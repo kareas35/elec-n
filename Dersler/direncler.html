@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Elektronik Akademi: Dirençler - renk kodları, seri ve paralel bağlantı, etkileşimli hesaplayıcı ve test">
+<title>Dirençler | Elektronik Akademi</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1d2939;--muted:#536174;--primary:#1565c0;--line:#dce4ec;--soft:#edf5ff;--good:#116b39;--bad:#a52525}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Segoe UI',Arial,sans-serif}a{color:var(--primary)}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ffb700;outline-offset:2px}
+header{background:linear-gradient(115deg,#0e4480,#227acb);color:white;padding:25px max(20px,calc((100% - 1050px)/2))}header a{color:white}h1{font-size:clamp(2rem,5vw,2.7rem);margin:12px 0;line-height:1.2}h2{line-height:1.3;margin-top:0}h3{margin:0 0 8px}.eyebrow{opacity:.85;letter-spacing:.08em;font-size:.85rem;text-transform:uppercase}.wrap{max-width:1050px;margin:auto;padding:24px 18px 80px}.grid{display:grid;grid-template-columns:240px 1fr;gap:22px;align-items:start}.toc,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:23px;box-shadow:0 4px 20px #1229490a}.toc{position:sticky;top:16px}.toc a{display:block;padding:7px 0;text-decoration:none;font-size:.9rem}.panel{margin-bottom:22px;scroll-margin-top:15px}.muted{color:var(--muted)}.small{font-size:.9rem}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chip{background:#ffffff24;border:1px solid #ffffff45;border-radius:50px;padding:3px 12px;font-size:.85rem}.example{background:var(--soft);border-left:4px solid var(--primary);border-radius:10px;padding:15px;margin:17px 0}.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}.control-grid label,.field{display:block;font-weight:600;font-size:.94rem}.control-grid select,.field select,.field input{display:block;width:100%;margin-top:7px;background:white;padding:10px;border:1px solid #a9bdd0;border-radius:9px;color:#1d2939}.field{margin:16px 0}.result{margin-top:17px;padding:17px;background:#e9f6ee;border:1px solid #bce6cc;border-radius:12px}.result strong{color:#165d36;font-size:1.65rem}.formula{font-weight:700;font-size:1.23rem;text-align:center;padding:12px}.diagram{border-radius:12px;background:var(--soft);padding:14px;margin:16px 0}.diagram svg{display:block;width:100%;height:auto;max-height:170px}.resistor{display:block;width:100%;max-width:580px;margin:12px auto 0}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.switch{border:1px solid var(--line);padding:8px 14px;border-radius:9px;background:#edf5ff;color:#125196;font-weight:700}.switch[aria-pressed="true"]{background:#1565c0;color:#fff}.question{border:1px solid var(--line);border-radius:12px;padding:16px;margin:15px 0}.question legend{font-weight:700}.question label{display:block;padding:7px 0}.question input{margin-right:8px;accent-color:var(--primary)}.feedback{font-weight:600;margin-top:10px}.good{color:var(--good)}.bad{color:var(--bad)}.action{border:none;background:#1565c0;color:white;padding:11px 20px;border-radius:9px;font-weight:700}.notice{padding:12px 15px;background:#fff8e5;border-left:4px solid #bd8616;border-radius:8px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}.mini-card{border:1px solid var(--line);border-radius:12px;padding:15px}footer{text-align:center;padding:24px;background:#0f477f;color:white}footer a{color:white}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.toc{position:static}.wrap{padding:18px 12px 50px}.panel,.toc{padding:18px}header{padding:22px 20px}}
+</style>
+</head>
+<body>
+<header>
+<a href="../index.html">← Elektronik Akademi ana sayfa</a>
+<p class="eyebrow">Ders 02 · Başlangıç seviyesi</p>
+<h1>Dirençler</h1>
+<p>Dirençleri tanı, renk kodlarını çöz, seri ve paralel bağlantıları deneyerek öğren.</p>
+<div class="chips"><span class="chip">6 konu</span><span class="chip">Renk kodu okuyucu</span><span class="chip">Seri/paralel hesaplayıcı</span><span class="chip">4 soruluk test</span></div>
+</header>
+<div class="wrap grid">
+<aside class="toc" aria-label="Ders içeriği"><strong>İçindekiler</strong><a href="#nedir">1. Direnç nedir?</a><a href="#cesitler">2. Direnç türleri</a><a href="#renkler">3. Renk kodları</a><a href="#seri">4. Seri ve paralel</a><a href="#uygulama">5. Mini uygulama</a><a href="#test">6. Bilgi testi</a></aside>
+<main>
+<section class="panel" id="nedir"><h2>1. Direnç nedir?</h2><p><strong>Direnç (R)</strong>, elektrik akımına karşı gösterilen karşı koymayı ifade eder. Birimi <strong>ohm (Ω)</strong>dur. Sabit bir gerilim altında direnç arttıkça akım azalır.</p><div class="formula">I = V / R</div><p>Dirençler devrelerde akımı sınırlamak, gerilimi bölmek ve çalışma noktalarını belirlemek için kullanılır. Direnç üzerinden geçen akım, elektrik enerjisinin bir kısmını ısıya dönüştürür.</p><div class="example"><strong>Örnek:</strong> 9 V kaynağa bağlı 1 kΩ dirençten geçen akım 9 mA'dir. (Burada yalnızca direnç olduğu varsayılır.)</div><p class="small muted">Ω = ohm, kΩ = 1.000 Ω ve MΩ = 1.000.000 Ω.</p></section>
+<section class="panel" id="cesitler"><h2>2. Direnç türleri</h2><div class="cards"><div class="mini-card"><h3>📏 Sabit direnç</h3><p>Nominal değeri sabittir; devrelerde akım sınırlamada sık kullanılır.</p></div><div class="mini-card"><h3>🎚️ Potansiyometre</h3><p>Elle ayarlanabilen dirençtir; ayar veya gerilim bölücü olarak kullanılabilir.</p></div><div class="mini-card"><h3>🌡️ Termistör</h3><p>Direnç değeri sıcaklığa göre değişir; sıcaklık algılamada kullanılır.</p></div></div><div class="notice small">Gerçek devre kurarken direnç değerinin yanında tolerans ve güç dayanımını da kontrol et. Özellikle yüksek güçte direnç ısınabilir.</div></section>
+<section class="panel" id="renkler"><h2>3. Etkileşimli direnç renk kodu okuyucu</h2><p>Bu örnekte <strong>4 bantlı</strong> direnci inceliyoruz. İlk iki bant rakamları, üçüncü bant çarpanı, dördüncü bant toleransı gösterir.</p>
+<div class="diagram">
+<svg class="resistor" viewBox="0 0 540 145" role="img" aria-label="Renk bantları değiştirilebilen dört bantlı direnç çizimi">
+<path d="M14 72 H146 M394 72 H526" stroke="#62798d" stroke-width="9" stroke-linecap="round"/>
+<rect x="130" y="28" width="280" height="88" rx="25" fill="#dfbe91" stroke="#9b7850" stroke-width="2"/>
+<rect id="band1" x="171" y="28" width="21" height="88" fill="#7c3aed"/>
+<rect id="band2" x="219" y="28" width="21" height="88" fill="#7c3aed"/>
+<rect id="band3" x="267" y="28" width="21" height="88" fill="#7c3aed"/>
+<rect id="band4" x="349" y="28" width="19" height="88" fill="#d4af37"/>
+<g fill="#40566c" font-size="14" text-anchor="middle"><text x="181" y="137">1</text><text x="229" y="137">2</text><text x="277" y="137">×</text><text x="358" y="137">±</text></g>
+</svg>
+</div>
+<div class="control-grid">
+<label for="c1">1. bant <select id="c1"></select></label>
+<label for="c2">2. bant <select id="c2"></select></label>
+<label for="mult">3. bant (çarpan) <select id="mult"></select></label>
+<label for="tol">4. bant (tolerans) <select id="tol"></select></label>
+</div>
+<div class="result" aria-live="polite"><div>Direncin nominal değeri</div><strong id="colorResult">—</strong><div id="colorExplanation" class="small"></div></div>
+<p class="small muted">Bu hesaplayıcı 4 bant içindir. Başlangıç örneği kahverengi-siyah-kırmızı-altın = 1 kΩ ±%5.</p>
+</section>
+<section class="panel" id="seri"><h2>4. Seri ve paralel dirençler</h2><p><strong>Seri bağlantıda</strong> dirençler arka arkaya bağlanır ve eşdeğerleri toplanır. <strong>Paralel bağlantıda</strong> dirençler aynı iki düğüm arasına bağlanır ve eşdeğer direnç her bir dirençten daha küçüktür.</p>
+<div class="row" role="group" aria-label="Bağlantı türü"><button class="switch" id="seriesBtn" type="button" aria-pressed="true">Seri</button><button class="switch" id="parallelBtn" type="button" aria-pressed="false">Paralel</button></div>
+<div class="diagram"><svg id="circuit" viewBox="0 0 470 160" role="img" aria-label="Seçilen direnç bağlantısının çizimi"><g id="lines" fill="none" stroke="#1565c0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></g><g id="labels" font-size="14" fill="#234d7b" text-anchor="middle"></g></svg></div>
+<div class="control-grid"><label for="r1">R1 (Ω) <input type="number" id="r1" min="1" max="1000000" step="1" value="220"></label><label for="r2">R2 (Ω) <input type="number" id="r2" min="1" max="1000000" step="1" value="330"></label><label for="source">Kaynak gerilimi (V) <input type="number" id="source" min="0" max="50" step="0.5" value="9"></label></div>
+<div class="result" aria-live="polite"><div>Eşdeğer direnç</div><strong id="equivalent">—</strong><div id="seriesExplanation" class="small"></div><div id="currentResult" class="small"></div></div>
+<p class="small muted">Model, ideal dirençler ve ideal DC kaynak varsayar. Pozitif direnç değerleri gir.</p></section>
+<section class="panel" id="uygulama"><h2>5. Mini uygulama: LED için direnç seçimi</h2><p>9 V pil, yaklaşık 2 V ileri yön gerilimine sahip kırmızı LED ve hedef 10 mA akım için seri direnç hesaplayalım.</p><div class="formula">R = (V<sub>kaynak</sub> − V<sub>LED</sub>) / I</div><div class="example">R = (9 − 2) / 0,010 = <strong>700 Ω</strong>. Pratikte daha yüksek yakın standart değerlerden <strong>750 Ω</strong> seçilirse akım yaklaşık <strong>9,3 mA</strong> olur.</div><p>LED'in ileri yön gerilimi ve uygun akımı modele göre değişebilir. Üretici veri sayfasını dikkate al.</p></section>
+<section class="panel" id="test"><h2>6. Mini bilgi testi</h2><p>Dört soruyu cevapla, sonuçlarını hemen gör.</p><form id="quiz">
+<fieldset class="question"><legend>1. Direncin birimi hangisidir?</legend><label><input type="radio" name="q1" value="a" required> Volt</label><label><input type="radio" name="q1" value="b"> Ohm</label><label><input type="radio" name="q1" value="c"> Amper</label><div class="feedback" id="f1" aria-live="polite"></div></fieldset>
+<fieldset class="question"><legend>2. 220 Ω ve 330 Ω direnç seri bağlanırsa eşdeğer direnç kaç Ω olur?</legend><label><input type="radio" name="q2" value="a" required> 550 Ω</label><label><input type="radio" name="q2" value="b"> 132 Ω</label><label><input type="radio" name="q2" value="c"> 110 Ω</label><div class="feedback" id="f2" aria-live="polite"></div></fieldset>
+<fieldset class="question"><legend>3. İki eşit direnç paralel bağlandığında eşdeğer direnç ne olur?</legend><label><input type="radio" name="q3" value="a" required> İki katına çıkar</label><label><input type="radio" name="q3" value="b"> Aynı kalır</label><label><input type="radio" name="q3" value="c"> Yarıya iner</label><div class="feedback" id="f3" aria-live="polite"></div></fieldset>
+<fieldset class="question"><legend>4. Kahverengi-siyah-kırmızı-altın 4 bantlı direnç değeri nedir?</legend><label><input type="radio" name="q4" value="a" required> 100 Ω ±%5</label><label><input type="radio" name="q4" value="b"> 1 kΩ ±%5</label><label><input type="radio" name="q4" value="c"> 10 kΩ ±%5</label><div class="feedback" id="f4" aria-live="polite"></div></fieldset>
+<button class="action" type="submit">Sonuçları kontrol et</button><p id="score" class="feedback" role="status"></p></form></section>
+</main></div>
+<footer><a href="../index.html">← Ana sayfaya dön</a> · © 2026 Elektronik Akademi</footer>
+<script>
+'use strict';
+const digits=[['Siyah','#171717',0],['Kahverengi','#7b4625',1],['Kırmızı','#d32f2f',2],['Turuncu','#f28c28',3],['Sarı','#f3ce34',4],['Yeşil','#138c4d',5],['Mavi','#1565c0',6],['Mor','#7c3aed',7],['Gri','#858c99',8],['Beyaz','#f8fafc',9]];
+const multiplier=[['Gümüş','#c0c0c0',0.01],['Altın','#d4af37',0.1],...digits.map(([n,c,d])=>[n,c,10**d])];
+const tolerances=[['Kahverengi','#7b4625',1],['Kırmızı','#d32f2f',2],['Yeşil','#138c4d',0.5],['Mavi','#1565c0',0.25],['Mor','#7c3aed',0.1],['Gri','#858c99',0.05],['Altın','#d4af37',5],['Gümüş','#c0c0c0',10]];
+function fill(id,data,defaultIndex){const el=document.getElementById(id);data.forEach((d,i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=d[0];el.append(option)});el.value=String(defaultIndex);el.addEventListener('change',updateColor)}
+fill('c1',digits,1);fill('c2',digits,0);fill('mult',multiplier,4);fill('tol',tolerances,6);
+const fmt=(n,d=2)=>n.toLocaleString('tr-TR',{maximumFractionDigits:d});
+function unit(n){if(n>=1e6)return fmt(n/1e6,3)+' MΩ';if(n>=1000)return fmt(n/1000,3)+' kΩ';return fmt(n,3)+' Ω'}
+function updateColor(){const a=digits[+document.getElementById('c1').value],b=digits[+document.getElementById('c2').value],m=multiplier[+document.getElementById('mult').value],t=tolerances[+document.getElementById('tol').value];const val=(10*a[2]+b[2])*m[2];['band1','band2','band3','band4'].forEach((id,i)=>document.getElementById(id).setAttribute('fill',[a,b,m,t][i][1]));document.getElementById('colorResult').textContent=unit(val)+' ±%'+fmt(t[2]);document.getElementById('colorExplanation').textContent=`(${a[2]}${b[2]}) × ${fmt(m[2],2)} = ${fmt(val,2)} Ω`;}
+updateColor();
+let mode='series';
+const line=document.getElementById('lines'),label=document.getElementById('labels');
+function diagram(){if(mode==='series') {line.innerHTML='<path d="M20 85 H95 M150 85 H255 M310 85 H450"/><rect x="95" y="72" width="55" height="26" rx="3" fill="#e8bb7b" stroke="#98622e"/><rect x="255" y="72" width="55" height="26" rx="3" fill="#e8bb7b" stroke="#98622e"/>';label.innerHTML='<text x="123" y="58">R1</text><text x="283" y="58">R2</text>';}else{line.innerHTML='<path d="M20 85 H90 V38 H200 M260 38 H380 V85 H450 M90 85 V126 H200 M260 126 H380 V85"/><rect x="200" y="25" width="60" height="26" rx="3" fill="#e8bb7b" stroke="#98622e"/><rect x="200" y="113" width="60" height="26" rx="3" fill="#e8bb7b" stroke="#98622e"/>';label.innerHTML='<text x="230" y="17">R1</text><text x="230" y="103">R2</text>';}}
+function updateNetwork(){const x=Number(document.getElementById('r1').value),y=Number(document.getElementById('r2').value),v=Number(document.getElementById('source').value);const out=document.getElementById('equivalent'),info=document.getElementById('seriesExplanation'),iout=document.getElementById('currentResult');if(!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(v)||x<=0||y<=0||v<0||x>1e6||y>1e6||v>50){out.textContent='Geçersiz değer';info.textContent='R1 ve R2 için 1–1.000.000 Ω, gerilim için 0–50 V gir.';iout.textContent='';return}const req=mode==='series'?x+y:(x*y)/(x+y);out.textContent=unit(req);info.textContent=mode==='series'?`R eş = ${fmt(x)} + ${fmt(y)} = ${fmt(req)} Ω`:`R eş = (${fmt(x)} × ${fmt(y)}) / (${fmt(x)} + ${fmt(y)}) = ${fmt(req,3)} Ω`;iout.textContent=`Kaynak akımı: ${fmt(v/req*1000,3)} mA`;}
+function setMode(next){mode=next;document.getElementById('seriesBtn').setAttribute('aria-pressed',String(mode==='series'));document.getElementById('parallelBtn').setAttribute('aria-pressed',String(mode==='parallel'));diagram();updateNetwork()}
+document.getElementById('seriesBtn').addEventListener('click',()=>setMode('series'));document.getElementById('parallelBtn').addEventListener('click',()=>setMode('parallel'));['r1','r2','source'].forEach(id=>document.getElementById(id).addEventListener('input',updateNetwork));setMode('series');
+document.getElementById('quiz').addEventListener('submit',event=>{event.preventDefault();const answers={q1:'b',q2:'a',q3:'c',q4:'b'};const explanations={q1:'Direncin birimi ohmdur (Ω).',q2:'Seride 220 + 330 = 550 Ω.',q3:'İki eşit direnç paralelde bağlandığında eşdeğer direnç R/2 olur.',q4:'Kahverengi=1, siyah=0, kırmızı çarpan=100; 10 × 100 = 1.000 Ω. Altın tolerans ±%5.'};let score=0;for(let n=1;n<=4;n++){const key='q'+n;const chosen=document.querySelector(`input[name="${key}"]:checked`)?.value;const good=chosen===answers[key];score+=Number(good);const el=document.getElementById('f'+n);el.className='feedback '+(good?'good':'bad');el.textContent=(good?'✓ Doğru. ':'✗ Yanlış. ')+explanations[key]};document.getElementById('score').textContent=`Sonuç: ${score}/4 doğru (%${Math.round(score*25)}).`});
+</script>
+</body></html>
