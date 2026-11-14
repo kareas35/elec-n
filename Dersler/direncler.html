@@ -10,6 +10,31 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Segoe UI',Arial,sans-serif}a{color:var(--primary)}button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #ffb700;outline-offset:2px}
 header{background:linear-gradient(115deg,#0e4480,#227acb);color:white;padding:25px max(20px,calc((100% - 1050px)/2))}header a{color:white}h1{font-size:clamp(2rem,5vw,2.7rem);margin:12px 0;line-height:1.2}h2{line-height:1.3;margin-top:0}h3{margin:0 0 8px}.eyebrow{opacity:.85;letter-spacing:.08em;font-size:.85rem;text-transform:uppercase}.wrap{max-width:1050px;margin:auto;padding:24px 18px 80px}.grid{display:grid;grid-template-columns:240px 1fr;gap:22px;align-items:start}.toc,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:23px;box-shadow:0 4px 20px #1229490a}.toc{position:sticky;top:16px}.toc a{display:block;padding:7px 0;text-decoration:none;font-size:.9rem}.panel{margin-bottom:22px;scroll-margin-top:15px}.muted{color:var(--muted)}.small{font-size:.9rem}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.chip{background:#ffffff24;border:1px solid #ffffff45;border-radius:50px;padding:3px 12px;font-size:.85rem}.example{background:var(--soft);border-left:4px solid var(--primary);border-radius:10px;padding:15px;margin:17px 0}.control-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}.control-grid label,.field{display:block;font-weight:600;font-size:.94rem}.control-grid select,.field select,.field input{display:block;width:100%;margin-top:7px;background:white;padding:10px;border:1px solid #a9bdd0;border-radius:9px;color:#1d2939}.field{margin:16px 0}.result{margin-top:17px;padding:17px;background:#e9f6ee;border:1px solid #bce6cc;border-radius:12px}.result strong{color:#165d36;font-size:1.65rem}.formula{font-weight:700;font-size:1.23rem;text-align:center;padding:12px}.diagram{border-radius:12px;background:var(--soft);padding:14px;margin:16px 0}.diagram svg{display:block;width:100%;height:auto;max-height:170px}.resistor{display:block;width:100%;max-width:580px;margin:12px auto 0}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.switch{border:1px solid var(--line);padding:8px 14px;border-radius:9px;background:#edf5ff;color:#125196;font-weight:700}.switch[aria-pressed="true"]{background:#1565c0;color:#fff}.question{border:1px solid var(--line);border-radius:12px;padding:16px;margin:15px 0}.question legend{font-weight:700}.question label{display:block;padding:7px 0}.question input{margin-right:8px;accent-color:var(--primary)}.feedback{font-weight:600;margin-top:10px}.good{color:var(--good)}.bad{color:var(--bad)}.action{border:none;background:#1565c0;color:white;padding:11px 20px;border-radius:9px;font-weight:700}.notice{padding:12px 15px;background:#fff8e5;border-left:4px solid #bd8616;border-radius:8px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:12px}.mini-card{border:1px solid var(--line);border-radius:12px;padding:15px}footer{text-align:center;padding:24px;background:#0f477f;color:white}footer a{color:white}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.toc{position:static}.wrap{padding:18px 12px 50px}.panel,.toc{padding:18px}header{padding:22px 20px}}
+
+/* ELEKTRONIK_AKADEMI_LAB_V1 */
+.lab-switch {display:flex;flex-wrap:wrap;gap:9px;margin:15px 0}
+.lab-switch .switch {font-size:.92rem}
+.lab-controls {display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:16px}
+.lab-controls label{display:block;font-weight:650}
+.lab-controls [hidden],.lab-stage[hidden]{display:none!important}
+.lab-controls input,.lab-controls select {display:block;width:100%;margin-top:6px;padding:9px;border:1px solid #afc0d2;border-radius:9px;background:white;color:#1d2939}
+.lab-controls input[type=range]{padding:0;accent-color:#1565c0}
+.lab-svg{width:100%;height:auto;display:block}
+.lab-stage{background:#edf5ff;border-radius:13px;padding:12px;margin:14px 0}
+.lab-stage svg{max-height:none}
+.lab-details{margin-top:12px;line-height:1.8}
+.lab-details strong{font-size:1.4rem;color:#165d36}
+.lab-hint{padding:12px 15px;background:#f4f8ff;border-left:4px solid #1565c0;border-radius:9px;margin-top:12px}
+.lab-result{padding:16px;background:#e9f6ee;border:1px solid #bce6cc;border-radius:12px;margin-top:16px}
+.lab-answer{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.lab-answer label{padding:9px 12px;border:1px solid #dce4ec;border-radius:9px;cursor:pointer}
+.lab-status{margin-top:12px;font-weight:600}
+.lab-status.good{color:#136939}.lab-status.bad{color:#9d2626}
+.lab-led{transition:fill .2s,filter .2s}
+.lab-bb-note{font-size:.91rem;color:#536174}
+@media(max-width:600px){.lab-stage{padding:5px}.lab-switch .switch{padding:8px}}
+@media(prefers-reduced-motion:reduce){.lab-stage animateMotion{display:none}}
+
 </style>
 </head>
 <body>
@@ -18,10 +43,10 @@ header{background:linear-gradient(115deg,#0e4480,#227acb);color:white;padding:25
 <p class="eyebrow">Ders 02 · Başlangıç seviyesi</p>
 <h1>Dirençler</h1>
 <p>Dirençleri tanı, renk kodlarını çöz, seri ve paralel bağlantıları deneyerek öğren.</p>
-<div class="chips"><span class="chip">6 konu</span><span class="chip">Renk kodu okuyucu</span><span class="chip">Seri/paralel hesaplayıcı</span><span class="chip">4 soruluk test</span></div>
+<div class="chips"><span class="chip">8 konu</span><span class="chip">Renk kodu okuyucu</span><span class="chip">Seri/paralel hesaplayıcı</span><span class="chip">4 soruluk test</span></div>
 </header>
 <div class="wrap grid">
-<aside class="toc" aria-label="Ders içeriği"><strong>İçindekiler</strong><a href="#nedir">1. Direnç nedir?</a><a href="#cesitler">2. Direnç türleri</a><a href="#renkler">3. Renk kodları</a><a href="#seri">4. Seri ve paralel</a><a href="#uygulama">5. Mini uygulama</a><a href="#test">6. Bilgi testi</a></aside>
+<aside class="toc" aria-label="Ders içeriği"><strong>İçindekiler</strong><a href="#nedir">1. Direnç nedir?</a><a href="#cesitler">2. Direnç türleri</a><a href="#renkler">3. Renk kodları</a><a href="#seri">4. Devre laboratuvarı</a><a href="#bbExercise">5. Breadboard alıştırması</a><a href="#ledBreadboard">6. LED uygulaması</a><a href="#uygulama">7. Mini uygulama</a><a href="#test">8. Bilgi testi</a></aside>
 <main>
 <section class="panel" id="nedir"><h2>1. Direnç nedir?</h2><p><strong>Direnç (R)</strong>, elektrik akımına karşı gösterilen karşı koymayı ifade eder. Birimi <strong>ohm (Ω)</strong>dur. Sabit bir gerilim altında direnç arttıkça akım azalır.</p><div class="formula">I = V / R</div><p>Dirençler devrelerde akımı sınırlamak, gerilimi bölmek ve çalışma noktalarını belirlemek için kullanılır. Direnç üzerinden geçen akım, elektrik enerjisinin bir kısmını ısıya dönüştürür.</p><div class="example"><strong>Örnek:</strong> 9 V kaynağa bağlı 1 kΩ dirençten geçen akım 9 mA'dir. (Burada yalnızca direnç olduğu varsayılır.)</div><p class="small muted">Ω = ohm, kΩ = 1.000 Ω ve MΩ = 1.000.000 Ω.</p></section>
 <section class="panel" id="cesitler"><h2>2. Direnç türleri</h2><div class="cards"><div class="mini-card"><h3>📏 Sabit direnç</h3><p>Nominal değeri sabittir; devrelerde akım sınırlamada sık kullanılır.</p></div><div class="mini-card"><h3>🎚️ Potansiyometre</h3><p>Elle ayarlanabilen dirençtir; ayar veya gerilim bölücü olarak kullanılabilir.</p></div><div class="mini-card"><h3>🌡️ Termistör</h3><p>Direnç değeri sıcaklığa göre değişir; sıcaklık algılamada kullanılır.</p></div></div><div class="notice small">Gerçek devre kurarken direnç değerinin yanında tolerans ve güç dayanımını da kontrol et. Özellikle yüksek güçte direnç ısınabilir.</div></section>
@@ -47,86 +72,117 @@ header{background:linear-gradient(115deg,#0e4480,#227acb);color:white;padding:25
 <p class="small muted">Bu hesaplayıcı 4 bant içindir. Başlangıç örneği kahverengi-siyah-kırmızı-altın = 1 kΩ ±%5.</p>
 </section>
 
+
 <section class="panel" id="seri">
-<h2>4. Seri, paralel ve karışık dirençler</h2>
-
-<p>
-<strong>Seri:</strong> Dirençler arka arkaya bağlanır.
-<strong>Paralel:</strong> Dirençler aynı iki nokta arasına bağlanır.
-<strong>Karışık:</strong> Seri ve paralel bağlantılar birlikte kullanılır.
-</p>
-
-<div class="row" role="group" aria-label="Bağlantı türü">
-<button class="switch" id="seriesBtn" type="button">Seri</button>
-<button class="switch" id="parallelBtn" type="button">Paralel</button>
-<button class="switch" id="mixedBtn" type="button">Seri + Paralel</button>
-</div>
-
-<div class="diagram">
-<svg id="circuit" viewBox="0 0 470 230"
-     style="max-height:260px"
-     role="img"
-     aria-label="Pil ve dirençlerden oluşan kapalı devre">
-<g id="lines" fill="none" stroke="#1565c0"
-   stroke-width="4" stroke-linecap="round"
-   stroke-linejoin="round"></g>
-<g id="labels" font-size="14" fill="#234d7b"
-   text-anchor="middle"></g>
-<text id="sourceVoltageLabel" x="110" y="216"
-      font-size="15" fill="#1565c0"
-      font-weight="bold">Pil: 9 V</text>
-</svg>
-</div>
-
-<div class="control-grid">
-<label for="r1">
-R1 (Ω)
-<input type="number" id="r1" min="1" max="1000000"
-       step="1" value="220">
-</label>
-
-<label for="r2">
-R2 (Ω)
-<input type="number" id="r2" min="1" max="1000000"
-       step="1" value="330">
-</label>
-
-<label for="r3" id="r3Field" style="display:none">
-R3 (Ω)
-<input type="number" id="r3" min="1" max="1000000"
-       step="1" value="330">
-</label>
-
-<label for="source">
-Pil gerilimi (V)
-<input type="number" id="source" min="0" max="50"
-       step="0.5" value="9">
-</label>
-
-<label for="sourceSlider">
-Pil gerilimini ayarla
-<input type="range" id="sourceSlider"
-       min="0" max="50" step="0.5" value="9"
-       style="width:100%">
-</label>
-</div>
-
-<div class="result" aria-live="polite">
-<div>Eşdeğer direnç</div>
-<strong id="equivalent">—</strong>
-<div id="seriesExplanation" class="small"></div>
-<div id="currentResult" class="small"></div>
-<div id="branchResult" class="small"></div>
-</div>
-
-<p class="small muted">
-Bu uygulama ideal pil ve dirençleri esas alan
-bir eğitim modelidir. Gerçek devrelerde
-direnç toleransı ve sıcaklık etkili olabilir.
-</p>
+  <h2>4. Seri, paralel ve karışık devre laboratuvarı</h2>
+  <p>Bağlantı türünü seç, dirençleri ve pil gerilimini değiştir. Yeşil noktalar <strong>geleneksel akım yönünü</strong> temsil eder. Animasyon hızı yalnızca öğretici amaçlıdır; elektronların gerçek hızını göstermez.</p>
+  <div class="lab-switch" role="group" aria-label="Bağlantı türleri">
+    <button type="button" class="switch" id="seriesBtn" aria-pressed="true">Seri</button>
+    <button type="button" class="switch" id="parallelBtn" aria-pressed="false">Paralel</button>
+    <button type="button" class="switch" id="mixedBtn" aria-pressed="false">Seri + Paralel</button>
+    <button type="button" class="switch" id="breadBtn" aria-pressed="false">Breadboard</button>
+  </div>
+  <div class="lab-stage" id="schematicStage">
+    <svg id="labCircuit" class="lab-svg" viewBox="0 0 620 270" role="img" aria-label="Pil ile beslenen direnç devresi">
+      <g id="labWires" fill="none" stroke="#1565c0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="labComponents"></g>
+      <g id="labTexts" fill="#234d7b" text-anchor="middle" font-size="16"></g>
+      <g id="labParticles"></g>
+    </svg>
+  </div>
+  <div class="lab-stage" id="breadboardStage" hidden>
+    <svg id="labBreadboard" class="lab-svg" viewBox="0 0 720 400" role="img" aria-label="A-J delikleri ve numaralı satırları gösteren karışık devre breadboard yerleşimi"></svg>
+    <p class="lab-bb-note">A–E ve F–J, <strong>aynı numaralı satırda ayrı</strong> beşli bağlantı gruplarıdır. Ortadaki kanal onları ayırır. Kırmızı/mavi güç hatları bu örnekte kesintisiz varsayılmıştır. Gerçek breadboard'un bağlantı şemasını kontrol et.</p>
+  </div>
+  <div class="lab-controls">
+    <label>R1 (Ω)<input id="r1" type="number" min="1" max="1000000" step="1" value="220"></label>
+    <label>R2 (Ω)<input id="r2" type="number" min="1" max="1000000" step="1" value="330"></label>
+    <label id="r3Field">R3 (Ω)<input id="r3" type="number" min="1" max="1000000" step="1" value="330"></label>
+    <label>Pil gerilimi (V)<input id="source" type="number" min="0" max="50" step="0.5" value="9"></label>
+    <label>Gerilimi kaydır<input id="sourceSlider" type="range" min="0" max="50" step="0.5" value="9"></label>
+  </div>
+  <div class="lab-result" aria-live="polite">
+    <div>Eşdeğer direnç</div><strong id="equivalent">—</strong>
+    <div id="seriesExplanation" class="lab-details"></div>
+    <div id="currentResult"></div><div id="branchResult"></div>
+    <div id="branchVoltage"></div>
+  </div>
+  <p class="lab-hint" id="labTeaching">Seride aynı akım tüm dirençlerden geçer.</p>
 </section>
-<section class="panel" id="uygulama"><h2>5. Mini uygulama: LED için direnç seçimi</h2><p>9 V pil, yaklaşık 2 V ileri yön gerilimine sahip kırmızı LED ve hedef 10 mA akım için seri direnç hesaplayalım.</p><div class="formula">R = (V<sub>kaynak</sub> − V<sub>LED</sub>) / I</div><div class="example">R = (9 − 2) / 0,010 = <strong>700 Ω</strong>. Pratikte daha yüksek yakın standart değerlerden <strong>750 Ω</strong> seçilirse akım yaklaşık <strong>9,3 mA</strong> olur.</div><p>LED'in ileri yön gerilimi ve uygun akımı modele göre değişebilir. Üretici veri sayfasını dikkate al.</p></section>
-<section class="panel" id="test"><h2>6. Mini bilgi testi</h2><p>Dört soruyu cevapla, sonuçlarını hemen gör.</p><form id="quiz">
+<section class="panel" id="bbExercise">
+  <h2>5. Breadboard bağlantı alıştırması</h2>
+  <p>Karışık devrede <strong>R2 ve R3 paralel</strong> olabilmesi için, sol ve sağ tarafın bağlantı düğümleri ortak olmalıdır. Breadboard üzerindeki orta kanalın iki tarafını doğru kabloyla birleştirmek gerekir.</p>
+  <p><strong>Soru:</strong> Hangi jumper (bağlantı kablosu), R2 ile R3'ün giriş uçlarını aynı düğüme bağlar?</p>
+  <div class="lab-answer" id="bbAnswers">
+    <label><input type="radio" name="bbQuestion" value="ok"> E5 ile F5'i bağlamak</label>
+    <label><input type="radio" name="bbQuestion" value="wrong"> E5 ile F8'i bağlamak</label>
+    <label><input type="radio" name="bbQuestion" value="danger"> Pozitif ve negatif güç hatlarını doğrudan bağlamak</label>
+  </div>
+  <button class="action" type="button" id="bbCheck">Bağlantıyı kontrol et</button>
+  <div class="lab-status" id="bbFeedback" role="status" aria-live="polite"></div>
+  <p class="small muted">Bu alıştırma temsili bağlantıları değerlendirir. Kısa devre olabilecek bağlantıları gerçek pil üzerinde deneme.</p>
+</section>
+<section class="panel" id="ledBreadboard">
+  <h2>6. LED + direnç + breadboard mini uygulaması</h2>
+  <p>LED'in uzun bacağı genellikle <strong>anot (+)</strong>, kısa bacağı <strong>katot (−)</strong> olarak adlandırılır. Uygun yönde ve seri dirençle bağlanmalıdır. LED'in veri sayfası esas alınır.</p>
+  <div class="lab-stage">
+    <svg class="lab-svg" viewBox="0 0 620 220" role="img" aria-label="Direnç ile seri bağlı LED devre çizimi">
+      <g stroke="#1565c0" stroke-width="4" fill="none" stroke-linejoin="round">
+        <path d="M90 45 H185 M255 45 H370 M422 45 H525 V177 H90 V108 M90 86 V45"/>
+        <path d="M66 86 H114 M76 108 H104" stroke="#234d7b"/>
+        <rect x="185" y="32" width="70" height="26" rx="5" fill="#e8bb7b" stroke="#98622e"/>
+        <path d="M370 24 L370 66 L414 45 Z" fill="#cbd5e1" stroke="#234d7b"/>
+        <path d="M422 24 V66" stroke="#234d7b"/>
+      </g>
+      <circle id="labLedGlow" class="lab-led" cx="396" cy="45" r="29" fill="#94a3b8" opacity=".30"/>
+      <g font-size="15" fill="#234d7b" text-anchor="middle">
+        <text x="220" y="20">Seri direnç</text><text x="395" y="105">LED</text>
+        <text x="125" y="88">+</text><text x="125" y="112">−</text>
+        <text x="310" y="201">Breadboard bağlantı ilkesi (şematik)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="lab-stage">
+    <svg class="lab-svg" viewBox="0 0 620 230" role="img" aria-label="LED ve seri direnç için breadboard üzerinde örnek doğru yerleşim">
+      <rect x="75" y="25" width="470" height="180" rx="14" fill="white" stroke="#b7c4d6" stroke-width="2"/>
+      <path d="M105 47 H515" stroke="#e34848" stroke-width="3"/>
+      <path d="M105 185 H515" stroke="#3475cc" stroke-width="3"/>
+      <g font-size="12" fill="#234d7b" text-anchor="middle">
+        <text x="155" y="78">A</text><text x="185" y="78">B</text><text x="215" y="78">C</text><text x="245" y="78">D</text><text x="275" y="78">E</text>
+        <text x="335" y="78">F</text><text x="365" y="78">G</text><text x="395" y="78">H</text><text x="425" y="78">I</text><text x="455" y="78">J</text>
+        <text x="105" y="115">2</text><text x="105" y="145">3</text>
+        <text x="310" y="158">Orta kanal</text>
+      </g>
+      <g fill="#cbd5e1">
+        <circle cx="155" cy="110" r="4"/><circle cx="185" cy="110" r="4"/><circle cx="215" cy="110" r="4"/><circle cx="245" cy="110" r="4"/><circle cx="275" cy="110" r="4"/>
+        <circle cx="335" cy="110" r="4"/><circle cx="365" cy="110" r="4"/><circle cx="395" cy="110" r="4"/><circle cx="425" cy="110" r="4"/><circle cx="455" cy="110" r="4"/>
+        <circle cx="155" cy="140" r="4"/><circle cx="185" cy="140" r="4"/><circle cx="215" cy="140" r="4"/><circle cx="245" cy="140" r="4"/><circle cx="275" cy="140" r="4"/>
+        <circle cx="335" cy="140" r="4"/><circle cx="365" cy="140" r="4"/><circle cx="395" cy="140" r="4"/><circle cx="425" cy="140" r="4"/><circle cx="455" cy="140" r="4"/>
+      </g>
+      <g stroke-width="4" fill="none"><path d="M155 47 V68 M155 91 V110" stroke="#e34848"/><path d="M455 110 V185" stroke="#3475cc"/><path d="M275 110 H335" stroke="#16a34a"/></g>
+      <rect x="146" y="68" width="18" height="23" rx="6" fill="#e8bb7b" stroke="#98622e" stroke-width="2"/>
+      <circle cx="305" cy="110" r="12" fill="#facc15" stroke="#98622e" stroke-width="2"/>
+      <g font-size="12" fill="#234d7b"><text x="120" y="90">R</text><text x="290" y="97">LED</text><text x="108" y="40">+</text><text x="108" y="198">−</text></g>
+    </svg>
+    <p class="lab-bb-note">Örnek bağlantı: kırmızı (+) hat → seri direnç → A2–E2 grubu → LED anot → LED katot → F2–J2 grubu → mavi (−) hat. LED, orta kanalı aşar. Bu bir bağlantı öğretim çizimidir.</p>
+  </div>
+  <div class="lab-controls">
+    <label>Pil gerilimi (V)<input id="ledV" type="number" min="0" max="24" step="0.5" value="9"></label>
+    <label>Seri direnç (Ω)<input id="ledR" type="number" min="1" max="1000000" step="1" value="470"></label>
+    <label>LED bağlantısı
+      <select id="ledConnection">
+        <option value="correct">Doğru: direnç seri, LED ileri yönde</option>
+        <option value="reverse">Yanlış: LED ters yönde</option>
+        <option value="open">Yanlış: bağlantı kablosu eksik</option>
+        <option value="short">Tehlikeli: LED'in seri direnci atlanmış</option>
+      </select>
+    </label>
+  </div>
+  <div class="lab-result" aria-live="polite"><strong id="ledCurrent">—</strong><div id="ledFeedback"></div></div>
+  <p class="small muted">Basitleştirilmiş kırmızı LED modeli: ileri gerilim yaklaşık 2 V; 5–20 mA eğitim için örnek çalışma aralığıdır, evrensel güvenli aralık değildir. Ters akım, sıcaklık ve LED güç sınırları fiziksel simülatör düzeyinde modellenmez.</p>
+</section>
+<section class="panel" id="uygulama"><h2>7. Mini uygulama: LED için direnç seçimi</h2><p>9 V pil, yaklaşık 2 V ileri yön gerilimine sahip kırmızı LED ve hedef 10 mA akım için seri direnç hesaplayalım.</p><div class="formula">R = (V<sub>kaynak</sub> − V<sub>LED</sub>) / I</div><div class="example">R = (9 − 2) / 0,010 = <strong>700 Ω</strong>. Pratikte daha yüksek yakın standart değerlerden <strong>750 Ω</strong> seçilirse akım yaklaşık <strong>9,3 mA</strong> olur.</div><p>LED'in ileri yön gerilimi ve uygun akımı modele göre değişebilir. Üretici veri sayfasını dikkate al.</p></section>
+<section class="panel" id="test"><h2>8. Mini bilgi testi</h2><p>Dört soruyu cevapla, sonuçlarını hemen gör.</p><form id="quiz">
 <fieldset class="question"><legend>1. Direncin birimi hangisidir?</legend><label><input type="radio" name="q1" value="a" required> Volt</label><label><input type="radio" name="q1" value="b"> Ohm</label><label><input type="radio" name="q1" value="c"> Amper</label><div class="feedback" id="f1" aria-live="polite"></div></fieldset>
 <fieldset class="question"><legend>2. 220 Ω ve 330 Ω direnç seri bağlanırsa eşdeğer direnç kaç Ω olur?</legend><label><input type="radio" name="q2" value="a" required> 550 Ω</label><label><input type="radio" name="q2" value="b"> 132 Ω</label><label><input type="radio" name="q2" value="c"> 110 Ω</label><div class="feedback" id="f2" aria-live="polite"></div></fieldset>
 <fieldset class="question"><legend>3. İki eşit direnç paralel bağlandığında eşdeğer direnç ne olur?</legend><label><input type="radio" name="q3" value="a" required> İki katına çıkar</label><label><input type="radio" name="q3" value="b"> Aynı kalır</label><label><input type="radio" name="q3" value="c"> Yarıya iner</label><div class="feedback" id="f3" aria-live="polite"></div></fieldset>
@@ -146,190 +202,206 @@ function unit(n){if(n>=1e6)return fmt(n/1e6,3)+' MΩ';if(n>=1000)return fmt(n/10
 function updateColor(){const a=digits[+document.getElementById('c1').value],b=digits[+document.getElementById('c2').value],m=multiplier[+document.getElementById('mult').value],t=tolerances[+document.getElementById('tol').value];const val=(10*a[2]+b[2])*m[2];['band1','band2','band3','band4'].forEach((id,i)=>document.getElementById(id).setAttribute('fill',[a,b,m,t][i][1]));document.getElementById('colorResult').textContent=unit(val)+' ±%'+fmt(t[2]);document.getElementById('colorExplanation').textContent=`(${a[2]}${b[2]}) × ${fmt(m[2],2)} = ${fmt(val,2)} Ω`;}
 updateColor();
 
-let mode = 'series';
 
-const line = document.getElementById('lines');
-const label = document.getElementById('labels');
-
-const battery = `
-  <path d="M65 45 V88 M65 110 V185"
-        stroke="#1565c0" stroke-width="4"/>
-  <path d="M43 88 H87 M53 110 H77"
-        stroke="#234d7b" stroke-width="4"/>
-`;
-
-function resistor(x, y) {
-  return `<rect x="${x}" y="${y}" width="60" height="26"
-    rx="4" fill="#e8bb7b" stroke="#98622e"
-    stroke-width="2"/>`;
-}
-
-function diagram() {
-  if (mode === 'series') {
-    line.innerHTML = battery + `
-      <path d="M65 45 H145 M205 45 H275
-               M335 45 H410 V185 H65"/>
-      ${resistor(145,32)}
-      ${resistor(275,32)}
-    `;
-    label.innerHTML = `
-      <text x="175" y="23">R1</text>
-      <text x="305" y="23">R2</text>
-      <text x="100" y="88">+</text>
-      <text x="100" y="113">−</text>
-      <text x="285" y="211">Seri bağlantı</text>
-    `;
-  } else if (mode === 'parallel') {
-    line.innerHTML = battery + `
-      <path d="M65 45 H130 H170 M230 45 H390
-               V185 H65 M130 45 V110 H170
-               M230 110 H390"/>
-      ${resistor(170,32)}
-      ${resistor(170,97)}
-    `;
-    label.innerHTML = `
-      <text x="200" y="23">R1</text>
-      <text x="200" y="91">R2</text>
-      <text x="100" y="88">+</text>
-      <text x="100" y="113">−</text>
-      <text x="285" y="211">Paralel bağlantı</text>
-    `;
-  } else {
-    line.innerHTML = battery + `
-      <path d="M65 45 H130 M190 45 H235 H280
-               M340 45 H390 V185 H65
-               M235 45 V110 H280 M340 110 H390"/>
-      ${resistor(130,32)}
-      ${resistor(280,32)}
-      ${resistor(280,97)}
-    `;
-    label.innerHTML = `
-      <text x="160" y="23">R1</text>
-      <text x="310" y="23">R2</text>
-      <text x="310" y="91">R3</text>
-      <text x="100" y="88">+</text>
-      <text x="100" y="113">−</text>
-      <text x="285" y="211">Karışık bağlantı</text>
-    `;
-  }
-}
-
-function updateNetwork() {
-  const raw = id => document.getElementById(id).value;
-  const x = Number(raw('r1'));
-  const y = Number(raw('r2'));
-  const z = Number(raw('r3'));
-  const v = Number(raw('source'));
-
-  const out = document.getElementById('equivalent');
-  const info = document.getElementById('seriesExplanation');
-  const current = document.getElementById('currentResult');
-  const branch = document.getElementById('branchResult');
-
-  const valid = ['r1','r2','source'].every(
-    id => raw(id) !== ''
-  ) && (mode !== 'mixed' || raw('r3') !== '')
-    && [x,y].every(n => Number.isFinite(n) && n>0 && n<=1e6)
-    && (mode !== 'mixed' ||
-        (Number.isFinite(z) && z>0 && z<=1e6))
-    && Number.isFinite(v) && v>=0 && v<=50;
-
-  document.getElementById('sourceVoltageLabel')
-    .textContent = raw('source') !== '' &&
-    Number.isFinite(v) && v>=0 && v<=50
-    ? 'Pil: ' + fmt(v,1) + ' V' : 'Pil: —';
-
-  if (!valid) {
-    out.textContent = 'Geçersiz değer';
-    info.textContent =
-      'Dirençler için 1–1.000.000 Ω, pil için 0–50 V gir.';
-    current.textContent = '';
-    branch.textContent = '';
-    return;
-  }
-
-  let req;
-
-  if (mode === 'series') {
-    req = x+y;
-    info.textContent =
-      `R eş = ${fmt(x)} + ${fmt(y)} = ${fmt(req,3)} Ω`;
-    branch.textContent = '';
-  } else if (mode === 'parallel') {
-    req = (x*y)/(x+y);
-    info.textContent =
-      `R eş = (${fmt(x)} × ${fmt(y)}) / ` +
-      `(${fmt(x)} + ${fmt(y)}) = ${fmt(req,3)} Ω`;
-    branch.textContent =
-      `R1 akımı: ${fmt(v/x*1000,3)} mA | ` +
-      `R2 akımı: ${fmt(v/y*1000,3)} mA`;
-  } else {
-    const rp = (y*z)/(y+z);
-    req = x+rp;
-    const totalI = v/req;
-    const parallelV = totalI*rp;
-
-    info.textContent =
-      `R2 ∥ R3 = ${fmt(rp,3)} Ω; ` +
-      `R eş = R1 + (R2 ∥ R3) = ${fmt(req,3)} Ω`;
-
-    branch.textContent =
-      `R2 akımı: ${fmt(parallelV/y*1000,3)} mA | ` +
-      `R3 akımı: ${fmt(parallelV/z*1000,3)} mA`;
-  }
-
-  out.textContent = unit(req);
-  current.textContent =
-    `Kaynak akımı: ${fmt(v/req*1000,3)} mA`;
-}
-
-function setMode(next) {
-  mode = next;
-
-  const modes = {
-    seriesBtn:'series',
-    parallelBtn:'parallel',
-    mixedBtn:'mixed'
+/* Direnç devresi ve breadboard laboratuvarı */
+(function () {
+  'use strict';
+  const byId = id => document.getElementById(id);
+  const fmtLab = (n,d=3) => Number(n).toLocaleString('tr-TR',{maximumFractionDigits:d});
+  const unitLab = n => n>=1e6?fmtLab(n/1e6)+' MΩ':n>=1000?fmtLab(n/1000)+' kΩ':fmtLab(n)+' Ω';
+  let mode = 'series';
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const makeSVG = (tag, attributes, content) => {
+    const el=document.createElementNS(svgNS,tag);
+    Object.entries(attributes||{}).forEach(([k,v])=>el.setAttribute(k,v));
+    if(content!==undefined)el.textContent=content;
+    return el;
   };
+  const textAt=(g,x,y,value,size=15)=>g.appendChild(makeSVG('text',{x,y,'font-size':size},value));
+  const rectAt=(g,x,y,w=65,h=26)=>g.appendChild(makeSVG('rect',{x,y,width:w,height:h,rx:5,fill:'#e8bb7b',stroke:'#98622e','stroke-width':2}));
+  const pathAt=(g,d,stroke='#1565c0',width=4)=>g.appendChild(makeSVG('path',{d,fill:'none',stroke,'stroke-width':width,'stroke-linejoin':'round'}));
+  const addParticle=(g,path,dur,begin,opacity=1)=>{
+    const circle=makeSVG('circle',{r:5,fill:'#16a34a',opacity});
+    circle.appendChild(makeSVG('animateMotion',{path,dur:dur+'s',begin:begin+'s',repeatCount:'indefinite'}));
+    g.appendChild(circle);
+  };
+  const battery=(w,t)=>{
+    pathAt(w,'M72 48 V91 M72 116 V193');
+    pathAt(w,'M49 91 H95 M59 116 H85','#234d7b',4);
+    textAt(t,114,92,'+',16);textAt(t,114,120,'−',16);
+  };
+  function diagram(currentTotal=0,current2=0,current3=0){
+    const w=byId('labWires'),t=byId('labTexts'),p=byId('labParticles'),c=byId('labComponents');
+    [w,t,p,c].forEach(el=>el.replaceChildren());
+    battery(w,t);
+    let v=byId('source').value;
+    textAt(t,140,236,'Pil: '+(v===''?'—':fmtLab(+v,1)+' V'),17);
+    const speed=I=>Math.max(.75,Math.min(9,120/Math.max(I,.05)));
+    if(mode==='series'){
+      pathAt(w,'M72 48 H165 M235 48 H305 M375 48 H516 V193 H72');
+      rectAt(c,165,35,70);rectAt(c,305,35,70);
+      textAt(t,200,28,'R1 = '+byId('r1').value+' Ω',13);
+      textAt(t,340,28,'R2 = '+byId('r2').value+' Ω',13);
+      const route='M72 48 H516 V193 H72 V116';
+      for(let i=0;i<4;i++)addParticle(p,route,speed(currentTotal),(-i*speed(currentTotal)/4).toFixed(2));
+    }else if(mode==='parallel'){
+      pathAt(w,'M72 48 H148 H235 M305 48 H516 V193 H72 M148 48 V124 H235 M305 124 H516');
+      rectAt(c,235,35,70);rectAt(c,235,111,70);
+      textAt(t,270,27,'R1 = '+byId('r1').value+' Ω',13);
+      textAt(t,270,104,'R2 = '+byId('r2').value+' Ω',13);
+      addParticle(p,'M72 48 H148',speed(currentTotal),0);
+      for(let i=0;i<3;i++){
+        addParticle(p,'M148 48 H516 V193 H72 V116',speed(current2),-i*speed(current2)/3);
+        addParticle(p,'M148 48 V124 H516 V193 H72 V116',speed(current3),-i*speed(current3)/3);
+      }
+    }else{
+      pathAt(w,'M72 48 H158 M228 48 H290 H370 M440 48 H516 V193 H72 M290 48 V128 H370 M440 128 H516');
+      rectAt(c,158,35,70);rectAt(c,370,35,70);rectAt(c,370,115,70);
+      textAt(t,193,27,'R1 = '+byId('r1').value+' Ω',13);
+      textAt(t,405,27,'R2 = '+byId('r2').value+' Ω',13);
+      textAt(t,405,107,'R3 = '+byId('r3').value+' Ω',13);
+      for(let i=0;i<4;i++){
+        addParticle(p,'M72 48 H290',speed(currentTotal),-i*speed(currentTotal)/4);
+      }
+      for(let i=0;i<4;i++){
+        addParticle(p,'M290 48 H516 V193 H72 V116',speed(current2),-i*speed(current2)/4);
+        addParticle(p,'M290 48 V128 H516 V193 H72 V116',speed(current3),-i*speed(current3)/4);
+      }
+    }
+  }
 
-  Object.entries(modes).forEach(([id,value]) => {
-    document.getElementById(id)
-      .setAttribute('aria-pressed', String(mode===value));
+  function breadboard(){
+    const svg=byId('labBreadboard');svg.replaceChildren();
+    svg.appendChild(makeSVG('rect',{x:90,y:48,width:570,height:305,rx:18,fill:'#fff',stroke:'#b7c4d6','stroke-width':2}));
+    // Seçilen model: A-E ve F-J, aynı numaralı satırda beşli bağlantı gruplarıdır.
+    const xs=[195,225,255,285,315,395,425,455,485,515];
+    const letters='ABCDEFGHIJ';
+    xs.forEach((x,i)=>textAt(svg,x,111,letters[i],12));
+    for(let row=1;row<=10;row++){
+      const y=112+row*20;
+      textAt(svg,146,y+4,String(row),11);
+      xs.forEach(x=>svg.appendChild(makeSVG('circle',{cx:x,cy:y,r:4.5,fill:'#d0d9e4',stroke:'#9aa9b9','stroke-width':.5})));
+    }
+    pathAt(svg,'M125 69 H625','#e34848',4);pathAt(svg,'M125 334 H625','#3475cc',4);
+    textAt(svg,108,74,'+',16);textAt(svg,108,339,'−',16);
+    pathAt(svg,'M355 125 V323','#c6ced8',1);
+    textAt(svg,355,365,'Orta kanal',13);
+    // R1: A2 -> A5; R2: B5 -> B8; R3: H5 -> H8.
+    // Jumper E5-F5 ve E8-F8, iki yarım sırayı bağlar.
+    // Güç rail+ A2'ye, rail- B8'e gider.
+    const segments=[
+      ['M150 69 V152 H195','#e34848'],
+      ['M195 152 V212','#a56b2a'],
+      ['M225 212 V272','#a56b2a'],
+      ['M455 212 V272','#a56b2a'],
+      ['M315 212 H395','#16a34a'],
+      ['M315 272 H395','#16a34a'],
+      ['M225 272 V334 H150','#3475cc']
+    ];
+    segments.forEach(([d,color])=>pathAt(svg,d,color,5));
+    rectAt(svg,185,171,20,22);rectAt(svg,215,231,20,22);rectAt(svg,445,231,20,22);
+    textAt(svg,177,165,'R1',12);textAt(svg,205,226,'R2',12);textAt(svg,473,226,'R3',12);
+    textAt(svg,557,178,'R1 seri',14);textAt(svg,557,202,'R2 ∥ R3',14);
+    textAt(svg,565,226,'E5–F5',12);textAt(svg,565,245,'E8–F8',12);
+    textAt(svg,553,297,'Pil: '+fmtLab(+byId('source').value||0,1)+' V',13);
+  }
+  function updateNetwork(){
+    const ids=mode==='series'||mode==='parallel'?['r1','r2']:['r1','r2','r3'];
+    const valid=ids.every(id=>byId(id).value.trim()!=='' && Number.isFinite(+byId(id).value) && +byId(id).value>0 && +byId(id).value<=1000000)
+      && byId('source').value.trim()!=='' && Number.isFinite(+byId('source').value)
+      && +byId('source').value>=0 && +byId('source').value<=50;
+    if(!valid){
+      byId('equivalent').textContent='Geçersiz değer';
+      byId('seriesExplanation').textContent='Dirençler: 1–1.000.000 Ω, gerilim: 0–50 V.';
+      byId('currentResult').textContent='';byId('branchResult').textContent='';byId('branchVoltage').textContent='';
+      byId('labParticles').replaceChildren();return;
+    }
+    const r1=+byId('r1').value,r2=+byId('r2').value,r3=+byId('r3').value,v=+byId('source').value;
+    let req,description='',branch='',branchv='',i2=0,i3=0;
+    if(mode==='series'){
+      req=r1+r2;description=`R eş = ${fmtLab(r1)} + ${fmtLab(r2)} = ${fmtLab(req)} Ω`;
+    }else if(mode==='parallel'){
+      req=r1*r2/(r1+r2);i2=v/r1*1000;i3=v/r2*1000;
+      description=`R eş = (R1 × R2) / (R1 + R2) = ${fmtLab(req)} Ω`;
+      branch=`R1 kolu: ${fmtLab(i2)} mA | R2 kolu: ${fmtLab(i3)} mA`;
+      branchv=`Paralel kollarda gerilim: ${fmtLab(v)} V`;
+    }else{
+      const rp=r2*r3/(r2+r3);req=r1+rp;
+      const vp=v*rp/req;i2=vp/r2*1000;i3=vp/r3*1000;
+      description=`R2 ∥ R3 = ${fmtLab(rp)} Ω; R eş = R1 + (R2 ∥ R3) = ${fmtLab(req)} Ω`;
+      branch=`R2 kolu: ${fmtLab(i2)} mA | R3 kolu: ${fmtLab(i3)} mA`;
+      branchv=`R2 ve R3 üzerindeki gerilim: ${fmtLab(vp)} V`;
+    }
+    const it=v/req*1000;
+    byId('equivalent').textContent=unitLab(req);
+    byId('seriesExplanation').textContent=description;
+    byId('currentResult').textContent=`Kaynak akımı: ${fmtLab(it)} mA`;
+    byId('branchResult').textContent=branch;
+    byId('branchVoltage').textContent=branchv;
+    diagram(it,i2,i3);
+    breadboard();
+  }
+  function setMode(next){
+    mode=next;
+    const modes={seriesBtn:'series',parallelBtn:'parallel',mixedBtn:'mixed',breadBtn:'breadboard'};
+    Object.entries(modes).forEach(([id,m])=>byId(id).setAttribute('aria-pressed',String(m===mode)));
+    byId('schematicStage').hidden=mode==='breadboard';
+    byId('breadboardStage').hidden=mode!=='breadboard';
+    byId('r3Field').hidden=mode==='series'||mode==='parallel';
+    const guide={
+      series:'Seri devrede akım bütün dirençlerden aynı miktarda geçer.',
+      parallel:'Paralel devrede tüm kollarda gerilim aynı, akım ise dirençlere göre farklıdır.',
+      mixed:'R1 üzerinden toplam akım geçer; R2 ve R3 kollarına bölünür. Direnci düşük kolda akım daha fazladır.',
+      breadboard:'Breadboard: aynı satırdaki A–E ve F–J grupları ayrıdır; E5–F5 ve E8–F8 jumper kablolarıyla köprülenir.'
+    };
+    byId('labTeaching').textContent=guide[mode];
+    updateNetwork();
+  }
+  Object.entries({seriesBtn:'series',parallelBtn:'parallel',mixedBtn:'mixed',breadBtn:'breadboard'})
+    .forEach(([id,m])=>byId(id).addEventListener('click',()=>setMode(m)));
+  ['r1','r2','r3'].forEach(id=>byId(id).addEventListener('input',updateNetwork));
+  byId('source').addEventListener('input',()=>{byId('sourceSlider').value=byId('source').value;updateNetwork();});
+  byId('sourceSlider').addEventListener('input',()=>{byId('source').value=byId('sourceSlider').value;updateNetwork();});
+  byId('bbCheck').addEventListener('click',()=>{
+    const chosen=document.querySelector('input[name="bbQuestion"]:checked');
+    const el=byId('bbFeedback');el.className='lab-status';
+    if(!chosen){el.textContent='Önce bir bağlantı seç.';return;}
+    if(chosen.value==='ok'){
+      el.classList.add('good');el.textContent='✓ Doğru! E5 ile F5 jumper kablosu, iki yarım sıradaki paralel giriş düğümünü birleştirir. E8–F8 çıkış için ayrıca bağlanmalıdır.';
+    }else if(chosen.value==='danger'){
+      el.classList.add('bad');el.textContent='✗ Tehlikeli! Pozitif ve negatif güç hatlarını doğrudan birleştirmek kısa devre yapabilir. Gerçek pil ile deneme.';
+    }else{
+      el.classList.add('bad');el.textContent='✗ E5 ile F8 farklı düğümlerdir; bu jumper R2/R3 girişini doğru birleştirmez ve bağlantıyı değiştirir.';
+    }
   });
-
-  document.getElementById('r3Field').style.display =
-    mode==='mixed' ? 'block' : 'none';
-
-  diagram();
-  updateNetwork();
-}
-
-document.getElementById('seriesBtn')
-  .addEventListener('click',()=>setMode('series'));
-document.getElementById('parallelBtn')
-  .addEventListener('click',()=>setMode('parallel'));
-document.getElementById('mixedBtn')
-  .addEventListener('click',()=>setMode('mixed'));
-
-['r1','r2','r3'].forEach(id => {
-  document.getElementById(id)
-    .addEventListener('input',updateNetwork);
-});
-
-const sourceInput = document.getElementById('source');
-const sourceSlider = document.getElementById('sourceSlider');
-
-sourceInput.addEventListener('input',()=>{
-  sourceSlider.value = sourceInput.value;
-  updateNetwork();
-});
-
-sourceSlider.addEventListener('input',()=>{
-  sourceInput.value = sourceSlider.value;
-  updateNetwork();
-});
-
-setMode('series');
+  function updateLed(){
+    const rawV=byId('ledV').value,rawR=byId('ledR').value,mode=byId('ledConnection').value;
+    const out=byId('ledCurrent'),feedback=byId('ledFeedback'),glow=byId('labLedGlow');
+    const v=+rawV,r=+rawR;
+    if(rawV===''||rawR===''||!Number.isFinite(v)||!Number.isFinite(r)||v<0||v>24||r<1||r>1e6){
+      out.textContent='Geçersiz değer';feedback.textContent='Pil: 0–24 V, direnç: 1–1.000.000 Ω.';
+      glow.setAttribute('fill','#94a3b8');glow.setAttribute('opacity','.3');return;
+    }
+    let current=0,message='',status='';
+    if(mode==='reverse'){message='LED ters yönde: bu basit modelde yanmaz. Yüksek ters gerilim gerçek LED’e zarar verebilir.';status='bad';}
+    else if(mode==='open'){message='Açık devre: kablo eksik, akım geçmez ve LED yanmaz.';status='bad';}
+    else if(mode==='short'){message='Tehlikeli bağlantı: seri direnç atlandığında akım güvenli biçimde hesaplanamaz. Bu düzeni gerçek devrede kurma.';status='bad';}
+    else{
+      current=Math.max(0,(v-2)/r*1000);
+      if(v<2){message='Pil gerilimi LED’in yaklaşık 2 V ileri gerilimine ulaşmadı: LED sönük.';status='bad';}
+      else if(current<5){message='Akım düşük; LED sönük veya çok zayıf görünebilir.';status='bad';}
+      else if(current<=20){message='Uygun örnek akım: LED yanıyor. Kesin sınır için LED veri sayfasını kontrol et.';status='good';}
+      else{message='Aşırı akım riski! Daha yüksek bir seri direnç seç. Gerçek LED zarar görebilir.';status='bad';}
+    }
+    out.textContent=mode==='short'?'Akım: güvenli hesaplanamaz':'Hesaplanan akım: '+fmtLab(current)+' mA';
+    feedback.textContent=message;feedback.className='lab-status '+status;
+    const on=mode==='correct' && current>=5 && current<=20;
+    glow.setAttribute('fill',on?'#facc15':'#94a3b8');
+    glow.setAttribute('opacity',on?'.85':'.3');
+  }
+  ['ledV','ledR','ledConnection'].forEach(id=>byId(id).addEventListener('input',updateLed));
+  setMode('series');updateLed();
+})();
 document.getElementById('quiz').addEventListener('submit',event=>{event.preventDefault();const answers={q1:'b',q2:'a',q3:'c',q4:'b'};const explanations={q1:'Direncin birimi ohmdur (Ω).',q2:'Seride 220 + 330 = 550 Ω.',q3:'İki eşit direnç paralelde bağlandığında eşdeğer direnç R/2 olur.',q4:'Kahverengi=1, siyah=0, kırmızı çarpan=100; 10 × 100 = 1.000 Ω. Altın tolerans ±%5.'};let score=0;for(let n=1;n<=4;n++){const key='q'+n;const chosen=document.querySelector(`input[name="${key}"]:checked`)?.value;const good=chosen===answers[key];score+=Number(good);const el=document.getElementById('f'+n);el.className='feedback '+(good?'good':'bad');el.textContent=(good?'✓ Doğru. ':'✗ Yanlış. ')+explanations[key]};document.getElementById('score').textContent=`Sonuç: ${score}/4 doğru (%${Math.round(score*25)}).`});
 </script>
 </body></html>
