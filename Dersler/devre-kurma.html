@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Etkileşimli Devre Kurma | Elektronik Akademi</title>
+<style>
+:root{--blue:#1565c0;--ink:#203047;--muted:#536477;--line:#dce5f0;--bg:#f3f6fb;--card:#fff;--good:#137447;--bad:#b42318}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 'Segoe UI',Arial,sans-serif}a{color:var(--blue)}button,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffbd2b;outline-offset:2px}
+header{background:linear-gradient(120deg,#0e447d,#2081d1);color:#fff;padding:24px max(18px,calc((100% - 1080px)/2))}header a{color:#fff}h1{font-size:clamp(1.65rem,4vw,2.5rem);margin:6px 0 4px}h2{margin:0 0 12px;font-size:1.25rem}.container{max-width:1080px;margin:22px auto 64px;padding:0 16px}.panel{background:var(--card);padding:22px;border:1px solid var(--line);border-radius:16px;box-shadow:0 4px 18px #12345509;margin-bottom:18px}.muted{color:var(--muted)}.small{font-size:.9rem}.builder{display:grid;grid-template-columns:340px 1fr;gap:20px}.controls label{display:block;font-weight:650;margin:12px 0 5px}.controls select,.controls input{display:block;width:100%;padding:10px;border:1px solid #b8c6d9;border-radius:9px;background:white;color:var(--ink)}.parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}.part{border:2px solid var(--line);background:#f4f8fe;padding:10px 4px;border-radius:10px;color:#1c466e;font-weight:650}.part.selected{background:#e0f0ff;border-color:#1565c0}.slotgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.slot{min-height:74px;border:2px dashed #9db8d1;border-radius:12px;background:#f7fbff;color:#234763;padding:8px 4px;font-weight:700}.slot.filled{border-style:solid;border-color:#1565c0;background:#e8f4ff}.slot:disabled{opacity:.6}.action{border:0;border-radius:9px;padding:11px 16px;background:#1565c0;color:white}.secondary{background:#e5edf7;color:#1a4974}.buttons{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.buttons button{flex:1}.status{border-radius:12px;padding:14px;background:#edf4ff;border:1px solid #c9ddf3;margin-top:15px}.status.success{background:#e8f6ed;border-color:#a5dfb8}.status.error{background:#fff1ee;border-color:#f6bab2}.status strong{display:block;margin-bottom:5px}.metrics{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.metric{background:#f1f5fb;padding:9px 12px;border-radius:8px;font-size:.92rem}.diagram{background:#f6faff;border:1px solid #d9e8f6;border-radius:15px;padding:10px;overflow:hidden}.diagram svg{width:100%;height:auto;display:block;max-height:350px}.wire{fill:none;stroke:#657a92;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}.wire.live{stroke:#168252}.tag{fill:#294766;font-size:14px}.led-glow{opacity:0;transition:opacity .2s}.led-on .led-glow{opacity:1}.led-core{fill:#a9b5c4;transition:fill .2s}.led-on .led-core{fill:#ffda33}.led-on .led-shine{fill:#fff6bd}.feedback{margin-top:10px}ul{padding-left:22px}footer{text-align:center;padding:18px;color:#68798b}@media(max-width:800px){.builder{grid-template-columns:1fr}.panel{padding:17px}.container{padding:0 10px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><a href="elektronige-giris.html">← Elektroniğe Giriş dersine dön</a><h1>🔌 Etkileşimli Devre Kurma</h1><p>Bir LED devresini kendin tamamla: bileşenleri seç, doğru yerleştir, anahtarı kapat.</p></header>
+<div class="container">
+<section class="panel"><h2>🎯 Görevin</h2><p>9 V pil ile bir LED'i güvenli şekilde yak. Üstteki güç kaynağı ve alttaki dönüş kablosu hazır. Boş üç yuvaya <strong>anahtar, direnç ve LED</strong> yerleştir. Her bileşenden bir tane kullan; daha sonra anahtarı kapat. LED'in yönünü ve direnç değerini de kontrol et.</p><p class="small muted">Bu uygulama ideal bileşenlerden oluşan eğitim modelidir; gerçek elektronik simülatörünün yerine geçmez. Şebeke elektriğinde uygulama yapma.</p></section>
+<div class="builder">
+<section class="panel controls"><h2>1. Bileşenleri yerleştir</h2><p class="small muted">Önce bir bileşene, sonra devredeki 1, 2 veya 3 numaralı yuvaya tıkla. Dolmuş bir yuvaya tekrar tıklarsan seçtiğin bileşenle değişir.</p>
+<div class="parts" role="group" aria-label="Bileşen seçimi">
+<button type="button" class="part" data-part="switch" aria-pressed="false">🔘 Anahtar</button>
+<button type="button" class="part" data-part="resistor" aria-pressed="false">〰️ Direnç</button>
+<button type="button" class="part" data-part="led" aria-pressed="false">💡 LED</button>
+<button type="button" class="part" data-part="empty" aria-pressed="false">🗑️ Silgi</button>
+</div>
+<p class="small" id="selectionMessage" role="status">Yerleştirmek için bir bileşen seç.</p>
+<div class="slotgrid" aria-label="Devre bileşen yuvaları"><button class="slot" data-slot="0">1. Boş</button><button class="slot" data-slot="1">2. Boş</button><button class="slot" data-slot="2">3. Boş</button></div>
+<label for="voltage">Pil gerilimi</label><select id="voltage"><option value="3">3 V</option><option value="5">5 V</option><option value="9" selected>9 V</option><option value="12">12 V</option></select>
+<label for="resistance">Direnç değeri</label><select id="resistance"><option value="100">100 Ω</option><option value="220">220 Ω</option><option value="330" selected>330 Ω</option><option value="470">470 Ω</option><option value="1000">1000 Ω</option></select>
+<label for="ledDirection">LED yönü</label><select id="ledDirection"><option value="forward">Doğru yön (+ → anot)</option><option value="reverse">Ters yön</option></select>
+<label for="ledV">LED ileri yön gerilimi</label><select id="ledV"><option value="2" selected>Kırmızı LED — yaklaşık 2,0 V</option><option value="3.2">Beyaz LED — yaklaşık 3,2 V</option></select>
+<div class="buttons"><button class="action" id="toggleSwitch" type="button">Anahtarı kapat</button><button class="action secondary" id="reset" type="button">Sıfırla</button></div>
+<div id="status" class="status" role="status" aria-live="polite"><strong>Devre hazır değil</strong>Başlamak için üç bileşeni yerleştir.</div>
+</section>
+<section class="panel"><h2>2. Devreyi gözlemle</h2><div class="diagram"><svg id="circuit" viewBox="0 0 620 335" role="img" aria-label="Pil, üç bileşen yuvası, seri kablolar ve LED göstergesi içeren devre şeması">
+<defs><radialGradient id="glow"><stop offset="0" stop-color="#ffef51" stop-opacity=".95"/><stop offset="1" stop-color="#ffd532" stop-opacity="0"/></radialGradient></defs>
+<path class="wire" id="wire" d="M92 85 H530 V267 H92 V85"/>
+<rect x="70" y="147" width="44" height="60" rx="12" fill="#e7eff9" stroke="#527196" stroke-width="3"/><path d="M78 162 H105 M91.5 151 V175 M80 190 H103" stroke="#31597d" stroke-width="3"/><text x="45" y="180" class="tag" id="vLabel">9 V</text>
+<g id="drawSlots"></g>
+<g id="lamp" transform="translate(308 267)"><circle class="led-glow" r="64" fill="url(#glow)"/><circle r="25" fill="#f0f4fa" stroke="#577491" stroke-width="3"/><circle class="led-core" r="17"/><path class="led-shine" d="M-9 -8 Q-1 -18 8 -7" fill="none" stroke="#fff" stroke-width="4"/></g>
+<text x="310" y="318" text-anchor="middle" class="tag">LED durumu</text><text x="310" y="24" text-anchor="middle" class="tag">Seri devre (öğretici şema)</text>
+</svg></div><div class="metrics"><span class="metric" id="current">Akım: 0 mA</span><span class="metric" id="power">Direnç gücü: 0 W</span><span class="metric" id="circuitState">LED: Sönük</span></div><p class="small muted">Şema bileşenlerin varlığını ve seçimini gösterir. Her yuvanın sırası bu basit seri DC devresinde önemli değildir; ancak LED yönü ve bütün bileşenlerin bulunması önemlidir.</p><div class="feedback"><strong>İpucu:</strong> Ohm Kanunu ile yaklaşık akımı bul: I = (V<sub>pil</sub> − V<sub>LED</sub>) / R. Bu yaklaşımda LED sabit bir ileri yön gerilim düşümü olarak modellenir.</div></section>
+</div>
+<section class="panel"><h2>3. Neyi öğrendin?</h2><ul><li><strong>Kapalı devre:</strong> Anahtar açıkken ideal modelde akım geçmez.</li><li><strong>Direnç:</strong> LED'den geçen akımı sınırlar. Daha küçük direnç, aynı koşullarda daha büyük akım demektir.</li><li><strong>LED kutupları:</strong> LED ters bağlanırsa bu basit modelde yanmaz.</li><li><strong>Güvenlik:</strong> Hedef akım olarak en fazla 20 mA kabul ediyoruz. Gerçek LED'in izin verilen akımını ve direnç güç sınıfını veri sayfasından doğrulamak gerekir.</li></ul></section>
+</div><footer>© 2026 Elektronik Akademi • Eğitim amaçlı etkileşimli örnek</footer>
+<script>
+(()=>{
+ const labels={switch:'Anahtar',resistor:'Direnç',led:'LED',empty:'Boş'};
+ let selected=null, slots=[null,null,null],switchClosed=false;
+ const $=id=>document.getElementById(id);
+ const partButtons=[...document.querySelectorAll('[data-part]')],slotButtons=[...document.querySelectorAll('[data-slot]')];
+ function update(){
+  const V=Number($('voltage').value),R=Number($('resistance').value),ledV=Number($('ledV').value),reverse=$('ledDirection').value==='reverse';
+  const count={switch:slots.filter(x=>x==='switch').length,resistor:slots.filter(x=>x==='resistor').length,led:slots.filter(x=>x==='led').length};
+  const complete=count.switch===1&&count.resistor===1&&count.led===1;
+  const potentialI=Math.max(0,(V-ledV)/R)*1000;
+  let title='Devre hazır değil',message='Her bileşeni bir kez yerleştir.',klass='',on=false,I=0;
+  if(complete&&!switchClosed){title='Anahtar açık';message='Devre elemanların doğru. Akımı geçirmek için anahtarı kapat.'}
+  if(!complete&&switchClosed){title='Eksik veya hatalı bağlantı';message='Bir anahtar, bir direnç ve bir LED bulunmalı. Eksik veya tekrarlı bileşenleri düzelt.';klass='error'}
+  if(complete&&switchClosed){
+   if(reverse){title='LED ters bağlı';message='LED’in anot ve katot yönünü düzelt. Bu eğitim modelinde ters LED akım geçirmez.';klass='error'}
+   else if(V<=ledV){title='Yetersiz gerilim';message='Kaynak gerilimi LED’in ileri yön gerilimini aşmadığı için modelde LED yanmıyor.';klass='error'}
+   else if(potentialI>20){title='Fazla akım — LED yanmıyor';message=`Hesaplanan ${fmt(potentialI,1)} mA, bu alıştırmanın 20 mA güvenli hedefini aşıyor. Daha büyük direnç seç.`;klass='error';I=potentialI}
+   else{title='Başardın! LED yandı';message=`Devren tamamlandı. LED akımı yaklaşık ${fmt(potentialI,1)} mA.`;klass='success';on=true;I=potentialI}
+  }
+  $('status').className='status '+klass;$('status').innerHTML='<strong>'+title+'</strong>'+message;
+  $('lamp').classList.toggle('led-on',on);
+  $('wire').classList.toggle('live',on);
+  $('current').textContent='Akım: '+fmt(I,1)+' mA';$('power').textContent='Direnç gücü: '+fmt((I/1000)**2*R,3)+' W';$('circuitState').textContent='LED: '+(on?'Yanıyor':'Sönük');
+  $('toggleSwitch').textContent=switchClosed?'Anahtarı aç':'Anahtarı kapat';
+  slotButtons.forEach((b,i)=>{b.textContent=(i+1)+'. '+labels[slots[i]||'empty'];b.classList.toggle('filled',!!slots[i]);});
+  const positions=[180,310,440];
+  $('drawSlots').innerHTML=positions.map((x,i)=>{
+   const p=slots[i],name=labels[p||'empty'];
+   let symbol='<text x="'+x+'" y="85" text-anchor="middle" font-size="25" fill="#92a7bc">?</text>';
+   if(p==='switch')symbol=`<path d="M${x-23} 85 L${x+18} 60" stroke="#245782" stroke-width="4"/><circle cx="${x-23}" cy="85" r="4" fill="#245782"/><circle cx="${x+23}" cy="85" r="4" fill="#245782"/>`;
+   if(p==='resistor')symbol=`<rect x="${x-25}" y="74" width="50" height="22" rx="3" fill="#eebd77" stroke="#925b25" stroke-width="2"/><path d="M${x-13} 75 V95 M${x} 75 V95 M${x+13} 75 V95" stroke="#81491f" stroke-width="3"/>`;
+   if(p==='led')symbol=`<path d="M${x-18} 69 L${x+14} 85 L${x-18} 101 Z" fill="#efb545" stroke="#975718" stroke-width="2"/><path d="M${x+14} 68 V102" stroke="#975718" stroke-width="3"/>`;
+   return `<rect x="${x-36}" y="49" width="72" height="70" rx="9" fill="#f5f9fe" stroke="#a8bfd7" stroke-width="2"/>${symbol}<text x="${x}" y="138" text-anchor="middle" font-size="13" fill="#264666">${name}</text>`;
+  }).join('');
+ }
+ function fmt(n,d){return n.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d})}
+ partButtons.forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.part;partButtons.forEach(p=>{let active=p===b;p.classList.toggle('selected',active);p.setAttribute('aria-pressed',String(active))});$('selectionMessage').textContent='Seçili: '+labels[selected]+'. Şimdi bir yuvaya tıkla.'}));
+ slotButtons.forEach((b,i)=>b.addEventListener('click',()=>{if(!selected){$('selectionMessage').textContent='Önce yukarıdan bir bileşen seç.';return}slots[i]=selected==='empty'?null:selected;update()}));
+ ['voltage','resistance','ledDirection','ledV'].forEach(id=>$(id).addEventListener('change',update));
+ $('toggleSwitch').addEventListener('click',()=>{switchClosed=!switchClosed;update()});
+ $('reset').addEventListener('click',()=>{selected=null;slots=[null,null,null];switchClosed=false;partButtons.forEach(p=>{p.classList.remove('selected');p.setAttribute('aria-pressed','false')});$('voltage').value='9';$('resistance').value='330';$('ledDirection').value='forward';$('ledV').value='2';$('selectionMessage').textContent='Yerleştirmek için bir bileşen seç.';update()});
+ update();
+})();
+</script>
+</body>
+</html>
