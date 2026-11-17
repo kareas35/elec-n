@@ -14,7 +14,7 @@
     "url": "yayinlar/101.html",
     "source": "https://16f84pic.blogspot.com/2020/08/anolog-olarak-yaplms-muzik-kutusu.html",
     "summary": "sizler ile paylaşacağım devre proteusta çizilmiş ve denenmiştir simulasyonu çalışmıştır isteyenler bu devreyi verilen dirençlere yakın değerler kullanılarak denene bilir . isterseniz tuş tak…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Direnç"
     ]
@@ -37,7 +37,7 @@
     "url": "yayinlar/253.html",
     "source": "https://16f84pic.blogspot.com/2020/08/cd-4013-flip-flop-entegresi-ile-sifreli.html",
     "summary": "Sizlere flipflop  CD 4013 entegresi ile şifreli kilit projesi ile ilgili proteus da çizdiğim devreyi  ve kullanılacak malzemeleri vereceğim Kullanılan Malzemeler 2 adet CD 4013 flipflop ente…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Proteus"
     ]
@@ -58,7 +58,7 @@
     "url": "yayinlar/186.html",
     "source": "https://16f84pic.blogspot.com/2020/07/tk19-alc-kullanlarak-uzaktan-kumanda.html",
     "summary": "TK19 alıcı kullanılarak uzaktan kumanda ile Led kontrolu Uzaktan kumandalar içlerinde barındırdıkları elektronik devre ile içlerinde ürettikleri bir şifre vardır.  Arduino ile bunu okutarak …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Arduino",
       "LED"
@@ -120,7 +120,7 @@
     "url": "yayinlar/004.html",
     "source": "https://16f84pic.blogspot.com/2020/05/ntc-sensoru-ile-scaklk-olcumu-ve-buzzer.html",
     "summary": "NTC ısıya duyarlı bir sensördür. Bu uygulamamızda NTC Sensörü ile Sıcaklık ölçümü yapıp ve Buzzer Kullanarak bir yangın alarmı uygulaması yapacağız. Malzeme listesi: 1. Arduino Uno 2. BreadB…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Arduino",
       "Sensör"
@@ -143,7 +143,7 @@
     "url": "yayinlar/344.html",
     "source": "https://16f84pic.blogspot.com/2020/05/arduino-uno-ile-hc-sr04-sensor-ve-servo.html",
     "summary": "Arduino  UNO  ile  HC-SR04 sensor ve SERVO MOTOR ile Radar   Devresi YAPIMI Kullanılan  Malzemeler : 1 . Arduino Uno R3 2.   HC-SR04 Uzaklık Sensörü 3. HC-SR04 Uzaklık Sensörü tutacağı akril…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Arduino",
       "Motor",
@@ -191,7 +191,7 @@
     "url": "yayinlar/235.html",
     "source": "https://16f84pic.blogspot.com/2020/05/arduino-ve-ir-kumanda-tv-kumandas-ile.html",
     "summary": "Kullanılan Malzemeler: 1 Ardiuno uno 2 Led ( Yeşil,Mavi,Kırmızı,Sarı) 4 Adet. 3 Kablolama yapmak için jumper kablo. 4 IR uzaktan kumanda (TV kumandası ) olabilir. 5 IR alıcı sensor. (Arduino…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Arduino",
       "LED",
@@ -218,7 +218,7 @@
     "url": "yayinlar/211.html",
     "source": "https://16f84pic.blogspot.com/2020/05/4017ve-ic-4060-entegresi-ile-yuruyen.html",
     "summary": "Malzeme listesi : 10 adet kırmızı Led 5 mm IC 4017 IC4060 Mercimek Kondansator (104) 100nF  50v Resistör 47K Resistör 10K Resistör 220 R jumper kablosu 10 lu kablo Lehim teli lehim pastası L…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED",
       "Direnç",
@@ -294,7 +294,7 @@
     "url": "yayinlar/048.html",
     "source": "https://16f84pic.blogspot.com/2011/09/yeni-egitim-yl-kutlamas.html",
     "summary": "Kıymetli Öğretmen ve Öğrenci Arkadaşlarım 2017 - 2018 eğitim yılında Başarıların sizin ile birlikte olmasını diler yeni Eğitim ve Öğretim yılınızı en içten duygularla kutlarım . Blog Yönetic…",
-    "content_type": "unclassified",
+    "content_type": "announcement",
     "technical_tags": []
   },
   {
@@ -305,7 +305,7 @@
     "url": "yayinlar/278.html",
     "source": "https://16f84pic.blogspot.com/2011/03/yumurta-pisirirken-sure-ayarlama.html",
     "summary": "Pazartesi, 28 Şubat 2011 Yumurta pişirmek ustalık ister. Katı olsun istersiniz, rafadan çıkar. Rafadan olsun dersiniz taş gibi sert olur… Önemli olan zamanlamayı iyi yapabilmektir Yumurtayı …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -330,7 +330,7 @@
     "url": "yayinlar/169.html",
     "source": "https://16f84pic.blogspot.com/2011/01/l297-l6203-l6203-entegreli-motor-surucu.html",
     "summary": "Verilen devre  16f877 Pic ile Desteklenirse Çeşitli alanlarda Kullanılabilir.Ben Proteusta Şemanın Similasyonunu Yaptım ve devreyi çalıştırdım similasyon programında çalıştı Devrenin Prtsc G…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC",
       "Motor"
@@ -358,7 +358,7 @@
     "url": "yayinlar/240.html",
     "source": "https://16f84pic.blogspot.com/2011/01/555-entegresi-ile-4017-entegresi.html",
     "summary": "555 Entegresi ve 4017 entegresi kullanarak yürüyen ışık yapma projesi                                                                             26.1.2010 Bu Gördüğünüz Şema Pretousta yapıl…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "555 Entegresi"
     ]
@@ -371,7 +371,7 @@
     "url": "yayinlar/345.html",
     "source": "https://16f84pic.blogspot.com/2011/01/555-entegresi-ile-motor-devir-projesi.html",
     "summary": "Motordevir projesi 12 volt motoru NE555 entegresi ile pwm pulse modülasyon ile devrini ayarlamak için fet  BUZ 11 kullanarak yapılmış bir devre Motora en fazla 47nF kondansatör bağlamalıyız …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PWM",
       "Motor",
@@ -387,7 +387,7 @@
     "url": "yayinlar/139.html",
     "source": "https://16f84pic.blogspot.com/2010/12/tork-hesaplama.html",
     "summary": "Tork, motordan hareket parçalarına (tekerlek, dişli, palet...vb) iletilen itme kuvveti ya da dönme momentidir. Yandaki şekilde gösterildiği gibi bir motorun şaftına bağlı  bir tekerleğin bul…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -398,7 +398,7 @@
     "url": "yayinlar/334.html",
     "source": "https://16f84pic.blogspot.com/2010/12/jdm-pic-programlyc_20.html",
     "summary": "Jdm picprogramlayıcı devresi sizinle paylaşmak istedim",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -411,7 +411,7 @@
     "url": "yayinlar/282.html",
     "source": "https://16f84pic.blogspot.com/2010/12/jdm-pic-programlyc.html",
     "summary": "Jdm picprogramlayıcı devresi sizinle paylaşmak istedim",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -677,7 +677,7 @@
     "url": "yayinlar/002.html",
     "source": "https://16f84pic.blogspot.com/2010/12/12-volt-100-watt-220-volt-ac-konvertor.html",
     "summary": "12Volt 'dan 100Watt gücünde 22V AC konvertör devresi. 12 Volt ile şebeke gerilimi ile çalışan cihazları çalıştırma için kullanılır. AÇIKLAMALAR Devre otomobil içerisinde 220V AC ile çalışan …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -728,7 +728,7 @@
     "url": "yayinlar/285.html",
     "source": "https://16f84pic.blogspot.com/2010/12/slkla-calsan-devre.html",
     "summary": "İşte yapımı biraz karışık ama kolay bir devre. Islıkla açılıp kapanıyor. Yeterince küçük yapıp bir de kutuya kondu mu ilginç bir lamba açma kapama devresi olabilir. Gece eve geldiniz, bir ıs…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -779,7 +779,7 @@
     "url": "yayinlar/161.html",
     "source": "https://16f84pic.blogspot.com/2010/11/settings-for-makinterface-pro.html",
     "summary": "Settings for MakInterface Pro Programmer You need the following settings: 24Cxx ( I2C EEPROM) Jumper settings +--------------------+ | ooooo :::::::::: + | | ooooo IIIIIII:I: - | +----------…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -814,7 +814,7 @@
     "url": "yayinlar/113.html",
     "source": "https://16f84pic.blogspot.com/2010/11/trafik-isklar-animasyon-devresi.html",
     "summary": "DEVRE ŞEMASI DEVRE ELEMANLARI LİSTESİ 1AD. LM555 ENTEGRE 1AD. 4017 ENTEGRE 1AD. 3.9 KOHM DİRENÇ 1AD. 68KOHM DİRENÇ 1AD. 360 OHM DİRENÇ 1AD. KIRMIZI LED LAMBA 1AD. SARI LED LAMBA 1AD. YEŞİL L…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED"
     ]
@@ -827,7 +827,7 @@
     "url": "yayinlar/118.html",
     "source": "https://16f84pic.blogspot.com/2010/11/555-ve-74191-entegreleri-ile-step-motor.html",
     "summary": "Step motor, 4 fazlı sinyal ile çalışan ve herbir giriş darbesinde bir adım ilerleyen motorlardır. Bu adımlar, motor çeşitlerine göre çeşitli derecelerde olabilir. ( Devrede test edilen step …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor",
       "555 Entegresi"
@@ -841,7 +841,7 @@
     "url": "yayinlar/256.html",
     "source": "https://16f84pic.blogspot.com/2010/11/l298-ve-data-sheet-okuma.html",
     "summary": "Öncelikle bir elektronikçinin bilmesi gereken kullanacağı malzemenin özellikleridir. Malzemenin özelliklerini de bize anlatan belgelere datasheet diyoruz. Kısaca datasheet okuma nasıl olur? …",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -876,7 +876,7 @@
     "url": "yayinlar/170.html",
     "source": "https://16f84pic.blogspot.com/2010/11/buzzerl-ses-ikazl-kumanda-test-devresi.html",
     "summary": "TK19 infrared alıcı göz 1 adet buzzer,1 kohm direnç, Devrede led ve .Her model kumandayı bu devrede test edebiliriz.Uygulamanız  gereken kumandanızı alıcının (TK19) göreceği şekilde tutup,ku…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED",
       "Direnç"
@@ -925,7 +925,7 @@
     "url": "yayinlar/027.html",
     "source": "https://16f84pic.blogspot.com/2010/11/elektronik-devre-semalarnda-kullanlan.html",
     "summary": "Elektronik Devre Şemalarında Kullanılan Semboller Bağlantı Var Güç Kaynağı NPN Transistör Bağlantı Yok Şase PNP Transistör Direnç Röle N Kanal FET Trimpot 7 Segment Display P Kanal Fet Potan…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "7 Segment",
       "Direnç",
@@ -1030,7 +1030,7 @@
     "url": "yayinlar/140.html",
     "source": "https://16f84pic.blogspot.com/2010/11/pic16f84-deneme-devresi.html",
     "summary": "PIC16F84  DENEME DEVRESI : Asagidaki devre PIC16F84 mikrodenetleyici deneme devresidir. PIC16F84 hafiza bilgisi PIC yükleme devresi ve IC-Prog programi ile okunabilir. EEPROM hafiza adresind…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -1069,7 +1069,7 @@
     "url": "yayinlar/173.html",
     "source": "https://16f84pic.blogspot.com/2010/11/port-giris-buton-uygulamalari.html",
     "summary": "Program 11 : A portunun ilk bitine bagli butona basildiginda, B portunun ilk bitine bagli LED’i (0. LED) yakan program. Program 11’de butona basilip basilmadigina dair buton kontrolü (6) nol…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "LED"
     ]
@@ -1095,7 +1095,7 @@
     "url": "yayinlar/205.html",
     "source": "https://16f84pic.blogspot.com/2010/11/pic16f84-programlama-devresi.html",
     "summary": "PIC16F84  YÜKLEME DEVRESI Asagidaki devre ile PIC16F84 mikrodenetleyiciyi okuma veya yazma islemi yapilabilir.  PIC, bilgisayarin COM portu üzerinden seri konnektör araciligiyla programlanir…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -1170,7 +1170,7 @@
     "url": "yayinlar/245.html",
     "source": "https://16f84pic.blogspot.com/2010/11/pic16f84-ve-4017-entegreli-10-x-7-kayan.html",
     "summary": "4017 ENTEGRELI 10 x 7 KAYAN YAZI DEVRESI Bu devreyi çalistirmak için gerekli programi indirmek için buraya tiklayiniz. 3 x 4017 entegreli yürüyen isik devresini yüklemek için buraya tiklayin…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -1286,7 +1286,7 @@
     "url": "yayinlar/040.html",
     "source": "https://16f84pic.blogspot.com/2010/11/telefon-amplifikator-devresi.html",
     "summary": "Devre Entegresi LM386 Besleme Gerilimi 6-18V aralığı. Telefon Sesini dışarı vermek için tasarlanmış devredir.",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -1311,7 +1311,7 @@
     "url": "yayinlar/275.html",
     "source": "https://16f84pic.blogspot.com/2010/10/wattsvoltamperohm-hesaplama-sekille.html",
     "summary": "Volt ,Amper , Ohm ve watts  Hesaplamak için gereken Formülleri gösterir resim.",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -1333,7 +1333,7 @@
     "url": "yayinlar/121.html",
     "source": "https://16f84pic.blogspot.com/2010/10/12-30-volt-15-amper-ceken-ksa-devre.html",
     "summary": "Bu konuda 1.2 – 30 V arası değişebilen 1.5 Amper çeken kısa devre korumalı bir güç kaynağı göreceksiniz… Devrenin orjinali budur. Devre Elemanları 1000uF/63V C1 1uF C2 1,8 K R1 LED 5K POT ( …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED",
       "Güç Kaynağı"
@@ -1384,7 +1384,7 @@
     "url": "yayinlar/293.html",
     "source": "https://16f84pic.blogspot.com/2010/10/mikroislemciler-ve-ksmlar.html",
     "summary": "Mikroişlemciler Yüksek seviyeli bir programlama dilini öğrenmek istediğinizde, kullandığınız bilgisayarın dahili yapısını incelemeye gerek duymadan, çalışmalarınıza başlayabilirsiniz. Assemb…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -1395,7 +1395,7 @@
     "url": "yayinlar/312.html",
     "source": "https://16f84pic.blogspot.com/2010/10/pic-nedir.html",
     "summary": "PIC nedir? PIC Serisi mikroişlemciler MICROCHIP firması tarafından geliştirilmiş ve üretim amacı çok fonksiyonlu logic uygulamalarının hızlı ve ucuz bir Mikroişlemci ile yazılım yoluyla karş…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "PIC"
     ]
@@ -1419,7 +1419,7 @@
     "url": "yayinlar/025.html",
     "source": "https://16f84pic.blogspot.com/2010/10/direnc-nedir-nasl-olculur-direnc-ve.html",
     "summary": "Direnç Nedir Nasıl Ölçülür Direnç ve Ölçümleri Yapısı : Dirençler elektronik devrelerin vazgeçilmez elemanlarıdır. Yaptıkları iş ise devre içinde kullanılan diğer aktif elemanlara uygun geri…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "Direnç"
     ]
@@ -1454,7 +1454,7 @@
     "url": "yayinlar/066.html",
     "source": "https://16f84pic.blogspot.com/2010/09/fotograf-makinas-flas-devresi.html",
     "summary": "Fotoğraf Makinası Flaşı ile 220 Volt Flaşör Devresi Flaşör Devre Şeması Eski hurda Fotoğraf makinelerinizin Flaş parçalarını değerlendirmeniz için basit bir devre aslında makinelerin diğer p…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -1465,7 +1465,7 @@
     "url": "yayinlar/075.html",
     "source": "https://16f84pic.blogspot.com/2010/09/transistor-ve-olcumleri.html",
     "summary": "Transistör ve Ölçümleri Yapısı : Transistörler PNP ve NPN olmak üzere iki çeşittir. Emiter, Kollektör ve Beyz olmak üzere 3 adet bağlantı ucu vardır. En çok kullanılan yarı iletken devre ele…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "Transistör"
     ]
@@ -1504,7 +1504,7 @@
     "url": "yayinlar/129.html",
     "source": "https://16f84pic.blogspot.com/2010/09/pratik-bask-devre-yapm.html",
     "summary": "Pratik Baskı Devre Yapımı İster amatör ister profesyonel olarak elektronikle uğraşanların en büyük derdi baskı devre yapımıdır. İlk defa yaptığımız bir devrenin baskı devresini dışarıda hazı…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -1561,7 +1561,7 @@
     "url": "yayinlar/189.html",
     "source": "https://16f84pic.blogspot.com/2010/09/basit-pic-programlayc.html",
     "summary": "Basit PIC Programlayıcı Bildiğiniz gibi PIC Mikroişlemcileri Microchip firmasının oldukça popüler olarak kullanılan, programlanması basit ve kullanım alanı çok geniş bir spektruma yayılmış p…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -1652,7 +1652,7 @@
     "url": "yayinlar/143.html",
     "source": "https://16f84pic.blogspot.com/2010/09/precision-15v-regulator.html",
     "summary": "This is a precision ±15V regulator on a single side PCB.The circuit is based on EB-802 with design by zerosoft on www.headphoneamp.co.kr .I have replaced some components that easy to find in…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -1663,7 +1663,7 @@
     "url": "yayinlar/333.html",
     "source": "https://16f84pic.blogspot.com/2010/09/ev-aletleri-icin-kzlotesi-toggle-switch.html",
     "summary": "Ev Aletleri için kızılötesi Toggle Switch Bu  infra-red (IR) toggle switch projesi ile çeşitli aletleri ve mekanizmaları uzaktan kontrol edebilirsiniz Kontrol Kutusu ile Modern Görünümlü Bir…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -1696,7 +1696,7 @@
     "url": "yayinlar/076.html",
     "source": "https://16f84pic.blogspot.com/2010/09/ir-kumandal-ses-kontrol-devresi.html",
     "summary": "IR kumandalı ses kontrol devresi",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -1755,7 +1755,7 @@
     "url": "yayinlar/328.html",
     "source": "https://16f84pic.blogspot.com/2010/09/lm2941ct-ve-fan-kontrol.html",
     "summary": "Bir Çok Elektronik Devre Var Fan devrini Kontrol Etmek İçin Yayınlanmış Olan Bunlardan Biride  12volt Dc Akımla Çalışan fanı kontrol edebilmek için Burda kullanılan IC LM 2941CTÇıkışı 1 ampe…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -1790,7 +1790,7 @@
     "url": "yayinlar/387.html",
     "source": "https://16f84pic.blogspot.com/2010/09/lamba-karartma-motor-hz-havya-s-kontrol.html",
     "summary": "Lamba Karartma, Motor hız, havya ısı kontrol gibi uygulamalarında kullanabileceğiniz bir dimmer devresi 220 volt (AC) çılışan Cihazların kontrolü için 100w Kademeli izole dimer. İzole işlemi…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor"
     ]
@@ -1825,7 +1825,7 @@
     "url": "yayinlar/053.html",
     "source": "https://16f84pic.blogspot.com/2010/09/transistor-katalogu.html",
     "summary": "Transistör kataloğu bu transistör kataloğu çok kısadır ve belli başlı bazı transistörleri içermektedir. transistör karşılıkları tablosu değildir. ifadeler ingilizce. türkçe olması çok anlaış…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -1890,7 +1890,7 @@
     "url": "yayinlar/204.html",
     "source": "https://16f84pic.blogspot.com/2010/09/ntc-ptc-nedir-ve-nasl-kullanlr.html",
     "summary": "TERMİSTÖRLER (NTC - PTC ) Termistörler ısı ile değerleri değişen bir direnç türüdürler. termistörlerin bazı tipleri ısı ile doğru orantılı bazı tipleride ısı ile ters orantılı olmak üzere di…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "Sensör",
       "Direnç"
@@ -1986,7 +1986,7 @@
     "url": "yayinlar/343.html",
     "source": "https://16f84pic.blogspot.com/2010/09/pic-ile-gecikme-ve-donguler.html",
     "summary": "Döngü nedir? pic ile programlama yapmaya niyetlendiyseniz en azından aklınıza bu takılıyor ise, az veya çok programlama konusunda bilginiz vardır. döngüler bildiğiniz gibi program içersinde …",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "PIC"
     ]
@@ -2012,7 +2012,7 @@
     "url": "yayinlar/360.html",
     "source": "https://16f84pic.blogspot.com/2010/09/tek-transistor-npn-surucu-devresi-beyz.html",
     "summary": "Tek transistör NPN sürücü... İşlemcili devrelerde sık rastlanılan bir devre tipi tek transistörlü sürücülerdir. Kullanımı çok pratik ve ucuz olan bu sürme tipinin bazı inceliklerine dikkat e…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "Direnç",
       "Transistör"
@@ -2051,7 +2051,7 @@
     "url": "yayinlar/102.html",
     "source": "https://16f84pic.blogspot.com/2010/09/transistorler-de-akm-yonleri.html",
     "summary": "Alıntıdır. Akım ve Gerilim Yönleri Akım Yönleri NPN Transistörde akım yönleri: 1. Emiterde; Transistörden dış devreye doğru, yani emiterdeki ok yönündedir. 2. Beyz ve Collectorde; Dış devred…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -2095,7 +2095,7 @@
     "url": "yayinlar/098.html",
     "source": "https://16f84pic.blogspot.com/2010/08/duyuru-akilli-uhf-cw-gondermeci-beacon.html",
     "summary": "TAMSAT Amatör Uydu Teknolojileri Derneği çalışmalarına hızla devam ediyor. Yeni bir proje uygulamaya konulmuş. AKILLI UHF CW GONDERMECİ (BEACON) TASARIMI YARIŞMASI Amatör Uydu Teknolojileri …",
-    "content_type": "unclassified",
+    "content_type": "announcement",
     "technical_tags": []
   },
   {
@@ -2130,7 +2130,7 @@
     "url": "yayinlar/092.html",
     "source": "https://16f84pic.blogspot.com/2010/08/lojik-entegre-devre-cesitleri.html",
     "summary": "Lojik Entegre Devre Çeşitleri Endüstriyel uygulamalarda  CMOS ve TTL  entegreleri en yaygın kullanılan iki entegre çeşididir. Bunların dışında ECL entegresi  çok yüksek   çalışma hızının ist…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -2163,7 +2163,7 @@
     "url": "yayinlar/039.html",
     "source": "https://16f84pic.blogspot.com/2010/08/eeprom-pic-programlayc-download.html",
     "summary": "In this project we are building a JDM programmer that can handle PIC12, PIC16 and PIC18 family microcontrollers and some popular 24C family EEPROMs . The programmer also provides ICSP featur…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -2189,7 +2189,7 @@
     "url": "yayinlar/183.html",
     "source": "https://16f84pic.blogspot.com/2010/08/otomatik-gunes-takip-devresi.html",
     "summary": "AUTOMATIC SOLAR TRACKER starts following the SUN right from dawn, throughout the day, till evening, and starts all over again from dawn next day. On cloudy weathers, it remains still and cat…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2239,7 +2239,7 @@
     "url": "yayinlar/401.html",
     "source": "https://16f84pic.blogspot.com/2010/08/ucretsiz-pcb-cizim-programlar.html",
     "summary": "PCB Here's a PCB design tools list you can download, and more resource for comparing which one software you can choose to use. Get freeware and open source PCB http://www.cadsoft.de/ \" ; EAG…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -2250,7 +2250,7 @@
     "url": "yayinlar/254.html",
     "source": "https://16f84pic.blogspot.com/2010/07/dc-motor-surucu-entegre-cesitleri.html",
     "summary": "DC Motor Drivers/Controllers L292+DC-Motor-Drivers-Controllers \" L292 ,SWITCH-MODE DRIVER FOR DC MOTORS The L292 is a monolithic LSI circuit in 15-lead Mul- tiwatt   package. It is intended …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Motor"
     ]
@@ -2263,7 +2263,7 @@
     "url": "yayinlar/034.html",
     "source": "https://16f84pic.blogspot.com/2010/06/klasik-dimmer-devresi.html",
     "summary": "Şekilde görülen devre klasik dimmer devresidir.L1 ve C2, C3 akımı depolamak için kullanılmış TIC226D triyak da genelde kaliteli dimmer devrelerinde kullanılan bir elemandır.lambanın çektiği …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2274,7 +2274,7 @@
     "url": "yayinlar/215.html",
     "source": "https://16f84pic.blogspot.com/2010/06/malzeme-listesi-r110k-14w.html",
     "summary": "Malzeme Listesi R1_____________10K   1/4W Resistor\nR2,R9,R10_____100K   1/4W Resistors\nR3-R8,R11-R16__10R   1/4W Resistors\nR17___________150R   1/4W Resistor\n \nC1______________1µF  63V Polye…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Direnç"
     ]
@@ -2325,7 +2325,7 @@
     "url": "yayinlar/358.html",
     "source": "https://16f84pic.blogspot.com/2010/05/555-ve-4017-entegresi-kullanlarak.html",
     "summary": "Devre şeması Devrede 10 adet led kullanılarak  4017 sayıcı entegresi ile yapılan yürüyen ışık devresi Devre şeması yan tarafta görülmektedir. 555 entegresi ile üretilen sinyal,  OUT çıkışınd…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED",
       "555 Entegresi"
@@ -2350,7 +2350,7 @@
     "url": "yayinlar/106.html",
     "source": "https://16f84pic.blogspot.com/2010/05/electronic-speed-controller.html",
     "summary": "This ESC is based on Mike Norton's design. I have modified the PCB to accept two FETs, which increases current capacity to more than 20 Amps. The circuit is quite simple, as all the hard wor…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2383,7 +2383,7 @@
     "url": "yayinlar/297.html",
     "source": "https://16f84pic.blogspot.com/2010/05/step-motor-kontrol-ve-surucu-devresi.html",
     "summary": "STEP MOTOR KONTROL VE SÜRÜCÜ DEVRESİ MOTOR KONTROL VE SÜRÜCÜ DEVRESİ Step motor, 4 fazlı sinyal ile çalışan ve herbir giriş darbesinde bir adım ilerleyen motorlardır. Bu adımlar, motor çeşit…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor"
     ]
@@ -2407,7 +2407,7 @@
     "url": "yayinlar/089.html",
     "source": "https://16f84pic.blogspot.com/2010/05/steepmotor-kontrol-devresi.html",
     "summary": "Steepmotor kontrol devresi MALZEME LİSTESİ R1,R2,R3,R4= 470 Ohm 0.5 Watt D1,D2,D3,D4= 1N4148 R5,R6,R7,R8= 3k3 Q1,Q2,Q3,Q4= BC547 B Q5,Q6,Q7,Q8= BD139 L1,L2,L3,L4= Motor Bağlantı Uçları",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor"
     ]
@@ -2446,7 +2446,7 @@
     "url": "yayinlar/228.html",
     "source": "https://16f84pic.blogspot.com/2010/05/multi-programlayici.html",
     "summary": "Programator Pic Atmel Avr Isp Denenmiş olan entegreler AT89S8252 PIC12C508, PIC12C509, PIC16F877A,PIC18F452 93Cxx 24Cxx serisi eepromlar ek bağlantı ile farklı entegrelerde programlanabilir.…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC",
       "AVR"
@@ -2473,7 +2473,7 @@
     "url": "yayinlar/060.html",
     "source": "https://16f84pic.blogspot.com/2010/05/15volt-30-amps-guc-kaynag-power-supply.html",
     "summary": "30 amp version PSF14A30 in transformer  capable of delivering 20 amps @ 15volt 30 amps 4 x 2N3055 6 x 2n3055 Use a large radiator (heat sink) of appropriate size and surface area; insulating…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -2497,7 +2497,7 @@
     "url": "yayinlar/270.html",
     "source": "https://16f84pic.blogspot.com/2010/05/2022-amp-138-volt-guc-kaynagi-power.html",
     "summary": "20 Amp BDX33 tabanlı güç kaynağı: 2 x 15 volts 6 amps, but 1 x 15 volt 10+ Amps 20 Amp BDX33-based power supply:2 x 15 volt 12+ amps 2 times 3 MR750 (MR7510) diodes (MR750 = 6 Ampere diode) …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Diyot",
       "Güç Kaynağı"
@@ -2533,7 +2533,7 @@
     "url": "yayinlar/380.html",
     "source": "https://16f84pic.blogspot.com/2010/05/12-amper-guc-kaynag-power-supply.html",
     "summary": "ON6MU:12 ampere,20or30 amps powersupply(bdx332n3055) Revision 3 Zd was wrongly connected after the relay switch instead of before C5 changed to 330uF to improve ripple rejection and stabelis…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -2560,7 +2560,7 @@
     "url": "yayinlar/230.html",
     "source": "https://16f84pic.blogspot.com/2010/05/pic-ile-termometre-ve-termostat-devresi.html",
     "summary": "Bu gördüğünüz devrede Thermistör Isı Ayarlamak için Bu uygulama için   Bu PIC kullanılmıştır.Büyük dezavantajı: Düşük bellek ve küçücük program sayacı vardır. PIC programlamayı  anlamak için…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -2573,7 +2573,7 @@
     "url": "yayinlar/314.html",
     "source": "https://16f84pic.blogspot.com/2010/05/mini-crossover.html",
     "summary": "Mini-Crossover To make a regular straight through ethernet cable into a crossover we will create a mini cable a couple inches long to flip the nessicary wires and add it to the regular cable…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2584,7 +2584,7 @@
     "url": "yayinlar/057.html",
     "source": "https://16f84pic.blogspot.com/2010/05/rs-232-information-and-troubleshooting.html",
     "summary": "RS-232 Information and Troubleshooting Tips The following is information related to RS-232 communication and connections, mainly involving the connection of RS-232 devices to the serial port…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "RS-232"
     ]
@@ -2597,7 +2597,7 @@
     "url": "yayinlar/331.html",
     "source": "https://16f84pic.blogspot.com/2010/05/pil-kaynak-makinasi-ve-sac-metal-kesme.html",
     "summary": "Kaynak  yapmak için kullanılan güç kaynağı hem punta kaynağı gibi kullanıyorsunuz hemde metalleri kesme işinde kullanabiliyorsunuz .Oldukça kullanışlı Proje den bir enstantene Sizin için ziy…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -2610,7 +2610,7 @@
     "url": "yayinlar/009.html",
     "source": "https://16f84pic.blogspot.com/2010/04/kablosuz-gitar-ve-saz-taklabilecek.html",
     "summary": "9 volt ile çalışan devre .Bir gitar veye saz a monte edebileceğiniz kablosuz bağlantı yapabileceğiniz devre şeması Malzemeler şemadan çıkarılacaktır .",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2645,7 +2645,7 @@
     "url": "yayinlar/280.html",
     "source": "https://16f84pic.blogspot.com/2010/04/15-volt-kablosuz-mikrofon-devresi-88.html",
     "summary": "Bunun  9 voltla çalışan ve gelişmiş olan tipi(fabrication-d-un-emetteur-fm-t156.html)adlı yazıda kayıtlı. Biri bunu 1.5 volta düşürmüş, ve düşürmekle kalmamış, bobin turunu da artırarak frek…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2715,7 +2715,7 @@
     "url": "yayinlar/324.html",
     "source": "https://16f84pic.blogspot.com/2010/04/isiga-duyarli-otomatik-calisan.html",
     "summary": "IŞIĞA DUYARLI OTOMATİK ÇALIŞAN ANAHTARLI LAMBA DEVRESİ Malzemeler şekildeki devrede mevcut yapmak isteyenler buradan bakıp malzemelistesini temin ederler. Bu devre genelde sokak lambalarının…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2726,7 +2726,7 @@
     "url": "yayinlar/355.html",
     "source": "https://16f84pic.blogspot.com/2010/04/simetrik-guc-kaynag-icin-op-amp.html",
     "summary": "S imetrik Güç Kaynağı için Op-Amp Uygulaması 78xx ve 79xx MALZEME LİSTESİ BR 1A Bridge Rectifier C1,C2 100uF / 35V R1,R2 100 KOhm U1 78xx ( 7805 – 7809 – 7812 – 7815 – 7824 – 7818 – 7924 ...…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -2739,7 +2739,7 @@
     "url": "yayinlar/379.html",
     "source": "https://16f84pic.blogspot.com/2010/04/13-32-v-5a-guc-kaynagi-w-kisa-devre.html",
     "summary": "1.3 - 32 V / 5A GÜÇ KAYNAĞI w/ KISA DEVRE KORUMALI  LM338 İLE YAPILMIŞ BİR DEVRE LM 338 bir soğutucuya  termal pasta ve heatsink kullanarak bağlanmalı trafo olarak seçilecek trafo 100w civar…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -2851,7 +2851,7 @@
     "url": "yayinlar/287.html",
     "source": "https://16f84pic.blogspot.com/2010/04/entegre-ler-cesitlerine-ve-markalarina.html",
     "summary": "\"ENTEGRE\"> ENTEGRE\" \"SIEMENS SAB80C166-M (smd) - siemens SAB80C166M\" SIEMENS SAB80C166-M (smd) - siemens SAB80C166M\" SIEMENS SAB80C166-M (smd) - siemens SAB80C166M\"ALTERA EPF81188AGC232-5 - …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -2884,7 +2884,7 @@
     "url": "yayinlar/011.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2sc-transistor-ve-ozellikleri-hakknda.html",
     "summary": "2SC1008       SI-N 80V 0.7A 0.8W 75MHz 2SC1012A      SI-N 250V 60mA 0.75W 80MHz 2SC1014       SI-N 50V 1.5A 7W 2SC1017       SI-N 75V 1A 60mW 120MHz 2SC1030       SI-N 150V 6A 50W 2SC1046   …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -2897,7 +2897,7 @@
     "url": "yayinlar/130.html",
     "source": "https://16f84pic.blogspot.com/2010/04/m-serisi-s-serisi-t-serisi-v-serisi.html",
     "summary": "MJ10005       N-DARL+D 500/400V 20A 175 MJ1001        N-DARL 80V 8A 90W MJ10012       N-DARL+D 600V 10A 175W MJ10016       N-DARL+D 500V 50A 250W 1us MJ11015       P-DARL 120V 30A 200W MJ110…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -2924,7 +2924,7 @@
     "url": "yayinlar/195.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2sk-3sk-transistor-ve-ozellikleri.html",
     "summary": "2SK1010       N-FET 500V 6A 80W 1E5         | 2SK1036       N-FET 250V 1A 2W 80ns 2SK1057       N-FET 140V 7A 100W            | 2SK1058       N-FET 160V 7A 100W 1E 2SK107        N-FET 9V 20M…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -2937,7 +2937,7 @@
     "url": "yayinlar/196.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2sd-transistor-ve-ozellikleri-hakknda.html",
     "summary": "2SD1012       SI-N 20V 0.7A 0.25W 250MHz    | 2SD1018       SI-N 250V 4A 80W B250 2SD1027       N-DARL+D 20V 15A 100W B1      | 2SD1033       SI-N 200V 2A 20W 10MHz 2SD1036       SI-N 150/12…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -2950,7 +2950,7 @@
     "url": "yayinlar/236.html",
     "source": "https://16f84pic.blogspot.com/2010/04/bobinler-ve-hesaplama-yontemleri-ile.html",
     "summary": "Bobinler Elektronik devrelerde çok kullanılan elemanlardan biri de bobinlerdir. Bobinler alternatif akımın bulunduğu yerlerde kullanılırlar çünkü; alternatif akımla bobinler arasında özel bi…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -2961,7 +2961,7 @@
     "url": "yayinlar/239.html",
     "source": "https://16f84pic.blogspot.com/2010/04/b-serisi-transistor-ve-ozellikleri.html",
     "summary": "BC107C        SI-N 50V 0.2A 0.3W 250MHz     | BC109B        SI-N 30V 0.2A 0.3W 300MHz BC109C        SI-N 30V 0.2A 0.3W 150MHz     | BC117         SI-N 120V 50mA 0.3W 60MHz BC119         SI-N…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -2974,7 +2974,7 @@
     "url": "yayinlar/243.html",
     "source": "https://16f84pic.blogspot.com/2010/04/irf-serisi-ve-j-serisi-k-serisi.html",
     "summary": "IR2403        DARL.ARRAY 7x45V 0.4A         | IR2422        7XDARLINGTON TRAN. ARRAY IRF120        N-FET 100V 9.2A 60W 58/5      | IRF140        N-FET 100V 28A 150W 0E77 IRF230        N-FET …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -2987,7 +2987,7 @@
     "url": "yayinlar/273.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2sa-transistor-ve-ozellikleri-hakknda.html",
     "summary": "2SB1009       SI-P 40V 2A 10W 100MHz 2SB1010       SI-P 40V 2A 0.75W 100MHz 2SB1012K      P-DARL 120V 1.5A 8W 2SB1013       SI-P 20V 2A 0.7W 2SB1015       SI-P 60V 3A 25W 0.4us 2SB1016      …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -3011,7 +3011,7 @@
     "url": "yayinlar/364.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2sa-transistor-ve-ozellikleri-hakknda_17.html",
     "summary": "2SA1013       SI-P 160V 1A 0.9W 50MHz 2SA1015       SI-P 50V 0.15A 0.4W 80MHz 2SA1016       SI-P 100V 0.05A 0.4W 110MHz 2SA1017       SI-P 120V 50mA 0.5W 110MHz 2SA1018       SI-P 250V 70mA …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -3024,7 +3024,7 @@
     "url": "yayinlar/397.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2sj-transistor-ve-ozellikleri-hakknda.html",
     "summary": "2SJ109        P-FET DUAL 30V Id2.6mA        | 2SJ113        P-FET 100V 10A 100W OE35 2SJ117        P-FET 400V 2A 40W 35ns        | 2SJ162        P-FET 160V 7A 100W 1E 2SJ174        P-FET 60V…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -3037,7 +3037,7 @@
     "url": "yayinlar/019.html",
     "source": "https://16f84pic.blogspot.com/2010/04/u-v-x-y-z-harfinde-bulabildigim.html",
     "summary": "U1096B-TFK          LINE DRIVER FOR 30 LEDS U116-TFK            ...?... U117-TFK            ...?... U120-TFK            I.C. U123P-TFK           PHOTO PULSE AMPLIFIER 6p U143M-TFK           …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3048,7 +3048,7 @@
     "url": "yayinlar/021.html",
     "source": "https://16f84pic.blogspot.com/2010/04/m-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "M089B1-ST           2x8 CROSSPOINT SWITCH M1024               Bakınız: SAA1024-ITT M1025               Bakınız: SAA1025-MBR M104B1-ST           ...?... M105B1              ...?... M1124     …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3059,7 +3059,7 @@
     "url": "yayinlar/052.html",
     "source": "https://16f84pic.blogspot.com/2010/04/c-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "C1237HA             Bakınız: UPC1237HA-NEC C1263C2             Bakınız: KA2214-SSU C4570               Bakınız: UPC4570C-NEC CA1190              Bakınız: TDA1190Z-ST CA1310              Bakı…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3070,7 +3070,7 @@
     "url": "yayinlar/141.html",
     "source": "https://16f84pic.blogspot.com/2010/04/harfinde-bulabildigim-entegreler-ve.html",
     "summary": "A109D               Bakınız: UA741CN8-MBR A110D               Bakınız: UA710-14P A1818               Bakınız: LM1818 A202D               Bakınız: TDA1002/DIV A210E               Bakınız: TBA…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3081,7 +3081,7 @@
     "url": "yayinlar/157.html",
     "source": "https://16f84pic.blogspot.com/2010/04/t-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "T40993              Bakınız: KS5805B TA2003P-TOS         FM DETECTOR TA6210              Bakınız: KIA6210AH-KEC TA7060AP-TOS        FM IF AMPLIFIER 7p TA7061AP-TOS        FM IF AMPLIFIER TA7…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3092,7 +3092,7 @@
     "url": "yayinlar/180.html",
     "source": "https://16f84pic.blogspot.com/2010/04/d-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "D410D Bakınız: SAA1029/DIV D492D               Bakınız: SN75492 DAC0800L            Bakınız: DAC08EN-MBR DAC0801             Bakınız: DAC08EN-MBR DAC0808             Bakınız: DAC08EN-MBR DAC…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3103,7 +3103,7 @@
     "url": "yayinlar/182.html",
     "source": "https://16f84pic.blogspot.com/2010/04/2n-transistor-ve-ozellikleri-hakknda.html",
     "summary": "2N1613        SI-N 75V 1A 0.8W 60MHz 2N1711        SI-N 75V 1A 0.8W 70MHz 2N1893        SI-N 120V 0.5A 0.8W 2N2102        SI-N 120V 1A 1W 120MHz 2N2166        SI-P 15V 50mA 0.15W 10MHz 2N221…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "Transistör"
     ]
@@ -3127,7 +3127,7 @@
     "url": "yayinlar/207.html",
     "source": "https://16f84pic.blogspot.com/2010/04/n-o-p-r-harfinde-bulabildigim.html",
     "summary": "NE4558D             Bakınız: MC1458D-MBR NE4558N             Bakınız: MC4558CN-MBR NE5007N-PHI         DAC 8B NE5008N-PHI         DAC 8B NE5009N-PHI         BCD COUNTER/DRIVER NE5018N-PHI   …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3138,7 +3138,7 @@
     "url": "yayinlar/227.html",
     "source": "https://16f84pic.blogspot.com/2010/04/k-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "KA1222              Bakınız: LA3160-SAN KA2101              Bakınız: CA3065E-MBR KA2102              Bakınız: UPC1353C-NEC KA2103L-SSU         ...?... KA2107              Bakınız: AN5836-MAT…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3149,7 +3149,7 @@
     "url": "yayinlar/238.html",
     "source": "https://16f84pic.blogspot.com/2010/04/b-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "B064D               Bakınız: TL064CN/DIV B081                Bakınız: TL071CN-MBR B083D               Bakınız: TL083CN-MBR B084D               Bakınız: TL084CN B165                Bakınız: L…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3160,7 +3160,7 @@
     "url": "yayinlar/271.html",
     "source": "https://16f84pic.blogspot.com/2010/04/h-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "HA11122W-HIT        I.C. HA11123             FM IF DETEC.AM CONVRT.18p HA11211             FM/AM TUNER 16/20p HA11215A-HIT        COLOR TV PICTURE IF 24p HA11219             ...?... HA11221 …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3171,7 +3171,7 @@
     "url": "yayinlar/279.html",
     "source": "https://16f84pic.blogspot.com/2010/04/s-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "S041P               Bakınız: SO41P-SIE S042P               Bakınız: SO42P-SIE S100W-SKN           ...?... S1998A              LED ALARM CLOCK 40p SAA1000-ITT         US REMOTE CRT.TRANS/RECV…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "LED"
     ]
@@ -3184,7 +3184,7 @@
     "url": "yayinlar/301.html",
     "source": "https://16f84pic.blogspot.com/2010/04/l-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "L149V-ST            20W AUDIO AMP. to220/5p L165V-ST            POWER AMPLIFIER L165V/DIV           POWER AMPLIFIER L201                Bakınız: ULN2001AN-MBR L202                Bakınız: UL…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3195,7 +3195,7 @@
     "url": "yayinlar/317.html",
     "source": "https://16f84pic.blogspot.com/2010/04/e-g-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "ESM1350             Bakınız: MC1350P-MOT GL1150              Bakınız: TDA2005R-ST GL1150-GS           Bakınız: LA7850 GL1151              Bakınız: LA7851-SAN GL1161              Bakınız: LM1…",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": []
   },
   {
@@ -3206,7 +3206,7 @@
     "url": "yayinlar/404.html",
     "source": "https://16f84pic.blogspot.com/2010/04/i-harfinde-bulabildigim-entegreler-ve.html",
     "summary": "ICL7106CPL-MBR      ADC 3.5-DIG 333ms+LCD DR. ICL7106RCPL-MB      ADC 3.5-DIG 333ms REVERSE ICL7107CPL-MBR      ADC 3.5-DIG 333ms+LED DR. ICL7109CPL-MBR      ADC 12B 133ms ICL7116CPL-MBR    …",
-    "content_type": "unclassified",
+    "content_type": "component_catalog",
     "technical_tags": [
       "LED",
       "LCD"
@@ -3220,7 +3220,7 @@
     "url": "yayinlar/219.html",
     "source": "https://16f84pic.blogspot.com/2010/04/elektrnik-kap-kontrol-kart.html",
     "summary": "Keypad Layout Do not use the \"on-board\" relay to switch mains voltage. The board's layout doe s not offer sufficient isolation between the relay contacts and the low-voltage components. If y…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -3242,7 +3242,7 @@
     "url": "yayinlar/399.html",
     "source": "https://16f84pic.blogspot.com/2010/04/periyodik-artrm-sureli-anahtar-devresi.html",
     "summary": "Periyodik artırım süreli anahtar devresi Süreyi ayarlamakiçin aşağıdaki formül uygulanıyor Zaman = 1.4 C 1 x R 1 Burada kullanılacak olan kondansatörün  tantal kondansatör olması tavsiye edi…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Kondansatör"
     ]
@@ -3266,7 +3266,7 @@
     "url": "yayinlar/105.html",
     "source": "https://16f84pic.blogspot.com/2010/04/scr-alarm-devresi.html",
     "summary": "Sizin için faydalı olacağını düşündüğüm bir alarm devresi malzemeler şekillerin üzerinde yazılı bu devreleri yapmak isteyenler teknik personel olacağından ingilizce metni Türkçe ye çevirmedi…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -3277,7 +3277,7 @@
     "url": "yayinlar/177.html",
     "source": "https://16f84pic.blogspot.com/2010/04/dokunmatik-on-off-devre-semasi.html",
     "summary": "DOKUNMATİK ON OFF DEVRE ŞEMASI MALZEME LİSTESİ D1 .D2.D3.D4 =1N4148 R1.R6= 10k R4 = 22k R2.R3.R5.R7.R8 =1M C1= 47u C2.C3= 22pF C4 =1nF C5=10nF C6 =1uF IC= 74c14 .40106 Tarafımdan denenmemişt…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -3288,7 +3288,7 @@
     "url": "yayinlar/225.html",
     "source": "https://16f84pic.blogspot.com/2010/04/dip-trace-programi-ve-turkce-kullanma.html",
     "summary": "DİP TRACE PROGRAMI TÜRKÇE KULLANMA KILAVUZU Türkçe DipTrace Programı ile Baskı Devre Kartı Yapımı-I İlk yazımda, pcb yapımında en çok kullandığım program olan DipTrace programını tanıtacağım…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -3347,7 +3347,7 @@
     "url": "yayinlar/111.html",
     "source": "https://16f84pic.blogspot.com/arsiv-110.html",
     "summary": "PIC Basic Pro ile PIC Programlama 2 PIC Basic Pro ile PIC Programlama 2 Bu dersimizde pic pinlerinin nasıl input yani giriş olarak ayarlandığını ve bu işlemin nerelerde kullanıldığını öğrene…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "PIC"
     ]
@@ -3360,7 +3360,7 @@
     "url": "yayinlar/132.html",
     "source": "https://16f84pic.blogspot.com/arsiv-131.html",
     "summary": "PIC PIC Basic Pro ile PIC Programlama 4 Program Oluşturma Genel Kuralları Bu bölümde bir program yazılırken nelere dikkat etmeliyiz, hangi bilgi nerede verilmeli bunları öğreneceğiz. Ayrıca …",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "PIC"
     ]
@@ -3373,7 +3373,7 @@
     "url": "yayinlar/155.html",
     "source": "https://16f84pic.blogspot.com/2010/04/pil-durum-gostergesi.html",
     "summary": "Pil Durum Göstergesi Baskı Devresi \"pilin bitmeye yakın kırmızı ışık yanan, pil dolu iken ise yeşil lamba yanan bir devre yapmak istiyorum\" şeklinde bir soru sormuştu. Orada bahsettiği devre…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -3438,7 +3438,7 @@
     "url": "yayinlar/260.html",
     "source": "https://16f84pic.blogspot.com/arsiv-259.html",
     "summary": "PIC Basic Pro ile PIC Programlama 1 Pic Micro işlemciler hakkında kısa bilgi: Pic mikro işlemciler teknik özellikleri ve kılıfları açısından farklılıklar gösterirler. Her şeyden önce birden …",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "PIC"
     ]
@@ -3531,7 +3531,7 @@
     "url": "yayinlar/146.html",
     "source": "https://16f84pic.blogspot.com/2010/04/kristalli-1-hz-osilator-devresi.html",
     "summary": "Kristalli 1 Hz Osilatör Devresi Her ihtiyaç duyduğunuzda kullana bileceğiniz bu devre kararlı 1 Hz frekans osilatör devresidir. Devrede tek entegre kullanılması ve karmaşık olmaması dolayısı…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -3566,7 +3566,7 @@
     "url": "yayinlar/080.html",
     "source": "https://16f84pic.blogspot.com/2010/03/12volt-50watt-motor-lamba-kontrol.html",
     "summary": "12Volt 50Watt Güç Kontrol Devresi Güç kontrol devresi olarak yapılmış bir proje 12v lamba karartma dimer devresi. Bu devrenin  şemasında sürücü entegre olarak 7555  görünüyor Bu sizi yanıltm…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor"
     ]
@@ -3604,7 +3604,7 @@
     "url": "yayinlar/045.html",
     "source": "https://16f84pic.blogspot.com/2010/03/12volt-100w-lamba-karartma-devresi.html",
     "summary": "12 volt 100w lamba karartma devresi Bu yapılan devre ile  halojen lambaların parlaklığını ayarlayabiliriz . Burada kullanılan 555 entegresi ile yapılmışbir devre Malzeme Listesi C1 100n C2 1…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "555 Entegresi"
     ]
@@ -3704,7 +3704,7 @@
     "url": "yayinlar/354.html",
     "source": "https://16f84pic.blogspot.com/2010/03/elektronik-te-kullanilan-kisaltmalar.html",
     "summary": "A (amp)=Ampere Amper AC=Alternating Alternatif akım AC/DC=Alternating current or Direct current Alternatif akım Doğru Akım A/D=Analog to digital Analog dijital ADC=Analog-to-digital Analog-d…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -3726,7 +3726,7 @@
     "url": "yayinlar/191.html",
     "source": "https://16f84pic.blogspot.com/2010/03/elektronik-senboller-in-gosterimi.html",
     "summary": "Aşağıda ki semboller elektronik çizimlerde gösterim şekli",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -3763,7 +3763,7 @@
     "url": "yayinlar/116.html",
     "source": "https://16f84pic.blogspot.com/2010/03/floppydrive-cd-rom-25-pin-d-sub-male.html",
     "summary": "Printer Pinout 25 PIN D-SUB MALE to the Computer 36 PIN CENTRONICS MALE to the Printer. 25-DSub 36-Cen Strobe 1 1 Data Bit 0 2 2 Data Bit 1 3 3 Data Bit 2 4 4 Data Bit 3 5 5 Data Bit 4 6 6 D…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -3785,7 +3785,7 @@
     "url": "yayinlar/374.html",
     "source": "https://16f84pic.blogspot.com/2010/03/atx-v22-power-supply-atx-power-supply.html",
     "summary": "20 PIN MOLEX 39-29-9202 at the motherboard 20 PIN MOLEX 39-01-2200 at the cable Pin Name Color Description 1 3.3V Orange +3.3 VDC 2 3.3V Orange +3.3 VDC 3 COM Black Ground 4 5V Red +5 VDC 5 …",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -3835,7 +3835,7 @@
     "url": "yayinlar/323.html",
     "source": "https://16f84pic.blogspot.com/2010/03/entegreli-adm-motor-surucu-devresi.html",
     "summary": "Adim motorun kablolarindan bir veya iki tanesi ortaktir (vMotor). Yaptigimiz islem basit olarak bu ortak kabloya sürekli +12 Volt göndermek ve diger uçlari ise belli bir sirada topraga gönde…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor"
     ]
@@ -3848,7 +3848,7 @@
     "url": "yayinlar/064.html",
     "source": "https://16f84pic.blogspot.com/2010/03/110820-ir-transceiver-rc5rc6-ir.html",
     "summary": "HEXdownloads Download RC5-RC6_Decoder_V-1_NL.bas, de broncode voor PIC Basic Download DECODERN.HEX(RC5/RC6 decoder) bestand om in een PIC16F628A te programmeren DECODER.HEX,PIC 16F648A ve Yo…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -3874,7 +3874,7 @@
     "url": "yayinlar/181.html",
     "source": "https://16f84pic.blogspot.com/2010/03/datasheet-aktiv-kompenenetler-ve-pasif.html",
     "summary": "u6264a.pdf pdf 86 KB 28/09/2008 ha13118.pdf pdf 44 KB 27/09/2008 u2402b.pdf pdf 412 KB 28/09/2008 ds1803.pdf pdf 338 KB 27/09/2008 ds1620.pdf pdf 540 KB 27/09/2008 ba526.pdf pdf 70 KB 27/09/…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -3885,7 +3885,7 @@
     "url": "yayinlar/063.html",
     "source": "https://16f84pic.blogspot.com/2010/03/74ls01-74ls688-ttl-mantk-entegreleri.html",
     "summary": "74 Numaralı Ön Eke sahip Mantık TTL Entegreleri T TL mantık ailesi 54 veya 74 numaralı önekine sahiptirler. 54 serisi askeri amaçlıdır. Çalışma sıcaklığı aralığı -55°C ile +125°C arasında ik…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -3931,7 +3931,7 @@
     "url": "yayinlar/131.html",
     "source": "https://16f84pic.blogspot.com/2010/03/16f876-pic-programlama-ve-test-devresi.html",
     "summary": "16F876 PIC inin Programlama ve Test etme Devresi Bu devre ile,28 pin li dahil diğer 16F87X -18FXXX  programlayabilirsiniz.  Daha sonra bu entegreyi Yerinden çıkartmadan Programı deneyebilirs…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -3957,7 +3957,7 @@
     "url": "yayinlar/083.html",
     "source": "https://16f84pic.blogspot.com/2010/03/555-ve-4026-entegreleri-ile-calsan-8.html",
     "summary": "' Rasgele' Çalışan 8 LED li Flasher Projesi Bu  Yedi LED ile flash projesi Görünüşte rastgele hareket eder. Aslında  4.026 Entegresi ile combine kullanılır. Sayıcı ve Sürücü Entegresi IC  40…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED",
       "7 Segment",
@@ -3972,7 +3972,7 @@
     "url": "yayinlar/030.html",
     "source": "https://16f84pic.blogspot.com/2010/03/cesitli-renk-ve-parlakliktaki-ledlerin.html",
     "summary": "LED'ler için teknik veri tablosu Okuyabilme Tedarikçilerin katalogları genellikle LED gibi bileşenler için teknik veri tabloları içerir. Bu tablolarda kompakt bir biçimde yararlı bilgiler iy…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "LED"
     ]
@@ -4096,7 +4096,7 @@
     "url": "yayinlar/352.html",
     "source": "https://16f84pic.blogspot.com/2010/02/irf-150-ve-dc-12v-motor-ile-yon-ve.html",
     "summary": "Bu devre Pwm DC Motor Dönme hızını ayarlama ve yön değiştirme devresidir .Bu devrede geri ve ileri dönüş sağlayarak fren tertibatı gibi bir işlem yaratabilirsiniz .Bir PWM Sinyal ile dc hızı…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PWM",
       "Motor"
@@ -4163,7 +4163,7 @@
     "url": "yayinlar/313.html",
     "source": "https://16f84pic.blogspot.com/2010/02/irs21571d-elektronik-balast-kontrol.html",
     "summary": "İki Adet 14 wattlık Florasant ampul  ve IRS21571D Elektronik B alast  Kontrol Entegresi ile birlikte PFC IC,L6562,,,IC PFC Entegresi kullanılarak yapılmış bir  Elektronik Balast Devresi Şema…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -4222,7 +4222,7 @@
     "url": "yayinlar/036.html",
     "source": "https://16f84pic.blogspot.com/2010/02/6-12-volt-cks-gerilimi-ayarl-guc-kaynag.html",
     "summary": "Plaket deldiğimiz El Matkap ların da devri ayarlamak için kullanabileceğimiz bir ayarlı güç kaynağı projesi P1 ile çıkış voltajı ayarlanarak motorun  dönüş hızını ayarlayarak delmeye çalıştı…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -4235,7 +4235,7 @@
     "url": "yayinlar/165.html",
     "source": "https://16f84pic.blogspot.com/2010/02/sva-altndan-gecen-akm-tasyan-kablo.html",
     "summary": "Bu Devre kendi ufak Fakat Yüklendiği Görev Oldukça büyük bir önem taşımaktadır .Hepimizin evinde sıva altından geçen akım taşıyan bir sürü kablo bulunmaktadır hepimizde ufak tefek işlerimizi…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -4271,7 +4271,7 @@
     "url": "yayinlar/386.html",
     "source": "https://16f84pic.blogspot.com/2010/02/bilgisayar-kontrollu-16f628-entegre-ve.html",
     "summary": "Renk Kontrolü PWM lerde 256*256*256 = 16.777.216 renk elde edebilirsiniz. Yazılımlarda renk başına bir baytlık değişimlerle elde edebileceğiniz renk tablosuna örnek ler aşağıda verilmiştir Y…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC",
       "LED",
@@ -4299,7 +4299,7 @@
     "url": "yayinlar/056.html",
     "source": "https://16f84pic.blogspot.com/2010/02/trafo-tur-spir-sayma-devresi.html",
     "summary": ". Trafo Tur sayma devresini sizinle paylaşıyorum.Forumlarda dolaşan Birçok 16F877 İle yapılmış Trafo sarım sayısını sayma Devresinin Hex Dosyası kısıtlı sürüm olduğu için Bu devre Hazırlanmı…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -4345,7 +4345,7 @@
     "url": "yayinlar/300.html",
     "source": "https://16f84pic.blogspot.com/2010/02/led-li-motor-devir-saati.html",
     "summary": "Aracınıza değişik bir görünüm katacak oldukca şıkbir aksesuar olarak araç göğsünün üstüne yerleştirebileceğiniz led göstergeli dijital Motor devir saati . Devre de kullanılan entegreler pic1…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED",
       "Motor"
@@ -4420,7 +4420,7 @@
     "url": "yayinlar/395.html",
     "source": "https://16f84pic.blogspot.com/2010/02/diyet-yapanlarn-kullandklar-tuz-miktarn.html",
     "summary": "MALZEME LİSTESİ R1________________470R   1/4W Direnç\nR2,R5______________10K   1/4WDirenç\nR3,R6_____________220K   1/4WDirenç\nR4__________________5K   1/2W Trimmer Cermet\nR7________________68…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Direnç"
     ]
@@ -4433,7 +4433,7 @@
     "url": "yayinlar/185.html",
     "source": "https://16f84pic.blogspot.com/2010/02/7404-ve-7486-entegreleriyle-yaplms.html",
     "summary": "7404 ve 7486 entegreleri kullanılarak SL 100 transitörleri ile motorlar sürülerek yapılmış bir stepper motor kontrol devresi daha vermiş oluyoruz MALZEMELER 4 adet 1N4001 diyot 4 Adet SL 100…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor",
       "Diyot"
@@ -4447,7 +4447,7 @@
     "url": "yayinlar/276.html",
     "source": "https://16f84pic.blogspot.com/2010/02/4027-entegresi-ile-photo-transistor-ile.html",
     "summary": "2N5777 photo transistör ile yapılmış bu arada 4027 entegresi kullanılarak yapılmış bir röle kontrol devresi MALZEME LİSTESİ 1 Adet 4027 Entegre 1 Adet 2 N 5777 Photo Transistor 1 Adet BC 558…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Transistör"
     ]
@@ -4460,7 +4460,7 @@
     "url": "yayinlar/351.html",
     "source": "https://16f84pic.blogspot.com/2010/02/60-adet-ledle-yaplms-saat-projesi.html",
     "summary": "Bu projemiz 4017 entegresi ile yapmış olduğumuz projede bazı değişiklikler yaptık.Yeni yaptığımız projede 4093 entegresi kullandık devrede bunu görebilirsiniz. 4093 NAND kapısı şimdi tam ola…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -4484,7 +4484,7 @@
     "url": "yayinlar/291.html",
     "source": "https://16f84pic.blogspot.com/2010/02/16f-84-pic-ile-0-99-sayc-devre.html",
     "summary": "Bu  Yanda şemasını vermiş olduğumuz devre 0.7 saniye ara ile  sayı sayan bir timer (saat) devresi olup 0 dan başlayarak 1artırımlı olarak 99 kadar sayıları sayar displaylar ortak katotlu olm…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -4508,7 +4508,7 @@
     "url": "yayinlar/112.html",
     "source": "https://16f84pic.blogspot.com/2010/01/temel-flip-flop-devre-semas-ve-calsma.html",
     "summary": "Flip-Flop devreler elektroniğin en temel devrelerinin başında gelir bu devreler basit bir yapıya sahip olup flaş hızı C1 ,C2 Kondansatörleri Ve R2,R3 dirençlerinin değerlerinin değiştirilmes…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Direnç"
     ]
@@ -4532,7 +4532,7 @@
     "url": "yayinlar/088.html",
     "source": "https://16f84pic.blogspot.com/2010/01/bobin-hesaplama-program-inductance.html",
     "summary": "Bobin Hesaplama Programı Bob Stein`in Hazırladığı kurulum gerektirmeyen indiktör ve filtre Hepaplama Programı.Programı Kullanmak için micro2003b.exe dosyasını çalıştırın bobin_hesaplama_prog…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -4554,7 +4554,7 @@
     "url": "yayinlar/266.html",
     "source": "https://16f84pic.blogspot.com/2010/01/220-volt-12-kw-40-guc-devresi.html",
     "summary": "Bu cihaz oldukça yüksek güçlü alıcılar ile çalıştırılmak üzere tasarlanmıştır. Kolayca 10kW ın üzerinde güç kapasitesine çıkan yüklerle çalışabilir Sistemde Triyak olarak BTA 40 -600 BRG 3 A…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -4576,7 +4576,7 @@
     "url": "yayinlar/167.html",
     "source": "https://16f84pic.blogspot.com/2010/01/ledlerle-donen-yldz.html",
     "summary": "Dönen Yıldız Devre Şeması LED ANİMASYON Devrede  görsel efektin oluşması için temel olarak 3 tane led yeterlidir.Bu devrede biz her satırda ortada birtane her iki tarafında 3 er adet kırmızı…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED"
     ]
@@ -4589,7 +4589,7 @@
     "url": "yayinlar/187.html",
     "source": "https://16f84pic.blogspot.com/2010/01/sg3525-pwm-ile-dc-motor-kontrol.html",
     "summary": "Bu Kontrol devresi DC motorları kontrol edebilmek için idealdir. Bu devre Başka uygulamalarda da kullanılabilir Örneğin Küçük ısıtıcılar ve aydınlatma gibi . Böyle bir devrenin en büyük avan…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PWM",
       "Motor"
@@ -4603,7 +4603,7 @@
     "url": "yayinlar/304.html",
     "source": "https://16f84pic.blogspot.com/2010/01/pwm-motor-hz-kontrolu-12v-tl494.html",
     "summary": "- 12V max 15A - Kontrol devirli motor Sürülebilir. - R6 1 Kohm luk ayarlı direnç ile motor kontrol devri ayarlanır -IRFZ48 Mosfet  Sürücü tarafından Motor sürülüyor. - Kontrol Frekans 100Hz …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PWM",
       "Motor",
@@ -4619,7 +4619,7 @@
     "url": "yayinlar/188.html",
     "source": "https://16f84pic.blogspot.com/2010/01/0-28v-20amp-lm317-ve-2n3055-ile.html",
     "summary": "S2 anahtarı + - 3 Amper ve tam çıkış akımı sağlamak için kulanılmıştır (S1) Açık / kapalı Anahtarı güç kaynağını kapatmak ve açmak için kullanılır. Röle   C2 Kondansatöründeki  voltajı  geci…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -4641,7 +4641,7 @@
     "url": "yayinlar/015.html",
     "source": "https://16f84pic.blogspot.com/2010/01/1-kw-230v-ac-dimmer-devresi-ve-ldr-ve.html",
     "summary": "Bu devre  özellikleri ile oldukça tipik triyak tabanlı dimmer devresidir. Bu Devre indüktif yükler standart ampuller gibi 50-1000W aralıktaki aletleri çalıştırmak ve ampullerin loş ışık verm…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED"
     ]
@@ -4678,7 +4678,7 @@
     "url": "yayinlar/216.html",
     "source": "https://16f84pic.blogspot.com/2010/01/pic-16f84-mikrodenetleyicisi-ve-deney.html",
     "summary": "Deneysel endüstriyel sistemin kontrol edilebilmesi için PIC16F84 mikrodenetleyicisi kullanılmıştır. Bu mikrodenetleyicinin tercih edilmesinin sebeplerinden bazıları şunlardır: ! Kontrol edil…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC"
     ]
@@ -4726,7 +4726,7 @@
     "url": "yayinlar/392.html",
     "source": "https://16f84pic.blogspot.com/2010/01/ds89c430-ile-cisim-uzunlugunun.html",
     "summary": "Proje Hakkında Bu projede, DALLAS DS89C430 mikrodenetleyicisi kullanılarak tasarlanan (simülasyonda AT89C51RC2) devre ile yürüyen bir bant üzerindeki cismin uzunluğu hesaplanıp, LCD ekranda …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LCD"
     ]
@@ -4774,7 +4774,7 @@
     "url": "yayinlar/232.html",
     "source": "https://16f84pic.blogspot.com/2010/01/opto-kuplor-nedir-nasl-calsr-cesitleri.html",
     "summary": "Opto Kuplörler Bir infaruj Led ve foto alıcıdan oluşur. Aralarındaki iletişim ışık ile sağlanır led ışık kaynağıdır. Biz Bunlara Led ve Transistörlü Foto alıcı diyoruz biraz daha Derinlemesi…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": [
       "LED"
     ]
@@ -4787,7 +4787,7 @@
     "url": "yayinlar/247.html",
     "source": "https://16f84pic.blogspot.com/2010/01/reed-role-ve-role-test-devresi.html",
     "summary": "Reed röle, rölenin daha küçük bir versiyonudur. Paket plastik kılıftadır paket 14 pin DIP IC olarak aynı boyutta Ancak Röle’nin Çalışma prensibi mekanik bir röle ile aynı fakat mıknatıslama …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -4811,7 +4811,7 @@
     "url": "yayinlar/284.html",
     "source": "https://16f84pic.blogspot.com/2010/01/5-volt-guc-kaynag.html",
     "summary": "220 volt 9 volt trafo ile entgreleri çalıştırmak için 5voltluk güç kaynağı devresi yerleştirme şekli çizimde gösterilmiştir. kullanılan elemanlar 220/9 volt trafo B80C1000 köprü diyot LM7805…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Diyot",
       "Güç Kaynağı"
@@ -4825,7 +4825,7 @@
     "url": "yayinlar/302.html",
     "source": "https://16f84pic.blogspot.com/2010/01/transitor-cesitleri-ve-bunlarin-kilif.html",
     "summary": "TRANSİTOR ÇEŞİTLERİ ve BUNLARIN  KILIF ÇEŞİTLERİ Transistör Kılıfları farklı şekillerdedir. Yüksek güç transistörleri daha yüksek bir akım kapasitesi ve  boyut olarak büyük olurlar. Tipik gü…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "Transistör"
     ]
@@ -4838,7 +4838,7 @@
     "url": "yayinlar/024.html",
     "source": "https://16f84pic.blogspot.com/2010/01/ayarl-guc-kaynag.html",
     "summary": "Amatörler tarafından ucuza ve kolaylıkla gerçekleştirilebilecek bir güç kaynağı sunuyoruz. Cihazımızın amatör deneylerinde kullanılabilecek özelliklere sahip olmasının yanı sıra, genç amatör…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -4851,7 +4851,7 @@
     "url": "yayinlar/068.html",
     "source": "https://16f84pic.blogspot.com/2010/01/lcd-gostergeli-s-kontrol-devresi.html",
     "summary": "http://antrak.org.tr/images/stories/pic_2004/ocak/isikontrol.zip Merhabalar, Bu yazıda sizlere PIC16F84A ile ısı kontrolünün nasıl yapılabileceğine örnek vermeye çalışacağım. Bu ısı kontrol …",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LCD"
     ]
@@ -4891,7 +4891,7 @@
     "url": "yayinlar/163.html",
     "source": "https://16f84pic.blogspot.com/2010/01/elimizin-altnda-bulunmas-gereken.html",
     "summary": "Her an elimizin altında bulunması gereken sembolleri sizler için düzenlemiş bulunmaktayım. Aşağı tarafta elektronikte kullanılan aktif ve pasif elemanlara ilişkin semboller ve anlamlarını bu…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -4949,7 +4949,7 @@
     "url": "yayinlar/081.html",
     "source": "https://16f84pic.blogspot.com/2010/01/220-volt-flasor-devresi-yazar-gevv.html",
     "summary": "http://video.yahoo.com/watch/3833539 220 Volt Flaşör Devresi Yazar gevv Perşembe, 20 Kasım 2008 Artık işe yaramayan ya da hurda haline gelmiş fotoğraf makinenizin flaşı yeniden çaksın isteme…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -5000,7 +5000,7 @@
     "url": "yayinlar/078.html",
     "source": "https://16f84pic.blogspot.com/2009/12/geri-beslemeli-motor-surucu-devresi.html",
     "summary": "Bu görmüş olduğunuz devre şeması güzel bir devre hex kodunu yazmasını bilenler kendileri yazıp düzenleye bilirler Malzemeler R1........R7 10 komh 6 adet Basçek buton U1  1 adet L298 U2 1 ade…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Motor"
     ]
@@ -5013,7 +5013,7 @@
     "url": "yayinlar/373.html",
     "source": "https://16f84pic.blogspot.com/2009/12/step-motor-surucu-devresi-kendim.html",
     "summary": "Şemasını verdiğim devre Tarafımdan denenmiş yapılmış çalışan bir devre devreyi çizen ve gönderen arkadaşa teşekkür ederim Hex yazılımı da var yalnız pıc + 5 volt tan fazla vermeyin pic hemen…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC",
       "Motor"
@@ -5038,7 +5038,7 @@
     "url": "yayinlar/135.html",
     "source": "https://16f84pic.blogspot.com/2009/12/atmega-programlayc-devresi.html",
     "summary": "Sizlere faydalı olacağını düşündüğüm bir devrenin fotografını yayınlıyorum deneyenler çalışıp çalışmadığını bildirirse sevinirim. (alıntıdır)",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "AVR"
     ]
@@ -5075,7 +5075,7 @@
     "url": "yayinlar/234.html",
     "source": "https://16f84pic.blogspot.com/2009/12/dogru-akim-elemanlari.html",
     "summary": "Doğru Akım Üreteçlerinde kullanılan devre elemanları Alternatif gerilimi doğru gerilime dönüştürme işlemine doğrultma denir. Doğrultma diyotlarla yapılır. Doğrultmaç olarak kullanılan diyotl…",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {

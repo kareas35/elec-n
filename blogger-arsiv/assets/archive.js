@@ -85,10 +85,17 @@ fetch('records.json')
       heading.appendChild(link);
 
       const meta = document.createElement('small');
-      const typeLabel =
-        item.content_type === 'component_catalog'
-          ? ' · Bileşen Kataloğu'
-          : '';
+      const contentTypeLabels = {
+        project: 'Elektronik Projesi',
+        lesson: 'Ders',
+        component_catalog: 'Bileşen Kataloğu',
+        technical_reference: 'Teknik Referans',
+        announcement: 'Duyuru'
+      };
+
+      const typeLabel = contentTypeLabels[item.content_type]
+        ? ' · ' + contentTypeLabels[item.content_type]
+        : '';
 
       meta.textContent =
         item.date + ' · ' + item.category + typeLabel;
