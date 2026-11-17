@@ -68,7 +68,7 @@
   {
     "title": " Joystick ve Arduino ile Servo Motor Kullanımı",
     "date": "2020-05-31",
-    "category": "PIC ve Mikrodenetleyiciler",
+    "category": "Arduino ve Robotik",
     "labels": [
       "Arduino programlama ve programları",
       "Arduino-IRremote",
@@ -83,7 +83,7 @@
   {
     "title": " NTC Sensörü ile Sıcaklık ölçümü ve Buzzer Kullanarak yangın alarmı yapımı",
     "date": "2020-05-30",
-    "category": "PIC ve Mikrodenetleyiciler",
+    "category": "Arduino ve Robotik",
     "labels": [
       "Arduino programlama ve programları",
       "Arduino-IRremote",
@@ -101,7 +101,7 @@
   {
     "title": "Arduino  UNO  ile  HC-SR04 sensor ve SERVO MOTOR ile Radar  Devresi yapımı",
     "date": "2020-05-14",
-    "category": "PIC ve Mikrodenetleyiciler",
+    "category": "Arduino ve Robotik",
     "labels": [
       "Arduino Uno R3",
       "Motor",
@@ -638,7 +638,7 @@
   {
     "title": "L298    Ve       Data Sheet Okuma",
     "date": "2010-11-05",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Motor ve Sürücüler",
     "labels": [],
     "url": "yayinlar/256.html",
     "source": "https://16f84pic.blogspot.com/2010/11/l298-ve-data-sheet-okuma.html",
@@ -1043,7 +1043,7 @@
   {
     "title": "PİC Nedir",
     "date": "2010-10-15",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "PIC ve Mikrodenetleyiciler",
     "labels": [],
     "url": "yayinlar/312.html",
     "source": "https://16f84pic.blogspot.com/2010/10/pic-nedir.html",
@@ -1277,7 +1277,7 @@
   {
     "title": "3-30 V/2.5 A Stabilized power supply",
     "date": "2010-09-20",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/249.html",
     "source": "https://16f84pic.blogspot.com/2010/09/3-30-v25-stabilized-power-supply.html",
@@ -1412,7 +1412,7 @@
   {
     "title": "NTC - PTC nedir ve nasıl kullanılır",
     "date": "2010-09-13",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Temel Elektronik",
     "labels": [],
     "url": "yayinlar/204.html",
     "source": "https://16f84pic.blogspot.com/2010/09/ntc-ptc-nedir-ve-nasl-kullanlr.html",
@@ -1448,7 +1448,7 @@
   {
     "title": "Pic ile Tarama Yöntemiyle 7 Segment Display kullanımı",
     "date": "2010-09-13",
-    "category": "PIC ve Mikrodenetleyiciler",
+    "category": "LED ve Göstergeler",
     "labels": [],
     "url": "yayinlar/294.html",
     "source": "https://16f84pic.blogspot.com/2010/09/pic-ile-tarama-yontemiyle-7-segment_13.html",
@@ -1466,7 +1466,7 @@
   {
     "title": "PİC KOMUTLARI NELER VE NE İŞE YARIYORLAR",
     "date": "2010-09-13",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "PIC ve Mikrodenetleyiciler",
     "labels": [],
     "url": "yayinlar/315.html",
     "source": "https://16f84pic.blogspot.com/2010/09/pic-komutlari-neler-ve-ne-ise.html",
@@ -1493,7 +1493,7 @@
   {
     "title": "Tek transistör NPN sürücü devresi Beyz Akım sınır lama Ve yük direncinin Hesap yolu ile bulunması",
     "date": "2010-09-12",
-    "category": "Motor ve Sürücüler",
+    "category": "Temel Elektronik",
     "labels": [],
     "url": "yayinlar/360.html",
     "source": "https://16f84pic.blogspot.com/2010/09/tek-transistor-npn-surucu-devresi-beyz.html",
@@ -1511,7 +1511,7 @@
   {
     "title": "MULTİMETRE KULLANIMI",
     "date": "2010-09-08",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Sensörler ve Ölçüm",
     "labels": [],
     "url": "yayinlar/096.html",
     "source": "https://16f84pic.blogspot.com/2010/09/multimetre-kullanimi.html",
@@ -1538,7 +1538,7 @@
   {
     "title": "AUTOMATIC ROOM LIGHT CONTROLLER WITH BIDIRECTIONAL VISITOR COUNTER “. mICROCONTROLLER BASED PROJECT",
     "date": "2010-09-05",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "PIC ve Mikrodenetleyiciler",
     "labels": [],
     "url": "yayinlar/365.html",
     "source": "https://16f84pic.blogspot.com/2010/09/automatic-room-light-controller-with.html",
@@ -1916,7 +1916,7 @@
   {
     "title": "RS-232 Information and Troubleshooting Tips",
     "date": "2010-05-01",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Programlama ve Haberleşme",
     "labels": [],
     "url": "yayinlar/057.html",
     "source": "https://16f84pic.blogspot.com/2010/05/rs-232-information-and-troubleshooting.html",
@@ -2816,7 +2816,7 @@
   {
     "title": "ATX v2.2 Power Supply ATX Power Supply",
     "date": "2010-03-17",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/374.html",
     "source": "https://16f84pic.blogspot.com/2010/03/atx-v22-power-supply-atx-power-supply.html",
@@ -2960,7 +2960,7 @@
   {
     "title": "L298 Ve 16F877 de bulunan 2 pwm modülü ve BDX 53 ile motor sürme",
     "date": "2010-03-01",
-    "category": "PIC ve Mikrodenetleyiciler",
+    "category": "Motor ve Sürücüler",
     "labels": [],
     "url": "yayinlar/041.html",
     "source": "https://16f84pic.blogspot.com/2010/03/l298-ve-16f877-de-bulunan-2-pwm-modulu.html",
@@ -3122,7 +3122,7 @@
   {
     "title": "Varistör (Voltage Dependent Resistor ).VDR( Portakal+Kahve+Siyah = 310)",
     "date": "2010-02-20",
-    "category": "Güç ve Besleme",
+    "category": "Temel Elektronik",
     "labels": [],
     "url": "yayinlar/406.html",
     "source": "https://16f84pic.blogspot.com/2010/02/varistor-voltage-dependent-resistor-vdr.html",
@@ -3311,7 +3311,7 @@
   {
     "title": "PWM  ile devir kontrolü",
     "date": "2010-02-05",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Motor ve Sürücüler",
     "labels": [],
     "url": "yayinlar/339.html",
     "source": "https://16f84pic.blogspot.com/2010/02/pwm-ile-devir-kontrolu.html",
