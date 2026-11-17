@@ -269,7 +269,7 @@
   {
     "title": "555 entegresi ile 4017 entegresi konfigrasyonu ile yürüyen işık devresi",
     "date": "2011-01-26",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "LED ve Göstergeler",
     "labels": [],
     "url": "yayinlar/240.html",
     "source": "https://16f84pic.blogspot.com/2011/01/555-entegresi-ile-4017-entegresi.html",
@@ -854,7 +854,7 @@
   {
     "title": "LCD UYGULAMALARI",
     "date": "2010-11-03",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "LED ve Göstergeler",
     "labels": [],
     "url": "yayinlar/218.html",
     "source": "https://16f84pic.blogspot.com/2010/11/lcd-uygulamalari.html",
@@ -1232,7 +1232,7 @@
   {
     "title": "Precision ±15V Regulator",
     "date": "2010-09-26",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/143.html",
     "source": "https://16f84pic.blogspot.com/2010/09/precision-15v-regulator.html",
@@ -1637,7 +1637,7 @@
   {
     "title": "Araç park etme sensörü",
     "date": "2010-08-01",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Sensörler ve Ölçüm",
     "labels": [],
     "url": "yayinlar/252.html",
     "source": "https://16f84pic.blogspot.com/2010/08/arac-park-etme-sensoru_01.html",
@@ -1655,7 +1655,7 @@
   {
     "title": "Araç park etme sensörü",
     "date": "2010-08-01",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Sensörler ve Ölçüm",
     "labels": [],
     "url": "yayinlar/356.html",
     "source": "https://16f84pic.blogspot.com/2010/08/arac-park-etme-sensoru.html",
@@ -1808,7 +1808,7 @@
   {
     "title": "LCD Ekran  ve Bağlantı Uçları",
     "date": "2010-05-07",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "LED ve Göstergeler",
     "labels": [],
     "url": "yayinlar/152.html",
     "source": "https://16f84pic.blogspot.com/2010/05/lcd-ekran-ve-baglant-uclar.html",
@@ -1817,7 +1817,7 @@
   {
     "title": "multi-programlayici",
     "date": "2010-05-07",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Programlama ve Haberleşme",
     "labels": [],
     "url": "yayinlar/228.html",
     "source": "https://16f84pic.blogspot.com/2010/05/multi-programlayici.html",
@@ -1880,7 +1880,7 @@
   {
     "title": "12 amper  Güç Kaynağı  (POWER SUPPLY)",
     "date": "2010-05-04",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/380.html",
     "source": "https://16f84pic.blogspot.com/2010/05/12-amper-guc-kaynag-power-supply.html",
@@ -2024,7 +2024,7 @@
   {
     "title": "Simetrik Güç Kaynağı için Op-Amp Uygulaması 78xx ve 79xx",
     "date": "2010-04-21",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/355.html",
     "source": "https://16f84pic.blogspot.com/2010/04/simetrik-guc-kaynag-icin-op-amp.html",
@@ -2033,7 +2033,7 @@
   {
     "title": "1.3 - 32 V / 5A GÜÇ KAYNAĞI w/ KISA DEVRE KORUMALI  LM338",
     "date": "2010-04-21",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/379.html",
     "source": "https://16f84pic.blogspot.com/2010/04/13-32-v-5a-guc-kaynagi-w-kisa-devre.html",
@@ -2618,7 +2618,7 @@
   {
     "title": "Sensör ve Transdüserler",
     "date": "2010-04-04",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Sensörler ve Ölçüm",
     "labels": [],
     "url": "yayinlar/070.html",
     "source": "https://16f84pic.blogspot.com/2010/04/sensor-ve-transduserler.html",
@@ -2636,7 +2636,7 @@
   {
     "title": "ENGEL LERİ BULUP ONLARDAN UZAKLAŞARAK YOLUNU BULAN ROBOT",
     "date": "2010-04-02",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Arduino ve Robotik",
     "labels": [],
     "url": "yayinlar/035.html",
     "source": "https://16f84pic.blogspot.com/2010/04/engel-leri-bulup-onlardan-uzaklasarak.html",
@@ -3176,7 +3176,7 @@
   {
     "title": "HALL EFFECT SENSOR ve Elektropnömatik ve basınç sensörleri",
     "date": "2010-02-16",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Sensörler ve Ölçüm",
     "labels": [],
     "url": "yayinlar/184.html",
     "source": "https://16f84pic.blogspot.com/2010/02/hall-effect-sensor.html",
@@ -3221,7 +3221,7 @@
   {
     "title": "Araç Motor Devir Saati LED Lİ",
     "date": "2010-02-13",
-    "category": "LED ve Göstergeler",
+    "category": "Motor ve Sürücüler",
     "labels": [],
     "url": "yayinlar/300.html",
     "source": "https://16f84pic.blogspot.com/2010/02/led-li-motor-devir-saati.html",
@@ -3419,7 +3419,7 @@
   {
     "title": "0-28V 20Amp LM317 ve 2N3055 ile Ayarlanabilir Güç kaynağ",
     "date": "2010-01-15",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/188.html",
     "source": "https://16f84pic.blogspot.com/2010/01/0-28v-20amp-lm317-ve-2n3055-ile.html",
@@ -3527,7 +3527,7 @@
   {
     "title": "GÜÇ KAYNAĞI ŞEMASI",
     "date": "2010-01-11",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/214.html",
     "source": "https://16f84pic.blogspot.com/2010/01/guc-kaynagi-semasi.html",
@@ -3581,7 +3581,7 @@
   {
     "title": "Ayarlı Güç Kaynağı",
     "date": "2010-01-10",
-    "category": "Diğer Elektronik Projeleri",
+    "category": "Güç ve Besleme",
     "labels": [],
     "url": "yayinlar/024.html",
     "source": "https://16f84pic.blogspot.com/2010/01/ayarl-guc-kaynag.html",
