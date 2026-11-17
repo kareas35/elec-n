@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Elektronik Akademi: Elektroniğe Giriş etkileşimli dersi">
+<title>Elektroniğe Giriş | Elektronik Akademi</title>
+<style>
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1d2939;--muted:#536174;--primary:#1565c0;--line:#dce4ec;--soft:#edf5ff;--good:#116b39;--bad:#a52525}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 'Segoe UI',Arial,sans-serif}a{color:var(--primary)}button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #ffb700;outline-offset:3px}
+header{background:linear-gradient(115deg,#0e4480,#227acb);color:#fff;padding:25px max(20px,calc((100% - 1050px)/2))}header a{color:#fff}.eyebrow{opacity:.88;font-size:.85rem;letter-spacing:.07em;text-transform:uppercase}h1{font-size:clamp(2rem,5vw,2.7rem);line-height:1.2;margin:12px 0}h2{line-height:1.25;margin-top:0}h3{margin:0 0 8px}.intro{max-width:720px}.wrap{max-width:1050px;margin:auto;padding:24px 18px 80px}.grid{display:grid;grid-template-columns:240px 1fr;gap:22px;align-items:start}.toc,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:23px;box-shadow:0 4px 20px #1229490a}.toc{position:sticky;top:16px}.toc a{display:block;padding:7px 0;text-decoration:none;font-size:.9rem}.panel{margin-bottom:22px;scroll-margin-top:15px}.muted{color:var(--muted)}.chips{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}.chip{background:var(--soft);color:#0d4b88;border-radius:99px;padding:4px 12px;font-size:.85rem}.concepts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.concept{border:1px solid var(--line);border-radius:12px;padding:16px}.concept strong{font-size:1.25rem;color:var(--primary)}.example{background:var(--soft);border-left:4px solid var(--primary);border-radius:9px;padding:15px;margin-top:16px}.ctrl{margin:22px 0}.ctrl label{display:flex;justify-content:space-between;font-weight:600}.ctrl input{width:100%;margin-top:12px;accent-color:var(--primary)}.result{background:#e9f6ee;border:1px solid #bce6cc;border-radius:12px;padding:20px}.result strong{font-size:1.8rem;color:#165d36}.formula{font-size:1.25rem;font-weight:700;text-align:center;padding:10px}.diagram{background:var(--soft);border-radius:12px;padding:15px}.diagram svg{width:100%;max-height:170px}.question{border:1px solid var(--line);border-radius:12px;padding:17px;margin:15px 0}.question legend{font-weight:700;margin-bottom:10px}.question label{display:block;padding:7px 0}.question input{accent-color:var(--primary);margin-right:8px}.action{border:0;border-radius:9px;background:var(--primary);color:#fff;padding:11px 18px}.feedback{font-weight:600;margin-top:12px}.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}.small{font-size:.9rem}footer{text-align:center;padding:24px;background:#0f477f;color:white}footer a{color:white}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.toc{position:static}.concepts{grid-template-columns:1fr}header{padding:22px 20px}.wrap{padding:18px 12px 50px}.panel,.toc{padding:18px}}
+</style>
+</head>
+<body>
+<header><a href="../index.html">← Elektronik Akademi ana Sayfa<p class="eyebrow">Ders 01 • Başlangıç seviyesi</p><h1>Elektroniğe Giriş</h1><p class="intro">Temel kavramları öğren, akım ve güç hesaplarını canlı dene, öğrendiklerini mini testle pekiştir.</p><div class="chips"><span class="chip">6 konu</span><span class="chip">Etkileşimli hesaplamalar</span><span class="chip">3 soruluk test</span></div></header>
+<div class="wrap grid"><aside class="toc" aria-label="Ders içeriği"><strong>İçindekiler</strong><a href="#elektrik">1. Elektrik ve elektronik</a><a href="#kavramlar">2. Temel kavramlar</a><a href="#ohm">3. Ohm Kanunu</a><a href="#guc">4. Elektriksel güç</a><a href="#elemanlar">5. Devre elemanları</a><a href="#test">6. Mini test</a></aside>
+<main>
+<section class="panel" id="elektrik"><h2>1. Elektrik ve elektronik nedir?</h2><p><strong>Elektrik</strong>, elektrik yüklerinin varlığı ve hareketiyle ilgili olayları ifade eder. <strong>Elektronik</strong> ise devre elemanları kullanarak elektriksel işaretleri kontrol etmeye ve işlemeye odaklanır.</p><p>Örneğin bir el fenerinde pil enerji sağlar, anahtar devreyi açıp kapatır, LED ise elektrik enerjisini ışığa dönüştürür.</p><div class="example"><strong>Hatırla:</strong> Bir devrede akımın akabilmesi için uygun bir gerilim kaynağına ve kapalı bir iletim yoluna ihtiyaç vardır.</div></section>
+<section class="panel" id="kavramlar"><h2>2. Gerilim, akım ve direnç</h2><div class="concepts"><div class="concept"><strong>V</strong><h3>Gerilim</h3><p>İki nokta arasındaki elektriksel potansiyel farkıdır.</p><span class="muted">Birim: volt (V)</span></div><div class="concept"><strong>I</strong><h3>Akım</h3><p>Bir kesitten birim zamanda geçen net elektrik yüküdür.</p><span class="muted">Birim: amper (A)</span></div><div class="concept"><strong>R</strong><h3>Direnç</h3><p>Bir elemanın elektrik akımına karşı gösterdiği karşı koymadır.</p><span class="muted">Birim: ohm (Ω)</span></div></div><p class="small muted">Basit bir benzetme: gerilim suyu hareket ettiren basınç farkına, akım suyun akışına, direnç ise akışı zorlaştıran dar bir boruya benzetilebilir. Bu benzetmenin sınırları vardır.</p></section>
+<section class="panel" id="ohm"><h2>3. Ohm Kanunu — canlı deney</h2><p>Ohmik bir direnç için, sıcaklık gibi fiziksel koşullar sabitken, gerilim akımla doğru orantılıdır.</p><div class="formula">I = V / R</div><div class="diagram"><svg viewBox="0 0 360 170" role="img" aria-label="Gerilim kaynağı ve seri bağlı direnç içeren basit kapalı devre"><g stroke="#234d7b" stroke-width="3" fill="none"><path d="M70 45 H155 M210 45 H290 V132 H70 V45"/><rect x="155" y="33" width="55" height="24" rx="3" fill="#e9b56c" stroke="#975c26"/><circle cx="70" cy="87" r="22"/><path d="M63 82 H77 M70 75 V89 M64 98 H76"/></g><g fill="#234d7b" font-family="Arial" font-size="15"><text x="155" y="24">R: <tspan id="diagramR">220</tspan> Ω</text><text x="15" y="92"><tspan id="diagramV">9</tspan> V</text><text x="150" y="157">Kapalı DC devresi</text></g></svg></div>
+
+
+
+
+ <div class="ctrl"><label for="v">Gerilim <output id="vOut" for="v">9 V</output></label><input type="range" id="v" min="1" max="24" step="1" value="9"></div><div class="ctrl"><label for="r">Direnç <output id="rOut" for="r">220 Ω</output></label><input type="range" id="r" min="100" max="1000" step="20" value="220"></div><div class="result" aria-live="polite"><div>Hesaplanan akım</div><strong id="iOut">40,91 mA</strong><div class="small" id="ohmExplanation"></div></div><p class="small muted"><strong>Ohmik direnç nedir?</strong> Ohm Kanunu'na uyan dirençtir. Sıcaklık sabitken gerilim iki katına çıkarsa akım da iki katına çıkar. <br><br><strong>Bu uygulamada:</strong> Pilin ideal olduğu ve direncin sabit kaldığı kabul edilir. Gerçek devrelerde sıcaklık ve üretim farklılıkları sonuçları etkileyebilir.</p></section>
+<section class="panel" id="animasyon">
+  <h2>Animasyonlu Elektrik Devresi</h2>
+
+  <p>
+    Gerilimi veya direnci değiştirdiğinde
+    devredeki akımın nasıl değiştiğini gözlemle.
+    Hareketli noktalar geleneksel akım yönünü
+    temsil eder.
+  </p>
+
+  <div class="diagram">
+    <svg viewBox="0 0 360 190"
+         aria-label="Animasyonlu direnç devresi">
+
+      <path id="akimYolu"
+            d="M70 45 H290 V145 H70 V45"
+            fill="none"
+            stroke="#1565c0"
+            stroke-width="4"/>
+
+      <rect x="150" y="32"
+            width="60" height="26"
+            rx="4"
+            fill="#e9b56c"
+            stroke="#975c26"/>
+
+      <circle cx="70" cy="95" r="22"
+              fill="#edf5ff"
+              stroke="#1565c0"
+              stroke-width="3"/>
+
+      <text x="61" y="100"
+            fill="#1565c0">+ −</text>
+
+      <text x="150" y="23"
+            fill="#1565c0">Direnç</text>
+
+      <circle r="6" fill="#16a34a">
+        <animateMotion id="akim1"
+          dur="3s" repeatCount="indefinite"
+          path="M70 45 H290 V145 H70 V45"/>
+      </circle>
+
+      <circle r="6" fill="#16a34a">
+        <animateMotion id="akim2"
+          dur="3s" begin="-1s"
+          repeatCount="indefinite"
+          path="M70 45 H290 V145 H70 V45"/>
+      </circle>
+
+      <circle r="6" fill="#16a34a">
+        <animateMotion id="akim3"
+          dur="3s" begin="-2s"
+          repeatCount="indefinite"
+          path="M70 45 H290 V145 H70 V45"/>
+      </circle>
+
+    </svg>
+  </div>
+
+  <div class="example">
+    <strong>Devredeki akım:</strong>
+    <span id="animasyonAkimi">40,91 mA</span>
+  </div>
+
+  <p class="small muted">
+    Bu animasyon öğretim amaçlıdır.
+    Noktaların hızı hesaplanan akıma göre
+    ölçeklenir; gerçek elektron hızını göstermez.
+  </p>
+</section>
+
+<script>
+(function () {
+  const v = document.getElementById("v");
+  const r = document.getElementById("r");
+
+  const motions = [1, 2, 3].map(n =>
+    document.getElementById("akim" + n)
+  );
+
+  function animasyonuGuncelle() {
+    const akim = Number(v.value) / Number(r.value);
+    const miliamper = akim * 1000;
+
+    document.getElementById("animasyonAkimi")
+      .textContent =
+      miliamper.toFixed(2).replace(".", ",") + " mA";
+
+    const sure = Math.max(
+      0.7,
+      Math.min(12, 250 / miliamper)
+    );
+
+    motions.forEach(m => {
+      m.setAttribute("dur", sure + "s");
+    });
+  }
+
+  v.addEventListener("input", animasyonuGuncelle);
+  r.addEventListener("input", animasyonuGuncelle);
+
+  animasyonuGuncelle();
+})();
+</script>
+
+<section class="panel" id="guc"><h2>4. Elektriksel güç</h2><p>Güç, birim zamanda aktarılan veya dönüştürülen enerji miktarıdır. Bir dirençte ısıya dönüşen güç:</p><div class="formula">P = V × I = V² / R</div><div class="example" aria-live="polite">Yukarıdaki deneyin mevcut değerlerinde dirençte harcanan güç: <strong id="pOut">0,368 W</strong>.</div><p>Gerilim veya direnç kaydırıcısını değiştirerek gücün nasıl etkilendiğini gözlemle.</p></section>
+<section class="panel" id="elemanlar"><h2>5. Basit devre elemanları</h2><div class="concepts"><div class="concept"><h3>🔋 Pil</h3><p>Devreye gerilim sağlar.</p></div><div class="concept"><h3>〰️ Direnç</h3><p>Akımı sınırlandırmak ve gerilim bölmek için kullanılır.</p></div><div class="concept"><h3>💡 LED</h3><p>Uygun yönde ve akımda çalıştırıldığında ışık üretir.</p></div></div><div class="example"><strong>Güvenlik:</strong> Denemeleri düşük gerilimli, akım sınırlı eğitim devreleriyle yap. Şebeke elektriği (230 V) üzerinde deney yapma. LED'e uygun seri direnç kullan.</div></section>
+
+<section class="panel" id="devre-uygulamasi">
+  <h2>🔌 Kendi Elektrik Devreni Kur!</h2>
+
+  <p>
+    Pil, direnç, anahtar ve LED kullanarak
+    kendi elektrik devreni oluştur.
+  </p>
+
+  <p>
+    Bağlantıları doğru yap, anahtarı kapat
+    ve LED'in yanmasını sağla!
+  </p>
+
+
+<iframe
+  src="devre-kurma.html"
+  title="Etkileşimli Devre Kurma Uygulaması"
+  style="width:100%;
+         height:850px;
+         border:1px solid #dce4ec;
+         border-radius:12px;
+         margin-top:20px;"
+  loading="lazy">
+</iframe>
+
+  </a>
+</section>
+
+<section class="panel" id="test"><h2>6. Mini bilgi testi</h2><p>Üç soruyu cevapla ve <strong>Sonuçları kontrol et</strong> düğmesine bas.</p><form id="quiz">
+<fieldset class="question"><legend>1. Gerilimin birimi hangisidir?</legend><label><input required type="radio" name="q1" value="a"> Amper</label><label><input type="radio" name="q1" value="b"> Volt</label><label><input type="radio" name="q1" value="c"> Ohm</label><div class="feedback" id="f1" aria-live="polite"></div></fieldset>
+<fieldset class="question"><legend>2. 10 V gerilim, 200 Ω direnç için akım kaç mA'dir?</legend><label><input required type="radio" name="q2" value="a"> 20 mA</label><label><input type="radio" name="q2" value="b"> 50 mA</label><label><input type="radio" name="q2" value="c"> 200 mA</label><div class="feedback" id="f2" aria-live="polite"></div></fieldset>
+<fieldset class="question"><legend>3. Gerilim sabitken direnç iki katına çıkarsa akım ne olur?</legend><label><input required type="radio" name="q3" value="a"> İki katına çıkar</label><label><input type="radio" name="q3" value="b"> Değişmez</label><label><input type="radio" name="q3" value="c"> Yarıya iner</label><div class="feedback" id="f3" aria-live="polite"></div></fieldset>
+<button class="action" type="submit">Sonuçları kontrol et</button><p class="feedback" id="score" role="status"></p></form><p class="small muted">İlk sürümde sınav sonucu yalnızca bu sayfada gösterilir; hesap veya sunucu gerektirmez.</p></section>
+</main></div><footer><a href="../index.html">← Ana sayfaya dön</a> · © 2026 Elektronik Akademi</footer>
+<script>
+const v=document.getElementById('v'),r=document.getElementById('r');
+const tr=(n,d=2)=>n.toLocaleString('tr-TR',{minimumFractionDigits:d,maximumFractionDigits:d});
+function update(){const V=Number(v.value),R=Number(r.value),I=V/R;document.getElementById('vOut').textContent=V+' V';document.getElementById('rOut').textContent=R+' Ω';document.getElementById('diagramV').textContent=V;document.getElementById('diagramR').textContent=R;document.getElementById('iOut').textContent=tr(I*1000)+' mA';document.getElementById('ohmExplanation').textContent=`I = ${V} V / ${R} Ω = ${tr(I*1000)} mA`;document.getElementById('pOut').textContent=tr(V*I,3)+' W'}
+v.addEventListener('input',update);r.addEventListener('input',update);update();
+document.getElementById('quiz').addEventListener('submit',e=>{e.preventDefault();const answers={q1:'b',q2:'b',q3:'c'},explanations={q1:'Gerilim volt (V) ile ölçülür.',q2:'I = 10 / 200 = 0,05 A = 50 mA.',q3:'I = V / R olduğundan R iki katına çıkarsa I yarıya iner.'};let score=0;for(let k=1;k<=3;k++){const key='q'+k;const chosen=document.querySelector(`input[name="${key}"]:checked`)?.value;const good=chosen===answers[key];score+=Number(good);const el=document.getElementById('f'+k);el.className='feedback '+(good?'good':'bad');el.textContent=(good?'✓ Doğru. ':'✗ Yanlış. ')+explanations[key]}document.getElementById('score').textContent=`Sonuç: ${score}/3 doğru (${Math.round(score/3*100)}%).`;});
+</script>
+</body>
+</html>
