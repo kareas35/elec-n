@@ -1,0 +1,415 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC PROGLAMADA KULLANILAN KOMUTLAR | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC PROGLAMADA KULLANILAN KOMUTLAR</h1><div>2010-02-26 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div align="left"><span><span><b>PIC KOMUT SETİ</b></span></span></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<tr><td></td><td colspan="4" width="480"><br/>
+<table align="center" bgcolor="#99cc77" cellpadding="5" cellspacing="0" summary="content"><tbody>
+<tr> <td width="320"><hr/><table border="1" bordercolor="#000000" cellpadding="0" cellspacing="0"><tbody>
+<tr> <td align="center" width="100%"><br/>
+Faydalı Olmuştur Umarım<br/>
+<table border="1" cellpadding="2" cellspacing="0" height="2357"><tbody>
+<tr align="middle"> <td bgcolor="#000000" bordercolor="#000000" colspan="2" height="36"><br/>
+<div align="center"><span><strong>Komut</strong></span></div></td> <td bgcolor="#000000" bordercolor="#000000" height="36" width="234"><br/>
+<strong><span>Açılım</span></strong></td> <td bgcolor="#000000" bordercolor="#000000" height="36" width="257"><br/>
+<strong><span>Tanım</span></strong></td> </tr>
+<tr> <td bordercolor="#000000" height="66" width="71"><br/>
+<div align="justify"><span>BCF</span></div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f , b </span></div></td><td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Bit Clear <br/>
+File </span></div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f nin b inci <br/>
+bitini sıfırla </span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>BSF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f , b </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Bit set File<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f nin b inci <br/>
+bitini 1 yap </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>BTFSC </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f , b </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Bit test <br/>
+file, skip if clear </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f nin b inci <br/>
+biti 0 ise bir komut atla </span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>BTFSS </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f , b </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Bit test <br/>
+file, skip if set </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f nin b inci <br/>
+biti 0 ise bir komut atla </span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>Addwf </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Add w and f<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w ile f yi <br/>
+topla </span></div><div align="justify"><span>d=1 ise <br/>
+sonucu f ye koy </span></div><div align="justify"><span>d=0 ise <br/>
+sonucu w ye koy </span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>Andwf </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>And w with f<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w ile f ye <br/>
+AND işlemi yap </span></div><div align="justify"><span>d=1 ise <br/>
+sonucu f ye koy </span></div><div align="justify"><span>d=0 ise <br/>
+sonucu w ye koy </span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>CLRF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>CLEAR f<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi sil<br/>
+</span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>CLRW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>CLEAR w<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w yi sil<br/>
+</span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>COMF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Comlement f<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f nin <br/>
+tersini al </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>DECF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>decrement f<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi 1 azalt<br/>
+</span></div><div align="justify"><span>d=1 ise <br/>
+sonucu f ye koy </span></div><div align="justify"><span>d=0 ise <br/>
+sonucu w ye koy </span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>DECFSZ<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>decrement f <br/>
+skip if zero </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi bir <br/>
+azalt eğer sıfır</span><br/>
+<span> ise bir komut atla </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>INCF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>increment f<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi bir <br/>
+artır. </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>INCFSZ<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>increment f <br/>
+skip if zero </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi bir <br/>
+artır eğer sıfır ise </span><br/>
+<span>bir komut atla </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>IORWF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Inclusive OR <br/>
+W with F </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w ile f ye <br/>
+OR işlemi yap </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>MOVF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f.d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Move F<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi taşı<br/>
+</span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>MOVWF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Move W to F<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w yi f ye <br/>
+taşı </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>NOP </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>NO operation<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>İşlem yapma<br/>
+</span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>RLF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Rotate Left <br/>
+F through Carry </span></div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>F yi birer <br/>
+bit sola kaydır<br/>
+<br/>
+<br/>
+<br/>
+düşünürseniz bunun 2 </span><br/>
+<span>ile çarpma olduğunu</span><br/>
+<span> anlarsınız.<br/>
+</span></div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>RRF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Rotate Right <br/>
+F through Carry </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f yi birer <br/>
+bit sağa kaydır </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>SUBWF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Subract W <br/>
+from f </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>f den w yi <br/>
+çıkart </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>SWAPF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Swap nibles <br/>
+in f </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>F nin 4 lü <br/>
+bitlerinin yerini</span><br/>
+<span> değiştir </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>XORWF </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>f,d </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Exclusive OR <br/>
+w with F </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w ile f ye <br/>
+EXOR işlemi yap </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>ADDLW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Add literal <br/>
+and w </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>k yı w ye <br/>
+ekle </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>ANDLW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>And literal <br/>
+with k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>k yı w ile <br/>
+And le </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>CALL </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Call <br/>
+subroutine k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>k <br/>
+altyordamını çağır </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>CLRWDT<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Clear <br/>
+Watchdog Timer </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>watchdog <br/>
+Timer temizle </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>GOTO </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Goto address <br/>
+k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>k etiketine <br/>
+git </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="66" width="71"><br/>
+<div align="justify"><span>IORLW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="66" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="234"><br/>
+<div align="justify"><span>Inclusive or <br/>
+literal k with w </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="66" width="257"><br/>
+<div align="justify"><span>w ile k yı <br/>
+IOR la </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>MOVLW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Move literal <br/>
+k to w </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>k yı w ye <br/>
+taşı </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>RETFIE<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Return from <br/>
+interrupt </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>kesmeden dön<br/>
+</span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>RETLW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Return with <br/>
+literal in w </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>k yı w ye <br/>
+yükle ve dön </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>RETURN<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Return from <br/>
+subroutine </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>Altyordamdan <br/>
+dön </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>SLEEP </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Go into <br/>
+standby mode </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>bosta bekle </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>SUBLW </span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Subtract w <br/>
+from literal k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>w yi k dan <br/>
+çıkart </span></div><div align="justify"><br/>
+</div></td> </tr>
+<tr> <td bordercolor="#336699" height="67" width="71"><br/>
+<div align="justify"><span>EXORLW<br/>
+</span></div><div align="justify"><br/>
+</div></td> <td align="middle" bordercolor="#336699" height="67" width="50"><br/>
+<div align="justify"><span>k </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="234"><br/>
+<div align="justify"><span>Exclisive OR <br/>
+literal k with W </span></div><div align="justify"><br/>
+</div></td> <td bordercolor="#336699" height="67" width="257"><br/>
+<div align="justify"><span>k yı w ile <br/>
+Exor la </span></div><div align="justify"><br/>
+</div></td> </tr>
+</tbody></table></td> </tr>
+</tbody></table></td> </tr>
+</tbody></table></td><td><div><br/>
+</div></td></tr></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/02/pic-proglamada-kullanilan-komutlar.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

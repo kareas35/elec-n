@@ -1,0 +1,580 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC İle Termometre ve Termostat devresi | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC İle Termometre ve Termostat devresi</h1><div>2010-05-03 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXNVkBtfZij6_v8-IYyNEODkafZjvfoggGspHY-yciU5ZPX44oPPqj_m7PUfAEh-WZlELIwVvR2e5eU7L5RskR81o4ewjkgfWFCjK1rU78lcigiM2PEvWkvN2hKL6ae8NG7VTKOf7PhqpN/s1600/picthermometerthermostat_1266693107.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="151" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXNVkBtfZij6_v8-IYyNEODkafZjvfoggGspHY-yciU5ZPX44oPPqj_m7PUfAEh-WZlELIwVvR2e5eU7L5RskR81o4ewjkgfWFCjK1rU78lcigiM2PEvWkvN2hKL6ae8NG7VTKOf7PhqpN/s200/picthermometerthermostat_1266693107.png" width="200"/></a></div><span></span><br/>
+<table border="0"><tbody>
+<tr><td colspan="3"><span><u>Bu gördüğünüz devrede Thermistör <span><span> Isı Ayarlamak için </span></span><span><span><u><span><div> Bu uygulama için   Bu PIC kullanılmıştır.Büyük dezavantajı: Düşük bellek ve küçücük program sayacı vardır. PIC programlamayı  anlamak için, bellek sayfasının sadece 256 byte! olduğunu unutmamanız gerfekir Yani,  bu devreyi geliştirmek isteresek bu programı  ve PIC  i değiştirmemiz gerekir.</div></span></u></span><div>Sıcaklık sensörüolarak  bir 10K NTC sensörü, 10K direnci ile bir gerilim bölücü gerçekleştiriyor. Çıkış 2 7-seg basamaklı bir NPN ve PNP transistör ile çoğaltılmış gösterilir. Bu teknik sayesinde, küçük 14-pin PIC   <span><u><span><span><u><span></span></u></span></span></u></span></div><u><u><div>eski bir TV den <span><u><span></span></u></span></div><u><div> HDK123 dual 7-seg ekran ,Kullanılarak yapılmıştır.</div></u></u></u></span><u><u><u></u></u></u><br/>
+<div><span><u><span><span><u><span></span></u></span></span></u></span></div><u><u><div><span><u><span></span></u></span></div><u><div><b><span>Malzeme Listesi</span></b></div></u></u></u><br/>
+<div><span><u><span><span><u><span></span></u></span></span></u></span></div><u><u><div><span><u><span></span></u></span></div><u><div><br/>
+</div></u></u></u><br/>
+Resistors</u></span></td></tr>
+<tr><td bgcolor="#E3FAFF" width="20"><b>R1</b></td><td bgcolor="#E3FAFF">Resistor 330 Ohm 1/4 Watt 5% Carbon Film</td><td bgcolor="#E3FAFF" width="200"><br/>
+</td></tr>
+<tr><td bgcolor="#FFFFAB" width="20"><b>R2</b></td><td bgcolor="#FFFFAB">Resistor 1.5 KOhm 1/4 Watt 5% Carbon Film</td><td bgcolor="#FFFFAB" width="200"><br/>
+</td></tr>
+<tr><td bgcolor="#E3FAFF" width="20"><b>R3-9</b></td><td bgcolor="#E3FAFF">Resistor 150 Ohm 1/4 Watt 5% Carbon Film</td><td bgcolor="#E3FAFF" width="200"><br/>
+</td></tr>
+<tr><td bgcolor="#FFFFAB" width="10"><b>R10</b></td><td bgcolor="#FFFFAB" colspan="2">Resistor 10 KOhm 1/4 Watt 1% Metal Film</td></tr>
+<tr><td bgcolor="#E3FAFF" width="20"><b>R11</b></td><td bgcolor="#E3FAFF">Resistor 2.2 KOhm 1/4 Watt 5% Carbon Film</td><td bgcolor="#E3FAFF" width="200"><br/>
+</td></tr>
+<tr><td colspan="3"></td></tr>
+<tr><td colspan="3"><span><u>Capacitors</u></span></td></tr>
+<tr><td bgcolor="#FFFFAB" width="10"><b>C1</b></td><td bgcolor="#FFFFAB" colspan="2">0.1 uF ceramic capacitor</td></tr>
+<tr><td bgcolor="#E3FAFF" width="10"><b>C2</b></td><td bgcolor="#E3FAFF" colspan="2">1 uF 25 Volts electrolytic capacitor</td></tr>
+<tr><td bgcolor="#FFFFAB" width="10"><b>C3</b></td><td bgcolor="#FFFFAB" colspan="2">1000 uF 25 Volts electrolytic capacitor</td></tr>
+<tr><td colspan="3"></td></tr>
+<tr><td colspan="3"><span><u>Diodes</u></span></td></tr>
+<tr><td bgcolor="#E3FAFF" width="20"><b>D1-3</b></td><td bgcolor="#E3FAFF">1N4004 General Purpose Diode Rectifier</td><td bgcolor="#E3FAFF" width="200"> </td></tr>
+<tr><td colspan="3"></td></tr>
+<tr><td colspan="3"><span><u>Transistors</u></span></td></tr>
+<tr><td bgcolor="#FFFFAB" width="20"><b>T1</b></td><td bgcolor="#FFFFAB">2N2222 Switching NPN Transistor</td><td bgcolor="#FFFFAB" width="200"> </td></tr>
+<tr><td bgcolor="#E3FAFF" width="20"><b>T2</b></td><td bgcolor="#E3FAFF">BC548 Switching and Applications NPN Epitaxial Transistor</td><td bgcolor="#E3FAFF" width="200"> </td></tr>
+<tr><td bgcolor="#FFFFAB" width="20"><b>T3</b></td><td bgcolor="#FFFFAB">BC327 Switching and Amplifier Applications PNP Epitaxial Silicon Transistor</td><td bgcolor="#FFFFAB" width="200"> </td></tr>
+<tr><td colspan="3"></td></tr>
+<tr><td colspan="3"><span><u>ICs</u></span></td></tr>
+<tr><td bgcolor="#E3FAFF" width="20"><b>IC1</b></td><td bgcolor="#E3FAFF">PIC16F526 Microcontroller</td><td bgcolor="#E3FAFF" width="200"> </td></tr>
+<tr><td bgcolor="#FFFFAB" width="20"><b>IC2</b></td><td bgcolor="#FFFFAB">7805CV Positive Voltage Regulator</td><td bgcolor="#FFFFAB" width="200"> </td></tr>
+</tbody></table><br/>
+<br/>
+<br/>
+<div>Termistör doğrudan devrenin "THERM" bağlantısına bağlı. </div><ul><li>A1 ve A2 RC0 pin </li>
+<li>b1 ve b2 RC1 pin </li>
+<li>C1 ve C2 RC2 pin </li>
+<li>d1 ve d2 RC3 pin </li>
+<li>e1 ve e2 RC4 pin </li>
+<li>f1 ve g2 RC5 pin </li>
+<li>g1 ve f2 RB4 pin </li>
+</ul><br/>
+<br/>
+PIC_Thermometer_and_Thermostat.ASM<br/>
+list       F=inhx8m, P=16F526, R=hex, N=0<br/>
+#include  P16F526.inc; PIC definitions<br/>
+ __config _CPDF_OFF  &amp; _IOSCFS_8MHz &amp; _MCLRE_ON  &amp; _CP_OFF &amp; _WDTE_OFF &amp; _IntRC_OSC_RB4<br/>
+<br/>
+ Errorlevel -302      ; switches off Message [302]: Register in operand not in bank 0.<br/>
+; Definitions -------------------------------------------------------------<br/>
+<br/>
+#define RelayPin portb,1<br/>
+#define DigitControlPin portb,5<br/>
+#define ButtonPin portb,0<br/>
+<br/>
+; RAM preserved -----------------------------------------------------------<br/>
+<span> </span>;BANKSEL EEADR<br/>
+<span> </span>cblock 0x0d<br/>
+<span> </span>D1_H,D1_L<br/>
+<span> </span>D2_H,D2_L<br/>
+<span> </span>passarg1,passarg2,passarg3,passarg4,passarg5,passarg6,passarg7<br/>
+<span> </span>passarg8,passarg9,passarg10,passarg11,passarg12,passarg13<br/>
+<span> </span>WaitCounter,WaitCounter2<br/>
+<span> </span>endc<br/>
+<br/>
+<span> </span>cblock 0x30<br/>
+<span> </span>Temp_High,Temp_Low<br/>
+<span> </span>KeyPressCount<br/>
+<span> </span>endc<br/>
+<br/>
+<br/>
+<br/>
+; Conastants --------------------------------------------------------------<br/>
+GLLowThreshold<span> </span>=       d'39'<br/>
+GLHighThreshold<span> </span>=<span> </span>d'42'<br/>
+; Program Memory ----------------------------------------------------------<br/>
+                org     0<br/>
+<span> </span>movlw b'01111001'<br/>
+<span> </span>movwf adcon0<br/>
+<span> </span>movlw b'11001111'<br/>
+<span> </span>option<br/>
+<span> </span>movlw b'11110001'<br/>
+<span> </span>movwf cm1con0<br/>
+<span> </span>movwf cm2con0<br/>
+Start<br/>
+<span> </span>;TRIS setup<br/>
+<span> </span>movlw b'11001101'<br/>
+<span> </span>tris portb<br/>
+<span> </span>movlw b'11000000'<br/>
+<span> </span>tris portc<br/>
+<br/>
+<br/>
+<span> </span>movlw b'00111111'<br/>
+<span> </span>movwf portc<br/>
+<br/>
+<span> </span>bank1<br/>
+<span> </span>movlw GLLowThreshold<br/>
+<span> </span>movwf temp_low<br/>
+<span> </span>movlw GLHighThreshold<br/>
+<span> </span>movwf temp_high<br/>
+<span> </span>clrf KeyPressCount<br/>
+<span> </span>bank0<br/>
+<br/>
+<span> </span>bcf RelayPin<br/>
+<span> </span>clrf D2_H<br/>
+<span> </span>clrf D2_L<br/>
+<span> </span>clrf D1_H<br/>
+<span> </span>clrf D1_L<br/>
+<br/>
+Mainloop<br/>
+<span> </span>call Wait250mSec<br/>
+<span> </span>call Wait250mSec<br/>
+MainLoopCont<br/>
+<span> </span>pagesel GetAndCalculateADC_Value<br/>
+<span> </span>goto GetAndCalculateADC_Value<br/>
+ADC_ValueAcquired<br/>
+<span> </span>movwf PassArg1<br/>
+<span> </span>movwf PassArg2<br/>
+<span> </span>btfss relaypin<br/>
+<span> </span>goto WasOFF<br/>
+WasON<br/>
+<span> </span>bank1<br/>
+<span> </span>movf temp_high,w<br/>
+<span> </span>bank0<br/>
+<br/>
+<span> </span>subwf PassArg2,w<br/>
+<span> </span>btfsc carry<br/>
+<span> </span>bcf relaypin<br/>
+<span> </span>goto Continue<br/>
+WasOFF<br/>
+<span> </span>bank1<br/>
+<span> </span>movf temp_low,w<br/>
+<span> </span>bank0<br/>
+<span> </span>subwf PassArg2,w<br/>
+<span> </span>btfss carry<br/>
+<span> </span>bsf relaypin<br/>
+Continue<br/>
+<span> </span>call Bin8ToDecimal<br/>
+<span> </span>pagesel UpdateNumbers<br/>
+<span> </span>goto UpdateNumbers<br/>
+<span> </span>goto mainloop<br/>
+<br/>
+StartDelayCount<br/>
+<span> </span>movwf WaitCounter2<br/>
+BackWaitLoop2<br/>
+<span> </span>movlw b'00010000'<br/>
+<span> </span>ANDWF D2_H,w<span> </span><br/>
+<span> </span>bCf DigitControlPin<br/>
+<span> </span>BCF PORTB,4<br/>
+<span> </span>IORWF PORTB,F<br/>
+<span> </span>movf D2_L,w<br/>
+<span> </span>movwf portc<br/>
+<br/>
+<span> </span>movlw d'164'<br/>
+<span> </span>movwf WaitCounter<br/>
+<span> </span>decfsz WaitCounter,f<br/>
+                <span> </span>goto $-1<br/>
+<span> </span>movlw d'164'<br/>
+<span> </span>movwf WaitCounter<br/>
+<span> </span>decfsz WaitCounter,f<br/>
+                <span> </span>goto $-1<br/>
+<span> </span>movlw b'00010000'<br/>
+<span> </span>ANDWF D1_H,w<span> </span><br/>
+<span> </span>bsf DigitControlPin<br/>
+<span> </span>BCF PORTB,4<br/>
+<span> </span>IORWF PORTB,F<br/>
+<span> </span>movf D1_L,w<br/>
+<span> </span>movwf portc<br/>
+<br/>
+<span> </span>movlw d'164'<br/>
+<span> </span>movwf WaitCounter<br/>
+<span> </span>decfsz WaitCounter,f<br/>
+                goto $-1<br/>
+<span> </span>movlw d'164'<br/>
+<span> </span>movwf WaitCounter<br/>
+<span> </span>decfsz WaitCounter,f<br/>
+                goto $-1<br/>
+<span> </span>nop<br/>
+<span> </span>nop<br/>
+                decf WaitCounter2,f<br/>
+                btfss zero<br/>
+                goto BackWaitLoop2<br/>
+                retlw 0x00<br/>
+<br/>
+<br/>
+Wait250mSec     movlw d'250'<br/>
+                goto StartDelayCount<br/>
+<br/>
+Bin8ToDecimal<br/>
+                movf PassArg1,w<br/>
+                movwf PassArg2<br/>
+                movlw 8<br/>
+                movwf PassArg3<br/>
+                clrf PassArg4<br/>
+                clrf PassArg5<br/>
+                clrf PassArg6<br/>
+<br/>
+Bin8ToDecimal_BCDADD3      <br/>
+<span> </span>movlw 5<br/>
+                subwf PassArg4, 0<br/>
+                btfsc STATUS, C<br/>
+                CALL Bin8ToDecimal_ADD3HUNS<br/>
+                movlw 5<br/>
+                subwf PassArg5, 0<br/>
+                btfsc STATUS, C<br/>
+                CALL Bin8ToDecimal_ADD3TENS<br/>
+                movlw 5<br/>
+                subwf PassArg6, 0<br/>
+                btfsc STATUS, C<br/>
+                CALL Bin8ToDecimal_ADD3ONES<br/>
+                decf PassArg3, 1<br/>
+                bcf STATUS, C<br/>
+                rlf PassArg1, 1<br/>
+                rlf PassArg6, 1<br/>
+                btfsc PassArg6,4 ;<br/>
+                CALL Bin8ToDecimal_CARRYONES<br/>
+                rlf PassArg5, 1<br/>
+                btfsc PassArg5,4 ;<br/>
+                CALL Bin8ToDecimal_CARRYTENS<br/>
+                rlf PassArg4,1<br/>
+                bcf STATUS, C<br/>
+                movf PassArg3, 0<br/>
+                btfss STATUS, Z<br/>
+                GOTO Bin8ToDecimal_BCDADD3<br/>
+                movf PassArg2,w<br/>
+                movwf PassArg1<br/>
+                retlw 0<br/>
+Bin8ToDecimal_ADD3HUNS       <br/>
+<span> </span>movlw 3<br/>
+                addwf PassArg4,1<br/>
+                retlw 0<br/>
+Bin8ToDecimal_ADD3TENS<br/>
+<span> </span>movlw 3<br/>
+                addwf PassArg5,1<br/>
+                retlw 0<br/>
+Bin8ToDecimal_ADD3ONES<br/>
+<span> </span>movlw 3<br/>
+                addwf PassArg6,1<br/>
+                retlw 0<br/>
+Bin8ToDecimal_CARRYONES<br/>
+<span> </span>bcf PassArg6, 4<br/>
+                bsf STATUS, C<br/>
+                retlw 0<br/>
+Bin8ToDecimal_CARRYTENS<br/>
+<span> </span>bcf PassArg5,4<br/>
+            bsf STATUS,C<br/>
+<br/>
+<span> </span>goto UpdateNumbers<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<span> </span>org 0x100<br/>
+GetAndCalculateADC_Value<br/>
+<span> </span>BSF ADCON0, 1<br/>
+<span> </span>BTFSC ADCON0, 1<br/>
+<span> </span>GOTO $-1<br/>
+<span> </span>MOVF ADRES, W ;read result<br/>
+<span> </span>MOVWF PASSARG1<br/>
+<span> </span>movlw d'64'<br/>
+<span> </span>subwf passarg1,f<br/>
+<span> </span>clrf passarg2<br/>
+<span> </span>clrf passarg4<br/>
+<span> </span>movlw d'100'<br/>
+<span> </span>movwf passarg3<br/>
+<span> </span>pagesel Multiply16x16<br/>
+<span> </span>call Multiply16x16<br/>
+<span> </span>movf passarg7,w<br/>
+<span> </span>movwf passarg1<br/>
+<span> </span>movf passarg6,w<br/>
+<span> </span>movwf passarg2<br/>
+<span> </span>movf passarg5,w<br/>
+<span> </span>movwf passarg3<br/>
+<span> </span>clrf passarg4<br/>
+<span> </span>clrf passarg5<br/>
+<span> </span>clrf passarg6<br/>
+<span> </span>incf passarg5,f<br/>
+<span> </span>incf passarg6,f<br/>
+<span> </span>pagesel Divide24By24<br/>
+<span> </span>call Divide24By24<br/>
+<span> </span>movlw b'00000001'<br/>
+<span> </span>andwf PassArg9,f<span> </span>;Clear 0.5<br/>
+<span> </span>movf passarg3,w<br/>
+<span> </span>pagesel ADC_ValueAcquired<br/>
+<span> </span>goto ADC_ValueAcquired<br/>
+<br/>
+<span> </span>org 0x200<br/>
+Divide24By24<br/>
+<span> </span>movlw .24<br/>
+<span> </span>movwf PassArg13<br/>
+<span> </span>movf PassArg1,w<br/>
+<span> </span>movwf PassArg12<br/>
+<span> </span>movf PassArg2,w<br/>
+<span> </span>movwf PassArg11<br/>
+<span> </span>movf PassArg3,w<br/>
+<span> </span>movwf PassArg10<br/>
+<span> </span>clrf PassArg1<br/>
+<span> </span>clrf PassArg2<br/>
+<span> </span>clrf PassArg3<br/>
+<span> </span>clrf PassArg7<br/>
+<span> </span>clrf PassArg8<br/>
+<span> </span>clrf PassArg9<br/>
+Divide24By24_dloop<br/>
+<span> </span>bcf status,c<br/>
+<span> </span>rlf PassArg10,f<br/>
+<span> </span>rlf PassArg11,f<br/>
+<span> </span>rlf PassArg12,f<br/>
+<span> </span>rlf PassArg9,f<br/>
+<span> </span>rlf PassArg8,f<br/>
+<span> </span>rlf PassArg7,f<br/>
+<span> </span>movf PassArg4,w<br/>
+<span> </span>subwf PassArg7,w<br/>
+<span> </span>btfss status,z<br/>
+<span> </span>goto Divide24By24_nochk<br/>
+<span> </span>movf PassArg5,w<br/>
+<span> </span>subwf PassArg8,w<br/>
+<span> </span>btfss status,z<br/>
+<span> </span>goto Divide24By24_nochk<br/>
+<span> </span>movf PassArg6,w<br/>
+<span> </span>subwf PassArg9,w<br/>
+Divide24By24_nochk<br/>
+<span> </span>btfss status,c<br/>
+<span> </span>goto Divide24By24_nogo<br/>
+<span> </span>movf PassArg6,w<br/>
+<span> </span>subwf PassArg9,f<br/>
+<span> </span>btfss status,c<br/>
+<span> </span>decf PassArg8,f<br/>
+<span> </span>movf PassArg8,w<br/>
+<span> </span>xorlw 0xff<br/>
+<span> </span>btfsc status,z<br/>
+<span> </span>decf PassArg7,f<br/>
+<span> </span>movf PassArg5,w<br/>
+<span> </span>subwf PassArg8,f<br/>
+<span> </span>btfss status,c<br/>
+<span> </span>decf PassArg7,f<br/>
+<span> </span>movf PassArg4,w<br/>
+<span> </span>subwf PassArg7,f<br/>
+<span> </span>bsf status,c<br/>
+Divide24By24_nogo<br/>
+<span> </span>rlf PassArg3,f<br/>
+<span> </span>rlf PassArg2,f<br/>
+<span> </span>rlf PassArg1,f<br/>
+<span> </span>decfsz PassArg13,f<br/>
+<span> </span>goto Divide24By24_dloop<br/>
+<span> </span>pagesel GetAndCalculateADC_Value<br/>
+<span> </span>retlw 0<br/>
+<br/>
+Multiply16x16<br/>
+Multiply16x16<br/>
+<span> </span>local m1, m2<br/>
+<span> </span>clrf PassArg8<br/>
+<span> </span>clrf PassArg7<br/>
+<span> </span>clrf PassArg6<br/>
+<span> </span>clrf PassArg5<br/>
+<span> </span>bsf PassArg6, 7<br/>
+m1:<br/>
+<span> </span>rrf PassArg2, f<br/>
+<span> </span>rrf PassArg1, f<br/>
+<span> </span>skpc<br/>
+<span> </span>goto m2<br/>
+<span> </span>movf PassArg3, w<br/>
+<span> </span>addwf PassArg7, f<br/>
+<span> </span>movf PassArg4, w<br/>
+<span> </span>skpnc<br/>
+<span> </span>incfsz PassArg4, w<br/>
+<span> </span>addwf PassArg8, f<br/>
+m2:<br/>
+<span> </span>rrf PassArg8, f<br/>
+<span> </span>rrf PassArg7, f<br/>
+<span> </span>rrf PassArg6, f<br/>
+<span> </span>rrf PassArg5, f<br/>
+<span> </span>skpc<br/>
+<span> </span>goto m1<br/>
+<span> </span>pagesel GetAndCalculateADC_Value<br/>
+<span> </span>retlw 0<br/>
+UpdateNumbers<br/>
+<span> </span>movlw 0x00<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_0<br/>
+<span> </span>movlw 0x01<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_1<br/>
+<span> </span>movlw 0x02<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_2<br/>
+<span> </span>movlw 0x03<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_3<br/>
+<span> </span>movlw 0x04<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_4<br/>
+<span> </span>movlw 0x05<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_5<br/>
+<span> </span>movlw 0x06<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_6<br/>
+<span> </span>movlw 0x07<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_7<br/>
+<span> </span>movlw 0x08<br/>
+<span> </span>subwf passarg5,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D1_8<br/>
+D1_9<br/>
+<span> </span>movlw b'00101111'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_8<br/>
+<span> </span>movlw b'00111111'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_7<br/>
+<span> </span>movlw b'00000111'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11101111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_6<br/>
+<span> </span>movlw b'00111101'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_5<br/>
+<span> </span>movlw b'00101101'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_4<br/>
+<span> </span>movlw b'00100110'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_3<br/>
+<span> </span>movlw b'00001111'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_2<br/>
+<span> </span>movlw b'00011011'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_1<br/>
+<span> </span>movlw b'00000110'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11101111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_0<br/>
+<span> </span>movlw b'00111111'<br/>
+<span> </span>movwf D1_L<br/>
+<span> </span>movlw b'11101111'<br/>
+<span> </span>movwf D1_H<br/>
+<span> </span>goto D1_Cont<br/>
+D1_Cont<br/>
+<span> </span>movlw 0x00<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_0<br/>
+<span> </span>movlw 0x01<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_1<br/>
+<span> </span>movlw 0x02<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_2<br/>
+<span> </span>movlw 0x03<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_3<br/>
+<span> </span>movlw 0x04<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_4<br/>
+<span> </span>movlw 0x05<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_5<br/>
+<span> </span>movlw 0x06<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_6<br/>
+<span> </span>movlw 0x07<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_7<br/>
+<span> </span>movlw 0x08<br/>
+<span> </span>subwf passarg6,w<br/>
+<span> </span>btfsc zero<br/>
+<span> </span>goto D2_8<br/>
+D2_9<br/>
+<span> </span>movlw b'00101111'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_8<br/>
+<span> </span>movlw b'00111111'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_7<br/>
+<span> </span>movlw b'00000111'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11101111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_6<br/>
+<span> </span>movlw b'00111101'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_5<br/>
+<span> </span>movlw b'00101101'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_4<br/>
+<span> </span>movlw b'00100110'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_3<br/>
+<span> </span>movlw b'00001111'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_2<br/>
+<span> </span>movlw b'00011011'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11111111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_1<br/>
+<span> </span>movlw b'00000110'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11101111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_0<br/>
+<span> </span>movlw b'00111111'<br/>
+<span> </span>movwf D2_L<br/>
+<span> </span>movlw b'11101111'<br/>
+<span> </span>movwf D2_H<br/>
+<span> </span>goto D2_Cont<br/>
+D2_Cont<br/>
+<br/>
+<span> </span>pagesel mainloop<br/>
+<span> </span>goto MainLoop<br/>
+Fins<br/>
+<br/>
+                end             ; end of program<br/>
+<div><br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/05/pic-ile-termometre-ve-termostat-devresi.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

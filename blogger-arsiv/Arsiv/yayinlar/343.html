@@ -1,0 +1,211 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pic ile Gecikme ve Döngüler | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Pic ile Gecikme ve Döngüler</h1><div>2010-09-13 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span><strong>Döngü nedir?</strong></span><span><br/>
+</span><span><br/>
+</span><span>pic ile programlama yapmaya niyetlendiyseniz en azından aklınıza bu takılıyor ise, az veya çok programlama konusunda bilginiz vardır.</span><span><br/>
+</span><span><br/>
+</span><span>döngüler bildiğiniz gibi program içersinde bir dizi işlemin belli sayıda yapılması yada bir şartın gerçekleşmesine kadar belli bir işin yapılması veya zaman gecikmesi gibi amaçlar için kullanılan alt yordamlardır.</span><span><br/>
+</span><span><br/>
+</span><span>örneğin visual basic de 1 den 10 a kadar olan sayıların toplanması işlemi şöyle yapılır;</span><span><br/>
+</span><span><br/>
+</span><span><strong>--------------------<br/>
+toplam=0<br/>
+for sayi=1 to 10<br/>
+toplam=toplam+1<br/>
+next<br/>
+<br/>
+-----------------</strong></span><span><br/>
+</span><span>sonuçta Toplam=10 olacaktır.</span><span><br/>
+</span><span>4 satırla işi hallettik.</span><span><br/>
+</span><span><br/>
+</span><span>ama assembler a gelince iş değişiyo, çünkü orda for next kullanma gibi bir lüksümüz yok.</span><span><br/>
+</span><span><br/>
+</span><span>assembler iile bu işlemleri yapmak için etiketlerden ve yönlendirme komutu olan GOTO komutundan çok faydalanıyoruz.</span><span><br/>
+</span><span><br/>
+</span><span>konunun tepesine çıkmadan hemen küçük bir örnek verelim;</span><span><br/>
+</span><span><br/>
+</span><span><strong>---------------------------<br/>
+dongubasi<br/>
+   goto dongubasi<br/>
+------------------------------</strong></span><span><br/>
+</span><span><br/>
+</span><span>2 satırlık bu program, pic için assembler da yapabileceğimiz en küçük döngüdür ve bir kısır döngüdür.</span><span><br/>
+</span><span><br/>
+</span><span>hemen ledler ile ilgili bir örnek verelim;</span><span><br/>
+</span><span><br/>
+</span><span>aşağıdaki kodlar ile portB nin birinci pin'ine (Sıfırıncı bit) bağlı olan led yakılıp söndürülür.</span><span><br/>
+</span><span><br/>
+</span><span><strong>---------------------------<br/>
+dongubasi<br/>
+    bsf portb,0<br/>
+    bcf portb,0<br/>
+goto dongubasi</strong></span><span><br/>
+</span><span>------------------------------</span><span><br/>
+</span><span><br/>
+</span><span>bakın şimdi konuyu biraz dağıtıp burda bir parantez açalım.</span><span><br/>
+</span><span><br/>
+</span><span>(</span><span><br/>
+</span><span><br/>
+</span><span>Eğer bu programı denerseniz, devreyi çalıştırdığınızda göreceksiniz ki programınız sizin dediğinizi yapmayacak, yani diyeceksinizki "bu porogram" çalışmıyor.</span><span><br/>
+</span><span><br/>
+</span><span>halbuki bu kodlar doğru.</span><span><br/>
+</span><span><br/>
+</span><span><b>burda ince bir nokta var. </b></span><span><br/>
+</span><span>biraz elektrik-elektronik bilginiz varsa şu soruya cevap verirsiniz değilmi.</span><span><br/>
+</span><span><br/>
+</span><span>Soru: Evimizdeki ampuller devamlı yanıyor mudur, yani anahtarı açtığınızdan itibaren kapanıncaya kadar devamlı yanar mı?</span><span><br/>
+</span><span><br/>
+</span><span>hemen cevap verelim. evet yanar, ama bu doğru cevap değil.</span><span><br/>
+</span><span><br/>
+</span><span>bu lambalar, devamlı yanmaz, arasıra canı sönmek ister ve söner, normal şartlar altında bu sönme olayı 10 milisn de bir olur.</span><span><br/>
+</span><span><br/>
+</span><span>parantezin içine bir parantez daha açalım ( konuları oldukça basitten başlayarak karmaşığa doğru götürmek isitoyrum ve bu anlatım şeklini seçmemdeki amaç da konunun anlaşılırlığını ve doyuruculuğunu sağlamak. o yüzden sizin için çok basit olan bir yer karşınıza gelirse o bölümü geçebilirsiniz. 2 inci parantez burda bitti.)</span><span><br/>
+</span><span><br/>
+</span><span>birinci parantezden devam edelim.</span><span><br/>
+</span><span><br/>
+</span><span>lambalarımız sn de 100 defa iyice sönmesine rağmen biz bunu farketmeyiz. neden? çünkü 10 ms gibi bir zamanı gözlerimiz algılamaz. ve devamlı yanıyor görürüz, çünkü lamba sönmesine rağmen yanık kalma süresi daha fazla olduğundan devamlı yanıyor görürüz.</span><span><br/>
+</span><span><br/>
+</span><span>birinci parantezi de burda kapattık.)</span><span><br/>
+</span><span><br/>
+</span><span><strong>---------------------------<br/>
+dongubasi<br/>
+   bsf portb,0<br/>
+   bcf portb,0<br/>
+goto dongubasi<br/>
+------------------------------</strong></span><span><br/>
+</span><span><br/>
+</span><span>pic de eğer osilator olarak 4 MHZ osilatör kullanıyorsak yukardaki programda, led yanar 1 mikrosn yanık kalır sonra söner ve 3 mikrosn sönük kalır.</span><span> </span><span><br/>
+</span><span><br/>
+</span><span>ve bu programda biz bişey gözlemleyemeyiz. Sönük kalma süresi yanık kalma süresinden daha fazla olduğu için led devamlı sönük görünecektir.</span><span><br/>
+</span><span><br/>
+</span><span>yukardaki döngü özgür, bağımsız ve koşulsuz bir döngü ve belli bir sayısı yok. yani gene bu program pic resetleninceye kadar yada gücü kesilinceye kadar yada bozuluncaya kadar devam edecektir.</span><span><br/>
+</span><span><br/>
+</span><span>yani kısacası bir koşul ve bir sayı yok.</span><span><br/>
+</span><span><br/>
+</span><span>şimdi 10 defa çalışacak bir alt bölüm yapalım.</span><span><br/>
+</span><span><br/>
+</span><span>bunun için mantığı anlatalım.</span><span> </span><span><br/>
+</span><span>(çünkü assemnbler da döngü için bir komut yok.)</span><span><br/>
+</span><span><br/>
+</span><span>1) belli sayıda bir döngü yapılırken önce döngü sayısı bir değişkene aktarılır.</span><span><br/>
+</span><span><br/>
+</span><span>2) döngü başı için bir etiket tanımlanır.</span><span><br/>
+</span><span><br/>
+</span><span>3) ardından bu sayı bir komutla her defasında bir azaltılır.</span><span> </span><span><br/>
+</span><span>DECFSZ komutu bu işi yapar. F register içindeki sayıyı bir azaltıp F registerin içine koyar, ve F içindeki sayı sıfıra indiğinde yönlendirme yaparak kendinden sonraki komutu işletmeden, pic'i kendinden sonraki 2 inci komuta gönderir.</span><span><br/>
+</span><span><br/>
+</span><span>4) eğer sıfıra ulaşıldıysa zaten döngüden çıkar. ama eğer sıfıra ulaşılmadıysa döngübaşı etiketine yönlendirme yapılması gerekir ki döngü devam etsin.</span><span><br/>
+</span><span><br/>
+</span><span>buynuda GOTO komutu yapıyor.</span><span><br/>
+</span><span><br/>
+</span><span>5) ve döngü dışına çıkışta ne yapacaksa yada program devam edecekse bir sonraki satırda da o verilir.</span><span><br/>
+</span><span><br/>
+</span><span><br/>
+</span><span>şimdi bunları toparlayalım.</span><span><br/>
+</span><span><br/>
+</span><span><strong>-----------------------------<br/>
+<br/>
+movlw d'10'<br/>
+movwf SAYAC<br/>
+<br/>
+DONGUBASI<br/>
+  decfsz SAYAC,f<br/>
+   goto DONGUBASI<br/>
+  goto BAS<br/>
+<br/>
+-----------------------------</strong></span><span><br/>
+</span><span><br/>
+</span><span><br/>
+</span><span>SAYAC değişkenine 10 atanırsa döngü 10 defa işlenir 100 atanırsa 100 defa işlenir.</span><span><br/>
+</span><span><br/>
+</span><span>pic içinde döngülerin en çok kullanıldığı yerler gecikme sağlamak, buton kontrolü gbi işlemlerdir.</span><span><br/>
+</span><span><br/>
+</span><span>gözle görülebilir bir gecikme sağlayacaksak bu durumda döngü için kullanılan sayı artırılmalıdır. ve bu durumda bir adet döngü bizim ihtiyacımızı karşılamaz.</span><span><br/>
+</span><span><br/>
+</span><span>ama program gereği bir miktar mesela 100 mikrosn gibi bir geçikme sağlamak istiyorsak bu durumda bir döngü işimizi görür.</span><span><br/>
+</span><span><br/>
+</span><span>gözle görülür bir döngüden kasıt mesela ledi flaşör gibi yakıp söndürme işlemi yapacaksak içiçe döngüler kurmalıyız. ama göze göre ayar olduğu için de bunu kendimiz değişkenlere vereceğimiz sayılarla deneyerek yada hesaplayarak ayarlarız.</span><span><br/>
+</span><span><br/>
+</span><span>içiçe döngülerde de mantık aynı olacaktır.</span><span><br/>
+</span><span><br/>
+</span><span>program birinci döngüden başlar ve hemen ikinci döngüye girer,</span><span><br/>
+</span><span><br/>
+</span><span>ikinci döngü bittiğinde birinci döngünün ilk dönüşü tamamlanmış olur.</span><span><br/>
+</span><span><br/>
+</span><span>İÇ İÇE 2 Lİ DÖNGÜ:</span><span><br/>
+</span><span><br/>
+</span><span>Visual basic de bir örnek:</span><span><br/>
+</span><span><br/>
+</span><span><strong>--------------------------------<br/>
+<br/>
+for i=1 to 10<br/>
+<br/>
+    for j=1 to 10<br/>
+    komutlar<br/>
+    next<br/>
+next<br/>
+---------------------------</strong></span><span><br/>
+</span><span><br/>
+</span><span>bu döngü sonucunda komutlar 10+10=20 defa değil 10*10=100 defa işlenmiş olur.</span><span><br/>
+</span><span><br/>
+</span><span>aynı işlemi pic ile yaparsak,</span><span><br/>
+</span><span><br/>
+</span><span><strong>-----------------------------<br/>
+TUMDONGU<br/>
+movlw d'255'<br/>
+movwf SAYAC1<br/>
+<br/>
+DONGUBASI1<br/>
+<br/>
+movlw d'255'<br/>
+movwf SAYAC2<br/>
+<br/>
+DONGUBASI2<br/>
+  decfsz   SAYAC2,f<br/>
+  goto   DONGUBASI2<br/>
+<br/>
+  decfsz   SAYAC1,f<br/>
+  goto   DONGUBASI1<br/>
+<br/>
+RETURN<br/>
+<br/>
+-----------------------------</strong></span><span><br/>
+</span><span><br/>
+</span><span>burda return komutu; eğer bu döngü bir gecikme alt yordamı olarak çağrılacaksa pic i çağrıldığı yere geri göndermek içindir.</span><span><br/>
+</span><span><br/>
+</span><span>eğer bir yerden çağrılma yapılmayacak ve program işlenip devam edecekse return komutuna gerek yoktur.</span><span><br/>
+</span><span><br/>
+</span><span><strong>İÇ İÇE 3 Lü DÖNGÜ:<br/>
+<br/>
+GECIKME<br/>
+MOVLW D'255'<br/>
+MOVWF SAYAC1<br/>
+DONGU1<br/>
+MOVLW D'255'<br/>
+MOVWF SAYAC2<br/>
+<br/>
+DONGU2<br/>
+MOVLW D'255'<br/>
+MOVWF SAYAC3<br/>
+<br/>
+DONGU3<br/>
+DECFSZ SAYAC3,F<br/>
+GOTO DONGU3<br/>
+DECFSZ SAYAC2,F<br/>
+GOTO DONGU2<br/>
+DECFSZ SAYAC1,F<br/>
+GOTO DONGU1<br/>
+RETURN<br/>
+END</strong></span><span> </span><span><br/>
+</span><span><br/>
+</span><span>bu son alt program içiçe 3 lü döngüde elde edilebilecek en fazla zamanı elde eder.</span><span><br/>
+</span><span><br/>
+</span><span>şüphesiz ki burda elde edilecek zaman gecikmesi 255X255X255 mikrosn diye aklamıza gelebilir ama Değildir.</span><span><br/>
+</span><span><br/>
+</span><span>sadece yukardan aşağıya komutların bir defa işlendiğini gözönüne alırsak 13 adet komut vardır. ve bu aralık içiçe defalarca işlenmektedir.</span><span><br/>
+</span><span><br/>
+</span><span>buradaki 3 lü döngüde sayac değişkenlerine 255 verip belli aralıklarla ledlerin sönüp yanmasını beklemeyin. çünkü döngüden çıkmak için pic in yaklaşık 50.000.000 küsür tane işleyecek komutu var.</span><span><br/>
+</span><span><br/>
+</span><span>buda yaklaşık 50 sn gibi bir zamana denk düşer.</span><span><br/>
+</span><span><br/>
+</span><span>saat çevrimlerine göre döngü hesaplarını ayrıca bir sayfada anlatacağım.</span><span><br/>
+</span><span><br/>
+</span><span>şimdilik bu kadar.</span></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/09/pic-ile-gecikme-ve-donguler.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

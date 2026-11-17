@@ -1,0 +1,508 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC16F84 ile Elektronik Kas Uyarım Cihazı | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC16F84 ile Elektronik Kas Uyarım Cihazı</h1><div>2010-01-12 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div><a href="http://320volt.com/wp-content/uploads/2008/07/kas_uyarim_cihazi1.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/kas_uyarim_cihazi1.jpg"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+ <a href="http://www.baskent.edu.tr/~mustafak/Bitirme%20Projeleri/Bitirme%20Projesi%20Ornekleri/bitirme%20projesi%20raporu.doc" rel="noopener noreferrer">Projenin doc dosyasına Buradan Ulaşabilirsiniz</a><br/>
+Bu çalışmada entegre devrelerden ve mikro kontroller’ dan oluşan programlana bilinir bir elektronik kas uyarım cihazı tasarlanmıştır. Bu çalışmada kullanılan yöntem TENS yöntemidir. Bu yöntem deri üzerinden kas ve sinir uyarım yöntemidir. Bu yöntemde sinir ve kaslar, deri üzerinden elektrotlar ile, farklı frekans ve yoğunlukta elektrik akımları kullanılarak uyarılırlar. Uyartımın amacı ağrı modülasyonu için sinir bağlantılarındaki iletimi engellemektir.<br/>
+<br/>
+Kas kasılması sağlamak için ise kasların motor noktalarına gereken dalgaları uygulamaktır. TENS yöntemi kullanıldığında endorfin denilen doğal analjezik salgılanır ve sedatif etki meydana gelir. Bu yöntem fizyoterapide; kas kasılmalarını, gevşemelerini sağlamak, acı dindirmek, Sedatif etki sağlamak için kullanılan alternatif yöntemlerden biridir.<br/>
+<br/>
+Tasarlanan devredeki mikro kontroller ile frekansı, akım süresini belirlemek ve çıkıştaki ayarlama ile her hastaya uygun akım yoğunluğunu belirlemek mümkündür. Seçilen dalga tipi ve özellikleri ise LCD ekranda kullanıcı bilgisi olarak sunulmaktadır.<br/>
+<br/>
+Öncelikle Ağrı modülasyonu ve TENS metotları anlatılacaktır. Daha sonra ise tasarlanan blok diyagram, devre şeması ve devre çalışma prensibi açıklanacaktır. Son kısımda ise sonuç ve öneriler kısmı ile yapılan çalışma ve gelecekteki olabilecek gelişmeler anlatılmıştır.<br/>
+<br/>
+Simgeler ve Kısaltmalar<br/>
+Bu çalışmada kullanılmış bazı simgeler ve kısaltmalar, açıklamaları ile birlikte aşağıda sunulmuştur.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/kisaltmalar_simgeler_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/kisaltmalar_simgeler_.png"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Elektroterapinin Tarihçesi<br/>
+Elektroterapi, teşhis ve tedavi amacıyla elektriksel ajanların kullanılmasıdır. Elektriğin tedavi edici bir araç olarak kullanılması eski Yunan ve Mısırlılara kadar uzanır;<br/>
+<br/>
+Yunan bilgin Aetius gut hastalığının tedavisinde torpido sarsıntılarını ve elektrik balıklarını kullanmıştır. Ortaçağda yaşayan tıp bilgini Paracelsus mıknatıslanmış (magnet) cisimlerin bütün tedavilere iyi geldiğine inanmıştır. Yine bu devirlerde Kraliçe Elizabeth’ in doktoru Dr. William Gilbert’ in 1600 yılında yayınladığı “De Magnette” isimli kitabı oldukça ilgi uyandırmıştır.<br/>
+<br/>
+1780 yılında Bologna Üniversitesi Profesörü Galvani, elektriğin etkisiyle kurbağanın bacak kasının (gastroknemius) kasıldığını görmüş ve bunun sonucu olarak da elektriğin sadece hayvansal dokulara ait olduğunu söylemiştir. Bundan sonra İtalyan tabiat bilgini Alessandro Volta, elektriğin sadece hayvansal dokulara ait olmadığını ve 1800 yılında Volta pilini keşfetmiştir. Böylece Galvani ve Volta elektroterapinin temelini oluşturmuşlardır. Elektroterapi hakkındaki ilk kitap Alman Fiziatrisi Kratzenstein tarafından 1745′de yayınlanmıştır.<br/>
+<br/>
+Paris’ li Jallabert elektrik kıvılcımlanmasının kas kontraksiyonu için kullanılmasını tavsiye etmiştir. Marat, parazi, hemipleji ve romatizmal hastalıkların tedavisinde elektriğin kullanıldığına dair kitaplar yazmıştır. Marat nasıl ilaç tedavisinin belirli bir süre verilmesi gerekiyorsa elektriğin de belirli bir süre verilmesi gerektiğini ileri sürmüştür.<br/>
+<br/>
+İlk fizyoterapi departmanı 1840 yılında Dr. Golding tarafından Londra’ daki ‘Guy’ hastanesinde Elektroterapi departmanı olarak açılmıştır. İndüksiyon bobininin Faraday tarafından keşfinden sonra elektrofızyoloji, kas ve sinirlerin faradik ve galvanik akımla uyarımı hakkındaki kanunlar 19. Yüzyılın ortalarında Fransız Du-BoisRaymond, Duchenne ve Erb tarafından geliştirilmiştir. Amerikalı (Michigan) John H. Kellogg tarafından sinüzoidal akımlar kas uyarımında kullanılmıştır.<br/>
+<br/>
+Yüksek frekanslı akımlar Tesla tarafından keşfedildikten sonra 1892′de D’Arsonval tarafından tedavide kullanılmıştır. Diatermi 20. asrın ilk onuncu yılında Alman Zeynek ve Nagelschnidt tarafından bulunmuştur ve tıbbi amaçlar için New Yorklu F. De Kraft, cerrahi amaçlar için de Philadelphialı Clark tarafından geliştirilmiştir.<br/>
+<br/>
+Kısa dalga diatermi Amerikalı Schereschewsky, Witney ve Alman Schliepake tarafından bulunmuştur. Küçük dalga diatermi (mikro dalga diatermi), savaş zamanında kullanılan radarlardan örnek alınarak İngiliz bilgini Sir Arthur Tisdale tarafından “Magnetron” adı verilen tüpün geliştirilmesi ile bulunmuştur.<br/>
+<br/>
+<br/>
+Tens Uygulaması<br/>
+Bu çalışmada esas amaç deri üzerinden elektrikli kas sinir uyarıcı ünitesinin tasarım ve uygulamasının gerçekleştirilmesidir. Ancak öncelikle ağrının nasıl algılandığı, DÜEKSU ünitelerinde kullanılabilecek uyartım yöntemleri ile kullanılan materyal ve metotların tanıtılarak konu hakkında ön bilgi verilmesi amaçlanmıştır.<br/>
+<br/>
+Günümüzde sabit ve uzun süreli acılar için analjezik bir durumda uzun süreli bir uygulamada, böbrek veya karaciğerin hasara uğraması riski nedeniyle kullanılan alternatif metot deri üstü elektrikli sinir uyarımı yani fizyoterapide bilinen adıyla TENS Ünitesi kullanımıdır. Bu metot elektrik akımının, elektrotlar yardımıyla deri üzerinden deri altındaki sinirleri uyarmak için iletilmesi yöntemidir. Bu teknik daha sonra “Transkutaneous Electrical Nerve Stimulation” kelimelerinin baş harflerinden oluşan TENS olarak adlandırılmıştır.<br/>
+<br/>
+Kullanılan bu deri üstü elektrikli kas sinir uyarımı (DÜEKSU) yöntemi çok iyi başarı oranı ile ağrıların azaltılması veya giderilmesi için düzenli olarak kullanılmaktadır. Bugün elektrik akımı oldukça yaygın bir şekilde TENS formunda kullanılmaktadır.<br/>
+<br/>
+Doğru akımda kısa süreli uyanlar üreten TENS yani deri üstünden elektrikli kas sinir uyarımı cihazları ilk kez 1919 yılında kullanılmaya başlanmıştır. İlk kez Wall ve Sweet cilt üzerine yerleştirilen elektrotlar aracılığı ile periferik yani çevresel sinirlerin elektriksel olarak uyarılması sonucunda kronik ağrının geçici olarak düzeldiğini bildirmişlerdir.<br/>
+<br/>
+Çok daha önceleri de elektrik akımlarıyla bu tür, ağrıyı azaltmayı amaçlayan çalışmalar yapılmış ve çok değişik şekilli elektriksel uyanlar kullanılmıştır. Ancak zamanla bunların az çok benzer etkide oldukları görülerek pek çoğu terk edilmiş, yalnızca sinüzoidal akım ve bunun üzerinde değişiklikler yapılarak elde edilen diadinamik akımlar ağrı kontrolü için kullanılmaya devam edilmiştir.<br/>
+<br/>
+TENS deri aracılığı ile çevre sinirlerinin uyarılması olarak da açıklanabilir. Tedavi için kullanılma amacı da ağrıları hafifletmek veya ortadan kaldırmaktır. Bu uyarıları verdiğimizde beynin salgıladığı endorfinler doğal acı yok edici maddeler olarak devreye girerek acının azaltılması yada giderilmesini gerçekleştirir.<br/>
+Beyin dış ortamda ve vücut içinde oluşan elektriksel uyarılan algılama ve yorumlama özelliğine sahiptir. Bazı akım şekilleri ve özellikle TENS cihazlarının ürettiği uyarılar santral sinir sistemine etki ederken ağrıyla ilgili odakların duyarlılığında da büyük değişmeler yapabilir.<br/>
+<br/>
+TENS cilde yerleştirilen elektrotlar üzerinden sinir sistemine kontrollü düşük gerilimli elektrik akımının uygulanmasıyla gerçekleştirilir. TENS’ in gelişmesi sayesinde elektrik akımıyla ağrı tedavisinin önemi artmıştır. Başlangıçta TENS, ağrının kontrolünde bir yöntem olarak dorsal kolon sinirlerini doğrudan uyarmak için yapılmış olan dorsal kolon elektrik stimülatörünün bir yan ürünü olarak geliştirilmiştir.<br/>
+<br/>
+Bu stimulatör cerrahi olarak vücut içine yerleştirilir. Noninvazif bir teknik olarak geliştirilen TENS ise çoğu hastada ağrının azaltılmasında yeterli olduğundan dorsal kolon stimülatörü gibi cerrahi bir girişime gerek kalmadan uygulanır.<br/>
+<br/>
+1965′de ağrının Melzack ve Wall tarafından “Kapı Kontrol Teorisi” ile tanımlanmasının ardından ağrının elektrik akımlarıyla azaltılmasına büyük ilgi duyulmuş ve TENS ile yapılan araştırmalarda ve onun tedavide kullanımında büyük artışlar görülmüştür.<br/>
+<br/>
+TENS’ in şu anda pek çok uygulamaları vardır. Ağrının tedavi edilmesinde güvenilir ve etkili olduğundan, ve “Besin ve İlaç Yönetimi” (FDA) onayını aldığından TENS birçok cerrahi girişimden sonra ve çeşitli hastalıkların yol açtığı akut ve kronik ağrılarda kullanılır. FDA medikal cihaz kullanım yönetmeliğine göre TENS II. sınıf cihazlar arasındadır.<br/>
+<br/>
+Yani hastaya dağıtımı ve uygulanması lisanslı bir doktor tarafından yapılmalıdır. ABD’ de transkutan elektriksel sinir stimulatörleri için ulusal standartlar belirlenmiştir(1985). Buna göre TENS için birincil indikasyon şu şekilde tarif edilmiştir:”Kronik ağrının semptomatik olarak kontrol altına alınmasında ve tedavisinde veya yardımcı tedavi olarak ve hem operasyon sonrası hem de travma sonrası akut ağrının tedavisinde kullanılır.<br/>
+<br/>
+Bugün pek çok ülkede ve ülkemizde klinik ve ev tedavileri için TENS cihazları üretilmektedir. TENS cihazlarının doğru akımdan ürettikleri pozitif kare ve negatif dikensi dalgalardan oluşan asimetrik bifazik, kare şeklinde monofazik ve yine kare şeklinde bifazik uyanlar çok yaygın kullanılmaktadır. Bunlar içinde en yaygını simetrik veya dengeli asimetrik, bifazik kare dalgadır. Çıkış elektrotlarına polarite kazandırmak için daha çok asimetrik kare dalga kullanılmaktadır.<br/>
+<br/>
+Değişik tipte elde edilen TENS dalga şekilleri<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_dalga.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_dalga.jpg"/></a><br/>
+</div><br/>
+<br/>
+TENS dalga çeşitleri<br/>
+<br/>
+a) Bifazik kare dalga<br/>
+b) Asimetrik bifazik pozitif kare ve negatif dikensi dalga<br/>
+c) Monofazik kare dalga<br/>
+<br/>
+Deri üstünden sinirsel uyan, sinir uçlarının içinden geçen iletimi önlemeye yöneliktir. Böylece beyin ağrı sinyallerini algılamaz. TENS’ in kullanılmasında, acıların azaltılmasında kullanılan alternatif bir neden, uyarının endorfinleri oluşturmasıdır. Endorfinler vücuda salgılanan hormonlar olup, doğal acı yok edici maddelerdir. TENS’ in verimliliği, hastanın bu yöntemin yaralı olacağına inanmasına da bağlıdır. Bu yöntem daha çok fizyoterapistler tarafından kullanılmaktadır.<br/>
+<br/>
+Çalışma kapsamında genel bilgiler<br/>
+<br/>
+Ağrı ve Ağrı Teorileri<br/>
+<br/>
+Elektriğin tedavi edici bir araç olarak kullanılmasının eski Yunan ve Mısırlılara kadar uzandığı, hatta Sezar zamanında “torpido” balığının elektriksel deşarjlarının “gut” ve “baş ağrısı” tedavisinde kullanıldığı söylenmişti.<br/>
+<br/>
+İlerleyen zamanlarda tıp ve medikal elektronik alanındaki çalışmalarla ağrının giderilmesi için alternatif metotlar araştırılmış ve fizik tedavide kullanılan elektriksel cihazlar geliştirilmiştir.<br/>
+<br/>
+Fizik tedavide kullanılan elektriksel cihazlar ve fizik tedavinin esas amacı hastanın ızdırabını azaltmaktır. Izdırabın sebebi çoğunlukla ağrıdır. Bu nedenle ağrının nasıl hissedildiği, iletildiği ve beyin tarafından nasıl algılandığı bilinmelidir.<br/>
+<br/>
+Ağrı; doku harabiyetini önlemek amacıyla kişiyi uygun bir cevap oluşturması için uyaran koruyucu bir mekanizmadır. Ağrı oluşumu ile ilgili bazı teoriler bulunmakla beraber en önemlisi Melzack ve Wall’ ın kapı kontrol teorisidir.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/kapi_kontrol_sistemi.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/kapi_kontrol_sistemi.jpg"/></a><br/>
+</div><br/>
+<br/>
+Kapı Kontrol Sisteminin Mekanizması<br/>
+<br/>
+Kapı kontrol teorisi periferden merkeze giden ağrılı uyanların medülla spinalisdeki nöral mekanizma ile arttırılması veya azaltılması esasına dayanır. Noniseptif uyarının spinal kord boyunca iletilmesi iki yoldan olabilir:<br/>
+<br/>
+1-Yavaş ileten, miyelinsiz bir C lifi yoluyla: Miyelinsiz C lifleri çok İnce olup iletim hızı çok düşüktür. Küçük d.r. C grubu lifler ise arka kökte ve çevresel sinirlerde bulunurlar ve bazı reseptörlerden ağrı, basınç, sıcaklık bilgisini getirirler. Aksiyon potansiyeli s.C liflerinde her iki tür ard potansiyelini içerirken, d.r.C grubu liflerinde depolarize edici ard potansiyel bulunmamaktadır.<br/>
+<br/>
+2-Daha hızlı, miyelinli bir A delta lifi yoluyla: A tipi lifler, çaplan ve iletim hızları bakımından geniş aralıklar kapsarlarsa da oldukça homojen bir grup oluştururlar.<br/>
+<br/>
+Her ikisi de spinal korda arka yoldan girecektir. Her iki türlü lifinde belli bir en üst frekans iletisi olduğu düşünülmektedir. C lifi için saniyede 15 darbe; A delta lifi için saniyede 40 darbe önerilmiştir. Daha yüksek bir frekans uygulandığında, iletinin geçişini engelleyen fizyolojik bir blok olacağı öne sürülmektedir.<br/>
+<br/>
+TENS gibi cihazlar kullanılarak bu düzeyde bir frekans ile istenilen etki elde edilebilir. Teorinin anatomik yapısı; kalın çaplı A- delta, küçük çaplı C- lifleri, medülla spinalisin dorsal boynuzundaki lamina I ve II ile ilişkisi olan substansiya gelatinosa (S.G.) ve dorsal boynuzun orta kısmında yer alan transmisyon hücrelerini (T hücreleri) içerir. A- delta ve C lifleri planlı bir şekilde hem substansiya gelatinosa hem de T hücreleri ile sinaps yapar.<br/>
+<br/>
+Substansiya gelatinosa A- delta ile C lifleri (afferent) ve T hücreleri üzerinde presnaptik uzantıları ile düzenleyici (kapı kontrol) olarak hareket eder. Kontrol presnaptik inhibisyon adı verilen nörofizyolojik mekanizma ile oluşturulur.<br/>
+<br/>
+Ağrı duyusunu taşıyan kalın çaplı A- delta liflerinin uyarıları daha fazla olduğundan substansiya gelatinosayı fasihte ederler. Böylece SG’ nin T hücrelerini inhibe edici uyarıları artar. Kapı kapatılarak aksiyon sisteminin ateşlenmesi azaltılır ve ağrılı uyarıların geçişi önlenir. Küçük çaplı C lifleri daha fazla uyarıldığında ise SG’ nin aktivitesi baskılanarak presnaptik kontrol azalır, kapı ağrılı uyaranlara açılır.<br/>
+Melzack ve Wall kapı kontrol teorisinde, düzenleyici olarak, rol oynayan diğer bir mekanizma olarak, post-sinaptik inhibasyonu göstermişlerdir. Merkezi ve periferik sinir sistemindeki bazı nöronlar şiddetli bir şekilde uyarıldığında enkafalin ve endorfin gibi endojen analjezik madde açığa çıkararak ağrının azaltılmasında rol oynarlar.<br/>
+<br/>
+Kas Kontraksiyonu Ve Kas Kuvvetlendirme:<br/>
+<br/>
+TENS, kalın çaplı afferent sinir liflerinin (A — delta lifleri) uyarılmasıyla ağrının azaltılmasını amacıyla deriye değişik elektrik akımı veren alet elektrotlarının uygulanmasıdır. Fizik tedavide kullanılan Faradik, sinüzoidal, diadinamik, interferansiyel, Rus (Kotz), yüksek voltajlı kesikli akımları içeren stimülatörler TENS’ lerdir. Ancak birçok fizik tedavi uzmanı TENS ünitelerini diğer stimülatörlerden daha küçük ve pille çalıştıkları için hem ayırırlar hem de tercih ederler. Tasarlanan sistemde ağrı modülasyonu için dalga çeşitlerine ve kas kasılmasını sağlayacak tipte akımlara sahiptir.<br/>
+<br/>
+Tasarlanan sistem kullanılarak istenilen kas grubunu çalıştırmak mümkün olacaktır.<br/>
+<br/>
+Materyal ve Metod<br/>
+<br/>
+Deri Üstü Elektrikli Sinir Uyarımı Yöntemleri<br/>
+<br/>
+TENS cihazları klinik ve portatif olmak üzere iki tipte üretilmektedir. Klinik cihazlar beş ile on adet kanal çıkışına sahipken portatifler de çıkış sayısı en fazla ikidir. Klinik cihazlar akım karakteristikleri bakımından daha düzgün bir çıkış verirler. Tüm akım modülasyon çeşitlerine sahiptirler.<br/>
+<br/>
+Ayrıca bu cihazlar fizyoterapistlerin işlerini kolaylaştıracak yönde bazı ek devreler de içerirler. Zamanlayıcı, alarm, tek tuşla kutup döndürme gibi düzenler birçok cihazda asgari bulunur.<br/>
+Klinik TENS cihazları şehir şebekesi ile çalışırlar. Portatif cihazlar ise çoğunlukta Konvansiyonel tens akımını verecek şekildedir ve 9 V’ luk pil ile çalışırlar.<br/>
+<br/>
+TENS cihazlarında iki veya daha fazla sayıda çıkış kanalı olabilir. Böylelikle birden fazla bölgeye akım uygulanabilir.<br/>
+<br/>
+Tasarlanan sistem ise deneme aşaması için tek kanallı tiptedir. Hem portatif hem de klinik cihazların verebildiği akım çeşitlerine sahiptir. Burada ise tasarlanan cihazın çıkışından alınan dört farklı dalga çeşidi, fizyolojik etkileri ve uygulama süreleri anlatılmıştır.<br/>
+<br/>
+<br/>
+Konvansiyonel (Geleneksel) Yöntem<br/>
+<br/>
+En yaygın kullanılan tiptir. Bu tedavi şeklinde düşük şiddette fakat yüksek frekansta uyarılar kullanılır. Frekans 50–100 Hz, süre 40–75 µs, akım yoğunluğu 10–30 m A değerleri arasındadır. Bu değerler hastasına göre aşın rahatsızlık hissi vermeden, hafif karıncalanma oluşturacak şekilde ayarlanabilir. Çalışmalar sonucunda ağrı üzerinde en etkili frekans 60 Hz olarak belirlenmiştir. Bu yöntemle kalın çaplı afferent yani getiren sinir lifleri (A-alfa, beta lifleri) uyarılarak derin sızı şeklindeki kronik ağrılar azaltılabilir. Ağrı kesici özelliği omurga kapı mekanizmasına göredir. Şekil 3,1’de Konvansiyonel TENS çıkışı örnek(monofazik) olarak gösterilmiştir.<br/>
+<br/>
+Konvansiyonel TENS ‘in etkisi hızlı başlar, uygulamanın 10–15. dakikasında ağrı azalır, tedavi kesildikten kısa bir süre sonra kaybolur. Elde edilen anestezi tedavi sonrasında üç saat devam edebilir. Tedavi süresi 30 dk’ dan birkaç saate uzayabilir.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/konvansiyonel_dalga.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/konvansiyonel_dalga.jpg"/></a><br/>
+</div><br/>
+<br/>
+Konvansiyonel TENS çıkışı temsili (monofazik )<br/>
+<br/>
+Akupunktur (Güçlü düşük hız) Yöntemi<br/>
+<br/>
+Burada uzun süreli güçlü elektrik akımları kullanılır ve ritmik kas kasılmaları elde edilir. Yüksek genlik ve düşük frekans kullanılır. Frekans 1–10 Hz, darbe süresi 200–300 µs, akım yoğunluğu 50–60 mA değerleri arasındadır. monofazik dalga için akupunktur yöntemine ait temsili bir dalga şekli gösterilmiştir.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/monofazik_dalga.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/monofazik_dalga.jpg"/></a><br/>
+</div><br/>
+Monofazik dalga için temsili akupunktur yöntemi<br/>
+<br/>
+Akım şiddeti hastanın dayanabileceği değere ayarlanır ve genellikle gözle görülür kas kasılmaları meydana gelir. Bu yöntemle yüksek eşikli miyelinsiz C sinir lifleri ve efferent motor lifler uyarılarak enkafalin endorfin hormonunun salgılanmasına sebep oldukları ve bu şekilde ağrı dindirici etki gösterdikleri kabul edilir. Bu uyanlar ile derin sızlama türü ağrılar 20 ile 30 dakika içinde azalır. Elde edilen rahatlık akupunkturda kine benzer, 6 saate kadar devam eder. Tedavi süresi genellikle 30–60 dakikadır.<br/>
+<br/>
+Kısa Yoğun Etki Yöntemi<br/>
+<br/>
+TENS’ in bu tedavi şeklinde hem süresi hem de frekansı yüksek uyarımlar kullanılır. monofazik dalga için kısa yoğun etki yöntemi ile elde edilen temsili bir dalga şekli görülmektedir.<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/100_150hz.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/100_150hz.jpg"/></a><br/>
+</div>Monofazik dalga(temsili) için kısa yoğun etki yöntemi<br/>
+<br/>
+Frekans 100–150 Hz, süre 150–250 µs, akım yoğunluğu da hastanın dayanabileceği kadar arttırılır. Bu da amplitüd kas kontraksiyonu yani maksimum düzeyde kasılma meydana getirir. Sonuç olarak hastalarda 15 dk. güçlü ve sürekli bir parestezi yani hissizlik ve analjezi elde edilir, fakat bu uzun sürmez. Bu nedenle istenilen sağlanamazsa gerilim ve uyan süresi azaltılarak “Geleneksel Yönteme” geçilir.<br/>
+<br/>
+Hiperstimulasyon Yöntemi<br/>
+Bu metot yüksek frekansta, yüksek şiddette uyarım ile C liflerini aktive ederek karşıt istenmeyen bir durum oluşturur. Kısa güçlü uyarı verildiğinden dayanılması zor bir yöntemdir. Frekans 50-150 Hz, dalga genişliği 100-200 µs’ dir. Genlik, tetanik veya belirgin kas kasılması oluşturan hastanın dayanabileceği şiddette ayarlanır. Kas kasılmalarına sebep olmadan ciltte keskin ve yanıcı karakterde uyan meydana getirir. hiperstimulasyon TENS yöntemi ile elde edilmiş temsili bir dalga şekli görülmektedir.<br/>
+<br/>
+<br/>
+Hiperstimulasyon Yöntemi<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/hiperstimulasyon.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/hiperstimulasyon.jpg"/></a><br/>
+</div><br/>
+Çizelge ‘de genelde uygulanan TENS akım çeşitleriyle ilgili frekans, dalga genişliği ve genliği hakkında bilgiler verilmiştir.<br/>
+<br/>
+Uygulanan Akım Çeşitleri<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/frekans_cizelgesi.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/frekans_cizelgesi.png"/></a><br/>
+</div>TENS gibi tüm Elektro terapi cihazlarında 1 mA 1 V’ a karşılık gelir. Çünkü insan vücudu direnci 1 KΩ kabul edilmektedir. Bir elektro terapi cihazı maks. 80 V’ luk darbe verebilmelidir.<br/>
+Tasarlanan sistemde ise dört farklı akım için yapılan hesaplamalar aşağıdadır.<br/>
+<br/>
+Konvansiyonel Dalga Tipi: 60 Hz için, 50 µs hesaplama yapılmıştır.<br/>
+1/60=0,0166 sn<br/>
+0,0166 sn= 16666 µs<br/>
+50 µs uyarı var.<br/>
+16666 µs- 50 µs=16616 µs uyarı yok.<br/>
+<br/>
+Akupunktur Dalga Tipi: 4 Hz için, 200 µs hesaplama yapılmıştır.<br/>
+1/4=0,25 sn<br/>
+0,25 sn= 25000 µs<br/>
+200 µs uyarı var.<br/>
+25000 µs- 200 µs=24980 µs uyarı yok.<br/>
+<br/>
+Hiperstimulasyon Dalga Tipi: 100 Hz için, 150 µs hesaplama yapılmıştır.<br/>
+1/100=0,01 sn<br/>
+0,01 sn= 10000 µs<br/>
+150 µs uyarı var.<br/>
+10000 µs- 150 µs=9850 µs uyarı yok.<br/>
+<br/>
+Kısa Yoğun Etki Dalga Tipi: 150 Hz için, 200 µs hesaplama yapılmıştır.<br/>
+1/150=0,0066 sn<br/>
+0,0066 sn= 6666 µs<br/>
+200 µs uyarı var.<br/>
+6666 µs- 200 µs=6466 µs uyarı yok.<br/>
+<br/>
+Hesaplama sonucunda bulunan değerlere göre sistem kare dalga üretmektedir.<br/>
+<br/>
+Kullanılan Elektrotlar<br/>
+<br/>
+Elektro terapide tedavi amacıyla çok çeşitli elektrot tipleri kullanılmaktadır. Elektrotlar değişik şekil ve büyüklüktedir. Güçlü bir uyarımdan kaçınma ve istenilenin aksine ağrıyı artırmamak için elektrotlar 4 cm2 den küçük olmaması gerekir. Elektrotlara akım ileten kabloların, negatif veya pozitif kutuplara bağlantısını belirtmek üzere ayrı renkte olmaları istenir. Bu renkler çoğunlukta kırmızı ve siyahtır.<br/>
+<br/>
+Akımın uygulanacağı bölge ile elektrotlar arasında daha iyi empedans uyumu sağlamak ve uygulanan akımdan kayıp olmaması için elektrot yüzeylerine jel sürülmesi ya da elektrotlar için ıslak sünger pedlerin kullanılması gerekmektedir. Tasarlanan sistem ile istenilen tipte ve büyüklükteki elektrotlar kullanıla bilmektedir<br/>
+<br/>
+Elektrotlar ile deri arasına özel jel kullanılır. Aşağıdaki şekilde ise sistemde kullanılmak üzere yaptırdığım özel elektrotlar görülmektedir.<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/elektrotlar.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/elektrotlar.jpg"/></a><br/>
+</div><br/>
+Kullanılan Elektrotlar<br/>
+<br/>
+Bir TENS cihazı kendi vücudumuza bağlanıp çalıştırıldığında kırmızı kutup tarafının diğerine göre daha fazla etki ettiği görülür. Fakat bunun sebebi kırmızı kutbun artı (+) olmasından değil, o kutbun elektron gönderen eksi kutup olmasındandır.<br/>
+<br/>
+Tasarlanan Sistem<br/>
+<br/>
+Tasarladığım sistemde; önceden programlanan dört farklı dalga şekline sahip elektro terapi tedavi akımını hastaya elektrotlar yardımı ile uygulamak mümkündür. Dalgaların genliklerinin ise bir potansiyometre aracılığı ile istenilen düzeyde olması sağlanmıştır.<br/>
+<br/>
+Sistemde akım tipini seçmek için bir mikroişlemci: PIC 16f84A kullanılmıştır. Böylece isteğe bağlı olarak akım tiplerini programlamak mümkün olacaktır. Bu tasarımda ise; Hiperstimulasyon, Akupunktur, Konvansiyonel, Kısa Yoğun Etki olmak üzere dört farklı akım tipine yer verilmiştir.<br/>
+<br/>
+Sistemde besleme için 220V AC ~ 20 V AC trafo kullanılmıştır. Güç trafosu için 24 V, PIC ve LCD ekran için ise 12 V luk çıkışlar kullanılmıştır.<br/>
+<br/>
+PIC ile tetiklenen transistor, trafoyu tetiklemekte ve trafoda oluşan akım elektrotlar üzerinden hastaya aktarılmaktadır. Devrenin çalışma mantığı ise bölüm 4.5. Devre Çalışma Prensibi kısmında, detaylı bir şeklide anlatılmıştır.<br/>
+<br/>
+Kullanılan Parçalar<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_malzeme_list.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_malzeme_list.png"/></a><br/>
+</div><br/>
+<br/>
+Devre Blok Şeması<br/>
+<br/>
+Devrenin blok şemasında devreyi oluşturan en önemli parçalar olan;<br/>
+<br/>
+• PIC: 16f84A<br/>
+• Güç kaynağı: 220V ~ 24V Trafo<br/>
+• Güç trafosu: Özel sarımlı 3300’e 1200<br/>
+• LCD: 2X16 LCD Ekran<br/>
+• Elektrotlar: Klasik 5X5 Elektro terapi Elektrotları<br/>
+• Transistor<br/>
+<br/>
+Blok şemadaki oklar ile devrenin çalışma mantığını anlatılmıştır.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_blok_sema.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_blok_sema.png"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+Devre Blok Şeması<br/>
+<br/>
+Devre Şeması<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_devre_semasi-150x150.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_devre_semasi-150x150.gif"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+Sistemin devre şeması multisim 7.0 ve isis 6.0 ile çizilmiştir. Yukarıdaki şekildeki çizim ise multisim programı ile yapılmıştır.<br/>
+<br/>
+Baskı Devre Şemaları<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_baski_devre-150x150.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_baski_devre-150x150.gif"/></a><br/>
+</div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_baski_devre_2-150x150.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_baski_devre_2-150x150.gif"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Proteus 6.0 Professional ile Ares programı kullanarak, devrenin baskı şemasını çizdim. Bu şemalar ile baskı devremi elde ettim ve baskı devreyi yaptım. İlk şekilde devrenin elemanları da görülmektedir. İkinci şekilde ise devre elemanları kaldırılmış ve baskı devre tam olarak basılmaya hazır hale getirilmiştir.<br/>
+Devre Mikro Kontrol Ünitesi<br/>
+<br/>
+PIC 16f84A kullanılarak yapılan dalga jeneratörü kısmında, dört farklı dalga için frekanslarına göre darbe süreleri hesaplanmış ve Pic C program kodu halinde yazılmıştır. Yazılan C kodu, Pic C tarafında Hex formatına getirilip IC prog. Programı ile PIC ‘e program kaydedilmiştir. program kodu verilmiştir Bu kodu ile dalga çeşitlerini seçmek ve seçilen bilgileri LCD ekranda görmek mümkündür. Program istenilen yeni dalga çeşitleri için kolayca ekleme yapılacak şekilde programlanmıştır.<br/>
+<br/>
+Devre Çalışma Prensibi<br/>
+Tasarladığım devre, farklı frekanslarda, istenilen genlikteki kare dalgayı elektrotlar üzerinden hastaya uygulayan bir sistemdir. Tasarlanan cihazı güç kaynağı, dalga jeneratörü ve tetikleme kısmı oluşturur.<br/>
+<br/>
+Güç Kaynağı<br/>
+ilk bölüm devrenin besleme güç kaynağı kısmıdır. Bu kısımda devreye gereken güç şehir şebeksinden alınmıştır. 220 V AC voltaj transformatör ile 24V ve 12V ‘a indirilmiştir. Güç trafosu için gereken 20 volt ile PIC ve LCD için gereken 5 volt değerleri bu kısımda elde edilip devreye verilir. Trafodan sonra devre, ana güç hattından bir düğme ile ayrılarak güvenlik önemli alınmıştır. Trafodan gelen 24 volt, 1N4007 diyot ve 3300 µF 35V kapasitör ile doğrultulmuş ve yaklaşık 25 V değeri DC olarak elde edilmiştir. Gereken 20 V ise LM317 ayarlanabilinir voltaj regülâtörü ile 20 volt seviyesine getirilmiştir. Diğer kısımlara gereken 5 V ise 7805 voltaj regülatörü ile sağlanmıştır. Yüksek akım çekildiği zamanlarda 7805 entegresinde ısınma olmaması için ise soğutucu plaka ile önlem alınmıştır.<br/>
+<br/>
+Dalga Jeneratörü:<br/>
+İkinci bölüm ise PIC ve LCD ekran kısmıdır. Cihazı açınca LCD ekranda “Akım tipi Seçiniz?” yazısı görülecektir. Programlanmış dört farklı dalga şekli tuş ile seçilir. ‘Seçim’ tuşuna her bastığımızda kırmızı LED bir kere yanacak ve ‘ok’ tuşu ile seçim işlemi tamamlanacaktır. Böylece PIC istenilen komutu alacak ve ona uygun kare dalgayı çıkışı olarak verecektir.<br/>
+<br/>
+Aynı zamanda ise seçilen dalga şeklinin adı ekranın ilk satırında, frekans bilgisi ve zamanı ise ikinci satırda yazacaktır. İstenildiği zaman ise ‘reset’ tuşu ile program resetlenir ve yeniden seçim yapma durumuna geçilebilinir. Eğer seçim yapılırken dörtten fazla kez seçim tuşuna basılırsa, ekranda ‘Yanlış seçim lütfen bekleyiniz’ yazısı çıkacak ve beş sn bir zamandan sonra yeniden seçime izin verecektir. Ayrıca LCD ekran için konulmuş olan tripot ile ekran kontrast ayarını da isteğe göre yapmak mümkün olur.<br/>
+<br/>
+Tetikleme Kısmı:<br/>
+Bu bölümde PIC’ ten gelen kare dalga sinyali 2N3055 güç transistöründe bir tetiklemeye sebep olacak ve bu tetikleme güç trafosuna aktarılıp, bu trafoyu besleyen 20 V ile birlikte trafoda yaklaşık 55 V civarı bir değerde kare dalgamız elde edilecektir. Trafodan elde edilen dalga ise bir potansiyometre üzerinden hasta elektrotlarına uygulanır. Böylece her hastaya göre uygun voltaj değerinde, rahatsızlık yaratmayan seviyelerde tedavi dalgaları elde edilir.<br/>
+<br/>
+Sonuç ve Öneriler<br/>
+<br/>
+Bu çalışmada yapmak istediğim elektronik kas uyarıcı cihaz için yaptığım araştırma çalışmasında öncelikle TENS ve benzeri diğer Elektroterapi de kullanılan cihazlarda farklı akımların kullanıldığını ve birçok modülasyon tekniklerine dayalı olduğunu öğrendim. Projemde öncelikle ağrı modülasyonu ve kas kasılması konusunu ele aldım. Bu modülasyonlar için değişken parametrelerin uygulanan voltaj, frekans ve darbe süresi olması gerektiğini örgendim. Ve tasarladığım devrenin bu üç parametre üzerinde değişiklik yapabilecek bir devre olmasına dikkat ettim.<br/>
+<br/>
+Trafo ve mikro kontroller tarafından tetiklenen bir transistor ile voltaj yoğunluğu, darbe süresi ve frekansı ayarlanabilen bir deri üstü elektriksel kas uyarım cihazı tasarladım, uygun dalga şekilleri için frekans ve darbe süresi hesaplamalarını yaptım ve dört farklı hazır dalga şekli verebilen tasarımı gerçekleştirdim.<br/>
+<br/>
+Piyasada mevcut elektro tedavi cihazlarından farklı olarak hem portatif hem de klinik cihazlardaki birçok dalga şekli tasarladığım cihaza kolaylıkla yüklene bilmektedir. Şuanda dört faklı moda programlanmıştır. Bu modlar ile hem kas kasılması hem de ağrı tedavisinde kullanılabilecektir.<br/>
+<br/>
+Sistem hasta güvenliği açısından dalga seçiminde aniden olacak değişimlere izin vermez. Cihazın kutulanması ile gelecekte diğer hasta güvenlik şartları içinde testler yapılabilinir.<br/>
+<br/>
+Tasarladığım sistemde dalga şeklini seçmek için seçim tuşuna basmak ve seçim değerini LED ‘i yakarak görmek mümkündür. Ayrıca seçim LCD ekranda kullanıcıya bilgi olarak sunulmaktadır.<br/>
+<br/>
+Bu çalışma istenirse şehir şebekesi dışında harici pillerle ya da güç kaynakları ile de kullanılabilinmesi, güç kaynağı kısmında yapılacak çok küçük değişiklerle sağlanacaktır.<br/>
+<br/>
+Tasarlanan sistemi kullanmanın Endikasyonlarını ve Kontrendikasyonları ise aşağıdadır.<br/>
+<br/>
+Genel olarak, endikasyonları maddeler halinde özetleyecek olursak:<br/>
+• Ağrı modülasyonu<br/>
+• Felçli hastalarda kas kasılması<br/>
+• Kas kuvvetlendirme<br/>
+• İlaç / iyon transferi<br/>
+<br/>
+Elektroterapi uygulamanın sakıncalı olduğu durumlar, vücut bölgeleri ve Kontrendikasyonları aşağıdadır.<br/>
+<br/>
+• Pacemaker, kalp pili kullanan hastalarda<br/>
+• Karotid Sinusun üstünde<br/>
+• Hamilelikte<br/>
+• Serebral Damarsal Sorunlarda<br/>
+• Eğer hasta kalp hastasıysa, göğüs kafesi üstünde kullanımı sakıncalıdır.<br/>
+<br/>
+Vücudun ön ve arka bölgelerinde elektro terapinin uygulanabileceği kas grupları Ek-1 ve Ek-2 ‘de verilmiştir. Ayrıca detaylı bir şekilde kasların motor noktaları Ek 4 ‘deki resimlerde gösterilmiştir.<br/>
+<br/>
+Yaptığım araştırmalar sonucu fizik tedavi bölümünde kullanılan elektro terapi hakkında bilgi sahibi oldum. Bir tasarımı meydana getirirken elektronik aksaklıklar ve problemlere karşı nasıl bir yol izlemem gerektiğini öğrendim. Elektronik parçaları temin etmede ve bu parçaların verimli bir şekilde kullanılmasını öğrendim. Donanım ve yazılım kısımlarını birlikte koordineli bir şekilde kullanmayı öğrendim. Ayrıca baskı devre çizimi ve baskı devre yapımı konusunda bilgi sahibi oldum. Tasarlanan sitem maliyeti de piyasadaki cihazların fiyatları yanında çok az bir miktar olması da tasarımın başka bir avantajıdır.<br/>
+<br/>
+Sonuç olarak dört farklı dalga tipinin seçimine izin veren, seçilen modu ekranda gösteren ve elektro tedaviyi gerçekleştiren bir tasarım meydana getirilmiştir. İleriki çalışmalımda ise farklı dalga tiplerinin insan fizyolojik sistemi üzerindeki etkilerini incelemeyi ve en doğru tedavi için en doğru dalga şeklini tespit etmeyi düşünüyorum.<br/>
+<br/>
+Yazılan PIC Kodu<br/>
+<br/>
+#include&lt;16F84A.h&gt;<br/>
+#fuses HS,NOWDT,PUT<br/>
+#use delay(clock=4000000)<br/>
+#include<br/>
+<br/>
+void main()<br/>
+{<br/>
+int i=0;<br/>
+while(1)<br/>
+{<br/>
+lcd_init();<br/>
+cd_putc("\f Akim Tipi Sec?");<br/>
+if(!input(pin_A1))      //secim icin i degeri belirlenir.<br/>
+{<br/>
+i++;<br/>
+output_bit(PIN_A3,1);<br/>
+delay_ms(250);<br/>
+output_bit(PIN_A3,0);<br/>
+delay_ms(250);       //bolum sonu<br/>
+}<br/>
+if(!input(pin_A2))  //i secim degerine gore 4 cesit cikis verilir.<br/>
+{<br/>
+if(i==1)  //i=1 ise konvansiyonel dalga sekli<br/>
+{<br/>
+lcd_init();<br/>
+lcd_putc("Konvansiyonel\n 60 Hz / 50 µs ");<br/>
+while(1)<br/>
+{<br/>
+output_bit(PIN_A0,1);<br/>
+delay_us(50);<br/>
+output_bit(PIN_A0,0);<br/>
+delay_us(16616);<br/>
+}<br/>
+}<br/>
+if(i==2)//i=2 ise akapunktur dalga sekli<br/>
+{<br/>
+lcd_init();<br/>
+lcd_putc("Akapunktur\n 4 Hz / 250 µs");<br/>
+while(1)<br/>
+{<br/>
+output_bit(PIN_A0,1);<br/>
+delay_us(200);<br/>
+output_bit(PIN_A0,0);<br/>
+delay_us(249800);<br/>
+}<br/>
+}<br/>
+if(i==3)  //i=3 ise hiperstimulasyon dalga sekli<br/>
+{<br/>
+lcd_init();<br/>
+lcd_putc("Hiperstimulasyon\n 100 Hz / 150 µs");<br/>
+while(1)<br/>
+{<br/>
+output_bit(PIN_A0,1);<br/>
+delay_us(150);<br/>
+output_bit(PIN_A0,0);<br/>
+delay_us(9850);<br/>
+}<br/>
+}<br/>
+if(i==4)  //i=4 ise kisa yogun etki dalga sekli<br/>
+{<br/>
+lcd_init();<br/>
+lcd_putc("Kisa Yogun Etki\n 150 Hz / 200 µs");<br/>
+while(1)<br/>
+{<br/>
+output_bit(PIN_A0,1);<br/>
+delay_us(200);<br/>
+output_bit(PIN_A0,0);<br/>
+delay_us(6466);<br/>
+}<br/>
+}<br/>
+}<br/>
+}<br/>
+}<br/>
+<br/>
+<!-- more --><br/>
+<br/>
+Vücudun ön kısmında uygulama bölgeleri<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_vucut_on-150x150.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_vucut_on-150x150.png"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Vücudun arka kısmında uygulama bölgeleri<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/tens_arka-150x150.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/tens_arka-150x150.png"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Kasların Motor Noktaları<br/>
+<br/>
+Yüzdeki Motor Noktalar<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/kas_motor-150x150.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/kas_motor-150x150.jpg"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Kol Ön Bölgesindeki Motor Noktalar<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/koldaki_motor-150x150.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/koldaki_motor-150x150.jpg"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Arka Sırt ve Omuz Bölgesindeki Motor Noktalar<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/sirt_motor-150x150.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/sirt_motor-150x150.jpg"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Bacak Ön Bölgesindeki Motor Noktalar<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/07/motor_bacak-150x150.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/07/motor_bacak-150x150.jpg"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Kanaklar<br/>
+<br/>
+1] Sabri Kocer, M. Rahmi Canal &amp; Inan Guler, Design of Low-Cost General Purpose Microcontroller Based Neuromuscular Stimulator, Journal of Medical Systems, Vol. 24, No. 2, 2000<br/>
+<br/>
+[2] Dr. Fzt Nihal Şimşek, Elektro Terapi Ders Notları, Başkent Üniversitesi Sağlık Bilimleri Fakültesi Fizik Tedavi Ve Rehabilitasyon Bölümü, Ankara,2003<br/>
+<br/>
+[3] Jader A. De Lima and Adriano S. Cordeiro, A Low-Cost Neurostimulator With Accurate Pulsed-Current Control, IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING, VOL. 49, NO. 5, 497, MAY, 2002<br/>
+<br/>
+[4] Erik A. Cheever, Member, IEEE, Dirk R. Thompson, Brian L. Cmolik,<br/>
+William P. Santamore, and David T. George,* Member IEEE, A Versatile Microprocessor-Based Multichannel Stimulator for Skeletal Muscle Cardiac Assist, IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING, VOL. 45, NO. 1, JANUARY,1998<br/>
+<br/>
+[5] Orhan Altınbaşak, Mikro Denetleyiciler Pic Programlama, Altın Başak Yayıncılık, Şubat 2003<br/>
+<br/>
+[6] Robert L.Boylestad, Loui Nashelsky, Electronic Devices and Circuit Theorty, Eight Edition<br/>
+<br/>
+[7] KENZO AKAZAWA, MASAAKI MAKIKAWA, JIRO KAWAMURA, AND HIDEKI AOKI, Functional Neuromuscular Stimulation System Using an Implantable Hydroxyapatite Connector and a Microprocessor-Based Portable Stimulator, IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING, VOL. 36, NO. 7. JULY,1989<br/>
+<br/>
+[8] Michael J. Callaghan, PhD, Jacqueline A. Oldham, PhD, Electric Muscle Stimulation of the Quadriceps in the Treatment of Patellofemoral Pain, Arch Phys Med Rehabil Vol 85, June, 2004<br/>
+<br/>
+[9] DIRK PETTE, MD ve GERTA VRBOVA´, MD WHAT DOES CHRONIC ELECTRICAL STIMULATION TEACH US ABOUT MUSCLE PLASTICITY?, 1 Faculty of Biology, University of Konstanz, D-78457 Konstanz, Germany, 2 Department of Anatomy and Developmental Biology, University College London, London, UK Accepted 11 February, 1999<br/>
+<br/>
+[10] MICHAEL S. YOUNG, MD, and WILLIAM J. TRIGGS, MD, EFFECT OF STIMULATOR ORIENTATION ON F-WAVE PERSISTENCE, Department of Neurology, University of Florida College of Medicine, 25 December, 1997<br/>
+<br/>
+[11] Robert G. Dennis, Douglas E. Dow b,c,d, John A. Faulkner, An implantable device for stimulation of denervated muscles in rats,Department of Mechanical Engineering, University of Michigan, Ann Arbor, Medical Engineering &amp; Physics 25, 239–253, 2<br/>
+<br/>
+"ALINTIDIR</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/pic16f84-ile-elektronik-kas-uyarm-cihaz.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

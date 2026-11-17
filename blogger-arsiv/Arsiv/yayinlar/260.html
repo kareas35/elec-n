@@ -1,0 +1,98 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 1 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 1</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><b><span>PIC Basic Pro ile PIC Programlama 1</span></b><br/>
+Pic Micro işlemciler hakkında kısa bilgi:<br/>
+<br/>
+Pic mikro işlemciler teknik özellikleri ve kılıfları açısından farklılıklar gösterirler. Her şeyden önce birden fazla bacağa (pin) sahip olan işlemcilerin bacakları giriş veya çıkış olarak çalıştırılabilirler. Özellikleri açısından da bir kere programlanabilenler (C serisi) programları ultraviyole ile silinip yeniden programlanabilenler ve birden fazla silinip programlanabilenler olarak sınıflandırılabilirler.<br/>
+Biz genelde FLASH olarak tarif edilen birden fazla silinip programlanabilen tipler üzerinde çalışacağız.Pic’ler taşıdığı ekstra özellikler açısından da bir kaç kategoriye ayrılırlar. Örnek olarak üzerin de;<br/>
+1) Analog-Digital Çeviricisi olanlar,<br/>
+2) Komparatör olanlar,<br/>
+3) Donanımsal olarak seri haberleşme ünitesi olanlar,<br/>
+4) HPWM ünitesi olanlar gibi Pic’ler mevcuttur. İleriki bölümlerde bunların kullanımına ait örnekler vereceğiz.<br/>
+Pic işlemcilerin pinlerinin hem giriş hem de çıkış olarak çalıştırılabildiğinden bahsetmiş idik. Açıklamalarımızla ilgili uygulamalarımıza “Proje” adını vereceğiz ve her projemizin bir numarası olacaktır. Şimdi Pic lerinin organizasyonu işlemlerine kısa bir göz atalım.<br/>
+Kullanacağımız Pic 16F84A olacak. Bu işlemcinin toplam 18 bacağı vardır.5 nolu bacak(-),ve 14 nolu bacak(+) besleme ,15-16 nolu bacaklar (XTAL) osilatör bacakları ve PortA (0-4 arası 5 adet pin) &lt; 17,18,1,2,3 nolu bacaklar &gt; ve PortB (0-7 arası 8 adet pin) &lt;6,7,8,9,10,11,12,13 nolu bacaklar &gt; olmak üzere toplam 13 adet (Giriş-Çıkış) pin’e sahip bir işlemcidir.<br/>
+PIC16F84 Pin Bilgileri<br/>
+<br/>
+İlk projemize geçmeden, anlatımda lazım olacak olan BASIC de kullanılan sayı gösterim formatları konusunda biraz bilgi vermek istiyorum. Bildiğiniz gibi kullanacağımız 3 tür sayı formatı vardır. Formatlar ve gösterim şekilleri aşağıda verilmiştir.<br/>
+1) Desimal Sayılar (10 tabanına göre düzenlenmiş sayılar):direkt kullanılırlar 12 -23 gibi<br/>
+2) Hexadesimal Sayılar (16 tabanına göre düzenlenmiş sayılar) : başlarına $ işareti koyularak gösterilirler. $1F , $31 gibi<br/>
+3) Binary Sayılar (2 tabanına göre düzenlenmiş sayılar) : ise başlarına % işareti koyularak gösterilirler. %111000 , 01 gibi.<br/>
+Sıklıkla kullandığımız sayı sistemi desimal olduğundan diğer sayıların kolayca anlaşılabilmesi için zaman zaman bu sayıların 10 tabanına çevrilmesi gerekir. Aşağıda bu işlemin nasıl yapıldığını basitçe göreceksiniz. Bu işlemde temel formül; aynı on tabanına göre sayılarda olduğu gibidir. Sağdan sola doğru haneler sayı tabanının katları şeklinde değer alırlar. Yani değişen tek şey taban çarpım değeridir. Örnekle daha iyi anlayacaksınız.<br/>
+Hexadesimal sayılar : 0-1-2-3-4-5-6-7-8-9-A-B-C-D-E-F: Örnek sayımız &lt;3F&gt; olsun. 16 tabanlı sayı formatı olduğundan;16′lar hanesi olan 3 sayısı 16 ile çarpılıp F sayısının desimal karşılığı bu sayıya eklenir. Dolayısıyla; 3F = 3 x 16 + 15 = 63 olarak bulunur. Şayet sayı 23F olsa idi sayımız= 2 x 256 + 16 x 3 + 15= 575 olarak bulunacak idi.<br/>
+Binary sayılar; 0-1 , örnek sayımız %11101101 olsun. Hanelerin taban sayısının katları şeklinde gittiğini biliyoruz. O halde sağdan itibaren ilk sayımız hane değerleri şöyle olacaktır. sayı sırasına göre verir isek 128 - 64 - 32 - 16 - 8 - 4 - 2 – 1 Bu sisteme göre sayımızı desimal değere çevirelim; %11101101: 128×1 + 64×1 + 32×1 + 16×0 + 8×1 + 4×1 + 2×0 + 1= 128+64+32+8+4+1=237 olarak bulunacaktır.<br/>
+En çok kullanacağımız sayı formatlarından birisi olan Binary sayı formatının kullanım yerine bir örnek vermek bu aşamada iyi olacaktır sanırım. Bir Pic’in B portuna bağlı olan Led lerden 0-3-4-6-ve 7 nolu pinlere bağlı olanları bir seferde yanar hale getirebilmek için porta verilecek değeri desimal olarak hesaplayalım. Bu durumda PortB=%11011001 olacaktır.Desimal değeri = 128+64+16+8+1= 217 olarak bulunur.<br/>
+İlk projemiz, PIC16F84A işlemcinin Tüm bacaklarını çıkış olarak ayarlamak ve bu çıkışlara bağlanacak LED lerin değişik aralıklar ile yanmasını gösteren bir program olacaktır. Bu arada amaç, Pic lerin bacaklarının nasıl çıkış olarak ayarlandığını öğrenmek olacaktır.<br/>
+Pic lerde bacakların giriş veya çıkış olarak ayarlanmasını üstlenen bir REGISTER (Türkçe’si YAZMAÇ) vardır. Her bir port için ayrı olan bu registerler A portu için TRISA , B portu için ise TRISB olarak adlandırılır. Tris yazmaçları aslında Pic’in hafızasında 8 bitlik birer hafızadırlar. Buraya yerleştirilen sayının Binary formatındaki şekline bağlı olarak Pic bacaklarını giriş veya çıkış olarak ayarlar.8 bitlik değer sırası ile port’a ait pinleri temsil etmektedir.<br/>
+Şöyle ki;<br/>
+A) 000000, ifadesi 8 bitlik Binary bir sayıdır. Desimal karşılığı 0 (sıfır) dır. Bu değeri herhangi bir TRIS registerine verir isek tüm pinlerin OUTPUT yani çıkış olarak ayarlanacağını ifade eder.<br/>
+B) Şayet değer %11111111 olur ise tüm bacakların INPUT yani giriş olarak ayarlanacağını ifade eder.<br/>
+Binary değerin bazılarının sıfır (0) bazılarının bir(1) olması ise bazı pinlerin çıkış bazılarının ise giriş olarak ayarlandığını gösterir. Şimdi açıklamamızı program şeklinde verelim.<br/>
+TRISA=000 ‘A portu Çıkış olarak ayarlandı<br/>
+TRISB=000000 ‘B portu Çıkış olarak ayarlandı<br/>
+Çıkış olarak belirlediğim portun çıkış değerini Low (0) olarak ayarlamak için şu şekilde bir ifade yazabilirim.<br/>
+PORTA=0 ‘A portu tüm çıkışlar Low (0)<br/>
+PORTB=0 ‘B portu tüm çıkışlar Low (0) Eğer High yapmak isteseydim<br/>
+(PORTA=1),(PORTB=1)şeklinde yazacaktım.<br/>
+Gördünüz mü ne kadar basit. Pinleri çıkış olarak ayarladım ve tüm çıkışları Low yaptım.<br/>
+Herhangi bir portun bir pin’inin gösterilme şekli port ismi devamında nokta ve pin numarası verilerek yapılır.<br/>
+Örnek A portunun 2 nolu pini için PORTA.2 şeklinde bir gösterim kullanılır.<br/>
+Şimdi diyelim ki PORTA.0 yani A portunun sıfır biti yani ilk pin’e bağlı LED‘i yakalım ;Komutumuz bir kaç mantıklı şekilde olabilir. Sırası ile;<br/>
+PORTA.0=1 ‘PortA.0 High yani 1 oldu ve LED yandı.veya<br/>
+HIGH PORTA.0 ‘PortA.0 High oldu yani LED yandı,<br/>
+Komutu mümkün olduğu sürece şeklinde kullanmayı tercih edin.<br/>
+Proje 1a :<br/>
+<br/>
+Şimdi de birden fazla pin’e bağlı Led lerin aynı anda yakılmasını gerçekleştirelim.<br/>
+PortA=%10101 şeklin de bir komut yazarsam, sağdaki ilk değer olan 1 (Bir) PortA.0′a verilir. Sonra sırası ile yani soldan sağa doğru olan Binary değerler PORTA nın 0-4 nolu pinlerine verilirler. Değer sıfır ise pin Low, değer bir ise pin High olur.<br/>
+Sonuçta bu komut ;<br/>
+TRISA=000 ‘A portu Çıkış olarak ayarlandı<br/>
+PortA.0=1<br/>
+PortA.1=0<br/>
+PortA.2=1<br/>
+PortA.3=0<br/>
+PortA.4=1 ‘( Bu pin diğerlerinden farklıdır.Open kollektör olduğu için “pullup” direnci kullanılır.Aksi halde istediğimiz çıkışı alamayız.)şeklinde karşılık gelen Binary değerleri port pinlerine verir.<br/>
+Demek ki bir port’a bağlı pinlerin birden fazlasına hükmetmek için port’a sekiz bitlik bir Binary veya desimal değer verilir.Şimdi port pinlerinin ne amaçlı çıkış olarak kullanıldığı üzerine biraz bilgi verelim.<br/>
+Diyelim ki port pin’ine bağlı bir Role yi bir transistor aracılığı ile çalıştırmak istiyorsun. İşte yolu, pin çıkışını bir direnç ile (1K-2k2) bir transistor ün (B)eys’ine bağla. NPN tipi bir transistör kullanırsan transistör ün (E)mitterini GND ye bağla. Port Pin’inden High (1) çıkartırsan transistör iletime geçecek ve (C) kollektör ünden GND çıkaracaktır. Bunu bir role ye bağla ve rölenin diğer ucunu +5V‘a bağlar isen pinden röleyi çalıştırıp kapatabilirsin.<br/>
+Bunu bir örnekle açıklayalım;<br/>
+Diyelim ki PortB.1 pinine bir transistör üzerinden role bağladık ve bu röleyi açıp kapayacağız.İşte basit programımız;<br/>
+Proje 1b :<br/>
+<br/>
+1 TRISB=000000 ‘B portu çıkış yapıldı<br/>
+2 PortB=0 ‘B portunun çıkışı Low(0) yapıldı.<br/>
+3 ROLEAC:<br/>
+4 HIGH PORTB.1<br/>
+5 PAUSE 1000 ‘1000 ms lik bir gecikme yaratır.<br/>
+6 LOW PORTB.1<br/>
+7 PAUSE 500<br/>
+8 GOTO ROLEAC<br/>
+1. Satırda PortB yi çıkış olarak ayarladık.<br/>
+2. Satırda PortB pinlerinin tamamını LOW yaptık.<br/>
+3. cü satırda ROLEAC isimli bir etiket yarattık.(Yaptırmak istediğimiz diğer komutlar için ismini kendimizin koyduğu başka etiketler yaratıp programın daha fazla işlem yapmasını sağlarız.)<br/>
+4. satırda PortB.1 pinini High yaptık.<br/>
+5. satırda 1000 ms lik bir gecikme yarattık. Yani role 1000 ms süresince çekili kaldı.<br/>
+6. Satırda PortB.1 pinini LOW yaptık. Yani role bıraktı.<br/>
+7. satırda tekrar 500 ms lik bir gecikme yarattık.<br/>
+Sonra programı tekrar aynı işleri yapması için ROLEAC etiketine yönlendirdik.<br/>
+Buraya kadar öğrendiklerimizi toparlar isek;<br/>
+- Sayı gösterim formatlarını öğrendik.<br/>
+- Port pinlerinin nasıl giriş nasıl çıkış yapılacağını öğrendik.<br/>
+- Port ve port pinlerine nasıl ulaşabileceğimizi öğrendik.<br/>
+- Milisaniye cinsinden gecikmenin nasıl yaratıldığını öğrendik.<br/>
+- Program içinde etiket kullanarak aynı işlemlerin nasıl tekrarlanabileceğini öğrendik.<br/>
+Bütün bu öğrendiklerimizi tek program üzerinde göstermeye çalışalım.<br/>
+Proje 1c :<br/>
+<br/>
+Program PortA.0 pinine bağlı LED i kontrol edecek ve ayrıca PortB.0 pin’ine bağlı röleyi açıp kapayacaktır. Role çekildiğinde PortA.0 pinine bağlı LED yanacak. Role bırakınca LED’de sönecektir. Role çekili kalma süresi 1 sn. yani 1000 ms. olacaktır.<br/>
+TRISA=0 ‘bu ifade “TrisA=000”e eşdeğerdir.<br/>
+TRISB=0<br/>
+PortA=0<br/>
+PortB=0<br/>
+ROLEAC:<br/>
+HIGH PORTB.0 ‘role çektirildi<br/>
+PAUSE 500 ‘500 ms bekleme<br/>
+HIGH PORTA.0 ‘Led yandı<br/>
+PAUSE 500 ‘500 ms bekleme<br/>
+LOW PORTA.0 ‘Led söndü<br/>
+PAUSE 500 ‘500 ms bekleme<br/>
+LOW PORTB.0 ‘Role bıraktı<br/>
+PAUSE 500 ‘500 ms bekleme<br/>
+GOTO ROLEAC ‘Roleac etiketine git<br/>
+END ‘programın burada bittiğini ifade eder.</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-259.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

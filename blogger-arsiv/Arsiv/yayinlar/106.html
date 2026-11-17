@@ -1,0 +1,92 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Electronic Speed Controller | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Electronic Speed Controller</h1><div>2010-05-10 · Diğer Elektronik Projeleri</div></header><main><article class="panel">This ESC is based on Mike Norton's design. I have modified the PCB to accept two FETs, which increases current capacity to more than 20 Amps.<br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6ydP5QpqWQQ60RzMOgf-0YkOQ4J_YGgz3LhitWHXs70n8uWMgqLmmYWg9Luqk-K6Nq1OpNWaBxyfFDeqWSyEX2N0rn2aGFwV8c7GVPb9N_-fBgcmUn2zWEJEAFieJuiTZqUQJCUQ0gAxl/s1600/esc3_s.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6ydP5QpqWQQ60RzMOgf-0YkOQ4J_YGgz3LhitWHXs70n8uWMgqLmmYWg9Luqk-K6Nq1OpNWaBxyfFDeqWSyEX2N0rn2aGFwV8c7GVPb9N_-fBgcmUn2zWEJEAFieJuiTZqUQJCUQ0gAxl/s320/esc3_s.gif"/></a></div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqyUHv48sjhJk1gV8HJTtXzxdcI_lfFuzZQOulQcKf6ywBhsPy12Bmst9pPz_rhPPpwNmN2CX7aJh21vzsl6KhFnXv3X1zMvE87Do3mmqMJeT-Bx9JEGt_LMpmWWCZ_YJ1h5TRBovBL5mi/s1600/esc3cct_s.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqyUHv48sjhJk1gV8HJTtXzxdcI_lfFuzZQOulQcKf6ywBhsPy12Bmst9pPz_rhPPpwNmN2CX7aJh21vzsl6KhFnXv3X1zMvE87Do3mmqMJeT-Bx9JEGt_LMpmWWCZ_YJ1h5TRBovBL5mi/s320/esc3cct_s.gif"/></a><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2pmddRvcPgz6dnByn3Myc7mRfqkicZ48ABRsuzKfy9xhtUPsOo6GIQoMtfu1Q4SneN-1wn2z66utletPIvk4cj0YnUgYsAtcS6Peqbl8Oo3MG7b8j87_1toCjE4wb0fQGDpkDZsyz5SmN/s1600/esc3_ovl_s.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2pmddRvcPgz6dnByn3Myc7mRfqkicZ48ABRsuzKfy9xhtUPsOo6GIQoMtfu1Q4SneN-1wn2z66utletPIvk4cj0YnUgYsAtcS6Peqbl8Oo3MG7b8j87_1toCjE4wb0fQGDpkDZsyz5SmN/s320/esc3_ovl_s.gif"/></a></div><br/>
+<br/>
+<br/>
+<tr><td><br/>
+</td><td><br/>
+</td><td><br/>
+</td><td>The circuit is quite simple, as all the hard work is done inside a PIC<br/>
+microcontroller. Brake and BEC (Battery Eliminator Circuit) are optional.<br/>
+Cutoff voltage is set by choosing the value of resistor R7. The Schottky diode<br/>
+(1N5821 or equivalent) is now mounted directly on the PCB, instead of on the motor.</td> <td><br/>
+</td></tr><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<tr> <td><br/>
+</td><td></td><td><br/>
+</td><td>My PCB layout prints actual size at 600dpi, or double-size at 300dpi. To get<br/>
+the image, click on the small preview to the left, then Right-click on the<br/>
+full-size image and choose "save picture as..". If you can't get it to print<br/>
+the correct size, download <a href="http://homepages.paradise.net.nz/bhabbott/esc/esc3_pcb.zip" rel="noopener noreferrer">this zip file</a> which<br/>
+contains 300dpi and 600dpi BitMap versions. These should print actual size <br/>
+using Kodak Imaging for Windows</td><td><br/>
+</td></tr><br/>
+<br/>
+<br/>
+<br/>
+<tr><td><br/>
+</td><td><br/>
+</td><td><i>Added 25th Nov, 2003. Due to popular demand</i>, a colourful overlay diagram showing component placement and wiring! <br/>
+<b> <br/>
+Value of R7 for Different Cutoff Voltages<br/>
+</b> <br/>
+<br/>
+<table border="1" cellpadding="2" cellspacing="0"><tbody>
+<tr> <td><br/>
+<b> <br/>
+Cells<br/>
+</b> </td> <td><br/>
+<b> <br/>
+Nom. Volts<br/>
+</b> </td> <td><br/>
+<b> <br/>
+Cutoff Volts<br/>
+</b> </td> <td><br/>
+<b> <br/>
+R7<br/>
+</b> </td> </tr>
+<tr> <td><br/>
+5</td> <td><br/>
+6V</td> <td><br/>
+4.5V</td> <td><br/>
+760 Ohms</td> </tr>
+<tr> <td><br/>
+6</td> <td><br/>
+7.2V</td> <td><br/>
+5.4V</td> <td><br/>
+390 Ohms</td> </tr>
+<tr> <td><br/>
+7</td> <td><br/>
+8.4V</td> <td><br/>
+6.3V</td> <td><br/>
+wire link</td> </tr>
+</tbody></table><br/>
+<br/>
+<b> <br/>
+Modifications for 4.8V operation (4 cells and no BEC)<br/>
+</b> <br/>
+<br/>
+<ol><li> <br/>
+Replace IC2 (LM2940 regulator) with a 15 Ohm resistor from I to O.<br/>
+</li>
+<li> <br/>
+R7 = 330 Ohms.<br/>
+</li>
+<li> <br/>
+R8 = 2.7V 500mW Zener Diode (or 2 x 1N4148 diodes and a red LED in series).<br/>
+</li>
+<li> <br/>
+Power the Receiver (and servos) directly from the ON/OFF Switch.<br/>
+</li>
+</ol><b>     Update: 23rd August, 2001   </b> <br/>
+I have modified the firmware to improve glitch handling. I also replaced the   Brake indicator LED with an audible arming indicator. The new source codes are   <a href="http://homepages.paradise.net.nz/bhabbott/esc/spd400.asm" rel="noopener noreferrer">spd400.asm</a>    and   <a href="http://homepages.paradise.net.nz/bhabbott/esc/spd400.inc" rel="noopener noreferrer">spd400.inc</a>    .   The new hex file is   <a href="http://homepages.paradise.net.nz/bhabbott/esc/SPD400.HEX" rel="noopener noreferrer">SPD400.HEX</a>    .   <br/>
+The graph at right shows throttle response (click on it to see a more detailed   plot). Note how the PWM ratio (colored black) is curved. This seems to   concentrate most of the control at the lower end, but power is proportional to   PWM <i>squared</i>, so the motor's response (purple) is linear. Throttle control    is more natural using this reverse-exponential compensation. You can see that    center stick (1.5mS) produces 50% power, wheras a non-compensated throttle would    only produce 25% at this setting. The flat areas at 0% and 100% power are quite   large, to ensure that full throttle range is available on transmitters that   cannot generate the whole 1mS to 2mS servo pulse range. Notice the 'step'   effect in the graph lines. This is due to the limited number of PWM ratios that   can be generated (there are 40 steps).   <br/>
+<b>Parts Substitutions</b> <i>added 14th April 2004</i> <br/>
+Q1 can be replaced with any enhancement mode PMOSFET which can handle at least 20V and   has RDSon of 0.1 Ohms or lower, eg. 2SJ255. Q2 and Q3 are NMOSFETs with logic level gate    drive (must turn on with 4.5V or less), VDss = 30V or better, and RDSon lower than 0.01    Ohms. I have used the HUF76143. Other good choices are the IRL3803 or SUP75N03-04. You    could use two cheap FETs in parallel to get a low enough RDSon, eg. 2 x IRL3103 = 0.008    Ohms.            <br/>
+Schottky diode D1 should be rated at least 3A and 20V. Q4 can be replaced with a 2N7000   or equivalent. Q5 can be just about any PNP low power transistor, eg. BC327, 2N3906.   IC2 must be a <i>low dropout voltage</i> 5V regulator, if you want to use a 6 or 7 cell   battery (the standard 7805 regulator has a dropout voltage of 7V, so needs 8 cells or   more). I use the ROHM BA05T. Check the pinouts, some regulators have input and output pins    reversed!   <br/>
+If you want to modify the source code, a Flash PIC will save lots of money (the 12C509 can    only be programmed once unless you get the expensive windowed verison). The 12F629 and 12F675    are pin compatible, and just need slightly modified coding (<a href="http://homepages.paradise.net.nz/bhabbott/esc/spd475.zip" rel="noopener noreferrer">spd475.zip</a></td></tr></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/05/electronic-speed-controller.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

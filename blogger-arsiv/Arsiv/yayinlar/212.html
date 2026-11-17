@@ -1,0 +1,62 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dc ve Ac Motorlarda Güç Kontroli İle Motor devri Düzenleme Mantığı | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Dc ve Ac Motorlarda Güç Kontroli İle Motor devri Düzenleme Mantığı</h1><div>2010-01-14 · Motor ve Sürücüler</div></header><main><article class="panel"><span>SCR ler DC ve AC motorlarda güç kontrolü yaparak hız değişiklikleri yapabilir. Örneğin bazı el tipi elektrikli matkapların tetiklerine basarak hızlarının değiştirilebilme özellikleri gibi.</span><br/>
+<span><span>Girişteki devre köprü tipi bir doğrultucudur. Devrede dikkatimizi çeken bir nokta devredeki SCR' nin her ateşlemeden sonra kendiliğinden sönmesini sağlamak için doğrultucu çıkışında herhangi bir süzgeç kondansatör kullanılmamasıdır. Şekildeki R2 direnci hız kontrolü için kullanılır. L bobini oluşacak parazitik gürültüleri önlemek, D diyodu ise bu diyot üzerinde oluşan ters yöndeki gerilimleri kendi üzerinde kısa devre etmek için kullanılır.</span></span><br/>
+<span><span>Aşağıdaki şekilde tipik bir DC motor hız kontrol devresi görülmektedir. </span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span></span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><div><a href="http://www.elektrik.gen.tr/sites/default/files/image/2006/10/tristor/15.gif" imageanchor="1" rel="noopener noreferrer"><span></span></a><br/>
+</div><div align="justify"><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><!-- more --></span><span><br/>
+</span><br/>
+</div><div align="justify"><span>SCR nin karaktestik eğrisindeki terimlerin anlamları</span><br/>
+</div><div align="justify"><br/>
+<ol><li><span><span>I</span></span><sub><span><span>A</span></span></sub><span><span>: Anod akımı</span></span></li>
+<li><span><span>i</span></span><sub><span><span>F</span></span></sub><span><span>: O anki en büyükanod akımı</span></span></li>
+<li><span><span>I</span></span><sub><span><span>H</span></span></sub><span><span>: SCR yi açık (ON) durumunda tutan akım yada tutma akımı.</span></span></li>
+<li><span><span>i</span></span><sub><span><span>R:</span></span></sub><span><span> En büyük negatif kapama (OFF) akımı.</span></span></li>
+<li><span><span>V</span></span><sub><span><span>RSL</span></span></sub><span><span>: En büyük negatif kapama gerilimi.</span></span></li>
+<li><span><span>V</span></span><sub><span><span>F</span></span></sub><span><span>: Geçirme durumunda (On durumunda) anod - katod gerilimi.</span></span></li>
+<li><span><span>V</span></span><sub><span><span>Fmin</span></span></sub><span><span>: Geçirme durumundaki minimum (On durumunda) anod - katod gerilimi.</span></span></li>
+<li><span><span>V</span></span><sub><span><span>(BO)</span></span></sub><span><span>: Devrilme (anod- katod arası iletime geçilme) gerilimi. Bu an I</span></span><sub><span><span>G</span></span></sub><span><span> akımı akar.</span></span></li>
+<li><span><span>V</span></span><sub><span><span>(BO)0</span></span></sub><span><span>: Devrilme (anod - katod arası iletime geçilme) gerilimi. Bu an I</span></span><sub><span><span>G</span></span></sub><span><span> akımı yoktur.</span></span></li>
+</ol><br/>
+<span><br/>
+</span><br/>
+<span><span></span></span><br/>
+<div align="justify"><span>Tristörlerin genel olarak türleri :</span><br/>
+</div><div align="justify"><span><span>Aşağıdaki Tek Yönlü Akım İleten Tristörler aslında bu kadar kısa değil. Bu Tristörlerin kendi içlerinde de ışığa vs. duyarlı türleri de bulunmaktadır. Aşağıdaki gurup tek yönlü akım ileten tristörlerin en temel üyeleridir</span></span><br/>
+</div><div align="justify"><span>1- Tek yönlü akım ileten tristörler.</span><br/>
+<span><br/>
+</span><br/>
+</div><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><ol><li><span><span><b> </b>- </span><span>SCR</span><span> Silicon Controlled Rectifier yada Silikon Kontrollü Tek taraflı akım geçiren Diyot Veya Transistör Gibi. </span></span></li>
+<li> -  SUS Silicon Unidirectional Switch yada Silikon Tek yönlü Anahtar . </li>
+<li> -  PUT  Prgrammable Unijunction Transistor ( Programlanabilir Tek  bağlantılı) Transistör. .</li>
+</ol></span><br/>
+<ul></ul><div align="justify"><span><span>2-Çift yönlü akım ileten tristörler.</span></span><br/>
+</div><ul><div align="justify"><span><span>a- </span></span><span><span>DIAC</span></span><span><span> <br/></span></span> <span><span>b- </span></span><span><span>TRIAC </span></span> <span><span> </span></span> <span><span></span></span>
+<div align="justify"><span><span><span>Tristörlerin ortak özellikleri :</span></span></span>
+</div><ol><li><span><span><span>Boyutları kontrol ettikleri güce göre çok küçüktür.</span></span></span></li>
+<li><span><span><span>Ömürleri, yarı iletken oldukları için pratikte olmasa teorikte  sonsuz gibi algılanmalıdır.</span></span></span></li>
+<li><span><span><span>Çalışırken fazla ısınmadıkları için fazla soğutma problemleri yoktur.</span></span></span></li>
+<li><span><span><span>Görevini yerine getirebilmek için küçük gerilimler yeterlidir.</span></span></span></li>
+<li><span><span><span> Verimleri yüksektir. Çok az kayıpla çalışırlar, </span></span></span></li>
+<li><span><span><span>Yarı iletken oldukları için mekanik darbelerle etkilenmeden çalışa bilirler.</span></span></span></li>
+<li><span><span><span>Bakım gerektirmezler</span></span></span></li>
+<li><span><span><span>zaman/2  (t/2) saniyede açılabilir ve birkaç mikrosaniyede kapanabilirler.</span></span></span></li>
+</ol></div>
+</ul><br/>
+</div></span><span><br/>
+</span></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/dc-ve-ac-motorlarda-guc-kontroli-ile.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,42 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>110820  IR-Transceiver  RC5/RC6  IR-Transceiver | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>110820  IR-Transceiver  RC5/RC6  IR-Transceiver</h1><div>2010-03-11 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><a href="http://www.picbasic.nl/downloads/DECODERN.HEX" rel="noopener noreferrer">HEXdownloads</a><br/>
+<a href="http://www.picbasic.nl/downloads/RC5-RC6_Decoder_V-1_NL.bas" rel="noopener noreferrer">Download RC5-RC6_Decoder_V-1_NL.bas, de broncode voor PIC Basic</a><br/>
+<a href="http://www.picbasic.nl/downloads/DECODERN.HEX" rel="noopener noreferrer">Download DECODERN.HEX(RC5/RC6 decoder) bestand om in een PIC16F628A te programmeren</a><br/>
+DECODER.HEX,PIC 16F648A ve Yoksa  (RC5/RC6 decoder)  PIC16F628A nın kullanılması<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwyeYRf2b1tDefC_ttiOvXddMfjyn2XoKuGJ2utCwCCk3Ujh6ndUKxwWChQ-ZLeDxZo5QoOAU-O5muCKaxJzzqq3eFMQJH6hwtTtiLq_MLs_d-gvQIwc743k0mWB51IH6gGFr-cZNqYfA5/s1600-h/schema_rc5-rc6_display_nl.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjwyeYRf2b1tDefC_ttiOvXddMfjyn2XoKuGJ2utCwCCk3Ujh6ndUKxwWChQ-ZLeDxZo5QoOAU-O5muCKaxJzzqq3eFMQJH6hwtTtiLq_MLs_d-gvQIwc743k0mWB51IH6gGFr-cZNqYfA5/s320/schema_rc5-rc6_display_nl.gif"/></a><br/>
+<b>Program 1</b><br/>
+RC5 protokolü için ;bir tane PIC16F648 A programlanması lazımdır<br/>
+PORTB.0 (pin 6) ;GND bağlı hem ikilik sisteme göre ve  ondalık sisteme göre sayısal verileri hemdePORTB.0 komutta sadece sayısal değerler bağlı değil komutlar ve fonksiyonlar da verilir .Örneğin sisteme ve ses +<br/>
+<b>Program 2</b><br/>
+Elimizde PIC 16F648 A olmayabilir RC6 Çözümlenir veHEX Dosyasını PIC16F628A. Yüklenir tek işlevli LCD nin uygun olmadığı zamanlarda 2 program işleve konur hem RC5 ve RC6 sisteminin sadece sayısal  hem ikili ve ondalık değerler hemde komut LCD ekranda gözükür<br/>
+<b>LED ler</b><br/>
+Eğer resepsiyon ya da kötü bir geçiş değeri varsa PORTA.3 yeşil LED yanar kızılötesi (IR) sinyal alındığında görmeye bağlı olarak kırmızı LED Yanar , eğer sarı LED yanarsa TSOP1736 (36KHZ = IR alıcısı kullanıldıysa bu bilgileri ihtiyaç yoktur LED'ler atlanabilir) bir 470 Ohm direnç 5 V ve + ve  - bacağına bağlıbir tantal 1μF kondansatör bağlanır!<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGBxEYXpTlynKTZgjxGZiWc8vvy3-qg7XQm4kLMEKXkSg23yzm8S6glQgxWC5mqMkV_wJk98eEaiCeZMIOBVOL3hd4W6BoKa0HkJg3Qia4vDBwOxlj3pLiJyQT5L9NJHWygzL_j7cV6S_S/s1600-h/schema_transceiver.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGBxEYXpTlynKTZgjxGZiWc8vvy3-qg7XQm4kLMEKXkSg23yzm8S6glQgxWC5mqMkV_wJk98eEaiCeZMIOBVOL3hd4W6BoKa0HkJg3Qia4vDBwOxlj3pLiJyQT5L9NJHWygzL_j7cV6S_S/s320/schema_transceiver.gif"/></a></div><br/>
+<br/>
+Malzeme listesi<br/>
+<br/>
+PCB : Print 110820 (Doğal kendinden gravürlü)<br/>
+LCD :HD44780 (of compatibel) 2x16 karakters<br/>
+IC 1 :PIC16F628(A)<br/>
+VR1: 78L05 Voltaj Regülatörü<br/>
+IR :Alıcı TSOP1736<br/>
+LED1, LED2, LED3 :Green, Red Yellow LED, Ø3mm<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEfMDjrE611qhUoM5eWhYZNHhDM7ezDcPYsgh8rStpT4eQsbfCPv2XQset6j9712G4UolJHE1zgxo6GZyOmICdMHjp7Durv6S8aGrIk1remFYRKWCzFkBEQtOOPTei8JuK9NdkjpdGpAmQ/s1600-h/cmp_110820.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEfMDjrE611qhUoM5eWhYZNHhDM7ezDcPYsgh8rStpT4eQsbfCPv2XQset6j9712G4UolJHE1zgxo6GZyOmICdMHjp7Durv6S8aGrIk1remFYRKWCzFkBEQtOOPTei8JuK9NdkjpdGpAmQ/s320/cmp_110820.gif"/></a>LED4, LED5: Infrareed (IR) LED, Ø5mm (bv. LD274)<br/>
+T1: BC547 NPN transistor<br/>
+D1: 1N4007 diode<br/>
+X1: Kristal 10MHz (Düşük Tip)<br/>
+R1.R3 :1k<br/>
+R4 :33k<br/>
+R5: 4k7<br/>
+R6 :27 Ohm<br/>
+R7 :470 Ohm<br/>
+R8 :0,0 Ohm (Sadece küçük bir tel LCD arka işığı için bir direnç)<br/>
+P1  :potansiyometre 10k...47k, 6mm,<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguJL9QFQxZFJaas5eoCjstKLBQdZx_g_mtYO4HUM-WUK-e2WQ0IjPc_iQa86R5akWBGZdhCBc4vTFrrgThXM_EE7WpbG6QSMQm1qUm5R2U5NiHOer30itwTDvf0bhNlMA7nMbJy-XBRINN/s1600-h/pcb_110820.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguJL9QFQxZFJaas5eoCjstKLBQdZx_g_mtYO4HUM-WUK-e2WQ0IjPc_iQa86R5akWBGZdhCBc4vTFrrgThXM_EE7WpbG6QSMQm1qUm5R2U5NiHOer30itwTDvf0bhNlMA7nMbJy-XBRINN/s320/pcb_110820.gif"/></a>C1 :100µF<br/>
+C2 :1µF (tantaal)<br/>
+C3,C4: 22pF<br/>
+ SMD : 100n,(IC  pcb ye üstten lehimlenen)<br/>
+Kontakt pasta<br/>
+Konnektör  3,5mm<br/>
+<br/>
+<br/>
+<div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/03/110820-ir-transceiver-rc5rc6-ir.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>2 Kanallı Kablosuz Kumanda | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>2 Kanallı Kablosuz Kumanda</h1><div>2010-01-08 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><div><br/>
+</div><a href="http://antrak.org.tr/images/stories/pic_2009/ekim/jumbo-uni-remote.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2009/ekim/jumbo-uni-remote.jpg" width="156"/></a>2 Kanallı Kablosuz Kumanda    <br/>
+Yazar Tarık Konca    <br/>
+Cumartesi, 03 Ekim 2009<br/>
+Piyasada kolaylıkla bulabileceğiniz PIC 16F84A ve Udea  alıcı verici modüllerini kullanarak iki kanallı kablosuz uzaktan kumanda yapmak ister misiniz? Devremizin en önemli özelliği ise vericiden gönderdiğimiz komutun alıcıya ulaşıp ulaşmadığının kontrolünün de yapılıyor olması<br/>
+<br/>
+<br/>
+<br/>
+Düşük maliyetli ama kablosuz iki kanallı uzaktan kumanda devremiz doğal olarak alıcı ve verici olarak iki ayrı bölümden oluşuyor.<br/>
+<br/>
+Şimdi sırasıyla verici ve alıcı bölümlerini teker teker ele alalım.<br/>
+<br/>
+VERİCİ BÖLÜMÜ:<br/>
+<br/>
+Devremizin baskılı devresinin yerleşim planı aşağıdaki gibidir.<br/>
+<a href="http://antrak.org.tr/images/stories/pic_2009/ekim/rf1.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="225" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2009/ekim/rf1.jpg" width="320"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Yerleşim planında da görülebileceği gibi UDEA firmasının ATX_34S ve NRX_34U alıcı verici modülleri kullanılmıştır.<br/>
+<br/>
+Verici bölümünün çalışmasını kısaca özetleyecek olursak:<br/>
+<br/>
+Verici devredeki portb.4 e bagli butona basılınca alıcı devredeki portb.4 ucu mantıksal  "1" seviyesine yani +5 V seviyesine çekilir.<br/>
+<br/>
+Verici devredeki portb.5 e bagli butona basılınca alıcı devredeki portb.4 ucu mantıksal  "0" seviyesine yani 0 V seviyesine çekilir.<br/>
+<br/>
+Verici devredeki portb.6 ya bagli butona basılınca alıcı devredeki portb.5 ucu mantıksal  "1" seviyesine yani +5 V seviyesine çekilir.<br/>
+<br/>
+Verici devredeki portb.7 ye bagli butona basılınca alıcı devredeki portb.5 ucu mantıksal  "0" seviyesine yani 0 V seviyesine çekilir.<br/>
+<br/>
+<a href="http://antrak.org.tr/images/stories/verici.pdf" rel="noopener noreferrer">Verici bölümünün baskılı devresini yapmak isteyenler için 1:1 ölçekle çizilmiş PDF dosyasına bu linkten ulaşabilirsiniz.</a><br/>
+<br/>
+Yukarıdaki satırlarda da belirttiğimiz gibi vericinin gönderdiği komutun alıcı tarafından alındığı bilgisi devremiz üzerinde bulunan led'in bir saniye süreyle yanıp sönmesinden anlıyabiliyoruz.<br/>
+<br/>
+<a href="http://antrak.org.tr/images/stories/verici.hex" rel="noopener noreferrer">Verici bölümünde kullanılan PIC 16F84A'ya ilişkin hex dosyasını bu linkten indirebilirsiniz.</a><br/>
+<br/>
+ALICI BÖLÜMÜ:<br/>
+<br/>
+Devremizin baskılı devresinin yerleşim planı aşağıdaki gibidir.<br/>
+<br/>
+<a href="http://antrak.org.tr/images/stories/pic_2009/ekim/rf2.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="224" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2009/ekim/rf2.jpg" width="320"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<a href="http://antrak.org.tr/images/stories/alici.pdf" rel="noopener noreferrer">Alıcı bölümünün baskılı devresini yapmak isteyenler için 1:1 ölçekle çizilmiş PDF dosyasına bu linkten ulaşabilirsiniz.</a><br/>
+<br/>
+<a href="http://antrak.org.tr/images/stories/alici.hex" rel="noopener noreferrer">Alıcı bölümünde kullanılan PIC 16F84A'ya ilişkin hex dosyasını bu linkten indirebilirsiniz.</a><br/>
+<br/>
+Projeyi gerçekleştirecek arkadaşlara başarılar dilerim.<br/>
+<br/>
+Tarık Konca<br/>
+<br/>
+   "ALINTIDIR"<br/>
+Bilgi Paylaşıldıkça değer Kazanır Emeği geçen arkadaşa teşekkür ederim.</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/2-kanall-kablosuz-kumanda-yazar-tark.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

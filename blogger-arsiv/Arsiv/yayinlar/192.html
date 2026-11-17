@@ -1,0 +1,148 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>12Cxxx, 12Fxxx,16x84(A), 16F62x,16F870, 16F872, 16F876 18F242, 18F252 , 16F871, 16F877, 18F252, 18F452 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>12Cxxx, 12Fxxx,16x84(A), 16F62x,16F870, 16F872, 16F876 18F242, 18F252 , 16F871, 16F877, 18F252, 18F452</h1><div>2010-03-11 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><h3><span>DIP Pin Çıkışları</span></h3><span><span title="When you are soldering a breadboard and hence looking at the bottom of the chip you might find the bottom pinouts handy.">Aşağıda gösterilen PIC isimlerine göre pin çıkışlarını gösteriri şemalardır.</span></span><br/>
+<span><span title="When you are soldering a breadboard and hence looking at the bottom of the chip you might find the bottom pinouts handy.">Breadboard veya lehimleme yapmadan önce  size ait  PIC' in pin çıkışlarını alttan bakışta ve üsten bakışta hangi pinin nasıl geldiğini gösteren şemaları  kullanışlı bulabilirsiniz .</span></span><br/>
+<br/>
+<tr><td><pre><span><span>           <span><span>     </span><span>   ÜST GÖRÜNÜŞ      </span><span><span>1</span></span></span></span><span>
+</span></span></pre><pre><span><span>                +---+--+---+
+            VCC |1  +--+  8| GND
+    OSC1,X1,GP5 |2        7| GP0,CIN+,PGD
+    OSC2,X1,GP5 |3        6| GP1,CIN-,PGC
+  VPP,/MCLR,GP3 |4        5| GP2,T0CKI,INT,COUT 
+                +----------+
+                12Cxxx, 12Fxxx</span></span></pre><pre><span><span>
+</span></span></pre><pre><span><span><span>
+
+<pre><span><span>                 ALT GÖRÜNÜŞ <span><span>1</span></span>
+                +----------+
+  VPP,/MCLR,GP3 |4        5| GP2,T0CKI,INT,COUT
+    OSC2,X1,GP5 |3        6| GP1,CIN-,PGC
+    OSC1,X1,GP5 |2        7| GP0,CIN+,PGD
+            VCC |1        8| GND
+                +----------+
+               12Cxxx, 12Fxxx </span></span></pre></span></span></span></pre></td><td><pre><span><span> </span></span><span>
+</span></pre></td></tr><br/>
+<br/>
+<br/>
+<table cellspacing="20"><tbody>
+<tr><td><pre><span><span>                 ÜST GÖRÜNÜŞ   <span><span>2</span></span>
+                +---+--+---+
+   Vref,AN2,RA2 |1  +--+ 18| RA1,AN1
+   CMP1,AN3,RA3 |2       17| RA0,AN0
+ CMP2,TOCKI,RA4 |3       16| RA7,OSC1,CLKIN
+  VPP,/MCLR,RA5 |4       15| RA6,OSC2,CLKOUT
+            GND |5       14| VCC
+        INT,RB0 |6       13| RB7,T1OSI,PGD
+      RX,DT,RB1 |7       12| RB6,T1OSO,T1CKI,PGC
+      TX,CK,RB2 |8       11| RB5
+       CCP1,RB3 |9       10| RB4,(LVP 16F628)
+                +----------+
+              16x84(A), 16F62x</span></span><span>
+</span></pre><pre><span><span>
+</span></span></pre><pre><span><span>                 <span>ALT GÖRÜNÜŞ   </span><span>2</span></span></span></pre><pre><span><span><span>
+
+<pre><span><span>                +----------+
+       CCP1,RB3 |9       10| RB4,(LVP 16F628)
+      TX,CK,RB2 |8       11| RB5
+      RX,DT,RB1 |7       12| RB6,T1OSO,T1CKI,PGC
+        INT,RB0 |6       13| RB7,T1OSI,PGD
+            GND |5       14| VCC
+  VPP,/MCLR,RA5 |4       15| RA6,OSC2,CLKOUT
+ CMP2,TOCKI,RA4 |3       16| RA7,OSC1,CLKIN
+   CMP1,AN3,RA3 |2       17| RA0,AN0
+   Vref,AN2,RA2 |1       18| RA1,AN1
+                +----------+
+               16x84(A), 16F62x </span></span></pre></span></span></span></pre></td><td><pre><span><span>
+<span></span></span></span></pre></td></tr>
+</tbody></table><table cellspacing="20"><tbody>
+<tr><td><pre><span><span>                 ÜST GÖRÜNÜŞ <span>  </span><span><span>3</span></span>
+                 +---+--+---+
+      VPP,/MCLR |1  +--+ 28| RB7,PGD
+        AN0,RA0 |2       27| RB6,PGC
+        AN1,RA1 |3       26| RB5,(LVP 18F)
+  Vref-,AN2,RA2 |4       25| RB4
+  Vref+,AN3,RA3 |5       24| RB3,(LVP 16F)
+      TOCKI,RA4 |6       23| RB2
+    /SS,AN4,RA5 |7       22| RB1
+            GND |8       21| RB0,INT
+     CLKIN,OSC1 |9       20| VCC
+    CLKOUT,OSC2 |10      19| GND
+T1CKI,T1OSO,RC0 |11      18| RC7,RX,DT
+ CCP2,T1OSI,RC1 |12      17| RC6,TX,CK
+       CCP1,RC2 |13      16| RC5,SDO
+    SCK,SCL,RC3 |14      15| RC4,SDI,SDA        
+                +----------+
+          16F870, 16F872, 16F876
+              18F242, 18F252 </span></span></pre><pre><span><span>        </span></span></pre><pre><span><span>            </span></span></pre><pre><span><span>                 <span>ALT GÖRÜNÜŞ    </span><span>3</span></span></span></pre><pre><span><span>                +----------+
+    SCK,SCL,RC3 |14      15| RC4,SDI,SDA
+       CCP1,RC2 |13      16| RC5,SDO
+ CCP2,T1OSI,RC1 |12      17| RC6,TX,CK
+T1CKI,T1OSO,RC0 |11      18| RC7,RX,DT
+    CLKOUT,OSC2 |10      19| GND
+     CLKIN,OSC1 |9       20| VCC
+            GND |8       21| RB0,INT
+    /SS,AN4,RA5 |7       22| RB1
+      TOCKI,RA4 |6       23| RB2
+  Vref+,AN3,RA3 |5       24| RB3,(LVP 16F)
+  Vref-,AN2,RA2 |4       25| RB4
+        AN1,RA1 |3       26| RB5,(LVP 18F)
+        AN0,RA0 |2       27| RB6,PGC
+      VPP,/MCLR |1       28| RB7,PGD
+                +----------+
+           16F870, 16F872, 16F876 
+</span></span></pre><pre><span><span><span>               18F242, 18F252 </span>                  </span></span><span>
+</span></pre></td><td><pre><span><span>
+   </span></span><span>
+</span></pre></td></tr>
+</tbody></table><div></div><table cellspacing="20"><tbody>
+<tr><td><pre><span><span><span><span>                  ÜST GÖRÜNÜŞ      <span><span>4</span></span>
+                +-----+--+-----+
+       VPP,/RST |1    +--+   40| RB7,PGD
+        AN0,RA0 |2           39| RB6,PGC
+        AN1,RA1 |3           38| RB5,(LVP 18F)
+  AN2,Vref-,RA2 |4           37| RB4
+  AN3,Vref+,RA3 |5           36| RB3,(LVP 16F)
+      T0CKI,RA4 |6           35| RB2
+    /SS,AN4,RA5 |7           34| RB1
+    /RD,AN5,RE0 |8           33| RB0,INT
+    /WR,AN6,RE1 |9           32| VCC
+    /CS,AN7,RE2 |10          31| GND
+            VCC |11          30| RD7
+            GND |12          29| RD6
+     CLKIN,OSC1 |13          28| RD5
+    CLKOUT,OSC2 |14          27| RD4
+T1CKI,T1OSO,RC0 |15          26| RC7,RX,DT
+ CCP2,T1OSI,RC1 |16          25| RC6,TX,CK
+       CCP1,RC2 |17          24| RC5,SDO
+    SCK,SCL,RC3 |18          23| RC4,SDI,SDA
+            RD0 |19          22| RD3
+            RD1 |20          21| RD2
+                +--------------+
+         16F871, 16F877, 18F252, 18F452</span></span></span><span><span>
+</span></span></span></pre><pre><span><span><span><span>
+</span></span></span></span></pre><pre><span><span><span><span>                    <span>ALT GÖRÜNÜŞ <span>   </span></span><span>4</span></span></span></span></span></pre><pre><span><span><span><span><span>
+
+<pre><span><span><span><span>
+                +--------------+
+            RD1 |20          21| RD2
+            RD0 |19          22| RD3
+    SCK,SCL,RC3 |18          23| RC4,SDI,SDA
+       CCP1,RC2 |17          24| RC5,SDO
+ CCP2,T1OSI,RC1 |16          25| RC6,TX,CK
+T1CKI,T1OSO,RC0 |15          26| RC7,RX,DT
+    CLKOUT,OSC2 |14          27| RD4
+     CLKIN,OSC1 |13          28| RD5
+            GND |12          29| RD6
+            VCC |11          30| RD7
+    /CS,AN7,RE2 |10          31| GND
+    /WR,AN6,RE1 |9           32| VCC
+    /RD,AN5,RE0 |8           33| RB0,INT
+    /SS,AN4,RA5 |7           34| RB1
+      T0CKI,RA4 |6           35| RB2
+  AN3,Vref+,RA3 |5           36| RB3,(LVP 16F)
+  AN2,Vref-,RA2 |4           37| RB4
+        AN1,RA1 |3           38| RB5,(LVP 18F)
+        AN0,RA0 |2           39| RB6,PGC
+       VPP,/RST |1           40| RB7,PGD
+                +--------------+
+           16F871, 16F877, 18F252, 18F452 </span></span></span></span></pre></span></span></span></span></span></pre></td><td><pre><span><span>
+</span></span></pre></td></tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/03/12cxxx-12fxxx16x84a-16f62x16f870-16f872.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,209 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DS89C430 ile Cisim Uzunluğunun Hesaplanması | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>DS89C430 ile Cisim Uzunluğunun Hesaplanması</h1><div>2010-01-12 · Diğer Elektronik Projeleri</div></header><main><article class="panel">Proje Hakkında<br/>
+Bu projede, DALLAS DS89C430 mikrodenetleyicisi kullanılarak tasarlanan (simülasyonda AT89C51RC2) devre ile yürüyen bir bant üzerindeki cismin uzunluğu hesaplanıp, LCD ekranda gösterilmesi gerçekleştirilmiştir.<br/>
+Devre 3 kısımdan oluşmaktadır.<br/>
+Birinci kısımda, devrenin besleme gerilimi için 7805 ile tasarlanan regüleli gerilim kaynağı kullanılmıştır.<br/>
+İkinci kısımda yürüyen bant üzerindeki cismin algılanması için Fototransistörlü algılayıcı sensör devresi kullanılmıştır.<br/>
+Devrenin üçüncü kısmı 8051 mikrodenetleyici ve LCD kısmından oluşmaktadır.<br/>
+Devre yürüyen bir bant üzerindeki cismin uzunluğunu hesaplamaktadır. Bandı bir DC motor hareket ettirmektedir. Motor devreden bağımsız sabit bir hızla dönmektedir. Projede DALLAS firmasının DS89C430 entegresi, 7805 5v regüle entegresi, 741 karşılaştırıcı op-amp entegreleri kullanılmıştır.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/05/cisim_hesap_sunu.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="239" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/05/cisim_hesap_sunu.gif" width="320"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Dallas Program Yükleme Devresi<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/05/dallas_programmer.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/05/dallas_programmer.png"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+DS89C420/430/440/450 temelli entegreler için fiziksel bağlantı<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/05/protokolu_-max232.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/05/protokolu_-max232.png"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+RS232 Seri İletişim Protokolü ile MAX232 entegresinin bağlantı şeması<br/>
+<br/>
+Yükleme Devresinin Dış Görüntüsü<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/05/at89c51rc2_cisim.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/05/at89c51rc2_cisim.jpg"/></a><br/>
+</div><br/>
+<br/>
+<div>Yazılım<br/>
+</div><div>Dallas entegrelerine program yüklemek için, MTK programı kullanılmaktadır. Programın arayüzü aşağıdaki görülmektedir<br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+.<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2008/05/dallas_mtk.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2008/05/dallas_mtk.gif"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+MTK programına program yüklemek için önce ayarlar yapılmalıdır. Bu ayarları Options menüsünden seçilmelidir. Target menüsünden “Open COM port” seçeneği ile port açılmalı ve “Connect to Loader” seçeneği ile bağlantı kurulmalıdır. Daha sonra seçilmiş olan hex dosyası programın içerisine sürüklenerek veya File menüsünden Load Flash seçeneği ile seçilmelidir.<br/>
+<br/>
+NOT:<br/>
+-Devrenin şematik çizimleri için Proteus ISIS version 6.7 kullanılmıştır.<br/>
+-Daha önceki versiyonlarda şema açılmayacaktır. Bu yüzden uygun versiyonla açınız.<br/>
+-Dallas entegresini Keil içerisinde derleyebilmek için gerekli Include dosyası Root klasör de verilmektedir. -Bu dosyayı Keil altında Include\Dallas klasörüne kopyalayınız.<br/>
+<br/>
+<a href="http://320volt.com/wp-content/files/DS89C430_cisim.rar" rel="noopener noreferrer">Projenin isis simülasyon pcb dosyaları ve keil kaynak kodları</a><br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCkXc4hkJJ7Gk93HbX8skDPJLrZOaiGgSLzf41BudVQrQmrUnukTh5rA96_Lb2xAtbNHk5ER01Kwq28uniadWwY39Phj0wd_YmnDmlo3yHoGPK9g053HNGJTom8-2eIEmpqWyX-JdZIg6j/s1600-h/ads%C4%B1zqwe.JPG" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCkXc4hkJJ7Gk93HbX8skDPJLrZOaiGgSLzf41BudVQrQmrUnukTh5rA96_Lb2xAtbNHk5ER01Kwq28uniadWwY39Phj0wd_YmnDmlo3yHoGPK9g053HNGJTom8-2eIEmpqWyX-JdZIg6j/s200/ads%C4%B1zqwe.JPG"/></a><br/>
+</div><br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtRtqZiWQbYHUd6YDMw6ciEHdwYAS2rJcYEmHMZSKRIrt5uLbRsVGE834m29uHg0hEthBZpetg14_H41Z2rIMOASZ3YKfCq_S9HM9QbXkoXHO1_uCNWDnXNTH0tqZoZSSjbOkUq1-hcIaG/s1600-h/not.JPG" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtRtqZiWQbYHUd6YDMw6ciEHdwYAS2rJcYEmHMZSKRIrt5uLbRsVGE834m29uHg0hEthBZpetg14_H41Z2rIMOASZ3YKfCq_S9HM9QbXkoXHO1_uCNWDnXNTH0tqZoZSSjbOkUq1-hcIaG/s640/not.JPG"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsHxycnewnaHGxqt5aZxQkcsNz_PLSUfurv9ivnE-GZkUlSm34INoJcRtavBuWOsN9vf3stgbK450j4fz039vQv9R2Ll4pjvrPgzS99f2vFSgtWpJDnPZTJmcsGdJxgY0C8GtlZaX8YE4v/s1600-h/dsa.JPG" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgsHxycnewnaHGxqt5aZxQkcsNz_PLSUfurv9ivnE-GZkUlSm34INoJcRtavBuWOsN9vf3stgbK450j4fz039vQv9R2Ll4pjvrPgzS99f2vFSgtWpJDnPZTJmcsGdJxgY0C8GtlZaX8YE4v/s640/dsa.JPG"/></a><br/>
+</div><br/>
+<table border="1" cellpadding="0" cellspacing="0"><tbody>
+<tr> <td colspan="2" valign="top" width="614"><div><b>LCD ve   Mikrodenetleyici Kısmı<o:p></o:p></b><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>DALLAS DS89C430<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div><a href="http://www.dalsemi.com/" rel="noopener noreferrer">www.dalsemi.com</a><o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>2 SATIR LCD<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>HYP1602 K LCD 2X16 GÖSTERGE<o:p></o:p><br/>
+</div><div>Topt: 4.25 $  Par: 4.70   $<o:p></o:p><br/>
+</div><div>(www.yildirimelektronik.com)<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>1 <span>m</span>F<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.2<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>22 pF<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.2<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>12 Mhz Kristal <o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>12,000 MHZ KRİSTAL<o:p></o:p><br/>
+</div><div>Topt: 0.15 $  Par: 0.17   $<o:p></o:p><br/>
+</div><div>(www.yildirimelektronik.com)<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>8.2 K<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td colspan="2" valign="top" width="614"><div><br/>
+</div></td> </tr>
+<tr> <td colspan="2" valign="top" width="614"><div><b>5V Doğrultmaç Kısmı<o:p></o:p></b><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>LED Diyot<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>330 <span>W</span><o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>100 nF x 2<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.2 x 2<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>220 <span>m</span>F<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.3<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>78L05<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>7805K X VOLTAJ REGÜLATÖR METAL TESLA<o:p></o:p><br/>
+</div><div>0.90 $  1.00 $<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td colspan="2" valign="top" width="614"><div><br/>
+</div></td> </tr>
+<tr> <td colspan="2" valign="top" width="614"><div><b>Algılayıcı Kısmı<o:p></o:p></b><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>1.5 K x 4<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>4.7 K<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>330 <span>W</span><o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>100 <span>W</span><o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>Fototransistor<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.75<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>10K Pot<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.4<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>741 Opamp<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>LM 741N ENTEGRE<o:p></o:p><br/>
+</div><div>0.13 $  0.14 $<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>1N4733A Zener (5V)<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>ZD 5,1V 5W ZENER<o:p></o:p><br/>
+</div><div>0.22 $  0.25 $<o:p></o:p><br/>
+</div></td> </tr>
+<tr> <td valign="top" width="247"><div>LED Diyot<o:p></o:p><br/>
+</div></td> <td valign="top" width="367"><div>0.1<o:p></o:p><br/>
+</div></td> </tr>
+</tbody></table><br/>
+<br/>
+<div><br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/ds89c430-ile-cisim-uzunlugunun.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

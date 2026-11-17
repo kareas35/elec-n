@@ -1,0 +1,303 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 6 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 6</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span></span><br/>
+<h3><span>PIC Basic Pro ile PIC Programlama 6</span></h3><div><h2><span> </span></h2><div><div><strong><span>KESME (INTERRUPT) KULLANIMI:</span></strong><span><br/>
+Tüm bilgisayarlar ve mikroislemci sistemlerinde kullanılan bir özelliktir. Basitçe açıklamak gerekirse, bir mikroislemciye kesme anında neler yapması gerektigi bir program bölümü seklinde verilir. Açıkçası mikro islemci kesme oluştugu anda yaptıgı isi tamamen bırakarak kesme bölümüne gider ve orada gösterilen isleri yapar. Kesme bölümünün sonunda tekrar geriye dön komutunu alır ve önceden yaptıgı ise kaldıgı yerden devam etmek üzere döner.</span></div><div><span>Bu olayı günlük hayatımızda yasadıgımız bir örnekle açıklayalım isterseniz. Diyelim ki bir evde yasıyorsunuz ve bir gün tüm aileyi topladınız. Amacınız aileye bir yangın olması durumunda ne yapılması gerektigini ögreteceksiniz. Burada yangının meydana gelmesi bir kesme olayı olacaktır. Normal yasama düzeninde hiç yangın olmaz ise kesme oluşmayacak demektir. Ama oluşma ihtimali her zaman olacaktır. Simdi bir aksam yemegi esnasında yangın çıktıgını varsayalım. Kesme oluşacak ve herkes önceden ögretildigi gibi görevinin basına kosacak. Yangın söndürülecek ve her kes yemege geri dönecektir. iste tipik bir kesme olayına</span></div><div><span>örnek. Kesme olayını kısaca açıkladıktan sonra Pic islemcilerinde hangi olayların kesme yaratabilecegine bir göz atalım.</span></div><div><strong><span>RB0/INT KESMESİ:</span></strong><span><br/>
+En çok kullanılanlardan birisi </span><strong><span>PortB.0</span></strong><span> pininde meydana gelen lojik seviye degisikliginin oluşturacagı kesme dir. Option Yazmaçının 6. biti önceden ayarlanarak kesmenin sıfırdan – bir konumuna geçiste mi yoksa bir konumundan – sıfır konumuna geçiste mi oluşturulacagı belirlenir.</span></div><div><strong><span>OPTION_REG.6=0</span></strong><span> olur ise RB0 da düsen kenarda kesme oluşur.</span><strong><span>OPTION_REG.6=1</span></strong><span> olur ise RB0 da yükselen kenarda kesme oluşur.</span></div><div><span>Düsen veya yükselen kenar terimi bir clock palsının kenar sekli olarak anlasılmalıdır. Kesme isleminin aktif edilebilmesi için</span><strong><span>INTCON</span></strong><span> (interrupt control registeri) yazmaçı kullanılır.</span></div><div><span>Örnegin RB0 kesmesinin aktif hale getirilebilmesi için;</span><strong><span>INTCON.4=1</span></strong><span> yapılmalı ve daha sonra ;</span><strong><span>INTCON.7=1</span></strong><span> degeri 7 nolu bite verilerek tüm kesmeler açılmalıdır.<br/>
+Bu iki deger tek bir komutlada verilebilir. Söyle,</span><strong><span>INTCON=%10010000</span></strong></div><div><span>Bu kesme aktif hale getirildikten sonra sayet bir kesme oluşur ise</span><strong><span> INTCON</span></strong><span> yazmaçı nın 1 nolu biti 0 konumundan 1 konumuna geçer. Bu bit sayet tekrar 0 konumuna program içinde getirilmez ise yeniden bir kesme oluşmaz. Bu nedenle programın </span><strong><span>KESME</span></strong><span> bölümünde bu bit sıfırlanmalıdır. RB0/INT Kesme kullanımını toparlamak gerekir ise;</span></div><div><strong><span>RB0/INT</span></strong><span> kesmesini kullanmak için yapılması gerekenler sırası ile;<br/>
+- Programın bas kısmına </span><strong><span>ON INTERRUPT GOTO KESME</span></strong><span> komutu verilerek kesme oluştugunda programın gidecegi yer (KESME) belirlenir.</span></div><div><span>- </span><strong><span>RB0</span></strong><span> pini giris olarak ayarlanacak<br/>
+- Gerekir ise Option Yazmaçının 7. biti 1 veya 0 yapılarak pullup dirençleri istege göre ayarlanacak.</span></div><div><span>- Option Yazmaçının 6 biti 1 veya 0 olarak ayarlanarak kesmenin düsen kenar veya yükselen kenardamı olacağına karar verilecek.</span></div><div><span>- Intcon yazmaçına </span><strong><span>INTCON=%10010000</span></strong><span> degeri verilerek kesme aktif hale getirilecek.</span></div><div><span>- Kesme bölümüne baslarken </span><strong><span>DISABLE</span></strong><span> komutu verilerek kesme anında yeniden kesme oluşumuna imkan verilmeyecek.</span></div><div><span>- Kesme bölümünde </span><strong><span>INTCON.1=0</span></strong><span> komutu verilerek kesmeden dolayı 1 olan bayrak tekrar sıfırlanır ve sonradan yeni kesme oluşmasına imkan tanınır.</span></div><div><span>- Kesme bölümünün sonunda </span><strong><span>RESUME </span></strong><span>komutu verilerek programın kesme oluşmasından önceki yerine dönmesi saglanır.</span></div><div><span>- En sona </span><strong><span>ENABLE</span></strong><span> komutu yazılarak kesmeden dönüldükten sonra tüm kesmeler aktif hale getirilir.</span></div><div><span>Simdi de ögrendiklerimizi bir örnek vererek açıklayalım. Örnek Programımız </span><strong><span>RB0</span></strong><span> bacagına baglı bir tus yardımı ile </span><strong><span>RA.0</span></strong><span>bacagına baglı olan bir led’i yakıp söndürsün. Program içinde tusa basıldı mı? seklinde bir komut vermeden direkt kesme özelliginden yararlanacagız.</span></div><div><span>Yani </span><strong><span>RB0</span></strong><span> bacagını sürekli 1 konumunda tutacağız (pullu up ile). Dolayısıyla bu bacagı tusa basarak sıfıra çekersek kesme oluşacak ve kesme bölümünde de led’i toggle komutu ile yanıksa söndürecegiz, sönük ise yakacagız. Tabiiki seçim olarak</span><strong><span>RB0/INT</span></strong><span> bacagı düsen kenar da kesme oluşacak sekilde ayarlanacaktır. Önce semamızı verelim;</span></div><div><span><img alt="kesme-devre-semasini-verelim" height="365" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/kesme-devre-semasini-verelim.png" title="kesme-devre-semasini-verelim.png" width="673"/></span></div><div><strong><span>iste Programımız;<br/>
+‘****************************************************************<br/>
+‘* Name : KESME-RB0.BAS *<br/>
+‘* Author : [Erol Tahir Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 23.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+PORTA=0<br/>
+TrisA=000000<br/>
+TrisB=000000<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘islemci 16F628<br/>
+@ DEVICE pic16F628, WDT_on ‘Watch Dog timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Koruma kapalı<br/>
+@ DEVICE pic16F628, MCLR_OFF ‘MCLR pini kullanılmıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘—————————————————————–<br/>
+ON INTERRUPT GoTo KESME ‘kesme oluşursa KESME adlı etikete git.<br/>
+OPTION_REG=00000 ‘dahili Pull up dirençleri aktif edildi ayrıca pullup direncine gerek yok<br/>
+INTCON=%10010000 ‘Tüm Kesmeler aktif ve RB0/INT kesmesi aktif<br/>
+TRISB=000001 ‘PortB.0 giris digerleri çıkıs yapıldı.<br/>
+TRISA=000000 ‘A portu tamamı çıkıs yapıldı.<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giris çıkıs<br/>
+‘—————————————————————–<br/>
+SYMBOL TUS=PORTB.0<br/>
+SYMBOL LED=PORTA.0<br/>
+‘——————————————————————-<br/>
+BASLA: ‘Ana program bölümünde program bir sey yapmayacak<br/>
+pauseus 100 ‘kesme oluşmadıgı müddetçe program<br/>
+goto basla ‘ bu satırlar arasında dolasır<br/>
+DISABLE ‘yeniden kesme oluşması önleniyor<br/>
+KESME: ‘program buraya geldiginde kesme oluşmus demektir.<br/>
+TOGGLE LED ‘LED konum degistirdi<br/>
+PAUSE 1<br/>
+INTCON.1=0 ‘RB0/INT Bayragı (flag) silindi.<br/>
+Resume ‘geldigin yere dön<br/>
+Enable ‘kesmeler yeniden aktif.<br/>
+End<br/>
+‘————————————————————————</span></strong></div><div><span>B portunda dahili pullup dirençleri vardır ve </span><strong><span>OPTION </span></strong><span>Yazmaçının 7. biti bunların aktif olup olmamasını kontrol eder. Sayet bu bit 0 ise dirençler aktif, 1 ise dirençler devrede degildir. Sanırım örnek her seyi açıkça anlatıyor. Burada özellikle dikkat edilecek yer ana program bölümünde </span><strong><span>pauseus 100</span></strong><span> komutundan baska bir komut olmadıgıdır. Normal olarak program kesme oluşuncaya kadar sürekli Basla etiketi ile </span><strong><span>Goto basla</span></strong><span> komutu arasında dönüp duracaktır. Buraya kadar açıklananlar yalnızca RB0/INT kesmesinin kullanımına örnektir.</span></div><div><strong><span>PORTB (RB4-RB7) DEGİSİKLİK KESMESİ :</span></strong><span><br/>
+Bu kesme tipinde </span><strong><span>RB4-RB7</span></strong><span> bacaklarının mevcut konumlarında oluşacak bir degisiklik sonucunda da kesme oluşturulmaktadır. Bu kesme </span><strong><span>PORTB </span></strong><span>nin </span><strong><span>RB4-RB7 </span></strong><span>arası bacaklarının tamamının giris yapılması halinde geçerlidir. Bacaklardan birisi çıkıs yapılır ise kesme iptal olur.</span></div><div><span>Kesme bir kere aktif hale getirilir ise bu 4 adet bacak degeri sürekli pic tarafından okunur. Okunan deger bir önceki ile karsılastırılır. Sayet fark var ise kesme oluşur. Kesme de oluşan </span><strong><span>RBIF</span></strong><span> bayragının silinmesi için PortB nin bir kere programcı tarafından mutlaka okutulması gerekir. Aksi taktirde bayrak silinemez ve sürekli kesme oluşur.</span></div><div><span>Tabiiki yalnızca PortB nin okunması bayragı silmeye yetmeyecektir. Ayrıca RBIF bayragının<br/>
+kesme bölümünde silinmesi de gerekir. </span><strong><span>RB PORT (Rb4-Rb7)</span></strong><span> Degisiklik Kesmesinin oluşması İçin Gerekenler :</span></div><div><span>Programın bas kısmına </span><strong><span>ON INTERRUPT GOTO KESME</span></strong><span> komutu verilerek kesme oluştugunda programın gidecegi yer (KESME) belirlenir.</span></div><div><span>-</span><strong><span> RB4-RB7</span></strong><span> pinleri mutlaka giris olarak ayarlanacak</span></div><div><span>- Intcon yazmaçının 3 biti bu kesme için ayrılmıstır. Bu bit 1 yapılarak kesme aktif edilir. </span><strong><span>INTCON=%10001000 </span></strong><span>degeri verilerek kesme aktif hale getirilecek.</span></div><div><span>- Kesme bölümüne baslarken </span><strong><span>DISABLE</span></strong><span> komutu verilerek kesme anında yeniden kesme oluşumuna imkan verilmeyecek.</span></div><div><span>- Kesme Bölümünde </span><strong><span>DURUM=PORTB </span></strong><span>seklinde port degeri okunacak</span></div><div><span>- Kesme bölümünde </span><strong><span>INTCON.0=0</span></strong><span> komutu verilerek kesmeden dolayı 1 olan bayrak tekrar sıfırlanır ve sonradan yeni kesme oluşmasına imkan tanınır.</span></div><div><span>- Kesme bölümünün sonunda </span><strong><span>RESUME</span></strong><span> komutu verilerek programın kesme oluşmasından önceki yerine dönmesi saglanır.</span></div><div><span>En sona </span><strong><span>ENABLE</span></strong><span> komutu yazılarak kesmeden dönüldükten sonra tüm kesmeler aktif hale getirilir</span></div><div><span>Bu kesmeyi bir örnekle açıklayalım. Bu defa yine </span><strong><span>PortA.0</span></strong><span> pinine bir </span><strong><span>LED</span></strong><span> baglı olsun. </span><strong><span>PortB.7 </span></strong><span>pinine bir Tus baglayalım ve bu sefer tus, pulldown yani </span><strong><span>GND</span></strong><span> ye çekili olsun. Tusa basılınca </span><strong><span>PortB.7 </span></strong><span>pinine </span><strong><span>High</span></strong><span><br/>
+uygulayalım.</span></div><div><strong><span>İste baglantı semamız;</span></strong></div><div><span><img alt="kesme-baglanti-semasi" height="350" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/kesme-baglanti-semasi.png" title="kesme-baglanti-semasi" width="670"/></span></div><div><strong><span>Program RB (4-7) Degisiklik Kesmesi:<br/>
+‘****************************************************************<br/>
+‘* Name : KESME-RBCH.BAS *<br/>
+‘* Author : [Erol Tahir Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 23.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+PORTA=0:portb=0<br/>
+TRISB=%11110000 ‘PortB tamamı giris yapıldı.<br/>
+TRISA=000000 ‘A portu tamamı çıkıs yapıldı.<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘islemci 16F628<br/>
+@ DEVICE pic16F628, WDT_on ‘Watch Dog timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Koruma kapalı<br/>
+@ DEVICE pic16F628, MCLR_off ‘MCLR pini kullanılmıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘—————————————————————–<br/>
+ON INTERRUPT GoTo KESME ‘kesme oluşursa KESME adlı etikete git.<br/>
+OPTION_REG=%10000000 ‘dahili Pull up dirençleri iptal edildi<br/>
+INTCON=%10001000 ‘Kesmeler aktif ve RB CHANGE kesmesi aktif<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giris çıkıs<br/>
+‘—————————————————————–<br/>
+DURUM VAR BYTE<br/>
+SYMBOL TUS=PORTB.0<br/>
+SYMBOL LED=PORTA.0<br/>
+SYMBOL RBIF=INTCON.0<br/>
+‘——————————————————————-<br/>
+BASLA: ‘Ana program bölümü<br/>
+DURUM=PORTB<br/>
+PAUSEUS 100<br/>
+GOTO BASLA<br/>
+DISABLE ‘yeniden kesme oluşması önleniyor<br/>
+KESME: ‘ burada kesme oluştu demektir.<br/>
+TOGGLE LED ‘LED konum degistirdi<br/>
+PAUSE 300<br/>
+DURUM=PORTB ‘PortB degeri okundu<br/>
+RBIF=0 ‘INTCON.0=0 yapıldı yani RB CHANGE Bayragı (flag) silindi.<br/>
+RESUME ‘geldigin yere dön.<br/>
+ENABLE ‘kesmeler yeniden aktif.<br/>
+End</span></strong></div><div><strong><span>TMR0 KESMESİ :</span></strong><span><br/>
+Ram bellegin 01 adresinde bulunan özel bir yazmaçdır. Genellikle adı üstünde zamanlayıcı olarak kullanılır. 8 bitlik bir sayıcıdır. Yazılabilir okunabilir. Programlanabilen bir özel bölücüsü (prescaler) vardır. Harici veya dahili clock palsları ile sayım yapabilir.</span></div><div><span>Sayma yönü daima artan yöndedir. Bu sayıcı veya zamanlayıcı 255 degerini astıgı zaman degeri tekrar sıfır olur ve bu anda bir kesme oluşturulabilir. Bu sayıcının diger önemli bir özelligi ise arka planda yani ana programdan bagımsız çalısmasıdır. Ana program çalısırken veya kesme oluştugu andan<br/>
+itibaren saymasına devam eder.</span></div><div><strong><span>OPTION</span></strong><span> Yazmacının ilk üç biti frekans bölme (prescaler) ayarlaması için kullanılır. Bu üç bitin aldıgı degerlere göre bölücünün aldıgı degerler asagıda gösterilmistir. Bu bölücü aynı zamanda </span><strong><span>WDT</span></strong><span> içinde kullanıldıgından tabloda </span><strong><span>WDT</span></strong><span> için bölücü degerleride gösterilmistir.</span></div><div><span><img alt="tmr0-kesmesi-ram-picbasic" height="271" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/tmr0-kesmesi-ram-picbasic.png" title="tmr0-kesmesi-ram-picbasic" width="360"/></span></div><div><span>Tablodan da anlasılacagı üzere sinyal kaynagından gelen palsların </span><strong><span>TM0</span></strong><span> sayıcısını 1/1 yani direkt saydıracagı bir konum mevcut degildir. Özellikle dısarıdan bir sinyal kaynagından gelen palsların sayılmasında lazım olacak olan bu husus için</span><strong><span>OPTION</span></strong><span> yazmacının 3. biti 1 (bir) yapılarak frekans bölme islemi WDT için yapılır.</span></div><div><span>Bu bir nevi aldatmadır. Bölme </span><strong><span>WDT</span></strong><span> için yapılınca Frekans bölücü </span><strong><span>TM0</span></strong><span> için </span><strong><span>Bay-Pass </span></strong><span>edilmis yani atlanmıs olur. Dolayısıyla gelen sinyaller 1/1 olarak Timer0 tarafından sayılır. Bunu yapacagımız örnekte görecegiz.</span><strong><span>TM0 </span></strong><span>sayısının kullanılması için bazı parametrelerin önceden ayarlanması gerekiyor. Bunlar sırası ile;</span></div><div><strong><span>1. </span></strong><span>Sayıcının sayabilmesi için gerekli olan clock sinyalinin kaynagı ne olacaktır?. Bu kaynak dahili osilatör olabilecegi gibi standart olarak </span><strong><span>PortA.4 /TOCKI</span></strong><span> bacagı kullanılarak dısarıdan bir sinyal kaynagı ile beslenebilir. Bu seçim </span><strong><span>OPTION</span></strong><span> yazmacının 5. biti olan </span><strong><span>TOCS </span></strong><span>biti ile yapılır.</span></div><div><strong><span>TOCS biti = 0</span></strong><span> ise sinyal kaynagı dahili osilatör dür. </span><strong><span>TOCS biti = 1</span></strong><span> ise sinyal kaynagı </span><strong><span>PortA.4</span></strong><span> pinin den giren harici sinyal kaynagıdır.</span></div><div><strong><span>2. </span></strong><span>Harici sinyal kaynagı seçilir ise, sayacın düsen kenarda mı yoksa yükselen kenarda mı sayma isini yapacagı </span><strong><span>OPTION</span></strong><span>yazmacının 4. biti olan </span><strong><span>TOSE</span></strong><span> biti ile ayarlanır.</span></div><div><strong><span>TOSE Biti = 0 </span></strong><span>ise düsen kenarda sayma</span><strong><span>TOSE Biti = 1</span></strong><span> ise Yükselen kenarda sayma yapılır.</span></div><div><strong><span>3.</span></strong><span> Frekans bölme islemi </span><strong><span>TMR0</span></strong><span> için mi yoksa </span><strong><span>WDT</span></strong><span> için mi geçerli olacaktır? Bunu seçmek için </span><strong><span>OPTION </span></strong><span>yazmacının 3. biti olan</span><strong><span>PSA</span></strong><span> biti kullanılır.</span></div><div><strong><span>PSA Biti = 0 </span></strong><span>ise Frekans Bölme TMR0 için geçerli,</span><strong><span>PSA Biti = 1</span></strong><span> ise Frekans Bölme WDT için geçerli olur.</span></div><div><strong><span>4. </span></strong><span>Son olarak da Frekans bölme kullanılacak ise degeri ayarlanır. Bunun içinde</span><strong><span> OPTION</span></strong><span> yazmacının ilk 3 bitinin kullanıldıgını söylemistik. Tabloda verdigimiz degerlerden biri seçilerek </span><strong><span>OPTION </span></strong><span>yazmacına yazılır.</span></div><div><strong><span>5.</span></strong><span> Programın bas kısmına </span><strong><span>ON INTERRUPT GOTO KESME</span></strong><span> komutu verilerek kesme oluştugunda programın gidecegi yer (KESME) belirlenir.</span></div><div><strong><span>6. INTCON</span></strong><span> yazmacının 5. biti bu kesme için ayrılmıstır. Bu bit 1 yapılarak kesme aktif edilir.</span></div><div><strong><span>7. </span></strong><span>Kesme bölümüne baslarken </span><strong><span>DISABLE </span></strong><span>komutu verilerek kesme anında yeniden kesme oluşumuna imkan verilmeyecek.</span></div><div><strong><span>8. </span></strong><span>Kesme bölümünde </span><strong><span>INTCON.2=0 </span></strong><span>komutu verilerek kesmeden dolayı 1 olan bayrak tekrar sıfırlanır ve sonradan yeni kesme oluşmasına imkan tanınır.</span></div><div><strong><span>9.</span></strong><span> Kesme bölümünün sonunda </span><strong><span>RESUME</span></strong><span> komutu verilerek programın kesme oluşmasından önceki yerine dönmesi saglanır.</span></div><div><strong><span>10. </span></strong><span>En sona</span><strong><span> ENABLE</span></strong><span> komutu yazılarak kesmeden dönüldükten sonra tüm kesmeler aktif hale getirilir. Burada bir konuyu açıklamakta fayda görüyorum. Dahili veya harici osilatör kullanılması durumunda, frekans degerinin Pic’e baglı kristal degerinin dörtte biri olacağını bilmeniz gerekiyor. Diyelimki Pic 4 MHz lik bir kristal ile çalısıyor. O halde </span><strong><span>TMR0</span></strong><span> için kullanılacak sinyal kaynagı 1 MHz frekansa sahip olacaktır.</span></div><div><span>Dahili osilatör ve Frekans bölücü pek çok uygulamalarda kullanılır. Özellikle hassas zamanlama islerinde önemli bir kullanım alanı vardır. Bunların basında Pic’in bir saat olarak kullanılması gelir. Dahili veya harici ösilatör ve frekans bölücü kullanılarak pic’in her bir saniyede bir kesme oluşturmasını saglayabiliriz. Sayet bu zamanı hassas bir sekilde ayarlayabilir isek dogru çalısan bir saat yapabiliriz. Simdi bunu bir örnek ile açıklayalım.</span></div><div><span>Yapacagımız örnek de 4 MHz de çalısan bir </span><strong><span>PIC16F628</span></strong><span> kullanacagız. Dahili sinyal kaynagını kullanarak gelen sinyali 64’e bölecegiz. Bu durumda pic, TMR0’ ile 0 dan baslayıp 255’e kadar sayıp kesme oluşturabilmesi için ;</span></div><div><strong><span>1 us x 64 x 256 = 16384 us</span></strong><span> süre kullanacaktır. </span><strong><span>1 sn = 1000 ms</span></strong><span> ve oda </span><strong><span>1000.000 us</span></strong><span> ye esit oldugundan sayet </span><strong><span>1.000.000 us</span></strong><span>degerini </span><strong><span>16384</span></strong><span>’e bölersek 61 degerini buluruz. O halde her kesme oluştugunda bir baska degiskeni saydırır ve bunun degeri 61 den 62 ye geçtigi anda degerini sıfırlayıp saniye degerini bir artırırsak bir saniyelik saat palslarını yakalamıs oluruz. Bunu bir programda kullanarak da saat yapabiliriz.</span></div><div><strong><span>Bu örnek için bir semamız asagıdadır.</span></strong></div><div><span><img alt="tmr0-ornek-devre-semasi-picbasic" height="470" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/tmr0-ornek-devre-semasi-picbasic.png" title="tmr0-ornek-devre-semasi-picbasic" width="682"/></span></div><div><span>Programa geçmeden önce gerekli parametrelerimizi tespit edelim; Tespitlerimizin etki alanı</span><strong><span> OPTION</span></strong><span> Yazmacı olacağından tüm tespitleri Binary olarak bu yazmaca isleyecegiz.</span></div><div><strong><span>1. </span></strong><span>Sinyal kaynagımız dahili osilatör olacaktır. O halde TOCS (5.bit) 0 olacaktır.</span><strong><span>OPTION_REG=000000</span></strong></div><div><strong><span>2.</span></strong><span> Frekans Bölme islemi TMR0 için olacak olup 3. bit 0 olacaktır.</span><strong><span>OPTION_REG=000000</span></strong></div><div><strong><span>3. </span></strong><span>Frekans bölme (prescaler) degeri 64 olacak olup bunun TMR0 için bit karsılıgı 101 dir.</span><strong><span>OPTION_REG=000101</span></strong></div><div><strong><span>4.</span></strong><span> TMR0 kesmesini kullanacagımızdan INCON yazmacının 5. biti high olacaktır. Tüm Kesmeleri açmak için INTCON 7. biti high olacağından bu iki durumu tek komutta toparlarsak, </span><strong><span>INTCON=%10100000 </span></strong><span>seklinde bir komut yazmamız gerekir. Bu asamadan sonra programımızı verelim.</span></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : KESMETMR0.BAS *<br/>
+‘* Author : [Erol Tahir Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 23.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+PORTA=0:portb=0<br/>
+TRISB=000000 ‘PortB tamamı çıkıs yapıldı.<br/>
+TRISA=000000 ‘A portu tamamı çıkıs yapıldı.<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘islemci 16F628<br/>
+@ DEVICE pic16F628, WDT_OFF ‘Watch Dog timer kapalı<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Koruma kapalı<br/>
+@ DEVICE pic16F628, MCLR_off ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘—————————————————————–<br/>
+DEFINE LCD_DREG PORTB ‘LCD data bacakları hangi porta baglı?<br/>
+DEFINE LCD_DBIT 4 ‘LCD data bacakları hangi bitten baslıyor?<br/>
+DEFINE LCD_EREG PORTB ‘LCD Enable Bacagı Hangi Porta baglı?<br/>
+DEFINE LCD_EBIT 3 ‘LCD Enable Bacagı Hangi bite baglı ?<br/>
+define LCD RWREG PORTB ‘LCD R/W Bacagı Hangi Porta baglı?<br/>
+define LCD_RWBIT 2 ‘LCD R/W Bacagı Hangi bite baglı ?<br/>
+DEFINE LCD_RSREG PORTB ‘LCD RS Bacagı Hangi Porta baglı ?<br/>
+DEFINE LCD_RSBIT 1 ‘LCD RS bacagı Hangi Bite baglı ?<br/>
+DEFINE LCD_BITS 4 ‘LCD 4 bit mi yoksa 8 bit olarak baglı?<br/>
+DEFINE LCD_LINES 2 ‘LCD Kaç sıra yazabiliyor<br/>
+‘————————————————————————-<br/>
+ON INTERRUPT GoTo KESME ‘kesme oluşursa KESME adlı etikete git.<br/>
+OPTION_REG=%10000101 ‘Pull up dirençleri İPTAL- Bölme oranı 1/64.<br/>
+INTCON=%10100000 ‘Kesmeler aktif ve TMR0 kesmesi aktif<br/>
+TMR0=0<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giris çıkıs<br/>
+‘—————————————————————————-<br/>
+SAYAC VAR BYTE<br/>
+SN VAR BYTE<br/>
+DAK VAR BYTE<br/>
+SAAT VAR BYTE<br/>
+GUN VAR BYTE<br/>
+‘—————————————————————————–<br/>
+CLEAR ‘tüm degiskenler sıfırlandı<br/>
+PAUSE 200<br/>
+LCDOUT $FE,1<br/>
+LOW PORTB.2 ‘LCD -R/W bacagı LOW’a çekildi.<br/>
+‘—————————————————————————–<br/>
+BASLA:<br/>
+LCDOUT $FE,$84,DEC2 SAAT,”:”,DEC2 DAK,”:”,DEC2 SN<br/>
+GOTO BASLA</span></strong></div><div><strong><span>DISABLE<br/>
+KESME:<br/>
+SAYAC=SAYAC+1 ‘kesme sayacı 1 sn= 61(sayac) x 256 (Tmr0) x 64 (bölme)<br/>
+IF SAYAC=61 then ‘61 adet kesme olunca 1 sn. süre geçiyor.(999424 us)<br/>
+SAYAC=0 ’sayaç sıfırlanıyor<br/>
+SN=SN+1 ’saniye degeri bir artırılıyor<br/>
+IF SN=60 THEN ’saniye 60 olmus ise 1 dakika süre geçti o halde<br/>
+SN=0 ‘ saniye sıfırlanıyor<br/>
+DAK=DAK+1 ‘ dakika degeri bir artırılıyor<br/>
+IF DAK=60 THEN ‘dakika 60 olmus ise 1 saat süre geçti<br/>
+DAK=0 ‘ dakika sıfırlanıyor<br/>
+SAAT=SAAT+1 ‘ saat degeri bir artırılıyor<br/>
+IF SAAT=24 THEN ’saat 24 olmus ise 1 gün geçti<br/>
+SAAT=0 ’saat sıfırlanıyor<br/>
+GUN=GUN+1 ‘gün degeri bir artırılıyor<br/>
+IF GUN=365 THEN GUN=0 ‘gün 365 olmus ise<br/>
+ENDIF ‘gün sıfırlanıyor 1 yıl geçti<br/>
+ENDIF<br/>
+ENDIF<br/>
+ENDIF<br/>
+INTCON.2=0 ‘TMR0 Kesme bayragı sıfırlanıyor<br/>
+RESUME<br/>
+ENABLE<br/>
+END<br/>
+‘———————————————————————————–</span></strong></div><div><span>Her ne kadar hesap sonucunda kesmenin oluşturacagı gecikme yaklasık 1 sn hesaplanmıs isede pratikte program komutlarınında bir gecikmeye sebep olacağı unutulmamalıdır. Yukarıdaki programda KESME bölümünde bir çok komut bulunmaktadır. Makine dilinde her bir komut yaklasık (4MHz de) 1 us süre almaktadır. Bu nedenle hesaplama dogru olsa da saat ileri gidebilir veya geri kalabilir. Bunun için SAYAC degeri her 61 kesme yerine 60 – 59 -58 kesmede bir saniye artırımı yaptırılabilir. En iyisi programın yazılması tamamlanınca bir dogru çalısan bir saat yardımı ile süre karsılastırması yapılmalı ve gerekirse SAYAC degeri ile oynanarak hassas bir ayarlama yapılmalıdır.</span></div><div><span>Burada ikinci bir örnek daha verecegiz ve saat’in baska ilerde nasıl kullanılacagına bakacagız. Diyelim ki 4 adet tus ile kontrol edilen 4 adet rölemiz var ve bunlar bir takım sistemleri çalıstırıyorlar. Her bir röle ayrı bir sistemi çalıstırıyor ve biz hangi sistemin ne kadar çalıstıgını bilmek istiyoruz. İste yazacagımız program 4 adet tus yardımı ile 4 adet röleyi çalıstıracak ve arka planda ise TMR0 kesmesi yardımı ile saatimiz çalısacak.</span></div><div><span>Bu programda ayrıca yeni bir degisken tipi ile tanısacagız. Dizi degiskeni. Dizi degiskenleri aynı isimle açılırlar ancak her bir degiskenin bir indeks denilen parametresi vardır. Indeks ayrı bir degisken altında saklanabilir ve degeri degistirilerek istenilen dizi degiskenine kolaylıkla ulasılabilir. Kullanımı degisken tanımlarında söyle yapılmaktadır.</span></div><div><strong><span>DEGER</span></strong><span> var Byte [4] burada deger adlı degiskenin 4 ayrı indeksli çesidi vardır. Bunlar ;</span><strong><span>DEGER[0] – DEGER [1] – DEGER [2] ve DEGER [3]</span></strong><span> dür.</span></div><div><strong><span>Önce programla ilgili semamızı verelim;</span></strong></div><div><span><img alt="kesme-role-lcd-picbasic" height="573" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/kesme-role-lcd-picbasic.png" title="kesme-role-lcd-picbasic" width="650"/></span></div><div><span>Dikkat edilirse semada röle yerine logic prop baglanmıstır. Bunların yerine asıl devrede birer role baglanacaktır. Ancak asıl amacımız programın islevini göstermek oldugundan detaya girilmemistir.</span></div><div><strong><span>İste programımız;<br/>
+‘****************************************************************<br/>
+‘* Name : KESME-R0LE.BAS *<br/>
+‘* Author : [E.Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 23.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+PORTA=0:portb=0<br/>
+TRISB=001111 ‘PortB (RB4-RB7) çıkıs digerleri giris yapıldı.<br/>
+TRISA=000000 ‘A portu tamamı çıkıs yapıldı.<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘islemci 16F628<br/>
+@ DEVICE pic16F628, WDT_OFF ‘Watch Dog timer kapalı<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod koruma kapalı<br/>
+@ DEVICE pic16F628, MCLR_off ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘—————————————————————–<br/>
+DEFINE LCD_DREG PORTA ‘LCD data bacakları hangi porta baglı?<br/>
+DEFINE LCD_DBIT 0 ‘LCD data bacakları hangi bitten baslıyor?<br/>
+DEFINE LCD_EREG PORTA ‘LCD Enable Bacagı Hangi Porta baglı?<br/>
+DEFINE LCD_EBIT 7 ‘LCD Enable Bacagı Hangi bite baglı ?<br/>
+DEFINE LCD_RSREG PORTA ‘LCD RS Bacagı Hangi Porta baglı ?<br/>
+DEFINE LCD_RSBIT 6 ‘LCD RS bacagı Hangi Bite baglı ?<br/>
+DEFINE LCD_BITS 4 ‘LCD 4 bit mi yoksa 8 bit olarak baglı?<br/>
+DEFINE LCD_LINES 2 ‘LCD Kaç sıra yazabiliyor<br/>
+‘————————————————————————-<br/>
+ON INTERRUPT GoTo KESME ‘kesme oluşursa KESME adlı etikete git.<br/>
+OPTION_REG=%10000101 ‘Pull up dirençleri İPTAL- Bölme oranı 1/64.<br/>
+INTCON=%10100000 ‘Kesmeler aktif ve TMR0 kesmesi aktif<br/>
+TMR0=0<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giris çıkıs<br/>
+‘—————————————————————————-<br/>
+SAYAC VAR BYTE<br/>
+SN VAR BYTE[5]<br/>
+DAK VAR BYTE[5]<br/>
+SAAT VAR BYTE[5]<br/>
+GUN VAR BYTE<br/>
+DURUM var byte<br/>
+I VAR WORD<br/>
+ESKI VAR BYTE<br/>
+ROLE VAR BYTE<br/>
+‘—————————————————————————–<br/>
+CLEAR ‘tüm degiskenler sıfırlandı<br/>
+PAUSE 200<br/>
+LCDOUT $FE,1<br/>
+‘—————————————————————————–<br/>
+BASLA:<br/>
+LCDOUT $FE,$84,DEC2 SAAT[0],”:”,DEC2 DAK[0],”:”,DEC2 SN[0]<br/>
+DURUM=PORTB &amp; %1111<br/>
+IF DURUM&gt;0 THEN PORTB=DURUM<br/>
+ESKI=PORTB | DURUM*16<br/>
+ROLE=NCD ESKI ‘NCD KOMUTU SAYIDAKİ EN YÜKSEK HİGH OLAN BİTİ VERİR<br/>
+ROLE=((ROLE&gt;0)&amp;%1)*(ROLE-4) ‘BİR ÇOK İSİ GÖREN TEK BİR KOMUT<br/>
+LCDOUT $FE,$C0,”ROLE=”,#ROLE,” “,DEC2 SAAT[ROLE],”:”,DEC2<br/>
+DAK[ROLE],”:”,DEC2 SN[ROLE]<br/>
+PORTB=ESKI<br/>
+FOR I=0 TO 2000<br/>
+PAUSEUS 10<br/>
+NEXT I<br/>
+GOTO BASLA<br/>
+DISABLE<br/>
+KESME:<br/>
+SAYAC=SAYAC+1 ‘kesme sayacı 1 sn= 61(sayac) x 256 (Tmr0) x 64 (bölme)</span></strong></div><div><strong><span>IF SAYAC=61 then ‘61 adet kesme olunca 1 sn. süre geçiyor.(999424 us)<br/>
+SAYAC=0 ’sayaç sıfırlanıyor<br/>
+SN[0]=SN[0]+1<br/>
+IF ROLE=0 then ATLA<br/>
+SN[ROLE]=SN[ROLE]+1 ’saniye degeri bir artırılıyor<br/>
+ATLA: IF SN[0]=60 THEN ’saniye 60 olmus ise 1 dakika süre geçti ohalde<br/>
+SN[0]=0<br/>
+SN[ROLE]=0 ‘ saniye sıfırlanıyor<br/>
+DAK[0]=DAK[0]+1<br/>
+DAK[ROLE]=DAK[ROLE]+1 ‘ dakika degeri bir artırılıyor<br/>
+IF DAK[0]=60 then ‘dakika 60 olmus ise 1 saat süre geçti<br/>
+DAK[0]=0<br/>
+DAK[ROLE]=0 ‘ dakika sıfırlanıyor<br/>
+SAAT[0]=SAAT[0]+1<br/>
+SAAT[ROLE]=SAAT[ROLE]+1 ‘ saat degeri bir artırılıyor<br/>
+IF SAAT[0]=24 THEN ’saat 24 olmus ise 1 gün geçti<br/>
+SAAT[0]=0<br/>
+SAAT[ROLE]=0 ’saat sıfırlanıyor<br/>
+GUN=GUN+1 ‘gün degeri bir artırılıyor<br/>
+IF GUN=365 THEN GUN=0 ‘gün 365 olmus ise<br/>
+endif ‘gün sıfırlanıyor 1 yıl geçti<br/>
+ENDIF<br/>
+ENDIF<br/>
+ENDIF<br/>
+INTCON.2=0 ‘TMR0 Kesme bayragı sıfırlanıyor<br/>
+RESUME<br/>
+ENABLE<br/>
+END<br/>
+‘—————————————————————————–</span></strong><span><br/>
+</span><strong><span>Sayac=61</span></strong><span> satırında 61 sayısı 1 sn lik süreyi ayarlamaktadır. Program komutlarındaki gecikmeler nedeni daha hassas bir ayarlama gerekebilir. Bir saatle birlikte kontrol edilerek pic saati geri kalıyorsa degeri azaltılmalıdır. İleri gidiyor ise artırılmalıdır. Programla iligli genel açıklamalar; Bu programda ileri programlama teknikleri kullanılmıstır. Program satırlarını esas alarak açıklamaya çalısalım.<br/>
+‘——————————————————————————————————–</span><strong><span>LCDOUT $FE,$84,DEC2 SAAT[0],”:”,DEC2 DAK[0],”:”,DEC2 SN[0]</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Programda saat için 5 adet indeks li degisken kullanılmıs idi. Bunun amacı her bir röle için ayrı bir zaman tutmak ve sıfır ile çalısan indeks degerini de ana saat için kullanmaktır. Yani saat(0) sistemin ana saati olacak Saat(1-4) arası ise her bir röleye ait olacaktır. Yukarıdaki komutta görüldügü gibi [0] indeksi kullanılmıs ve dolayısıyla sistem ana saati </span><strong><span>LCD</span></strong><span> üst satırında ekrana verilmistir.<br/>
+‘——————————————————————————————————–</span><strong><span>DURUM=PORTB &amp; %1111</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Bu komutta Tusların hangisine basıldıgını kontrol etmek için tek bir komut kullanılmıstır. </span><strong><span>PORTB</span></strong><span> degeri okunarak 15 (%1111) sayısı ile AND islemi uygulanmıstır. Dolayısıyla PortB nin ilk 4 biti filtre edilerek ayrılmıs olacak ve bu bitlerden hangisi 1 ise (tusa basılmıs ise) belirlenecektir.</span></div><div><span>‘——————————————————————————————————–</span><strong><span>IF DURUM&gt;0 THEN PORTB=DURUM</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Burada herhangi bir tusa basılmıs ise eski basılmıs olanı iptal etmek ve yenisini devreye sokmak için bu komut kullanılmıstır.<br/>
+‘——————————————————————————————————–</span><strong><span>AKTIF=PORTB | DURUM*16</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Burada basılan tusa paralel olarak hangi rolelin aktif hale getirilecegi hesaplanmaktadır. Bir yerde basılan tuşun bit degeri 4 bit sola kaydırılarak PortaB ye verilmektedir. Hangi rölenin aktif oldugunu ise asagıdaki komut hesaplamaktadır.<br/>
+‘——————————————————————————————————–</span><strong><span>ROLE=NCD AKTIF</span></strong><span> </span><strong><span>‘NCD KOMUTU SAYIDAKİ EN YÜKSEK HİGH OLAN BİTİ VERİR</span></strong><span><br/>
+‘——————————————————————————————————–</span><strong><span>NCD</span></strong><span> komutu bir sayı içindeki en yüksek degerlikli high olan bitin konumunu verir. Örnek vermek gerekir ise</span><strong><span>SAYI=010000</span></strong><span> ise </span><strong><span>NCD </span></strong><span>SAYI komutu bize 5 sayısını verecektir. En yüksek high 5. sıradaki 1 dir. Bu komut yardımı ile basılan tusa göre hangi rolenin aktif oldugunu belirliyoruz. Ancak bu belirleme bize PORTB deki sırayı verecektir.</span></div><div><span>Yani 4-8 arası bir deger. Halbuki biz 1. Role – 2. Role … 4.Role demek isteriz. Dolayısıyla bu degeri 1-4 arası degere indirgememiz gerekir. Burada islem aslında basit Hesaplanan degerden 4 çıkartır isek bize 1-4 arası degeri verir. Ancak ya deger 0 (sıfır) ise. Bu durumda 0-4 bize 65531 gibi bir deger verirki buda sistemin hata yapmasına sebep olur. Bu durumda sayet Role degeri sıfır ise bu hesabı yapmadan atlamamız gerekir. Akıllıca bir programlama mantıgı ile bu isi tek komutla halledebiliriz.<br/>
+‘——————————————————————————————————–</span><strong><span>ROLE=((ROLE&gt;0) &amp; %1)*(ROLE - 4) ‘BİR ÇOK İSİ GÖREN TEK BİR KOMUT</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Bu komut bizi birkaç defa if kullanmaktan kurtarır. Bu komut asagıdaki program satırlarının görevini yapmaktadır;<br/>
+‘——————————————————————————————————–</span><strong><span>IF ROLE=0 THEN </span></strong><span>Hesap yapma ve Ekrana bir sey yazma</span><strong><span>IF ROLE&gt;0 then ROLE= Role-4</span></strong><span> hesabını yap<br/>
+‘——————————————————————————————————–</span><strong><span>Simdi komut nasıl çalısıyor bir bakalım;</span></strong><span><br/>
+</span><strong><span>(ROLE&gt;0) &amp; %1 </span></strong><span>komutunda </span><strong><span>(ROLE&gt;0)</span></strong><span> ifadesi bir logik operatör kullanan bir aritmetik ifadesidir. </span><strong><span>Role&gt;0</span></strong><span> ise degeri 255, Role=0 ise degeri 0 dır. Dolayısıyla bunu %1 ile </span><strong><span>AND </span></strong><span>islemine tabi tutar isek Role 0 dan büyük olunca degeri 1, sıfıra esit olunca ise degeri 0 olarak gelir. Bu ifadeyi </span><strong><span>(ROLE-4)</span></strong><span> ile çarpar isek istedigimizi elde etmis oluruz.</span><strong><span>Yani:</span></strong><span><br/>
+</span><strong><span>1 x (Role-4)</span></strong><span> burada Role 0 dan büyük oldugundan role degeri 1-4 arası çıkacaktır.</span><strong><span>0 x (Role-4) </span></strong><span>ki burada Role 0 oldugundan sonuç 0 olacaktır.<br/>
+‘——————————————————————————————————–</span><strong><span>LCDOUT $FE,$C0,”ROLE=”,#ROLE,” “,DEC2 SAAT[ROLE],”:”,DEC2 D<br/>
+DAK[ROLE],”:”,DEC2 SN[ROLE]</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Komutu ile aktif olan role ile o röleye ait saat degeri ekrana getirilmektedir.<br/>
+‘——————————————————————————————————–</span><strong><span>PORTB=AKTIF</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Aktif olan role ekrana verilmektedir. Kesme oluşmasında kolaylık saglamak üzere 20 ms lik gecikme us cinsinden döngü kullanılarak verilmektedir.<br/>
+‘——————————————————————————————————–</span><strong><span>FOR I=0 TO 2000<br/>
+PAUSEUS 10<br/>
+NEXT I</span></strong><span><br/>
+‘——————————————————————————————————–</span><strong><span>GOTO BASLA</span></strong><span><br/>
+‘——————————————————————————————————–<br/>
+Goto basla ile program tekrar basa yönlendirilmektedir. Programın Kesme kısmında ise 1 sn lik süre Sayac=61 sayısı ile kontrol edilmekte ve bu süre sonunda Sn=Sn+1 komutu ile degeri bir artırılmaktadır. Sn degerinin 60’ı geçmesi halinde dakika ve paralel olarak saat ve gün degerleri artırılmaktadır.</span></div><div><span>Buradaki diger önemli nokta ise o andaki ROLE degeri ki burada indeks olarak kullanılmakta esas alınarak o roleye ait saat degeri ise ayrıca saydırılmaktadır. Tabiiki hiçbir role aktif degil ise role degeri 0 olacağından sistem ana saati saydırılmaktadır.</span></div></div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-375.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

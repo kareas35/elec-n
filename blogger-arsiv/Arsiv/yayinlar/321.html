@@ -1,0 +1,33 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PİC VE RÖLE İLE LED YAKMA DEVRE VE DENEME PROGRAMI | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PİC VE RÖLE İLE LED YAKMA DEVRE VE DENEME PROGRAMI</h1><div>2010-04-05 · LED ve Göstergeler</div></header><main><article class="panel"><b><span>PİC VE RÖLE İLE LED YAKMA DEVRE VE DENEME PROGRAMI</span></b><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPXo48FrWjG5rhTCjpKWx4pExV1el2UjEWmLYMqNYpBFhteswFZoZn-leddW3qpZWHWJ3tIilk6GdPchkuQ4RMhMeVMnMyYy6V_FQNVCgH_dIMkN7888olI5MZO9hrXh7GjQx1MSKc6qYT/s1600/led_role.png" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjPXo48FrWjG5rhTCjpKWx4pExV1el2UjEWmLYMqNYpBFhteswFZoZn-leddW3qpZWHWJ3tIilk6GdPchkuQ4RMhMeVMnMyYy6V_FQNVCgH_dIMkN7888olI5MZO9hrXh7GjQx1MSKc6qYT/s320/led_role.png"/></a></div>Pic basıc pro ile yazılan program Şu şekilde çalışacaktır.Program <span>PortA.0</span> pinine bağlı <strong>LED</strong> i kontrol edecek ve ayrıca <span>PortB.0</span><span> </span>pin’ine bağlı röleyi açıp kapayacaktır. Role çekildiğinde <span>PortA.0</span> pinine bağlı <strong>LED</strong> yanacak. Role bırakınca <strong>LED</strong>’de sönecektir. Role çekili kalma süresi <strong>2 sn</strong>. yani 2<strong>000 ms</strong>. olacaktır.<br/>
+<b>MALAZEME LİSTESİ</b><br/>
+C1 C2 =22pF<br/>
+R1       = 330<br/>
+R2        =1k<br/>
+D1 D2  = Led<br/>
+Q1        =NPN <br/>
+IC         =16f84<br/>
+XTAL   =4 Mhz<br/>
+RÖLE<br/>
+<span></span><br/>
+<h3><b>PIC Basic Pro</b> ile yazılmış program aşağıdadır.</h3><br/>
+<!-- more --><br/>
+<strong><span>TRISA=0</span></strong> <span>‘bu ifade “TrisA=000”e eşdeğerdir.</span><br/>
+<strong><span>TRISB=0</span></strong><br/>
+<strong><span>PortA=0<br/>
+ PortB=0</span></strong><br/>
+<strong><span>ROLEAC:</span><br/>
+<span>HIGH PORTB.0</span></strong> <span>‘role çektirildi</span><br/>
+<strong><span>PAUSE 500</span></strong> <span>‘500 ms bekleme</span><br/>
+<strong><span>HIGH PORTA.0</span></strong> <span>‘Led yandı</span><br/>
+<strong><span>PAUSE 1500</span></strong> <span>‘1500 ms bekleme</span><br/>
+<strong><span>LOW PORTA.0</span></strong> <span>‘Led söndü</span><br/>
+<strong><span>PAUSE 500</span></strong><span> ‘500 ms bekleme</span><br/>
+<strong><span>LOW PORTB.0</span></strong> <span>‘Role bıraktı</span><br/>
+<strong><span>PAUSE 500</span></strong><span> ‘500 ms bekleme</span><br/>
+<strong><span>GOTO ROLEAC</span></strong> <span>‘Roleac etiketine git</span><br/>
+<strong><span>END</span></strong> <span>‘programın burada bittiğini ifade eder.</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/04/pic-ve-role-ile-led-yakma-devre-ve.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

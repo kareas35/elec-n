@@ -1,0 +1,207 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Version:0.9 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Version:0.9</h1><div>2010-08-01 · Diğer Elektronik Projeleri</div></header><main><article class="panel">Version:0.9<br/>
+StartHTML:0000000105<br/>
+EndHTML:0000009599<br/>
+StartFragment:0000001197<br/>
+EndFragment:0000009583<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<pre><code><span>#include &lt;REGX51.H&gt;
+
+</span><span>void</span><span>        bekle()
+        {
+                </span><span>unsigned</span><span> </span><span>int</span><span> i;
+                </span><span>for</span><span> (i=</span><span>0</span><span>;i&lt;</span><span>7600</span><span>;i++)
+                        {
+                                ;
+                        }
+        }
+
+
+</span><span>void</span><span>        Hizi_Arttir()        interrupt </span><span>0
+</span><span>        {
+                </span><span>while</span><span>(!TI);
+                SBUF=</span><span>0xF1</span><span>;        </span><span>// Hizi arttir butonuna basilinca aliciya F1H gonder
+</span><span>                bekle();
+        }
+
+</span><span>void</span><span>        Hizi_Azalt()        interrupt </span><span>2
+</span><span>        {
+                </span><span>while</span><span>(!TI);
+                SBUF=</span><span>0xF2</span><span>;        </span><span>// Hizi azalt butonuna basilinca aliciya F2H gonder        
+</span><span>                bekle();
+        }
+
+</span><span>void</span><span>        main()
+        {
+                SCON=</span><span>0x40</span><span>;        </span><span>// 8 bit uart modu
+</span><span>                TMOD=</span><span>0x20</span><span>;        </span><span>// Z/S 1 icin 8 bit otomatik yukleme modu
+</span><span>                TH1=</span><span>0xE8</span><span>;        </span><span>// yaklasik 1200 bit/s (11.059 Mhz kristal icin)
+</span><span>                TR1=</span><span>1</span><span>;                </span><span>// Z/S'i calistir
+</span><span>                TI=</span><span>1</span><span>;
+                EX0=</span><span>1</span><span>;                </span><span>// INT0'in yetkilendirilmesi
+</span><span>                EX1=</span><span>1</span><span>;                </span><span>// INT1'in yetkilendirilmesi
+</span><span>                IT0=</span><span>1</span><span>;                </span><span>// INT0 dusen kenarda tetiklensin
+</span><span>                IT1=</span><span>1</span><span>;                </span><span>// INT1 dusen kenarda tetiklensin
+</span><span>                EA=</span><span>1</span><span>;                </span><span>// Butun kesmelerin yetkilendirilmesi
+</span><span>                P3=</span><span>0xFF</span><span>;        </span><span>//Butonlar giris icin ayarlandi
+</span><span>                </span><span>while</span><span>(</span><span>1</span><span>)
+                        {
+                                ;
+                        }
+
+
+        }
+</span></code></pre><br/>
+<br/>
+<br/>
+<b>PWM sinyali ile DC Motor kontrolü (Visual Basic)</b> <br/>
+<span><span><span>Public Enable As Integer, Phase As Integer, duty_cycle As Integer, a As Integer<br/>
+<br/>
+Const PortA = &amp;H378 'Paralel Port adresi<br/>
+<br/>
+<br/>
+Sub delay(delay_time As Double)<br/>
+<br/>
+'Gecikmeyi sağlayan fonksiyon<br/>
+<br/>
+temp_timer = Timer<br/>
+<br/>
+Do<br/>
+<br/>
+Loop While (Timer - temp_timer) &lt; delay_time<br/>
+<br/>
+End Sub<br/>
+<br/>
+<br/>
+Sub pwm(total_time As Double, duty_cycle As Integer)<br/>
+<br/>
+Dim OnTime As Double<br/>
+<br/>
+Dim OffTime As Double<br/>
+<br/>
+OnTime = total_time * duty_cycle / 100<br/>
+<br/>
+OffTime = total_time - OnTime<br/>
+<br/>
+Enable = 1<br/>
+<br/>
+Out PortA, Enable + Phase<br/>
+<br/>
+delay OnTime<br/>
+<br/>
+Enable = 0<br/>
+<br/>
+Out PortA, Enable + Phase<br/>
+<br/>
+delay OffTime<br/>
+<br/>
+Label1.Caption = duty_cycle<br/>
+<br/>
+Label1.Refresh<br/>
+<br/>
+End Sub<br/>
+<br/>
+<br/>
+Private Sub Command1_Click()<br/>
+<br/>
+If duty_cycle &lt; 100 Then<br/>
+<br/>
+duty_cycle = duty_cycle + 5<br/>
+<br/>
+Enable = 1<br/>
+<br/>
+Label1.Caption = duty_cycle<br/>
+<br/>
+Label1.Refresh<br/>
+<br/>
+End If<br/>
+<br/>
+End Sub<br/>
+<br/>
+<br/>
+Private Sub Command2_Click()<br/>
+<br/>
+a = 0<br/>
+<br/>
+Do<br/>
+<br/>
+DoEvents<br/>
+<br/>
+If a = 1 Then Exit Do<br/>
+<br/>
+pwm 0.1, duty_cycle<br/>
+<br/>
+Loop<br/>
+<br/>
+End Sub<br/>
+<br/>
+Private Sub Command3_Click()<br/>
+<br/>
+If duty_cycle &gt; 5 Then<br/>
+<br/>
+duty_cycle = duty_cycle - 5<br/>
+<br/>
+Enable = 1<br/>
+<br/>
+Label1.Caption = duty_cycle<br/>
+<br/>
+Label1.Refresh<br/>
+<br/>
+End If<br/>
+<br/>
+End Sub<br/>
+<br/>
+<br/>
+Private Sub Command4_Click()<br/>
+<br/>
+'Ters yönde çalıştırma rutini<br/>
+<br/>
+Enable = 1<br/>
+<br/>
+If Phase = 0 Then<br/>
+<br/>
+Phase = 2<br/>
+<br/>
+Else<br/>
+<br/>
+Phase = 0<br/>
+<br/>
+End If<br/>
+<br/>
+End Sub<br/>
+<br/>
+<br/>
+Private Sub Command5_Click()<br/>
+<br/>
+'Durdurma ve Do-Loop tan çıkış<br/>
+<br/>
+a = 1<br/>
+<br/>
+Out PortA, 0<br/>
+<br/>
+End Sub<br/>
+<br/>
+<br/>
+Private Sub Form_Load()<br/>
+<br/>
+duty_cycle = 50<br/>
+<br/>
+Phase = 0<br/>
+<br/>
+End Sub</span></span></span> <br/>
+<br/>
+<span><br/>
+<br/>
+<br/>
+<div align="center"><img loading="lazy"/><br/>
+<br/>
+<br/>
+</div></span></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/08/version09.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

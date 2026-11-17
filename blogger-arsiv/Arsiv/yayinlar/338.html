@@ -1,0 +1,320 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LED ANİMASYON PİK PROGRAMI | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>LED ANİMASYON PİK PROGRAMI</h1><div>2010-02-11 · LED ve Göstergeler</div></header><main><article class="panel">' FANCY LEDs<br/>
+' Written for Thibault in March 2003<br/>
+' Version 2<br/>
+<br/>
+<!-- more -->'<br/>
+' Olivier de Broqueville<br/>
+'<br/>
+' Internal osc.<br/>
+<br/>
+DEVICE 16F628<br/>
+<br/>
+REMARKS=ON<br/>
+<br/>
+CONFIG WDT_OFF, BODEN_ON,INTRC_OSC_NOCLKOUT,LVP_OFF,CP_OFF, PWRTE_ON, MCLRE_OFF    <br/>
+<br/>
+DECLARE XTAL = 4 <br/>
+<br/>
+<br/>
+DIM IMG  ' Image pointer<br/>
+DIM FREQ   ' delay between each frame<br/>
+DIM T   ' work variable<br/>
+<br/>
+<br/>
+SYMBOL L1 = PORTA.4<br/>
+SYMBOL L2 = PORTA.3<br/>
+SYMBOL L3 = PORTA.2<br/>
+SYMBOL L4 = PORTA.1<br/>
+SYMBOL L5 = PORTA.0<br/>
+SYMBOL L6 = PORTA.7<br/>
+<br/>
+SYMBOL V  = PORTA.6   ' Port assignment for POT <br/>
+<br/>
+SYMBOL PS = 2     ' Value used to smooth the display of figures by adding a small delay <br/>
+<br/>
+TRISA=%01000000     ' Set PORTA for OUTPUT (except A.6 -&gt; POT). In charge of LINES <br/>
+TRISB=000000    ' Set PORTB for OUTPUT. In charge of columns<br/>
+<br/>
+'*****************************************************************************<br/>
+<br/>
+DEBUT:<br/>
+LOW L1: LOW L2 : LOW L3: LOW L4: LOW L5: LOW L6  ' All LEDs OFF<br/>
+<br/>
+IMAGE:<br/>
+FOR IMG = 0 TO 236               ' Scan 237 images<br/>
+FREQ= POT V,64          ' Read POT value<br/>
+IF FREQ&lt;2 THEN FREQ=2         ' If no POT connected assume result is 2    FOR T=1 TO FREQ          ' Progression of pictures                     ' Each data represents a column =&gt; 6 data needed for a <br/>
+' complete frame<br/>
+' Now let's scan (and multiplex) each row<br/>
+<br/>
+HIGH L1:LOW PORTB        ' Line 1, clear port b      <br/>
+PORTB=LREAD AFFI+(IMG*6)      ' And appropriate DATA to illuminate LEDs of a column<br/>
+DELAYMS ps           ' Wait a bit to smooth display<br/>
+<br/>
+LOW L1:HIGH L2:LOW PORTB      ' Line 2, clear port b <br/>
+PORTB=LREAD AFFI+(IMG*6)+1     ' And appropriate DATA to illuminate LEDs of a column<br/>
+DELAYMS ps           ' Wait a bit to smooth display<br/>
+<br/>
+LOW L2:HIGH L3:LOW PORTB      ' Line 3, clear port b <br/>
+PORTB=LREAD AFFI+(IMG*6)+2     ' And appropriate DATA to illuminate LEDs of a column<br/>
+DELAYMS ps           ' Wait a bit to smooth display<br/>
+<br/>
+LOW L3:HIGH L4:LOW PORTB      ' Line 4, clear port b <br/>
+PORTB=LREAD AFFI+(IMG*6)+3     ' And appropriate DATA to illuminate LEDs of a column<br/>
+DELAYMS ps           ' Wait a bit to smooth display<br/>
+<br/>
+LOW L4:HIGH L5:LOW PORTB      ' Line 5, clear port b <br/>
+PORTB=LREAD AFFI+(IMG*6)+4     ' And appropriate DATA to illuminate LEDs of a column<br/>
+DELAYMS ps           ' Wait a bit to smooth display<br/>
+<br/>
+LOW L5:HIGH L6:LOW PORTB      ' Line 6, clear port b <br/>
+PORTB=LREAD AFFI+(IMG*6)+5     ' And appropriate DATA to illuminate LEDs of a column<br/>
+DELAYMS ps           ' Wait a bit to smooth display<br/>
+<br/>
+LOW L6:LOW PORTB       ' And ALL OFF<br/>
+NEXT T<br/>
+NEXT IMG<br/>
+GOTO IMAGE                ' And next loop through all images<br/>
+<br/>
+' ***************************************************************************** <br/>
+' DATA file. The name has to be AFFI<br/>
+<br/>
+AFFI:                      ' DATA: Each data= one line / 6 data= one frame<br/>
+LDATA  32, 0, 0, 0, 0, 0<br/>
+LDATA  16, 32, 0, 0, 0, 0<br/>
+LDATA  8, 16, 32, 0, 0, 0<br/>
+LDATA  4, 8, 16, 32, 0, 0<br/>
+LDATA  2, 4, 8, 16, 32, 0<br/>
+LDATA  1, 2, 4, 8, 16, 32<br/>
+LDATA  0, 1, 2, 4, 8, 16<br/>
+LDATA  0, 0, 1, 2, 4, 8<br/>
+LDATA  0, 0, 0, 1, 2, 4<br/>
+LDATA  0, 0, 0, 0, 1, 2<br/>
+LDATA  0, 0, 0, 0, 0, 1<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 32<br/>
+LDATA  0, 0, 0, 0, 32, 16<br/>
+LDATA  0, 0, 0, 32, 16, 8<br/>
+LDATA  0, 0, 32, 16, 8, 4<br/>
+LDATA  0, 32, 16, 8, 4, 2<br/>
+LDATA  32, 16, 8, 4, 2, 1<br/>
+LDATA  16, 8, 4, 2, 1, 0<br/>
+LDATA  8, 4, 2, 1, 0, 0<br/>
+LDATA  4, 2, 1, 0, 0, 0<br/>
+LDATA  2, 1, 0, 0, 0, 0<br/>
+LDATA  1, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  32, 0, 0, 0, 0, 0<br/>
+LDATA  48, 0, 0, 0, 0, 0<br/>
+LDATA  56, 0, 0, 0, 0, 0<br/>
+LDATA  28, 0, 0, 0, 0, 0<br/>
+LDATA  14, 0, 0, 0, 0, 0<br/>
+LDATA  7, 0, 0, 0, 0, 0<br/>
+LDATA  3, 1, 0, 0, 0, 0<br/>
+LDATA  1, 1, 1, 0, 0, 0<br/>
+LDATA  0, 1, 1, 1, 0, 0<br/>
+LDATA  0, 0, 1, 1, 1, 0<br/>
+LDATA  0, 0, 0, 1, 1, 1<br/>
+LDATA  0, 0, 0, 0, 1, 3<br/>
+LDATA  0, 0, 0, 0, 0, 7<br/>
+LDATA  0, 0, 0, 0, 0, 14<br/>
+LDATA  0, 0, 0, 0, 0, 28<br/>
+LDATA  0, 0, 0, 0, 0, 56<br/>
+LDATA  0, 0, 0, 0, 32, 48<br/>
+LDATA  0, 0, 0, 32, 32, 32<br/>
+LDATA  0, 0, 32, 32, 32, 0<br/>
+LDATA  0, 32, 32, 32, 0, 0<br/>
+LDATA  0, 48, 32, 0, 0, 0<br/>
+LDATA  0, 56, 0, 0, 0, 0<br/>
+LDATA  0, 28, 0, 0, 0, 0<br/>
+LDATA  0, 14, 0, 0, 0, 0<br/>
+LDATA  0, 6, 2, 0, 0, 0<br/>
+LDATA  0, 2, 2, 2, 0, 0<br/>
+LDATA  0, 0, 2, 2, 2, 0<br/>
+LDATA  0, 0, 0, 2, 6, 0<br/>
+LDATA  0, 0, 0, 0, 14, 0<br/>
+LDATA  0, 0, 0, 0, 28, 0<br/>
+LDATA  0, 0, 0, 16, 24, 0<br/>
+LDATA  0, 0, 16, 16, 16, 0<br/>
+LDATA  0, 0, 24, 16, 0, 0<br/>
+LDATA  0, 0, 28, 0, 0, 0<br/>
+LDATA  0, 0, 12, 4, 0, 0<br/>
+LDATA  0, 0, 4, 12, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  18, 18, 30, 30, 18, 18<br/>
+LDATA  18, 18, 30, 30, 18, 18<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  28, 18, 28, 18, 18, 28<br/>
+LDATA  28, 18, 28, 18, 18, 28<br/>
+LDATA  12, 18, 18, 30, 18, 18<br/>
+LDATA  12, 18, 18, 30, 18, 18<br/>
+LDATA  18, 18, 18, 18, 18, 12<br/>
+LDATA  18, 18, 18, 18, 18, 12<br/>
+LDATA  16, 16, 16, 16, 16, 30<br/>
+LDATA  16, 16, 16, 16, 16, 30<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  12, 12, 63, 63, 12, 12<br/>
+LDATA  51, 45, 33, 32, 18, 12<br/>
+LDATA  12, 30, 63, 30, 12, 12<br/>
+LDATA  12, 12, 12, 30, 12, 18<br/>
+LDATA  12, 30, 45, 45, 30, 12<br/>
+LDATA  51, 63, 18, 18, 12, 12<br/>
+LDATA  12, 12, 63, 63, 12, 12<br/>
+LDATA  18, 51, 0, 0, 51, 18<br/>
+LDATA  33, 0, 0, 0, 0, 33<br/>
+LDATA  0, 0, 12, 12, 0, 0<br/>
+LDATA  0, 30, 18, 18, 30, 0<br/>
+LDATA  63, 33, 33, 33, 33, 63<br/>
+LDATA  0, 30, 18, 18, 30, 0<br/>
+LDATA  0, 0, 12, 12, 0, 0<br/>
+LDATA  0, 18, 0, 0, 18, 0<br/>
+LDATA  33, 0, 0, 0, 0, 33<br/>
+LDATA  33, 0, 0, 0, 0, 33<br/>
+LDATA  0, 18, 0, 0, 18, 0<br/>
+LDATA  0, 0, 12, 12, 0, 0<br/>
+LDATA  1, 3, 12, 12, 0, 0<br/>
+LDATA  32, 48, 12, 12, 0, 0<br/>
+LDATA  0, 0, 12, 12, 16, 48<br/>
+LDATA  0, 0, 12, 12, 3, 1<br/>
+LDATA  12, 12, 0, 12, 12, 12<br/>
+LDATA  0, 0, 0, 12, 12, 12<br/>
+LDATA  12, 12, 0, 12, 12, 12<br/>
+LDATA  0, 0, 0, 12, 12, 12<br/>
+LDATA  12, 12, 0, 12, 12, 12<br/>
+LDATA  63, 12, 0, 0, 0, 0<br/>
+LDATA  12, 63, 0, 0, 0, 0<br/>
+LDATA  0, 18, 30, 30, 18, 0<br/>
+LDATA  0, 0, 63, 63, 0, 0<br/>
+LDATA  0, 18, 30, 30, 18, 0<br/>
+LDATA  0, 0, 63, 63, 0, 0<br/>
+LDATA  0, 18, 30, 30, 18, 0<br/>
+LDATA  0, 0, 63, 63, 0, 0<br/>
+LDATA  0, 0, 33, 33, 0, 0<br/>
+LDATA  0, 0, 18, 18, 0, 0<br/>
+LDATA  0, 0, 12, 12, 0, 0<br/>
+LDATA  0, 12, 0, 0, 12, 0<br/>
+LDATA  12, 0, 0, 0, 0, 12<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  0, 30, 30, 30, 30, 0<br/>
+LDATA  0, 30, 30, 30, 30, 0<br/>
+LDATA  0, 0, 12, 12, 0, 0<br/>
+LDATA  0, 0, 12, 12, 0, 0<br/>
+LDATA  0, 0, 63, 63, 0, 0<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  0, 0, 63, 63, 0, 0<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  12, 63, 12, 12, 12, 12<br/>
+LDATA  12, 12, 63, 12, 12, 12<br/>
+LDATA  12, 12, 12, 63, 12, 12<br/>
+LDATA  12, 12, 12, 12, 63, 12<br/>
+LDATA  12, 12, 12, 12, 12, 63<br/>
+LDATA  63, 51, 51, 51, 51, 51<br/>
+LDATA  51, 63, 51, 51, 51, 51<br/>
+LDATA  51, 51, 63, 51, 51, 51<br/>
+LDATA  51, 51, 51, 63, 51, 51<br/>
+LDATA  51, 51, 51, 51, 63, 51<br/>
+LDATA  51, 51, 51, 51, 51, 63<br/>
+LDATA  12, 0, 0, 0, 0, 0<br/>
+LDATA  0, 12, 0, 0, 0, 0<br/>
+LDATA  0, 0, 12, 0, 0, 0<br/>
+LDATA  0, 0, 0, 12, 0, 0<br/>
+LDATA  0, 0, 0, 0, 12, 0<br/>
+LDATA  0, 0, 0, 0, 0, 12<br/>
+LDATA  3, 0, 0, 0, 0, 0<br/>
+LDATA  0, 3, 0, 0, 0, 0<br/>
+LDATA  0, 0, 3, 0, 0, 0<br/>
+LDATA  0, 0, 0, 3, 0, 0<br/>
+LDATA  0, 0, 0, 0, 3, 0<br/>
+LDATA  0, 0, 0, 0, 0, 3<br/>
+LDATA  48, 0, 0, 0, 0, 0<br/>
+LDATA  0, 48, 0, 0, 0, 0<br/>
+LDATA  0, 0, 48, 0, 0, 0<br/>
+LDATA  0, 0, 0, 48, 0, 0<br/>
+LDATA  0, 0, 0, 0, 48, 0<br/>
+LDATA  0, 0, 0, 0, 0, 48<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  18, 18, 30, 30, 18, 18<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  28, 18, 30, 17, 17, 30<br/>
+LDATA  12, 18, 30, 18, 18, 18<br/>
+LDATA  18, 18, 18, 18, 18, 12<br/>
+LDATA  16, 16, 16, 16, 16, 30<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  12, 12, 63, 63, 12, 12<br/>
+LDATA  33, 33, 33, 18, 12, 12<br/>
+LDATA  12, 18, 30, 18, 18, 18<br/>
+LDATA  16, 16, 16, 16, 16, 30<br/>
+LDATA  30, 16, 28, 28, 16, 30<br/>
+LDATA  33, 49, 41, 37, 35, 33<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  33, 49, 41, 37, 35, 33<br/>
+LDATA  30, 16, 28, 28, 16, 30<br/>
+LDATA  0, 30, 0, 30, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  18, 45, 33, 18, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  18, 18, 30, 30, 18, 18<br/>
+LDATA  18, 18, 30, 30, 18, 18<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  12, 12, 12, 12, 12, 12<br/>
+LDATA  28, 18, 28, 18, 18, 28<br/>
+LDATA  28, 18, 28, 18, 18, 28<br/>
+LDATA  12, 18, 18, 30, 18, 18<br/>
+LDATA  12, 18, 18, 30, 18, 18<br/>
+LDATA  18, 18, 18, 18, 18, 12<br/>
+LDATA  18, 18, 18, 18, 18, 12<br/>
+LDATA  16, 16, 16, 16, 16, 30<br/>
+LDATA  16, 16, 16, 16, 16, 30<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  63, 12, 12, 12, 12, 12<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  0, 0, 0, 0, 0, 0<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  63, 63, 63, 63, 63, 63<br/>
+LDATA  0, 0, 0, 0, 0, 0</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/02/led-animasyon-pik-programi.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

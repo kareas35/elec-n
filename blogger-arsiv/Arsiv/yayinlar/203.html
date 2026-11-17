@@ -1,0 +1,97 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DS1307 + PIC16F877A Gerçek zamanlı saat | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>DS1307 + PIC16F877A Gerçek zamanlı saat</h1><div>2010-04-22 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span><h1><span><span><span><span><span><div><div><div><div><div><div><div><div><div><h3><span><span><br/>
+</span></span></h3><h3><span>DS1307 + PIC16F877A    </span></h3><h3><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3P78kojBR-UH9XbpwZ-VpY31ScKGkfcQqi9IkQ_Aq1p_TSLJS3h7VTKwYCPVkWaiitV3Hlwk1FZ2W4gcvscGgEQ7ONHvqwCeVDaKbF3Gx2yCAYRynSiwYbS6bUGHX7erZT2wHScBqhAgq/s1600/RTC-sim.gif" imageanchor="1" rel="noopener noreferrer"><img alt="Schematic of DS1307 and PIC16F877a or PIC16F887" border="0" height="134" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3P78kojBR-UH9XbpwZ-VpY31ScKGkfcQqi9IkQ_Aq1p_TSLJS3h7VTKwYCPVkWaiitV3Hlwk1FZ2W4gcvscGgEQ7ONHvqwCeVDaKbF3Gx2yCAYRynSiwYbS6bUGHX7erZT2wHScBqhAgq/s200/RTC-sim.gif" width="200"/></a><span>   </span></h3><h3><span><br/>
+</span></h3><h3><span><br/>
+</span></h3><h3><span><br/>
+</span></h3><h3><span><br/>
+</span></h3><h3><span>Ds 1307 ve PIC 16F877 A PIC kullanılarak yapılmış gerçek zaman saati alnızca Micro C Kompiler kullanmanızı tavsiye ederim kod aşşağıda verilmiştir</span></h3><div><span><br/>
+</span></div><div><span><br/>
+</span></div></div><div><br/>
+<span><br/>
+<span><i>//Sample code for </i></span><br/>
+<span><i>//DS1307 RTC Ineterfacing with PIC16F877A </i></span><br/>
+<span><i>//Coded by Pynn Pynn </i></span><br/>
+<span><i>//Compiler: mikroC 8.0.0 </i></span><br/>
+<span><i>//http://picnote.blogspot.com </i></span><br/>
+<span><i>//07/06/2008 </i></span><br/>
+<span><i>//Use with your own risk </i></span><br/>
+<br/>
+<span>unsigned</span> <span>short</span> <span>read_ds1307</span>(<span>unsigned</span> <span>short</span> <span>address</span> );<br/>
+<span>unsigned</span> <span>short</span> <span>sec</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>minute</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>hour</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>day</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>date</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>month</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>year</span>;<br/>
+<span>unsigned</span> <span>short</span> <span>data</span>;<br/>
+<span>char</span> <span>time</span>[<span>9</span>];<br/>
+<span>char</span> <span>ddate</span>[<span>11</span>];<br/>
+<span></span></span><br/>
+<span><span>unsigned</span> <span>char</span> <span>BCD2UpperCh</span>(<span>unsigned</span> <span>char</span> <span>bcd</span>);<br/>
+<span>unsigned</span> <span>char</span> <span>BCD2LowerCh</span>(<span>unsigned</span> <span>char</span> <span>bcd</span>);<br/>
+<br/>
+<span>void</span> <span>main</span>(){<br/>
+<br/>
+<span>I2C_Init</span>(<span>100000</span>); <span><i>//DS1307 I2C is running at 100KHz</i></span><span>PORTB</span> = <span>0</span>;<br/>
+<span>TRISB</span> = <span>0</span>; <span><i>// Configure PORTB as output </i></span><span><i><br/>
+</i></span><span>TRISC</span> = <span>0xFF</span>;<br/>
+<span>Lcd_Init</span>(&amp;<span>PORTB</span>); <span><i>// Initialize LCD connected to PORTB</i></span><span>Lcd_Cmd</span>(<span>Lcd_CLEAR</span>); <span><i>// Clear display</i></span><span>Lcd_Cmd</span>(<span>Lcd_CURSOR_OFF</span>); <span><i>// Turn cursor off</i></span><span>Lcd_Out</span>(<span>1</span>, <span>1</span>, <span>"TIME:"</span>);<br/>
+<span>Lcd_Out</span>(<span>2</span>, <span>1</span>, <span>"DATE:"</span>);<br/>
+<br/>
+<span><b>while</b></span>(<span>1</span>)<br/>
+{<br/>
+<span>sec</span>=<span>read_ds1307</span>(<span>0</span>); <span><i>// read second</i></span><span>minute</span>=<span>read_ds1307</span>(<span>1</span>); <span><i>// read minute</i></span><span>hour</span>=<span>read_ds1307</span>(<span>2</span>); <span><i>// read hour</i></span><span>day</span>=<span>read_ds1307</span>(<span>3</span>); <span><i>// read day</i></span><span>date</span>=<span>read_ds1307</span>(<span>4</span>); <span><i>// read date</i></span><span>month</span>=<span>read_ds1307</span>(<span>5</span>); <span><i>// read month</i></span><span>year</span>=<span>read_ds1307</span>(<span>6</span>); <span><i>// read year</i></span></span><br/>
+<span><span>time</span>[<span>0</span>] = <span>BCD2UpperCh</span>(<span>hour</span>);<br/>
+<span>time</span>[<span>1</span>] = <span>BCD2LowerCh</span>(<span>hour</span>);<br/>
+<span>time</span>[<span>2</span>] = <span>':'</span>;<br/>
+<span>time</span>[<span>3</span>] = <span>BCD2UpperCh</span>(<span>minute</span>);<br/>
+<span>time</span>[<span>4</span>] = <span>BCD2LowerCh</span>(<span>minute</span>);<br/>
+<span>time</span>[<span>5</span>] = <span>':'</span>;<br/>
+<span>time</span>[<span>6</span>] = <span>BCD2UpperCh</span>(<span>sec</span>);<br/>
+<span>time</span>[<span>7</span>] = <span>BCD2LowerCh</span>(<span>sec</span>);<br/>
+<span>time</span>[<span>8</span>] = <span>'\0'</span>;<br/>
+<br/>
+<span>ddate</span>[<span>0</span>] = <span>BCD2UpperCh</span>(<span>date</span>);<br/>
+<span>ddate</span>[<span>1</span>] = <span>BCD2LowerCh</span>(<span>date</span>);<br/>
+<span>ddate</span>[<span>2</span>] =<span>'/'</span>;<br/>
+<span>ddate</span>[<span>3</span>] = <span>BCD2UpperCh</span>(<span>month</span>);<br/>
+<span>ddate</span>[<span>4</span>] = <span>BCD2LowerCh</span>(<span>month</span>);<br/>
+<span>ddate</span>[<span>5</span>] =<span>'/'</span>;<br/>
+<span>ddate</span>[<span>6</span>] = <span>'2'</span>;<br/>
+<span>ddate</span>[<span>7</span>] = <span>'0'</span>;<br/>
+<span>ddate</span>[<span>8</span>] = <span>BCD2UpperCh</span>(<span>year</span>);<br/>
+<span>ddate</span>[<span>9</span>] = <span>BCD2LowerCh</span>(<span>year</span>);<br/>
+<span>ddate</span>[<span>10</span>] = <span>'\0'</span>;<br/>
+<br/>
+<span>Lcd_Out</span>(<span>1</span>,<span>6</span>,<span>time</span>);<br/>
+<span>Lcd_Out</span>(<span>2</span>,<span>6</span>,<span>ddate</span>);<br/>
+<span>Delay_ms</span>(<span>500</span>);<br/>
+}<br/>
+}<br/>
+<br/>
+<span>unsigned</span> <span>short</span> <span>read_ds1307</span>(<span>unsigned</span> <span>short</span> <span>address</span>)<br/>
+{<br/>
+<span>I2C_Start</span>();<br/>
+<span>I2C_Wr</span>(<span>0</span><span>xd0</span>); <span>//address 0x68 followed by direction bit (0 for write, 1 for read) 0x68 followed by 0 --&gt; 0xD0</span><span>I2C_Wr</span>(<span>address</span>);<br/>
+<span>I2C_Repeated_Start</span>();<br/>
+<span>I2C_Wr</span>(<span>0</span><span>xd1</span>); <span>//0x68 followed by 1 --&gt; 0xD1</span><br/>
+<span>data</span>=<span>I2C_Rd</span>(<span>0</span>);<br/>
+<span>I2C_Stop</span>();<br/>
+<span><b>return</b></span>(<span>data</span>);<br/>
+}<br/>
+<br/>
+<br/>
+<span>unsigned</span> <span>char</span> <span>BCD2UpperCh</span>(<span>unsigned</span> <span>char</span> <span>bcd</span>)<br/>
+{<br/>
+<span><b>return</b></span> ((<span>bcd</span> &gt;&gt; <span>4</span>) + <span>'0'</span>);<br/>
+}<br/>
+<br/>
+<span>unsigned</span> <span>char</span> <span>BCD2LowerCh</span>(<span>unsigned</span> <span>char</span> <span>bcd</span>)<br/>
+{<br/>
+<span><b>return</b></span> ((<span>bcd</span> &amp; <span>0x0F</span>) + <span>'0'</span>);<br/>
+}</span></div><br/>
+Yukardaki kod isis simülatörü ile test edilmiş kodun çalıştığı görülmüştür<br/>
+<br/>
+<div></div></div><div><div><span><span><br/>
+<span><span><br/>
+</span></span></span></span></div></div></div></div></div></div></div></div></div></span></span></span></span></span></h1></span></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/04/ds1307-pic16f877a-gercek-zamanl-saat.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,44 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ayarlı Güç Kaynağı | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Ayarlı Güç Kaynağı</h1><div>2010-01-10 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span></span><br/>
+<div>Amatörler tarafından ucuza ve kolaylıkla gerçekleştirilebilecek bir güç kaynağı sunuyoruz. Cihazımızın amatör deneylerinde kullanılabilecek özelliklere sahip olmasının yanı sıra, genç amatörler için iyi bir başlangıç olması da başka bir avantajdır. Genç kardeşlerimiz elektronik konularında biraz yol aldıktan sonra, metnin içinde anlatılacağı gibi biraz daha güçlü malzemeler edinerek güç kaynağının akım kapasitesini 5 Amper değerine arttırabilirler.<br/>
+</div><div><br/>
+</div><div><a href="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb9.jpg" rel="noopener noreferrer"><img alt="" border="0" height="228" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb9.jpg" width="374"/></a><br/>
+</div><div>Güç kaynağımızın çıkış gerilimi 1.5 volt ile 24 volt arasında ayarlanabilmektedir . Çıkış akımı ise en fazla 1-1.5 amper arasındadır. Devremizin çıkış akımını istediğimiz değerde sınırlama imkanımız yoktur ama çıkış kısa devreye karşı korumalıdır. Bu sözleri biraz açalım ; çıkışı kısa devre edersek veya 1/1.5 amperden fazla bir akım çekmeye çalışırsak, LM317 entegre devresi çıkış akımını bu değerler civarında sınırlar. Bu sınır değerler LM317 entegresini bağladığımız soğutucunun büyüklüğüne ve çıkış akımının akma süresine bağlıdır. LM317 entegresinin içinde sıcaklığı ölçen ve çipin sıcaklığını 125 santigrat civarında sınırlayan bir devre vardır. Bu devre, sıcaklık sınırlama işini çıkış akımına kumanda ederek gerçekleştirir. Yani entegreyi iyi soğutacak büyüklükte bir soğutucuya bağlamazsanız, çıkıştan 1 amper bile alamazsınız. Öte yandan iyi soğutmak şartıyla çıkıştan 1.5 amper kadar akımı da rahatça alabiliriz.<br/>
+</div><div>Parça listesi :<br/>
+</div><div>S1 250 V / 2A AC cereyan anahtarı<br/>
+</div><div>S2 100 V / 5A AC anahtar ( iki konumlu )<br/>
+</div><div>F1 Sigorta yuvası ve 1 A. Cam sigorta<br/>
+</div><div>Tr1 220 V / 2x12 V. 20 Watt besleme trafosu<br/>
+</div><div>Br1 2 A. / 50 V. diyot köprüsü ( 5 veya 10 amperlik de olabilir , ilerde daha güçlü devrelerde kullanabilirsiniz . )<br/>
+</div><div>C1 2200 uF / 50 V. Elektrolitik kondansatör<br/>
+</div><div>C2,C3,C4 0.1 uF (100 nF) mercimek kondansatör<br/>
+</div><div>D1 1N4007 diyot (1N4001 ile 4007 arasında herhangi bir diyot )<br/>
+</div><div>R1 82 ohm çeyrek watt direnç<br/>
+</div><div>R2 , R3 100 Ohm değişken direnç (trimpot)<br/>
+</div><div>Pot1 2.2 kilohm lineer potansiyometre<br/>
+</div><div>Lamba 24V. 2W flamanlı lamba (panolarda kullanılan tipten)<br/>
+</div><div>Çıkış terminalleri : kırmızı ve siyah renkli (şase tipi banana soket veya born vida)<br/>
+</div><div><img alt="" border="0" height="100" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb10.jpg" width="373"/><br/>
+Bir adet alüminyum soğutucu ( özellikleri aşağıda anlatılacak)<br/>
+</div><div>Güç regülatörlerinin en tanınmış tiplerinin resimlerini hemen aşağıda görmektesiniz<br/>
+</div><div><a href="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb11.jpg" rel="noopener noreferrer"><img alt="" border="0" height="160" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb11.jpg" width="386"/></a><br/>
+</div><div>Güç kaynağının yapımında dikkat edilecek noktaların başında; kullanacağımız soğutucunun tipi ve büyüklüğüdür. TO 220 plastik paket için piyasada bol bulunan ve yukarıda sağda görülen soğutucu, <u><span>bu cihaz için kesinlikle uygun değildir.</span></u> Bu tip laboratuvar cihazlarında genellikle aşağıdaki tiplerde soğutucular kullanılır !<br/>
+</div><div><img alt="" border="0" height="211" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb12.jpg" width="383"/><br/>
+</div><div>Burada dikkat edilmesi gereken nokta soğutucunun YxGxD formülü ile hesaplanan hacmı 400-500 cm<sup>3 </sup>veya daha fazla olmalıdır.(Y~G~10 cm ve D~3-5 cm)<br/>
+</div><div>Montajda dikkat edilmesi gereken başka bir nokta da, devre şemasında renkli olarak çizilen iletkenlerin kalın tellerle yapılmasıdır. Pembe iletkenler 1 mm<sup>2 </sup>; kırmızı ve mavi iletkenler de tercihen 1.5 mm<sup>2 </sup>kesitteki çoklu bakır<sup> </sup>tellerle ve olabildiğince kısa tutularak yapılmalıdır.<br/>
+</div><div>Çıkışa bağlanan 24V. 2W lamba, bu tip devrelerde çok rastlanan osilasyonu önlemek için kullanılır. Bu lamba ön panele monte edilirse, aynı zamanda kaba bir voltaj göstergesi görevi de görür.<br/>
+</div><div>Devrede kullanılan köprü 5 Amper veya daha fazla değerde olduğunda: yüksek akımlarda kullanılırken, gövde izole ise şaseye ; aksi halde izole bir soğutucuya bağlanır . ( LM317’nin soğutucusundan farklı bir soğutucu !)<br/>
+</div><div>Devrenin ayarlanması :<br/>
+</div><div>S2 anahtarı trafonun orta ucuna alınır; pot iyice sola çevrilir (düşük voltaj konumu); R2 ve R3 trimpotları orta konuma alınır; çıkışa bir DC voltmetre bağlanır; trafoya 220 V enerji uygulanır. Çıkışta 1.5 ile 2 volt civarında bir DC okumanız lazım. Şimdi S2 anahtarını trafonun sekonderinin üst ucuna alın , ayar potunu yavaş şekilde sağa çevirin , çıkış gerilimi artacaktır. Ayar potansiyometresi en sağ konuma alındığında , R2 trimpotu ile çıkış voltajını 24 volta ayarlayın. Ayar potu ile çıkışın en düşük ve en yüksek seviyeler arasında (1.5 v civarı ile 24 v arası) ayar yaptığını gözleyiniz. Ayar potansiyometresini tekrar en düşük seviyeye (en sola) çevirin ve R3 trimpotunu kullanarak çıkış voltajının en düşük seviyesini 1.5 volta ayarlayın. Ayar potunu tekrar an sağa alıp R2 trimpotu ile çıkış voltajını bir kez daha 24 volta ayarlayın. Bu şekilde ayarlar tamam olur.<br/>
+</div><div>İsteyen çıkışa paralel bir DC voltmetre ve (+) çıkışı besleyen hatta seri bir DC ampermetre (1-1.5 A.) bağlayabilir.<br/>
+</div><div>Cihazın Kullanılması :<br/>
+</div><div>İstenilen çıkış voltajı 10 volt ya da daha az ise S2 anahtarı trafonun orta ucunu köprüye bağlayan konuma alınır. Pot ile çıkış ayarlanır ve yük beslenir. Çıkış voltajı 10 volttan fazla istenirse , S2 trafonun üst ucunu seçecek şekilde ayarlanır ve gene pot ile ayar yapılır.<br/>
+</div><div>S2 anahtarıyla trafonun orta ucunu seçtiğimiz zaman , ayar potunun çıkışa 12 volttan fazla kumanda edemediğine lütfen dikkat ediniz, bu durum düşük kademe durumudur. Düşük kademe kullanılırken, ayar potu 10-11 volt konumundan daha fazla açılmamalıdır. Çıkış voltajının 10-11 volttan daha fazla olmasını istersek, S2 anahtarı ile trafonun üst ucu seçilir ve çıkış gene ayar potu kullanılarak ayarlanır.<br/>
+</div><div>Düşük voltaj kullanılırken, devrenin gereksiz enerji harcamasını önlemek için S2 anahtarı köprüye 12 V~ tatbik eder. Yüksek kademe için de köprü doğrultucuya 24 V~ uygulanır.<br/>
+</div><div><a href="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb13.jpg" rel="noopener noreferrer"><img alt="" border="0" height="152" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Nisan/tb2cbb/tb2cbb13.jpg" width="377"/></a><br/>
+</div><div>Montaj şekli konusunda bir fikir vermek için iki resim yukarıda görülmektedir .<br/>
+</div><div>Regülatör entegresini LM338K kullanarak ; trafonun gücünü 100 Watt yaparak , köprüyü 5 A. seçerek ve 2200uF elektrolitik kondansatörün yanına 3 adet daha 2200 uF/ 50 V. paralel bağlayarak cihazımızın akım kapasitesini 5 A. değerine kadar arttırabiliriz. Tabii iletken kesitleri ile sigorta akımının değeri ve anahtarların akım kapasitesini de arttırmayı unutmayınız<br/>
+<span>Temel Y. METİN' e teşekküe ederim .</span><br/>
+<span>Bilgi Paylaşıldıkça Değer Kazanır.</span><br/>
+<br/>
+"Alıntıdır"<br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/ayarl-guc-kaynag.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

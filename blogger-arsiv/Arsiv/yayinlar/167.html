@@ -1,0 +1,106 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ledlerle dönen yıldız | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>ledlerle dönen yıldız</h1><div>2010-01-22 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><div><a href="http://www.teknomerkez.net/ek/379/donen-sch-k.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><a href="http://www.teknomerkez.net/ek/379/donen-sch-k.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="68" loading="lazy" src="http://www.teknomerkez.net/ek/379/donen-sch-k.gif" width="200"/></a><a href="http://www.teknomerkez.net/ek/379/donen-sch-k.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><a href="http://www.teknomerkez.net/ek/379/donen-sch-k.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><a href="http://www.teknomerkez.net/ek/379/donen-sch-k.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><br/>
+</div>Dönen Yıldız Devre Şeması <br/>
+<br/>
+  <span>LED ANİMASYON</span><br/>
+<div><span>Devrede  görsel efektin oluşması için temel olarak 3 tane led yeterlidir.Bu devrede biz her satırda ortada birtane her iki tarafında 3 er adet kırmızı led olmak üzere 6 şar adet led  kullandık . Ledler programa uygun şekilde sırasıyla ışık yayacak ledlerden  beklenen Animasyon görünüm açısından bakıldığı zaman dönüyormuş hissini verebilmesi için uygun şekilde yerleştirilmesiyle oluşacak Dönen ışığın hızını Gecikme_10ms(15) -- 150ms bekle satırlarından ayarlayabilirsiniz. Bizim açımızdan 150 milisaniyelik gecikme ile elde edilen hız, görüntü açısından en uygun olduğu düşüncesiyle secilmiştir. Işığın dönme yönünü tersine çevirmek için ise PortB = 0b_0000_0001 satırı ile PortB = 0b_0000_0100 satırının yerini değiştirmek Suretiyle sağlanır. Ledlerin renk parlaklığı devredeki Dirençlerin değerlerini değiştirmek suretiyle elde edilir. D19 LED'i ucunda bağlı R7 direncinin değeri görüntüde en ortada olan LED'in parlaklığı ile alakalıdır. Bu LED'in biraz parlak olduğu düşünülürse bu direncin değerini büyütmek gerekmektedir. Örneğin 1K2 veya 1K5 gibi. Işığın parlaklığını değiştirmek için R4-R7 dirençlerinin değerlerini değiştirmek gerekmektedir.</span><br/>
+</div><div><span> <br/>
+<span>Devrenin Montajı Yapılmış Hal</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s1600-h/donen_resim1.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s200/donen_resim1.gif" width="168"/></a><span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><!-- more --></span><span>Devrede PIC 16F628 entegresi kullanılmıştır. Bu Entegrenin RB0, RB1, RB2 uçları çıkış olarak tayin edilmiş ve ledleri sürmektedir. PIC 16F628 entegresinin dahili Osilatör ve dahili Reset özelliklerinden yararlanılmıştır. Bu Şekilde Kullanılan Malzemeler en alt seviyeye indirilmiştir.  Devre tasarlanırken en basit hali esas alınmış ve geliştirmeye açık olacak şekilde düşünülerek ledler transistörlerle sürülmüştür.  Bu devreyi inceleyenler daha değişik devreler üretebilirler . Entegrenin Yazılımı Jal Programıyla yapılmıştır. JAL PROGRAMINI İNDİREBİLECEĞİNİZ SİTE  </span><a href="http://jal.sunish.net/jaledit" rel="noopener noreferrer">http://jal.sunish.net/jaledit</a><span><br/>
+Bu siteden indirip kullanabilirsiniz. <o:p></o:p></span><br/>
+</div><div><span>Aşağıdaki Verilen Programı daha da değiştirerek yeni animasyonlar düzenleye bilirsiniz <o:p></o:p></span><br/>
+</div><div><br/>
+</div><div><span>Bu programı yazan ve devreyi düzenleyen arkadaşa da teşekkür ederiz <o:p></o:p></span><br/>
+</div><div><br/>
+</div><span>-- ===========================================</span><span><br/>
+-- Proje: JALTURK ILE DONEN ISIK<br/>
+-- Mehmet YILMAZ <a href="mailto:mehmet.yilmaz@teknomerkez.net"><span>mehmet.yilmaz@teknomerkez.net</span></a><br/>
+-- Tarih: 02.05.2008<br/>
+-- Dosya: donen1jt.jal<br/>
+-- ===========================================<br/>
+-- === DONANIM AYARLARI ===<br/>
+INCLUDE 16F628_GENEL<br/>
+pragma target fuses 0x3F11 -- dahili osilator ve reset<br/>
+-- === PORTLARIN YONLENDIRILMESI ===<br/>
+Pin_B0_Yon = Cikis -- Pin B0 Çıkış<br/>
+Pin_B1_Yon = Cikis -- Pin B1 Çıkış<br/>
+Pin_B2_Yon = Cikis -- Pin B2 Çıkış<br/>
+-- === PROGRAM AYARLARI ===<br/>
+PortB = 0b_0000_0000<br/>
+-- === PROGRAM BASLANGICI ===<br/>
+FOREVER LOOP<br/>
+PortB = 0b_0000_0001<br/>
+Gecikme_10ms(15) -- 150ms bekle<br/>
+PortB = 0b_0000_0010<br/>
+Gecikme_10ms(15) -- 150ms bekle<br/>
+PortB = 0b_0000_0100<br/>
+Gecikme_10ms(15) -- 150ms bekle</span><br/>
+<div><span>END LOOP</span><br/>
+</div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s1600-h/donen_resim1.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s1600-h/donen_resim1.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s1600-h/donen_resim1.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><span>-- === PROGRAM SONU ===</span><br/>
+<span><span><br/>
+</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjc95SMh3P3PQLYgdQn-gBrueL4mOagDIVE8y3v7SIq5xH6tl5K3pjv6txMYGTSlnEXfixgrSyFaZ1583PWWhjiSTm-h-DY-c_lFu1y9UXNSUOZXlfhDKD9g0dMdzjtd5R2Qtnhq6GDiqIU/s1600-h/donen_baski_devre.gif" imageanchor="1" rel="noopener noreferrer">Malzeme Yerleşim Yüzü </a><br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuZwKxyVn-bKLTgs_IixZZnGflb_WicmSb9nsKwPuxTkt0UZoRxvsC7ZaqfPBxz7guLTMTpc3OoS4x9fK7LLZQoZY5-M0a-mw2t06sVv6aE9u4k6MOizD2_Ji54WXQya6RO2JCfsTh1agC/s1600-h/donen_baski_devre.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="157" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhuZwKxyVn-bKLTgs_IixZZnGflb_WicmSb9nsKwPuxTkt0UZoRxvsC7ZaqfPBxz7guLTMTpc3OoS4x9fK7LLZQoZY5-M0a-mw2t06sVv6aE9u4k6MOizD2_Ji54WXQya6RO2JCfsTh1agC/s200/donen_baski_devre.gif" width="200"/></a><br/>
+</div><br/>
+        <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Devrenin lehim yüzeyi<br/>
+<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnsoujyKo2872_95R5UbSNqBX5PzjBsibgneM-A6KAwjfg1IT18BZohvqWAv5XxrjGZ7ERgQ83au3P6-lz6jamgDPRYJyjZN4dv2XuVEsqLcT84LWeBFERxiXacBWDFlLfyDqiXIOWXAG/s1600-h/baski_devre_hazir1.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="166" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmnsoujyKo2872_95R5UbSNqBX5PzjBsibgneM-A6KAwjfg1IT18BZohvqWAv5XxrjGZ7ERgQ83au3P6-lz6jamgDPRYJyjZN4dv2XuVEsqLcT84LWeBFERxiXacBWDFlLfyDqiXIOWXAG/s200/baski_devre_hazir1.gif" width="200"/></a><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s1600-h/donen_resim1.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEioOv6LZe_LOuo1weucQOC61snPlQf9Oo0iSpyKxeNLKrSDnZTlmSHKspGAt-dhm2sEkfz3STJ1KNWxOiHcnRsvY5jXR-psYzMGXgitxx0vms_HGfHJy4YDsFau7StDsuEziUctADPfOv_7/s1600-h/donen_resim1.gif" imageanchor="1" rel="noopener noreferrer"><br/>
+</a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/ledlerle-donen-yldz.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

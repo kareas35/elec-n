@@ -1,0 +1,117 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 9 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 9</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span></span><br/>
+<h3><span>PIC Basic Pro ile PIC Programlama 9</span></h3><div><h2><a href="http://320volt.com/wp-content/picbasic/pic-basic-pro-ile-pic-programlama-9.html" rel="noopener noreferrer" title="Permanent Link: PIC Basic Pro ile PIC Programlama 9"><span>PIC Basic Pro ile PIC Programlama 9</span></a></h2><div><div><strong><span>EEPROM VE SENSÖR KULLANIMI</span></strong><span><br/>
+Bu dersimizde Pic ile birlikte dışarıdan bağlı hafıza ünitelerinin kullanılmalarını inceleyeceğiz. Ayrıca pic ile birlikte kullanabileceğimiz bazı sensörler ’in haberleşme sistemlerini inceleyeceğiz.</span></div><div><span>Önce Eeprom Kullanımına bir göz atalım.</span></div><div><span>Normal olarak sıklıkla kullandığımız pic modellerinde flash tipi eeprom bulunmaktadır. Ancak bazen kendi hafızlarının yetmediği durumlarda pic ile birlikte dışarıdan bağlı hafıza üniteleri kullanılır.</span></div><div><span>Önce pic’ in kendi eeprom’ u ile nasıl haberleşiyoruz biraz inceleyelim sonra harici eeprom konusuna gireceğiz.</span></div><div><span>Pic’ in dahili eepromu’ nun kullanımı ile ilgili birkaç komut var öğrenmeniz gereken. Bunların başında ;</span></div><div><strong><span>DATA @konum, data, data, data ……</span></strong></div><div><span>Komutu gelmektedir. Data, pic’ in programlanması esnasında hafızasının belirli konumlarına önceden belirli olan sabit bazı bilgilerin yazılması için kullanılır. Örneğin şifre kullanan bazı programlarda ilk (default ) şifrenin girilmesi bu yolla yapılır.</span></div><div><span>Komutun ilk parametresi @Konum ilk bilginin yazılacağı eeprom adresine aittir. Şayet bilgiler birbirini takip eden hafıza adreslerine yazılacak ise her seferinde adres verilmesi gerekmez. Bir kere başta adres verirsiniz sonra yazılacak bilgileri aralarına virgül koyarak sıralarsınız.</span></div><div><span>Burada dikkat edilecek husus şudur. Pic’ i her çalıştırdığınızda bu bilgilerin ilgili hafıza birimlerine yeniden yazılacak olmasıdır. Dolayısıyla şifre girişi gibi işlemlerde şayet şifreyi program içinden değiştirmiş iseniz ve pici yeniden çalıştırırsanız şifreniz tekrar eskiye dönecektir.</span></div><div><span>Aslında yeri gelmişken bu gibi konuları aşmanın bir tekniğini belirtmek isterim. Ancak bunu diğer hafıza komutlarını inceledikten sonra açıklayacağım. Dahili hafızaya bir bilgi yazmak için;</span></div><div><span>Write adres,Bilgi</span></div><div><span>Şeklinde bir komut kullanırız. Örneğin 0 nolu adrese 12 bilgisini yazmak istersek;</span></div><div><span>Write 0,12 dememiz yeterli olacaktır.</span></div><div><span>Diğer komut eepromdan bir bilgi okuma komutudur.</span></div><div><strong><span>Read adres,Bilgi</span></strong></div><div><span>Şeklinde kullanılır. Yine örnek olarak 0 nolu adreste yazılı olan bilgiyi okuyalım</span></div><div><strong><span>Read 0,Sayı</span></strong></div><div><span>Okunan değer Sayı isimli değişkene yerleştirilmiş oldu.</span></div><div><span>Yeni programlanmış bir pic’ den okunacak hafıza değeri kesinlikle $FF yani 255 olarak gelir. Bu hafızaya henüz bir şey kayıt edilmediği anlamına gelir. Diyelim ki hafızaya şifre yazacaksınız şöyle yapabilirsiniz.</span></div><div><strong><span>Read 0,Sifre</span></strong><span> ‘ilk hafıza okundu ve değeri Sifre isimli değişkene yerleşti.</span></div><div><strong><span>if sifre=255 then </span></strong><span>‘henüz hafızada kayıtlı bir şey yok ise</span></div><div><strong><span>Sifre=2 </span></strong><span>‘yeni sifre=2 olsun</span></div><div><strong><span>Write 0,sifre</span></strong><span> ‘yeni sifre yi sıfır no’ lu adrese yaz. Endif</span></div><div><span>Kısaca önce hafızayı okudunuz. Sonra baktınız hafızaya herhangi bir şey kayıt edilmemiş ise şifreyi belirleyip hafızaya yazdınız. Pic’ i ilk defa çalıştırınca 0 nolu adrese 2 bilgisi yazılır. Daha sonra program içinden şifrenizi değiştirdiniz. Pic’ i yeniden çalıştırınca ilgili hafızada 255 den farklı bir sayı olacağı için yeni sifre olarak 2 yazılmayacaktır. Dolayısıyla mevcut şifrenizi korumuş olacaksınız.</span></div><div><span>Son olarak dahili eeprom’ ların 8 bit çalıştıklarını ve her bir hafıza adresine 8 bitlik bilgi yazılması gerektiğini hatırlatmak isterim. Kullandığınız bilgi Word tipi yani 16 bit bir değişken ise bilgiyi Değişken.Lowbayt ve Değişken.Highbyte veya Değişken.Byte0 ve Değişken,Byte1 şeklinde 8 er bitlik iki kısma ayırıp o şekilde yazmanız gerekir. Aslında direkt word değişkeni olarak yazabilirsiniz. Bu durumda pic sizin için değişkeni lowbyte ve highbyte</span></div><div><span>olarak ayırıp öyle kayıt edecektir. Ancak okuma yaparken kesinlikle sayının 8’er birlik iki kısım halinde okunması gerekir. Örnek olarak vermek gerekir ise aşağıdakiler doğrudur.</span></div><div><strong><span>SAYI VAR WORD</span></strong></div><div><span>Sayı=12345 ‘Sayımız 16 bit.</span></div><div><strong><span>WRITE 0,SAYI</span></strong><span> ‘sayıyı 16 bit olarak eeproma yazdık aslında 0 ve 1 nolu adreslere yazıldı</span></div><div><strong><span>READ 0,SAYI.Lowbyte</span></strong><span> ‘say’ nın lowbyte nı okuduk. READ 1,SAYI.Highbyte ‘say’ nın highbyte’ ını okuduk</span></div><div><strong><span>HARiCi EEPROMLARIN KULLANIMI</span></strong></div><div><span>Dışarıdan bağlanabilen eepromlar genelde uzun depolama ömürleri (yaklaşık 200 yıl) nedeni ile tercih edilirler. Bunların tamamı Seri Senkron haberleşme arabirimi kullanır. Üreticilere göre haberleşme şekilleri farklıdır. Piyasada genelde 3 ayrı tip eeprom bulunmaktadır. Bunlar;</span></div><div><strong><span>1. </span></strong><span>Microwire tipi (Atmel firmasının üretmiş olduğu) 93Cxx (93C66 gibi) eepromlar</span></div><div><strong><span>2.</span></strong><span> SPI tipi haberleşme yapan eepromlar 24LCxxx serisi</span></div><div><strong><span>3.</span></strong><span> I2C tipi haberleşme yapan eepromlar. 24Cxx serisi</span></div><div><span>Şimdi bunları sırası ile inceleyelim,</span></div><div><strong><span>1. Microwire Eeprom Kullanımı;</span></strong></div><div><span>Bu eeprom’ ların 2 adet Data pini DI (data-in) ve DO (Data-out) clock input CI veya SK ile Chip Select CS pinleri bulunmaktadır. Genelde 3 wire interface yani 3 kablolu veya hatlı arabirim şeklinde tanımlansa da haberleşme için 4 adet hat gerekiyor. Aslında 3 hatlı arabirim denmesinin bir sebebi’ de DI ve DO uçlarının Pic’ de aynı ucun kullanılabilmesinden kaynaklanır. DI (Data Giriş)işini yapmak istediğinizde yani Eeproma Data girişi (yazma) yapmak istediğinizde pic deki pin Output yapılmalı, DO yani eepromdan data okuma yapıldığında ise aynı pin Input yapılmalıdır. Böylece Eeprom ile pic arasında 3 hat bağlı olabilmektedir.</span></div><div><span>Eeprom ile haberleşmede 7 adet komut kullanılabilir. Bunlar;</span></div><div><span><img alt="eeprom_picbasic" height="162" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_picbasic.png" title="eeprom_picbasic" width="441"/></span></div><div><span>Her bir haberleşme işi bir START işlemi ile başlamalıdır. Start işleminde; -CS High ve DI High yapılır ve Clock ucu low dan High a dönerken start konumu sağlanmış olur. Bu yüzden bir işlem yapıldıktan sonra DI ucu daima High da bırakılır. Pic den gelen her bir işlem komutundan sonra CS low’a çekilmelidir. Yalnızca birbirinin ardı sıra (sequential) okuma durumlarında bu işlem yapılmaz.</span></div><div><span>Eeproma yazmak için -önce DI hattından ERASE/WRITE ENABLE komutu gönderilir. Bunun rakam karşılığı %10011 dır. -Arkasından bir Write komutu gönderilir (%101) -Sonra Adres bilgisi -Ve arkasından yazılacak bilgi gönderilir. -En sonunda CS Low’a çekilir.</span></div><div><span>ERASE/WRITE ENABLE komutu bir çalışma döneminde yalnızca bir kere verilen bir komuttur. Bunun anlamı şudur. Pic ilk çalıştırıldığında bu komut bir defa verilir ise sonraki okuma yazma işlemlerinde yeniden bu komutun verilmesi gerekmez. Ne zaman gerekir, pic’ in voltajını dolayısıyla eepromun besleme voltajını kesip yeniden çalıştırdığınızda bu gereklidir.</span></div><div><span>Aynı şekilde Eepromdan okuma yapmak için</span></div><div><span>-Önce DI hattından bir READ komutu gönderilir (%110) -Arkasından okunacak adres bilgisi gönderilir</span></div><div><span>-Şayet okuma yapıldıktan sonra CS Low yapılmaz ise yani High da tutulur ise okumanın devam edeceği anlamına gelir . Şayet CS low yapılır ise ondan sonraki okuma komutu yine READ-ADRES bilgisi ile başlamalıdır.</span></div><div><span>Bu hafıza ile ilgili olarak simülasyon imkanımız olmadığı için yalnızca bir örnek program vermekle yetineceğim. Bu tip eepromlar ile haberleşme yapabilmek için SHIFTIN ve SHIFTOUT komutlarını kullanıyoruz. Komutların nasıl kullanıldıklarını görebilmek için örneğimizi yazalım.</span></div><div><span>Örneğimizde Eepromun ilk 8 adresine bir şifreli kilit için gerekli şifre bilgisi yazdıracağımızı varsayacağız. Şifremiz 8 haneli bir rakam olacak. Ancak biz bunu 2 adet Word değişkeninde saklayacağız. Kolay anlaşılması açısından şifremizi ;</span></div><div><strong><span>SIFRE_A=1234<br/>
+SIFRE_B=5678</span></strong><span> ‘tamamı Şifre=12345678 olarak tanımladık Şeklinde tanımlıyoruz.</span></div><div><strong><span>Örnek Program:</span></strong></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : Microwire Eeprom.BAS *<br/>
+‘* Author : [E.T.E] *<br/>
+‘* Notice : Copyright (c) 2005 Ete] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 30.06.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+Include “Modedefs.Bas”<br/>
+PORTA=0<br/>
+TRISB=000000 ‘PortB.0 giriş diğerleri çıkış yapıldı.<br/>
+TRISA=000000 ‘A port’ u tamamı çıkış yapıldı.<br/>
+‘—————————————————————-<br/>
+@ DEVICE pic16F628 ‘işlemci 16F628<br/>
+@ DEVICE pic16F628, WDT_on ‘Watch Dog timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Protek kapalı<br/>
+@ DEVICE pic16F628, MCLR_OFF ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘——————————————————————–<br/>
+SYMBOL CS=PortB.0 ‘ Chip Select pin<br/>
+SYMBOL SK=PortB.1 ‘ Clock pin<br/>
+SYMBOL DI=PortB.2 ‘ Data in pin<br/>
+SYMBOL DO=PortB.2 ‘ Data out pin<br/>
+SIFRE_A<br/>
+VAR BYTE<br/>
+SIFRE_B<br/>
+VAR BYTE<br/>
+ADRS<br/>
+VAR word<br/>
+E_GIRIS<br/>
+Var Byte‘ Eeprom’ a yazılacak bilgi<br/>
+E_CIKIS<br/>
+Var Byte‘ Eeprom’ dan okunacak Bilgi<br/>
+EWEN Con %10011 ‘ Erase/Enable kodu<br/>
+EWDS Con %10000 ‘ Disable Kodu<br/>
+ERAL Con %10010 ‘ Erase-All Tamamını sil Kodu<br/>
+WRAL Con %10001 ‘ Tamamına yaz kodu<br/>
+ERD Con %1100 ‘ Read Kodu<br/>
+EWR Con %1010 ‘ Write Kodu<br/>
+ERASE Con %1110 ‘ Erase Kodu<br/>
+‘———ÖNCE EEPROM WRITE ENABLE YAPILDI———————–<br/>
+High CS ‘ Enable eeprom<br/>
+Shiftout DI,SK , 1 ,[EWEN5,07]‘ WRITE ENABLE kodu gönder<br/>
+Low CS ‘ Disable eeprom<br/>
+SIFRE_A=1234<br/>
+SIFRE_B=5678</span></strong></div><div><strong><span>BASLA:<br/>
+‘—————–önce ilk sekiz adrese bilgi yazalım—————-<br/>
+ADRS=0<br/>
+E_CIKIS=SIFRE_A DIG 0<br/>
+GOSUB E_YAZ<br/>
+ADRS=1<br/>
+E_CIKIS=SIFRE_A DIG 1<br/>
+GOSUB E_YAZ<br/>
+ADRS=2<br/>
+E_CIKIS=SIFRE_A<br/>
+DIG 2 GOSUB E_YAZ<br/>
+ADRS=3<br/>
+E_CIKIS=SIFRE_A DIG 3<br/>
+GOSUB E_YAZ ’sifre 2. kısım yazılıyor<br/>
+ADRS=4<br/>
+E_CIKIS=SIFRE_B DIG 0<br/>
+GOSUB E_YAZ<br/>
+ADRS=5<br/>
+E_CIKIS=SIFRE_B DIG 1<br/>
+GOSUB E_YAZ<br/>
+ADRS=6<br/>
+E_CIKIS=SIFRE_B DIG 2<br/>
+GOSUB E_YAZ<br/>
+ADRS=7<br/>
+E_CIKIS=SIFRE_B DIG 3<br/>
+GOSUB E_YAZ<br/>
+‘———-Şimdide ilk 8 adresteki bilgileri okuyalım——————-<br/>
+ADRS=0<br/>
+GOSUB E_OKU<br/>
+SIFRE_A=E_GIRIS<br/>
+ADRS=1<br/>
+GOSUB E_OKU<br/>
+SIFRE_A=SIFRE_A+E_GIRIS*10<br/>
+ADRS=2<br/>
+GOSUB E_OKU<br/>
+SIFRE_A=SIFRE_A+E_GIRIS*100<br/>
+ADRS=3<br/>
+GOSUB E_OKU<br/>
+SIFRE_A=SIFRE_A+E_GIRIS*1000<br/>
+‘———–Sifre 2. kısım okunacak——————-<br/>
+ADRS=4<br/>
+GOSUB E_OKU<br/>
+SIFRE_B=E_GIRIS<br/>
+ADRS=5<br/>
+GOSUB E_OKU<br/>
+SIFRE_B=SIFRE_B+E_GIRIS*10<br/>
+ADRS=6<br/>
+GOSUB E_OKU<br/>
+SIFRE_B=SIFRE_B+E_GIRIS*100<br/>
+ADRS=7<br/>
+GOSUB E_OKU<br/>
+SIFRE_B=SIFRE_B+E_GIRIS*1000 ‘buraya kadar olan satırlarda Sifre_A=1234 , Sifre?B=5678 olarak okundu<br/>
+END ‘PROGRAM BURADA SONA ERECEK!!!!!!!!!!!!!!!!!</span></strong></div><div><strong><span>‘————————ALT PROGRAMLAR—————————-<br/>
+E_YAZ:<br/>
+High CS ‘ Eeprom Enable yapıldı<br/>
+Shiftout DI,SK, 1,[EWR4,ADRS,E_CIKIS] ‘<br/>
+Low CS ‘ Disable the eeprom Pause 10 Return<br/>
+E_OKU:<br/>
+High CS ‘ Eeprom Enable yapıldı<br/>
+Shiftout DI,SK, 1,[ERD4,ADRS] ‘ READ komutu ve Adres verildi<br/>
+Shiftin DO,SK, 2,[E_GIRIS] ‘ Okunan data E_Giris içinde Low CS ‘ Disable eeprom Return<br/>
+END</span></strong></div><div><strong><span>SPI TIPI EPROMLARIN KULLANIMI:</span></strong></div><div><span>Aslında Microwire tipi eepromlar ile çok benzerlikleri vardır. Bazı ufak tefek farklılıklar ile haberleşme Microwire ile çok benzeşir. Bu yüzden burada açıklama vermek yerine bir örnek program üzerinden açıklamamızı vereceğiz.</span></div><div><span>Microwire tipi eepromlar bölümünde vermiş olduğumuz programı bu sefer SPI tipi ile yapacağız. Böylece izleyenler aralarındaki farkı kolaylıkla görmüş olacaklardır.</span></div><div><span>Örneğimizde Eepromun ilk 8 adresine bir şifreli kilit için gerekli şifre bilgisi yazdıracağımızı varsayacağız. Şifremiz 8 haneli bir rakam olacak. Ancak biz bunu 2 adet Word değişkeninde saklayacağız. Kolay anlaşılması açısından şifremizi ; </span><strong><span>SIFRE_A=1234 SIFRE_B=5678 ‘tamamı Şifre=12345678</span></strong><span> olarak tanımladık Şeklinde tanımlıyoruz.</span></div><div><strong><span>Programımız;</span></strong></div><div><span><img alt="eeprom_pbp_kod" height="568" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod.png" title="eeprom_pbp_kod" width="551"/><br/>
+<img alt="eeprom_pbp_kod_2" height="659" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_2.png" title="eeprom_pbp_kod_2" width="569"/><br/>
+<img alt="eeprom_pbp_kod_3" height="869" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_3.png" title="eeprom_pbp_kod_3" width="683"/></span></div><div><strong><span>I2C TiPi EEPROMLARIN KULLANIMI:</span></strong></div><div><span>Senkronize seri bus sitemi ile çalışan bu haberleşme şekli yalnızca hafızalar değil diğer bazı cihazların birbirleri veya bu cihazların MCU üniteleri ile haberleşmesinde de kullanılmaktadır. Haberleşme, her biri çift yönlü (bi-directional) 2 hat üzerinden yapılır. Bunlar SDA Serial Data, ve SCL, Serial Clock olarak tanımlanırlar. Protokolü her zaman olduğu gibi burada incelemeyeceğiz. Yalnızca eeproma nasıl bilgi yazılır ve nasıl okunur bu konuyu açıklığa kavuşturacağız. Pic BASIC de I2C haberleşmesi için direkt komut vardır. Yazma için;</span></div><div><strong><span>I2CWRITE DPIN, CPIN, $A0, 0, [SAYI]</span></strong></div><div><span>Okuma için</span></div><div><strong><span>I2CREAD DPIN,CPIN,$A0,0,[SAYI]</span></strong></div><div><span>Şeklinde komutlar kullanılır.</span></div><div><span>DPIN burada Data pin’ini , CPIN ise Clock pin’ini göstermektedir. Bu pinleri belirledikten sonra Kontrol kodu verilir. Cihazlara göre değişiklik arz eden bu kod eepromlar için genelde %1010 dır. Adres eepromda yazılacak veya okunacak adresi belirler. Okunacak veya yazılacak bilgi 8 veya 16 bit olabilir (Byte-Word). Bu durumda Adres değişkeni de bilgi değişken tipine göre seçilmelidir. Word tipi bir bilgi yazılması veya okunması halinde adres de word tipinde seçilmelidir.</span></div><div><span>BASIC de diğer eeprom tiplerine göre daha kolay bir kullanım şekli sunan I2C tipi eeprom’ larla ilgili örneğimiz yine aynı olacaktır. Önceden yazmış olduğumuz programı bu seferde I2C tipi eepromlar için yazacağız.</span></div><div><span>işte programımız,</span></div><div><span><img alt="eeprom_pbp_kod_4" height="1111" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_4.png" title="eeprom_pbp_kod_4" width="543"/><br/>
+<img alt="eeprom_pbp_kod_5" height="701" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_5.png" title="eeprom_pbp_kod_5" width="499"/></span></div><div><strong><span>PIC iLE BiRLiKTE SENSÖR KULLANIMI</span></strong></div><div><span>Sensörler hayatımız kolaylaştıran ve zaman zamanda hayranlık duyduğum cihazlardır. Pek çoğu pic ile haberleşebilmektedir. Burada piyasada en çok kullanılan sensörler den bazılarının pic ile olan haberleşme konusunu işleyeceğiz.</span></div><div><span>işe sıcaklık sensörler’ inden başlamak istiyorum. Bu konuda en çok kullanılanlardan birisi olan DS18B20 sensör ünü ele alacağız. TO92 kılıfında imal edilmiş bulunan sensör one-wire (tek hat veya tek-tel) haberleşme sistemine sahiptir. Üç bacaklı olan sensör ün iki bacağı besleme ve kalan son bacağı da Data in ve out bacağı olarak çalışmaktadır. Okunan değerler dijital olarak alınıp formül kullanılarak ısı’ya çevrilmektedir.</span></div><div><span>Konuyu yine bir örnek ile açıklayalım.</span></div><div><span>Örneğimizde Pic 16F628’e bağlı bir sensör ün değerlerini okuyacak ve ısı göstergesi şeklinde LCD ekranda göstereceğiz.</span></div><div><span>Önce şemamızı verelim,</span></div><div><span><img alt="picbasic_eeprom_ds18b20" height="472" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/picbasic_eeprom_ds18b20.png" title="picbasic_eeprom_ds18b20" width="550"/></span></div><div><strong><span>Program;</span></strong></div><div><span><img alt="eeprom_pbp_kod_6" height="1528" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_6.png" title="eeprom_pbp_kod_6" width="624"/></span></div><div><span>Programdan da görüleceği üzere sensör okunduktan sonra önce sıcaklığın sıfırın altında mı yoksa üstünden mi anlamak için okunan ham değerin 11. bitine bakıyoruz. Bu bit şayet 1 ise sıcaklık eksi demektir. Bu bitin değerine göre program ayrı hesaplama bölümlerine gitmektedir. Bu programda 32 bit hesaplama işlemi kullanılmaktadır. Kısaca mantığını izah etmek istiyorum. Hesapla isimli alt programda;</span></div><div><span>TEMP=($FFFF -HAM+1)*625 şeklinde bir satır mevcuttur. Burada TEMP değişkeni içine 32 bit hesaplama yapacağımız değer yerleştirilmektedir. 32 bitlik hesap komutu bu satırın hemen altında verilmektedir. Bir örnek hesapla işi daha kolay anlayacağınızı umuyorum. -25 dereceye karşılık gelen ham değer $FE6F dir. Bu formüle göre TEMP= ($FFFF-$Fe6F+1) x 625 = 250.625 , görüldüğü gibi bu hesabın sonucunda TEMP isimli değişkende 250.625 sayısı yer alması gerekir. Ancak bu sayı WORD formatından büyüktür ve 32 bit büyüklüğündedir. Bu yüzden pic bu değişken değerini kendi içinde geçici bir yerde tutar ve bir sonraki satırda verilen hesap da kullanır. Bir sonraki satırda;</span></div><div><span>ISI = DIV32 10</span></div><div><span>Şeklinde bir ifade yer alır. Bu ifadenin anlamı; ISI = TEMP /10 şeklindedir. Yani temp hesabında elde edilen değer 32 bitişlemi ile 10’a bölünmektedir. Dolayısıyla elde edilecek sonuç bizim örneğimize göre;</span></div><div><span>250.625 / 10 = 25.062 olacaktır. BU sonuç 16 bit dir ve işlemlerimizde kullanabileceğimiz hale gelmiştir.</span></div><div><strong><span>SHT-11 (SENSIRION) DIGITAL ISI ve NEM SENSÖRÜ</span></strong></div><div><span>Sensirion firmasının üretimi olan bu sensörler I2C prensibine benzer bir mantık ile haberleşme yapmakla beraber tam anlamı ile birebir değildir. Sensör tamamı ile dijital bir sensör olup aynı kılıf içinde hem ısı hem de rutubet sensör ünü taşımaktadır. Sıcaklık aralığı -40 ile +123 derece arasında dır. Rutubet ölçümlerinde 0-ile %99,999 hassasiyette ölçüm yapabilmektedir. Ayrıca rutubet ölçümünde sıcaklık kompanizasyonu bulunmaktadır.</span></div><div><span>Örnek programımız aşağıdadır.</span></div><div><span><img alt="picbasic_eeprom_lcd" height="410" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/picbasic_eeprom_lcd.png" title="picbasic_eeprom_lcd" width="600"/></span></div><div><span><img alt="eeprom_pbp_kod_7" height="1802" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_7.png" title="eeprom_pbp_kod_7" width="632"/><br/>
+<img alt="eeprom_pbp_kod_8" height="1144" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/eeprom_pbp_kod_8.png" title="eeprom_pbp_kod_8" width="507"/></span></div></div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-189.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

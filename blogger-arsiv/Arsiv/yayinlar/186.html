@@ -1,0 +1,490 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TK19 alıcı kullanılarak uzaktan kumanda ile Led kontrolu | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>TK19 alıcı kullanılarak uzaktan kumanda ile Led kontrolu</h1><div>2020-07-16 · LED ve Göstergeler</div></header><main><article class="panel"><div dir="ltr" trbidi="on">
+<h2>
+TK19 alıcı kullanılarak uzaktan kumanda ile Led kontrolu</h2>
+<div>
+<br/></div>
+<div>
+        Uzaktan kumandalar içlerinde barındırdıkları elektronik devre ile içlerinde ürettikleri bir şifre vardır.  Arduino ile bunu okutarak yazacağımız program sayesinde kullanacağız. Yapacağımız  bu devre de kullanacağımız malzemeler Aşağıda belirtilecek.</div>
+<div>
+<br/></div>
+<div>
+        MALZEME LİSTESİ</div>
+<div>
+<ol>
+<li>ARDUİNO UNO</li>
+<li>DİRENÇ </li>
+<li>LED</li>
+<li>DELİKLİ PERTİKNANS     </li>
+</ol>
+        Kullanılan led ler 4 adet olup   renkleri kırmızı mavi yeşil beyazdır .</div>
+<div>
+ Bunlara kullanacağımız dirençler ben hepsinde 220 om olarak kullandım . </div>
+<div>
+Bunları delikli pertiknansa yerleştirerek lehimledim ve devreyi tamamladım.</div>
+<div>
+<br/></div>
+<div>
+TK19 un ayak bağlantılarını gösteriri resim aşağıda<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtp_Ka21mX7CQxjqq-SzCb54rEc0tpJmrqZA70HIZAalz9FgxoZXaNKPejZKWXlbCP4aObnaxIxghPoD-9s2qKwCt8d2kcA4vfHaAZSm47S9wlG4bRaAW8ZZ1wMJU5-FxbhS5W6atwfzZ_/s1600/Ashampoo_Snap_2020.07.16_13h55m27s_001_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="274" data-original-width="320" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtp_Ka21mX7CQxjqq-SzCb54rEc0tpJmrqZA70HIZAalz9FgxoZXaNKPejZKWXlbCP4aObnaxIxghPoD-9s2qKwCt8d2kcA4vfHaAZSm47S9wlG4bRaAW8ZZ1wMJU5-FxbhS5W6atwfzZ_/s1600/Ashampoo_Snap_2020.07.16_13h55m27s_001_.png"/></a></div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHdZP7RxT2IPX-uTauD-hyfCiyORXGN_axgpl3-ynIc47UnMQIg70x9nI7_TaSGaFtWDbfV6PagtnKfj4fAU5pS1xOnYa3QOyQDKIE8Ryhi835BQjvUjeKhSLHU3X824N0oeJzb8cjn5L_/s1600/Ashampoo_Snap_2020.07.16_13h56m28s_002_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="182" data-original-width="185" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiHdZP7RxT2IPX-uTauD-hyfCiyORXGN_axgpl3-ynIc47UnMQIg70x9nI7_TaSGaFtWDbfV6PagtnKfj4fAU5pS1xOnYa3QOyQDKIE8Ryhi835BQjvUjeKhSLHU3X824N0oeJzb8cjn5L_/s1600/Ashampoo_Snap_2020.07.16_13h56m28s_002_.png"/></a><br/>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+Led in Ayak bağlantılarını gösterir resim Aşağıda</div>
+<div>
+<br/></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZCQeDy0idK7R9SUTKZud32Z0lxOI8Yz7NbRqHgf-itOnqEk-kBo7X-wf-Wz_mHXi4RWF6D5S2aD2AJpmgHJ4-A4rqqD_P2Wn_QFZkJv50gDMieAakVX_8Rm2QruyschuW_o-bjS3A5lRj/s1600/Ashampoo_Snap_2020.07.16_14h00m44s_003_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="437" data-original-width="351" height="320" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjZCQeDy0idK7R9SUTKZud32Z0lxOI8Yz7NbRqHgf-itOnqEk-kBo7X-wf-Wz_mHXi4RWF6D5S2aD2AJpmgHJ4-A4rqqD_P2Wn_QFZkJv50gDMieAakVX_8Rm2QruyschuW_o-bjS3A5lRj/s320/Ashampoo_Snap_2020.07.16_14h00m44s_003_.png" width="257"/></a></div>
+<div>
+Kullandığımız 220 ohm . Direnç resimleri aşağıda</div>
+<div>
+<br/></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhraJbGmykUHYjqLhnlgGKcybGLYrz5yFf1870EQVaoSi-zQdUO_MYhF9VSsyj29KhX0UX9nqbC097F9-LJQbvhvTaAhfOXNyz4fcvDeW6JRo3Wh2IoxvgAY-6jIv3XQaa7WdCIl_7fnOC0/s1600/Ashampoo_Snap_2020.07.16_14h03m28s_004_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="226" data-original-width="475" height="152" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhraJbGmykUHYjqLhnlgGKcybGLYrz5yFf1870EQVaoSi-zQdUO_MYhF9VSsyj29KhX0UX9nqbC097F9-LJQbvhvTaAhfOXNyz4fcvDeW6JRo3Wh2IoxvgAY-6jIv3XQaa7WdCIl_7fnOC0/s320/Ashampoo_Snap_2020.07.16_14h03m28s_004_.png" width="320"/></a></div>
+<div>
+<br/></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyrs8PsubCWOEpbTod5E6e5GAt_6z1jxUO-G1-VCUFLg8hnIhXgoCN9lxg9ZDOE-xQ0pwNliFkEB1cYdBNXNMb60w7YT6BwIFlA487XC_-jgBva1v8Q9Zab3JO4FstpstE0pux2vPCjmBR/s1600/Ashampoo_Snap_2020.07.16_14h08m04s_005_.png" imageanchor="1" rel="noopener noreferrer"></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyrs8PsubCWOEpbTod5E6e5GAt_6z1jxUO-G1-VCUFLg8hnIhXgoCN9lxg9ZDOE-xQ0pwNliFkEB1cYdBNXNMb60w7YT6BwIFlA487XC_-jgBva1v8Q9Zab3JO4FstpstE0pux2vPCjmBR/s1600/Ashampoo_Snap_2020.07.16_14h08m04s_005_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="541" data-original-width="412" height="320" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyrs8PsubCWOEpbTod5E6e5GAt_6z1jxUO-G1-VCUFLg8hnIhXgoCN9lxg9ZDOE-xQ0pwNliFkEB1cYdBNXNMb60w7YT6BwIFlA487XC_-jgBva1v8Q9Zab3JO4FstpstE0pux2vPCjmBR/s320/Ashampoo_Snap_2020.07.16_14h08m04s_005_.png" width="243"/></a></div>
+<div>
+Ledin eksi bacağını direnç ile GND ye bağlıyacağız</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+Arduino kod </div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+#include &lt;IRremote.h&gt;</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+#define TK19_PIN 2</div>
+<div>
+<br/></div>
+<div>
+IRrecv irrecv(TK19_PIN);</div>
+<div>
+<br/></div>
+<div>
+decode_results results;</div>
+<div>
+<br/></div>
+<div>
+#define BUTON1 0xFF906F //buradaki kodların yerine sizin kumandanızda bastığınız tuşun                                                                  karşılığında okuduğunuz değer yazılacak</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+#define BUTON2 0xFFB847  //buradaki kodların yerine sizin kumandanızda bastığınız tuşun             </div>
+<div>
+<br/></div>
+<div>
+                                                    karşılığında okuduğunuz değer yazılacak</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+#define BUTON3 0xFFF807  // buradaki kodların yerine sizin kumandanızda bastığınız tuşun      </div>
+<div>
+                                                    karşılığında okuduğunuz değer yazılacak</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+#define BUTON4 0xFFB04F  //buradaki kodların yerine sizin kumandanızda bastığınız tuşun </div>
+<div>
+                                                   karşılığında okuduğunuz değer yazılacak</div>
+<div>
+<br/></div>
+<div>
+  </div>
+<div>
+#define led1 7</div>
+<div>
+<br/></div>
+<div>
+#define led2 6</div>
+<div>
+<br/></div>
+<div>
+#define led3 5</div>
+<div>
+<br/></div>
+<div>
+#define led4 4</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+void setup()</div>
+<div>
+<br/></div>
+<div>
+{</div>
+<div>
+<br/></div>
+<div>
+ pinMode(led1, OUTPUT);</div>
+<div>
+<br/></div>
+<div>
+ pinMode(led2, OUTPUT);</div>
+<div>
+<br/></div>
+<div>
+ pinMode(led3, OUTPUT);</div>
+<div>
+<br/></div>
+<div>
+ pinMode(led4, OUTPUT);</div>
+<div>
+<br/></div>
+<div>
+ Serial.begin(9600);</div>
+<div>
+<br/></div>
+<div>
+ irrecv.enableIRIn();</div>
+<div>
+<br/></div>
+<div>
+}</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+void loop() {</div>
+<div>
+<br/></div>
+<div>
+ if (irrecv.decode(&amp;results))</div>
+<div>
+<br/></div>
+<div>
+ //Serial.print komutu seriport ekranda satırı yazar yan yana devam eder</div>
+<div>
+<br/></div>
+<div>
+    //Serial.println komutu seri port ekranda satırı yazar alt satıra geçer</div>
+<div>
+<br/></div>
+<div>
+     Serial.print("HEX&gt; "); </div>
+<div>
+<br/></div>
+<div>
+     Serial.println(results.value, HEX); // Gelen veri hexadecimal (16'lık) tabanda yazılır</div>
+<div>
+<br/></div>
+<div>
+     Serial.print("BIN&gt; "); </div>
+<div>
+<br/></div>
+<div>
+     Serial.println(results.value, BIN); // Gelen veri binary (2'lik) tabanda yazılır</div>
+<div>
+<br/></div>
+<div>
+     Serial.print("DEC&gt; "); </div>
+<div>
+<br/></div>
+<div>
+     Serial.println(results.value, DEC); // Gelen veri decimal (10'luk)tabanda yazılır</div>
+<div>
+<br/></div>
+<div>
+     Serial.println("---------------------------------------");</div>
+<div>
+<br/></div>
+<div>
+    </div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ if (results.value == BUTON1)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ digitalWrite(led1, !digitalRead(led1));</div>
+<div>
+<br/></div>
+<div>
+ if (digitalRead(led1) == HIGH)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ Serial.println("LED 1 yandi");</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ else</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ Serial.println("LED 1 sondu");</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ if (results.value == BUTON2)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ digitalWrite(led2, !digitalRead(led2));</div>
+<div>
+<br/></div>
+<div>
+ if (digitalRead(led2) == HIGH)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ Serial.println("LED 2 yandi");</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ else</div>
+<div>
+<br/></div>
+<div>
+{</div>
+<div>
+<br/></div>
+<div>
+ Serial.println("LED 2 sondu");</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+if (results.value == BUTON3)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ digitalWrite(led3, !digitalRead(led3));</div>
+<div>
+<br/></div>
+<div>
+ if (digitalRead(led3) == HIGH)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ Serial.println("LED 3 yandi");</div>
+<div>
+<br/></div>
+<div>
+}</div>
+<div>
+<br/></div>
+<div>
+ else</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+Serial.println("LED 3 sondu");</div>
+<div>
+<br/></div>
+<div>
+}</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ if (results.value == BUTON4)</div>
+<div>
+<br/></div>
+<div>
+{</div>
+<div>
+<br/></div>
+<div>
+digitalWrite(led4, !digitalRead(led4));</div>
+<div>
+<br/></div>
+<div>
+ if (digitalRead(led4) == HIGH)</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+ Serial.println("LED 4 yandi");</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ else</div>
+<div>
+<br/></div>
+<div>
+ {</div>
+<div>
+<br/></div>
+<div>
+Serial.println("LED 4 sondu");</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+Serial.println(results.value, HEX); // gelen mesajı daha kolay anlayabilmek için hexadecimal formatta ekrana yazdırıyoruz.</div>
+<div>
+<br/></div>
+<div>
+ irrecv.resume();</div>
+<div>
+<br/></div>
+<div>
+ }</div>
+<div>
+<br/></div>
+<div>
+ delay(200);</div>
+<div>
+<br/></div>
+<div>
+}</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+ </div>
+</div>
+</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2020/07/tk19-alc-kullanlarak-uzaktan-kumanda.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,386 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arduino ve IR Kumanda  (TV kumandası)  ile LED Kontrolü | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Arduino ve IR Kumanda  (TV kumandası)  ile LED Kontrolü</h1><div>2020-05-08 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div dir="ltr" trbidi="on">
+<h2>
+<u><b>Kullanılan Malzemeler:</b></u></h2>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<b><span>1 Ardiuno uno</span></b></div>
+<div>
+<b><span>2 Led ( Yeşil,Mavi,Kırmızı,Sarı) 4 Adet.</span></b></div>
+<div>
+<b><span>3 Kablolama yapmak için jumper kablo.</span></b></div>
+<div>
+<b><span>4 IR uzaktan kumanda (TV kumandası ) olabilir.</span></b></div>
+<div>
+<b><span>5 IR alıcı sensor. (Arduino IR Receiver 3 pin 38 khz Receiver ) .</span></b></div>
+<div>
+<span><b>6 Resistor ( <span><span> </span></span></b><span><span><b> 4 adet 220 ohm ) .</b></span></span></span></div>
+<div>
+<b><span>7 DEVRE TAHTASI (BREAD BOARD).</span></b></div>
+<h2>
+<b>           <u><br/></u></b><b><u>Devrenin montajı ve kullanılabilmesi için gerekenler</u></b></h2>
+<h2>
+<b><br/></b></h2>
+<h2>
+<b>        <span>Bu elemanlar ile bu devreyi kurabiliriz . Bu devrenin sorunsuz çalışması için gerekli olan bir diğer elemanlarda şunlar.</span></b></h2>
+<div>
+<b>           1 Bilgisayar </b></div>
+<div>
+<b>           2 Bilgisayar ile Arduino nun  bağlantısını sağlayacak olan bir adet bağlantı kablosu bu genelde Arduino ile birlikte verilir .</b></div>
+<div>
+<b>          3  Arduino ya  programı yükleyebilmek için arduino sitesinden indirdiğimiz ve bilgisayara daha önceden kurduğumuz program.  </b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b>Arduino sketch programına yüklemek için gerekli kodları burada paylaşacağım </b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b><a href="https://www.arduino.cc/en/Main/Donate" rel="noopener noreferrer">www.arduino.cc/en/Main/Donate</a></b><br/>
+<br/>
+<b>Kütüphane indirme linki aşağıda</b><br/>
+<b>https://github.com/z3t0/Arduino-IRremote</b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b>Yukarıda ki siteden Arduino programını indirip bilgisayarınıza kurun .</b><br/>
+<b><br/></b>
+<b>İndirdiğiniz derleyici son sürüm ise IR Remote kütüphanesi yüklü gelmektedir .</b></div>
+<div>
+<b><br/></b></div>
+<div>
+<div>
+<b>Aşağıdaki kodu  programı Açılan sketch yazıp onu Arduino uno ya yükleyip program Arduino tarafından kullanmak için anlaşılır hale gelmiş olur.</b><br/>
+<b><br/></b></div>
+<div>
+<b>(</b><b>#include <irremote .h=""> ) Infrared (IR) kütüphanesinin  Yüklenmesi</irremote></b><b> </b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b>( </b><b> </b><b>int RECV_PIN = 2; )  2 nci pini (IR) Alıcı için Dijital giriş  ( input olarak ) Tanıttık</b></div>
+</div>
+<div>
+<div>
+<b><br/></b></div>
+<div>
+<b>bu aşağıda gösterilen   define kodlarını elinizde kullandığınız uzaktan kumandanın tuşlarına basarak  Bilgisayar ekranında göreceğiniz kodları girmeniz gerekmektedir .</b></div>
+<div>
+<b>Aşağıda gösterilen define kodları sizin kumandanızda bulunan tuşlarınızın tamamında olmaya bilir ona göre define tuşlarının olmayanı silinebilir ve ya adı değiştirilebilir. </b><br/>
+<b><br/>
+ÖRNEK :</b><br/>
+<b><br/>
+<br/>
+#define BUTON1 0xFF30CF</b><br/>
+<b><br/>
+#define BUTON2 0xFF18E7</b><br/>
+<b><br/>
+#define BUTON3 0xFF7A85</b><br/>
+<b><br/>
+#define BUTON4 0xFF10EF</b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b><br/>
+</b></div>
+<div>
+<b> // (#define (CH1) Bu CH 1 tuş adı olup bu sizin kumandanızda yoksa silinebilir veya başka isimli tuş varsa onla değiştirilebilir</b></div>
+</div>
+<div>
+<b><br/>
+<br/>
+# include  &lt; IRemote.h &gt;</b><br/>
+<b><br/></b>
+<b>int RECV_PIN = 2;</b><br/>
+<b>IRrecv irrecv(RECV_PIN);</b><br/>
+<b>decode_results results;</b><br/>
+<b><br/></b>
+<b>#define CH1 </b><br/>
+<b>#define CH </b><br/>
+<b>#define CH2 </b><br/>
+<b>#define PREV   </b><br/>
+<b>#define NEXT </b><br/>
+<b>#define PLAYPAUSE </b><br/>
+<b>#define VOL1 </b><br/>
+<b>#define VOL2 </b><br/>
+<b>#define EQ </b><br/>
+<b>#define BUTON0 </b><br/>
+<b>#define BUTON100 </b><br/>
+<b>#define BUTON200 </b><br/>
+<b>#define BUTON1 </b><br/>
+<b>#define BUTON2 </b><br/>
+<b>#define BUTON3 </b><br/>
+<b>#define BUTON4 </b><br/>
+<b>#define BUTON5 </b><br/>
+<b>#define BUTON6 </b><br/>
+<b>#define BUTON7 </b><br/>
+<b>#define BUTON8 </b><br/>
+<b>#define BUTON9 </b><br/>
+<b><br/></b>
+<b>int yesil = 4;</b><br/>
+<b>int mavi = 5;</b><br/>
+<b>int sari = 6;</b><br/>
+<b>int kirmizi =7;</b><br/>
+<b><br/></b>
+<b>void setup()</b><br/>
+<b><br/></b>
+<b>{</b><br/>
+<b> Serial.begin(9600);</b><br/>
+<b> irrecv.enableIRIn();</b><br/>
+<b><br/></b>
+<b>  pinMode(yesil, OUTPUT);</b><br/>
+<b>  pinMode(mavi, OUTPUT);</b><br/>
+<b>  pinMode(sari, OUTPUT);</b><br/>
+<b>  pinMode(kirmizi, OUTPUT);</b><br/>
+<b>  </b><br/>
+<b>  irrecv.enableIRIn();</b><br/>
+<b>}</b><br/>
+<b>void loop() {</b><br/>
+<b><br/></b>
+<b>  if (irrecv.decode(&amp;results))</b><br/>
+<b>  {</b><br/>
+<b>    if (results.value == BUTON1) //   kumandanın 4 numaralı tuşu yeşil ledi yakar . </b><br/>
+<b>    {digitalWrite(yesil, HIGH);}</b><br/>
+<b>     </b><br/>
+<b>    if (results.value == BUTON2) //  kumandanın 5 numarlı tuşu mavi ledi yakar .</b><br/>
+<b>    {digitalWrite(mavi, HIGH);}</b><br/>
+<b>      </b><br/>
+<b>    if (results.value == BUTON3) // </b><b> kumandanın</b><b> 6 numaralı tuşu sarı ledi yakar .</b><br/>
+<b>    {digitalWrite(sari, HIGH);}</b><br/>
+<b>     </b><br/>
+<b>    if (results.value == BUTON4) //  kumandanın 7 numaralı tuşu kırmızı ledi yakar .</b><br/>
+<b>    {digitalWrite(kirmizi, HIGH);}</b><br/>
+<b>     </b><br/>
+<b>    if (results.value == BUTON0)  //  kumandanın 0 numaralı tuşu bütün yanan ledleri söndürür.</b><br/>
+<b>    {</b><br/>
+<b>      digitalWrite(yesil, LOW);</b><br/>
+<b>      digitalWrite(mavi, LOW);</b><br/>
+<b>      digitalWrite(sari, LOW);</b><br/>
+<b>      digitalWrite(kirmizi, LOW); </b><br/>
+<b>    }</b><br/>
+<b>    irrecv.resume();</b><br/>
+<b>  }</b><br/>
+<b><br/></b>
+<b>} </b><br/>
+<b><br/>
+<br/>
+</b><br/>
+<h2>
+<u>Devreyi Brodboard üzerinde nasıl kuracağız </u></h2>
+<div>
+<u><b>Ledin Katod ve Anot bacaklarını gösterir resim  aşağıda</b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTLMwI_QUoCsCWs74rLTEdt5EnDIp-2gk_6JScu82MR4tm_xnALfCN52GGmpqljO5rcS0og5P3uCo6tA5mmcM5nZopXGerynitpZ4FxmkLONJubtLSZNJ_jZkjddySR7NfA5z9_RxwuhRQ/s1600/Ashampoo_Snap_2020.05.08_17h31m41s_001_.png" imageanchor="1" rel="noopener noreferrer"><span><b><img border="0" data-original-height="333" data-original-width="251" height="320" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTLMwI_QUoCsCWs74rLTEdt5EnDIp-2gk_6JScu82MR4tm_xnALfCN52GGmpqljO5rcS0og5P3uCo6tA5mmcM5nZopXGerynitpZ4FxmkLONJubtLSZNJ_jZkjddySR7NfA5z9_RxwuhRQ/s320/Ashampoo_Snap_2020.05.08_17h31m41s_001_.png" width="241"/></b></span></a></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<u><b><br/></b></u></div>
+<div>
+<b><br/></b></div>
+</div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<b><br/></b></div>
+<div>
+<b>38khz IR ledin bacaklarını gösterir resim Aşağıda gösterilmektedir</b></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj75lKqCYdTGLY6_Ro4nS6bxDPGPIWG4858sxKpttS8_f7NXmEf65HE3faMiwGwcX7jj_A11PB1ZWC-vyDKw1f1XAU_WAAvQ2VlM-tk5nBcZChAqGWhP_u2hmM1PgjuxkFsFsI6EdXsy5H3/s1600/Ashampoo_Snap_2020.05.08_17h39m30s_004_.png" imageanchor="1" rel="noopener noreferrer"><span><b><img border="0" data-original-height="289" data-original-width="289" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj75lKqCYdTGLY6_Ro4nS6bxDPGPIWG4858sxKpttS8_f7NXmEf65HE3faMiwGwcX7jj_A11PB1ZWC-vyDKw1f1XAU_WAAvQ2VlM-tk5nBcZChAqGWhP_u2hmM1PgjuxkFsFsI6EdXsy5H3/s1600/Ashampoo_Snap_2020.05.08_17h39m30s_004_.png"/></b></span></a></div>
+<div>
+<span><span><b><br/></b></span></span><span><b></b></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<b><br/></b>
+<b>Arduino pinleri ni gösterir resim</b></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOQEaEt9ubA5wiUiU112oCkgieHDe2iPZI1GXidZXxRz6ObGzVdHpnZUx0wY7GWZWqvFGArXcwHOG6Qp5qBMWGXXYK2IkQfwnRTZNF54rPL37jzp8BquQGCcKt2FBz0A0-Pc5Gke_HR4Hm/s1600/Ashampoo_Snap_2020.05.08_17h50m29s_005_.png" imageanchor="1" rel="noopener noreferrer"><span><b><img border="0" data-original-height="255" data-original-width="330" height="246" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOQEaEt9ubA5wiUiU112oCkgieHDe2iPZI1GXidZXxRz6ObGzVdHpnZUx0wY7GWZWqvFGArXcwHOG6Qp5qBMWGXXYK2IkQfwnRTZNF54rPL37jzp8BquQGCcKt2FBz0A0-Pc5Gke_HR4Hm/s320/Ashampoo_Snap_2020.05.08_17h50m29s_005_.png" width="320"/></b></span></a></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b></b></span></span><br/>
+<div>
+<span><span><b><br/></b></span></span></div>
+<span><span><b>
+</b></span></span>
+<br/>
+<div>
+<span><span><b>               Brodboard Üstünde sırası ile Yeşil ,Mavi , Sarı , Kırmızı  şeklinde peşpeşe bord un üstündeki deliklere bacaklarını takalım  bunların  Katod ve Anot yönleri aynı sırada düzgün bir şekilde takılsın </b></span></span></div>
+<span><span><b>
+</b></span></span>
+<br/>
+<div>
+<span><span><b>Ledlerin uzun bacağına  direnç bağlayacağız .</b></span></span></div>
+<span><span><b>
+</b></span></span>
+<div>
+<span><span><b><br/></b></span></span></div>
+<span><span><b>
+<div>
+38khz lik IR sensöründe ön yüzü bize bakacak şekilde bord un deliklerine düzgün bir şekilde takılacak. </div>
+<div>
+<br/></div>
+<h2>
+Kablolama yapmaya başlayacağız  </h2>
+<div>
+<br/></div>
+<div>
+Arduino nun üzerinde bulunan  power kısmında bulunan  negatif pininden Bord un mavi ile işaretli kısmını jumper kablosu  ile bağlayacağız daha sonra borda taktığımız elemanları arduino üzerinde bulunan dijital pinlerin bulunduğu kısım ile kablolamasını yapacağız . Aşağıdaki resimde gösterildiği gibi</div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3eBk0Ti1Pp-n8wNTSqBOMpQSN_1FlxLDdFngjs9PHxm5e-w4XW1EgiOzWeYA4Act_1x0LQMhNxhxJtV2kJAfiWVnMqd5upU2VqcOaVef9IZsbzHEOj7cH6owUr9Zcr1nbtxx57kxo9enk/s1600/Ashampoo_Snap_2020.05.08_18h03m51s_006_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="386" data-original-width="406" height="304" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3eBk0Ti1Pp-n8wNTSqBOMpQSN_1FlxLDdFngjs9PHxm5e-w4XW1EgiOzWeYA4Act_1x0LQMhNxhxJtV2kJAfiWVnMqd5upU2VqcOaVef9IZsbzHEOj7cH6owUr9Zcr1nbtxx57kxo9enk/s320/Ashampoo_Snap_2020.05.08_18h03m51s_006_.png" width="320"/></a></div>
+<div>
+<br/></div>
+</b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<span><span><b><br/></b></span></span></div>
+<div>
+<b><br/></b></div>
+<div>
+<b>bordun üstünde bulunan  38khz lik arduino sensörün eksi ucu bordun negatif ucu ile şöntlenecek sinyal ucu arduino nun dijital kısmında bulunan 2 numaralı pini ile şöntleyeceğiz  38 khz lik sensörün voltaj bacağıda ardiuno power kısmında bulunan voltaj .</b></div>
+<div>
+<b>pini  ile şöntleyeceğiz.</b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b>Arduino dijital pin kısmındaki 7. pin , 6. pin , 5. pin , 4 . pin ledlerin ayaklarına bağlamış olduğumuz dirençler ile jampur kabloları ile şöntleyeceğizledin diğer ayağıda negatif enerjinin bulunduğu yerle şöntleyeceğiz . bundan sonra program arduino ya yüklendiyse enerjiyi verdiğimizde yapmış olduğumuz devre çalışmaya başlayacak . yapmak isteyenler buradan aldıkları bilgi ve kendi araştırma yateneklerini de kullanarak bunu yapa bilirler herkese kolay gelsin. bir başka devrede görüşene kadar hoşça kalın.  </b></div>
+<div>
+<b><br/></b></div>
+<div>
+</div>
+</div>
+</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2020/05/arduino-ve-ir-kumanda-tv-kumandas-ile.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

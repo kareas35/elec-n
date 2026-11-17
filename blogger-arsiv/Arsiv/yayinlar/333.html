@@ -1,0 +1,81 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ev Aletleri için kızılötesi Toggle Switch | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Ev Aletleri için kızılötesi Toggle Switch</h1><div>2010-09-26 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span><span><span>Ev Aletleri için kızılötesi Toggle Switch</span></span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWa5LnK-s-D11R-QWR7RwCZR4U9NjQD6t9Eda-X-3-RfVH9idVhJayHnw6gJ9olCzOtZwFoaJKHn7PN9ZSJdiCmchEDce6vqJ4FMzaBluC6DfvQQ2uEKu7NHyiBYQVSIrzXqYdBiRiA3MF/s1600/photo_1_th.jpg" imageanchor="1" rel="noopener noreferrer"><span><span><img border="0" height="222" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWa5LnK-s-D11R-QWR7RwCZR4U9NjQD6t9Eda-X-3-RfVH9idVhJayHnw6gJ9olCzOtZwFoaJKHn7PN9ZSJdiCmchEDce6vqJ4FMzaBluC6DfvQQ2uEKu7NHyiBYQVSIrzXqYdBiRiA3MF/s320/photo_1_th.jpg" width="320"/></span></span></a><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span>Bu  infra-red (IR) toggle switch projesi ile çeşitli aletleri ve mekanizmaları uzaktan kontrol edebilirsiniz Kontrol Kutusu ile Modern Görünümlü Bir  Uzaktan kontrol ünitesi görünümüne sahip 220V AC ile çalışan aletleri de kullana bilirsiniz resimde modern görünüme sahip bir ve açık kapalı konumunu led ile gösteren bir uzaktan kumanda aleti görülmekte</span></span><br/>
+<span><span>Modern IR remote kontrol generate modulated pulse train of 38KHz frequency ile çalışmakta olup herhangi bir uzaktan kumanda  aleti ile çalışabilir Uzaktan kumanda aletinin düğmesine bastığınızda . kapasitif filtre yi çevirerek  Akımı yönlendirir ve devre de bulunan röle yi çekerek çalıştırmak istediğimiz Aleti çalıştırırız.</span></span><span><span title=""><span><span>TSOP 1738 IR alıcı modül IR uzaktan kumanda cihazından alınan 38kHz giriş darbeleri algılar. </span></span></span></span><span><span title=""><span><span>stand-durumuna göre, çıkış IR modülün pin altında, mantık Yüksek olduğu zaman o darbeleri algılar, onlar çıkışta görünür. </span></span></span></span><span><span title=""><span><span>IR alıcı dan çıkış 4.7K 'yı bir dizi temel direnç ile bir PNP transistör (BC557) beslenir. </span></span></span></span><span><span title=""><span><span>NPN transistörün kollektör ters olacaktır. </span></span></span></span><span><span title=""><span><span>yere kolektöründen bağlı bir 10uF kapasitör ve 100K direnç var.</span></span></span><span title=""><span><span> </span></span></span></span><span><span title=""><span><span>kondansatörün işlevi, tek bir darbeyi  dönüştürmek olduğu direnç kondansatör için deşarj yolu sağlamaktır.</span></span></span></span><span title=""><span><span>Çok uzak bir tuşa basıldığında ne olacağını görmenizi sağlar.</span></span></span><span title=""><span><span>Bekleme sırasında, IR alıcı modül çıkışı Yüksek, bu yüzden BC557 kesilir. </span></span></span><span title=""><span><span>Kondansatör tamamen ve deşarjolur BC557 kollektör  yer almaktadır. </span></span></span><span title=""><span><span>önemli bir uzak üzerine basıldığında, BC557  sinyal geldiğinde OFFveON  konumuna </span></span></span><span><span> çok hızlı olarak </span></span><span title=""><span><span>döner. </span></span></span><span title=""><span><span>ON olduğunda, kondansatör, kollektör BC557 akımı üzerinden çalışır ve ne zaman 100K direnç üzerinden deşarj olursa OFF, kondansatör başlar olduğunu. </span></span></span><span title=""><span><span>Ama darbe  böylece (saniyede 38000 darbe)üretir</span></span></span><br/>
+<span><span><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkvtTh9h3jmxm56av3zRLJ1D0gbS3eL3L-dy0OzxGjavw-L75TKHhEwcF0elbPYPUn03EhTYpQdoAoDmME9TzBjDCSEQpaAUzbRvYoEc5-2Uj77ZK4E5hT4JleCcL4T4Iqc-5JXSkXy38q/s1600/Schematic_th.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="238" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkvtTh9h3jmxm56av3zRLJ1D0gbS3eL3L-dy0OzxGjavw-L75TKHhEwcF0elbPYPUn03EhTYpQdoAoDmME9TzBjDCSEQpaAUzbRvYoEc5-2Uj77ZK4E5hT4JleCcL4T4Iqc-5JXSkXy38q/s320/Schematic_th.jpg" width="320"/></a></span></span><span title=""><span><span>CD4017, sayaç entegresi </span></span></span><span title=""><span><span>CLK pin (14)  10 darbe  düşük-yüksek sayıları ve karşılık gelen çıkış (Q0-S9) Yüksek çeker. </span></span></span><span title=""><span><span>sadece açıldığında, Q0 Yüksek  gider  o zaman CLK i / p, Q0 Düşük gider bir ilk düşük-yüksek darbe(bir IR uzaktan gelen basıldığında) alır ve Q1 Yüksek olur. </span></span></span><span title=""><span><span>Q1 çıkışı ON / OFF durumunu gösteren bir akım sınırlayıcı direnç üzerinden LED  e bağlanır. </span></span></span><span title=""><span><span>Q1 çıkışı da bir NPN transistör (BC547) ile bir röle anahtarı sürücü için kullanılır. </span></span></span><span title=""><span><span>Ben  5V kaynaktan AÇMAK</span></span></span><span><span>için</span></span><span title=""><span><span> </span></span></span><span><span>70mA</span></span><span title=""><span><span>   5V DC </span></span></span><span title=""><span><span> röle kullandım. </span></span></span><span title=""><span><span>Bu akım BC547 tarafından sağlanmaktadır.</span></span></span><br/>
+<div><div><div><div><div><span><span></span></span></div><span><span><div></div></span></span><div></div></div></div></div></div><div></div><span><span><br/>
+</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNjcbKt0azgbpP3G-lKtrq9hmYyZZOD6ydZeTI0_QzPI_2Ltpzwhnh8Ylf0_28BBOGzFpjMTli9o2ep8gHFCrRQ_hrOexltJ-qFctR_9oN6dqnAubdkKAmctoWgDwyO_ZsxvCE40CfZHaU/s1600/photo_2.jpg" imageanchor="1" rel="noopener noreferrer"><span><span><img border="0" height="217" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNjcbKt0azgbpP3G-lKtrq9hmYyZZOD6ydZeTI0_QzPI_2Ltpzwhnh8Ylf0_28BBOGzFpjMTli9o2ep8gHFCrRQ_hrOexltJ-qFctR_9oN6dqnAubdkKAmctoWgDwyO_ZsxvCE40CfZHaU/s320/photo_2.jpg" width="320"/></span></span></a><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span>Komple Devrenin Bir Kutu içine Yerleştirilmesini Görüyorsunuz</span><br/>
+<span><span><br/>
+</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjInJRIkTNAygSA4CNlFrOklzrCH3XKPJfY7QklATk9hKsleerrFCtJmYxCKhVGYVUaWFmgmY3HOxHOzwQgGmpnA2_jzwON6CtyaMdSThb3nhGi1-3SrfXsaKROfoy6iO1l7d9YRTdwCfe6/s1600/photo_3_th.jpg" imageanchor="1" rel="noopener noreferrer"><span><span><img border="0" height="240" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjInJRIkTNAygSA4CNlFrOklzrCH3XKPJfY7QklATk9hKsleerrFCtJmYxCKhVGYVUaWFmgmY3HOxHOzwQgGmpnA2_jzwON6CtyaMdSThb3nhGi1-3SrfXsaKROfoy6iO1l7d9YRTdwCfe6/s320/photo_3_th.jpg" width="320"/></span></span></a><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span>.</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span>Power Supply  </span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span>Bu power supply için aşağıdaki devrede kullanılan malzemeler şunlardır 5V regulator IC LM7805. A 12V step-down Transformatör ile köprü diot ve kondansatör ler   kullanılmıştır .</span></span><br/>
+<span><span> LM7805.  regulator IC  5V regülatörün uçları görülmektedir</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfWr39fpS62j1S8c0_vdpO09BVWLqhyoIqxbhjlZyBZNsRvCgzSgo9VWEVlUQX4190IieCIAayHJMe0Y_zMX6-xxpyxVGMU8MDPbD_Lc7eYvoOQAAUX8Hu019RqZLGckDJIJ5nNXJuij0Q/s1600/power_supply_schematic.jpg" imageanchor="1" rel="noopener noreferrer"><span><span><img border="0" height="194" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfWr39fpS62j1S8c0_vdpO09BVWLqhyoIqxbhjlZyBZNsRvCgzSgo9VWEVlUQX4190IieCIAayHJMe0Y_zMX6-xxpyxVGMU8MDPbD_Lc7eYvoOQAAUX8Hu019RqZLGckDJIJ5nNXJuij0Q/s320/power_supply_schematic.jpg" width="320"/></span></span></a><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span>Dikkatli olmak gerekir çünkü devrede 220 volt akım kullanılmaktadır</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span>Uzaktan kumanda ile devrenin çalışması</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEKx1-z7jN-zendFs2OEykARTkSkGJpcvqifnuJjlAom2_UXqwKKkS8ly6nErPcl5wfkhv1GXYml1phMVIRSOw3A9Y1hkyTtczHUiolXtHFn_nxBbjqsasu0zpFZFkIFOf2StKI_dZU_a8/s1600/photo_6_th.jpg" imageanchor="1" rel="noopener noreferrer"><span><span><img border="0" height="240" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEKx1-z7jN-zendFs2OEykARTkSkGJpcvqifnuJjlAom2_UXqwKKkS8ly6nErPcl5wfkhv1GXYml1phMVIRSOw3A9Y1hkyTtczHUiolXtHFn_nxBbjqsasu0zpFZFkIFOf2StKI_dZU_a8/s320/photo_6_th.jpg" width="320"/></span></span></a><br/>
+<span><span>Ir led ve açık kapalı konumunu gösteren led görülmektedir</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span> Açık</span></span><br/>
+<span><span>Kapalı</span></span><br/>
+<span><span>Download</span></span><br/>
+<span><span>http://www.electronics-lab.com/projects/motor_light/021/IR_Toggle_Switch.doc</span></span></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/09/ev-aletleri-icin-kzlotesi-toggle-switch.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

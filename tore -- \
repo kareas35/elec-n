@@ -1,0 +1,71 @@
+[1mdiff --git a/Dersler/devre-kurma.html b/Dersler/devre-kurma.html[m
+[1mindex 4895beb..0825e9d 100644[m
+[1m--- a/Dersler/devre-kurma.html[m
+[1m+++ b/Dersler/devre-kurma.html[m
+[36m@@ -10,7 +10,7 @@[m [mheader{background:linear-gradient(120deg,#0e447d,#2081d1);color:#fff;padding:24p[m
+ </style>[m
+ </head>[m
+ <body>[m
+[31m-<header><a href="elektronige-giris.html">← Elektroniğe Giriş dersine dön</a><h1>🔌 Etkileşimli Devre Kurma</h1><p>Bir LED devresini kendin tamamla: bileşenleri seç, doğru yerleştir, anahtarı kapat.</p></header>[m
+[32m+[m[32m<header><a href="elektronige-giris.html">← Elektroniğe Giriş dersine döne etkileşimli Devre Kurma</h1><p>Bir LED devresini kendin tamamla: bileşenleri seç, doğru yerleştir, anahtarı kapat.</p></header>[m
+ <div class="container">[m
+ <section class="panel"><h2>🎯 Görevin</h2><p>9 V pil ile bir LED'i güvenli şekilde yak. Üstteki güç kaynağı ve alttaki dönüş kablosu hazır. Boş üç yuvaya <strong>anahtar, direnç ve LED</strong> yerleştir. Her bileşenden bir tane kullan; daha sonra anahtarı kapat. LED'in yönünü ve direnç değerini de kontrol et.</p><p class="small muted">Bu uygulama ideal bileşenlerden oluşan eğitim modelidir; gerçek elektronik simülatörünün yerine geçmez. Şebeke elektriğinde uygulama yapma.</p></section>[m
+ <div class="builder">[m
+[1mdiff --git a/Dersler/direncler.html b/Dersler/direncler.html[m
+[1mindex 8db8796..f534a87 100644[m
+[1m--- a/Dersler/direncler.html[m
+[1m+++ b/Dersler/direncler.html[m
+[36m@@ -52,6 +52,25 @@[m [mheader{background:linear-gradient(115deg,#0e4480,#227acb);color:white;padding:25[m
+ <div class="control-grid"><label for="r1">R1 (Ω) <input type="number" id="r1" min="1" max="1000000" step="1" value="220"></label><label for="r2">R2 (Ω) <input type="number" id="r2" min="1" max="1000000" step="1" value="330"></label><label for="source">Kaynak gerilimi (V) <input type="number" id="source" min="0" max="50" step="0.5" value="9"></label></div>[m
+ <div class="result" aria-live="polite"><div>Eşdeğer direnç</div><strong id="equivalent">—</strong><div id="seriesExplanation" class="small"></div><div id="currentResult" class="small"></div></div>[m
+ <p class="small muted">Model, ideal dirençler ve ideal DC kaynak varsayar. Pozitif direnç değerleri gir.</p></section>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<section class="panel" id="direncler-baglanti">[m
+[32m+[m[32m  <h2>📘 Sıradaki Ders: Dirençler</h2>[m
+[32m+[m
+[32m+[m[32m  <p>[m
+[32m+[m[32m    Dirençlerin nasıl çalıştığını öğren.[m
+[32m+[m[32m    Renk kodlarını incele, seri ve paralel[m
+[32m+[m[32m    direnç hesaplamaları yap.[m
+[32m+[m[32m  </p>[m
+[32m+[m
+[32m+[m[32m  <a href="direncler.html"[m
+[32m+[m[32m     class="action"[m
+[32m+[m[32m     style="display:inline-block;[m
+[32m+[m[32m            text-decoration:none;[m
+[32m+[m[32m            margin-top:15px;">[m
+[32m+[m[32m    Dirençler Dersine Git →[m
+[32m+[m[32m  </a>[m
+[32m+[m[32m</section>[m
+ <section class="panel" id="uygulama"><h2>5. Mini uygulama: LED için direnç seçimi</h2><p>9 V pil, yaklaşık 2 V ileri yön gerilimine sahip kırmızı LED ve hedef 10 mA akım için seri direnç hesaplayalım.</p><div class="formula">R = (V<sub>kaynak</sub> − V<sub>LED</sub>) / I</div><div class="example">R = (9 − 2) / 0,010 = <strong>700 Ω</strong>. Pratikte daha yüksek yakın standart değerlerden <strong>750 Ω</strong> seçilirse akım yaklaşık <strong>9,3 mA</strong> olur.</div><p>LED'in ileri yön gerilimi ve uygun akımı modele göre değişebilir. Üretici veri sayfasını dikkate al.</p></section>[m
+ <section class="panel" id="test"><h2>6. Mini bilgi testi</h2><p>Dört soruyu cevapla, sonuçlarını hemen gör.</p><form id="quiz">[m
+ <fieldset class="question"><legend>1. Direncin birimi hangisidir?</legend><label><input type="radio" name="q1" value="a" required> Volt</label><label><input type="radio" name="q1" value="b"> Ohm</label><label><input type="radio" name="q1" value="c"> Amper</label><div class="feedback" id="f1" aria-live="polite"></div></fieldset>[m
+[1mdiff --git a/Dersler/elektronige-giris.html b/Dersler/elektronige-giris.html[m
+[1mindex a96cf64..e6e96ce 100644[m
+[1m--- a/Dersler/elektronige-giris.html[m
+[1m+++ b/Dersler/elektronige-giris.html[m
+[36m@@ -18,12 +18,13 @@[m [mheader{background:linear-gradient(115deg,#0e4480,#227acb);color:#fff;padding:25p[m
+ <main>[m
+ <section class="panel" id="elektrik"><h2>1. Elektrik ve elektronik nedir?</h2><p><strong>Elektrik</strong>, elektrik yüklerinin varlığı ve hareketiyle ilgili olayları ifade eder. <strong>Elektronik</strong> ise devre elemanları kullanarak elektriksel işaretleri kontrol etmeye ve işlemeye odaklanır.</p><p>Örneğin bir el fenerinde pil enerji sağlar, anahtar devreyi açıp kapatır, LED ise elektrik enerjisini ışığa dönüştürür.</p><div class="example"><strong>Hatırla:</strong> Bir devrede akımın akabilmesi için uygun bir gerilim kaynağına ve kapalı bir iletim yoluna ihtiyaç vardır.</div></section>[m
+ <section class="panel" id="kavramlar"><h2>2. Gerilim, akım ve direnç</h2><div class="concepts"><div class="concept"><strong>V</strong><h3>Gerilim</h3><p>İki nokta arasındaki elektriksel potansiyel farkıdır.</p><span class="muted">Birim: volt (V)</span></div><div class="concept"><strong>I</strong><h3>Akım</h3><p>Bir kesitten birim zamanda geçen net elektrik yüküdür.</p><span class="muted">Birim: amper (A)</span></div><div class="concept"><strong>R</strong><h3>Direnç</h3><p>Bir elemanın elektrik akımına karşı gösterdiği karşı koymadır.</p><span class="muted">Birim: ohm (Ω)</span></div></div><p class="small muted">Basit bir benzetme: gerilim suyu hareket ettiren basınç farkına, akım suyun akışına, direnç ise akışı zorlaştıran dar bir boruya benzetilebilir. Bu benzetmenin sınırları vardır.</p></section>[m
+[32m+[m
+ <section class="panel" id="ohm"><h2>3. Ohm Kanunu — canlı deney</h2><p>Ohmik bir direnç için, sıcaklık gibi fiziksel koşullar sabitken, gerilim akımla doğru orantılıdır.</p><div class="formula">I = V / R</div><div class="diagram"><svg viewBox="0 0 360 170" role="img" aria-label="Gerilim kaynağı ve seri bağlı direnç içeren basit kapalı devre"><g stroke="#234d7b" stroke-width="3" fill="none"><path d="M70 45 H155 M210 45 H290 V132 H70 V45"/><rect x="155" y="33" width="55" height="24" rx="3" fill="#e9b56c" stroke="#975c26"/><circle cx="70" cy="87" r="22"/><path d="M63 82 H77 M70 75 V89 M64 98 H76"/></g><g fill="#234d7b" font-family="Arial" font-size="15"><text x="155" y="24">R: <tspan id="diagramR">220</tspan> Ω</text><text x="15" y="92"><tspan id="diagramV">9</tspan> V</text><text x="150" y="157">Kapalı DC devresi</text></g></svg></div>[m
+ [m
+ [m
+ [m
+ [m
+[31m- <div class="ctrl"><label for="v">Gerilim <output id="vOut" for="v">9 V</output></label><input type="range" id="v" min="1" max="24" step="1" value="9"></div><div class="ctrl"><label for="r">Direnç <output id="rOut" for="r">220 Ω</output></label><input type="range" id="r" min="100" max="1000" step="20" value="220"></div><div class="result" aria-live="polite"><div>Hesaplanan akım</div><strong id="iOut">40,91 mA</strong><div class="small" id="ohmExplanation"></div></div><p class="small muted">Bu eğitim modeli ideal DC kaynağı ve ohmik direnç varsayar. Gerçek devrelerde bileşen toleransları ve sıcaklık etkili olabilir.</p></section>[m
+[32m+[m[32m <div class="ctrl"><label for="v">Gerilim <output id="vOut" for="v">9 V</output></label><input type="range" id="v" min="1" max="24" step="1" value="9"></div><div class="ctrl"><label for="r">Direnç <output id="rOut" for="r">220 Ω</output></label><input type="range" id="r" min="100" max="1000" step="20" value="220"></div><div class="result" aria-live="polite"><div>Hesaplanan akım</div><strong id="iOut">40,91 mA</strong><div class="small" id="ohmExplanation"></div></div><p class="small muted"> ve ohmik direnç varsayar. Gerçek devrelerde bileşen toleransları ve sıcaklık etkili olabilir.</p></section>[m
+ <section class="panel" id="animasyon">[m
+   <h2>Animasyonlu Elektrik Devresi</h2>[m
+ [m
+[36m@@ -55,7 +56,7 @@[m [mheader{background:linear-gradient(115deg,#0e4480,#227acb);color:#fff;padding:25p[m
+               stroke="#1565c0"[m
+               stroke-width="3"/>[m
+ [m
+[31m-      <text x="61" y="100"[m
+[32m+[m[32m      <text x="Bu eğitim modeli ideal DC kaynağı61" y="100"[m
+             fill="#1565c0">+ −</text>[m
+ [m
+       <text x="150" y="23"[m

@@ -1,0 +1,41 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dans Eden Ledler | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Dans Eden Ledler</h1><div>2010-01-10 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span></span><br/>
+<div>Taşınabilir, sıralı LED'ler: müzik veya konuşma ritmini takip eder, 9 Volt pille çalışır ...<br/>
+</div><h3><a href="http://antrak.org.tr/images/stories/pic_2007/temmuz/led/led_1.jpg" rel="noopener noreferrer" target="_blank"><img align="default" alt="led_1.jpg" height="117" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/temmuz/led/led_1.jpg" title="led_1.jpg" width="239"/></a></h3><div>Parçalar:<br/>
+</div><pre>R1_____________10K   1/4W Direnç
+</pre><pre>R2,R3__________47K   1/4W Direnç
+</pre><pre>R4______________1K   1/4W Direnç
+</pre><pre>R5,R6,R7______100K   1/4W Direnç
+</pre><pre>R8____________820R   1/4W Direnç
+</pre><pre>C1,C3_________100nF   63V Seramik veya polyester kapasitör
+</pre><pre>C2_____________10µF   50V Elektrolitik kapasitör
+</pre><pre>C4____________330nF   63V Polyester kapasitör (bkz. notlar)
+</pre><pre>C5____________100µF   25V Elektrolitik kapasitör
+</pre><pre>D1___________1N4148   75V 150mA Diyot
+</pre><pre>D2-D11_________5 or 3mm. LED'ler (her tip ve renkte olabilir)
+</pre><pre>IC1___________LM358  Düşük güçlü çiftli op-amp
+</pre><pre>IC2____________4017  10 çıkışlı onluk sayaç entegresi
+</pre><pre>M1_____________minyatür elektret mikrofon
+</pre><pre>SW1____________SPST  anahtar
+</pre><pre>B1_______________9V  DC besleme için Pil veya adaptör
+</pre><pre>PP3 pil kelepçesi (isteğe bağlı)
+</pre><pre></pre><pre><strong>Ek baskı devre parçaları (bkz. notlar):</strong>
+</pre><pre>R9,R10_________10K   1/4W Direnç
+</pre><pre>R11____________56R   1/4W Direnç
+</pre><pre>D12,D13 v.s.____5 or 3mm. LED (her tip ve renkte olabilir)
+</pre><pre>Q1,Q2_________BC327   45V 800mA PNP Transistör
+</pre><pre>Q3____________BC337   45V 800mA NPN Transistör
+</pre><pre></pre><div><br/>
+</div><hr/><h4>Cihazın amacı:</h4><h4>Temel devre, küçük bir mikrofon tarafından alınan müziğin veya konuşmanın ritmine göre azami 10 adet LED'i sürer. Genişletilmiş versiyonu ise, herbiri beş adet LED'den oluşan toplam on adet şeridi 9V gerilimle çalıştırır.</h4><h4>Devrenin çalışması:</h4><div>IC1A, mikrofon tarafından alınan ses sinyalini yaklaşık 100 kat yükseltir tepe-voltaj dedektörü görevini yapan IC1B'yi çalıştırır. Çıkış tepe noktaları, giriş sinyali ve IC2 saati ile senkronizedir ve döngülü onluk sayaç 10 adet LED'i sıralı şekilde aydınlatır.<br/>
+</div><div>Ek bir devre ise, herbiri beş LED'den oluşan (azami) 10 adet şeridi 9V gerilimde aydınlatır. Tüm LED şeritleri için ortak olan 10mA'lik daimi akım kaynağı (Q1 &amp; Q2) ve 2 ila 5'li seri bağlanmış LED'lerden oluşan şeridi aydınlatan bir adet anahtar transistörden (Q3) oluşmaktadır. Bu nedenle, kullanılan herbir şeridin aydınlatılması için bir adet transistöre ve baz dirence ihtiyaç duyulmaktadır.<br/>
+</div><h4>Notlar:</h4><ul><li>R4 değeri değiştirilerek devrenin hassasiyeti ayarlanabilir.</li>
+<li>Müziğin tepe noktalarına karşı devrenin vereceği tepki hızını ayarlamak için C4 değeri 220 ila 470nF arasında değiştirilebilir.</li>
+<li>Ek devrenin işletime alınması için, on adet LED şeridinin çalıştırılmasında sadece birer adet R10, R11, Q1 ve Q2 gereklidir. Diğer yandan, kullanmaya karar verdiğiniz şeridin çalıştırılması için birer adet R9 ve Q3 gereklidir.</li>
+<li>D2-D11'de gösterilen LED'lerin yerine, IC2 çıkış uçlarına birer R9 bağlanmalıdır. R8 devre dışı bırakılmalıdır.</li>
+<li>Daha az sayıda LED veya LED şeridi kullanılmak istenirse, IC2'nin 15 nolu ucu devreden çıkarılmalı ve ilk sıradaki kullanılmayan çıkış ucuna bağlanmalıdır.<br/>
+Örneğin; 5 adet LED kullanacaksanız, IC2'nin 15 nolu ucu 1 nolu uca bağlanmalıdır; 8 adet LED kullanacaksınız, IC2'nin 15 nolu ucu bu kez 9 nolu uca bağlanmalıdır.</li>
+<li>Devre 10mA civarında akım çeker.</li>
+<li>9V pil yerine şebekeye bağlı adaptör kullanmak isterseniz, devreyi 12V ile besleyip şerit başına 6 LED veya 15V ile besleyip şerit başına 7 LED kullanabilirsiniz.</li>
+</ul><div>Kolay gelsin<br/>
+</div><div><span>Yazar Attila Özgit ' e teşekkür ederim.</span><br/>
+</div><div>"Alıntıdır"<br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/dans-eden-ledler.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

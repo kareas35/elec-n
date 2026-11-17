@@ -1,0 +1,112 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Miniature High-Rate Speed Control with Brake | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Miniature High-Rate Speed Control with Brake</h1><div>2010-08-09 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span><span><br/>
+</span></span><div><span>Build a Miniature High-Rate Speed Control with Brake</span></div>Many designs for high-rate speed controls have been published. Most require two 8-pin integrated circuits (ICs) or one 14-pin IC. Many designs suitable for home construction are fairly large (some as large as 2" square). Many do not include a brake. The design in this article addresses many of these shortcomings. Some of the ideas from this design are derived from designs published in various European magazines. Many of these use surface mount technology (SMT) construction, which most modellers (myself included) do not have the facilities to work with. This design uses standard off-the-shelf components, and does <u>not</u> use a microprocessor, meaning that you don't need any special equipment to build it.<a href="http://www.blogger.com/post-create.g?blogID=4994561290043001064" name="specs" rel="noopener noreferrer"></a><br/>
+<h2>Specifications</h2>This control has the following specifications:<br/>
+<ul><li>Size: 1.4"L x 1.2"W x 0.7"H (3.6cm x 3.0cm x 1.5cm).</li>
+<li>Weight: approximately 0.6 oz (17g) without motor and battery leads.</li>
+<li>Current: 30A continuous, 45A intermittent (higher with better MOSFETs).</li>
+<li>Voltage Loss: 150mV @ 20A (with four IRFZ40 MOSFETs).</li>
+<li>Solid state soft-brake when throttle is off.</li>
+<li>Arming switch.</li>
+<li>No power-on glitch.*</li>
+<li>Throttle stays off when transmitter is off.</li>
+<li>7 to 12 cell operation.</li>
+<li>Cost to build: approximately $40 Cdn.</li>
+</ul><div><br/>
+</div><br/>
+<b><sup>*</sup>Caution:</b> One time when this control <u>can and will turn on</u>unexpectedly is if you arm the control while the receiver is off or disconnected (i.e. there is no power to Z1). <u>Always</u> turn on your receiver before arming the control.<br/>
+<h2>The Circuit</h2>The circuit begins with a buffer, consisting of C1, R1, and Q1. This provides some isolation between the receiver and the rest of the circuit, and makes circuit operation somewhat independent of the model of receiver (although you may have to adjust R8 if you change receiver types). R2, R3, and C2 form an integrator, which produces an output voltage proportional to the pulse width of the input signal. This output voltage varies from approximately 1.15V for a 1ms input to 1.45V for a 2ms input (at 50 pulses per second).Z1A, together with R4 through R8, and C3, form a 2.5kHz triangle wave generator. R8 adjusts the upper and lower bounds of the triangle wave (it also affects the frequency, but within the range over which R8 must be adjusted, this is not significant). When properly adjusted, the triangle wave (which appears across C3) will oscillate between about 1.2V and 1.4V. This covers the middle 2/3 of the range that the integrator voltage covers.<br/>
+Z1B is used as a comparator, which compares the integrator voltage with the triangle wave. When the integrator voltage is above the voltage of the triangle wave, the output of Z1B is high; when it is below, it is low. At zero throttle, the integrator voltage (1.15V) is always below the triangle wave voltage (1.2V to 1.4V), so Z1B remains low. At full throttle, the integrator voltage (1.45V) is always above the triangle wave voltage, so Z1B remains high. At half throttle, the integrator voltage (1.3V) is above the triangle wave voltage half the time, so Z1B is high half the time and low half the time.<br/>
+When Z1B is low, MOSFETs Q2 through Q5 are turned off via R12 through R15. When Z1B is high, the MOSFETs are turned on via R9 and R12 through R15. The arming switch, S1, disconnects R9 from Z1B, and since it's output is an open collector, it will not go high (R10 ensures that it does not float high, and also provides some protection against damaging the MOSFETs).<br/>
+<br/>
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="2" cellspacing="2"><tbody>
+<tr><td><a href="http://www.stefanv.com/rcstuff/esc/escschem.gif" rel="noopener noreferrer"><img alt="ESC Schematic." border="0" height="189" hspace="0" loading="lazy" src="http://www.stefanv.com/rcstuff/esc/t-escschem.gif" vspace="0" width="457"/></a></td></tr>
+<tr><td>ESC Schematic. Click to enlarge.</td></tr>
+</tbody></table><br/>
+D1, C4, R11, and Q6 form the brake. Whenever Z1B is high, C4 is quickly discharged through R9 and D1. When Z1B is low, C4 is slowly charged through R11. This charging occurs so slowly that it will not get very far before the next time Z1B goes high. Only when Z1B does not go high for about 50ms (i.e. the throttle has been off for 50ms) does C4 make any significant progress. When C4 does charge fully (the lower side reaches close to 0V), the P-channel MOSFET Q6 is turned on, effectively shorting out the motor, and acting as a brake. Notice that this can't happen as long as the throttle is on even a little bit, so there is no danger of Q6 and Q2/3/4/5 being on at the same time. Because Q6's on-resistance is about 0.2 to 0.3Ω, the brake is somewhat gentle, but more than adequate to stop a wind-milling propeller.<br/>
+The circuit as originally designed used inexpensive IRFZ40 MOSFETs, which have an on-resistance of 0.028Ω at 10V, but work fine as low as 7V (i.e. 7 cells, under load) in practice. The <i><a href="http://www.stefanv.com/rcstuff/esc.htm#modifications" rel="noopener noreferrer">Modifications</a></i>section later in this article suggests several possible lower resistance replacements.<br/>
+<h2>Construction</h2>The circuit is best built on a printed circuit board. Refer to my article on the subject, <i>Making Excellent Printed Circuit Boards</i>.<br/>
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="2" cellspacing="2"><tbody>
+<tr><td></td></tr>
+<tr><td>Copper side. Actual size is 1.4" x 1.2" (3.6cm x 3.0cm). Click to enlarge.</td></tr>
+</tbody></table><div><a href="http://www.stefanv.com/rcstuff/esc/t-escpcb.gif" imageanchor="1" rel="noopener noreferrer"><img alt='Copper side. Actual size is 1.4" x 1.2" (3.6cm x 3.0cm).' border="0" height="150" hspace="0" loading="lazy" src="http://www.stefanv.com/rcstuff/esc/t-escpcb.gif" vspace="0" width="240"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+There are a few things to note in the construction. The leads to the receiver (a replacement servo lead) are connected directly to the pads on the bottom of the board (on the right side in the PCB layout shown above). Typically, the CH- lead is brown or black, the SIG lead is white, yellow, or orange, and the CH+ lead is red. The arming switch, S1, is connected with two short lengths of wire to the two holes marked S1 in the component placement diagram below.<br/>
+<br/>
+<table align="center" bgcolor="#ffffff" border="0" cellpadding="2" cellspacing="2"><tbody>
+<tr><td></td></tr>
+<tr><td><div><a href="http://www.stefanv.com/rcstuff/esc/t-escplace.gif" imageanchor="1" rel="noopener noreferrer"><img alt="Component placement diagram." border="0" height="200" hspace="0" loading="lazy" src="http://www.stefanv.com/rcstuff/esc/t-escplace.gif" vspace="0" width="320"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Component placement diagram. Click to enlarge.<br/>
+<span><span><span><br/>
+</span></span></span><br/>
+<span><span>Begin by installing all the resistors and capacitors. The resistors should be installed standing on end (except R12 to R15, which lay flat). Be sure to orient C2 correctly, with the negative side closest to the edge of the board. Install D1 and Q1, again making sure to orient them correctly (the negative side of D1 will have a band on it). Install the jumper that will end up underneath Z1, and then install a socket for Z1. Connect the receiver lead and arming switch as described above.</span></span></td></tr>
+</tbody></table><div><span>Connect 12 or 14 gauge wire to the MOTOR+, MOTOR-, BATT+, and BATT- traces on the board. For each wire, strip off enough insulation that you can solder the wire along the whole length of the trace, since the trace alone is not heavy enough to carry the full motor current. The MOTOR+ and BATT+ wires can actually be a single length of wire, with 1.4" of insulation stripped off the middle.</span></div><div><span>Install the MOSFETs. The four N-channel MOSFETs are installed with their tabs towards the MOTOR- side of the board, while the P-channel MOSFET is installed with it's tab towards the MOTOR+ side of the board. Before soldering the centre lead of each MOSFET, bend it over towards the MOTOR- trace. Each MOSFET's centre lead should overlap well onto the next lower-numbered MOSFET's centre lead. Solder the centre leads to the copper trace, and to each other and the MOTOR- wire. Be careful not to overheat the MOSFETs while soldering.</span></div><h2><span>Testing</span></h2><span><span>Double check your work, making sure there are no solder bridges, and that you didn't make a mistake copying the circuit board layout. Check that all the components are in place, but do not insert Z1 into its socket yet.</span></span><br/>
+<div><span>Connect a 7 to 12 cell motor battery to the BATT+ and BATT- leads, and use a volt meter to ensure that there are no high voltages on the servo leads (you don't want to fry your receiver because of a wiring error).</span></div><div><span>Disconnect the power, insert Z1 into its socket, plug the servo lead into the appropriate receiver channel, connect the motor battery, and connect a 12V automotive lamp to the MOTOR+ and MOTOR- leads. Move the transmitter throttle stick to off, turn on your transmitter, then your receiver, and then the arming switch. The lamp may or may not light. If it </span><u><span>does</span></u><span> light, use a small screwdriver to turn R8 counter-clockwise until the lamp goes out. If it </span><u><span>does not</span></u><span> light, turn R8 clockwise until it does, and then counter-clockwise again until it goes out.</span></div><div><span>Turn everything off, disconnect the motor battery, and hook up a motor (with a suitable propeller). Don't forget to install a diode across the motor terminals, with the banded end connected to the </span><u><span>positive</span></u><span>terminal of the motor (the diagram shows the easy-to-obtain 1N4004, but a Schottky diode would be better). Make sure the motor is firmly fastened to something and that the propeller can swing freely. Turn everything back on in the following order: throttle stick to </span><u><span>off</span></u><span>, transmitter on, receiver on, arming switch on. If you've adjusted everything using the light bulb as described above, the motor may be completely off, humming a bit, or turning slowly. Adjust R8 so that with the throttle stick set to off, the motor is not running, but with the stick advanced one or two clicks, it begins to hum. Keep clear of the propeller while making the adjustments. When the motor first starts, it will emit a high-pitched whine. This is simply the motor armature oscillating at the speed control's 2500Hz rate and is quite normal.</span></div><div><span>When everything is adjusted so that the motor starts at the right point, try moving the throttle stick slowly to full power. Pay attention to the motor speed. It should speed up as you move the throttle stick, but it should stop getting faster </span><u><span>before</span></u><span> you reach full on. Once you reach full on, move the throttle trim forward to confirm that the motor won't go any faster.</span></div><div><span>If you find that you can push the throttle stick all the way forward, and still get more speed by pushing the trim forward, then you may need to replace R5 with a 120kΩ resistor to narrow the throttle range to match your radio.</span></div><h2><span>Installation</span></h2><span><span>Installation is straightforward. Hook up everything as you did while testing. Install the arming switch in an appropriate place (I prefer the left side of the fuselage, just ahead of the leading edge of the wing, with forwards being ON). Make sure that the bottom of the circuit does not touch anything metallic. To prevent corrosion, I sprayed the bottom of the board with clear lacquer. Keep the motor and battery leads as short as possible. Also make sure your motor is equipped with a diode, and suppression capacitors (I use one 0.1µF capacitor across the motor terminals, and one 0.047µF capacitor between each terminal and the motor case; do</span></span><span><span> </span></span><span><u><span>not</span></u></span><span><span> </span></span><span><span>use electrolytic capacitors).</span></span><br/>
+<div></div><table align="right" bgcolor="#ffffff" border="0" cellpadding="2" cellspacing="2"><tbody>
+<tr><td rowspan="2"><span>  </span></td><td><span><img alt="Completed ESC installed in my Great Planes &lt;i&gt;Spectra&lt;/i&gt;." border="1" height="107" hspace="0" loading="lazy" src="http://www.stefanv.com/rcstuff/esc/t-escphot5.jpg" vspace="0" width="240"/></span></td></tr>
+<tr><td><span>Completed ESC installed in my Great Planes </span><i><span>Spectra</span></i><span>.</span></td></tr>
+</tbody></table><span>Be sure to use a fuse. The best place to install the fuse is in the BATT+ lead (i.e. between the speed control and the battery). I use two 12 gauge female spade connectors, soldered at right angles to the wire, as a fuse holder.</span><br/>
+<div><span>Before flying with this control, do a range check. With the motor off, you should get the same range as without the control (for most radios, this is 100ft (30m) with the antenna down; check your manufacturer's recommendations). With the motor on, you should get at least 85% of the range you got with the motor off. If you do not pass this range check, </span><u><span>do not fly</span></u><span>!</span></div><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<h2><span>Modifications</span></h2><span><span>This control is very versatile, and several modifications can be made to it. Here are some ideas.</span></span><br/>
+<div><span>If you don't require a brake, you can omit D1, R11, C4, and Q6.</span></div><div><span>If you'd like to build a smaller speed control, perhaps for Speed 400 applications, you can use fewer MOSFETs. For instance, a single IRFZ40 MOSFET is suitable for a Speed 400 sport plane drawing up to 10A. In that case, you can omit Q3, Q4, and Q5, and then bend Q2 over to lay flat on the board. If you're using a brake, Q6 can be bent over to lay down on top of Q2. This arrangement greatly reduces the thickness of the control.</span></div><div><span>To achieve a lower on-resistance and/or fewer MOSFETs, you can substitute some of the newer logic-level low resistance MOSFETs for Q2 through Q5, such as the IRLZ44N (0.025Ω @ 5V) SMP60N03-10L (0.010Ω @ 5V), IRL2203N (0.010Ω @ 4.5V) or IRL3803 (0.009Ω @ 4.5V). This can double or triple the current carrying capacity of the control, or produce a 20A control with a single MOSFET. Using logic-level MOSFETs also allows the control to run on as few as four cells.</span></div><div><span>By replacing R9 with a 1.2kΩ resistor, you can use the control with up to 14 cells. Please note that most logic-level MOSFETs </span><u><span>cannot</span></u><span> handle being switched by over 12 cells, so you </span><u><span>must</span></u><span> use regular MOSFETs such as the IRFZ40.</span></div><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<table align="center" border="" cellpadding="5" cellspacing="0"><tbody>
+<tr><td><b><span>Part</span></b></td><td><b><span>Description</span></b></td><td><b><span>Radio Shack®</span></b></td></tr>
+<tr><td><span>R1,R10</span></td><td><span>1M ¼W</span></td><td><span>271-1356</span></td></tr>
+<tr><td><span>R2</span></td><td><span>220k ¼W</span></td><td><span>271-1350</span></td></tr>
+<tr><td><span>R3</span></td><td><span>33k ¼W</span></td><td><span>271-1341</span></td></tr>
+<tr><td><span>R4</span></td><td><span>22k ¼W</span></td><td><span>271-1339</span></td></tr>
+<tr><td><span>R5</span></td><td><span>100k ¼W</span></td><td><span>271-1347</span></td></tr>
+<tr><td><span>R6,R9</span></td><td><span>1k ¼W</span></td><td><span>271-1321</span></td></tr>
+<tr><td><span>R7</span></td><td><span>68k ¼W</span></td><td></td></tr>
+<tr><td><span>R8</span></td><td><span>10k trimmer</span></td><td><span>271-282</span></td></tr>
+<tr><td><span>R11</span></td><td><span>470k ¼W</span></td><td><span>271-1354</span></td></tr>
+<tr><td><span>R12-R15</span></td><td><span>100Ω ¼W</span></td><td><span>271-1311</span></td></tr>
+<tr><td><span>C1,C3</span></td><td><span>22nF (0.022µF)</span></td><td></td></tr>
+<tr><td><span>C2</span></td><td><span>2.2µF tantalum</span></td><td><span>272-1435</span></td></tr>
+<tr><td><span>C4,C5</span></td><td><span>0.1µF</span></td><td><span>272-109</span></td></tr>
+<tr><td><span>D1</span></td><td><span>1N914 or 1N4148</span></td><td><span>276-1122</span></td></tr>
+<tr><td><span>Q1</span></td><td><span>2N3904, 2N4401, or equiv.</span></td><td><span>276-2016</span></td></tr>
+<tr><td><span>Z1</span></td><td><span>LM393 dual comparator</span></td><td></td></tr>
+<tr><td><span>Q2-Q5</span></td><td><span>IRFZ40, IRFZ44, ECG2395, SMP50N06-25</span></td><td></td></tr>
+<tr><td><span>Q6</span></td><td><span>IRF9530 or IRF9540</span></td><td></td></tr>
+<tr><td><span>S1</span></td><td><span>SPST miniature toggle switch</span><br/>
+<u><span>or</span></u><span> miniature slide switch</span></td><td><span>275-624</span><br/>
+<span>275-406</span></td></tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/08/miniature-high-rate-speed-control-with.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

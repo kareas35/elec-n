@@ -1,0 +1,70 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Network ( Ağ kablolarının) bağlantı kontrol aleti | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Network ( Ağ kablolarının) bağlantı kontrol aleti</h1><div>2010-02-14 · Diğer Elektronik Projeleri</div></header><main><article class="panel">Birçok Bilgisayar Ağ Bağlantı sistemleri Şimdilerde Uzak mesafelere bağlantı yapabilmek için artık optik kablolamaya geçildi .Bunlarda hız arttı ve kayıplar azaldı . Bizim bu  RJ45 diye bilinen  oketler  ile Yaptığımız bağlantı en fazla 100 metre mesafelerde kullanılabilir.  (RJ11)  Soketinin biraz daha yassı olan tipidir ve 8 adet pin bulunur. Bu konnektörler ekranlı ve ekransız olmak üzere iki tipte bulunur. 10Mbit/sn ve 100Mbit/sn hızlar için ekransız tip fiş soket kombinasyonları uygundur. Ve kablo tipi olarak da UTP (Unshielded Twisted Pair) olarak adlandırılan ekransız bükülmüş çiftli kablo kullanılır. Kablonun sokete takılması ise, bu Soketlere   ait özel bir pense yardımı ile yapılır. Her ne  kadar özel Ustalık  ve alet gerektiren bu işlem bazı kişilerin yaptığı gibi tornavida ve çekiç yardımı ile yapılmaya kalkılsada İşibilen kişiler kesinlikle bu yola başvurmazlar çünkü yapılan iş kaliteyi ve sağlamlığı gerektirir.İş bitti diye bakılıp denemeye geldiğinde sorun yaşanırsa hem zamandan hem malzemeden israf edilmiş olur . Yani siz siz olun bunun özel pensesini kullanın. Bir de yeriniz dar, masanın altında terlerken hele  kablo da kısa geliyorsa bu işi yapmak iyice çileden çıkartıcı bir duruma dönüşür.<br/>
+Aşağıda anlatmaya çalıştığım devre .İle bu bu bağlantıların düzgün bağlantısının yapılıp yapılmadığını kontrol edebiliriz.<br/>
+<br/>
+Bu bahsettiğim devre  bir alıcı ve bir de verici kısmından oluşuyor. Verici kısmında 555 entegresini bir multivibratör olarak kullanıyoruz.1 M Ohm ayrlı direnç (potansiyemetre) ile 1Hz-40Hz arası ayarlanabiliyor. Bunu (3 nolu bacak) çıkışı BCD olan bir sayıcıya 74HC193 Entegresine veriyoruz. Bu sayıcının 2 ve 6 nolu bacakları sürekli ve ardışık olarak 0 dan 7 ye kadar saymaktadır. Daha sonra BCD yi ondalık sisteme çeviren 74HC138 Entegresine  giriyoruz. Bu durumda çıkışlar sırayla BCD giriş değerine göre aktif oluyor. Alıcı kısmı ise sadece 8 adet LED den oluşuyor. Verici kısmındaki besleme kaynağı otomatik olarak açılıp kapanıyor. Verici aktif değilken yani herhengi bir kablo bağlantısı sokete takılmamışken BC547 transistörün beysine bağlı direnç üzerinden 4148 diyodu ve 1 Kohm direnç toprak potansiyelindedir, 74HC138Entegresinin 15 nolu bacağına bağlı iki adet diyot Transistör1 in beys akımını engellediği için de devre “Faaliyette değildir ” Yani OFF durumundadır.  Kablo, hem verici hem de alıcı tarafındaki Soketlere takıldığında ise sistem “on” Yani Hata olup olmadığını kontrol edebilir durumdadır.<br/>
+Devre şemasını büyük görmek için aşağıdaki küçük resme tıklayınız.<br/>
+<br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinGj4AHifbcp0xxjVsTihz_4scNiw587uLJ43yQeIoN0BCpzzQzTxFY7sP_NPilkw8kS4VRsAdBAYulABN58hlZ10ALdi0rIgMtuC9RQK_os9RLyLf8pbyzNi-JsXBp8KwJQgussedgeQB/s1600-h/S1111.GIF" imageanchor="1" rel="noopener noreferrer"><img border="0" height="85" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEinGj4AHifbcp0xxjVsTihz_4scNiw587uLJ43yQeIoN0BCpzzQzTxFY7sP_NPilkw8kS4VRsAdBAYulABN58hlZ10ALdi0rIgMtuC9RQK_os9RLyLf8pbyzNi-JsXBp8KwJQgussedgeQB/s200/S1111.GIF" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!-- more --><br/>
+<br/>
+<br/>
+Verici Kısmı<br/>
+<br/>
+<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlCrIm6eDHMHVelN7lOa8MslMiRdJn3D9_vRatYmeZ7rNSpyhrXzcKW-5tH0Bo7EQq61RlVCYaUfPjiqCLNubRqu-07ot-Pkfj2WCJxGv0OH2bsSLu_lFaJBfmK-fouwHDeF-z7wWZR0AW/s1600-h/rj45a.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhlCrIm6eDHMHVelN7lOa8MslMiRdJn3D9_vRatYmeZ7rNSpyhrXzcKW-5tH0Bo7EQq61RlVCYaUfPjiqCLNubRqu-07ot-Pkfj2WCJxGv0OH2bsSLu_lFaJBfmK-fouwHDeF-z7wWZR0AW/s200/rj45a.gif" width="196"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Alıcı Kısmı<br/>
+<br/>
+<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH4P0u3MXu3ApGwFDEoQdayR8gomSJTCL0CIDPVSkqHiWKWZxz84k08MRP5BDXggUp-I6zWZsXihz_KtbuT6g6irxZ_MQJJmuaUNr3Aw7T8jfeiXGJyaaCkP0Z3bIYpP5smSqOTKRSQTP2/s1600-h/rj45b.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhH4P0u3MXu3ApGwFDEoQdayR8gomSJTCL0CIDPVSkqHiWKWZxz84k08MRP5BDXggUp-I6zWZsXihz_KtbuT6g6irxZ_MQJJmuaUNr3Aw7T8jfeiXGJyaaCkP0Z3bIYpP5smSqOTKRSQTP2/s200/rj45b.gif" width="164"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+10 BASE-T2 kablo İki Çift Bükülmüş kablo kullandığınızda 1, 2, 3 ve 6 nolu LED ler Peş peşe yanacaklardır. Eğer çapraz  bağlanmış bağlantı varsa 6, 3, 2, 1 sırası ile yanacaktır. Prensip olarak bağlantı kablosunun cinsine göre tüm veya bir kısım LED lerin peş peşe belli bir hızda yanıp sönmeleri gerekmektedir. Eğer aynı anda yanan varsa iki hat arasında kısa devre söz konusudur, veya yanmayan LED varsa kabloda kopukluk vardır.Peş peşe  yanmıyorsa  kablo sokete doğru sırada bağlanmamış demektir.<br/>
+<br/>
+            Network kablo tipleri <br/>
+<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGZaOEZrr2SIP-P0Na70cXEsmIf2dn0rwGZo29v7wREc89Ur7i34W-1pw29JhZr5UmcdwjA4dbfP-aB7Icy2Y87mqUcHYUroqD5amti1TmIrp7o4MT0mdcEVf2KpYZ9qub8DLgADt0GNQF/s1600-h/s2.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="133" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGZaOEZrr2SIP-P0Na70cXEsmIf2dn0rwGZo29v7wREc89Ur7i34W-1pw29JhZr5UmcdwjA4dbfP-aB7Icy2Y87mqUcHYUroqD5amti1TmIrp7o4MT0mdcEVf2KpYZ9qub8DLgADt0GNQF/s200/s2.gif" width="200"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div><br/>
+</div><div>Adı                                                Uygulama                                   Kablo sayısı</div><div>10 BASE-T2                           10 Mbits/s Ethernet                      2 çift Cat. 3, UTP</div><div>10 BASE-T Crossover            10 Mbits/s Ethernet              2 çift Cat. 3, UTP, çaprazlanmış</div><div>100 BASE-T2                         100 Mbits/s Ethernet                    2 çift Cat. 3, UTP</div><div>100 BASE-T Crossover          100 Mbits/s Ethernet            2 çift Cat. 3, UTP, çaprazlanmış</div><div>100 BASE-T4                         100 Mbits/s Ethernet                    4 çift Cat. 3, UTP</div><div>100 BASE-TX                        100 Mbits/s Ethernet                    2 çift Cat. 5 UTP</div><br/>
+<br/>
+ Pin uçları                  10 BASE-T2   100 BASE-T4<br/>
+Pin 1                                 TD +         TX_D1 +<br/>
+Pin 2                                 TD -          TX_D1 -<br/>
+Pin 3                                 RD +         RX_D2 +<br/>
+Pin 4                                 Nc             B1_D3 +<br/>
+Pin 5                                 Nc             B1_D3 -<br/>
+Pin 6                                 RD -          RX_D2 -<br/>
+Pin 7                                 Nc             B1_D4 +<br/>
+Pin 8                                 Nc             B1_D4 -</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/02/network-ag-kablolarnn-baglant-kontrol.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

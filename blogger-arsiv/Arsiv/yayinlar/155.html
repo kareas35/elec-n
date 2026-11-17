@@ -1,0 +1,53 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pil Durum Göstergesi | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Pil Durum Göstergesi</h1><div>2010-04-05 · LED ve Göstergeler</div></header><main><article class="panel"><span></span><br/>
+<h3><span>Pil Durum Göstergesi Baskı Devresi</span></h3><div><br/>
+</div><div><span><span>"pilin bitmeye yakın kırmızı ışık yanan, pil dolu iken ise yeşil lamba yanan bir devre yapmak istiyorum" şeklinde bir soru sormuştu. Orada bahsettiği devre şeması bana bir fikir verdi ve bir "pil durum göstergesi" devresi yapmaya karar verdim.<br/>
+</span><b><span>Devrenin Yapısı ve Çalışması:</span></b><span><br/>
+<br/>
+Devre iki tane BC547 transistörüyle yapıldı. VR1 ayarlı direnci ile pilin ölçüm noktası ayarlanıyor. Q1 transistörü ile devre, pilin voltaj değerine göre iletime geçiyor ve LED1 kırmızı ledi sönüyor. Q1 transistörü iletime geçmediği zaman kırmızı LED1 ledi yanıyor. Kırmızı ledin yanması pilin enerjisinin azaldığı anlamına geliyor. Pilin enerjisinin değeri yeterli ise kırmızı ışık sönüyor.<br/>
+<br/>
+Q1 transistöründen aldığımız değere göre Q2 transistörünü bir değilleyici olarak kullanıyoruz ve kırmızı led söndüğünde yeşil ledin (LED2) yanmasını sağlıyoruz. Burada VR2 (22K) ayarlı direncinin üslendiği fonksiyon önem kazanmaktadır. Değeri büyüdükçe kırmızı ledin sönme ve yeşil ledin yanma aralığında oluşan boşluk yok olmakta hatta üst üste binmektedir. Değeri küçüldüğünde ise bu iki ledin sönme ve yanması aralığında boşluk oluşmaktadır. Bu durum Q2 transistörünün iletime geçme değerinin VR2 ile değiştirilmesi ile olmaktadır. Bu özellik ile devre yeni elemanlar ile düzenlenerek bir pil veya akü şarj cihazı olarakta kullanılabilir.<br/>
+<br/>
+Devrede kullanılan LED3 sarı ledi ise devrede voltaj olduğunu göstermek için konmuştur. Bu Ledi süren R6 direncinin değeri ledin parlaklığı göz önüne alınarak 3K9 olarak seçilmiştir.<br/>
+<br/>
+Devre ölçülecek voltaja ve kullanılan ledlere göre akım çeker. Bizim denemelerimizde 7.5 voltu ölçerken 25 mA akım çektiği görülmüştür.<br/>
+<br/>
+Pilin voltajına göre devrenin düzgün çalışması için devrede bulunan ayarlı dirençlerle ayar yapmanız gerekmektedir. Denemelerimde 3 volttan 12 volta kadar olan voltaj aralığını esas alarak yaptım. 12 Voltta ledlerin biraz parlak yandığını görülmektedir. Bu durumda R3 ve R5 dirençlerinin değerini yükselterek ayarları yeniden yapmak gerekmektedir. Uygun gördüğünüz takdirde 1K değerindeki R4 direncini iptal ederek köprüleyebilirsiniz.<br/>
+<br/>
+Devreye gelen bütün bağlantılarda temas olayı çok önemlidir. Krikodil, maşa, elle birleştirme gibi kullanılabilecek temas noktalarında oluşan arklanma gibi durumlar devrenin çalışmasında anında hissedilmekte ve kararsız çalışma görüntüsü oluşmakatadır. Bu yüzden bağlantıların sağlıklı olması çok önemlidir. Ayrıca devrede kullanılan buton ve trimpotların (ayarlı dirençlerin) yeni ve sağlıklı olması da devrenin düzgün ve karalı çalışması için önemlidir. Denemelerimizde bağlantıları sağlıklı olarak yapılan devrede herhangi bir kararsızlık görülmemiştir.<br/>
+<br/>
+Ölçülecek pilin ölçüm için herhangi bir devre ile bağlantısı olduğunda pilin bağlı olduğu cihazın çektiği akımdan ve oluşturduğu dalgalanmadan bizim yaptığımız devrenin çalışmasının da etkileneceği göz önüne alınmalıdır. Bizim devremiz pilin gerilimini ölçmektedir ve olası gerilim değişikliklerinden etkilenmesi kaçınılmazdır. Ayrıca devre tasarlanırken pile süreklü bir şekilde bağlı olacağı düşünülmemiştir. Pile bağlı devrenin pilden akım çekeceği göz önüne alınmalıdır.<br/>
+<br/>
+Bu devreyi tasarlarken, devrenin ayarlama imkanı fazla olacak şekilde olmasına özen gösterilmiştir. Sizler de ayarlı dirençlerin yerine uygun değerlerde sabit dirençler kullanarak devreyi basitleştirebilirsiniz.<br/>
+<br/>
+Devre </span></span><a href="http://kicad.sourceforge.net/" rel="noopener noreferrer"><span><span>KiCad</span></span></a><span><span> programı ile çizilmiştir. Ekteki şema ve baskı devre dosyalarını açmak için bu programın bilgisayarınızda bulunuyor olması gerekmektedir. Baskı devre hazırlanırken KiCad hazır kütüphanesinde bulunan buton kütüphanesi yerine MBUTTON adında yeni buton kütüphanesi hazırlandım. MBUTTON.mod isimli bu dosya da eklerin içindedir.<br/>
+</span><img align="left" height="16" loading="lazy" src="http://www.teknomerkez.net/ek/kresim/kicad.png" width="20"/><span>Devrenin </span></span><a href="http://kicad.sourceforge.net/" rel="noopener noreferrer"><span><span>KiCad</span></span></a><span><span> ile hazırlanan kaynak dosyalarını zip formatında sıkıştırılmış dosya olarak indirmek için </span><b><a href="http://www.teknomerkez.net/ek/180/pildurumgostergesi.zip" rel="noopener noreferrer"><span>tıklayınız</span></a></b><span>.<br/>
+</span><i><u><b><span>Devrenin şeması</span></b></u></i><span><br/>
+<br/>
+<img height="109" loading="lazy" src="http://www.teknomerkez.net/ek/180/pil_durum_gostergesi-sch.gif" width="200"/><br/>
+</span><b><span>Şekil 1</span></b><span>: Pil durum göstergesi devre şeması.<br/>
+</span><b><em><u><span>Malzeme Listesi:</span></u></em></b><span><br/>
+<br/>
+Q1,Q2: BC547<br/>
+D1,D2: 1N4148<br/>
+R1,R2,R4: 1K 1/4W<br/>
+R3,R5: 470 Ohm 1/4W<br/>
+R6: 2K2 1/4W<br/>
+RV1: 10K 1/4W<br/>
+RV2: 22K 1/4W<br/>
+LED1: Kırmızı LED 3mm<br/>
+LED2: Yeşil LED 3mm<br/>
+LED3: Sarı LED 3mm<br/>
+SW1: Buton<br/>
+P1: Batarya girişi için 2 uç<br/>
+</span><i><u><b><span>Devrenin baskı devresi</span></b></u></i><span><br/>
+<br/>
+<img loading="lazy" src="http://www.teknomerkez.net/ek/180/pil_durum_gostergesi-pcb.png"/><br/>
+</span><b><span>Şekil 2:</span></b><span> Pil durum göstergesi baskı devresi.<br/>
+</span><i><u><b><span>Resimler</span></b></u></i><span><br/>
+<br/>
+<img loading="lazy" src="http://www.teknomerkez.net/ek/180/pil_durum_gostergesi-baski.jpg"/><br/>
+</span><b><span>Resim 1:</span></b><span> Montaja hazır baskı devre.<br/>
+</span><i><u><b><span>Montajı yapılmış çalışır devre</span></b></u></i><span><br/>
+<br/>
+<img loading="lazy" src="http://www.teknomerkez.net/ek/180/malzemeli-calisir.jpg"/><br/>
+</span><b><span>Resim 2:</span></b><span> Montajı yapılmış çalışan devre. </span></span></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/04/pil-durum-gostergesi.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

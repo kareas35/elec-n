@@ -1,0 +1,412 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DOKUNMATİK EKRAN TEKNOLOJİSİNE ÖRNEK | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>DOKUNMATİK EKRAN TEKNOLOJİSİNE ÖRNEK</h1><div>2010-03-15 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><div></div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipDnXR-8l4NhIQItlGd-RQOsHYU_pxJEPFjOKelTE8cttLDwHovfZfynumzM8LA4bCTW4IM_sLJyGJKgfsOw2OOBcZMJ35bxrID04q1ZlIPnyQNsfiEDclaGSZfYajPpkXh89PjnyT0LF-/s1600-h/1zm338j.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEipDnXR-8l4NhIQItlGd-RQOsHYU_pxJEPFjOKelTE8cttLDwHovfZfynumzM8LA4bCTW4IM_sLJyGJKgfsOw2OOBcZMJ35bxrID04q1ZlIPnyQNsfiEDclaGSZfYajPpkXh89PjnyT0LF-/s320/1zm338j.gif"/></a></div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY2dm2gyww_SRtsnPUiAquveKqcJjYo-xAge_kcmPBD3enygkYmvYPIeM5MJFD12eBUJ_Lf2p0W7ep17cCwPz0rx6hbGALxutGqrqZbdC7RmiHzHVed_Va6b59m-OzGMRFvNZHIE5eNnDA/s1600-h/21cfjeu.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="168" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgY2dm2gyww_SRtsnPUiAquveKqcJjYo-xAge_kcmPBD3enygkYmvYPIeM5MJFD12eBUJ_Lf2p0W7ep17cCwPz0rx6hbGALxutGqrqZbdC7RmiHzHVed_Va6b59m-OzGMRFvNZHIE5eNnDA/s200/21cfjeu.jpg" width="200"/></a><br/>
+<b>DOKUNMATİK EKRAN TEKNOLOJİSİNE ÖRNEK</b><br/>
+mtouch kapasif sensör Bu uygulamada Microchip’in mTouch teknolojisi ile kapasitif sensör uygulaması yer almakta Basit parmak hareketleri ile okuma yapılabildiğinden kapasitif sensörler geliştiricilere çok yönlü tasarım olanağı sağlamakta.<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwTbUQgjvURa1sCo6O2PLuT1Sq1xZIIOjidvpiL6qh_7SGF0VGTkHI8KfizTfW8HXvDj12gy9pnmRV-78yHB1JuLK0FaQ6cuXJ0xp2kcMmvRlmKCiILBumK9ijSf9s_caiEJdo_M1E-Btz/s1600-h/24d33hi.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="212" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhwTbUQgjvURa1sCo6O2PLuT1Sq1xZIIOjidvpiL6qh_7SGF0VGTkHI8KfizTfW8HXvDj12gy9pnmRV-78yHB1JuLK0FaQ6cuXJ0xp2kcMmvRlmKCiILBumK9ijSf9s_caiEJdo_M1E-Btz/s400/24d33hi.jpg" width="400"/></a>Bu örnekte 16LF727 kullanılmıştır.16LF727Yukarıdaki resimden de görüleceği üzere devre tek taraflı olarak tasarlanmış ve sadece iki adet köprü yer almakta. Devrenin<br/>
+şeması Yan tarafta yer almaktadır.<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<span></span><br/>
+<div>Uygulama Dosyası:<strong>pruebas mtouch.c</strong></div><pre><span>/*     mTouch con 16LF727     <a href="http://www.micropic.es/" rel="noopener noreferrer">http://www.micropic.es/ </a>  Nocturno 2009
+
+*/
+
+</span><span>#include &lt;16LF727.h&gt;</span>    <span>#include <pruebas mtouch.h=""></pruebas></span>
+
+<span>#define ANTIRREBOTES  1</span>
+
+<span>#define SENSIBILIDAD 5</span>
+
+unsigned char indice;
+
+unsigned long lectura<span>[</span><span>8</span><span>]</span>;     <span>// lectura de cada sensor</span>
+
+unsigned long promedio<span>[</span><span>8</span><span>]</span>;     <span>// promedio leído de cada sensor</span>
+
+unsigned long umbral;      <span>// umbral que debe superar para que se considere pulsado</span>
+
+unsigned long promedio_alto;    <span>// variable temporal de promedio alto</span>
+
+unsigned long promedio_bajo;    <span>// variable temporal de promedio bajo</span>
+
+typedef struct<span>{</span>       <span>// Estructura de información de los sensores</span>
+
+unsigned char rebotes;
+
+unsigned char Pulsado:<span>1</span>;
+
+unsigned char SePulso:<span>1</span>;
+
+unsigned char Soltado:<span>1</span>;
+
+<span>}</span> TIPO_SENSOR;
+
+TIPO_SENSOR Sensor<span>[</span><span>8</span><span>]</span>;
+
+<span>/*************************************************************************************</span>
+
+INICIALIZACIÓN
+
+*************************************************************************************/
+
+void inicializacion<span>(</span><span>)</span> <span>{</span>
+
+char i;
+
+setup_oscillator<span>(</span>OSC_16MHZ<span>)</span>;
+
+<span>for</span> <span>(</span>indice=<span>0</span>; indice&lt;<span>8</span>; indice++<span>)</span><span>{</span> <span>// Inicialización de variables</span>
+
+promedio<span>[</span>indice<span>]</span> = <span>0</span>;
+
+lectura<span>[</span>indice<span>]</span> = <span>0</span>;
+
+<span>}</span>
+
+<span>/* Utilizaremos estos 8 sensores:</span>
+
+CPS4: RB4
+
+CPS5:  RB5
+
+CPS6: RA4
+
+CPS7: RA5
+
+CPS8: RD0
+
+CPS9: RD1
+
+CPS10: RD2
+
+CPS11: RD3
+
+*/
+
+ANSELA = 0b00110000;
+
+set_tris_a <span>(</span>0b11110111<span>)</span>;
+
+ANSELB = 0b00110000;
+
+set_tris_b <span>(</span>0b01110001<span>)</span>;
+
+ANSELD = 0b00001111;
+
+set_tris_d <span>(</span>0b11111111<span>)</span>;
+
+set_tris_c <span>(</span>0b11101001<span>)</span>;
+
+ANSELE = 0b00000000;
+
+set_tris_e <span>(</span>0b00000000<span>)</span>;
+
+setup_timer_2<span>(</span>T2_DIV_BY_16,0xB4,<span>15</span><span>)</span>;<span>// Timer2 activo, prescaler 1:16</span>
+
+setup_timer_1<span>(</span>T1_GATE_INVERTED<span>)</span>;  <span>// TMR1 activo, asociado a capacitivo, sin prescaler</span>
+
+T1GCON = 0b11100010;     <span>// Timer1 gate activo, y asociado al Timer2</span>
+
+CPSCON0 = 0b10001100;     <span>// Activamos los sensores capacitivos</span>
+
+CPSCON1 = 0×04;      <span>// Empezamos por el sensor nº 4, el primero de los que usamos</span>
+
+indice = <span>0</span>;
+
+TMR1GIF = <span>0</span>;       <span>// Borramos el flag de interrupción</span>
+
+TMR1GIE = <span>1</span>;       <span>// Activamos la interrupción del Timer1 Gate</span>
+
+enable_interrupts<span>(</span><a href="http://www.php.net/global" rel="noopener noreferrer"><span>GLOBAL</span></a><span>)</span>;   <span>// Activamos la gestión de interrupciones</span>
+
+<span>for</span><span>(</span>i=<span>0</span>; i&lt;<span>8</span>; i++<span>)</span> Sensor<span>[</span>i<span>]</span> = <span>0</span>; <span>// Inicialización de variables</span>
+
+output_low<span>(</span>LED0<span>)</span>;     <span>// Apagamos los leds</span>
+
+output_low<span>(</span>LED1<span>)</span>;
+
+output_low<span>(</span>LED2<span>)</span>;
+
+output_low<span>(</span>LED3<span>)</span>;
+
+output_low<span>(</span>LED4<span>)</span>;
+
+output_low<span>(</span>LED5<span>)</span>;
+
+output_low<span>(</span>LED6<span>)</span>;
+
+output_low<span>(</span>LED7<span>)</span>;
+
+<span>}</span>
+
+<span>/*************************************************************************************</span>
+
+RUTINA DE INTERRUPCIÓN
+
+*************************************************************************************/
+
+<span>#INT_DEFAULT </span>
+
+void GestionDeInterrupciones<span>(</span><span>)</span> <span>{</span>
+
+<span>if</span> <span>(</span>TMR1GIF &amp;&amp; TMR1GIE<span>)</span> <span>{</span>   <span>// Interrupción del Timer1 Gate</span>
+
+TMR1GIF = <span>0</span>;      <span>// Borramos el flag de interrupción</span>
+
+TMR1ON = <span>0</span>;      <span>// Paramos el timer1</span>
+
+<span>// Cálculo de la media móvil de los últimos 4 ciclos</span>
+
+lectura<span>[</span>indice<span>]</span> = promedio_alto = get_timer1<span>(</span><span>)</span> * <span>4</span>;
+
+promedio_bajo = promedio<span>[</span>indice<span>]</span> / <span>4</span>;
+
+umbral = promedio<span>[</span>indice<span>]</span>&gt;&gt;SENSIBILIDAD;
+
+<span>// Si ha pulsado, veremos que el Timer se ha acortado, por debajo del promedio - umbral</span>
+
+<span>if</span> <span>(</span>promedio_alto &lt; promedio<span>[</span>indice<span>]</span> - umbral<span>)</span> <span>{</span>
+
+<span>// Chequeo repetitivo para evitar rebotes</span>
+
+<span>if</span><span>(</span>Sensor<span>[</span>indice<span>]</span>.rebotes &lt; ANTIRREBOTES<span>)</span> Sensor<span>[</span>indice<span>]</span>.rebotes++;
+
+<span>if</span><span>(</span>!Sensor<span>[</span>indice<span>]</span>.SePulso &amp;&amp; Sensor<span>[</span>indice<span>]</span>.rebotes == ANTIRREBOTES<span>)</span> <span>{</span>
+
+Sensor<span>[</span>indice<span>]</span>.Pulsado = <span>1</span>;
+
+Sensor<span>[</span>indice<span>]</span>.SePulso = <span>1</span>;
+
+<span>}</span>
+
+<span>}</span> <span>else</span> <span>{</span>
+
+<span>// Si no ha pulsado y estamos en ciclo de rebotes</span>
+
+<span>if</span><span>(</span>Sensor<span>[</span>indice<span>]</span>.rebotes &gt; <span>0</span><span>)</span> Sensor<span>[</span>indice<span>]</span>.rebotes–;
+
+<span>if</span><span>(</span>Sensor<span>[</span>indice<span>]</span>.SePulso &amp;&amp; Sensor<span>[</span>indice<span>]</span>.rebotes == <span>0</span><span>)</span> <span>{</span>
+
+Sensor<span>[</span>indice<span>]</span>.SePulso = <span>0</span>;
+
+Sensor<span>[</span>indice<span>]</span>.Soltado = <span>1</span>;
+
+<span>}</span>
+
+<span>// Al promedio acumulado le restamos el valor antiguo y le metemos el nuevo</span>
+
+promedio<span>[</span>indice<span>]</span> += promedio_alto/<span>4</span> - promedio_bajo;
+
+<span>}</span>
+
+set_timer1<span>(</span><span>0</span><span>)</span>;     <span>// Iniciamos la cuenta en el Timer1</span>
+
+TMR1ON = <span>1</span>;      <span>// Activamos nuevamente el Timer1</span>
+
+indice ++;      <span>// Pasamos al siguiente sensor</span>
+
+indice &amp;= 0×07;     <span>// La máscara nos permite contar de 0 a 7</span>
+
+CPSCON1 = indice<span>+4</span>;    <span>// Sumamos 4 porque nuestros sensores son del 4 al 11</span>
+
+<span>}</span>
+
+<span>}</span>
+
+<span>/*************************************************************************************</span>
+
+PROGRAMA PRINCIPAL
+
+*************************************************************************************/
+
+void main<span>(</span><span>)</span> <span>{</span>
+
+unsigned char i;
+
+inicializacion<span>(</span><span>)</span>;
+
+<span>while</span> <span>(</span><span>true</span><span>)</span> <span>{</span>       <span>// bucle infinito</span>
+
+<span>for</span><span>(</span>i=<span>0</span>; i&lt;<span>8</span>; i++<span>)</span> <span>{</span>   <span>// recorremos los 8 sensores</span>
+
+<span>if</span><span>(</span>Sensor<span>[</span>i<span>]</span>.Pulsado<span>)</span> <span>{</span>  <span>// se ha detectado pulsación</span>
+
+<span>switch</span><span>(</span>i<span>)</span> <span>{</span>    <span>// encendemos el led que corresponda</span>
+
+<span>case</span> <span>0</span>:
+
+output_high<span>(</span>LED0<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>1</span>:
+
+output_high<span>(</span>LED1<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>2</span>:
+
+output_high<span>(</span>LED2<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>3</span>:
+
+output_high<span>(</span>LED3<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>4</span>:
+
+output_high<span>(</span>LED4<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>5</span>:
+
+output_high<span>(</span>LED5<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>6</span>:
+
+output_high<span>(</span>LED6<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>7</span>:
+
+output_high<span>(</span>LED7<span>)</span>;
+
+<span>break</span>;
+
+<span>}</span>
+
+Sensor<span>[</span>i<span>]</span>.Pulsado = <span>0</span>; <span>// trabajo realizado, borramos el indicador   </span>
+
+<span>}</span> <span>else</span> <span>if</span><span>(</span>Sensor<span>[</span>i<span>]</span>.Soltado<span>)</span> <span>{</span> <span>// se ha quitado el dedo</span>
+
+<span>switch</span><span>(</span>i<span>)</span> <span>{</span>    <span>// apagamos el led que corresponda</span>
+
+<span>case</span> <span>0</span>:
+
+output_low<span>(</span>LED0<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>1</span>:
+
+output_low<span>(</span>LED1<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>2</span>:
+
+output_low<span>(</span>LED2<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>3</span>:
+
+output_low<span>(</span>LED3<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>4</span>:
+
+output_low<span>(</span>LED4<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>5</span>:
+
+output_low<span>(</span>LED5<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>6</span>:
+
+output_low<span>(</span>LED6<span>)</span>;
+
+<span>break</span>;
+
+<span>case</span> <span>7</span>:
+
+output_low<span>(</span>LED7<span>)</span>;
+
+<span>break</span>;
+
+<span>}</span>
+
+Sensor<span>[</span>i<span>]</span>.Soltado = <span>0</span>; <span>// trabajo realizado, borramos el indicador</span>
+
+<span>}</span>
+
+<span>}</span>
+
+<span>}</span></pre><pre><span>}</span></pre><div>Header Dosyası:</div><pre><span>#FUSES INTRC_IO                 //Oscilador interno</span><span>#FUSES VCAP_A0                  //VCAP en pin A0 </span>
+
+<span>#FUSES NOWDT                    //No Watch Dog Timer </span>
+
+<span>#FUSES NOPROTECT                //Código accesible </span>
+
+<span>#FUSES PLLEN                    //PLL activado</span>
+
+<span>#FUSES MCLR                     //Master Clear activado </span>
+
+<span>#FUSES NOBROWNOUT               //No brownout reset </span>
+
+<span>#FUSES NOPUT                    //No Power Up Timer     </span></pre><pre><span>#use delay (clock=8000000) </span></pre><pre><span>// No dejamos que el compilador establezca los TRIS</span><span>#use fast_io(A)</span>
+
+<span>#use fast_io(B)</span>
+
+<span>#use fast_io(C)</span>
+
+<span>#use fast_io(D)</span>
+
+<span>#use fast_io(E) </span></pre><pre><span>// Registros del micro</span><span>#byte ANSELA = 0×185</span>
+
+<span>#byte ANSELB = 0×186</span>
+
+<span>#byte ANSELD = 0×188</span>
+
+<span>#byte ANSELE = 0×189 </span></pre><pre><span>#byte PORTA = 0×5</span><span>#byte PORTB = 0×6</span>
+
+<span>#byte PORTC = 0×7</span>
+
+<span>#byte PORTD = 0×8</span>
+
+<span>#byte PORTE = 0×9 </span></pre><pre><span>#byte TRISA = 0×85</span><span>#byte TRISB = 0×86</span>
+
+<span>#byte TRISC = 0×87</span>
+
+<span>#byte TRISD = 0×88</span>
+
+<span>#byte TRISE = 0×89 </span></pre><pre><span>#byte T1CON = 0×010   </span><span>#byte T1GCON = 0×08F </span>
+
+<span>#byte CPSCON0 = 0×108 </span>
+
+<span>#byte CPSCON1 = 0×109  </span></pre><pre><span>// Bits de configuración</span><span>#bit TMR1GIF = 0×0C.7 // clear gate intpt flag</span>
+
+<span>#bit TMR1GIE = 0×8C.7 // enable gate intpt</span>
+
+<span>#bit TMR1ON = 0×10.0 </span></pre><pre><span>// Salidas de leds</span><span>#define LED0      PIN_B1 </span>
+
+<span>#define LED1            PIN_A3 </span>
+
+<span>#define LED2            PIN_B7 </span>
+
+<span>#define LED3            PIN_C1 </span>
+
+<span>#define LED4            PIN_C2 </span>
+
+<span>#define LED5            PIN_C4 </span>
+
+<span>#define LED6            PIN_B3 </span>
+
+<span>#define LED7            PIN_B2</span></pre><br/>
+Under Creative Commons License: Attribution</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/03/dokunmatik-ekran-teknolojisine-ornek.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>
