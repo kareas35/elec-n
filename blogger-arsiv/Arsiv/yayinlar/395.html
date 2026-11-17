@@ -1,0 +1,43 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tuz miktarını ayarlayan devre şeması ve Çalışması | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Tuz miktarını ayarlayan devre şeması ve Çalışması</h1><div>2010-02-09 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgahPpJ85UZpG0KiudfQhhvx9xlshohjIpkGEOOclHd_PrEbv85B_FCJgufciGXmAIi_uBRktlZvd2yjx7txwYSVGLXVmBBr9OR6L_1yGIB8Yvcs5shiOAMtFu2Ix4B6630nwilaOSrnXV/s1600-h/Tuz+Luluk+oran%C4%B1+tesbit+etme.JPG" imageanchor="1" rel="noopener noreferrer"><img border="0" height="102" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhgahPpJ85UZpG0KiudfQhhvx9xlshohjIpkGEOOclHd_PrEbv85B_FCJgufciGXmAIi_uBRktlZvd2yjx7txwYSVGLXVmBBr9OR6L_1yGIB8Yvcs5shiOAMtFu2Ix4B6630nwilaOSrnXV/s200/Tuz+Luluk+oran%C4%B1+tesbit+etme.JPG" width="200"/></a></div><br/>
+<span></span><br/>
+<pre><span>
+</span></pre><pre><span><b>MALZEME LİSTESİ</b></span></pre><pre><span><b>
+</b></span></pre><pre><span><span><b>R1________________470R   1/4W Direnç
+R2,R5______________10K   1/4WDirenç
+R3,R6_____________220K   1/4WDirenç
+R4__________________5K   1/2W Trimmer Cermet
+R7________________680R   1/4W Direnç
+R8__________________2K2  1/4WDirenç
+R9,R10,R11,R12,R13__1K   1/4W Direnç</b></span></span></pre><pre><span><span><b>
+C1________________100µF   25V Elektrolytik Kondansatör
+D1,D2,D3______3 or 5mm. Red LED
+D4____________3 or 5mm. Green LED
+D5____________3 or 5mm. Yellow LED
+IC1_______________LM324 Düşük akım  Quad Op-amp
+P1_________________SPST Pushbutton
+Probes_________________ (metin de gösteriliyor)
+B1___________________9V PP3 PİL veya Akü </b></span></span></pre><pre><span><span><b><span>Güvenilir bir okuma elde etmek için en az 30 saniye bekleyin.</span></b></span></span></pre><pre><span><span><b><span>Her testten sonra probu dikkatle yıkayın ve silin.</span></b></span></span></pre><pre><span><span><b><span><span>Kurulum için  10V aralığı olan IC1A ve negatif   1 inci pine bağlı bir DC voltmetre kullanabilirsiniz</span></span></b><span><b><span> </span></b></span><b><span><span>Bu şekilde </span></span></b><b><span><span>daha hassas okuma elde edilir.
+<!-- more --></span></span></b></span></span></pre><pre><span><span><b><span><span>R4  ayarlı direnci ile </span></span><b><span><span>hassas </span></span><b><span><span> ayar yapabilmek için probun ucunu tatlı suya batırarak sıfır ayarı yapılır.</span></span></b></b></b></span></span></pre><pre><span><span><b><b><b><span title="You may change at will the threshold voltage levels at which the LEDs illuminate by trimming R4."><span><span>Size eşik gerilim seviyelerini R4   Direncinin değerini değiştirerek D3 LED i kırparak yanacaktır . </span></span></span><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span><span> R8 değeri ni değiştirerek  D4 LED inin ayarı yapılır  ve R9 değerini değiştirerek  D5  LED inin Hassasiyet aralığını değiştirebilirsiniz.</span></span></span></b></b></b></span></span></pre><pre><span><span><b><b><b><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span><span><span>P1 buton Yerine ortak bir SPST anahtar da koyulabilir.</span></span></span></span></b></b></b></span></span></pre><pre><span><span><span><span><b><span><b><span><b><span><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span>
+
+<div><span><span><b><span><span>IC1A
+op-Amp DC Akım  direnci ölçülen çıkış voltajı arttıkça</span></span></b></span><span title="In fact, fresh water has a relatively high DC resistance value that will decrease proportionally as an increasing amount of salt is added."><span><b><span>
+ Problarda yüksekdirenç azalır taze su eklenir bu orantılı olarak artan su
+miktarı ile tuz miktarı azalacak ve bu tuz miktarı en az seviyede ise IC1B,
+IC1C ve IC1D karşılaştırıcılar sayesinde D5 LED</span></b></span><span><b><span> 
+</span></b></span><span><b><span>i Yanacak</span></b></span><span><b><span>  </span></b></span><span><b><span>Eğer D4 LED i Yanarsa
+normal tuz miktarı</span></b></span><span><b><span>  </span></b></span><span><b><span>D3 </span></b></span><span><b><span> </span></b></span><span><b><span>LED i yanarsa tuz miktarının aşırı artmış
+olduğunu anlarız D1 ve D2 nin </span></b></span><span><b><span> </span></b></span><span><b><span>her zaman,
+amacı iki referans gerilimi sağlamak, böylece devre hassasiyetini artırmaktadır. </span></b></span></span><span title="At D2 anode a stable 3.2V supply feeds the non-inverting inputs of the comparators by means of the reference resistor chain R8, R9 and R10."><span><b><span>D2
+de istikrarlı bir tedarik 3.2V anot olmayan referans direnç zinciri R8, R9 ve
+R10 yoluyla karşılaştırıcıların girdiler tersini beslenir. </span></b></span></span><span title="The 1.6V reference voltage available at D1 anode feeds the probes and the set-up trimmer R4."><span><b><span>1.6V
+referans gerilim D1 anot mevcut problar ve </span></b></span><span><b><span> </span></b></span><span><b><span>R4 beslenir.</span></b></span></span></span><span>
+
+
+
+</span></div></span></span></span></b></span></b></span></b></span></span></span></span><span><span><span><span><b><span><b><span><b><span><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span><span title="One of these two red LEDs may be used as a pilot light to show when the device is on."></span></span></span></span></b></span></b></span></b></span></span></span></span></pre><pre><span><span><span><span><b><span><b><span><b><span><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span><span>
+
+<div><div dir="ltr"><span>
+</span></div></div><div align="left"><span>
+</span></div></span></span></span></span></b></span></b></span></b></span></span></span></span></pre><pre><span><span><span><span><b><span><b><span><b><span><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span>
+</span></span></span></b></span></b></span></b></span></span></span></span></pre><pre><span><span><span><span><b><span><b><span><b><span><span title="Vary R8 value to change D4 range and R9 value to change D5 range."><span>
+</span></span></span></b></span></b></span></b></span></span></span></span></pre></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/02/diyet-yapanlarn-kullandklar-tuz-miktarn.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,647 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mikrodenetleyici uygulamaları bilgiler pic c pic16f877 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Mikrodenetleyici uygulamaları bilgiler pic c pic16f877</h1><div>2010-01-07 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div><a href="http://320volt.com/wp-content/uploads/2009/03/mikrodenetleyici-uygulamalari-picc-pic16f877.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="149" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/mikrodenetleyici-uygulamalari-picc-pic16f877.png" width="200"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Pic c ile pic programlamayı öğrenmeye çalıştığım şu zamanlarda çok işime yarayacak bir döküman tam bir bilgi deposu dc-servo motorlar pwm kullanımı lcd kullanımı ve picc hakkında bilgiler. Emeği geçen kişilere teşekkürler aşağıda özetler verilmiştir tamamı<br/>
+<span>www.<b>megep</b>.meb.<b>gov</b>.tr/indexen.html /</span>modulson/1112/otomasyon/mikrodenetleyici%20uygulamalari%201.zip<br/>
+Alternatif link mikrodenetleyici-uygulamalari-picc-pic16f877.rar<br/>
+<br/>
+LCD Yapısı Ve Programlanması<br/>
+<br/>
+Bu kısımda paralel girişli LCD’nin yapısı ve programlanması verilecektir. LCD (Liquid Crystal Display)’ler bilginin uygulanış yöntemine göre paralel ve seri girişli olmak üzere iki kısımda incelenebilmektedir. LCD’nin kullanım amacı elektronik sistemlerde bilgilendirme için çeşitli karakterleri ve karakter topluluklarını göstermektir.<br/>
+<br/>
+LCD içerisindeki hazır karakterler kullanılarak veya özel karakterler hazırlanarak üzerinde anlamlı görüntüler oluşturulabilir.<br/>
+<br/>
+LCD dijital bilgi üreten herhangi bir sistem ile kontrol edilebilir. Yapılması gereken tek şey uygun komutları katalogda gösterilen zamanlama dilimleri ile göndermektir. LCD bilgisayarla veya mikrodenetleyici ile kontrol edilebilir.<br/>
+<br/>
+LCD’nin yapısı iki kısımdan meydana gelir. Bunlar yazı ya da grafikleri gösteren sıvı kristal display ve bu displayde karakterleri meydana getiren sürücü işlemcidir. LCD incelendiğinde bir yüzünde LCD diğer yüzünde de sürücü işlemci görülür.<br/>
+<br/>
+İşlemci entegre görünümünde olabileceği gibi siyah epoksi damla şeklinde de olabilir. Şekil 1.9’da HD44780 paralel girişli LCD görülmektedir. HD44780 LCD devresinde yer alan epoksi damla olarak yerleştirilmiş sürücü entegresidir. Bu kısımda piyasada bulunması kolay ve kullanım alanı geniş olduğundan dolayı bu LCD ile ilgili bilgiler verilip uygulama yapılacaktır.<br/>
+<br/>
+HD44780 işlemci LCD’ler için standart olmuş bir işlemcidir. LCD’nin arkasına bakılıp işlemci seri numarası okunabilir ve işlemcinin yapısı kataloglardan öğrenilebilir. Günümüzde birçok<br/>
+firmanın ürettiği LCD, HD44780 ile uyumludur.<br/>
+<br/>
+LCD’ler satır ve sütun sayısı ile tanımlanır. Satır uzunluklarına (sütun sayılarına) göre 8-16-20-24-32-40 karakterli olarak yapılır. Satır sayısına göre ise 1, 2 ya da daha çok satırlı olabilir. 2×8 denince 2 satırlı 8 sütunlu LCD akla gelmelidir. 2×8 ve 1×16 LCD’de sadece bir işlemci kullanılırken, 2×16 ve 2×20 LCD’lerde işlemcinin yanı sıra bir de hafıza entegresi bulunur. Boyut arttıkça hafıza kapasitesi de artar. Tüm entegreler siyah epoksi damla şeklinde veya entegre şeklinde PCB üzerine yerleştirilir.<br/>
+<br/>
+Şekil 1.9: HD44780 LCD Display<br/>
+<a href="http://320volt.com/wp-content/uploads/2009/03/hd44780-lcd-display.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="76" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/hd44780-lcd-display.jpg" width="320"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+LCD’lerde DDRAM ve CGRAM olmak üzere iki adet RAM hafıza hücresi yer alır. CGRAM karakter üretici RAM bellektir ve 64 Baytlık bir hafızadır. Özel karakterler üretmek için kullanılır. DDRAM ise display veri RAM belleğidir ve 80 Baytlık bir hafızadır.<br/>
+LCD’nin satır ve sütunlarına karakter yazmak için kullanılır. DDRAM içeriği LCD ekranında görülür, fakat görünen veri ancak LCD’nin sütun sayısı ile sınırlıdır. Örneğin 2×16’lık bir LCD’de ancak 16 karakter ekranda görülebilir. Diğer kayıtlı veriler DDRAM’da saklanmaya devam eder. Şekil 1.11’de DDRAM adreslerinin değişimi görülmektedir.<br/>
+<br/>
+LCD’nin içinde bulunan diğer hafıza ise CGROM’dur. Karakter üretici ROM bellek olarak tanımlanır ve 192 Baytlık bir hafızadır. CGROM içerisinde ASCII karakter tablosunda yer<br/>
+alan standart karakterler kayıtlıdır. Toplam karakter sayısı 192’dir. Bunlardan 64 tanesi genel olarak kullanılan ascii karakterleri, 64 tanesi Japon karakterleri ve 32 tanesi de özel yunan alfabesi karakterleridir. Bu karakterlerden genel olarak kullanılan 64 tane standart karakter Şekil 1.10’daki ASCII karakter tablosunda görülmektedir.<br/>
+<br/>
+Şekil 1.10: ASCII Karakter tablosu<br/>
+<br/>
+<br/>
+<a href="http://320volt.com/wp-content/uploads/2009/03/ascii-karakter-tablosu-150x150.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/ascii-karakter-tablosu-150x150.jpg"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+LCD’nin dış dünya ile haberleşmesi için pinleri bulunmaktadır. HD44780 uyumlu LCD’de 14 pin bulunmaktadır. Bu pinler 2’şerli 7 sıra halinde olabileceği gibi 14’lü tek sıra olabilir. Bu pinlerin fonksiyonları Şekil 1.14’teki tabloda görülmektedir. LCD 4×40 ise ilave bir pini daha vardır. Ayrıca bazı LCD’lerde ışıklandırma amacıyla 15. ve 16. pinlere de rastlanabilir. 15. ve 16. pinler yoksa LCD devresinde aydınlatma uçlarından da bağlantı yapılabilir. Bu ilave pinlerin karakter gösterilmesinde bir etkisi yoktur. HD44780 LCD ışıklandırma bağlantıları Şekil 1.13’te görülmektedir.<br/>
+Şekil 1.13: HD44780 LCD displayde ekran ışığı bağlantı uçları<br/>
+<br/>
+<a href="http://320volt.com/wp-content/uploads/2009/03/hd44780-lcd-displayde-ekran.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/hd44780-lcd-displayde-ekran.jpg"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+LCD Ayak bağlantıları<br/>
+<br/>
+1- Vdd (5V gerilim ucu)<br/>
+2- Vss (Şase bağlantı ucu)<br/>
+3- Vee (Kontrast gerilimi ucu)<br/>
+4- RS (Komut/Veri seçim ucu)<br/>
+5- R/W (Yazma-Okuma ucu)<br/>
+6- E (Uygulama izin ucu)<br/>
+7- D0 (0. veri (LSB) ucu)<br/>
+8- D1 (1. veri ucu)<br/>
+9- D2 (2. veri ucu)<br/>
+10- D3 (3. veri ucu)<br/>
+11- D4 (4. veri ucu)<br/>
+12- D5 (5. veri ucu)<br/>
+13- D6 (6. veri ucu)<br/>
+14- D7 (7. veri (MSB) ucu)<br/>
+<br/>
+a. Vdd ve Vss: LCD Vdd ucuna bağlanan 5V gerilim ile çalışır. Bağlandığı kontrol elemanı ile şase bağlantısı Vss ile mutlaka yapılmalıdır.<br/>
+<br/>
+b. Vee: Vee ucu ile 5V arasına 10K değerinde bir trimpot bağlanarak LCD ekranın kontrast seviyesi değiştirilebilir.<br/>
+<br/>
+c. RS: RS ucu lojik-0 ise komut gönderiliyor, lojik-1 ise veri gönderiliyor anlamındadır. Kontol devresinden RS ucuna önce lojik-0 gönderilir. Sonra işlenecek olan komut veri uçlarına(D0..D7) yazılır. RS ucu lojik-1 yapılarak komutun işlevi ile ilgili veri diğer bir değişle ekranda gösterilecek olan veri aynı uçlara gönderilir.<br/>
+<br/>
+d. R/W: 0 ise LCD hafıza hücresine veri yazılır. 1 ise hafıza hücresinden veri okunur.<br/>
+<br/>
+e. E: Gönderilen komutun uygulanması için veya verinin işlenmesi için kontrol devresinden bu uca lojik-1’den 0’a düşen (düşen kenar) bir kare dalga sinyal gönderilir.<br/>
+<br/>
+f: D0..D7: Komut girişi ve veri giriş-çıkışı için kullanılırlar. 8 bitlik modda tümü kullanılırken 4 bitlik LCD çalışmasında D7..D4 uçları kullanılır.<br/>
+<br/>
+Şekil 1.15: PIC16877-LCD Bağlantısı (8 bit Modu)<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2009/03/pic16877-lcd-baglantisi-8-bit-modu.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="161" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/pic16877-lcd-baglantisi-8-bit-modu.png" width="200"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Şekil 1.15’te PIC16F877 ile LCD bağlantısı için örnek bir devre görülmektedir. PortB’nin ilk üç biti kontrol bitleri için kullanılmış, PortD ise veri bitleri için kullanılmıştır. RV1 potansiyometresi ile LCD’nin kontrastı ayarlanmaktadır. Bu bağlantı ile LCD 8 bit modda kontrol edilebilir. Ancak yazılan programda program kodları 8 bitlik çalışmaya göre yazılmalıdır.<br/>
+<br/>
+Şekil 1.16’da PIC16F877 mikrodenetleyicinin 4 bitlik moda LCD’yi kontrol ettiği örnek bir devre görülmektedir. Bu devrede LCD’nin 4 bit modda bağlantısı için sadece PortB kullanılmıştır. Böylece mikrodenetleyicinin diğer portları farklı amaçlar için kullanılabilir.<br/>
+<br/>
+LCD Programlama HD44780 Komut Seti<br/>
+<br/>
+Şekil 1.16: PIC16877-LCD Bağlantısı (4 bit Mod<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2009/03/pic16877-lcd-baglantisi-4-bit-modu.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="191" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/pic16877-lcd-baglantisi-4-bit-modu.png" width="200"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+PIC-C ile LCD’yi kontrol etmek ve veri alışverişi yapmak çok kolaylaştırılmıştır. PIC Assembly dili ile çok karmaşık olan programlar PIC-C ile başlık ve sürücü dosyaları sayesinde çok daha kısa ve anlaşılır biçimde yazılabilir. Bu kısımda LCD’nin çalışma mantığını anlamak amacıyla kataloglarda gösterilen fonksiyonlardan bahsedilecektir.<br/>
+<br/>
+DDRAM: Display Data RAM<br/>
+CGRAM: Karakter Üretici RAM<br/>
+BF=1 ise komut kabul edilmez.LCD meşguldur. BF=0 ise komut kabul edilir.<br/>
+N=0 ise 1 satır, N=1 ise 2 satır kullanılır.<br/>
+* Önemsiz giriş 1 ya da 0<br/>
+F=1 5×10 karakter fontu, F=0 5×7 karakter fontu<br/>
+I/D=0 Kursör pozisyonunu 1 azalt, I/D=1 Kursör pozisyonunu 1 arttır.<br/>
+S=0 ise display kaymaz, S=1 ise display kayar.<br/>
+C=0 ise kursör kapalıdır, C=1 ise kursör açıktır.<br/>
+R/L=0 ise sola kayma gerçekleşir, R/L=1 ise sağa kayma gerçekleşir.<br/>
+DL=0 ise LCD 4 bit modda çalışır, DL=1 ise LCD 8 bit modda çalışır.<br/>
+S/C=0 ise kursör hareket eder, S/C=1 ise display hareket eder.<br/>
+B=0 ise kursör karartma kapalı, B=1 ise kursör karartma açık.<br/>
+LCD’nin yukarıdaki komutları işlemesi için ilgili uçlara dijital bilgi uygulandıktan sonra E ucundan 1’den 0’a düşen bir izin darbesi uygulanmalıdır. Bu sinyal uygulanmadan LCD komutu işleyemez.<br/>
+<br/>
+Enerjinin Gelmesi ve Resetleme<br/>
+<br/>
+HD44780 LCD’ye enerji uygulandığı zaman dahili reset devresi çalışır. Enerji verildikten yaklaşık 10 msn sonra meşgul bayrağı (BF) lojik-1 olur. BF bayrağı ilk kullanıma hazırlama işlemlerinin sonuna kadar otomatik olarak meşgul durumda kalır. Programda yapılması gereken ilk kullanıma hazırlama temel işlemleri aşağıda verilmiştir.<br/>
+<br/>
+LCD’ye enerji geldiği zaman mikrodenetleyici programının ilk başlangıçta en az 40 ms beklenmesinde fayda vardır. Kullanılan gerilim kaynağı yeterli akım veremiyorsa ya da kalitesiz ise sistemde hata oluşabilir. Gerilim kaynağı lojik yükselme zamanı 10 msn’den daha fazla ise LCD iç reset devresinin çalışmasında problem çıkabilir. Bu nedenle gerilim kaynağı özenle seçilmelidir. Portların giriş çıkış işlemleri için kurulumu sırasında belirli bir zaman geçtiğinden dolayı port kurulumu için bekleme yapmakta fayda vardır.<br/>
+<br/>
+Programda ilk işlem olarak lcd fonksiyon kurma komutunun yüksek dört biti ile resetlenmelidir. Bu amaçla 8 bitlik çalışma modunda arka arkaya 3 defa 30h komutu gönderilir. 4 bitlik modda ise arka arkaya 3 defa 20h komutu gönderilir. Meşgul bayrağı kullanılmıyorsa her komut arasında 1 ms’lik gecikme yapılmalıdır.<br/>
+<br/>
+PICC Dili ile LCD Programlama<br/>
+CCS C derleyici yaması bilgisayara yüklenip MPLAB programına bağlandığında PICC dili ile program yazılıp derlenebilir. Tabi istenirse başka programlar ve yamaları kullanılabilir. Bilgisayardaki PICC klasörü incelendiğinde iki alt klasör göze çarpar.<br/>
+<br/>
+Bunlar “Devices” ve “Drivers” klasörleridir. “Devices” klasörü içerisinde mikrodenetleyicilerin donanım tanımlarının yer aldığı başlık dosyaları yer almaktadır. Bu dosyaların uzantısı .h ile biter. Programda PIC16F877 entegresi ile ilgili donanım kullanılacağından dolayı “#include &lt;16F877.h&gt;” komutu programın en başında kullanılmalıdır. Aslında 16F877.h dosyası C dili ile yazılmıştır.<br/>
+<br/>
+İncelendiğinde PIC16F877 mikrodenetleyicisinin donanım kullanımına yönelik ifadeler ve<br/>
+fonksiyonlar göze çarpar. 16F877 başlık dosyası programın başında tanımlandığında başlık<br/>
+dosyasında tanımlanan fonksiyonlar ve ifadeler yazılan PIC-C programında kullanılabilir.<br/>
+16F877.h başlık dosyasını inceleyiniz.<br/>
+<br/>
+“Drivers” klasörü içerisinde çeşitli elektronik yapıların sürücü dosyaları yer almaktadır. Burada yer alan dosyaların uzantıları .C ile biter. Bu klasörde LCD’ye özel LCD.C dosyası vardır ve bu dosya içerisinde LCD kulanımı için fonksiyonlar yer almaktadır. Eğer LCD kullanılmak isteniyorsa LCD.C sürücü dosyası programın başında tanımlanmalıdır. Bu amaçla “#include ” komutu kullanılır. Aşağıda CCS C derleyicisi ilk kurulduğunda LCD.C dosyasının içeriğinden bir kısım görülmektedir. Aşağıda görüldüğü gibi, sürücünün en başında sürücü tanımlandığında kullanılabilecek fonksiyonlar gösterilmiştir.<br/>
+<br/>
+LCD.C sürücüsü HD44780 temelli tüm LCD’ler için kullanılabilen bir dosyadır. İlk başlangıç değeri 4 bitlik çalışma modu için uygundur. Fakat bu haliyle programda kullanılmaz. Öncelikle kullanılacak donanıma uyup uymadığı incelenmelidir. Bu haliyle LCD’nin PortD’ye bağlanması gereklidir. Ancak bu modülde örnek olarak şekil 1.16’daki devreye göre programlar yazılacaktır. Bu devrede LCD PortB’ye bağlanmıştır. Bu nedenle LCD.C dosyası öncelikle açılmalı, yukarıda ok ile gösterilen kısımda gerekli donanım değişiklikleri yapılmalı ve dosyanın orjinalliğini bozmamak için farklı adla kaydedilmelidir.<br/>
+<br/>
+PICC Örnek 1<br/>
+<br/>
+//LCD KONTROL PROGRAMI-LCD1_1.C<br/>
+//LCD ekranında 80H adresine L harfi yazdırma<br/>
+//PB0-X / PB1-RS / PB2-RW / PB3-E / PB4...PB7 - 4 bit data<br/>
+#include &lt;16F877.h&gt;<br/>
+#use delay(clock=20000000) //Devrede 20Mhz’lik krsital kullnılıyor<br/>
+#fuses hs,NOWDT,NOPROTECT,NOLVP<br/>
+#byte port_b=6 // port_b nin adresi<br/>
+#define RS PIN_B1<br/>
+#define RW PIN_B2<br/>
+#define E PIN_B3<br/>
+#define PB4 PIN_B4<br/>
+#define PB5 PIN_B5<br/>
+#define PB6 PIN_B6<br/>
+#define PB7 PIN_B7<br/>
+io_setout()<br/>
+{<br/>
+set_tris_b(0x00); // port_b = çıkış<br/>
+}<br/>
+komutyaz()<br/>
+{<br/>
+Output_Low(RS); // RS=0 Komut geliyor.<br/>
+Output_Low(RW); // R/W=0 Yazma modu<br/>
+}<br/>
+veriyaz()<br/>
+{<br/>
+Output_High(RS); // RS=1 veri geliyor.<br/>
+Output_Low(RW); // R/W=0 Yazma modu<br/>
+}<br/>
+uyg()<br/>
+<br/>
+{<br/>
+Output_High(E); // Uygulamadan önce portların kurulması için 1 ms ile beklenir<br/>
+delay_ms(1); // Kullanılmazsa LCD çalışması kitlenmektedir.<br/>
+Output_Low(E);<br/>
+delay_ms(1);<br/>
+}<br/>
+clrdsply()<br/>
+{<br/>
+komutyaz();<br/>
+port_b=0x00;<br/>
+uyg();<br/>
+port_b=0x10; //01H ekran temizleme komutu gönderiliyor.<br/>
+uyg();<br/>
+}<br/>
+dsplay_on()<br/>
+{<br/>
+komutyaz();<br/>
+port_b=0x00;<br/>
+uyg();<br/>
+port_b=0xC0; //0CH Display açma komutu gönderiliyor.<br/>
+uyg();<br/>
+}<br/>
+lcdreset()<br/>
+{ komutyaz();<br/>
+port_b=0x20; // 2 değeri porb7-4'e gönderiliyor.<br/>
+uyg();<br/>
+port_b=0x20;<br/>
+uyg();<br/>
+port_b=0x20; //4 bit modda resetleme için 3 defa 20h PB7-4'e uygulanıyor.<br/>
+uyg();<br/>
+}<br/>
+lcdkur()<br/>
+{<br/>
+komutyaz();<br/>
+port_b=0x20; // 2 değeri porb7-4'e gönderiliyor.<br/>
+uyg();<br/>
+port_b=0x80; // 8 değeri porb7-4'e gönderiliyor.<br/>
+uyg(); // 28h komutu uygulandı. 4 bit modu 2 satır 5*7 fontu kuruldu.<br/>
+}<br/>
+adreskur()<br/>
+{<br/>
+komutyaz();<br/>
+<br/>
+port_b=0x80;<br/>
+uyg(); // 80H PortB'den gönderiliyor.<br/>
+port_b=0x00; // DDRAM adresi 00h olarak kuruluyor. 1.satır 1.sütun<br/>
+uyg();<br/>
+}<br/>
+verigonder()<br/>
+{<br/>
+veriyaz();<br/>
+port_b=0x42; // RS'nin 1'de kalması sağlanıyor.<br/>
+uyg(); // Bu nedenle 42 ve C2 verileri gönderiliyor.<br/>
+port_b=0xC2;<br/>
+uyg(); // 4CH verisi gönderildi.<br/>
+} // DDRAM adresi üzerinden L harfi(4Ch) 1.satır 1.sütuna yazıldı.<br/>
+giriskur()<br/>
+{<br/>
+komutyaz();<br/>
+port_b=0x00;<br/>
+uyg();<br/>
+port_b=0x60;<br/>
+uyg(); // 06H PortB'den gönderiliyor. Giriş modu sağa hareket<br/>
+}<br/>
+void main()<br/>
+{<br/>
+io_setout();<br/>
+lcdreset();<br/>
+clrdsply();<br/>
+lcdkur();<br/>
+dsplay_on();<br/>
+giriskur();<br/>
+adreskur();<br/>
+verigonder();<br/>
+}<br/>
+PIC-C Örnek 2<br/>
+<br/>
+//LCD KONTROL PROGRAM-sürücü dosyalı<br/>
+//LCD ekranında 2. satır 16. sütuna (4Fh) L harfi yazdırma<br/>
+//PB0-X / PB1-RS / PB2-RW / PB3-E / PB4...PB7 - 4 bit data<br/>
+#include  //Gerekli tüm tanımlamalar sürücüde mevcuttur<br/>
+#fuses hs,NOWDT,NOPROTECT,NOLVP<br/>
+void main()<br/>
+{ io_setout();<br/>
+clrdsply();<br/>
+lcdreset();<br/>
+lcdkur();<br/>
+dsplay_on();<br/>
+giriskur();<br/>
+adreskur();<br/>
+verigonder();<br/>
+}<br/>
+LCDdrv.c sürücü programı aşağıda görülmektedir.<br/>
+//LCD SÜRÜCÜ-LCDdrv.c<br/>
+//PB0-X / PB1-RS / PB2-RW / PB3-E / PB4...PB7 - 4 bit data<br/>
+#include &lt;16F877.h&gt;<br/>
+#use delay(clock=20000000)<br/>
+#byte port_b=6 // port_b nin adresi<br/>
+#define RS PIN_B1<br/>
+#define RW PIN_B2<br/>
+#define E PIN_B3<br/>
+#define PB4 PIN_B4<br/>
+#define PB5 PIN_B5<br/>
+#define PB6 PIN_B6<br/>
+#define PB7 PIN_B7<br/>
+io_setout()<br/>
+{<br/>
+set_tris_b(0x00); // port_b = çıkış<br/>
+}<br/>
+komutyaz()<br/>
+{<br/>
+Output_Low(RS); // RS=0 Komut geliyor.<br/>
+<br/>
+Output_Low(RW); // R/W=0 Yazma modu<br/>
+}<br/>
+veriyaz()<br/>
+{Output_High(RS); // RS=1 veri geliyor.<br/>
+Output_Low(RW); // R/W=0 Yazma modu<br/>
+}<br/>
+uyg()<br/>
+{Output_High(E); //Portların kurulması buradaki 1 ms ile bekleme<br/>
+delay_ms(1);<br/>
+Output_Low(E);<br/>
+delay_ms(1);<br/>
+}<br/>
+clrdsply()<br/>
+{komutyaz();<br/>
+port_b=0x00;<br/>
+uyg();<br/>
+port_b=0x10; //01H ekran temizleme komutu<br/>
+uyg();<br/>
+}<br/>
+dsplay_on()<br/>
+{komutyaz();<br/>
+port_b=0x00;<br/>
+uyg();<br/>
+port_b=0xC0; //0CH Display açma komutu<br/>
+uyg();<br/>
+}<br/>
+lcdreset()<br/>
+{ komutyaz();<br/>
+port_b=0x20; // 2 değeri porb7-4'te<br/>
+uyg();<br/>
+port_b=0x20;<br/>
+uyg();<br/>
+port_b=0x20; //4 bit modda resetleme için 3 defa arka arkaya 20h<br/>
+uyg();<br/>
+}<br/>
+lcdkur()<br/>
+{ komutyaz();<br/>
+port_b=0x20; // 2 değeri porb7-4'te<br/>
+uyg();<br/>
+port_b=0x80; // 28h 4 bit modu 2 satır 5*7 fontu<br/>
+uyg();<br/>
+<br/>
+}<br/>
+adreskur()<br/>
+{ komutyaz();<br/>
+port_b=0xC0;<br/>
+uyg(); // DDRAM adresi 4Fh 2.satır 16.sütun<br/>
+port_b=0xF0;<br/>
+uyg();<br/>
+}<br/>
+verigonder()<br/>
+{ veriyaz();<br/>
+port_b=0x42;<br/>
+uyg();<br/>
+port_b=0xC2;<br/>
+uyg(); // DDRAM adresine L harfi(4Ch) 2.satır 16. sütuna yazılıyor.<br/>
+}<br/>
+giriskur()<br/>
+{komutyaz();<br/>
+port_b=0x00;<br/>
+uyg();<br/>
+port_b=0x60;<br/>
+uyg(); //06H PortB'den gönderiliyor. Giriş modu sağa hareket<br/>
+}<br/>
+LCD’de Karakter Oluşturma<br/>
+<br/>
+LCD’nin CGRAM belleği kullanılarak Şekil 1.10’da görülen ASCII tablosundaki karakterlerin dışında özel karakterler gerçekleştirilebilir. Örneğin Türkçe karakterler ASCII tablosuna göre LCD’ye yazdırılamaz. Aynı şekilde yukarı ok, dörtgen, ağaç figürü gibi karakterler için hazır bir kod mevcut değildir. Bunlar gibi özel karakterleri LCD ekranına getirmek için CGRAM kullanılır. Ancak LCD enerjisi kesildiğinde CGRAM’da oluşturulan karakter de silinir. CGRAM’in yapısı ve kullanımı Şekil 1.21 ile anlaşılabilir.<br/>
+<br/>
+Şekil 1.21: CGRAMYapısı<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2009/03/cgram-yapisi.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="86" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/cgram-yapisi.png" width="200"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+CGRAM’de toplam 8 adet özel karakter oluşturulabilir. Bu amaçla yukarıda 0-7 aralığında gösterilen 8 adet karakter kümesi kullanılır. Her kümenin bir adresi vardır ve CGRAM’deki karakter bu adresle DDRAM’e aktarılır ve ekranda gösterilir. Yukarıdaki şekilde küme adreslerine ulaşmak için gerekli komutlar görülmektedir. Örneğin 4. kümeye ulaşmak için 60H komutu kullanılmalıdır. Daha önce anlatıldığı gibi DB6 biti CGRAM kurma komutunu bildirir.<br/>
+<br/>
+SERVO MOTOR KONTROLÜ<br/>
+<br/>
+Otomasyon sistemlerinde üretimin otomatik olarak gerçekleşmesi için elektrik enerjisinin harekete çevrilmesi gerekmektedir. Hareket elde etmek için kullanılan en önemli elemanlar motorlardır. Daha önceki modüllerde doğru akım motoru ve adım motorunu öğrenmiştiniz. Bu öğrenme faaliyetine başlamadan önce bu motorların yapısını incelemenizde fayda vardır. Doğru akım motoru ve adım motoru ile hassas açılara dönme hareketi yapmak zordur. Özellikle robot sistemlerinde belirli açılarla dönme hareketi yapılmalıdır.<br/>
+<br/>
+Bu nedenle doğru akım motorları geliştirilmiş ve “servo motor” ortaya çıkmıştır. Servo-motorlar, verilen girişe göre istenen açısal konuma gelen motorlardır. Günümüzde ac veya dc gerilimle çalışabilen, çeşitli güçlerde ve ebatlarda servo motorlar mevcuttur. Servo motorların çok çeşitli uygulamalarda kullanılmasını nedenleri;<br/>
+<br/>
+Güvenilir olması<br/>
+Yüksek tork değerlerine sahip olması<br/>
+Konumlamada yüksek doğruluk göstermesi<br/>
+Kolay kurulum ve bağlantı özelliği<br/>
+Kontrol kolaylığı<br/>
+Ekonomik oluşu<br/>
+olarak verilebilir. Bu öğrenme faaliyetinde literatürde “RF Servo Motor” ya da “RC Servo Motor” olarak da geçen DC Servo Motorun temel yapısı incelenecektir.<br/>
+<br/>
+Servo Motorun PIC16F877 Mikrodenetleyici ile Kontrolü<br/>
+<br/>
+PIC16F877 mikrodenetleyici kullanarak çok kaliteli zamanlama sinyalleri elde edilebilir ve servo motor hassas açılarla hareket ettirilebilir. Bu bağlamda program içerisinde PIC-C dilinin avantajarını kullanmak gerekir. Örneğin 1 ms’lik bir zamanlama için “delay_ms(1)” komutunu kullanmak yeterlidir.<br/>
+<br/>
+Şekil 2.8’de servo motoru kontrol etmek için gereken akış diyagramı görülmektedir. PIC16F877’yi ilk kullanıma hazırladıktan sonra servonun konumlanacağı açıyı bildiren zamanlama sinyali oluşturulur. Bu sinyal alt program yardımıyla da oluşturulabilir.<br/>
+<br/>
+Öncelikle servo motorun kontrol ucuna bağlı port biti lojik-1 yapılır. Kullanılan servo motorun karakteristiğine göre Ton süresi ayarlanır ve bu süre kadar bekleme yapılır.Böylece kontrol ucuna açı kontrol bilgisi ulaşmış olur. Lojik-1 seviyesindeki beklemeden sonra PIC ucu lojik-0 yapılır. Aynı şekilde 10-18 ms lojik-0’da bekleme yapılır. Bu işlemler sürekli tekrarlanırsa motor mili boşta kalmadan sürekli açı pozisyonunu korur.<br/>
+<br/>
+Şekil 2.9’da PIC16F877’li bir servo sürücü devresi örneği görülmektedir. Örnek devrede görüldüğü gibi PIC ile servo motor arasına n kanal bir mosfet bağlanmıştır. Servo motor dönüş hareketi yapmaya başladığında gerilim kaynağından akım çeker. Akım çekilmesi esnasında gerilim kaynağındaki dalgalanma mikrodenetleyiciyi etkiler.<br/>
+<br/>
+Mosfet kullanılmadan da 5V’luk servo motorlar doğrudan mikrodenetleyici portuna bağlanarak dönme hareketi yapabilir. Ancak mosfet gibi arada bir tampon eleman kullanıp servo motor için ikinci bir besleme kaynağı kullanmak sürücü devrenin ve tüm sistemin çok daha kaliteli ve güvenilir olmasını sağlayacaktır. Özellikle servo motor bir yükü hareket ettirdiği zaman daha fazla akıma ve dolayısıyla güce ihtiyaç duyacağından harici besleme kaynağı yararlı olacaktır. Harici besleme kaynağının kullanılıp kullanılmayacağı yapılan sisteme göre tasarımcının karar vereceği bir problemdir. Şekil 2.9’da mosfet ve servo motor için ikinci besleme kaynağı(Vcc) kullanılmıştır.<br/>
+<br/>
+PIC C Örnek<br/>
+<br/>
+//SERVO MOTOR KONTROL PROGRAMI- ORNEK-1<br/>
+//PD0: Servo kontrol sinyali için kullanılacak<br/>
+#include &lt;16F877.h&gt;<br/>
+#use delay(clock=20000000)<br/>
+#fuses HS,NOWDT,NOPROTECT,NOLVP<br/>
+#byte port_d=8 //portd'nin adresi<br/>
+#define CNT PIN_D0<br/>
+io_setout()<br/>
+{<br/>
+set_tris_d(0x00); // port_d = çıkış<br/>
+}<br/>
+void main()<br/>
+{io_setout();<br/>
+while(1)<br/>
+{<br/>
+Output_High(CNT);<br/>
+delay_us(1750); // Lojik-1 süresi 1,75 ms<br/>
+Output_Low(CNT);<br/>
+delay_us(18250); // Lojik-0 süresi 18,25 ms<br/>
+}<br/>
+} // Periyot 20 ms<br/>
+<br/>
+<a href="http://320volt.com/wp-content/uploads/2009/03/picc-servo-motor-surucu-mosfet-pic16f877.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="166" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/picc-servo-motor-surucu-mosfet-pic16f877.png" width="200"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Şekil 2.10’da N kanal mosfet çıkışı görülmektedir. Mosfet çıkışı ile mikrodenetleyici çıkışı aynı fazlıdır. Mosfet kapı girişine lojik-1 seviyeli sinyal geldiğinde mosfet iletime geçer. Kaynaktaki R3 direncinin üst ucu lojik-1 olur. Böylece giriş lojik-1 iken çıkış da lojik- 1’dir.<br/>
+<br/>
+Tam tersi bir şekilde kapı girişine lojik-0 seviyeli sinyal geldiğinde mosfet yalıtımdadır. Bu durumda mosfet yalıtımda olduğu için R3 direncinin üst ucu şase potansiyelindedir, diğer bir deyişle lojik-0’dır. Sonuç olarak girişdeki zamanlama sinyalinin aynısı çıkışta elde edilir. Mosfet sayesinde servo motor kendisi için gereken akımı gerilim kaynağından çeker. Mosfet çıkışındaki sinyalin Ton süresi 1,75 ms, Toff süresi de 18,25 ms’dir. Mosfet<br/>
+çıkışındaki sinyalin periyotu ise;<br/>
+<br/>
+T=Ton+Toff formülüne göre<br/>
+T=1,75+18,25=20 ms bulunur.<br/>
+<br/>
+Zamanlama sinyaline göre servo motor 1,75 ms ile ifade edilen açıya doğru dönüş yapar ve bu açıda bekler.<br/>
+<br/>
+Şekil 2.10: Servo sürücü devresi mosfet çıkışı Time/div=5 ms Volt/div=2V<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2009/03/mosfet-cikis-surucu-devresi.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="163" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/mosfet-cikis-surucu-devresi.jpg" width="200"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Devrenin Çalışması: Devreye ilk enerji verildiğinde servo motor başlangıç pozisyonunda olacaktır. Bu aşamadan sonra B1 buTonuna basıldığında motor mili -90 dereceye gelecek, B2 buTonuna basıldığında ise +90 dereceye dönecektir. Çalışma sürekli +90 ve -90 derece arasında gerçekleşecektir.<br/>
+<br/>
+PWM KONTROLÜ<br/>
+<br/>
+PWM Teorisi : Bu faaliyette dc motor, PIC16F877’de bulunan PWM modülü ile kontrol edilecektir. Otomasyon sistemlerinde PWM tekniğinin kullanıldığı birçok uygulama mevcuttur. Bunlardan en yaygın olanı da dc gerilim değerinin değiştirilmesi işlemidir. Dc gerilimin değeri “dc-dc konverter” adı verilen sistemler ile değiştirilebilmektedir. Bu sistemlerde dc gerilimin seviye dönüşümü için bir veya daha fazla transistör, mosfet vb. gibi yarı iletken anahtar kullanılır. Ortalama çıkış gerilimi anahtarlama elemanının Ton ve Toff zamanı ayarlanarak yapılır. Anahtarlamalı güç kaynaklarında gerilim regülasyonunu sağlamak için yapılan bu işleme “Darbe Genişlik Modülasyonu”(PWM) adı verilir. PWM sinyali üreten bir devreye de “PWM Modülatörü” adı verilir. Kare dalga bir sinyalin periyotu için;<br/>
+<br/>
+T=Ton+Toff<br/>
+<br/>
+eşitliği kullanılır. Bu formülde “Ton” ifadesi kare dalga sinyalin lojik-1 değerinde kalma<br/>
+süresi, “Toff” ise kare dalga sinyalin lojik-0 değerinde kalma süresidir.<br/>
+<br/>
+Darbe genişlik modülasyonunda çıkış gerilimi izlenir ve sabit bir gerilim ile karşılaştırılır. Şekil 3.1’de görüldüğü gibi Vo çıkış gerilimi ile Vr referans gerilimi arasındaki fark alınarak yükseltilir. Vo çıkış gerilimi, fark yükselticinin pozitif girişine uygulandığı için çıkış gerilimi arttığında hata gerilimi artacak, çıkış gerilimi azaldığında ise hata gerilimi azalacaktır. Vhata gerilimi ile bir üçgen dalga sinyali opampla yapılan karşılaştırıcı ile kıyaslanır.<br/>
+<br/>
+Karşılaştırıcı çıkışında modüleli kare dalga sinyal elde edilir. Hata gerilimi karşılaştırıcının negatif girişine verilmişse, hata gerilimi artınca darbe genişliği azalacak, hata gerilimi azalınca darbe genişliği artacaktır. Böylece gerilim regülasyonu sağlanacaktır. Bu durum şekil 3.2’deki sinyal şekillerinde görülmektedir.<br/>
+<br/>
+PIC16F877’DE PWM Özelliği<br/>
+<br/>
+2. öğrenme faaliyetinde servo motor kontrolü için PIC16F877 mikrodenetleyici ile pwm sinyali üretilmişti. Daha önceki program uygulamalarında pwm sinyali üretmek için herhangibir port pini belirli süreler ile lojik-1 ve lojik-0 yapılmıştı. Bu programlar dikkatli bir şekilde incelenirse, özellikle mikrodenetleyici ile birden fazla iş yapılması durumu göz önüne alındığında, mikrodenetleyicinin sürekli meşgul durumda olduğu ve ikinci bir iş yapıldığında pwm sinyalinin bundan etkileneceği anlaşılır.<br/>
+<br/>
+PWM üretiminin de yer aldığı kompleks sistemlerde mikrodenetleyicilerin çok fonksiyonluluk özelliğinden etkili bir şekilde yararlanılırsa, sistemin verimliliği ve güvenirliği artarken karmaşıklığı ve maliyeti azalır. Bu bağlamda, PIC16F877 mikrodenetleyici iç yapısında birçok elektronik modül vardır ve konumuzla ilgili olduğundan burada PWM modülünün kullanılmasına değinilecektir. PWM modülü sayesinde ana programın çalışmasını meşgul etmeden otomatik olarak bağımsız bir hattan PWM sinyali elde edilebilir. PIC-C dili ile PWM sinyali üretmek hazır fonksiyonlar sayesinde oldukça kolaylaştırılmıştır. Bu konuya girmeden önce PWM için kullanılan yazmaçlara göz atalım.<br/>
+<br/>
+PIC16F877 ile Dc Motor Kontrolü<br/>
+Daha önceki mikrodenetleyici modüllerinde doğru akım motorunun kontrolü ile ilgili bilgiler verilmişti. Bu kısımda aynı bilgiler tekrar verilmeyecek, sadece PIC16F877 PWM modülü ve PIC-C dili kullanılarak bir doğru akım motorunun hızının nasıl değiştirileceği işlenecektir.<br/>
+<br/>
+Şekil 3.7: PIC16F877 ile DCMotor sürücü devresi bağlantısı<br/>
+<br/>
+<a href="http://320volt.com/wp-content/uploads/2009/03/dc-motor-kontrolu-picc-pic16f877.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="180" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/dc-motor-kontrolu-picc-pic16f877.png" width="200"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Şekil 3.7’de dc motor sürücü devresi ile PIC16F877 mikrodenetleyicinin bağlantısı görülmektedir. Mikrodenetleyici programı ile üretilen PWM sinyali RC2/CCP1 ucundan<br/>
+alınarak N-Kanal Mosfetin kapı girişine uygulanır. Mosfet PWM sinyalinin Ton sürelerinde<br/>
+iletimde Toff sürelerinde ise yalıtımdadır. Mosfetin iletimde olduğu sürelerde Motor içerisinden bir akım geçer. Motorun dönme hareketi sırasındaki hızı ve devir sayısı Vm gerilimi ve aktarma oranına bağlıdır. Bu bağlamda motor için ortalama gerilim değerinden<br/>
+<br/>
+Şekil 3.8’de PIC16F877 analog dijital çevirici modülü girişine bağlanan bir potansiyometre ile analog bir değer girilmiş ve bu değer dijitale çevrilmiştir. Analog değerin dijital karşılığı da PWM sinyalinin Ton süresini belirlemek için kullanılmıştır. Böylece potansiyometreyi çevirerek DC motorun hız kontrolü yapılmış olur.<br/>
+<br/>
+Şekil 3.8: Analog gerilim ile DC motorun PWM kontrolü<br/>
+<br/>
+<div><a href="http://320volt.com/wp-content/uploads/2009/03/dc-motor-hiz-kontrolu-pwm.png" imageanchor="1" rel="noopener noreferrer"><img border="0" height="121" loading="lazy" src="http://320volt.com/wp-content/uploads/2009/03/dc-motor-hiz-kontrolu-pwm.png" width="200"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+PWM için Kullanılan PIC-C Komutları<br/>
+<br/>
+PIC16F877 Mikrodenetleyicide PIC-C dili kullanarak PWM sinyali üretmek için 3 fonksiyonu kullanmak yeterlidir.<br/>
+<br/>
+a. SET_PWM1_DUTY() [SET_PWM2_DUTY()] : Aktarma saykılını(Ton) kurmak için 10 bitlik değer bu fonksiyon ile belirtilir. Düşük değerli bitler gerekli değilse 8 bitlik değerde bu fonksiyon ile kullanılabilir. Sadece PIC16F877 gibi CCP/PWM modülü içeren mikrodenetleyiciler için kullanılabilir. Herhangibir sürücü veya başlık dosyası gerektirmez.<br/>
+<br/>
+Kullanımı: set_pwm1_duty(X)<br/>
+set_pwm2_duty(X)<br/>
+<br/>
+X değeri için 8 veya 16 bit genişliğinde bir sabit veya değişken kullanılabilir. Değer 10 bitlik bir sayı ise bu sayı için kullanılan değişken veya sabit en az 16 bitlik olmalıdır. Fonksiyonun dönüş değeri yoktur. Değer 8 bitlik bir sayı ise, 10 biti elde etmek için donanım tarafından lsb bitlerinde 2 adet lojik-0 biti ile kaydırma yapılır. 10 bitlik değer bir periyot içerisindeki PWM sinyalinin lojik-1’de kaldığı zaman miktarını saptamak için kullanılır. Ton zamanı (Aktarma saykılı) aşağıdaki formül ile bulunur.<br/>
+<br/>
+b. SET_CCP1() [SET_CCP2()] : CCP modülünün çalışma modunu ayarlar.<br/>
+<br/>
+Kullanımı: setup_ccp1 (mod)<br/>
+setup_ccp2 (mod)<br/>
+<br/>
+“mod” bir sabittir. Her mikrodenetleyicinin başlık dosyasında geçerli sabitler tanımlanmıştır. Mod değeri için kullanılan sabit ifadeler PWM modu için aşağıda verilmiştir.<br/>
+<br/>
+“CCP_OFF” : CCP modülünü pasif yapar.<br/>
+“CCP_PWM”: Darbe genişlik modülatörünü (PWM) aktif yapar.<br/>
+<br/>
+c. SETUP_TIMER_2() : Timer2 yazmacını PWM sinyali için uygun değere ayarlar. Timer2 yazmacına sahip mikrodenetleyiciler için kullanılabilir.<br/>
+<br/>
+Kullanımı: setup_timer_2 (mod, periyot, son bölücü)<br/>
+Bu fonksiyonda mod, T2_DISABLED, T2_DIV_BY_1, T2_DIV_BY_4,<br/>
+<br/>
+T2_DIV_BY_16 ifadelerinden biridir. Mod osilatör saat darbesinin kaça bölüneceğini<br/>
+bildirir.<br/>
+<br/>
+Periyot: Fonksiyon periyot katsayısıdır. Saat darbesi değerinin sıfırlandığı zamanı<br/>
+belirleyen 0-255 arasındaki int tamsayı tipinde bir değişkendir.<br/>
+<br/>
+Son bölücü: Bir kesme sinyalinden önce zamanlayıcının kaç defa sıfırlanacağını belirleyen 1-16 arasında bir sayıdır. Örneğin bu sayı 1 olursa zamanlayıcı 1 kere, 2 olursa 2 kere resetlenir. PWM modunda CCP modülü PWM sinyali üretir.<br/>
+<br/>
+////Program Analog girişi okur ve bunun dijital değerini aktarma oranı için kullanır.<br/>
+//// Pwm çalışıyorken analog giriş sürekli okunur. Analog değer değiştikçe Ton süresi<br/>
+değişir.<br/>
+#include &lt;16F877.h&gt;<br/>
+#fuses HS,NOWDT,NOPROTECT,NOLVP<br/>
+#use delay(clock=20000000)<br/>
+void main()<br/>
+{ byte X;<br/>
+setup_ccp1(CCP_PWM); // CCP1 PWM moduna ayarlanıyor<br/>
+setup_timer_2(T2_DIV_BY_16, 127, 1); // Periyot (1/clock)*4*t2div*(period+1)<br/>
+setup_port_a(ALL_ANALOG); // Fosc=20000000 ve periyot katsayısı=127<br/>
+setup_adc(adc_clock_internal); // (1/20000000)*4*16*128= 409,6 us or 2,44 khz<br/>
+set_adc_channel( 0 );<br/>
+while( TRUE )<br/>
+{<br/>
+X=read_adc();<br/>
+set_pwm1_duty(X); // X*4*(1/clock)*t2div<br/>
+}<br/>
+}<br/>
+//// PWM Uygulama programı ////<br/>
+//// Programın başında PWM aktarma oranı %50 ////<br/>
+//// ART buTonuna basıldığında PWM oranı %5'er artacak, AZAL buTonuna<br/>
+basıldığında PWM oranı %5'er azalacak<br/>
+//// Pwm çalışması %0 ile %100 arasında değişecek<br/>
+#include &lt;16F877.h&gt;<br/>
+#fuses HS,NOWDT,NOPROTECT,NOLVP<br/>
+#use delay(clock=20000000)<br/>
+#define art input(PIN_C7)<br/>
+#define azal input(PIN_C6)<br/>
+byte port_c=7;<br/>
+int Ton,T;<br/>
+io_set()<br/>
+{<br/>
+set_tris_c(0xF0); //7. ve 6. bitler giriş, 1. bit çıkış<br/>
+}<br/>
+pwmkur()<br/>
+{<br/>
+setup_ccp2(CCP_PWM); // CCP2’yi PWM moduna ayarla<br/>
+setup_timer_2(T2_DIV_BY_16,30,1);<br/>
+}<br/>
+up()<br/>
+{<br/>
+delay_ms(10);<br/>
+while(1)<br/>
+{<br/>
+if(art==1){Ton=Ton+5;break;} //BuTon titreşiminin geçmesi bekleniyor.<br/>
+<br/>
+else continue;<br/>
+}<br/>
+delay_ms(10);<br/>
+}<br/>
+dwn()<br/>
+{ delay_ms(10);<br/>
+while(1)<br/>
+{<br/>
+if(azal==1){Ton=Ton-5;break;} //BuTon titreşiminin geçmesi bekleniyor<br/>
+else continue;<br/>
+}<br/>
+delay_ms(10);<br/>
+}<br/>
+pwm()<br/>
+{<br/>
+set_pwm2_duty(Ton); //PWM sinyali CCP2’de oluşturuluyor.<br/>
+}<br/>
+void main()<br/>
+{io_set();<br/>
+pwmkur();<br/>
+T=30;<br/>
+Ton=15; //D=%50 başlangıç değeri<br/>
+pwm();<br/>
+while(1)<br/>
+{<br/>
+if((art==0)&amp;(Ton!=30)) up();<br/>
+if((azal==0)&amp;(Ton!=0)) dwn();<br/>
+pwm();<br/>
+}<br/>
+}<br/>
+<br/>
+       <b><span><span>  "Alıntıdır"</span></span></b><br/>
+<br/>
+   YAYINLANAN sitede emeği geçenlere teşekkürler Bilgi paylaşıldıkça değerlenir</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/mikrodenetleyici-uygulamalar-bilgiler.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

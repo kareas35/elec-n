@@ -1,0 +1,56 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PİC KOMUTLARI NELER VE NE İŞE YARIYORLAR | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PİC KOMUTLARI NELER VE NE İŞE YARIYORLAR</h1><div>2010-09-13 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><h4><b>PIC Komut Seti</b></h4><table border="1" cellpadding="2" cellspacing="0"><tbody>
+<tr align="center"><td colspan="2" valign="top"><div align="center"><strong>Komut</strong></div></td><td valign="top" width="234"><strong>Açılım<br/>
+</strong></td><td valign="top" width="257"><strong>Tanım<br/>
+</strong></td></tr>
+<tr><td valign="top" width="71">BCF</td><td align="center" valign="top" width="50">f , b</td><td valign="top" width="234">Bit Clear File</td><td valign="top" width="257">f nin b inci bitini sıfırla</td></tr>
+<tr><td valign="top" width="71">BSF</td><td align="center" valign="top" width="50">f , b</td><td valign="top" width="234">Bit set File</td><td valign="top" width="257">f nin b inci bitini 1 yap</td></tr>
+<tr><td valign="top" width="71">BTFSC</td><td align="center" valign="top" width="50">f , b</td><td valign="top" width="234">Bit test file, skip if clear</td><td valign="top" width="257">f nin b inci biti 0 ise bir<br/>
+komut atla</td></tr>
+<tr><td valign="top" width="71">BTFSS</td><td align="center" valign="top" width="50">f , b</td><td valign="top" width="234">Bit test file, skip if set</td><td valign="top" width="257">f nin b inci biti 0 ise bir<br/>
+komut atla</td></tr>
+<tr><td valign="top" width="71"></td><td align="center" valign="top" width="50"></td><td valign="top" width="234"></td><td valign="top" width="257"></td></tr>
+<tr><td valign="top" width="71">Addwf</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Add w and f</td><td valign="top" width="257">w ile f yi topla<br/>
+d=1 ise sonucu f ye koy<br/>
+d=0 ise sonucu w ye koy</td></tr>
+<tr><td valign="top" width="71">Andwf</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">And w with f</td><td valign="top" width="257">w ile f ye AND işlemi yap<br/>
+d=1 ise sonucu f ye koy<br/>
+d=0 ise sonucu w ye koy</td></tr>
+<tr><td valign="top" width="71">CLRF</td><td align="center" valign="top" width="50">f</td><td valign="top" width="234">CLEAR f</td><td valign="top" width="257">f yi sil</td></tr>
+<tr><td valign="top" width="71">CLRW</td><td align="center" valign="top" width="50"></td><td valign="top" width="234">CLEAR w</td><td valign="top" width="257">w yi sil</td></tr>
+<tr><td valign="top" width="71">COMF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Comlement f</td><td valign="top" width="257">f nin tersini al</td></tr>
+<tr><td valign="top" width="71">DECF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">decrement f</td><td valign="top" width="257">f yi 1 azalt<br/>
+d=1 ise sonucu f ye koy<br/>
+d=0 ise sonucu w ye koy</td></tr>
+<tr><td valign="top" width="71">DECFSZ</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">decrement f skip if zero</td><td valign="top" width="257">f yi bir azalt eğer sıfır ise bir komut atla</td></tr>
+<tr><td valign="top" width="71">INCF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">increment f</td><td valign="top" width="257">f yi bir artır.</td></tr>
+<tr><td valign="top" width="71">INCFSZ</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">increment f skip if zero</td><td valign="top" width="257">f yi bir artır eğer sıfır ise bir komut atla</td></tr>
+<tr><td valign="top" width="71">IORWF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Inclusive OR W with F</td><td valign="top" width="257">w ile f ye OR işlemi yap</td></tr>
+<tr><td valign="top" width="71">MOVF</td><td align="center" valign="top" width="50">f.d</td><td valign="top" width="234">Move F</td><td valign="top" width="257">f yi taşı</td></tr>
+<tr><td valign="top" width="71">MOVWF</td><td align="center" valign="top" width="50">f</td><td valign="top" width="234">Move W to F</td><td valign="top" width="257">w yi f ye taşı</td></tr>
+<tr><td valign="top" width="71">NOP</td><td align="center" valign="top" width="50"></td><td valign="top" width="234">NO operation</td><td valign="top" width="257">İşlem yapma</td></tr>
+<tr><td valign="top" width="71">RLF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Rotate Left F through Carry</td><td valign="top" width="257">F yi birer bit sola kaydır<br/>
+<br/>
+Biraz düşünürseniz bunun 2 ile çarpma olduğunu<br/>
+anlarsınız.</td></tr>
+<tr><td valign="top" width="71">RRF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Rotate Right F through Carry</td><td valign="top" width="257">f yi birer bit sağa kaydır</td></tr>
+<tr><td valign="top" width="71">SUBWF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Subract W from f</td><td valign="top" width="257">f den w yi çıkart</td></tr>
+<tr><td valign="top" width="71">SWAPF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Swap nibles in<br/>
+f</td><td valign="top" width="257">F nin 4 lü bitlerinin<br/>
+yerini değiştir</td></tr>
+<tr><td valign="top" width="71">XORWF</td><td align="center" valign="top" width="50">f,d</td><td valign="top" width="234">Exclusive OR w with F</td><td valign="top" width="257">w ile f ye EXOR işlemi yap</td></tr>
+<tr><td valign="top" width="71"></td><td align="center" valign="top" width="50"></td><td valign="top" width="234"></td><td valign="top" width="257"></td></tr>
+<tr><td valign="top" width="71">ADDLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Add literal and w</td><td valign="top" width="257">k yı w ye ekle</td></tr>
+<tr><td valign="top" width="71">ANDLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">And literal with k</td><td valign="top" width="257">k yı w ile And le</td></tr>
+<tr><td valign="top" width="71">CALL</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Call subroutine k</td><td valign="top" width="257">k altyordamını çağır</td></tr>
+<tr><td valign="top" width="71">CLRWDT</td><td align="center" valign="top" width="50"></td><td valign="top" width="234">Clear Watchdog Timer</td><td valign="top" width="257">watchdog Timer temizle</td></tr>
+<tr><td valign="top" width="71">GOTO</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Goto address k</td><td valign="top" width="257">k etiketine git</td></tr>
+<tr><td valign="top" width="71">IORLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Inclusive or literal k with w</td><td valign="top" width="257">w ile k yı IOR la</td></tr>
+<tr><td valign="top" width="71">MOVLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Move literal k to w</td><td valign="top" width="257">k yı w ye taşı</td></tr>
+<tr><td valign="top" width="71">RETFIE</td><td align="center" valign="top" width="50"></td><td valign="top" width="234">Return from interrupt</td><td valign="top" width="257">kesmeden dön</td></tr>
+<tr><td valign="top" width="71">RETLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Return with literal in<br/>
+w</td><td valign="top" width="257">k yı w ye yükle ve dön</td></tr>
+<tr><td valign="top" width="71">RETURN</td><td align="center" valign="top" width="50"></td><td valign="top" width="234">Return from subroutine</td><td valign="top" width="257">Altyordamdan dön</td></tr>
+<tr><td valign="top" width="71">SLEEP</td><td align="center" valign="top" width="50"></td><td valign="top" width="234">Go into standby mode</td><td valign="top" width="257">Yat uyu, heç bişeycik yapma</td></tr>
+<tr><td valign="top" width="71">SUBLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Subtract w from literal k</td><td valign="top" width="257">w yi k dan çıkart</td></tr>
+<tr><td valign="top" width="71">EXORLW</td><td align="center" valign="top" width="50">k</td><td valign="top" width="234">Exclisive OR literal k with W</td><td valign="top" width="257">k yı w ile Exor la</td></tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/09/pic-komutlari-neler-ve-ne-ise.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

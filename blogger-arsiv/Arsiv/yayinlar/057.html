@@ -1,0 +1,32 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RS-232 Information and Troubleshooting Tips | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>RS-232 Information and Troubleshooting Tips</h1><div>2010-05-01 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span></span><br/>
+<br/>
+<center><br/>
+<h3>RS-232 Information and Troubleshooting Tips</h3></center><br/>
+The following is information related to RS-232 communication and connections, mainly involving the connection of RS-232 devices to the serial ports of IBM PC compatible computers.<br/>
+<h4>IBM PC Compatible Serial Port Pinouts</h4><pre><b>
+signal     flow     pin     pin
+on PC              (DB9M)  (DB25M)
+
+DCD in     &lt;---      1       8
+receive    &lt;---      2       3
+transmit   ---&gt;      3       2
+DTR out    ---&gt;      4       20    asserted when port is opened
+ground               5       7
+DSR in     &lt;---      6       6
+RTS out    ---&gt;      7       4     asserted if hardware handshake
+CTS in     &lt;---      8       5     must be held asserted to send if hardware handshake
+RI in      &lt;---      9       22
+</b>
+</pre><br/>
+<h4>Looping back Control Signals</h4>Many RS-232 devices that connect to a PC will work with only transmit, receive, and ground connections. If they do not, this may mean that they require that some or all of the control signals be connected and working. This will probably require using a cable with all of the wires present. Another way to simulate these signals to the PC is to loop back the PC's own signals as shown below.<img alt="loopback connections" loading="lazy" src="http://www.industrologic.com/loopback.gif"/><br/>
+<br/>
+<h4>Monitoring RS-232 Communication</h4>There are times when there is just no substitute for seeing exactly what two devices are sending to each other when they are failing to communicate properly or are not working as they should be. Shown below is a device that will allow you to "eavesdrop" on an RS-232 communication with a dumb terminal or IBM PC compatible computer running a communication program.The switch allows the monitor PC to select which side of the "conversation" it is receiving and displaying.<br/>
+The device shown uses 9 pin "D" connectors and is made for one monitor PC, but the following modifications can be made for your particular situation:<br/>
+<ul><li>It can be made as a box or a cable</li>
+<li>It can be made with two connectors for two monitor PC's</li>
+<li>The switches can be eliminated if there are two connectors and monitor PC's with one monitoring pin 2 of the devices and one monitoring pin 3</li>
+<li>The gender of the connectors can be customized for the PC's you have</li>
+<li>The connectors for the devices being monitored can be 25 pin connectors</li>
+<li>Both 9 pin and 25 pin connectors can be used/added</li>
+</ul><br/>
+<center><img alt="RS-232 Eavesdrop Device" loading="lazy" src="http://www.industrologic.com/eavesdrp.gif"/></center></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/05/rs-232-information-and-troubleshooting.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

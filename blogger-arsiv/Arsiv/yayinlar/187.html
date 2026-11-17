@@ -1,0 +1,41 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SG3525 PWM ile DC motor kontrol | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>SG3525 PWM ile DC motor kontrol</h1><div>2010-01-16 · Motor ve Sürücüler</div></header><main><article class="panel"><div><br/>
+</div><div><span><span></span></span><br/>
+</div><div><span><span></span></span><br/>
+</div><span><div><span><span>Bu Kontrol devresi DC motorları kontrol edebilmek için idealdir. Bu devre <span> </span>Başka uygulamalarda da kullanılabilir<span>  </span>Örneğin Küçük ısıtıcılar ve aydınlatma gibi .<span> Böyle bir devrenin en <span> </span>büyük avantajı hemen hemen hiçbir güç kaybı olmamış <span> </span>olmasıdır.</span></span></span><span><span> </span></span><span><span>Bu devre aşırı yük ve kısa devre karşı korur.</span></span><span><span> </span></span><span><span>PWM aralığı 0 dan %100 e, ayarlanabilir</span>. </span><span><span>PWM frekans 100Hz-5kHz</span></span><span><span> </span></span><span title="Operation voltage from +8V~ 35V"></span><span><span> çalışma voltajı 8 V ~ 35V</span></span> arasında <span><span>ayarlanabilir.</span></span><span><span> </span></span><span><span>Minimum <span> </span>akım tüketimi yaklaşık 35mA . Maksimum akım tüketimi yaklaşık 6.5A dir .Tam yükte % 90 verimle çalışabilir. Bu fonksiyonları 3 adet trim pot la <span> </span>yerine getirir.VR1 Minimum çıkış voltajını ayarlamada VR3 Maksimum çıkış voltajını ayarlamada VR2 <span> </span>de çıkış frekansını ayarlamada kullanılıyor.<o:p></o:p></span></span><br/>
+</div></span><br/>
+<div><a href="http://www.elecfree.com/electronic/wp-content/uploads/2007/09/3525.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="236" loading="lazy" src="http://www.elecfree.com/electronic/wp-content/uploads/2007/09/3525.gif" width="320"/></a><br/>
+</div><div><br/>
+</div><h3 align="center"><br/>
+</h3><h3><u><span>Malzeme Listesi<o:p></o:p></span></u></h3><div><div><span>U1<span>  </span><span> </span>= SG 3525<o:p></o:p></span><br/>
+</div><div><span>C1<span>   </span><span> </span>= 0.01<o:p></o:p></span><br/>
+</div><div><span>C2<span>   </span><span> </span>= 10uF<o:p></o:p></span><br/>
+</div><div><span>C3<span>   </span><span> </span>= 0.01<o:p></o:p></span><br/>
+</div><div><span>C4<span>   </span><span> </span>= 0.01<o:p></o:p></span><br/>
+</div><div><span>C5 <span>   </span>= 100uF<o:p></o:p></span><br/>
+</div><div><span>C6<span>   </span><span> </span>= 10uF<o:p></o:p></span><br/>
+</div><div><span>C7<span>   </span><span> </span>= 0.01<o:p></o:p></span><br/>
+</div><div><span>VR1 = 10 K<o:p></o:p></span><br/>
+</div><div><span>VR2 = 10 K<o:p></o:p></span><br/>
+</div><div><span>VR3 = 10 K<o:p></o:p></span><br/>
+</div><div><span>D1<span>   </span><span> </span>= 1N4148<o:p></o:p></span><br/>
+</div><div><span>D2 <span>  </span><span> </span>= 1N4148<o:p></o:p></span><br/>
+</div><div><span>D3<span>   </span><span> </span>= 1N4004<o:p></o:p></span><br/>
+</div><div><span>D4 <span> </span>= 6A2<o:p></o:p></span><br/>
+</div><div><span>Q1 <span> </span>= IRL520N<o:p></o:p></span><br/>
+</div><div><span>Q2 <span> </span>= 2N3904<o:p></o:p></span><br/>
+</div><div><span>R1 <span> </span>= 2.2 K<o:p></o:p></span><br/>
+</div><div><span>R2 <span> </span>= 10 K<o:p></o:p></span><br/>
+</div><div><span>R3 <span> </span>= 220 K<o:p></o:p></span><br/>
+</div><div><span>R4 <span> </span>= 2.2 K<o:p></o:p></span><br/>
+</div><div><span>R5 <span> </span>= 220 Ohm<o:p></o:p></span><br/>
+</div><div><span>R6 <span> </span>= 220 Ohm<o:p></o:p></span><br/>
+</div><div><span>R7 <span> </span>= 0.22 5 W<o:p></o:p></span><br/>
+</div><div><span>R8 <span> </span>= 0.22 5 W<o:p></o:p></span><br/>
+</div><div><span>R9 <span> </span>= 0.22 5 W<o:p></o:p></span><br/>
+</div><div><span>R10 = 100 K<o:p></o:p></span><br/>
+</div><div><br/>
+</div><div><br/>
+</div><div><br/>
+</div></div><br/>
+<div><br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/sg3525-pwm-ile-dc-motor-kontrol.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

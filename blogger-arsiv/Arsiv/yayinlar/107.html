@@ -1,0 +1,67 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Math operators | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Math operators</h1><div>2010-08-01 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><h2>Math operators</h2><br/>
+Proton PIC Basic V3.0<br/>
+To ensure the operations are carried out in the correct order use parenthesis to group the<br/>
+operations:<br/>
+<br/>
+<table border="0" cellpadding="2" cellspacing="0"><tbody>
+<tr> <td bgcolor="#FFFFFF" nowrap=""><br/>
+ A = ((B - C) * (D + E)) / F </td> </tr>
+</tbody></table><br/>
+<br/>
+<br/>
+<table border="0" cellpadding="7" cellspacing="0"><tbody>
+<tr> <td align="center"><b>+</b></td> <td>Adds variables and/or constants.</td> </tr>
+<tr> <td align="center"><b>-</b></td> <td>Subtracts variables and/or constants.</td> </tr>
+<tr> <td align="center"><span><b>*</b></span></td> <td>Multiplies variables and/or constants.</td> </tr>
+<tr> <td align="center"><span><b>**</b></span></td> <td>Returns the high 16 bits of a 16-bit multiply result.</td> </tr>
+<tr> <td align="center"><b><span>*</span>/</b></td> <td>Returns the middle 16 bits of a 16-bit multiply result.</td> </tr>
+<tr> <td align="center"><b>/</b></td> <td>Divides variables and/or constants.</td> </tr>
+<tr> <td align="center"><b>//</b></td> <td nowrap="">Modulus; returns the remainder left after a dividing one value by another.</td> </tr>
+<tr> <td align="center"><b>&amp;</b></td> <td>Bitwise AND.</td> </tr>
+<tr> <td align="center"><b>|</b></td> <td>Bitwise OR.</td> </tr>
+<tr> <td align="center"><b>^</b></td> <td>Bitwise XOR.</td> </tr>
+<tr> <td align="center"><b>~</b></td> <td>Bitwise NOT A = ~B <i>( (complement) inverts the bit(s) of a  number)</i></td> </tr>
+<tr> <td align="center"><b>&lt;&lt;</b></td> <td>Shifts the bits of a value left a specified number of places.</td> </tr>
+<tr> <td align="center"><b>&gt;&gt;</b></td> <td>Shifts the bits of a value right a specified number of places.</td> </tr>
+<tr> <td><b>ABS</b></td> <td>Returns the absolute value of a number.</td> </tr>
+<tr> <td><b>ACOS</b></td> <td>Returns the ARC COSINE of a value in RADIANS.</td> </tr>
+<tr> <td><b>ASIN</b></td> <td>Returns the ARC SINE of a value in RADIANS.</td> </tr>
+<tr> <td><b>ATAN</b></td> <td>Returns the ARC TANGENT of a value in RADIANS.</td> </tr>
+<tr> <td><b>COS</b></td> <td>Returns the COSINE of a value in RADIANS.</td> </tr>
+<tr> <td><b>DCD</b></td> <td>2 n -power decoder of a four-bit value.</td> </tr>
+<tr> <td><b>DIG</b></td> <td>Returns the specified decimal digit of a positive value.</td> </tr>
+<tr> <td><b>EXP</b></td> <td>Deduce the exponential function of a value.</td> </tr>
+<tr> <td><b>LOG</b></td> <td>Returns the NATURAL LOG of a value.</td> </tr>
+<tr> <td><b>LOG10 </b></td> <td>Returns the LOG of a value.</td> </tr>
+<tr> <td><b>MAX</b></td> <td>Returns the maximum of two numbers.</td> </tr>
+<tr> <td><b>MIN</b></td> <td>Returns the minimum of two numbers.</td> </tr>
+<tr> <td><b>NCD</b></td> <td>Priority encoder of a 16-bit value.</td> </tr>
+<tr> <td><b>POW</b></td> <td>Computes variable to the power of pow variable.</td> </tr>
+<tr> <td><b>REV</b></td> <td>Reverses the order of the lowest bits in a value.</td> </tr>
+<tr> <td><b>SIN</b></td> <td>Returns the SINE of a value in RADIANS.</td> </tr>
+<tr> <td><b>SQR</b></td> <td>Returns the SQUARE ROOT of a value.</td> </tr>
+<tr> <td><b>TAN</b></td> <td>Returns the TANGENT of a value in RADIANS.</td> </tr>
+<tr> <td><b>DIV32</b></td> <td>15-bit x 31-bit divide. (For PBP compatibility only)</td> </tr>
+</tbody></table><br/>
+<hr/><br/>
+<h2>Boolean logic operators</h2>Logic operators (Boolean functions) can be used to test the results from more than one comparison to TRUE or FALSE, <br/>
+the result can be used to make a decision concerning the running program.<br/>
+<table border="0" cellpadding="7" cellspacing="0"><tbody>
+<tr> <td><b>AND </b></td> <td></td> </tr>
+<tr> <td><b>OR</b></td> <td></td> </tr>
+<tr> <td><b>XOR</b></td> <td>Exclusive OR</td> </tr>
+<tr> <td><b>NOT</b></td> <td nowrap="">Inverts the outcome of a condition (TRUE becomes FALSE, FALSE becomes TRUE)</td> </tr>
+</tbody></table><br/>
+<hr/><br/>
+<h2>Relational operators</h2>Relational operators are used to compare two values, the result can be used to make a decision regarding program flow.<br/>
+<br/>
+<table border="0" cellpadding="7" cellspacing="0"><tbody>
+<tr> <td><b>=</b></td> <td>Equal to</td> </tr>
+<tr> <td><b>==</b></td> <td>Equal to (same as <b>=</b>)</td> </tr>
+<tr> <td><b>lt;gt;</b></td> <td>Unequal to</td> </tr>
+<tr> <td><b>!=</b></td> <td>Unequal to (same as <b>;</b>)</td> </tr>
+<tr> <td><b>lt;</b></td> <td>Smaller than</td> </tr>
+<tr> <td><b>gt;</b></td> <td>Greater than</td> </tr>
+<tr> <td><b>lt;= </b></td> <td nowrap="">Smaller than or equal to (<b>Note</b>: &lt;= <i>is correct</i>, =&lt; <i>is incorrect!</i>)</td> </tr>
+<tr> <td><b>gt;=</b></td> <td>Greater than or equal to (<b>Note</b>: &gt;= <i>is correct</i>, =&gt; <i>is incorrect!</i>)</td> </tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/08/math-operators.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

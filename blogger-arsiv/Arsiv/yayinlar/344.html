@@ -1,0 +1,234 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arduino  UNO  ile  HC-SR04 sensor ve SERVO MOTOR ile Radar  Devresi yapımı | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Arduino  UNO  ile  HC-SR04 sensor ve SERVO MOTOR ile Radar  Devresi yapımı</h1><div>2020-05-14 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div dir="ltr" trbidi="on">
+<h4>
+<u>Arduino  UNO  ile  HC-SR04 sensor ve SERVO MOTOR ile Radar   Devresi  </u><b>YAPIMI</b></h4>
+<div>
+<br/></div>
+<h2>
+Kullanılan  Malzemeler :</h2>
+<div>
+<b>1</b>.   <b>Arduino Uno R3</b></div>
+<div>
+<b>2.   HC-SR04 Uzaklık Sensörü</b><br/>
+<b>3.   </b><b>HC-SR04 Uzaklık Sensörü tutacağı akrilik bir parçadan yapılmış</b></div>
+<div>
+<b>4.   Servo Motor.</b></div>
+<div>
+<b>5.   Erkek - Erkek , Erkek Dişi soketleri bulunan bağlantı kablosu</b></div>
+<div>
+<b>6.   Data transfer kablosu </b></div>
+<div>
+<b>7.   Bilgisayarınızda görsel programlama yapmak için gerekli olan </b><b><i><a data-ved="2ahUKEwjFxZ2vqLPpAhWE4aYKHYXtB3AQkeECKAB6BAgWECo" href="https://www.google.com/search?newwindow=1&amp;sxsrf=ALeKk015Ony9-GY5LA2IVjf1GjcplfbTaQ:1589457973642&amp;q=processing&amp;spell=1&amp;sa=X&amp;ved=2ahUKEwjFxZ2vqLPpAhWE4aYKHYXtB3AQkeECKAB6BAgWECo" rel="noopener noreferrer">processing</a> </i></b><b>Programı  veya  C#  (c sharp)  bu programlar ile görsel program yaparız bunun için bu programlar yüklü olması lazım.</b></div>
+<div>
+<b>  </b></div>
+<div>
+<b>Bu processing programını bilgisayarınıza Aşağıda linkini verdiğim siteden indirebilirsiniz</b></div>
+<div>
+<b><br/></b></div>
+<div>
+<b><a href="https://processing.org/" rel="noopener noreferrer">https://processing.org/</a></b></div>
+<div>
+<br/></div>
+<div>
+Bu  Radar  Projesi ile Basit iki boyutlu haritaları görselleştirebiliriz.  Amatör olarak Yapabileceğimiz projeler ile algımızı ve düşüncelerimizi geliştirip yeni fikirler üretmemizde yardımcı olabilir. Bu projede geliştirdiğimiz aleti yapmış olduğumuz bir robot araba ile önüne gelen engelleri algılamada daha basit devreler geliştirebiliriz . </div>
+<h2>
+<span>HC-SR04 SENSÖR</span></h2>
+<div>
+HC-SR04 Uzaklık sensörü pinlerinin adını gösterir resim</div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis36dVQjt8sxU8jj0KY4j5WfOD16g91jnwiCjeh9QgoNToioIIpPe7hj9m27ehMXs4viZJydK9QE20RkvTUQNCNClANWAKn_HVnzHtQ-fPggTbPLkz2obpE2CqcBi2epT-DDM6xyVY4tPt/s1600/Ashampoo_Snap_2020.05.14_15h18m49s_001_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="487" data-original-width="522" height="298" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis36dVQjt8sxU8jj0KY4j5WfOD16g91jnwiCjeh9QgoNToioIIpPe7hj9m27ehMXs4viZJydK9QE20RkvTUQNCNClANWAKn_HVnzHtQ-fPggTbPLkz2obpE2CqcBi2epT-DDM6xyVY4tPt/s320/Ashampoo_Snap_2020.05.14_15h18m49s_001_.png" width="320"/></a></div>
+<div>
+<br/></div>
+<div>
+Vcc       :  Sensörün +5volt bağlanacak olan pini</div>
+<div>
+Trigger  :  Arduinodan Sensöre gönderilen sinyal </div>
+<div>
+Echo      : Sensörden gelen sinyalin Arduino daki programa geri gönderen sinyal bacağı</div>
+<div>
+GND      : Sensörün eksi voltaj bağlanacak olan pini</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Akrilik sensör tutacağı<br/>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3GdXaHKu6oRx34FAoLcjyAwks-jm_cx8P6FGvbAWsX_-8Q86wi5YmjFXFE1H9TxPS1RarCxNVMftgvL6UQqV0LxNOi5vIdVLyNK1E3LKPddwtlv5lThyphenhyphen0zpG-lN4Dn2mt-oGajSi-RJVH/s1600/Ashampoo_Snap_2020.05.14_21h13m35s_006_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="351" data-original-width="554" height="202" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj3GdXaHKu6oRx34FAoLcjyAwks-jm_cx8P6FGvbAWsX_-8Q86wi5YmjFXFE1H9TxPS1RarCxNVMftgvL6UQqV0LxNOi5vIdVLyNK1E3LKPddwtlv5lThyphenhyphen0zpG-lN4Dn2mt-oGajSi-RJVH/s320/Ashampoo_Snap_2020.05.14_21h13m35s_006_.png" width="320"/></a></div>
+<br/></div>
+<div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+ HC-SR04 uzaklık sensörü ile ilgili Datasheets </div>
+<div>
+<a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf" rel="noopener noreferrer">https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf</a></div>
+<div>
+<br/></div>
+<h2>
+SERVO MOTOR</h2>
+<div>
+<span>Servo Motor çalıştırmak için gerekli bağlantıları yapılan uçlarının adını gösterir  Resim</span></div>
+<div>
+<span><br/></span></div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiA1TPgluDN4DzVxUwgOXZs5eCoYdAlvgWiuvZeGAUPuPALtARlU5RyMOaZAwaxNuvyugLgNlAL6xkBe9MnLXocAaWoU_kzWX269D15KTO_KIzTnXw2tUk6ImaMfjHa1zC8s7X-Qn_QfMOA/s1600/Ashampoo_Snap_2020.05.14_15h33m58s_002_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="537" data-original-width="452" height="320" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiA1TPgluDN4DzVxUwgOXZs5eCoYdAlvgWiuvZeGAUPuPALtARlU5RyMOaZAwaxNuvyugLgNlAL6xkBe9MnLXocAaWoU_kzWX269D15KTO_KIzTnXw2tUk6ImaMfjHa1zC8s7X-Qn_QfMOA/s320/Ashampoo_Snap_2020.05.14_15h33m58s_002_.png" width="269"/></a></div>
+<div>
+<span><br/></span></div>
+<div>
+<br/></div>
+<div>
+Servo motor da 3 renk kodu ile bağlanmış Bağlantı pini bulunur.</div>
+<div>
+<br/></div>
+<div>
+1.  Orange (turuncu) PWM (Sinyal) pini Bu pine arduino'dan motorun Anlayabileceği ''yani ne yapması gerektiğini bildirir komutu göndermek için kullanılan uç'' .</div>
+<div>
+2.  Kırmızı kablonun bağlı olduğu pin Vcc          Servomotorun  +5 volt bağlanan ucu .</div>
+<div>
+<br/></div>
+<div>
+3.  Kahverengi kablonun bağlı olduğu pin Servomotorun çalışabilmesi için gerekli olan  (-) negatif enerjinin bağlanacağı pin.</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+3.4. HC-SR04 Ultrasonik Sensör Hakkında Türkçe bilgi</div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_HAbvh8-wJLvSzN8Qv1Bkbh6ekoUdt5aL8LFwWPuRN9Hmnmp671augzt3yMXzG5xJ-Pcuf7L-YmJDEHPpW00m9oV3hdt4zH5VIdXMTDgb6onfYXTQKivIbPoL3Bmfqb7sbx6O0JCsxtcc/s1600/Ashampoo_Snap_2020.05.14_15h48m34s_004_.png" imageanchor="1" rel="noopener noreferrer"><img border="0" data-original-height="600" data-original-width="875" height="219" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_HAbvh8-wJLvSzN8Qv1Bkbh6ekoUdt5aL8LFwWPuRN9Hmnmp671augzt3yMXzG5xJ-Pcuf7L-YmJDEHPpW00m9oV3hdt4zH5VIdXMTDgb6onfYXTQKivIbPoL3Bmfqb7sbx6O0JCsxtcc/s320/Ashampoo_Snap_2020.05.14_15h48m34s_004_.png" width="320"/></a></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/>
+<br/>
+//Radar proje Arduino Yaz?l?m?<br/>
+<br/>
+#include &lt;NewPing.h&gt;<br/>
+#include &lt;Servo.h&gt;<br/>
+#define TRIGGER_PIN 12<br/>
+#define ECHO_PIN 11<br/>
+#define MAX_DISTANCE 100<br/>
+#define SERVO_PWM_PIN 5 // means -angle .. angle<br/>
+#define ANGLE_BOUNDS 60<br/>
+#define ANGLE_STEP 1<br/>
+int angle = 0;<br/>
+int dir =1; // servonun kaç derece ile döneceğini belirledik.<br/>
+Servo myservo;<br/>
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);<br/>
+void setup()<br/>
+{Serial.begin(9600);<br/>
+myservo.attach(SERVO_PWM_PIN);<br/>
+pinMode(TRIGGER_PIN, OUTPUT);<br/>
+pinMode(ECHO_PIN, INPUT);<br/>
+myservo.writeMicroseconds(1000); // servo 90 dereceye ayarlandı.<br/>
+ }<br/>
+void loop()<br/>
+{<br/>
+delay(50);<br/>
+myservo.write(angle + ANGLE_BOUNDS);<br/>
+hesapla(angle);<br/>
+if (angle &gt;= ANGLE_BOUNDS || angle &lt;= -ANGLE_BOUNDS)<br/>
+{<br/>
+dir = -dir;<br/>
+}<br/>
+angle += (dir * ANGLE_STEP);<br/>
+}<br/>
+int hesapla(int angle)<br/>
+{<br/>
+int cm = sonar.ping_cm();<br/>
+Serial.println(cm, DEC);<br/>
+if(cm&gt;0)<br/>
+{<br/>
+   Serial.println(myservo.read());<br/>
+   }<br/>
+}</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<h3>
+Radar Projesinde HC-SR04 ve Stepper Motor Arduino ya pinlerin bağlanması.</h3>
+<div>
+TRIGGER_PIN 12</div>
+<div>
+ECHO_PIN 11</div>
+<div>
+SERVO_PWM_PIN 5</div>
+<div>
+<br/></div>
+<div>
+Servo motor Vcc  pinini   Arduino nun +5 volt çıkışına </div>
+<div>
+Servo motor  GND ucunu Arduino nun GND çıkışına </div>
+<div>
+Servo motorun PWM çıkışını  Arduino nun dijital  PIN 5 çıkışına bağlayacağız</div>
+<div>
+<br/></div>
+<div>
+HC-SR04  TRIGGER pinini Arduino nun dijital PIN 12 çıkışına</div>
+<div>
+HC-SR04  ECHO  pinini Arduino nun dijital PIN 11 çıkışına</div>
+<div>
+HC-SR04  Vcc pinini Arduino nun +5 volt çıkışına </div>
+<div>
+HC-SR04  GND pinini  Arduino nun GND çıkışına  bağlayacağız  </div>
+<div>
+bunları bağladıktan sonra Arduino UNO ya data aktarma kablosu ile yazdığımız programı yükleyeceğiz.  Çalıştırmaya başladığımızda  serial ekranından  processing programı ile çalıştırdığımız projenin görselini takip ederiz . yapanlara kolay gelsin . </div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+</div>
+</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2020/05/arduino-uno-ile-hc-sr04-sensor-ve-servo.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

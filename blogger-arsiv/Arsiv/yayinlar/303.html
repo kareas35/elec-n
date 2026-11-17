@@ -1,0 +1,150 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC kontrollü RGB Led Sürücü | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC kontrollü RGB Led Sürücü</h1><div>2010-01-10 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><a href="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/RGB_ANTRAK.HEX" rel="noopener noreferrer"></a><a href="http://www.ledmar.com/" rel="noopener noreferrer"></a><a href="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/RGB_ANTRAK.C" rel="noopener noreferrer"></a><span></span><br/>
+<div>Son yıllarda LED teknolojisinde hızlı gelişmeler olmakta. Aydınlatma uygulamalarında artık 3mm-5mm çaplı LED'lerin yanısıra, yüksek ışık akısına sahip flux LED, super flux LED ve power LED çeşitleri de yaygın olarak kullanılmakta. Renk değiştiren uygulamalarda ise genellikle RGB LED'ler tercih edilmekte.<br/>
+</div><div>Bu yazıda 8 pinli PIC12F675 mikro denetleyicisi kullanılarak flux RGB LED'i kontrol eden bir sürücü devre verilmiştir. Gerçekleştirilen elektronik devre ile LED'in ışık rengi kırmızı, yeşil, mavi, sarı, mor, turkuaz ve beyaz olarak ayarlanabilmektedir. Tasarlanan bu devre ile çeşitli ışık efektleri oluşturmak da mümkündür.<br/>
+</div><div>Işık rengini değiştirmek için en basit yöntem kırmızı (R), yeşil (G) ve mavi (B) ışık yayan 3 farklı LED kullanmaktır. Bu 3 ana rengin karıştırılmasıyla ara renkler kolayca elde edilebilmektedir. Örneğin kırmızı-yeşil ışığın karışımı sarı rengi; kırmızı-mavi ışığın karışımı mor rengi; yeşil-mavi ışığın karışımı ise turkuaz rengi verir. Ara renkleri elde etmek için 3 ayrı LED kullanmak yerine tek bir kılıf içerisinde 3 adet LED çipi barındıran RGB LED de kullanılabilir. Şekil 1-6'da piyasada satılan çeşitli LED türleri görülmektedir.<br/>
+</div><table border="0"><tbody>
+<tr><td><img alt="" border="0" height="82" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_1.jpg" width="112"/><br/>
+</td><td><img alt="" border="0" height="86" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_2.jpg" width="91"/><br/>
+</td><td><img alt="" border="0" height="96" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_3.jpg" width="121"/><br/>
+</td></tr>
+<tr><td>Şekil 1: 5mm çaplı LED<br/>
+</td><td>Şekil 2: Flux LED<br/>
+</td><td>Şekil 3: Power LED<br/>
+</td></tr>
+</tbody></table><table border="0"><tbody>
+<tr><td><img alt="" border="0" height="84" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_4.jpg" width="122"/><br/>
+</td><td><img alt="" border="0" height="99" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_5.jpg" width="107"/><br/>
+</td><td><img alt="" border="0" height="85" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_6.jpg" width="68"/><br/>
+</td></tr>
+<tr><td>Şekil 4: 5mm RGB LED<br/>
+</td><td>Şekil 5: 5mm RGB LED<br/>
+</td><td>Şekil 6: Flux RGB LED<br/>
+</td></tr>
+</tbody></table><div>4 adet bacağa sahip RGB LED'lerin bağlantı şekli ortak anotlu veya ortak katotlu olabilmektedir. Şekil 7'de bu bağlantı şekilleri görülmektedir.<br/>
+</div><div><img alt="" border="0" height="168" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_7.jpg" width="403"/><br/>
+Şekil 7: RGB LED'in iç yapısı<br/>
+</div><div>Projeye ait elektronik devre şeması şekil 8'de görülmektedir. Devrede PIC12F675 mikro denetleyicisi, 3 adet direnç ve bir adet flux RGB LED bulunmaktadır. Besleme gerilimi 5V'dur. Mikro denetleyici 4MHz'lik dâhili osilatör ile çalıştırılmaktadır. Ayrıca, yazılımda uygun konfigürasyon ayarları yapıldığından, MCLR ucu ile VDD arasına bağlanması gereken dirence gerek kalmamıştır. Devre bu haliyle oldukça sade yapıdadır.<br/>
+</div><div><img alt="" border="0" height="332" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_8.jpg" width="399"/><br/>
+Şekil 8: Devre şeması<br/>
+</div><div>R1, R2, R3 dirençleri, her bir LED'den 15-20mA akım geçecek şekilde seçilmelidir. Direnç değerini hesaplarken port çıkış gerilimini dikkate almak gerekir. Çünkü porttan çekilen akım arttıkça çıkış gerilim seviyesi önemli ölçüde düşer. Örneğin, porttan hiç akım çekilmezken çıkış gerilimi 5V olduğu halde, 20mA akım çekilirken çıkış gerilimi 3.7V'a kadar düşmektedir. Aşağıdaki tabloda port akımı ile port gerilimi arasındaki ilişki görülmektedir.<br/>
+</div><table border="0"><tbody>
+<tr><td width="89">I<sub>port</sub>(mA)<br/>
+</td><td width="89">V<sub>port</sub>(V)<br/>
+</td></tr>
+<tr><td width="89">0<br/>
+</td><td width="89">5<br/>
+</td></tr>
+<tr><td width="89">5<br/>
+</td><td width="89">4.7<br/>
+</td></tr>
+<tr><td width="89">10<br/>
+</td><td width="89">4.4<br/>
+</td></tr>
+<tr><td width="89">15<br/>
+</td><td width="89">4<br/>
+</td></tr>
+<tr><td width="89">18<br/>
+</td><td width="89">3.8<br/>
+</td></tr>
+<tr><td width="89">20<br/>
+</td><td width="89">3.7<br/>
+</td></tr>
+</tbody></table><div>Devredeki direnç değeri (Vport-Vf)/I<sub>LED</sub> formülü ile hesaplandığından, LED'in ileri yön gerilimini de bilmek gerekir. Bu projede kullanılan flux RGB LED'in ileri yön gerilimi kırmızı için 1.9V; yeşil için 3.55V; mavi için 3.6V olarak ölçülmüştür. Buna göre, port çıkış geriliminin 3.8V olduğu dikkate alınırsa R1 direnci 100 ohm, R2 ve R3 dirençleri 10 ohm seçilebilir. Bu durumda kırmızı, yeşil ve mavi LED'lerin her birinden yaklaşık 19mA akım geçer. Bu da yeterli miktarda parlaklık sağlar. Eğer istenirse yeşil ve mavi LED'ler direnç kullanmaya gerek olmaksızın port çıkışına doğrudan bağlanabilir. Bu durumda da LED akımları 20mA olur. Fakat akımı bir direnç ile sınırlamak daha uygun bir yöntemdir.<br/>
+</div><div>Flux RGB LED'in ve PIC12F675'in bacak bağlantıları şekil 9 ve10'da görülmektedir.<br/>
+</div><div><img alt="" border="0" height="192" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_9.jpg" width="430"/><br/>
+Şekil 9: Flux RGB LED bacak bağlantısı<br/>
+</div><div><img alt="" border="0" height="110" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_10.jpg" width="418"/><br/>
+Şekil 10: PIC12F675'in bacak bağlantısı<br/>
+</div><div>PIC programı PIC C Lite derleyicisi kullanılarak yazılmıştır. Hi-Tech (<a href="http://www.htsoft.com/" rel="noopener noreferrer">http://www.htsoft.com</a>) firması tarafından üretilen programın demo versiyonu (V8.05PL2) 12F675 mikro denetleyicisini tanımaktadır. Renk değiştirme algoritmasına ait C programı aşağıda verilmiştir. Programda ilk aşamada RGB LED'in 1'er saniye aralıkla kırmızı, yeşil, mavi, sarı, mor, turkuaz ve beyaz renk ışık yayması sağlanmıştır. Ardından, kırmızı LED'in ışık şiddeti yavaşça arttırılıp azaltılmıştır. Daha farklı ışık efektleri oluşturmak için C programı üzerinde uygun değişiklikler yapılmalıdır.<br/>
+</div><div>// PIC 12F675 ile Flux RGB LED sürme<br/>
+</div><div>// Şubat 2007 Yavuz EROL<br/>
+</div><div>#include <pic.h></pic.h><br/>
+</div><div>#include <delay.c></delay.c><br/>
+</div><div>#include <stdio.h></stdio.h><br/>
+</div><div>#define BLED GPIO0 // Mavi LED GPIO0'a bağlı<br/>
+</div><div>#define GLED GPIO1 // Yeşil LED GPIO1'e bağlı<br/>
+</div><div>#define RLED GPIO2 // Kırmızı LED GPIO2'ye bağlı<br/>
+</div><div>// Konfigürasyon ayarları<br/>
+</div><div>// Dahili osilatör seçili, MCLR direnci yok<br/>
+</div><div>__CONFIG(MCLRDIS&amp;WDTDIS&amp;PWRTEN&amp;INTIO);<br/>
+</div><div>void bekle(void){ // 1s'lik gecikme alt programı<br/>
+</div><div>unsigned char i;<br/>
+</div><div>for(i=0;i&lt;5;i++){<br/>
+</div><div>DelayMs(200);<br/>
+</div><div>}<br/>
+</div><div>}<br/>
+</div><div>// Ton ve Toff süresi kadar bekle (Ton+Toff=10ms)<br/>
+</div><div>void bekle_on(unsigned char i){<br/>
+</div><div>unsigned char a;<br/>
+</div><div>for(a=0;a<i;a++){></i;a++){><br/>
+</div><div>DelayUs(39);<br/>
+</div><div>}<br/>
+</div><div>}<br/>
+</div><div>void bekle_off(unsigned char i){<br/>
+</div><div>unsigned char a;<br/>
+</div><div>for(a=0;a&lt;255-i;a++){<br/>
+</div><div>DelayUs(39);<br/>
+</div><div>}<br/>
+</div><div>}<br/>
+</div><div>// ANA PROGRAM<br/>
+</div><div>main(void){<br/>
+</div><div>unsigned char i;<br/>
+</div><div>// Port ayarları<br/>
+</div><div>TRISIO=0x00; // Portların hepsini çıkış seç<br/>
+</div><div>CMCON=0x07; // Portları sayısal I/O olarak ayarla<br/>
+</div><div>ANSEL=0;<br/>
+</div><div>GPIO=0; // başlangıçta bütün çıkışları lojik 0 yap<br/>
+</div><div>// 3 ana rengi, 3 ara rengi ve beyaz rengi oluştur<br/>
+</div><div>RLED=1;GLED=0;BLED=0; bekle(); //Kırmızı<br/>
+</div><div>RLED=0;GLED=1;BLED=0; bekle(); //Yeşil<br/>
+</div><div>RLED=0;GLED=0;BLED=1; bekle(); //Mavi<br/>
+</div><div>RLED=1;GLED=1;BLED=0; bekle(); //Sarı<br/>
+</div><div>RLED=1;GLED=0;BLED=1; bekle(); //Mor<br/>
+</div><div>RLED=0;GLED=1;BLED=1; bekle(); //Turkuaz<br/>
+</div><div>RLED=1;GLED=1;BLED=1; bekle(); //Beyaz<br/>
+</div><div>GPIO=0;<br/>
+</div><div>// PWM sinyalinin görev periyodunu arttırıp azaltarak<br/>
+</div><div>// ışık şiddetini değiştir<br/>
+</div><div>// Adım adım kırmızı LED'in parlaklığını arttır<br/>
+</div><div>for(i=1;i&lt;255;i++){<br/>
+</div><div>RLED=1;<br/>
+</div><div>bekle_on(i); // Ton süresi kadar bekle<br/>
+</div><div>RLED=0;<br/>
+</div><div>bekle_off(i); // Toff süresi kadar bekle<br/>
+</div><div>}<br/>
+</div><div>// Adım adım kırmızı LED'in parlaklığını azalt<br/>
+</div><div>for(i=255;i&gt;0;i--){<br/>
+</div><div>RLED=1;<br/>
+</div><div>bekle_on(i); // Ton süresi kadar bekle<br/>
+</div><div>RLED=0;<br/>
+</div><div>bekle_off(i); // Toff süresi kadar bekle<br/>
+</div><div>}<br/>
+</div><div>}// Program sonu<br/>
+</div><div>Programın hex dosyası için <a href="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/RGB_ANTRAK.HEX" rel="noopener noreferrer">tıklayınız.</a> Uygun bir programlama kartı ile hex dosyası PIC'e kolayca yüklenir. Konfigürasyon ayarları C kodu içerisinde verildiğinden PIC programlama aşamasında herhangi bir ayar yapmaya gerek yoktur. Yani osilatör türü yanlışlıkla XT olarak seçilmemelidir.<br/>
+</div><div>LED'in parlaklığı PWM sinyalinin görev periyodu (d değeri) değiştirilerek sağlanmaktadır. Şekil 11'deki animasyondan görüldüğü gibi sinyalin frekansı sabit (100Hz) olduğu halde darbenin genişliği artıp azalmaktadır. Bu sayede, görev periyodu küçük iken LED'in ortalama akımı düşük olmakta; d değeri arttıkça ortalama akım artmaktadır. Yani, görev periyodunun değişimi LED parlaklılığını doğrudan etkilemektedir.<br/>
+</div><div><img alt="" border="0" height="103" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_11.gif" width="251"/><br/>
+Şekil 11: PWM sinyali<br/>
+</div><div>Projeye ait sürücü devre kullanıldığında LED akımı en fazla 20mA olmaktadır. Işık şiddetinin daha yüksek olması isteniyorsa LED akımını 50mA'e kadar arttırmak gerekir. Fakat bu akımı mikro denetleyicinin çıkış portundan sağlamak mümkün olmadığından transistörlü bir sürücü devre kullanmak gerekir. Şekil 12 ve 13'de sırasıyla ortak anotlu ve ortak katotlu RGB LED için örnek sürücü devreler görülmektedir. İlk devreden görüldüğü gibi LED'in ortak anot ucu güç kaynağının pozitif ucuna bağlıdır. LED'in katot uçları ise birer NPN transistör ve direnç üzerinden toprağa bağlıdır. Q0 ucuna 5V'luk gerilim uygulandığında transistör iletime girerek LED'den akım geçmesini sağlamaktadır. İkinci devrede ise LED'in ortak katot ucu güç kaynağının negatif ucuna bağlıdır. Q0 ucu lojik 1 seviyesinde iken PNP transistör kesimdedir ve LED'den akım geçmez. Q0 ucu toprak potansiyeline çekildiğinde transistör iletime girerek LED'in anot ucunu R direnci üzerinden kaynağın pozitif ucuna bağlar.<br/>
+</div><table border="0"><tbody>
+<tr><td><img align="right" alt="" border="0" height="190" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_12.jpg" width="161"/><br/>
+</td><td><img alt="" border="0" height="184" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_13.jpg" width="141"/><br/>
+</td></tr>
+<tr><td>Ortak anotlu RGB LED sürücü<br/>
+</td><td>Ortak katotlu RGB LED sürücü<br/>
+</td></tr>
+</tbody></table><div>Her iki devrede de LED akımlarını sınırlamak üzere birer direnç bulunmaktadır. Bu dirençleri uygun şekilde seçmek için aşağıdaki formülü kullanmak gerekir.<br/>
+</div><div><img alt="" border="0" height="99" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/image001.jpg" width="365"/><br/>
+</div><div>Formülde, Vcc besleme gerilimini, Vce(sat) transistörün doyma gerilimini, Vf ise LED'in ileri yön gerilimini göstermektedir. LED akımı, kullanılan LED'in türüne göre 20mA ile 50mA arasında değişebilir. Devredeki R direnci, akım değerini LED'e zarar vermeyecek şekilde sınırlar. Aşağıdaki tabloda Vcc=5V ve Vce(sat)=0.1V için hesaplanan direnç değerleri toplu olarak görülmektedir.<br/>
+</div><div><img alt="" border="0" height="260" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/tablo.jpg" width="340"/><br/>
+</div><div>Tablo: R direncinin seçimi<br/>
+</div><div>Örneğin, devrede kırmızı, yeşil, mavi renkli 3 adet 5mm LED kullanılacaksa LED akımlarını 20mA ile sınırlandırmak için R1 direnci 150 ohm, R2 direnci 100 ohm, R3 direnci ise 82 ohm seçilir. Eğer, flux RGB LED kullanılacaksa, LED akımını 50mA ile sınırlandırmak için R1 direnci 56 ohm, R2 direnci 8.2 ohm, R3 direnci ise 10 ohm seçilir. Fakat bu direnç değerleri her flux RGB LED türü için geçerli değildir. Eldeki mevcut LED'den 50mA akım geçtiği sırada LED uçlarındaki gerilimi ölçüp formülde yerine yazarak gerekli direnç değerini yeniden hesaplamak gerekir. Bu projede kullanılan flux RGB LED'in ürün kodu 913PRGB2C, görüş açısı ise 130 derecedir. Bu LED<a href="http://www.ledmar.com/" rel="noopener noreferrer">http://www.ledmar.com/</a> adresinden temin edilebilir. Devre çalıştırıldığında oluşan bazı renkler şekil 14'de görülmektedir.<br/>
+</div><div><img alt="" border="0" height="257" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/sekil_14.jpg" width="416"/><br/>
+Şekil 14: Renkler<br/>
+</div><div><a href="http://antrak.org.tr/images/stories/pic_2007/Mart/yavuz-erol/RGB_ANTRAK.C" rel="noopener noreferrer">C dosyası</a><br/>
+</div><div>Projenin, Antrak gazetesi okurlarına faydalı olmasını dilerim.<br/>
+</div><div>Yavuz EROL (Arş. Gör.)<br/>
+</div><div>Fırat Üniv. Elek-Elektronik Müh. Bölümü<br/>
+Yavuz Erol'a Teşekkür ederim .<br/>
+<br/>
+"ALINTIDIR "<br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/pic-kontrollu-rgb-led-surucu.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

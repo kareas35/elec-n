@@ -1,0 +1,103 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Elektronik dimmer | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Elektronik dimmer</h1><div>2010-11-04 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span><span></span></span><br/>
+<div align="left">Bu dimmer  komplike cihazının lardan biridir. Devre  doğrudan şebeke gerilimine bağlanabilir yapıdadır. Transfarmatöre ihtiyaç  duymaz C5 ve R6 ile istenilen düzeye düşürülen gerilim D3 ve D4 ile doğrultulur. D6 ve D7 ile regüle edilerek D5 üzerinden PIC in + 5 volt besleme gerilimi temin edilir.</div><div align="left">Q1 transistörü zero-cross (sıfır geçiş) anlarının tespit edilmesinde görev alır. Transistörün çıkışı PIC in harici KESME (GP2) kesme girişine bağlıdır. Her sıfır geçiş anında bir kesme üretilmiş olur. Elde edilen ve şebeke gerilimine bağlı olan bu kesme ile TIMER0 zamanlayıcısı kurulur. Zamanlayıcının süresi  dolduğunda triyak tetiklenir. Zamanlayıcının süresi butonlar ile ayarlanarak, triyakın iletime geçme noktası değiştirilir. Bu basit algoritma sayesinde digital dimmer devresi  gerçekleştirilmiş olur. PIC'in GP0 çıkışında içerisinde LED ve OPTOTRIAC içeren MOC3021 entegresi bağlıdır. Bu entegre sayesinde birçok triyak için uygun tetikleme gerilimi temin edilir.<br/>
+<br/>
+Şema MICROCHIP in uygulama notlarından alınmıştır. Şemada gösterilen MAC210 (triyak) yerine piyasamızda oldukça popüler olan BTA12-600 kullanabilirsiniz. MOC3021 de popülerdir ve kolay temin edilir.<br/>
+<br/>
+Nelere dikkat etmelisiniz?<br/>
+<br/>
+Devreyi fiziksel olarak gerçekleştirdikten sonra, PIC'i de programlayarak deneyin. Elinizin altında bir osilaskop olmasında fayda var. Osilaskop ile şebeke gerilimi ile GP0 daki tetikleme sinyalinin pozisyonunu karşılaştırın. Eğer devrenizde yanlış yerlerde tetikleme sinyali oluşuyor ise DIM_UP ve DIM_DOWM fonksiyonlarında yer alan değişken sınırlama değerleri ile (Load_Value = 180) oynayın ve devreniz için en uygun pozisyonu yakalayın.<br/>
+<br/>
+Yazılım PROTON Basic derleyicisi ile hazırlanmıştır. Yazılımı derlemek için bu yazılımın free versiyonunu kullanabilirsiniz. Derleme konusunda sorunlarınız olursa bu yazının altındaki yorumlar kısmına yazınız.<br/>
+<br/>
+Eğer PICBasicPro ile derleme yapacaksanız, özellikle değişken kullanımı bu iki derleyici arasında farklıdır, gerekli düzenlemeleri yapmalısınız<br/>
+<br/>
+Açık Şema</div><div align="left"><img alt="Image" border="0" height="445" hspace="6" loading="lazy" src="http://www.enerjiplatformu.org/images/stories/picDimmer.jpg" title="Image" width="795"/></div><div align="left">Projenin Kaynak Kodu ( Proton Basic derleyici ile hazırlanmıştır)<br/>
+<br/>
+'****************************************************************<br/>
+Device 12F675<br/>
+Config INTRC_OSC_NOCLKOUT, WDT_OFF, PWRTE_ON, BODEN_OFF, CP_OFF, MCLRE_OFF<br/>
+XTAL 4<br/>
+<br/>
+;I/O symbols<br/>
+Symbol Triac_out = GPIO.0 ;triac pin<br/>
+Symbol Zero_cross = GPIO.2 ;zero-cross algilama pini<br/>
+Symbol Dim_UP_Button = GPIO.4<br/>
+Symbol Dim_DOWN_Button = GPIO.5<br/>
+<br/>
+;interrupt symbols<br/>
+Symbol GIE = INTCON.7 ; Global Interrupt Enable 1 = enable, 0 = disable<br/>
+Symbol T0IE = INTCON.5 ;TMR0 Overflow Interrupt Enable bit<br/>
+Symbol INTE = INTCON.4 ;GP2/INT External Interrupt Enable 1 = enable, 0 = disable<br/>
+Symbol T0IF = INTCON.2 ;TMR0 Overflow Interrupt Flag bit<br/>
+Symbol INTF = INTCON.1 ;External Interrupt Flage 1 =<br/>
+  ;external interrupt occurred (must be cleared in software)<br/>
+<br/>
+'degiskenler<br/>
+Dim Load_Value As Word<br/>
+Dim I As Byte<br/>
+Dim tus_basili As Byte<br/>
+'***********************************************************************************<br/>
+<br/>
+ON_INTERRUPT Interrupt_Detect<br/>
+GoTo BEGIN<br/>
+'************************************************************************************<br/>
+Interrupt_Detect:<br/>
+If INTF = 1 Then<br/>
+  TMR0 = Load_Value<br/>
+  T0IE = 1 ' Enable TMR0 overflow interrupt<br/>
+  INTF = 0 ' Clear INT Flag (be ready for the next)<br/>
+EndIf<br/>
+<br/>
+If T0IF = 1 Then<br/>
+  High GPIO.0<br/>
+  DelayUS 100 'triyak tetiklemesi 100 uSn<br/>
+  Low GPIO.0<br/>
+<br/>
+  T0IF = 0<br/>
+EndIf<br/>
+Context Restore<br/>
+<br/>
+'************************************************************************************<br/>
+BEGIN: <br/>
+  ALL_DIGITAL = TRUE<br/>
+  CMCON = 7 ;comparator kapali<br/>
+  'OPTION_REG.7 = 0 ;pull-ups aktif<br/>
+  OPTION_REG = %01010101 ;presc 1:64 ,External Interrupt Edge to rising edge<br/>
+  TRISIO = 111100 ;1-giris, 0-cikis<br/>
+  WPU=110000<br/>
+<br/>
+  ;interrupt (kesme) tanimlamalari<br/>
+  T0IF = 0 ;TMR0 overflaw bayragini sil<br/>
+  INTF = 0 ;External Interrupt bayragini silg<br/>
+<br/>
+  Load_Value = 150<br/>
+  <br/>
+MAIN: <br/>
+  GIE = 0 ' tüm kesmeleri kapat<br/>
+  While GIE = 1:GIE = 0:Wend ' kesmelerin kapandigindan emin ol<br/>
+  <br/>
+  INTE = 1 ' Enable External Interrupt<br/>
+  GIE = 1 ' Enable global interrupts<br/>
+  <br/>
+  If tus_basili=0 Then<br/>
+  If Dim_UP_Button = 0 Then GoSub DIM_UP<br/>
+  If Dim_DOWN_Button = 0 Then GoSub DIM_DOWN<br/>
+  EndIf<br/>
+  <br/>
+  If Dim_UP_Button = 1 And Dim_DOWN_Button = 1 Then<br/>
+  tus_basili=0<br/>
+  EndIf<br/>
+  <br/>
+GoTo MAIN<br/>
+;bu degerler 50Hz gore ayarlidir<br/>
+DIM_UP:<br/>
+  Load_Value = Load_Value + 2<br/>
+  If Load_Value &gt;= 180 Then Load_Value = 180<br/>
+  tus_basili=1<br/>
+Return<br/>
+<br/>
+DIM_DOWN:<br/>
+  Load_Value = Load_Value - 2<br/>
+  If Load_Value &lt;= 110 Then Load_Value = 110<br/>
+  tus_basili=1<br/>
+<span>Return</span></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/11/elektronik-dimmer.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

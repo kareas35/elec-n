@@ -1,0 +1,45 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC 16F84 mikrodenetleyicisi ve deney devresi | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC 16F84 mikrodenetleyicisi ve deney devresi</h1><div>2010-01-13 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span></span><br/>
+<div align="justify"><br/>
+</div><div align="justify"><b>Deneysel endüstriyel sistemin kontrol edilebilmesi için PIC16F84 mikrodenetleyicisi kullanılmıştır. Bu mikrodenetleyicinin tercih edilmesinin sebeplerinden bazıları şunlardır: <br/>! Kontrol edilecek olan endüstriyel sistem için yeterli sayıda (13 adet) I/0 (giriş/çıkış) ucuna sahip olması.<br/>! 1000 defaya kadar tekrar programlanabilen EEPROM (Flash) belleğe sahip olması.<br/>! Programlanması için ucuz maliyetli programlama devresi bulunması.<br/>! Fiyatının ucuz olması.<br/>! Hakkında kolay elde edilebilir ve bol miktarda bilgi bulunması (internet aracılığıyla).</b><br/>
+<b><!-- more --></b><br/>
+</div><br/>
+<b>2.4. Programlama birimi</b><br/>
+<div align="justify"><span><span><b><span></span></b></span></span><br/>
+</div><b><span></span></b><br/>
+<span></span><br/>
+<span><div align="justify"><b><span>PIC mikrodenetleyicisi için programların hazırlanmasında “PIC ASSEMBLY” dili kullanılmıştır. Bu dilde program geliştirmek için gerekli olan MPLAB ve bu programla birlikte gelen MPASM programı http://www.microchip.com internet adresinden ücretsiz olarak temin edilebilmektedir. Hazırlanan PIC programlarının PIC16F84’ün içerisine yüklenebilmesi için PROPIC programı ve bu programla uyumlu olarak çalışabilen bir paralel port programlayıcı devresi kullanılmıştır.</span></b><br/>
+</div><div align="justify"><span><b><span>2.5. Uygulama devresi</span></b></span><br/>
+</div><div align="justify"><b><span>Deneysel endüstriyel kontrol sisteminin PIC microdenetleyicisi ile kontrol edilebilmesi için, PIC ile sistem arasındaki bağlantıyı sağlayacak ve PIC’in çalışması için gerekli enerji ile osilatör devresi vb. ihtiyaçları karşılayacak olan Şekil 4'teki devre gerçekleştirilmiştir. PROPIC programı ve programlama devresi ile içerisine program yüklenmiş olan PIC16F84 bu uygulama devresine takılarak endüstriyel sistem kontrol edilmiştir.</span></b><br/>
+</div><div align="justify"><b><span>Uygulama devesinde görülen reset butonu PIC’i reset etmek için ve dörtlü dip-switch ise bu çalışmada geliştirilen 4 farklı programdan birisini seçmek için kullanılmıştır. PIC16F84’ün iki girişi (RA4 ve RB0) program seçmek için ayrılarak bu dip-switch’e Şekil 4’te görüldüğü gibi bağlanmıştır. Bu şekilde PIC içerisine yazılan 2’den 4’e decoder mantığıyla çalışan bir program parçası ile 4 farklı programdan birini seçmek mümkün olmaktadır.</span></b><br/>
+</div><div><b><br/>
+</b><br/>
+</div></span><br/>
+<div align="justify"><a href="http://www.elektrik.gen.tr/sites/default/files/image/2009/12/piciledeneyseti/4a.jpg" imageanchor="1" rel="noopener noreferrer"><b><img border="0" loading="lazy" src="http://www.elektrik.gen.tr/sites/default/files/image/2009/12/piciledeneyseti/4a.jpg"/></b></a><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><span><b><br/>
+</b> </span></span><br/>
+</div><div align="justify"><span><b>Şekil 4. Uygulama devresi</b></span><br/>
+</div><div align="justify"><b><span></span></b><br/>
+</div><br/>
+<b></b><br/>
+<b><div align="justify">Devrede ayrıca PIC bacaklarına gelen ve giden sinyalleri gözlemlemek için 13 adet 470 ohm’luk ön<br/>
+dirençli LED bağlanmıştır. Sensörlere bağlı olan PIC bacaklarına gelen bilgiler ile parça seçme ve<br/>
+bırakma işini yapan selenoidlere PIC bacaklarından gönderilen bilgiler, 470 ohm’luk dirençler<br/>
+üzerinden uygulanmaktadır. Ayrıca 470 ohm’luk dirençler, PIC bacaklarında hiçbir ilgi yok iken,<br/>
+bütün bacaklara sürekli 0 V uygulanmasını sağlamaktadırlar.<br/>
+</div></b><br/>
+<div align="justify"><b><br/>
+</b><br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/pic-16f84-mikrodenetleyicisi-ve-deney.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

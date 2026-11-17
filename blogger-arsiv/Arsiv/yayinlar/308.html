@@ -1,0 +1,97 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC16F84A IC  LCD Display meter | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC16F84A IC  LCD Display meter</h1><div>2010-03-23 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel">PIC 16F84A LM311 ile yapılmış Display Meter<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkml3mVIPb9oLUGhqbxmd8nIZmEkknX310iwLqeC2N1XIUAfZ44sxCQtL6IAd_1dN8xYfG_ZDGz4xrTqUKq3gubZkswyaOr3ARWPc4kuPCt6zVZGVqNzxnG3AvMhWODYqL7naskgEUkZwd/s1600-h/lc_meter_pic16f84a.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjkml3mVIPb9oLUGhqbxmd8nIZmEkknX310iwLqeC2N1XIUAfZ44sxCQtL6IAd_1dN8xYfG_ZDGz4xrTqUKq3gubZkswyaOr3ARWPc4kuPCt6zVZGVqNzxnG3AvMhWODYqL7naskgEUkZwd/s320/lc_meter_pic16f84a.jpg"/></a></div><br/>
+<br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><br/>
+</span><br/>
+<span>SW1 - Zero okumaları dışarı.</span><br/>
+<div><span> SW2 - Kapasitans / Endüktans anahtarı.<br/>
+J3 - Bu LED aydınlatmasına  sahip LCD ekranlarda arka ışık yanar.<br/>
+J1 - 16x2 iki satır karakteri tarafından kullanılan görüntüler LCD.<br/>
+J2 - LM311 osilatör frekans  550KHz civarında olmalıdır </span><br/>
+<span><span><br/>
+</span></span></div><span></span><br/>
+<table border="0" cellpadding="0" cellspacing="0"><tbody>
+<tr><td valign="top" width="459"><table bgcolor="#666666" border="0" cellpadding="0" cellspacing="0"><tbody>
+<tr><td height="81" width="482"><table border="0" cellpadding="0" cellspacing="1" height="81"><tbody>
+<tr bgcolor="#FFFFCC"><td colspan="3"><div><div><strong>  <span>LC Meter Part's List:</span></strong></div></div></td></tr>
+<tr><td bgcolor="#FFFFFF" height="60" valign="middle" width="34%"><table border="0" cellpadding="0" cellspacing="0"><tbody>
+<tr><td height="60" valign="top" width="112"><div><span>2</span><span>x 1K<br/>
+2x 6.8K<br/>
+1x 47K<br/>
+3x 100K<br/>
+1x 10K POT</span></div></td></tr>
+</tbody></table></td><td bgcolor="#FFFFFF" valign="middle" width="31%"><table border="0" cellpadding="0" cellspacing="0"><tbody>
+<tr><td width="120"><div><span>2x 10pF<br/>
+1x</span><span> 100pF<br/>
+2x 1nF<br/>
+2x 10uF<br/>
+1x 78LM05</span></div></td></tr>
+</tbody></table></td><td bgcolor="#FFFFFF" valign="middle" width="35%"><table border="0" cellpadding="0" cellspacing="0"><tbody>
+<tr><td height="80" width="116"><div><span>1x 16x1 LCD Display<br/>
+1x PIC16F84A IC<br/>
+1x LM311 IC<br/>
+1x 4MHz Crystal<br/>
+1x 82uH Inductor<br/>
+1x 3V Reed Relay</span></div></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr>
+</tbody></table><table border="0" cellpadding="0" cellspacing="1" height="81"><tbody>
+<tr bgcolor="#FFFFFF"><td bgcolor="#FFFFCC" width="288"><div><strong> <span>LC Meter's Technical Specifications:</span></strong></div></td></tr>
+<tr><td bgcolor="#FFFFFF" height="60" valign="middle"><table border="0" cellpadding="0" cellspacing="5"><tbody>
+<tr><td width="268"><div><span>Voltage Supply: 7.5 - 15V<br/>
+Accuracy: 1%<br/>
+Zero Out Switch<br/>
+Automatic Ranging</span><span><br/>
+<br/>
+LC Meter's Inductance Measurement Ranges: <br/>
+- 10nH - 1000nH<br/>
+- 1uH - 1000uH<br/>
+- 1mH - 100mH<br/>
+<br/>
+LC Meter's Capacitance Measurement Ranges: <br/>
+- 0.1pF - 1000pF<br/>
+- 1nF - 900nF</span></div><div><span><span><span><span><br/>
+</span></span></span></span></div><div><span><span><span><span> <b><span>LCD Display Pin BAĞLANTISI</span></b></span></span></span></span></div><div><span><br/>
+</span></div><div><span><span></span></span></div><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><span><span><span><span><span></span></span></span></span></span><br/>
+<span><span><span><span></span></span></span></span><br/>
+<span><span><span><span><div align="center"><table border="0" cellpadding="0"><tbody>
+<tr> <td width="10%"><div align="center"><strong><span>PIN</span></strong><span><o:p></o:p></span></div></td> <td width="20%"><div align="center"><strong><span>Symbol</span></strong><span><o:p></o:p></span></div></td> <td width="51%"><div align="center"><strong><span>Function</span></strong><span><o:p></o:p></span></div></td> <td width="14%"><div align="center"><strong><span>States</span></strong><span><o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>1<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>VSS<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>GND<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>-<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>2<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>VDD<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>VCC +5V<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>+<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>3<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>VO<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Contrast Adjustment<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>+/-<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>4<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>RS<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Register Select<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>5<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>R/W<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Read / Write<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>6<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>E<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Enable Signal<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>7<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB0<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 0<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>8<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB1<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 1<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>9<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB2<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 2<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>10<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB3<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 3<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>11<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB4<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 4<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>12<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB5<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 5<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>13<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB6<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 6<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>14<o:p></o:p></span></div></td> <td width="20%"><div align="center"><span>DB7<o:p></o:p></span></div></td> <td width="51%"><div align="center"><span>Data Bit 7<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>H/L<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>15<o:p></o:p></span></div></td> <td width="20%"><div align="center"><br/>
+</div></td> <td width="51%"><div align="center"><span>LED Backlight VCC   +5V<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>+<o:p></o:p></span></div></td> </tr>
+<tr> <td width="10%"><div align="center"><span>16<o:p></o:p></span></div></td> <td width="20%"><div align="center"><br/>
+</div></td> <td width="51%"><div align="center"><span>LED Backlight GND<o:p></o:p></span></div></td> <td width="14%"><div align="center"><span>-<o:p></o:p></span></div></td> </tr>
+</tbody></table></div></span></span></span></span><span><span><span> </span></span></span><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia2su7vJB1CrcaFedeBLTGM22kZjmx_IaEfd2u3-570GjRaWdFxbiPy98HposRkcH0oUxsmmRgmhzFsWOfBmcxuf-jQA0d9gqOi_y9YVYOb87kbG26-aQ5FDkysWw3oyfVkdwgXlT77f1j/s1600-h/frequency_formula.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="76" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia2su7vJB1CrcaFedeBLTGM22kZjmx_IaEfd2u3-570GjRaWdFxbiPy98HposRkcH0oUxsmmRgmhzFsWOfBmcxuf-jQA0d9gqOi_y9YVYOb87kbG26-aQ5FDkysWw3oyfVkdwgXlT77f1j/s200/frequency_formula.jpg" width="200"/></a></div><div><span><span><span>f, L veC (f  frequency, L inductance ve C capacitance)</span></span></span></div><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><div><br/>
+</div><div><br/>
+</div><div><br/>
+</div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyXPZkKCZqJy7Yi1sJ6TfxrWPR4-fQ50zFTR7xqEpYCdLftTMobik5MCmg8Q2q5O849TKR-s0mCxVo8nlSpDT1Ptp4ITLjebs4x_oTp9GK1IWzL5wmoHmcDkAlYoYe9cDTPyEObh3Az57F/s1600-h/lc_meter_pcb4.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="80" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyXPZkKCZqJy7Yi1sJ6TfxrWPR4-fQ50zFTR7xqEpYCdLftTMobik5MCmg8Q2q5O849TKR-s0mCxVo8nlSpDT1Ptp4ITLjebs4x_oTp9GK1IWzL5wmoHmcDkAlYoYe9cDTPyEObh3Az57F/s200/lc_meter_pcb4.jpg" width="200"/></a></div><div></div><div></div><div></div></span></td></tr>
+</tbody></table></td></tr>
+</tbody></table></td></tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/03/pic16f84a-ic-lcd-display-meter.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

@@ -1,0 +1,184 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LED Bargraph Optical Tachometer | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>LED Bargraph Optical Tachometer</h1><div>2010-08-09 · LED ve Göstergeler</div></header><main><article class="panel"><b><span>Build an LED Bargraph Optical Tachometer</span></b><br/>
+equipment. When I first built this tach back in 1995, it was essential, as there were very few off-the-shelf electric R/C power systems that just worked.At that time, you had to experiment with batteries, speed controls or switches,connectors, and wiring, and a tachometer was a tool to help you measure the Now in 2006, a tachometer is still just as useful. By performing RPM measurements from time to time, problems such as a bad cell in the battery, deteriorating connectors, or damaged motor windings can be detected early before there's a major failure.There are of course many commercially available tachometers for R/C these days, but if you're like me, it's more fun to build your own.The tachometer in this project has the following <b>specifications:</b> Scales: 0-4000, 0-8000, 0-16000, and 0-32000 rpm.<br/>
+<b>Resolution: </b>250, 500, 1000, and 2000 rpm.†<br/>
+<b>Power:</b> 9V alkaline battery or 4xAA 4.8V NiCd/NiMH battery.<br/>
+<b>Sensor:</b> NPN photo-transistor.<br/>
+† This is the "raw" resolution. Each LED in the bargraph indicates an interval of this size. In practice (and with practice), the resolution is higher. When an RPM reading is taken that falls between two of the LEDs both LEDs will flicker, and you can interpolate between the two values by the relative amount of time that each LED is on. Q1 is an NPN photo-transistor whose conductivity is determined by the amount of light falling on it. By shining a light through the propeller arc, Q1 sees alternating pulses of light and dark as the propeller turns, which in turn Causes the junction of Q1 to alternate between about 0.7V (light) and 5V (dark).<br/>
+C3, R4, and R5 remove whatever DC bias appears at the junction of Q1 and R3, and then add back in a 2.5V bias. R6 provides a reference voltage to which this biased pulse train is compared by Z3a, half of an LM393 dual voltage comparator. The sensitivity of comparison is set by R7.<br/>
+<b>www.stefanv.com/rcstuff/tachometer/schematic.gif</b><br/>
+<b>www.stefanv.com/rcstuff/tachometer/t-schematic.gif</b><br/>
+<b>Optical tachometer schematic.</b><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggzwU0fYsIDUhqK5bh4o_r8AyEJKQNUK3EbNVJEg32R3EIn8a1tQEv9O21XlSpA58pkCISfjdR7NalJl0Hd1BK0sJgRFkmI0Qvd6Q3cUEG1BZtMpPwR3HBZMd0ier_wHOArbDPhXXrgsen/s1600/t-schematic.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggzwU0fYsIDUhqK5bh4o_r8AyEJKQNUK3EbNVJEg32R3EIn8a1tQEv9O21XlSpA58pkCISfjdR7NalJl0Hd1BK0sJgRFkmI0Qvd6Q3cUEG1BZtMpPwR3HBZMd0ier_wHOArbDPhXXrgsen/s320/t-schematic.gif"/></a></div><b><br/>
+</b><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+CAPTION<br/>
+<br/>
+<b>Optical tachometer schematic.</b><br/>
+The output of the comparator is a TTL compatible pulse train which is fed into Z2a, half of an SN74393 dual 4-bit counter. The outputs of the counter represent a count of the number of pulses seen, modulo 16, since the counter was last reset. These outputs are fed into four of the inputs of Z4, an SN74374 8-bit edge-triggered latch (they are also fed into the four unused inputs just to keep noise from entering the circuit). The latch serves to "capture" the  counter outputs at an appropriate time. The corresponding outputs of the latch go to the select inputs of an SN74154 4-line to 16-line decoder. This takes the 4-bit binary value on its inputs, and lowers a single corresponding output, which then drives one of the 16 LEDs<br/>
+through a 330Ω resistor. All we need now is something to trigger the latch at an appropriate time, and<br/>
+simultaneously reset the counter. If we want to measure propeller RPM ranging from 0 to 16000, we have to count from 0 to 32000 pulses per minute (assuming a two-bladed propeller). This corresponds to 0 to 533.3<br/>
+pulses per second. Since the pulse counter can only count from 0 to 15, we can't count for a whole second. In fact we should count for only 1/33.33 seconds (30ms). After that amount of time, with a 16000 rpm input, the counter will have received 16 pulses, which means it will have wrapped back around to zero. At 15999 rpm, it will only have received 15 pulses before 30ms are up. So, for a 0 to 15999 rpm range, we need to capture the counter output and then reset the counter every 30ms (i.e. 33.33 times per second). To do this, we need a 33.33Hz pulse train. Since this tach has three other ranges of 0 to 4000, 0 to 8000, and 0 to 32000 rpm, we also need 8.333, 16.67, and 66.67Hz pulse trains respectively. Z1 is an LM555 timer circuit, configured as an oscillator. R1 sets the pulse rate, and should be adjusted to produce a 133.3Hz output. This output is fed into Z2b, the other half of the dual 4-bit counter, which is being used here as a frequency divider. The QA, QB, QC, and QD outputs will have square waves of 66.67, 33.33, 16.67, and 8.333Hz respectively. S1 selects one of these outputs. C4, D1, and R9 act as a filter, turning the falling edge of the square wave into a single short duration (about 100µs) low-going pulse. This pulse is fed into the inverting input of Z3b, the other half of the dual voltage comparator, which here is just being used as an inverting buffer.<br/>
+The output is thus a short duration positive pulse. The leading edge of this pulse latches the current RPM pulse counter output into the latch, and then resets the counter. Because the RPM pulse input is not synchronized with the internal pulse train, the number of propeller pulses counted by the counter can vary from one<br/>
+latching pulse to the next. For a fixed RPM however, this count will always be one of the two values which is on either side of the exact value. In use this manifests itself as two flickering LEDs, with the one corresponding more closely to the correct value being on a larger percentage of the time. For example, if measuring a 20500 rpm propeller with the tachometer set to the 32000 rpm range, the 20000 rpm and 22000 rpm LEDs will both be lit. The 20000 rpm LED will be on 3/4 of the time, and the 22000 rpm LED will be on 1/4 of  the time. With practice, you can use this behaviour to interpolate between  the two values, effectively increasing the resolution the circuit is best built on a printed circuit board. Refer to my article on the subject,<br/>
+www.stefanv.com/electronics/etching.htm"<br/>
+<br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_CdkEY17l8XE5quleWc8fpMBUSs3GYJP1meZxYmr_p32Od3wB_VDSwe2Rt377jqoe7OxfCAAy8t3nm45TJHmS9qecjsRA8FfKnKorX0-b12RMgDATlK3OQCyLvnvg1mhGbrgt_Mvsuhsy/s1600/t-label.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_CdkEY17l8XE5quleWc8fpMBUSs3GYJP1meZxYmr_p32Od3wB_VDSwe2Rt377jqoe7OxfCAAy8t3nm45TJHmS9qecjsRA8FfKnKorX0-b12RMgDATlK3OQCyLvnvg1mhGbrgt_Mvsuhsy/s320/t-label.gif"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Making Excellent Printed Circuit Boards<br/>
+Here is the board layout for the tachometer:<br/>
+<b>www.stefanv.com/rcstuff/tachometer/copper.gif</b><br/>
+<b><br/>
+</b><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBU78-HY2zFixMCZ6FHM8WGms60rdjxeeHzYf1GCjqEYGY7SRtQ3fpzxWeHZrJUk_MOMRe29IO0R7uRnIbCHYYPSn5XvVwk1xncN6XOCDrVrI3p1f1cPA0Em68YfoRSuMvTsqBac9koXbO/s1600/copper.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBU78-HY2zFixMCZ6FHM8WGms60rdjxeeHzYf1GCjqEYGY7SRtQ3fpzxWeHZrJUk_MOMRe29IO0R7uRnIbCHYYPSn5XvVwk1xncN6XOCDrVrI3p1f1cPA0Em68YfoRSuMvTsqBac9koXbO/s320/copper.gif"/></a><b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b><br/>
+</b><br/>
+<b>www.stefanv.com/rcstuff/tachometer/t-copper.gif</b><br/>
+Printed circuit board layout. Actual size is 3.3" x2.9" .<br/>
+<br/>
+Printed circuit board layout. Actual size is 3.3" x2.9" .The diagram below illustrates the component placement on the board.<br/>
+<b>www.stefanv.com/rcstuff/tachometer/placement.gif" </b><br/>
+<b>www.stefanv.com/rcstuff/tachometer/t-placement.gif" </b><br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9xgS79kIr2Z6Kkzrb7-u-j3ex94dblYj-mDUkDbMv0_t-5YCl5rYREQi0_VaHADgd5J85nBTrZ31e_YGVDAxucnW3jjnTrdbBHhDVbH6o1rL_ezFzz5QB43bANTGl1eDP63ANrg2cQvNH/s1600/placement.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg9xgS79kIr2Z6Kkzrb7-u-j3ex94dblYj-mDUkDbMv0_t-5YCl5rYREQi0_VaHADgd5J85nBTrZ31e_YGVDAxucnW3jjnTrdbBHhDVbH6o1rL_ezFzz5QB43bANTGl1eDP63ANrg2cQvNH/s320/placement.gif"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Tachometer component placement.<br/>
+Begin by installing all the fixed resistors and capacitors. Be sure to orient C5 correctly, with its negative lead closest to the edge of the board. Install D1, with its banded end closest to Z2. Then, install all the jumper wires, of which there are eight. Be sure to install the one that's underneath Z5. For the two long diagonal wires in the top-left quarter of the board, use insulated hook-up wire. Next, install the two trimmer potentiometers, R1 and R6. There are two centre-lead holes for each. Which one to use depends on the configuration of the potentiometer's leads. Also install the integrated circuit sockets at this time, with pin 1 of each socket where shown. Install the sixteen red LEDs next. Each LED will have a flat spot on one side of it. This flat spot should be to the left (i.e. the side that connects to the corresponding resistor). If you plan to power the tach with a 9V battery... Install the 7805 voltage regulator next. The tab of the regulator should be furthest from the edge of the board. You bend the 7805's pins and lay the regulator down if you wish (as long as you used insulated wires for the jumpers). Connect a 9V battery clip to the 9V+ (red) and 9V- (black) terminals. Install a normally-open SPST pushbutton in the red battery lead. If you plan to use a 4.8V NiCd or NiMH battery... Omit the voltage regulator, and connect the battery leads directly the two lower voltage regulator holes. The positive lead connects to the lower hole and the negative lead to the middle hole. As with the 9V installation, install a normally-open SPST pushbutton switch in the positive battery lead. You may also wish to connect a charging jack.<br/>
+www.stefanv.com/rcstuff/tachometer/photo2.jpg" <br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_1bRc2heY0B32Ykg4NAtp-wyNSTpli8q8gfDjzcoIRuJKD7hVYvmhi6vic97GOtzAmwhbSi8RykmxHKejWW_5jZrLBM0lUY8YXarHybXv-AFsHH94e6VYOv5qUTyoia18Ah4m9ePv86OS/s1600/photo2.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_1bRc2heY0B32Ykg4NAtp-wyNSTpli8q8gfDjzcoIRuJKD7hVYvmhi6vic97GOtzAmwhbSi8RykmxHKejWW_5jZrLBM0lUY8YXarHybXv-AFsHH94e6VYOv5qUTyoia18Ah4m9ePv86OS/s320/photo2.jpg"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+www.stefanv.com/rcstuff/tachometer/t-photo2.jpg" <br/>
+<br/>
+The completed circuit board. My prototype used a 4.8V battery, and thus I omitted the voltage regulator.<br/>
+The completed circuit board. My prototype used a 4.8V battery, and thus I omitted the voltage regulator.<br/>
+Install five colour-coded hookup wires to connect between the circuit board and<br/>
+the range selector switch. Four of the wires connect to the top row of four<br/>
+holes, and one connects to the bottom row. The other three holes aren't used  (they are there if you want to install an 8-pin header to allow the switch to be easily disconnected). Connect the other ends of the wires to the four switch positions and the common contact of a 4-position rotary switch. Connect the phototransistor to the points marked Q1 on the board. The emitter lead connects to the lower hole (ground), and the collector lead to the upper hole (closest to the battery connections). The emitter is the lead closest to the tab on the base of the phototransistor. When I built the prototype, I didn't have a 4-position rotary switch in my parts cabinet. Instead, I used a pair of toggle switches, one DPDT and one SPDT, to create a range selector. In effect, the two switches represent a two-bit binary value which selects one of four ranges. A rough schematic of this arrangement is show below.<br/>
+www.stefanv.com/rcstuff/tachometer/switches.gif<br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjnG5qRppOv61x5vPj2ONZeqRUWU7CLpb7q8dWfEGzc10IqDshAg83FP2qN5xl5HK4_rK4AEvW6hdsfI3L2I2B2oeKwa-Vea2t2inyvIA9fxvGKcQgoUladayjh84w-lLFfRp5K7P00rsk/s1600/t-switches.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgjnG5qRppOv61x5vPj2ONZeqRUWU7CLpb7q8dWfEGzc10IqDshAg83FP2qN5xl5HK4_rK4AEvW6hdsfI3L2I2B2oeKwa-Vea2t2inyvIA9fxvGKcQgoUladayjh84w-lLFfRp5K7P00rsk/s320/t-switches.gif"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+www.stefanv.com/rcstuff/tachometer/t-switches.gif<br/>
+Schematic of the alternative binary range selector switch. Schematic of the alternative binary range selector switch. Double check all your work, making sure there are no solder bridges, and that you didn't make a mistake copying the circuit board layout. Check that all the components are in place. If everything looks to be in order, insert all the integrated circuits into their sockets, making sure they're all in the right way around. Set both R1 and R6 to their midpoints, and set the range selector to the 0 to 32000 rpm range. Connect a 9V battery (if you're using a regulator) or 4.8V NiCd or NiMH battery (no regulator) to the power inputs. If you're in a room with incandescent or natural light, the rightmost LED should illuminate, indicating zero rpm. In a room with fluorescent lighting, one or two LEDs should be flickering. Point the phototransistor at a fluorescent light, at close range. I find that compact fluorescents don't flicker enough, so use a traditional fluorescent tube fixture. If you don't get two flickering LEDs, adjust R6 until you do. Then, experiment with the setting of R6 to find the two positions at which the flickering stops, and then set it half way between these two positions. The next step is to calibrate the 555 oscillator to produce a 133.3Hz signal If you have a frequency counter or oscilloscope, the most accurate way to do this is to measure the frequency on pin 3 of the 555, and adjust R1 until it is 133.3Hz. If you don't have the appropriate measuring equipment, all is not lost. Once again, point the phototransistor at a fluorescent light, and adjust R1 until the second and third from the right LEDs are both lit. Then switch to the 0 to 4000 rpm range, and proceed as follows: If you live in a country where the power line frequency is 60Hz (e.g. Canada, USA)... Fine tune R1 until the two leftmost LEDs (indicating 3750 rpm and 3500 rpm) are both flickering, and the leftmost one is on slightly less than half the time. Switch to the 0 to 8000 rpm range, and the left- and right-of-centre LEDs should be lit about 20% and 80% of the time respectively (i.e. between 4000 rpm and 3500 rpm, closer to 3500 rpm). I initially calibrated my tach this way, and on checking it with a frequency counter later, found it was off by only 2% If you live in a country where the power line frequency is 50Hz (e.g. European countries)... Fine tune R1 until only the fourth LED from the left is lit indicating exactly 3000 rpm. You should be able to get the calibration within 1% this way. You can test the calibration by trying the other ranges. On the 0 to 8000 and 0 to 16000 scales, exactly one LED should light. Please keep in mind that this meter reads from right to left. The lowest RPM values are on the right. If you want it to real from left to right like most analog meter movements, you can install the LEDs on the copper side of the board. The calibration notes above assume the LEDs are on the<br/>
+www.stefanv.com/rcstuff/tachometer/photo3.jpg<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqgzifENd3a0mInJFI-sAT5etmn41-NuY_SFoHCXo0Lzqn767OLPYY4yFRVxiBe8h_nJPK1t9nXFEqm4Q6ghBCso1NiE6tF5_Pj_UcUwV2wpIa6dtQ7YNvADfAsumE7ZYOJAKd1rqVyjx_/s1600/photo3.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjqgzifENd3a0mInJFI-sAT5etmn41-NuY_SFoHCXo0Lzqn767OLPYY4yFRVxiBe8h_nJPK1t9nXFEqm4Q6ghBCso1NiE6tF5_Pj_UcUwV2wpIa6dtQ7YNvADfAsumE7ZYOJAKd1rqVyjx_/s320/photo3.jpg"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+www.stefanv.com/rcstuff/tachometer/t-photo3.jpg<br/>
+Circuit board, battery, and switches installed on the front panel. I installed my tachometer in a 3-3/4" x 4-1/4" x 1-1/4" plastic project case. I drilled a row of holes for the LEDs to protrude through the front panels, and installed the activation pushbutton and range selection switches (see Modifications above) on the front panel too. The circuit board was screwed to two wooden blocks glued to the panel, and the 4x600AA NiCd battery (a spare R/C receiver pack) was held to the panel with double-sided tape. The phototransistor was installed through holes in the top of the case, and enclosed in a brass tube that was painted black inside and out.    The label indicates the RPM values corresponding to each LED To aid in reading the tachometer, I created a label that has one column for each LED, and one row for each range. The label is reproduced at right, scaled to 300 dpi. It should be 3.5" wide when printed. To use the tachometer, merely point it at the propeller from behind, looking through the propeller arc. If doing this indoors (electric models only of course), it helps to shine an incandescent light through the propeller from the front. Be sure to turn off all fluorescent lighting when using the tachometer, or it will give erratic readings. The best light source to use is a battery operated flashlight. First and foremost, wear a good pair of safety glasses. Propellers can and do fail or come off the motor shaft. If this happens outdoors, injury is a possibility. Indoors, it's almost a foregone conclusion, as the propeller or pieces of it ricochet off the walls. I've had it happen, but I was lucky, and now I always wear safety glasses. A sticker we had on the wall in my high school's chemistry lab read, "Joe never used to wear his safety glasses. Now, he doesn't need them. If you are working with running motors, make sure they are securely mounted in a test stand from where they cannot escape or even move. If a motor turns in its stand, the propeller could hit the edge of the work bench, in which case it will shatter and send pieces flying. Keep all the wiring out of harm's way. Long power leads hanging loosely near spinning propellers are an accident waiting to happen. Keep leads away from the business end of the motor. Also be careful not to let bare alligator clips contact each other or the motor case. The following table lists all the parts needed. Parts can be ordered from electronic supply houses such as <br/>
+www.digikey.com/<br/>
+R1=100kΩ trimmer potentiometer<br/>
+R2=22kΩ ¼W resistor<br/>
+R3=10kΩ ¼W resistor<br/>
+R4, R5=100kΩ ¼W resistor<br/>
+R6=10kΩ trimmer potentiometer<br/>
+R7=4.7MΩ ¼W resistor<br/>
+R8, R9, R10=1kΩ ¼W resistor<br/>
+R11,R26=330Ω ¼W resistor<br/>
+C1, C2, C4, C6-C10=0.1µF capacito<br/>
+C3=22nF capacitor<br/>
+C5=22µF electrolytic capacitor<br/>
+D1=1N914 diode<br/>
+S1=SP4T rotary switch, or 1 each DPDT and SPDT mini toggle switch<br/>
+Z1=LM555 timer<br/>
+Z2=SN74393 dual 4-bit counter<br/>
+Z3=LM393 dual voltage comparator<br/>
+Z4=SN74373 8-bit edge-triggered latch<br/>
+Z5=SN74154 4-to-16 line decoder<br/>
+VR=7805 5V 1A regulator<br/>
+Q1=PT501 phototransistor<br/>
+LED1-LED16<br/>
+T-1 (3mm) red LED, 1.7-1.9V @ 10mA</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/08/led-bargraph-optical-tachometer.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

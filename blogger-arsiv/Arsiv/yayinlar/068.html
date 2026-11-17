@@ -1,0 +1,41 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LCD göstergeli ısı kontrol devresi | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>LCD göstergeli ısı kontrol devresi</h1><div>2010-01-10 · LED ve Göstergeler</div></header><main><article class="panel"><a href="http://antrak.org.tr/images/stories/pic_2004/ocak/isikontrol.zip" rel="noopener noreferrer">http://antrak.org.tr/images/stories/pic_2004/ocak/isikontrol.zip</a>Merhabalar,<br/>
+<br/>
+Bu yazıda sizlere PIC16F84A ile ısı kontrolünün nasıl yapılabileceğine örnek vermeye çalışacağım. Bu ısı kontrol devresiyle üç farklı cihazı ON/OFF metodu ile kontrol etmek mümkün. Yalnız ON/OFF metodu ile ısı kontrolleri pek sağlıklı sonuçlar vermez. Bu metod ile yapılan ısı kontrollerinde, ortam ısısı set değerine ulaşdığında cihazın aniden açılıp kapanması ile sıcaklık bir anda düşüp yükselemeyeceğinden okunan ısı değerlerinde salınımlar meydana gelir ve ısı istenilen düzeyde sabit tutulamaz. Bu nedenle daha profesyonel ısı kontrol devrelerinde farklı metodlar kullanılmaktadır. Bunların başında PID metodu gelir. PID metoduyla ısı istenilen düzeyde sabit tutulabilir. Bunuda kontrol edilecek cihazı bir anda iletime yada kesime götürmek yerine cihazın çalışma gerilimini kademe kademe arttırıp azaltarak salınımı daha az tutup, istenilen ısı düzeyine daha kısa zamanda ulaşılmasını sağlar. Bu nedenle PID metodu ile daha sağlıklı ve kaliteli kontrol sonuçları alınabilir. Bizim burada yapacağımız devrede daha genel amaçlı ısı kontrolü uygulandığı için ON/OFF metodu yeterlidir. <br/>
+<a href="http://antrak.org.tr/gazete/012004/images/yz101.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="170" loading="lazy" src="http://antrak.org.tr/gazete/012004/images/yz101.jpg" width="320"/></a><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Isı kontrol devresi  <br/>
+<br/>
+Bu devrede ısı sensörü olarak PTC kullandım.Yalnız bu sensör yerine LM35, LM335, LM3911 gibi diğer ısı sensörlerinide devreye uyarladıktan sonra kullanabilirsiniz. Bu devrede PTC ile ölçülecek olan ısı değerlerini dijitale ADC0804 (Anolog Dijital Converter) entegersi ile çeviriyoruz. Bu entegrenin çıkışında oluşacak 8 bitlik dijital değerleri 74165 PISO (Paralel Input/Serial Output) entegresi ile seri bilgi haline getiriyoruz. Bunun amacı PIC16F84A'nın daha az porttunu kullanmak. PIC devamlı olarak okuduğu 8 bitlik dijital değerleri eş zamanlı olarak LCD panele aktarır ve böylece panelden o anki sıcaklık değerini devamlı olarak okuyabiliriz. Bu devre ile 0-127°C arasındaki sıcaklık değerlerini okuyup, bu aralıklarda ısı kontrolü yapabilirsiniz. Devrenini sıcaklık kalibrasyonunu PTC ile seri olarak, bölücü direnç amacı ile, bağlanmış olan potansiyometre ile sağlayabilirsiniz. LCD panele gönderilmesi gereken 8 bitlik dijital bilgileri önce 74164 SIPO (Serial Input/Paralel Output) entegresine seri olarak gönderdikten sonra paralele çeviriyoruz. Gene bunu da yapmamızın amacı port kullanımından kısıtlama yapmak. Bu yaptığım ısı kontrol devresinin kullanımını, önceki saat uygulamamızdaki gibi, kolay kılmak amacı ile menülü sisteme dayandırdım.<br/>
+<br/>
+<br/>
+<br/>
+<div><a href="http://antrak.org.tr/images/stories/pic_2004/ocak/yz102.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" height="229" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2004/ocak/yz102.gif" width="320"/></a><br/>
+</div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+Bu uygulamada da kullandığımız butonlar M (Menü), S (Seçim) ve C (Çıkış) butonlarıdır. Bu butonları kullanarak menülerde gezebilir, kontrol etmek istediğiniz Fonksiyonun ayarlanması gereken sıcaklık değerlerini gene bu menüler aracılığıyla girebilirsiniz. Devreyi kurup çalıştırdığınızda karşınıza ilk gelecek olan ekran ana ekrandır. Bu ana ekranın ilk satırında ortalı bir şekilde 'Marmara Uni.' yazacak ve ikinci satırında da 'SICAKLIK XXX°C' yazacaktır. Buradaki XXX kısmı o anki ölçeceği sıcaklık değeridir. Menü tuşu ile ana menüye girebilir, karşınıza gelecek olan menüleride Seçim butonu ile gezebilirsiniz. Seçtiğiniz menüye girmek için tekrar Menu butonuna, çıkmak içinse Çıkış butonuna basmanız yeterli olacaktır. Aynı bu mantıkla diğer bütün işlemlerinizi halledebilirsiniz. Bu devrede ısı kontrolü yapılabilen 3 bağımsız çıkış bulunmaktadır. Yani bu çıkışlara isterseniz 3 adet ısıtıcı bağlayabilirsiniz istersenizde ısı kontrolü ile yapmak istediğiniz her türlü işlemi bu çıkışlar aracılığı ile gerçekleştirebilirsiniz. Örneğin Fonksiyon1 çıkışına kontrol etmek istediğiniz ısıtıcınızı, Fonksiyon2 çıkışına o ısıtıcının istenilen düzeye ulaşıp ulaşmadığını görmek için bir led, Fonksiyon3 çıkışınada ısının sabit düzeyde tutulması istenen ortamın, o düzeyin üstüne çıktığını ve bir problemin olduğunu bir buzzer veya led gibi gösterge amaçlı kullanılan elemanlar ile görmek mümkün olur veya Fonksiyon1 çıkışına bir ısıtıcı bağlayıp, bu ısıtıcı için ayarlanılması istenilen düzeyin 5°C fazlasını Fanksiyon2 değerine, 10°C fazlasınıda Fonksiyon3 değerine girdiğimiz zaman kontrol edilmek istenen ortamın kontrol dışı bir şekilde ısınıp ısınmadığını kademe kademe görmek mümkün olur. Bu örnekler genel amaçlı ısı kontrol devresinin kullanım alanlarına örnekti. Bu örnekler aynı şekilde soğutucular içinde düşünülebilir veya kullanım amaçlarına ve alanlarına göre çoğaltılabilir.<br/>
+<br/>
+Kullanılan yazılımın hex dosyasına aşağıdaki linkten ulaşabilirsiniz<br/>
+<br/>
+Isıkontrol.zip <br/>
+<br/>
+Yazımın başında da belirtiğim gibi bu devre ile genel amaçlı ısı kontrolünü, çok kolay ve görsel bir şekilde yapabilmekteyiz. Sizlere kolay gelsin. <br/>
+"Alıntıdır"</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/lcd-gostergeli-s-kontrol-devresi.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

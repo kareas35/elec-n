@@ -1,0 +1,145 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 5 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 5</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span></span><br/>
+<h3><span>PIC Basic Pro ile PIC Programlama 5</span></h3><div><h2><span> </span></h2><div><div><strong><span>Pic ile Analog – Digital Çevirici Kullanımı:</span></strong></div><div><span>Günlük hayatta kullandığımız cihazlar genelde Analog ve Dijital olarak ikiye ayrılmaktadırlar. Sayısal sistemle çalışan tüm cihazlar Dijital olarak nitelendirilmekte bunun dışındakiler ise Analog cihazlar olarak nitelendirilmektedirler. Mikroişlemcilerin tamamı dijital cihazlardır.</span></div><div><span>Zaman zaman mikroişlemci bazlı bazı cihazların Analog cihazları kontrol etmesi istenir. Zaman zamanda Analog sinyallerin işlenip değerlendirilmesi için bu sinyallerin dijital sinyaller haline getirilmesi gerekir.</span></div><div><span>İşte bu gibi durumlarda Analog – Digital çeviriciler kullanılır. Yalnızca A/D çevirici olarak üretilmiş entegreler olduğu gibi bazı Pic’ler de bu çeviriciler seçimli olarak hazır bulunurlar. Burada </span><strong><span>A/D</span></strong><span> çeviricisi bulunan Pic’ler incelenecek ve kullanımları konusunda örnekler verilecektir.</span></div><div><span>Bu konuda en çok kullanılan Pic’lerden birisi </span><strong><span>PIC16F877</span></strong><span> entegresidir. 40 bacaklı olan bu entegrede 8 kanal ve 10 bit hassasiyette </span><strong><span>A/D</span></strong><span> çeviricisi bulunmaktadır.</span></div><div><span>A/D çevirim prensibi genelde bir kondansatörün belirli bir referans voltajı ile şarj edilip deşarj için geçen sürenin sayılması esasına dayanır. Elde edilen süre bilgisi ise Analog değere karşılık elde edilmiş olan dijital değer olarak verilir.</span></div><div><span>Üzerinde </span><strong><span>A/D</span></strong><span> çevirici bulunan bir Pic kullanılırken yapılacak işlerin başında hangi bacakların ANALOG hangilerinin </span><strong><span>DIGITAL</span></strong><span> olarak kullanılacağına karar vermektir. Sonra A/D çevirici için referans voltajı kaynağının seçimi yapılmalıdır. İki türlü referans voltajı vardır. Birincisi Pic’in kendi VDD beslemesi (+5V) diğeri ise harici bir voltaj kaynağıdır. Tabiiki harici kaynaklar referans voltajının 5 Volt’tan farklı olması durumunda seçilmelidir.</span></div><div><span>Şimdi gelelim bu seçimleri yaptıktan sonra bunları Pic’e nasıl vereceğimize. A/D çeviricisi olan Pic’lerde </span><strong><span>ADCON</span></strong><span> register’i denilen 8 bitlik bir yazmaç bulunmaktadır. Genellikle bu yazmaç </span><strong><span>ADCON1</span></strong><span> adı ile isimlendirilir.</span></div><div><span>Şimdi </span><strong><span>PIC16F877</span></strong><span> nin </span><strong><span>ADCON1</span></strong><span> yazmaç’ını inceleyelim.</span></div><div><strong><span>2: ADCON1 REGISTER (ADDRESS 9Fh)</span></strong></div><div><span><img alt="adcon1_register" height="41" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/adcon1_register.png" title="adcon1_register" width="708"/></span></div><div><span>Bit-7: </span><strong><span>A/D </span></strong><span>Sonuç Format Seçme biti dir.<br/>
+1 olur ise sonuç sağa hizalanmış , </span><strong><span>ADRESH</span></strong><span> nin 6. uç bitleri 0 olarak okunur.<br/>
+0 olur ise sonuç sola hizalanmış, </span><strong><span>ADRESL</span></strong><span> nin alt bitleri 0 olarak okunur.</span></div><div><span>Bit 6-4 arası kullanılmaz ve 0 olarak okunur.</span></div><div><span>Bit -3-0 arası </span><strong><span>PCFG3</span></strong><span> – </span><strong><span>PCFG0 A/D</span></strong><span> portu ayarlama kontrol bitleridir. İşte bu bitleri ayarlayarak portların seçimleri yapılır. Aşağıdaki tabloya bakınız.</span></div><div><span><img alt="adcon1_register_2" height="255" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/adcon1_register_2.png" title="adcon1_register_2" width="671"/></span></div><div><span>Şimdi tablo üzerinde biraz kafa yoralım.<br/>
+Şayet </span><strong><span>PCFG3:PCFG0</span></strong><span> bitlerini </span><strong><span>0000</span></strong><span> olarak verir isek bu durumda </span><strong><span>RA0-RA3 , RA5, RE0-RE2 </span></strong><span>bacaklarının tamamı </span><strong><span>ANALOG</span></strong><span> olarak ayarlanmış olacak ve artı referans Voltajı VDD den eksi referans voltajı ise VSS yani </span><strong><span>GND</span></strong><span> den alınacaktır.</span></div><div><span>Şimdi diyelim ki bize 3 adet Analog giriş lazım diğerleri Digital olabilir. +5V ve </span><strong><span>GND</span></strong><span> de referans voltajları olarak kullanılacak. Bu durumda tabloya bakar isek 0100 değeri tam istediğimiz ayarlamayı yapabiliyor. Tablonun en son hanesinde ilk değer kaç Analog giriş olduğunu / işaretinden sonraki değer ise harici referans voltaj girişi adedini gösteriyor. Seçtiğimiz değerde burası 3/0 olarak görülmektedir. Anlamı 3 adet Analog giriş ve sıfır referans voltajı var demek. Zaten biz Pic’in kendi voltaj girişlerini kullanmak istediğimizden gerçektende bize sıfır referans girişi lazımdır.</span></div><div><span>Pic’in voltaj girişleri referans voltajı olarak seçildiğinde Pic’e giren Analog voltaj değerinin 5 Volt’u aşmamasına dikkat edilmelidir.</span></div><div><span>Bu şekilde tablonun kullanılmasını anlattıktan sonra bu aşamada tüm girişlerin Digital seçilmesi konusunda değinmek isterim. Analog girişlerin Digital olarak kullanılması istenir ise tablodan sağ tarafta 0/0 değerinin bulunduğu satırda </span><strong><span>PCFG3:PCFG0</span></strong><span> değeri 0111 (Desimal 7) olarak görülür. Demek ki </span><strong><span>ADCON1=7 </span></strong><span>veya </span><strong><span>ADCON1=%0111</span></strong><span> dediğimiz zaman </span><strong><span>Pic 17F877</span></strong><span> nin Analog girişleri iptal edilerek normal Digital giriş çıkışa dönüştürülmektedir. A/D çeviricisi bulunan Piclerde aksine bir komut bulunmaz ise ilk açılışta A/D pin’ler Analog olarak açılırlar. Dolayısıyla bu pinleri Digital kullanmak isterseniz mutlaka Adcon1=7 komutunu vermeniz gerekir.</span></div><div><span>Bu kadar bilgi bir örnek üzerinde çalışmamız için yeterlidir. Şimdi bir örnek program yapalım.</span></div><div><strong><span>Örnek Program</span></strong><span>:<br/>
+Bu programımız </span><strong><span>AN0</span></strong><span> yani </span><strong><span>PORTA.0</span></strong><span> bacağına bağlayacağımız bir potansiyometre üzerinden voltaj okuması yapılmasını sağlayacaktır.<br/>
+Bu durumda 1 adet Analog giriş gerekiyor. </span><strong><span>PCFG3:PCFG0</span></strong><span> değeri olarak tablodan </span><strong><span>1110 </span></strong><span>değerini seçiyoruz. Bu seçenek tek Analog giriş (</span><strong><span>AN0-RA0</span></strong><span>) verdiği gibi Pic in voltaj girişlerini de referans voltajı olarak kullanmamızı sağlamaktadır. Devremiz aşağıdaki gibi olacaktır.</span></div><div><span><img alt="pcfg3_pcfg0" height="429" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/pcfg3_pcfg0.jpg" title="pcfg3_pcfg0" width="587"/></span></div><div><span>Şimdi Programımızı yazalım</span></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : ADC.BAS *<br/>
+‘* Author : [ETE] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 20.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+TRISA=000001<br/>
+TRISB=0<br/>
+TRISC=0<br/>
+TRISD=0<br/>
+‘——————————————————————————-<br/>
+@ DEVICE pic16F877<br/>
+@ DEVICE pic16F877, WDT_on<br/>
+@ DEVICE pic16F877, PWRT_ON<br/>
+@ DEVICE pic16F877, PROTECT_OFF<br/>
+@ DEVICE pic16F877, XT_OSC<br/>
+‘——————————————————————————-<br/>
+DEFINE LCD_DREG PORTB ‘LCD data bacakları hangi Porta bağlı?<br/>
+DEFINE LCD_DBIT 4 ‘LCD data bacakları hangi bitten başlıyor?<br/>
+DEFINE LCD_EREG PORTB ‘LCD Enable Bacağı Hangi Porta bağlı?<br/>
+DEFINE LCD_EBIT 3 ‘LCD Enable Bacağı Hangi bite bağlı ?<br/>
+define LCD RWREG PORTB ‘LCD R/W Bacağı Hangi Porta bağlı?<br/>
+define LCD_RWBIT 2 ‘LCD R/W Bacağı Hangi bite bağlı ?<br/>
+DEFINE LCD_RSREG PORTB ‘LCD RS Bacağı Hangi Porta bağlı ?<br/>
+DEFINE LCD_RSBIT 1 ‘LCD RS bacağı Hangi Bite bağlı ?<br/>
+DEFINE LCD_BITS 4 ‘LCD 4 bit mi yoksa 8 bit olarak bağlı?<br/>
+DEFINE LCD_LINES 2 ‘LCD Kaç sıra yazabiliyor<br/>
+‘——————————————————————————-<br/>
+DEFINE ADC_BITS 10 ‘A/D çevirim sonucu kaç bit olacak<br/>
+DEFINE ADC_CLOCK 3 ‘Clock kaynağı (3=rc)<br/>
+DEFINE ADC_SAMPLEUS 100 ‘Örnekleme zamanı mikro saniye cinsinden.<br/>
+‘——————————————————————————-<br/>
+ADCON1=%10001110 ‘7. bit 1 yapıldı 10 bit sonuç almak için.<br/>
+‘——————————————————————————-<br/>
+HAM var word ‘ADC den okunan ham Digital değer.<br/>
+VOLT var word ‘16 bit değişken tipi seçtik kullanacağımız değer 10 bit olacak.<br/>
+Mvolt var byte<br/>
+‘——————————————————————————-<br/>
+Low PORTB.2 ‘ LCD R/W line Low (W), şemada direkt GND ye bağlanabilir.<br/>
+LCDOut $FE,1 ‘ LCD de CLS yapar<br/>
+pause 200 ‘ LCD nin açılması için gerekli süredir.<br/>
+‘——————————————————————————-</span></strong></div><div><strong><span>BASLA:<br/>
+ADCIN 0,HAM ‘0 nolu kanaldan Analog değeri oku ve RAW değişkenine aktar.</span></strong></div><div><strong><span>BAK: IF ADCON0.2=1 THEN BAK ‘Çevirme işlemi tamamlanınca Adcon0.2=0 olacak.</span></strong></div><div><strong><span>lcdout $FE,1,” HAM =”,# HAM<br/>
+Ham=ham+1 ‘Hesap kolaylığı açısından Ham değerini bir artırdık</span></strong></div><div><strong><span>‘Okunan değer 0-5 volt için 0-1024 olacağından okunacak değer başına volt değeri</span></strong></div><div><strong><span><br/>
+‘ 5/1024 =0,0048828 olacaktır. Sayı çok küçük olduğundan bu değeri 1000 ile</span></strong></div><div><strong><span><br/>
+‘çarpmalıyız. O halde (Okuma/V)= 4,8828 bu değeri 256 ile çarpar isek</span></strong></div><div><strong><span><br/>
+‘4,8875 x 256 = 1250 değerini buluruz. Bu değeri kullanarak 32 bit işlem yapabiliriz.</span></strong></div><div><strong><span><br/>
+‘1250 değeri (5/1024)*256 değerine karşılık gelmektedir.</span></strong></div><div><strong><span><br/>
+’sonuçta ADC HAM değerini bu sayı ile çarpıp 256′ya bölersek sonucu elde etmiş oluruz.</span></strong></div><div><strong><span><br/>
+‘ancak sonuç 32 bitlik sınırda olduğundan bu işi 32 bit çarpma ile yapıyoruz ve orta</span></strong></div><div><strong><span><br/>
+‘baytı aldığımızda ise zaten sayının 256′ya bölünmüş halini aldığımızdan başka bir</span></strong></div><div><strong><span><br/>
+‘işlem yapmadan sonucu elde etmiş oluruz.</span></strong></div><div><strong><span>Volt=(ham */ 1250)/100 ‘Ham ile 1250 yi 32 bit olarak çarp ve 100′böl<br/>
+Mvolt=Volt // 10 ‘Mvolt= Volt MOD 10</span></strong></div><div><strong><span>‘Burada yeni bir komut veya işlem şekli görüyorsunuz. MOD alma yani (//) kalan bulma<br/>
+‘Bir sayını başka bir sayıya bölünmesinden sonra kalan miktarı bulma işlemine MOD<br/>
+‘alma denir. Örnek W=A//1000 , A’yı 1000′e böl kalanı W değişkenine koy anlamındadır.<br/>
+‘bizde yukarıda Mili volt değerini bulmak için volt (10 ile çarpılmış halini) 10′a<br/>
+‘bölüp kalanı Mvolt değişkenine yerleştiriyoruz.</span></strong></div><div><strong><span>Volt=Volt/10</span></strong></div><div><strong><span>LCDOUT $FE,$C0,” VOLT=”,#VOLT,”,”,# Mvolt<br/>
+PAUSE 500<br/>
+GOTO BASLA</span></strong></div><div><strong><span>ADC </span></strong><span>işlemlerinde ölçümler genelde çok kararlı olmaz. Bir biri arkasına yapılan ölçümlerde ufak tefek farklılıklar görülebilir. Bu nedenle çoğunlukla ortalama alma metodu kullanılır. Aynı yerde birden fazla ölçüm alınır ve sonuçlar toplanır. Sonuçta kaç adet ölçüm yapılmış ise toplam, o sayıya bölünür. Örnek vermek gerekir ise;</span></div><div><strong><span>For I=1 To 10<br/>
+ADCIN 0,HAM<br/>
+TOPLAM=TOPLAM+HAM<br/>
+NEXT I<br/>
+HAM=TOPLAM/10</span></strong></div><div><span>Sonuçta Ham değeri 10 adet ölçümün ortalamasını gösterecektir ve oldukça kararlı bir değer olacaktır.</span></div><div><strong><span>ADC</span></strong><span> çevirme işlemlerinde en önemli husus elde edilen Ham değerin istenen değere çevrilmesi için oluşturulacak formülün bulunmasıdır. Örneğin bir sıcaklık ölçümü yapıyorsunuz ve bir ısı sensörü değerini ölçüyorsunuz. 8 bitlik bir işlemde </span><strong><span>0-255</span></strong><span> arası değerler , 10 bitlik bir işlemde </span><strong><span>0-1023</span></strong><span> arası değerler bulacaksınız. Peki bu değerleri nasıl sıcaklık değeri olarak göstereceksiniz. İşin önemli noktası burası.</span></div><div><span>Hemen şu hesaplamayı yapmalısınız. 8 bit hesaplama için , Sensör den okunabilecek en yüksek değer 255 olacaktır. Peki bu değer kaç derece sıcaklığa eşdeğerdir?. Yani Sensör ün gösterebileceği maksimum sıcaklık ne olacaktır. Bunu sensör bilgilerinden (bilgi formu veya üretici bilgilerinden) alacaksınız. Diyelim ki 120 dereceye eş değerdir. O halde birim okuma başına düşen sıcaklık değeri 120/255 =0,470 derece olacaktır.<br/>
+Bunu Pic de kullanabilmek için 0,470 x100 = 47 olarak bir değer elde edilecektir. Demek ki ben okuduğum değeri 47 ile çarpıp sonucu 100 e bölersem sıcaklığı bulabilirim.<br/>
+O halde sensör den okunan 134 dijital değerinin sıcaklık karşılığı ne olacaktır diye sorduğumuzda formülümüz bize;<br/>
+Sıcaklık =(134 x 47)/100=62,98 derece olarak bulunacaktır.</span></div><div><span>ADC konusunda söylenecek son söz olarak üzerinde ADC çevirici bulunan her Pic farklı özellikler taşıyabilir. En azından Analog pinlerinin ayarlanması işlemi farklı olabilir. Bu nedenle farklı Pic ler ile çalışırken mutlaka bilgi formlarında belirtilen ADC özelliklerine göz atmanızı tavsiye ediyorum.</span></div><div><span>Diğer bir husus da program başında verilen ADC DEFINE parametrelerinin ayarlanmasıdır.</span><strong><span>Bunlar;</span></strong><span><br/>
+</span><strong><span>DEFINE ADC_BITS 10 ‘A/D çevirim sonucu kaç bit olacak<br/>
+DEFINE ADC_CLOCK 3 ‘Clock kaynağı (3=rc)<br/>
+DEFINE ADC_SAMPLEUS 100 ‘Örnekleme zamanı mikro saniye cinsinden.</span></strong></div><div><strong><span>Sırası ile tekrar gözden geçirirsek;</span></strong></div><div><strong><span>DEFINE ADC_BITS 10</span></strong><span><br/>
+ADC çevirim sonucunun kaç bitlik olacağını ayarlamaktadır. Sonuç 8 bit ise buraya 8 , 10 bit ise buraya 10 yazılmalıdır. Tabiiki kullanılacak değişken tespit edilen Bit değerine uygun olmalıdır.</span></div><div><strong><span>DEFINE ADC_CLOCK 3 ‘Clock kaynağı (3=rc)</span></strong><span><br/>
+Adc çevrim işlemlerinde her bit karşılığı bir Clock palsı ile belirlenir. Clock kaynağı olarak Pic in osilatörü veya dahili RC osilatör kullanılır. ADC işlemlerinde Bit başına çevirim süresi yaklaşık 1,6 mikro saniye olmalıdır. Pic in kendi osilatörü kullanılacak ise bu süreyi tutturmak için sistemi çalıştıran kristal frekansına göre bir hesap yapılıp gerekli parametre bulunmalı ve buraya yazılmalıdır. Şimdi örnek bir hesap yapalım.</span></div><div><strong><span>Bu hesapta kullanabileceğimiz formül şöyledir;</span></strong><span><br/>
+</span><strong><span>Tçevirim= X/Fosc.</span></strong><span><br/>
+Burada X değeri 2 veya 8 veya 32 olabilmektedir. Fosc ise kristal frekansı olup MHZ cinsindendir.</span><strong><span>Tçevirim=1,6 us.</span></strong><span> Olduğuna göre şimdi diyelim ki kristal frekansımız 4 Mhz ve Pic’in osilatörü nü kullanacağız. Hesaba göre ;</span></div><div><strong><span>(00) Tcevirim=2/4 = 0,5 us çıkar 1,6 dan çok küçük olduğu için uygun değildir.<br/>
+(01) Tcevirim=8/4 = 2 us çıkar 1,6 dan büyük ve yakın olduğu için kullanılabilir.<br/>
+(10) Tcevirim=32/4 = 8 us çıkar 1,6 dan çok büyük olduğu için uygun değildir.</span></strong></div><div><span>Kullanılabilir olan 8 değerinin Define komutundaki karşılığı (%01=1) 1 dir.O halde komut</span></div><div><strong><span>DEFINE ADC_CLOCK 1</span></strong><span> ‘olacaktır.<br/>
+Aynı hesabı </span><strong><span>20 MHz</span></strong><span> için yapar isek;</span></div><div><strong><span>(00) Tcevirim=2/20 = 0,1 us çıkar 1,6 dan çok küçük olduğu için uygun değildir.<br/>
+(01) Tcevirim=8/20 = 0,4 us çıkar 1,6 dan çok küçük olduğu için uygun değildir.<br/>
+(10) Tcevirim=32/20 = 1,6 us çıkar 1,6 ile aynı olduğundan çok uygundur.</span></strong></div><div><span>O halde komut; (%10=2)</span></div><div><strong><span>DEFINE ADC_CLOCK 2</span></strong><span> ‘olacaktır.</span></div><div><span>Kristal osilatör ün uygun olmadığı durumlarda (%11=3) bu komut 3 olarak verilerek dahili RC osilatör kullanılır. En çok kullanılan seçenek budur.</span></div><div><strong><span>Son olarak;</span></strong><span><br/>
+</span><strong><span>DEFINE ADC_SAMPLEUS 100</span></strong><span> komutunu inceleyelim.</span></div><div><strong><span>ADC</span></strong><span> çevirim işleminin dahili bir kondansatörün önce şarj edilip sonra deşarj olma süresinin ölçüldüğünü söylemiş idik. Belirtilen</span><strong><span>ADC_SAMPLEUS </span></strong><span>süresi ADC işleminin başlatılmasını müteakip yani </span><strong><span>ADON </span></strong><span>bit inin set edilmesini müteakip uygulanan bir gecikme süresidir ve bir yerde kondansatörün şarj süresi olarak açıklanır. Genelde </span><strong><span>50-100 us</span></strong><span> dolayındaki süreler çevirim için uygun gelmektedir.</span></div><div><strong><span>Son bir örnek vererek ADC konusunu bitirelim.</span></strong><span><br/>
+Örneğimiz 5K değerinde bir termistör ün ısı sensörü olarak kullanımına ait bir örnek olacaktır. Termistör değerini ölçerek ekranda buna karşılık gelen sıcaklık değerini göstermeye çalışacağız. Kullanacağımız termistör </span><strong><span>NTC</span></strong><span> (Negative Temperature Coefficient) tipi bir termistör olacak yani sıcaklık arttıkça direnç değeri azalacak. Birde </span><strong><span>PTC </span></strong><span>tipleri mevcut olup bunlarda sıcaklık arttıkça direnç değeri de artmaktadır.<br/>
+Programa geçmeden önce bazı varsayımlarımız olacak. 5 K lık termistör ’ün değeri 25 oC de ölçülen değeridir. Varsayalım ki 0 oC de ki değeri 6 K olsun. 50 oC de ise 3 K olsun. Bu kriterleri kullanarak programımızı yazalım. Amacımız bu termistör ü kullanarak bir termometre yapmak olacaktır. Önce devremizi verelim</span></div><div><span><img alt="picbasic_isi" height="463" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/picbasic_isi.jpg" title="picbasic_isi" width="626"/></span></div><div><span>5 K lık termistör 0 derecede 6 K olacağı ve 50 derecede 3K ya düşeceği için yaklaşık 3K lık bir direnç sabit kalmakta yalnızca 3 K lık bölüm değişmektedir. O nedenle şemada 5 K lık termistör 3K (Pot) + 3K sabit Direnç olarak gösterilmiştir.</span></div><div><strong><span>ÖRNEK PROGRAM : TERMISTOR.BAS</span></strong></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : TERMISTOR.BAS *<br/>
+‘* Author : [Erol Tahir Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 21.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+TRISA=000001<br/>
+TRISB=0<br/>
+TRISC=0<br/>
+TRISD=0<br/>
+‘——————————————————————————-<br/>
+@ DEVICE pic16F877<br/>
+@ DEVICE pic16F877, WDT_on<br/>
+@ DEVICE pic16F877, PWRT_ON<br/>
+@ DEVICE pic16F877, PROTECT_OFF<br/>
+@ DEVICE pic16F877, XT_OSC<br/>
+‘——————————————————————————-<br/>
+DEFINE LCD_DREG PORTB ‘LCD data bacakları hangi porta bağlı?<br/>
+DEFINE LCD_DBIT 4 ‘LCD data bacakları hangi bitten başlıyor?<br/>
+DEFINE LCD_EREG PORTB ‘LCD Enable Bacağı Hangi Porta bağlı?<br/>
+DEFINE LCD_EBIT 3 ‘LCD Enable Bacağı Hangi bite bağlı ?<br/>
+DEFINE LCD RWREG PORTB ‘LCD R/W Bacağı Hangi Porta bağlı?<br/>
+DEFINE LCD_RWBIT 2 ‘LCD R/W Bacağı Hangi bite bağlı ?<br/>
+DEFINE LCD_RSREG PORTB ‘LCD RS Bacağı Hangi Porta bağlı ?<br/>
+DEFINE LCD_RSBIT 1 ‘LCD RS bacağı Hangi Bite bağlı ?<br/>
+DEFINE LCD_BITS 4 ‘LCD 4 bit mi yoksa 8 bit olarak bağlı?<br/>
+DEFINE LCD_LINES 2 ‘LCD Kaç sıra yazabiliyor</span></strong></div><div><strong><span>DEFINE ADC_BITS 10 ‘A/D çevirim sonucu kaç bit olacak<br/>
+DEFINE ADC_CLOCK 3 ‘Clock kaynağı (3=rc)<br/>
+DEFINE ADC_SAMPLEUS 100 ‘Şarj zamanı mikro saniye cinsinden.<br/>
+‘——————————————————————————-<br/>
+ADCON1=%10001110 ‘7. bit 1 yapıldı 10 bit sonuç almak için.<br/>
+‘——————————————————————————-<br/>
+ISI VAR word<br/>
+HAM VAR WORD<br/>
+ONDA VAR BYTE<br/>
+‘——————————————————————————-<br/>
+Low PORTB.2 ‘ LCD R/W line Low (W), şemada direkt GND ye bağlanabilir.<br/>
+LCDOut $FE,1 ‘ LCD de CLS yapar<br/>
+pause 200 ‘ LCD nin açılması için gerekli süredir.<br/>
+‘——————————————————————————-</span></strong></div><div><strong><span>BASLA:<br/>
+ADCIN 0,HAM ‘0 nolu kanaldan Analog değeri oku ve RAW değişkenine aktar.</span></strong></div><div><strong><span>BAK: IF ADCON0.2=1 THEN BAK ‘Çevirme işlemi tamamlanınca Adcon0.2=0 olacak.</span></strong></div><div><strong><span>lcdout $FE,1,”HAM =”,# HAM<br/>
+‘50 derecede okunan ADC değeri 256 ve 0 derecede okunan 146 olduğundan<br/>
+‘0-50 derece arası okunan değer farkı 110 dur (256-146) . O halde her bir derece<br/>
+‘için okunması gereken değer 110/50=2,2 olacaktır. Pic e uyarlamak için<br/>
+‘okunan değeri 10 ile çarpıp 22 ye bölersek direkt sıcaklığı bulmuş olacağız.<br/>
+‘ondalık değeri de hesaplamak için 10 yerine 100 ile çarpıyoruz.</span></strong></div><div><strong><span>ISI=((HAM-146)*100)/22<br/>
+onda=ISI//10<br/>
+ISI=ISI/10<br/>
+LCDOUT $FE,$C0,” ISI=”,#ISI,”,”,#onda,”`C”<br/>
+pause 500<br/>
+goto basla</span></strong></div></div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-13.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

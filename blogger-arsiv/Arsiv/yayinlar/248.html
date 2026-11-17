@@ -1,0 +1,71 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flip-flop lar hakkında genel bilgiler | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Flip-flop lar hakkında genel bilgiler</h1><div>2010-10-15 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><tr><td valign="top"><h1 align="center">Flip-floplar</h1>        Sayısal bir makinede bilginin saklanmasındaki temel devrelere flip-flop'lar denir. Çeşitli temel flip-flop tipleri ile bir çok devre tasarımı vardır. Bununla birlikte tüm flip-floplarda 2 karakteristik kullanılır;<br/>
+        1) Flip-flop çift dengeli (bistable) bir elemandır yani 0 durumu ve 1 durumu olarak gösterilebilecek iki kararlı durumu olan bir devredir. Çift dengeli karakteristiği sebebiyle bir ikilik bit bilgisini saklayabilirler. Flip-flop girişlere tepki gösterir. Bir giriş onun 1 durumuna gitmesine sebep olduğundan 0 durumuna gitmesine sebep olacak bir sinyal gelinceye kadar bu durumda kalır ve 1 saklanır. Benzer şekilde 0 durumuna yerleştirilen bir flip-flop 1 durumuna gelmesi söyleninceye kadar 0 durumunda kalır. Bu flip-flop'un bilindiği durumu koruma yeteneği şeklinde basit karakteristik sayısal bilgisayarın işlerm yada hesaplama bölümünde biliginin saklanması için temeldir.<br/>
+        2) Flip-flop'un biri diğerini tamamlayan iki çıkışı vardır.Aşağıda RS Flip-flop'u denen belirli bir tip flip-flop'un blok diyagramı görülmektedir. R ve S olarak tasarlanan iki girişi Q ve Q' diye belirlenmiş iki çıkışı vardır.<br/>
+        İki durumlu işlemlerini anlatmak ve incelemek için bilgisayar endüstrisinde çeşitli standart gelenekler vardır.<br/>
+        1) Her flip-flop'a bir isim verilir. Geleneksel isimler Q, X, Y, A, B vs... gibi harfler yada A1 ve B2 ile gösterilebilir. Aşağıdaki flip-flop Q diye isimlendirilsin. Q ve Q' olmak üzere iki çıkışı bulunmaktadır. Q ve Q' çıkış hatları daima birbirinin tamamlayanı şeklindedir, yani Q çıkış hattı 1 ise X' çıkış hattı 0 ve Q çıkış hattı 1 ise Q' çıkış hattı 1 olacaktır.<br/>
+<div align="center"><img loading="lazy" src="http://www.elektronikekibi.com/kubilay/img/rsff.png"/><br/>
+RS Flip-flop</div>        2) Flip-flop konumu , Q çıkışının durumunu alır. Böylece çıkış hattı Q, 1 sinyali olduğunda, Q flip-flop 1 denir. Benzer şekilde Q hattı 0 sinyalini içeriyorsa , Q flip-flop'u 0 durumundadır.<br/>
+        Bu kullanımlar çok önemle ve gelenekseldir. Q flip-flop 1 durumundayken çıkış hattı Q, 0 durumunda ve Q flip-flop'u 0 durumundayken , Q' çıkış hattının 1 olduğuna dikkat edilmelidir.<br/>
+<b>En çok kullanılan flip-lop'lar;</b><br/>
+<b>SR Flip-flop;</b><br/>
+        SR flip-flop'un iki giriş hattı vardır. Bunlar flip-flop'u kontrol etmek için kullanılır. Kuralları aşağıdaki gibidir.<br/>
+<br/>
+<ul><li>S ve R giriş hatlarının her ikiside 0 olduğu sürece flip-flop bir önceki durumunu korur.</li>
+<li>S'nin 1 ve R' nin 0 olduğu durum flip-flop'u 1 (set) durumuna getirir.</li>
+<li>R'nin 1 ve S' nin 0 olduğu durum flip-flop'u 0 (reset) durumuna getirir.</li>
+<li>Aynı anda R ve S' nin 1 olması yasaktır. Aynı anda hem başlat hemde başa dön hatlarına emir veren bu girdi, belirsiz bir giriştir.</li>
+</ul><br/>
+<table align="center" border="1" cellpadding="8" cellspacing="0"><tbody>
+<tr><th>R   S</th><th>Q</th></tr>
+<tr><td>0   0<br/>
+0   1<br/>
+1   0<br/>
+1   1</td><td>Q0<br/>
+1 (set)<br/>
+0 (reset)<br/>
+tanımsız</td></tr>
+</tbody></table><br/>
+<b>JK Flip-flop;</b><br/>
+        JK flip-flop'u hemen hemen SR flip-flop'u ile aynı tepkileri verir. Bu flip-flop'u SR flip-flop' undan ayıran tek fark J ve K uclarına 1 geldiğinde tanımsız olmamasıdır. Bu flip-flop'ta JK uclarına 1 geldiğinde flip-flop bir önceki aldığı değerin tersi bir değer alır.<br/>
+<br/>
+<table align="center" border="1" cellpadding="8" cellspacing="0"><tbody>
+<tr><th>J   K</th><th>Q</th></tr>
+<tr><td>0   0<br/>
+0   1<br/>
+1   0<br/>
+1   1</td><td>Q0<br/>
+1 (set)<br/>
+0 (reset)<br/>
+Q'0</td></tr>
+</tbody></table><br/>
+<b>D Flip-flop (DFF);</b><br/>
+        D flip-flop'u tek giriş hatlı bir flip-flop'tur.<br/>
+<br/>
+<table align="center" border="1" cellpadding="8" cellspacing="0"><tbody>
+<tr><th>D</th><th>Q</th></tr>
+<tr><td>0<br/>
+1</td><td>0 (reset)<br/>
+1 (set)</td></tr>
+</tbody></table><br/>
+<b>Toggle Flip-flop (TFF);</b><br/>
+        T flip-flop'u DFF gibi tek giriş hatli bir flip-flop'tur .T flip-flop'u 0 sinyali geldiğinde bir önceki konumunu korur fakat 1 sinyali geldiğinde bir önceki konumunun tersini alır.<br/>
+<br/>
+<table align="center" border="1" cellpadding="8" cellspacing="0"><tbody>
+<tr><th>T</th><th>Q</th></tr>
+<tr><td>0<br/>
+1</td><td>Q0<br/>
+Q'0</td></tr>
+</tbody></table><br/>
+<b>CLOCK</b><br/>
+        Flip-flop'ların önemli bir özelliğide saatlendirilmiş olmalarıdır. Bunun anlamı flip-flop'larda onların çalışmalarını düzenleyen maser clock (ana saat) ucunun bulunmasıdır. Master clock sinyalleri kare dalga şeklinde olup flip-flop'lar bu dalgaların herbir iniş veya çıkışında hareket eder. Buna tetikleme denir.<br/>
+        Saatli flip-flop'ların sınırlandırılmış bir şekli mandallayıcı (latch) diye adlandırılır, aşağıdaki verdiğimiz şekillerdede görüldüğü gibi dört tane VE-DEĞİL kapısı kullanılarak gerçekleştirilir. Devre S ve R girişlerine ve ayrıca saat girişi CL ' ye sahiptir. Mandallayıcı flip-flop saat gişindeki pozitif geçiş değil ,pozitif seviye tarafında aktif hale getirilir.Böylece flip-flop saat sinyalinin pozitif kısmı boyunca giriş seviyesini alır ve saat seviyelerinde değişiklik olmaz.<br/>
+<b>FLIP-FLOP TASARIMLARI</b><br/>
+<b>1) Kapılanmış(Saatli) SR Flip-Flop;</b><br/>
+<div align="center"><img height="135" loading="lazy" src="http://www.elektronikekibi.com/kubilay/img/kapilanmissrff.gif" width="408"/></div><b>2) Kapılanmış ( Saatli) D Flip-Flop;</b><br/>
+<div align="center"><img height="139" loading="lazy" src="http://www.elektronikekibi.com/kubilay/img/kapilanmisdff.gif" width="409"/></div><b>MASTER-SLAVE (ANA-UYDU) FLIP-FLOP'U;</b><br/>
+        Mandallayıcı tip flip-flop'un yol açtığı problemleri yok etmek için daha karmaşık flip-flop tasarımları kullanır.En yaygın olarak flip-flop'un çıkışındaki değişimleri başlatan saatten kenar tetikleneni kullanılır ve bunun temeli flip-flop oluşturmak için iki tek ve ya mandallayıcı flip-flop kullanımına dayanır.<br/>
+        Aşağıdaki şekilde esas flip-flop tasarımı gösterilmektedir.Aşağıdaki şekilde bazı kapılarla birlikte flip-flop'u içeren bir kenar tetiklemeli RS flip-flop görünmektedir.Her iki flip-flop ana- uydu diye adlandırılır.En soldaki VE-DEĞİL kapıları ana flip-flob'u ,en sağdaki VE-DEĞİL kapılarıda uydu flip-flop'u oluşturur.<br/>
+<div align="center"><img height="117" loading="lazy" src="http://www.elektronikekibi.com/kubilay/img/masterslaveff.gif" width="432"/></div><b>MASTER SLAVE SAYICILAR;</b><br/>
+        Flip-flop'larla sayıcılar yapılabilir. Örnek olarak aşağıda tasarladığımız 0-15 arası hekzadecimal olarak sayabilen JK flip-flop'larla gerçekleştirdiğimiz sayıcıyı sizde bilgisayar similasyonunda gerçekleştirebilirsiniz.<br/>
+<div align="center"><img loading="lazy" src="http://www.elektronikekibi.com/kubilay/img/masterslavesayici.png"/></div><div align="right"><span>Hazırlayan <a href="mailto:kubilay@muhendis.gen.ms">Kubilay Cem Kabacan</a></span></div><div><br/>
+</div></td></tr></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/10/flip-flop-lar-hakknda-genel-bilgiler.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

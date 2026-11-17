@@ -1,0 +1,320 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DİP TRACE PROGRAMI Ve TÜRKÇE  KULLANMA KILAVUZU | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>DİP TRACE PROGRAMI Ve TÜRKÇE  KULLANMA KILAVUZU</h1><div>2010-04-09 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span></span><br/>
+<table><tbody>
+<tr><td></td><td><span><b>DİP TRACE PROGRAMI TÜRKÇE KULLANMA KILAVUZU</b></span><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiG_Vnh9aX1gTbRcJzBNfEbFOQ21kMccj3zwe0pTsu3CPbKiRm1Fec34T9_Z57e5HVSsqVe4IxtgE9oHDe1mhV1o2-OY1uNn-LaquS6b9wzxFJFW70W-Q06uGsRqLvS259abcwIqva3cGCf/s1600/turkce-diptrace-kullanim-kilavuzu.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="150" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiG_Vnh9aX1gTbRcJzBNfEbFOQ21kMccj3zwe0pTsu3CPbKiRm1Fec34T9_Z57e5HVSsqVe4IxtgE9oHDe1mhV1o2-OY1uNn-LaquS6b9wzxFJFW70W-Q06uGsRqLvS259abcwIqva3cGCf/s200/turkce-diptrace-kullanim-kilavuzu.jpg" width="200"/></a></div><span><b><br/>
+</b></span><br/>
+<br/>
+<br/>
+<br/>
+<b><span><span>Türkçe DipTrace Programı ile Baskı Devre Kartı Yapımı-I</span></span></b></td></tr>
+<tr><td><br/>
+</td><td>İlk yazımda, pcb yapımında en çok kullandığım program olan DipTrace programını tanıtacağım. Dip Trace programı %100 Türkçe çalışan bir baskı devre tasarım programıdır. Türkçe olduğundan kolay ve rahatlıkla kullanılabilir. Ben baskı devre kartlarımı diptrace programı ile yapıyorum ve çok memnunum. Bütün elektronikle uğraşanlara bu programı kullanmalarını tavsiye ederim. Programın 250 pinlik ücretsiz sürümünü  adresinden indirebilirsiniz. Şimdi adım adım diptrace programı ile baskı devre kartımızı tasaramaya başlayalım</td></tr>
+<tr><td><br/>
+</td><td>Uygulamasını yapacağımız devre 555 entegresi ile yapılan ayarlanabilir flip-flop devresi.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjltY5lQ86J2rFy10OVKHomY9Wsp1eHFXs4FEoGHoYr1aI7extILBdJTXm7WykUCieywFlanufClq2Td8WtsK2o6oDhIVw5qyzwuanHP_ijHX4ziPqp-EfJIwBJ_-XRaddhu1doxSpsy88v/s1600/resim1.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjltY5lQ86J2rFy10OVKHomY9Wsp1eHFXs4FEoGHoYr1aI7extILBdJTXm7WykUCieywFlanufClq2Td8WtsK2o6oDhIVw5qyzwuanHP_ijHX4ziPqp-EfJIwBJ_-XRaddhu1doxSpsy88v/s200/resim1.jpg" width="168"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Öncelikle DipTrace-schematic programını açıyoruz. İlk önce elimizde olan devre şemasını schematic programında çizeceğiz. Araç çubuğundan Görünüm-Ölçü Birimi-mm olarak ayarlıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1QCA6w_6U-t8XkQGZ-6gD5AMnWCyZ557q51zL6aEo1k67k143MBXvk-UVTpKE3fN0AjJPiCPOwb_gzgTN_izYEW058Q8d6TTsyWslCr-TNpfqnB3q8LZiCgEM0jro7DBeKCr8PcUwThap/s1600/resim2.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1QCA6w_6U-t8XkQGZ-6gD5AMnWCyZ557q51zL6aEo1k67k143MBXvk-UVTpKE3fN0AjJPiCPOwb_gzgTN_izYEW058Q8d6TTsyWslCr-TNpfqnB3q8LZiCgEM0jro7DBeKCr8PcUwThap/s200/resim2.jpg" width="152"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td></td><td>Devremizde 4 adet direnç bulunuyor. Bu dirençleri Discrete menüsünden çağırıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjj1di70x6Otroh2OYnRf5Q5Yy6KN6StyhAOPVc5SxBWDFg75ZocbiG7GUftgME6dIEirvzD4_XEH8j2p9XSkEynYCPerG29gZB3iZZjEesMk5qAHBYBp6OeH68jHQUCJR3czmBEk6Hu2jX/s1600/resim3.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="128" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjj1di70x6Otroh2OYnRf5Q5Yy6KN6StyhAOPVc5SxBWDFg75ZocbiG7GUftgME6dIEirvzD4_XEH8j2p9XSkEynYCPerG29gZB3iZZjEesMk5qAHBYBp6OeH68jHQUCJR3czmBEk6Hu2jX/s200/resim3.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td></td><td>4 adet direncimizi çağırdıktan sonra adlandırıyoruz. Adlandırma yapmak için elemanların üzerine çift tıklıyoruz yada sağ tıklayıp özellikler diyoruz. Çıkan pencerede Genel diyoruz ve Tip kısmına değerleri giriyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimqbXZkshsynviHHX-_ijM62fRCOcafpYHNToMPwBMGb9fpCFY3P55xa3EKFMj4VXlupLdYQ1uQxjlagpzzmXK2C5IN2gh5KddRRGIq3PHLj7O2JnJNNMZ7xHv1-LuFiIqier3-XZ2B6ks/s1600/resim4.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEimqbXZkshsynviHHX-_ijM62fRCOcafpYHNToMPwBMGb9fpCFY3P55xa3EKFMj4VXlupLdYQ1uQxjlagpzzmXK2C5IN2gh5KddRRGIq3PHLj7O2JnJNNMZ7xHv1-LuFiIqier3-XZ2B6ks/s200/resim4.jpg" width="120"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Daha sonra aynı pencerede Etiketler dedikten sonra İlave Etiket başlığının altındaki Göster kısmını Tip olarak ayarlıyoruz, Konum kısmını da verdiğimiz değerin nerede görünmesini istiyorsak oraya ayarlıyoruz<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEip0AgUZPW6YkwazwRYXEIbGLGi3WLtAbf7qronRYDfHDGaSJkwKdGTH5EYMp_oBQBrz-r5T41UooLjJdrz7UPN679boGYapNvlmAh7nCAz8HryuNQhwQHvaXES5bpSMw0O7QLr9redpT3g/s1600/resim5.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEip0AgUZPW6YkwazwRYXEIbGLGi3WLtAbf7qronRYDfHDGaSJkwKdGTH5EYMp_oBQBrz-r5T41UooLjJdrz7UPN679boGYapNvlmAh7nCAz8HryuNQhwQHvaXES5bpSMw0O7QLr9redpT3g/s200/resim5.jpg" width="120"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Yukarıdaki adlandırma işlemleri bütün elanlara aynı şekilde uygulayacağız. Aynı şekilde Discrete bölümünden kondansatörü ve ledleri çağırıyoruz<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCP_gLuMo2YO1SY6PQW_D405-IvNZBBjtTRkE436a4uoKnzEG6TLsMgbXeI96G1EWpQdrsXYBs6kEwyF5CtHG-UVN1Y6rfhEU91zM30uJBnWvjRpck4mYU8tqp8qlrr033aKWLoFyTsnjJ/s1600/resim6.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCP_gLuMo2YO1SY6PQW_D405-IvNZBBjtTRkE436a4uoKnzEG6TLsMgbXeI96G1EWpQdrsXYBs6kEwyF5CtHG-UVN1Y6rfhEU91zM30uJBnWvjRpck4mYU8tqp8qlrr033aKWLoFyTsnjJ/s200/resim6.jpg" width="176"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<!--more-->.</td></tr>
+<tr><td><br/>
+</td><td>Geriye çağırmadığımız 555 entegresi, potansiyometre ve batarya kaldı. Onları da aratarak çağıracağız. Eleman araması yapmak için araç çubuğundan Kütüphane-Eleman Ara diyoruz<br/>
+<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5fFoLmWoP-YHz6niNuT89fxcHIYWkD19XiNRkL0OC5-s9Rku6uwhgPIZqQcsIiFcQ8EAXmJubZOsk8Z4bQh85iHWwdnCRBPfhtVSyXd8VtCxNj_3VRUBDHPVj7qqYXckiS9MbZ1y6R0hv/s1600/resim7.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="74" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5fFoLmWoP-YHz6niNuT89fxcHIYWkD19XiNRkL0OC5-s9Rku6uwhgPIZqQcsIiFcQ8EAXmJubZOsk8Z4bQh85iHWwdnCRBPfhtVSyXd8VtCxNj_3VRUBDHPVj7qqYXckiS9MbZ1y6R0hv/s200/resim7.jpg" width="200"/></a><br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Çıkan pencerenin İsim bölümüne NE555N yazıp Şimdi Bul diyoruz. Arama Sonuçları bölümünde arattığımız eleman çıkacak. elemana tıklayıp Yerleştir dedikten sonra 555 entegresini ekranımıza çağırmış oluyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiv7atP1PDAvPPnK4n63h2FGlcZo7sEzZFPyqYCeHw_KW5RcdsW5P4oWQ3322mquD6v4u3OfC6Ly-CpHAJ0g76r66Iy_DPLPBcY863gxJwd_jHirK6Rw9dznpUiHBUBZzwYQZtaroSU7k7Y/s1600/resim8.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiv7atP1PDAvPPnK4n63h2FGlcZo7sEzZFPyqYCeHw_KW5RcdsW5P4oWQ3322mquD6v4u3OfC6Ly-CpHAJ0g76r66Iy_DPLPBcY863gxJwd_jHirK6Rw9dznpUiHBUBZzwYQZtaroSU7k7Y/s200/resim8.jpg" width="173"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Aynı işlemi potansiyometre ve batarya için de yapıyoruz. Potansiyometreyi aratmak için isim kısmına POT yazıyoruz ve bataryayı aratmak içinde BAT yazıp aratıyoruz. Bu işlemlerden sonra bütün devre elemanlarını ekranımıza çağırmış bulunuyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzQ-IjZzbKyKoWXzvYtcm0WKNcU03G7LQ-U-YNtO4ioy3Ro30FARoioXQBIx9dAWyS4b5H29WeDaBSOaa1Xvz2L7WxRCoEo0tfqkCR9FTQGlwvKQFeSZyuQY4lyd2-GS4k90eG2xKWq2r1/s1600/resim9.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="144" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhzQ-IjZzbKyKoWXzvYtcm0WKNcU03G7LQ-U-YNtO4ioy3Ro30FARoioXQBIx9dAWyS4b5H29WeDaBSOaa1Xvz2L7WxRCoEo0tfqkCR9FTQGlwvKQFeSZyuQY4lyd2-GS4k90eG2xKWq2r1/s200/resim9.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Elemanları ekrana çağırma işlemini bitirdikten sonra sıra birleştirme işlemine geldi. Birleştirme işlemini, araç çubuğundan sırasıyla Objeler-Devre-Elektriksel Bağlantıyı Çiz diyerek yapıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEistf63zBqNrDUu5GVUQ2ylYaxueUH99Oo_Wy2XLcQlNe_FfPWAqnyWxFdCCuVswFwZrn2SmvQpshO3loZqFlK7IjWVrmM77zGtda-49ITBPPhNDue2Tg7PYFqo7Q5Q8CzJeBBKvr23b1QP/s1600/resim10.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="89" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEistf63zBqNrDUu5GVUQ2ylYaxueUH99Oo_Wy2XLcQlNe_FfPWAqnyWxFdCCuVswFwZrn2SmvQpshO3loZqFlK7IjWVrmM77zGtda-49ITBPPhNDue2Tg7PYFqo7Q5Q8CzJeBBKvr23b1QP/s200/resim10.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOflYSuInooIj2MXQG1yezXr6zmFJSNVkCz3bfDj_8tX40m_7Tkc84nKmo5cd7GEeXevfxSjZx0-2UQgkXOUp7OhWnOok9X-08I9bWYpOQGITmK_Y_Bjw6s222EiPhjSD0DiMhACAZ9MO8/s1600/resim11.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="88" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOflYSuInooIj2MXQG1yezXr6zmFJSNVkCz3bfDj_8tX40m_7Tkc84nKmo5cd7GEeXevfxSjZx0-2UQgkXOUp7OhWnOok9X-08I9bWYpOQGITmK_Y_Bjw6s222EiPhjSD0DiMhACAZ9MO8/s200/resim11.jpg" width="200"/></a></div><br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Eğer elemanları yatay veya dikey konumda çevirmek istiyorsak, çevirmek istediğimiz elemanın üzerine asğ tıklıyoruz ve Çevir dedikten sonra yatay konumda çevirmek istiyorsak yatayı, dikey konumda çevirmek istiyorsak dikeyi tıklıyoruz<br/>
+<div></div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1TpL6zR1375O-lwo8iIxhN1Aaa8-21LtoapLRQJKYUnfh2mQSpY-PXHXa7NzbD9qFUswnRaNYXrrTuEUz-d2gDyFseZytCSl7AZtybzxVNlr4pzGLk30qdOUSeNyFqsq8KI2gPGQyhuS8/s1600/resim12.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1TpL6zR1375O-lwo8iIxhN1Aaa8-21LtoapLRQJKYUnfh2mQSpY-PXHXa7NzbD9qFUswnRaNYXrrTuEUz-d2gDyFseZytCSl7AZtybzxVNlr4pzGLk30qdOUSeNyFqsq8KI2gPGQyhuS8/s200/resim12.jpg" width="161"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Eğer elemanları döndürmek istiyorsak, döndürmek istediğimiz elemanın üzerine tıklayıp Ctrl+R tuşlarına basıp döndürme işlemini gerçekleştiriyoruz.</td></tr>
+<tr><td><br/>
+</td><td>Elemanların birleştirme işlemlerini tamamlıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtDTgrf09bH_K8es_APPezM8oLH1LRSphhvR7PkY-1xpr7HSW_5vMjPwmQabMghhm2p2DdzkltArXZFLfK_Zcq7r8UmcII4KCKx6QTMvLfZfweYn9JK6bELYmZJzguT2x7tN4HLgaCA99S/s1600/resim13.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="144" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtDTgrf09bH_K8es_APPezM8oLH1LRSphhvR7PkY-1xpr7HSW_5vMjPwmQabMghhm2p2DdzkltArXZFLfK_Zcq7r8UmcII4KCKx6QTMvLfZfweYn9JK6bELYmZJzguT2x7tN4HLgaCA99S/s200/resim13.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Birleştirme işleminden sonra tasarımımızı kaydediyoruz. Şimdi, tasarımımızı PCB Layout programına aktarmadan önce kılıfı olmayan elemanlara kılıf atayacağız. Devremizde kılıfı olmayan 2 tane eleman mevcut. Bunlar potansiyometre ve batarya. İlk önce bataryamıza kılıf atayalım. Bunun için bataryanın üzerine çift tıklıyoruz yada sağ tıklayıp özellikler diyoruz. Çıkan pencerede Kılıf Ata seçeneğini seçiyoruz.<span></span><span></span> <br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOlbc8082R5-Sd44rv7GwNaJYJjRzs4nmIqvQPznARc5YUiFrqSFRnomcoB9MbGTDT75lxN6BmMBDKunxzR3d0R-g0XMUs8fBzkBVckOKyelkxu8Zur1K5wDfP4cLc7JdLJcOlKq2vo5ti/s1600/resim14.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOlbc8082R5-Sd44rv7GwNaJYJjRzs4nmIqvQPznARc5YUiFrqSFRnomcoB9MbGTDT75lxN6BmMBDKunxzR3d0R-g0XMUs8fBzkBVckOKyelkxu8Zur1K5wDfP4cLc7JdLJcOlKq2vo5ti/s200/resim14.jpg" width="111"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td></td><td>Daha sonra karşımıza çıkan pencerede Ekle seçeneğini seçiyoruz. Tekrar çıkan pencerede bizden kılıfların bulunduğu konumu seçmemizi istiyor. Konumu C:\Program Files\DipTrace\Lib olarak buluyoruz ve açılan pencerede misc.lib dosyasını seçiyoruz ve Aç diyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEDewkdsYsDpFU1t6nptsxWWy_S9LvZB0Fmr6RTRrHI5U-TJbkNJvovLTZtUVGeHiHezaNejSzmGJBONTCdimUQgj4x4i_2lml_gqSXLQIocpDO-8h-ZMisK4YVpIr8xiJHoWD36VXCd9W/s1600/resim15.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="116" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEDewkdsYsDpFU1t6nptsxWWy_S9LvZB0Fmr6RTRrHI5U-TJbkNJvovLTZtUVGeHiHezaNejSzmGJBONTCdimUQgj4x4i_2lml_gqSXLQIocpDO-8h-ZMisK4YVpIr8xiJHoWD36VXCd9W/s200/resim15.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Daha sonra çıkan pencerede BAT-2 seçeneğini seçiyoruz. Orta kısımda seçtiğimiz kılıf  belirecektir. Son işlem olarakta kılıfın pinlerini belirliyoruz. Bu işlemi faremizle yapacağız. İlk önce negatif ucu belirlemek için NEG seçeneğine tıklıyoruz ve daha sonra ortadaki kılıfta negatif ucun hangisi olmasını istiyorsak onu seçiyoruz. Aynı işlemi pozitif ucu belirlemedede yapıyoruz. Bütün bu işlemlerden sonra Tamam diyoruz ve böylelikle bataryamızın kılıfını atamış olduk.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Jf2CfdMwtq3wpacK47ytH_b6j16rutSebp4pV0e3pr7FPNnLlp8rlxw49e9fiwnacDCIsDKctiNnlB4c_DEfRkRa0TpX4NJKhwuvpH1inJ6z8Uc5OIiNtok5ulG77IUtVMKqpebqshoI/s1600/resim16.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="116" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3Jf2CfdMwtq3wpacK47ytH_b6j16rutSebp4pV0e3pr7FPNnLlp8rlxw49e9fiwnacDCIsDKctiNnlB4c_DEfRkRa0TpX4NJKhwuvpH1inJ6z8Uc5OIiNtok5ulG77IUtVMKqpebqshoI/s200/resim16.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Şimdi sıra potansiyometremizin kılıfını belirlemeye geldi. Benim elimde bulunan potansiyometrenin kılıfı bulunmadığından kılıf tasarımını ben kendim yapacağım. Bunun için DipTracenin pattern Editör programını kullanacağız. Bu program ile DipTrace programında bulunmayan elemanların kılıf tasarımları rahatlıkla yapılabilir. Bizim için gerekli olan tek şey elimizde bulunan elemanın ölçülerini tam olarak bilmek. Elimizde bulunan elemanların ölçülerini datasheetlerinden bulabiliriz. Eğer datasheetleri elimizde yoksa cetvellede ölçüm yapabiliriz. Ben elimdeki potansiyometrenin bacak mesafelerini cetvelle ölçtüm.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtAMuq6nAeknJvvsnLq4JvOAOBMkUMV3rAC7r7YW7-B8LBHvULh3SaBOqN4FrjE0EJ5JgpBsoaKaAKLmZMfsFdlFsONo5fpXod3l30M2JbABOyw_C9wdYl16pYhxqA2jY9st-psqp_pZp7/s1600/resim17.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjtAMuq6nAeknJvvsnLq4JvOAOBMkUMV3rAC7r7YW7-B8LBHvULh3SaBOqN4FrjE0EJ5JgpBsoaKaAKLmZMfsFdlFsONo5fpXod3l30M2JbABOyw_C9wdYl16pYhxqA2jY9st-psqp_pZp7/s200/resim17.jpg" width="90"/></a></div><br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Potansiyometrenin bacakları arasındaki mesafe 0,5 cm (5 mm). Bu ölçüleri Pattern Editor programında kullanacağız</td></tr>
+<tr><td><br/>
+</td><td>Şimdi Pattern Editor programını açıyoruz. Ölçü birimini mm olarak ayarlıyoruz (Görünüm-Ölçü Birimi-mm). Araç çubuğunun altındaki ızgara aralığı kısmını 5 mmye ayarlıyoruz. Yada Görünüm-Izgara Aralığı-Özel seçeneğini seçtikten sonra çıkan pencereye 5,00 yazıyoruz. Daha sonra araç çubuğunun altındaki ped işaretine tıklıyoruz yada araç çubuğundan Objeler-Ped Yerleştir-Tek seçeneğini seçiyoruz. Daha sonra 3 adet yan yana ped yerleştiriyoruz. Önceden ızgara aralığını 5 mm olarak ayarladığımız için Pedlerin arasındaki mesafe otomatik 5 mm olacaktır.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgliShc3uK3aHG2FrkJRVxABko5fddIFX3yDoaKwLXgxCqdMOWWoj0lJDewoVVbC91KUEkVIVlmWlwG4itKVzkhnOEDtiLidSakckmgSzjTfhbwpX-W5Ic2mo_HNfTJEYVzSmYHooQL2ecq/s1600/resim18.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="91" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgliShc3uK3aHG2FrkJRVxABko5fddIFX3yDoaKwLXgxCqdMOWWoj0lJDewoVVbC91KUEkVIVlmWlwG4itKVzkhnOEDtiLidSakckmgSzjTfhbwpX-W5Ic2mo_HNfTJEYVzSmYHooQL2ecq/s200/resim18.jpg" width="200"/></a></div><br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Bu işlemlerden sonra potnsiyometremizin pin bağlantılarını yapmış bulunuyoruz. Şimdi elemanları plakete yerleştirirken zorluk çekmememiz için potansiyometrenin şeklini çizeceğiz. Bunun için araç çubuğunun altındaki çizgi yerleştir işaretine tıklıyoruz yada Objeler-Şekil Yerleştir-Çizgi Yerleştir seçeneğini seçiyoruz ve şeklimizi çiziyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsLUrpkqBoMvAY22PbuFL9lqUN9eMhUwW2krLdyQTO5eDbaZGefrwwIOl0NvQWnwVtj9xIRCCSrxHkZDaIeoxr7KK_EfCS0al5_C05ogO82CUDfvIjoYvn54kpjTBbCXnPNzHnSPfb7veX/s1600/resim19.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsLUrpkqBoMvAY22PbuFL9lqUN9eMhUwW2krLdyQTO5eDbaZGefrwwIOl0NvQWnwVtj9xIRCCSrxHkZDaIeoxr7KK_EfCS0al5_C05ogO82CUDfvIjoYvn54kpjTBbCXnPNzHnSPfb7veX/s200/resim19.jpg" width="130"/></a></div><br/>
+<br/>
+</td></tr>
+<tr><td></td><td>Kılıf tasarımını tamamladıktan sonra kılıfımızı araç çubuğundan Kütüphane-Farklı Kaydet seçeneğini seçip Lib klasörüne kaydediyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiz-YNAa2ARqKWGSybMYLr0EbMMek-t8irRCAuTTDZky2I2h26sTxCSnUBEFL5_fMJiorr6RZdGVMnKSJK46EhIP47Alh3ke4vYqJuahiZNVh_IgB6RjSgYlJQihWA-OCXo2cHgxVcKVs2/s1600/resim20.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="71" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiz-YNAa2ARqKWGSybMYLr0EbMMek-t8irRCAuTTDZky2I2h26sTxCSnUBEFL5_fMJiorr6RZdGVMnKSJK46EhIP47Alh3ke4vYqJuahiZNVh_IgB6RjSgYlJQihWA-OCXo2cHgxVcKVs2/s200/resim20.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td><div></div>Daha sonra Schematic programına tekrar geçiyoruz. Bataryamıza kılıf atarken yaptığımız işlemlerin aynısını potansiyometrfeye kılıf atarkende yazpıyoruz. Sadece Kılıf Ata penceresinde Ekle kısmından kendi kütüphanemizi seçiyoruz. Pin bağlantılarınıda belirledikten sonra potansiyometremizede kılıf  atamış bulunuyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7Cf8P8DqoPZup1WQswb7E7GDKeYfxm8FPlwbZZeShjMyXjnRfCVUZ1tefX3UkcBzTLYuL0RzWajY1Tr7ZVLzglaeIlHs6NpVipZ2dMKdOO6xaSzzmX-wIALxwbxwkdeY4Hf6DRSq4UK_j/s1600/resim21.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="116" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7Cf8P8DqoPZup1WQswb7E7GDKeYfxm8FPlwbZZeShjMyXjnRfCVUZ1tefX3UkcBzTLYuL0RzWajY1Tr7ZVLzglaeIlHs6NpVipZ2dMKdOO6xaSzzmX-wIALxwbxwkdeY4Hf6DRSq4UK_j/s200/resim21.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Şimdi tasarımımızı kaydettikten sonra PCB Layout programına geçebiliriz. Bunun için Schematics programındayken CTtrl+B tuşlarıyla yada araç çubuğundan Dosya-PCB ye Aktar seçeneğine tıklayarak, PCB Layout programına geçiyoruz.</td></tr>
+<tr><td><br/>
+</td><td>Elemanları faremizle istediğimiz gibi yerleştiriyoruz. Yada bütün elemanları otomatik yerleştirmek istiyorsak araç çubuğundan Yerleştirme-Otomatik Yerleştir seçeneğini seçiyoruz. Eğer sadece seçtiğimiz elemanları otomatik yerleştirmesini istiyorsak istediğimiz elemanları seçip araç çubuğundan Yerleştirme-Seçimi Otomatik Yerleştir seçeneklerini tıklıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQV_dZlcR7HQbJHkX8MjVPUtVqKg2kS-IFlEa6Br_HSSQugerfmC29Ity4fz7FppvIbhu-IAcFxJfx4T50N1jVxcI7DBL1yn3sX0iAyhEZeE3Mlq0fMM3_Jm_ZG6KdxLhzmONOoMb6rHk9/s1600/resim22.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="143" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQV_dZlcR7HQbJHkX8MjVPUtVqKg2kS-IFlEa6Br_HSSQugerfmC29Ity4fz7FppvIbhu-IAcFxJfx4T50N1jVxcI7DBL1yn3sX0iAyhEZeE3Mlq0fMM3_Jm_ZG6KdxLhzmONOoMb6rHk9/s200/resim22.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Bu arada ölçü birimini inç olarak ayarlıyoruz. Delik çaplarını ve yol kalınlıklarını belirlerken inç kullanıyorum. Yolları çizdirmeden önce delik çaplarını belirliyoruz. Bunun için delik çaplarını değiştireceğimiz pedin üzerine sağtıklayıp Ped Özellikleri diyoruz daha sonra aşağıdaki resimdeki gibi yada istediğimiz değerleri giriyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv0SLSb_vbId9T8oCCoFeL0UWCK5-OvVyI864MOxBoPvUfPBkiuXZCJHTxzv00O0_F8-YLP3q3nAwFxvWoQzZaKYgB7NKO_Ms7scOR648rI7ptoglJ3gz1V2slx3tirZV14Iw7lpVOVgRL/s1600/resim23.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhv0SLSb_vbId9T8oCCoFeL0UWCK5-OvVyI864MOxBoPvUfPBkiuXZCJHTxzv00O0_F8-YLP3q3nAwFxvWoQzZaKYgB7NKO_Ms7scOR648rI7ptoglJ3gz1V2slx3tirZV14Iw7lpVOVgRL/s200/resim23.jpg" width="103"/></a></div><br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Elemanların üzerindeki değerlerin görünmesi için değerinin görünmesini istediğimiz elemana çift tıklıyoruz yada sağ tıklayıp Özellikler diyoruz. Daha sonra çıkan pencerede Etiketler seçeneğini seçip İlave Etiket bölümünde Göster kısmını Tip olarak ayarlıyoruz. Konum kısmınıda değerin nerede görünmesini istiyorsak orayı seçiyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaAOhgO9X0im0RK9T6BM3kJiTQjdWjwjzfNTK0UsFvLcec-un6vETo63hm6bMgbMOsJrHDHyVLpsK4qZmLGzwA1DVvl6fEcSQHNuXg-AGWdQrZuvaB5wLoqCxqsoMACcStgq96tUWUrUtA/s1600/resim24.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="138" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiaAOhgO9X0im0RK9T6BM3kJiTQjdWjwjzfNTK0UsFvLcec-un6vETo63hm6bMgbMOsJrHDHyVLpsK4qZmLGzwA1DVvl6fEcSQHNuXg-AGWdQrZuvaB5wLoqCxqsoMACcStgq96tUWUrUtA/s200/resim24.jpg" width="200"/></a></div><br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Bu işlemlerden sonra yollarımızı çizdirmeye başlayabiliriz. İlk önce çizim ayarlarını yapacağız. Bunun için araç çubuğundan Çizim-Otomatik Çizim Ayarları seçeneğini seçiyoruz<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvpT-EHUyvvK85YUXU2n-GE_o1MAwLLmyDVMXBGdTzA6DbGFZWa5iiIp5hWgYiIUEnU2ocDM8Mm6vaGSS7B6EF0Nb_jNaYaQ-_GBM33YCEndRb4gJukktNSS2o4yeG_V0ikXUa_3FI4SQn/s1600/resim25.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjvpT-EHUyvvK85YUXU2n-GE_o1MAwLLmyDVMXBGdTzA6DbGFZWa5iiIp5hWgYiIUEnU2ocDM8Mm6vaGSS7B6EF0Nb_jNaYaQ-_GBM33YCEndRb4gJukktNSS2o4yeG_V0ikXUa_3FI4SQn/s200/resim25.jpg" width="126"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Otomatik çizim ayarları penceresini kendimize göre ayarlıyoruz. Yolların iyi çizilmesi için otomatik ayar seçeneğini En İyi yapmayı unutmuyoruz.</td></tr>
+<tr><td><br/>
+</td><td>Bütün ayarlamaları yaptıktan sonra yolların çizimine geçebiliriz. Bunun için araç çubuğundan Çizim-Otomatik Çizimi Çalıştır seçeneğini seçiyoruz yada F9 tuşuna basıyoruz. Böylelikle yollar aşağıdaki çizilmiş olacaktır.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFdL0-42E13S2_Jfhu4s7ufIhpbi4y97PfHawNxEtywl6WqBjdVQFWI9gBu7JX_wd8ZmP-_Jbq6nUz1eAzAwJsquPFLsfeXV1mWDlegB2spBXArbrnJZrekxB72-5k68-fIgpxxoopJrci/s1600/resim26.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="150" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFdL0-42E13S2_Jfhu4s7ufIhpbi4y97PfHawNxEtywl6WqBjdVQFWI9gBu7JX_wd8ZmP-_Jbq6nUz1eAzAwJsquPFLsfeXV1mWDlegB2spBXArbrnJZrekxB72-5k68-fIgpxxoopJrci/s200/resim26.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Yol kalınlıklarını ayarlamak ve baskı devre kartımızın üzerine yazı yazabilmek için aşağıdaki resimdeki ayarlamaları yapıyoruuz. Baskı devre kartımızın üzerine yazı yazmak için şekil ve metnin yerleştirileceği katmanı Alt Dizgi, Geçerli sinyal/düzlem katmanını da Alt olarak ayarladıktan sonra Metin Yerleştir butonuna tıklıyoruz yada araç çubuğundan Objeler/Metin Yerleştir seçeneğini tıklıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSU793KAh5egtubtJ3EZ_6zUnxu82ypriYGjJP0yme-YfwwLPJdlrI9CSEId7d9YsERZMkLr58IKEapgneuboFMLeB0wuhD1FAFauSfSy3oalpDSHlXhWCwc1nyDuC5Oa67lv_0QmUK37z/s1600/resim27a.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="35" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSU793KAh5egtubtJ3EZ_6zUnxu82ypriYGjJP0yme-YfwwLPJdlrI9CSEId7d9YsERZMkLr58IKEapgneuboFMLeB0wuhD1FAFauSfSy3oalpDSHlXhWCwc1nyDuC5Oa67lv_0QmUK37z/s200/resim27a.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Kalınlığını değiştirmek istediğimiz yolun üzerine sağ tıklayıp özellikler diyoruz ve çıkan pencerede yol kalınlığını istediğimiz değerde ayarlıyoruz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbJsyHw1L3_sqiDB923-f7UCx5NjxQ6BMmlG7Mb6giQjohYer2uaciP2G2Is-M7-Imzo1G4EnuM2WlT5-nKz94BXDCNhLwzemTedTKkV-M1Q5RAEWLVFE-e-KW5cefRREF64kAwM1iFdrt/s1600/resim28.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="188" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhbJsyHw1L3_sqiDB923-f7UCx5NjxQ6BMmlG7Mb6giQjohYer2uaciP2G2Is-M7-Imzo1G4EnuM2WlT5-nKz94BXDCNhLwzemTedTKkV-M1Q5RAEWLVFE-e-KW5cefRREF64kAwM1iFdrt/s200/resim28.jpg" width="200"/></a></div><br/>
+<br/>
+</td></tr>
+<tr><td><br/>
+</td><td>Bu işlemlerden sonrada tasarımımızda hata olup olmadığını denetlemek için araç çubuğundan Doğrulama-Tasarımı Denetle seçeneğini seçiyoruz. Eğer aşağıdaki gibi Hata Bulunamadı penceresi çıkarsa tasarımımz başarıyla tamamlandı demektir.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgO8a3Fd4SxTw5blQb7FThwwEJl4vDL-QcuFhD3vnZEFHkEq7AMiUbncG-ZQ2-R66_aVYA25SNkig9cxyWmqksLVhREBkCdbw_3BOZlDytH4wm4Y__uWpJffyh90IPqnfKMoT6QR5Pmzh21/s1600/resim29.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="185" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgO8a3Fd4SxTw5blQb7FThwwEJl4vDL-QcuFhD3vnZEFHkEq7AMiUbncG-ZQ2-R66_aVYA25SNkig9cxyWmqksLVhREBkCdbw_3BOZlDytH4wm4Y__uWpJffyh90IPqnfKMoT6QR5Pmzh21/s200/resim29.jpg" width="200"/></a></div><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<span>Ve işte baskı devre tasarımımızın son hali…</span><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx3hyphenhyphenORHxhuzZF05tjs62V03Vu7RxxwTNqCHhsblT4mV37aks22aCPWgO3ulTNl13YJC_8q-veyP__yusP-d7UgMutXCMqZY5O5UqBYUCoCw8R67icVVBC-1rOo50U16us5HDCX1T5Bl8C/s1600/resim30a.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="73" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhx3hyphenhyphenORHxhuzZF05tjs62V03Vu7RxxwTNqCHhsblT4mV37aks22aCPWgO3ulTNl13YJC_8q-veyP__yusP-d7UgMutXCMqZY5O5UqBYUCoCw8R67icVVBC-1rOo50U16us5HDCX1T5Bl8C/s200/resim30a.jpg" width="200"/></a></div><span><br/>
+</span><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<span><a href="http://www.sdu.edu.tr/" rel="noopener noreferrer" target="_blank">http://www.sdu.edu.tr</a></span></td></tr>
+<tr><td><br/>
+</td><td>Yazının ikinci kısmı </td></tr>
+</tbody></table><br/>
+<br/>
+<table><tbody>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h2>Türkçe DipTrace Programı ile Baskı Devre Kartı Yapımı-II<span></span></h2></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><div> 07 Mart 2010 |<span><span><span>Genel Elektronik kategorisindeki tüm yazıları göster</span>" ;</span></span>Genel Elektronik</div></span></td></tr>
+<tr><td></td><td><span><span>PCB çizimini oluşturduğumuz devremizin çktısını almak için Dosya/Baskı Önizleme seçeneğini seçiyoruz.</span></span><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNPwWpnzJVSeubnYQTcPLNiBsTwyOE4zgpHpb4KbZprrpZ_LrJR1Domcjln3pQSACyWyHp5axObpcYB1UlK_VpYXWSKPbXKBUkRcR7wc2cQ4u41vxERSSv7dNLypJaLJ3P7-8-yKncKhZJ/s1600/resim31.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="146" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjNPwWpnzJVSeubnYQTcPLNiBsTwyOE4zgpHpb4KbZprrpZ_LrJR1Domcjln3pQSACyWyHp5axObpcYB1UlK_VpYXWSKPbXKBUkRcR7wc2cQ4u41vxERSSv7dNLypJaLJ3P7-8-yKncKhZJ/s200/resim31.jpg" width="200"/></a></div><span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span></td></tr>
+<tr><td><br/>
+</td><td><span><span>;Elemanların ayak bağlantılarına uygun çıktı alabilmemiz için, kesinlikle yazdırma ölçeğini %100 yapmamız gerekir. Bu işlemlerden sonra Yazdır seçeneğini seçerek tasarımımızın çıktısını alabiliriz…</span></span></td></tr>
+<tr><td><br/>
+</td><td><span><span>Eğer birden fazla plaketin çıktısını almak istiyorsak araç çubuğundan Düzen/Plaketi Çoğalt Seçeneğini seçiyoruz. Çıkan ekranda sütun ve satır sayılarını ayarlayarak plaketimizi çoğaltabiliriz. Bu ekranda plaketlerin arasındaki mesafeleride ayarlayabiliriz.<span></span></span><span></span></span> <br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2tD4ybKcMd4bA_qPQppJi4TrtfRMrOybrey6c6iNwvAJikoFgcKB21tzef1nBhzXfdBznG2ofrCG8cHk6DbUB0TND4daAEL0DOLwMVBATNX3CPiGLrETok6LaMzTZCpChLD1EphhTYCIl/s1600/resim35.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="200" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj2tD4ybKcMd4bA_qPQppJi4TrtfRMrOybrey6c6iNwvAJikoFgcKB21tzef1nBhzXfdBznG2ofrCG8cHk6DbUB0TND4daAEL0DOLwMVBATNX3CPiGLrETok6LaMzTZCpChLD1EphhTYCIl/s200/resim35.jpg" width="106"/></a></div><span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td><br/>
+</td><td><span><span>Son olarak DipTrace programı ile tasarımını yaptığımız 555 entegreli ayarlanabilir flip-flop devresinin tasarımını yapıyoruz. Bunu yapmamdaki amaç sanal ortamda DipTrace ile yapılan PCB tasarımının gerçekteki görünümünü göstermek. İşte sonuçlar…</span></span><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMr94EtIdyqpybadw5N-Vag8wjCyydA-u6dsrcPiSfJFQL-2jfeNgFkyu8T2lVeaCqrCkMveUCP_vn0rS65-b06rzlJbTsKOUZ6gU_reAVb5lu2u5kxN-NHWBsPvdNGwVy5rWXzE7slYAe/s1600/resim32.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="73" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMr94EtIdyqpybadw5N-Vag8wjCyydA-u6dsrcPiSfJFQL-2jfeNgFkyu8T2lVeaCqrCkMveUCP_vn0rS65-b06rzlJbTsKOUZ6gU_reAVb5lu2u5kxN-NHWBsPvdNGwVy5rWXzE7slYAe/s200/resim32.jpg" width="200"/></a><span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span></td></tr>
+<tr><td></td><td><span><span>Yukarıdaki resimde, solda DipTrace programındaki görüntü, sağda ise asetat kağıdına alınan çıktının görüntüsü görülmektedir…</span></span><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnWiDMEAMOo5N2PVKtSU21xr4Skcemqogd67pxFMkwSu0eQwB66qX88oYVXJFQ6ISDQFtkY-kVYfW1vo3Y534xQkWS4Vr_my4dRJFCluPz3pJut_OS6LmVDuOAod6AwmCivreufrg0cku2/s1600/resim33.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="74" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgnWiDMEAMOo5N2PVKtSU21xr4Skcemqogd67pxFMkwSu0eQwB66qX88oYVXJFQ6ISDQFtkY-kVYfW1vo3Y534xQkWS4Vr_my4dRJFCluPz3pJut_OS6LmVDuOAod6AwmCivreufrg0cku2/s200/resim33.jpg" width="200"/></a></div><span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span></td></tr>
+<tr><td><br/>
+</td><td><span><span>Yukarıdaki resimde, solda DipTrace programındaki görüntü, sağda ise plaketin arkasındaki görüntüsü görülmektedir…</span></span><br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggrLaNiubNlwV0X3ERKqC9700SI_sgJCm-trq-xx6vlsWMMdhbarrSOlzD728LpNG1PE7xfb6g-vk6f0HRKAHL8E8BS0WNWDgsJxk-x4xQlUgRWa0rwxoJD3p9D2BgAFllYg7IQ9uQbdLe/s1600/resim34.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" height="74" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggrLaNiubNlwV0X3ERKqC9700SI_sgJCm-trq-xx6vlsWMMdhbarrSOlzD728LpNG1PE7xfb6g-vk6f0HRKAHL8E8BS0WNWDgsJxk-x4xQlUgRWa0rwxoJD3p9D2BgAFllYg7IQ9uQbdLe/s200/resim34.jpg" width="200"/></a></div><span><span><br/>
+</span></span><br/>
+<span><span><br/>
+</span></span></td></tr>
+<tr><td><br/>
+</td><td><span><span>Yukarıdaki resimde, solda DipTrace programındaki görüntü, sağda ise plaketin önden görüntüsü görülmektedir…<span></span></span><span></span></span> <br/>
+<a href="http://www.diptrace.com/tr/" rel="noopener noreferrer">Free Programı İndirmek için</a><br/>
+<span><br/>
+</span><br/>
+<span><span>YAĞIZ VURAL a ve </span></span><span>Emeği geçenlere  </span><br/>
+<span><span>teşekür ederim .</span></span></td></tr>
+<tr><td></td><td></td></tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/04/dip-trace-programi-ve-turkce-kullanma.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

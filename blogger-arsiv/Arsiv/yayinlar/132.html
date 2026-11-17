@@ -1,0 +1,362 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 4 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 4</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><b>PIC PIC Basic Pro ile PIC Programlama 4</b><br/>
+Program Oluşturma Genel Kuralları<br/>
+Bu bölümde bir program yazılırken nelere dikkat etmeliyiz, hangi bilgi nerede verilmeli bunları öğreneceğiz. Ayrıca program oluşturmak için kullanacağımız yazılımlara bir göz atacağız.<br/>
+Daha sonrada oluşturduğumuz programı derleyip Hex file (Hex Dosyası) haline getirip Pic’e yüklemeyi öğreneceğiz.<br/>
+Basic programları yazılırken bir editör programından yararlanılır. Bu herhangi bir editör programı olabileceği gibi BASIC ler için yaratılmış özel editör programları da olabilir. Tabii ki özel editörlerin görsellik ve program takibi açısından büyük avantajları vardır. Bu nedenle bizde Özel editör programlarından olan Micro Code Studio programını kullanacağız.<br/>
+Program yazma işinde ilk önerimiz programlarınızın başına bir başlık mutlaka yerleştirin.<br/>
+Bu aynı zamanda program sırasında ilk olarak yazılacak bölümü kapsamaktadır.<br/>
+Örnek başlık;<br/>
+****************************************************************<br/>
+‘* İsim : Program Adı.BAS *<br/>
+‘* Yazar : [İsminiz] *<br/>
+‘* Not : Copyright (c) 2004] *<br/>
+‘*Tüm Hakları Saklıdır *<br/>
+‘* Tarih : 21.12.2004 *<br/>
+‘* Sürüm : 1.0 *<br/>
+‘* Notlar : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+Hiçbir program ilk yazıldığı hali ile çalışır hale gelmez. Sürekli olarak düzeltmeler yapıldıktan bir müddet sonra program yerine oturur. Bu nedenle her program değişikliğinde sürüm numarasını mutlaka değiştirmeye çalışın. Aksi taktirde programın hangisi olduğu konusunda tereddüde düşersiniz.<br/>
+Bu başlık verildikten sonra , şayet program içinde interrupt (kesme) kullanılacak ise ikinci öncelik sırası olarak kesme tanımlaması yapılmalıdır. Tanımlama şöyle olabilir.<br/>
+ON INTERRUPT GOTO KESME<br/>
+Şayet kesme kullanılmayacak ise Giriş çıkış pinleri ayarlanmalıdır.<br/>
+TRISA=0<br/>
+TRISB=255 gibi<br/>
+Daha sonra kullanılan mikro işlemciye ait Device tanımlamaları ve Config bilgileri verilmelidir. Burada @ (at) işareti ile başlayan ve aslında ASM (assembly) komutlarının Basic satırlarında kullanılmasına olanak tanıyan bir komuttan yararlanıyoruz. Çünkü bu komutlar ASM komutları olarak verilmektedirler. Örnek kullanım şekli aşağıdaki gibi olacaktır.<br/>
+@ DEVICE pic16F628<br/>
+@ DEVICE pic16F628, WDT_ON<br/>
+@ DEVICE pic16F628, PWRT_ON<br/>
+@ DEVICE pic16F628, PROTECT_OFF<br/>
+@ DEVICE pic16F628, MCLR_ON<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘XT_OSC - HS_OSC –<br/>
+Yukarıdaki örnekte program için ilk sırada PIC16F628 mikro işlemcisinin kullanılacağı tanımlanıyor . İkinci sırada Config değerini oluşturmak üzere, Watch Dog Timer On yani açık yapılıyor.<br/>
+Üçüncü sırada Power on Timer açık olarak ayarlanıyor.<br/>
+Dördüncü sırada Kod Protek kapalı olarak ayarlanıyor.<br/>
+Beşinci sırada MCLR pini kullanılacak deniyor. Bu 16F628’in bir özelliği olup MCLR pini gerektiğinde bir INPUT pini olarak kullanılabilmektedir. Burada MCLR ON yani açık olarak ayarlanıp pin’in MCLR fonksiyonu şeklinde kullanılacağını gösteriyor. Şayet bu OFF yapılırsa MCLR pini bir INPUT pini olarak kullanılabilir.<br/>
+Son satırda ise yine 16F628’e özel bir komut görülüyor. Bu komut 16F628 çinde bulunan dahili osilatör ün kullanılıp dışarıya ayrıca Clock çıkışı yapılmayacağını göstermektedir. Bu komuta yazılabilecek diğer alternatifler satır sonunda XT_OSC veyaHS_OSC olarak verilmiştir.<br/>
+Bu işlemler yerine getirildikten sonra yine mikro işlemci tipine bağlı olarak gerekirse bir emir daha verilir. Bazı işlemcilerde Komparatör bazılarında ise Analog-Digital çeviriciler bulunur. Bu sistemler açılışta önseçimli (default) olarak açık çalışırlar. Yani Komparatör ’ü olan bir Pic de aksine bir emir koymaz iseniz Komparatör önseçimli olarak çalışır. Şayet bu Komparatör bacaklarını iptal edip onları normal giriş-çıkış pin lerine dönüştürmez iseniz programınız hatalı çalışacaktır. Bu yüzden programın bu sırasında var ise bu komutlar yer alır.<br/>
+Komparatör lerin iptali için genelde; CMCON=7 şeklinde bir komut yazılır. Analog Digital çeviricilerin iptali için ise; ADCON1=7bilgisi verilir.<br/>
+Verilen değerler pic tipine göre değişiklik arz edebilir. Bu nedenle işlemcilerin Data Sheet’ lerine bakarak doğru bilgiler verilmelidir.<br/>
+Bu bölümden sonra programda LCD kullanılacak ise LCD tanımlamaları yapılır. Örnek tanımlama bir önceki derste verilmiştir. Görsel olarak unutulmaması için burada yeniden tanımlama yapıyoruz.<br/>
+DEFINE LCD_DREG PORTB‘LCD data bacakları PortB ye bağlı<br/>
+DEFINE LCD_DBIT 4 ‘LCD data bacakları 4. bit den başlıyor<br/>
+DEFINE LCD_RSREG PORTB ‘LCD RS Bacağı PortB ye bağlı<br/>
+DEFINE LCD_RSBIT 1 ‘LCD RS bacağı 1. Bite bağlı<br/>
+DEFINE LCD_EREG PORTB ‘LCD Enable Bacağı PortB ye bağlı<br/>
+DEFINE LCD_EBIT 3‘LCD Enable Bacağı 3. bite bağlı<br/>
+DEFINE LCD_RWREG PORTB ‘LCD RW Bacağı PortB ye bağlı<br/>
+DEFINE LC_RWBIT 2‘LCD RW Bacağı 2. bite bağlı<br/>
+DEFINE LCD_BITS 4LCD 4 bit olarak bağlı<br/>
+DEFINE LCD_LINES 2‘LCD 2 sıra yazabiliyor<br/>
+Bu aşamadan sonra sıra, Değişkenlerin tanımlanmasına gelir. Programın bu bölümünde program içinde kullanacağımız değişken isimleri ve tipleri belirlenir. Değişkenler büyüklüklerine göre Bit – Byte ve Word tipinde belirlenebilirler. Gerekirse port pinleri için Symbol tanımlaması kullanılabilir. Dolayısıyla Symbol tanımlaması da değişken tanımlama bölümünde yapılmalıdır.<br/>
+Örnek vermek gerekir ise<br/>
+SIRA VAR BYTE<br/>
+TOPLAM VAR WORD<br/>
+X VAR BYTE<br/>
+DOGRU VAR BIT<br/>
+TUS VAR PORTB.0<br/>
+CLK VAR PORTA.1<br/>
+DATA VAR PORTA.2<br/>
+SYMBOL BUTON=PORTB.7<br/>
+SYMBOL LED = PORTB.6<br/>
+Değişken tanımlamaları verildikten sonra, program için gerekli olan ilk değerler ayarlanır. Genelde değişkenler sıfırlanır (sıfıra eşitlenir). Varsa LCD için Türkçe karakterler tanımlanır.<br/>
+SIRA=0<br/>
+TOPLAM=0<br/>
+X=0<br/>
+LOW CLK<br/>
+Artık sıra programın ana bölümüne gelir. Genellikle programlar bir etiket ile başlatılır. Çünkü işlemlerin tekrarlanması amacı ile tekrar bu başlangıç bölümüne geri gelinmesi gerekebilir. Etiket adı olarak genelde BASLA veya START veya ILK veya BIRINCI gibi isimler kullanılır.<br/>
+Şimdi buraya kadar öğrendiklerimizi bir Örnek programla tekrarlayalım.<br/>
+Proje 4a :<br/>
+<br/>
+Yapacağımız örnekte LCD kullanmayacağız. İşlemci 16F628 olacak. Port a ya bağlı butonlar olacak ve bunlar normalde pinlerPull-up olarak ayarlanacak.<br/>
+PortB pinlerine ise birer tane LED bağlı olacak. Port a da hangi Buton’a basılırsa PortB de aynı bite karşılık gelen Led yanacak veya yanık ise sönecek. Programımız bu şimdi tüm program yazma kaidelerini uygulayarak programımızı yazalım.<br/>
+‘****************************************************************<br/>
+‘* Name : TOGGLE.BAS *<br/>
+‘* Author : [E.T.E] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 01.09.2004 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+TrisA=255<br/>
+Trisb=0<br/>
+‘————————————————————-<br/>
+@ DEVICE pic16F628 ‘işlemci 16F628<br/>
+@ DEVICE pic16F628, WDT_ON ‘Watch Dog Timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on Timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Protek kapalı<br/>
+@ DEVICE pic16F628, MCLR_ON ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘—————————————————————————————————————<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giriş çıkış<br/>
+‘—————————————————————————————————————<br/>
+SYMBOL TUS0=PORTA.0<br/>
+SYMBOL TUS1=PORTA.1<br/>
+SYMBOL TUS2=PORTA.2<br/>
+SYMBOL TUS3=PORTA.3<br/>
+SYMBOL TUS4=PORTA.4<br/>
+LED0 VAR PORTB.0<br/>
+LED1 VAR PORTB.1<br/>
+LED2 VAR PORTB.2<br/>
+LED3 VAR PORTB.3<br/>
+LED4 VAR PORTB.4<br/>
+PORTB=0<br/>
+‘————————————————————————————————————————<br/>
+BASLA:<br/>
+IF TUS0=0 THEN ‘Tuşa basılmadığı zaman Tus=1 dir basılınca 0 olur.<br/>
+TOGGLE LED0 ‘ LED’in durumunu değiştir yak veya söndür.<br/>
+WHILE TUS0=0 ‘ hala tuşa basılı tutuluyor ise<br/>
+wend ‘ bırakılıncaya kadar bekle.<br/>
+endIF ‘ tuş bırakılınca buraya geç.<br/>
+IF TUS1=0 THEN TOGGLE LED1<br/>
+IF TUS2=0 THEN TOGGLE LED2<br/>
+IF TUS3=0 THEN TOGGLE LED3<br/>
+IF TUS4=0 THEN<br/>
+TOGGLE LED4<br/>
+WHILE TUS4=0<br/>
+WEND<br/>
+ENDIF<br/>
+‘ TUS kullanımı son derece değişik neticeler verir. Yukarıdaki örnekte<br/>
+<br/>
+‘ toplam 5 adet Tuş bulunmaktadır. İlk tuş ile sonuncu tuş korumaya alınmıştır.<br/>
+<br/>
+‘ korumadan kasıt tuşa bir kere basılınca Toggle komutu icra edilmekte ancak<br/>
+<br/>
+‘ tuş bırakılıncaya kadar başka hiç bir işlem yapılmamaktadır.<br/>
+<br/>
+‘ Diğer tuşlarda ise koruma yoktur. Toggle komutu yerine getirildikten sonra<br/>
+<br/>
+‘ program çok hızlı bir şekilde yeniden aynı tuşa bakmakta ve şayet halen basılı<br/>
+<br/>
+‘ ise bir kez daha toggle komutunu icra etmektedir. Tüm tuşları deneyerek aradaki<br/>
+<br/>
+‘ farkı görmeye çalışınız. Gerekirse PAUSE 100 süresini daha da kısaltarak farkı görmeye<br/>
+‘ çalışınız.<br/>
+PAUSE 100<br/>
+GOTO BASLA<br/>
+END<br/>
+Yukarıdaki programda kullandığımız bazı komutları tekrar açıklayıp değişik kullanım örnekleri vereceğiz.<br/>
+İlk komutumuz IF yani şart komutu dur. Türkçesi ŞAYET olan bu komutu şarta bağlı bazı durumlar için kullanmaktayız. Programımızda olduğu gibi ;<br/>
+Şayet tuşa ’a basılmış ise TOGGLE LED0 komutunu icra et. Bunun Basic satırı olarak karşılığı; IF TUS0=0 THEN TOGGLE LED0idi.<br/>
+Başka bir örnek , Şayet sayı=200 ise , sayı yı 0 (sıfır) yap şeklinde bir durum için;<br/>
+IF SAYI=200 THEN SAYI=0 şeklinde bir komut kullanmalıyız.<br/>
+IF komutu birden fazla şartlar içeren bir halka içinde kullanılabilir. Bu durumda komut önce THEN ile satır bitirilip diğer şartlar test edildikten sonra komut sonu ENDIF ile belirlenmelidir.<br/>
+Örnek;<br/>
+IF SAYI= 200 THEN<br/>
+TOPLAM=25<br/>
+X=0<br/>
+ENDIF<br/>
+IF satırı ile ENDIF satırı arasında başka IF lerde bulunabilir. Ama daima kural ilk giren son çıkar prensibine göre uygulama yapılmalıdır. Bunu da bir örnekle açıklamak uygun olacaktır.<br/>
+IF SAYI=200 THEN<br/>
+SAYI=0<br/>
+IF X=100 THEN<br/>
+SAYI=50<br/>
+X=0<br/>
+ENDIF ‘bu komut ile ikinci IF komutunu bitiriyoruz.<br/>
+ENDIF ‘bu komut ile ilk IF komutunu bitiriyoruz.<br/>
+İkinci kullandığımız komut TOGGLE komutudur. Bit bazında çalışan bir komuttur. Her hangi bir bit değerini ters çevirmede kullanılır. Bit high ise Low , Low ise High yapar. Programda Led örneğinde şayet Led yanıyorsa söndürür. Sönük ise yakar. Bu komut Byte bazında kullanılmaz. Yani TOGGLE PORTB şeklinde bir ifade kullanamazsınız.<br/>
+Kullandığımız diğer değişik komut WHILE – WEND komutudur. While in kelime anlamı esnasında demektir. Kısaca bir durum esansında şunu yap şeklinde kullanılır. Örneğin Tuş=0 iken Led yanık olsun demek için;<br/>
+WHILE TUS=0<br/>
+HIGH LED ‘TUS=0 olduğu müddetçe program bu satırı icra eder.<br/>
+WEND<br/>
+LOW LED ‘TUS=1 olunca program bu satıra atlar ve LED söner.<br/>
+İfadesini kullanmak gerekir. Wend, While komutunun bitiş yerini belirlemek için kullanılır.<br/>
+Bizim örneğimizde;<br/>
+WHILE TUS0=0<br/>
+WEND<br/>
+Yazarak aslında TUS=0 iken hiçbir iş yapma sürekli tuşa bak anlamında bir komut icra edilir. Zira While – Wend arasına hiçbir komut yazmadık. Dolayısıyla Program Tus=0 mı diye bakar. Tus=0 ise alta geçer burada hiçbir komut yok. Wend’e gelir ve bunu görünce tekrar Tus=0 mı diye bakar.<br/>
+Bu olay Tus=1 oluncaya kadar devam eder. Yani Tus=0 olduğu müddetçe program WHILE WEND döngüsü içinde bekler.<br/>
+İkinci Program örneğimizde LCD Kullanacağız.<br/>
+Proje 4b:<br/>
+<br/>
+Bu örneğimizde PortB ye LCD bağlayacağız. PortA.0 ve PortA.1 pinlerine Pull-Up yapılmış iki tuş bağlayacağız. PortA.0 daki tuş Yukarı , PortA.1 deki tuş ise Aşağı tuşu olarak çalışacaktır. Başlangıçta Ekranda Sayı adı altında bir değişken’ verilen sıfır değeri görülecek ve yukarı tuşuna basılınca sayı bir artırılacaktır. Aynı şekilde Aşağı tuşuna basılınca sayımız bir azaltılacaktır.<br/>
+Sayıların artırılma ve eksiltme durumlarında maksimum ve minimum değerlerinden sonra aldıkları değerleri görerek öğrenmeniz için sayı değişkeni için bir sonlandırma fonksiyonu kullanılmayacaktır. Şimdi Programımıza geçelim.<br/>
+‘****************************************************************<br/>
+‘* Name : TUSBAS.BAS *<br/>
+‘* Author : [Erol Tahir Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 07.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+TrisA=255<br/>
+Trisb=0<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘işlemci 16F628<br/>
+@ DEVICE pic16F628, WDT_ON ‘Watch Dog timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Protek kapalı<br/>
+@ DEVICE pic16F628, MCLR_ON ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘——————————————————————-<br/>
+DEFINE LCD_DREG PORTB ‘LCD data bacakları hangi porta bağlı?<br/>
+DEFINE LCD_DBIT 4 ‘LCD data bacakları hangi bitten başlıyor?<br/>
+DEFINE LCD_RSREG PORTB ‘LCD RS Bacağı Hangi Porta bağlı ?<br/>
+DEFINE LCD_RSBIT 1 ‘LCD RS bacağı Hangi Bite bağlı ?<br/>
+DEFINE LCD_RWREG PORTB<br/>
+DEFINE LCD_RWBIT 2<br/>
+DEFINE LCD_EREG PORTB ‘LCD Enable Bacağı Hangi Porta bağlı?<br/>
+DEFINE LCD_EBIT 3 ‘LCD Enable Bacağı Hangi bite bağlı ?<br/>
+DEFINE LCD_BITS 4 ‘LCD 4 bit mi yoksa 8 bit olarak bağlı?<br/>
+DEFINE LCD_LINES 2 ‘LCD Kaç sıra yazabiliyor<br/>
+‘——————————————————————-<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giriş çıkış<br/>
+OPTION_REG.7=1 ‘portB deki dahili PULL-UP lar iptal edildi.<br/>
+‘——————————————————————-<br/>
+SYMBOL YUKARI=PORTA.0<br/>
+SYMBOL ASAGI=PORTA.1<br/>
+SAYI VAR BYTE<br/>
+‘——————————————————————-<br/>
+LOW PORTB.2<br/>
+SAYI=0<br/>
+PORTB=0<br/>
+LCDOUT $FE,1<br/>
+PAUSE 200<br/>
+‘——————————————————————-<br/>
+BASLA:<br/>
+IF YUKARI=0 then SAYI=SAYI+1<br/>
+IF ASAGI=0 THEN SAYI=SAYI-1<br/>
+‘ LCDOUT $FE,1,” SAYI = “,#SAYI<br/>
+LCDOUT $FE,2,” SAYI = “,DEC3 SAYI<br/>
+LCDOUT $FE,$C0, ” LCD ORNEK PROG.”<br/>
+PAUSE 100<br/>
+GOTO BASLA<br/>
+END<br/>
+Yukarıdaki örnekte LCDOUT $FE,2,” SAYI = “,DEC3 SAYI şeklinde bir komut satırı görüyoruz. Ekranda sayı gösterimine örnek olması açısından bu satır bir önceki ile alternatifli olarak koyulmuştur. Burada DEC3 komutu sayı değerinin 3 hane olarak ekrana geleceğini göstermektedir. 3 hane olmayan sayılarda hane sayısını doldurmak için 0 kullanıldığını daha önce söylemiş idik.<br/>
+Bir satırın başına koyulan tek tırnak satırın komut olarak icrasını önler. Genellikle açıklama satırları bu şekilde verilir ve derleyici tarafından değerlendirilmezler.<br/>
+Programda önce Yukarı tuşuna basılarak sayı artırılmalı sonra Aşağı tuşuna basılarak sayı azaltılmalıdır. Sayı 0’a ulaştığında azaltmaya devam edilir ise geriye doğru 255’e dönüldüğü ekrandan izlenmelidir. Aynı şekilde 250 den yukarı doğru sayıyı artırırsanız 255’e kadar gelinip 255 den sonra 0 a geçildiği yine ekrandan izlenmelidir.<br/>
+Bundan sonraki örneğimiz 2X16 LCD kullanarak Ekran Mönüsü oluşturma ile ilgili olacaktır. Genellikle Mönü ler bir den fazla seçenekli işlerde kullanılmaktadır.<br/>
+Şimdi kendimize bir örnek belirleyelim ve bunu program şekline getirelim.<br/>
+Diyelim ki Yine bir ısı kontrol programı yapıyoruz. Program bir evin ortam ısısını kontrol edecek. Kendimiz bir set değeri tayin ediyoruz ve bu işi hem gündüz hem de gece için ayrı yapıyoruz. Gerekçemizde gece oda sıcaklıklarının gündüze göre birkaç derece daha düşük olması.<br/>
+Şimdi yazacağımız program Ekrana önce bir seçenek getirecek Gündüz veya Gece. Bunlardan birini seçtikten sonra seçtiğimiz şayet Gündüz ise Gündüz Sıcaklığı Set etme bölümüne , seçimimiz şayet Gece ise Gece Sıcaklığı Set etme bölümüne geçecek ve sıcaklık değerini ayarlayıp programdan çıkacağız. Tabii ki normal çalışma modunda ekranda yalnızca ortam sıcaklığını göreceğiz. Şayet seçim tuşuna basarsam mönü ye gireceğim.<br/>
+Proje 4c :<br/>
+<br/>
+A portuna 3 adet tuş bağlı olacak. Pull-Up’lı olarak PortA.0 da Seçim tuşu, PortA.1 de Yukarı tuşu (+) ve PortA.2 de ise Aşağı tuşu (-) yer alacak. Yine PortB de 2×16 LCD bağlı olacak ve işlemcimiz 16F628 olacaktır.<br/>
+İşte Programımız ve açıklamaları;<br/>
+‘****************************************************************<br/>
+‘* Name : MENU.BAS *<br/>
+‘* Author : [Erol Tahir Erdal] *<br/>
+‘* Notice : Copyright (c) 2005 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 07.04.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+TrisA=255<br/>
+Trisb=0<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘işlemci 16F628<br/>
+@ DEVICE pic16F628, WDT_ON ‘Watch Dog timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Protek kapalı<br/>
+@ DEVICE pic16F628, MCLR_ON ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘——————————————————————-<br/>
+DEFINE LCD_DREG PORTB ‘LCD data bacakları hangi porta bağlı?<br/>
+DEFINE LCD_DBIT 4 ‘LCD data bacakları hangi bitten başlıyor?<br/>
+DEFINE LCD_RSREG PORTB ‘LCD RS Bacağı Hangi Porta bağlı ?<br/>
+DEFINE LCD_RSBIT 1 ‘LCD RS bacağı Hangi Bite bağlı ?<br/>
+define LCD_RWREG PORTB<br/>
+define LCD_RWBIT 2<br/>
+DEFINE LCD_EREG PORTB ‘LCD Enable Bacağı Hangi Porta bağlı?<br/>
+DEFINE LCD_EBIT 3 ‘LCD Enable Bacağı Hangi bite bağlı ?<br/>
+DEFINE LCD_BITS 4 ‘LCD 4 bit mi yoksa 8 bit olarak bağlı?<br/>
+DEFINE LCD_LINES 2 ‘LCD Kaç sıra yazabiliyor<br/>
+‘——————————————————————-<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giriş çıkış<br/>
+OPTION_REG.7=1 ‘portB deki dahili PULL-UP lar iptal edildi.<br/>
+‘——————————————————————-<br/>
+SYMBOL SEC=PORTA.0<br/>
+SYMBOL YUKARI=PORTA.1<br/>
+SYMBOL ASAGI= PORTA.2<br/>
+ISIGUN VAR BYTE ‘gündüz ısı değeri<br/>
+ISIGECE VAR BYTE ‘ gece ısı değeri<br/>
+ISIODA VAR BYTE ‘oda sıcaklığı<br/>
+‘——————————————————————-<br/>
+LOW PORTB.2<br/>
+ISIGUN=22<br/>
+ISIGECE=18 ‘Bunlar default değerler olacak<br/>
+ISIODA= 21<br/>
+PORTB=0<br/>
+LCDOUT $FE,1<br/>
+PAUSE 200<br/>
+‘——————————————————————-<br/>
+BASLA:<br/>
+LCDOUT $FE,1,” SEC =&gt; MENU “ ‘Menu ye nasıl girileceği açıklanıyor<br/>
+BIR:<br/>
+LCDOUT $FE,$C0,”ODA SICAKLIGI=”,#ISIODA ‘ODA sıcaklığını ekrana getiriyoruz.<br/>
+PAUSE 150<br/>
+IF SEC=0 THEN MENU ‘Şayet SEC tuşuna basılırsa Menu ye git<br/>
+GOTO BIR ‘Tekrar başa git.<br/>
+MENU:<br/>
+LCDOUT $FE,1, “GUNDUZ =&gt; YUKARI”<br/>
+IKI: LCDOUT $FE,$C0,”GECE =&gt;ASAGI BAS”<br/>
+PAUSE 200<br/>
+IF YUKARI=0 THEN GUNDUZ ‘Yukarı tuşuna basılırsa GUNDUZ ’e git.<br/>
+IF ASAGI=0 THEN GECE ‘Aşağı basılırsa GECE’ ye git.<br/>
+IF SEC=0 THEN BASLA ‘Tekrar SEC tuşuna basılırsa Başla’ ya git<br/>
+GOTO IKI<br/>
+GUNDUZ:<br/>
+LCDOUT $FE,1, “GUNDUZ SET DEGER”<br/>
+UC: LCDOUT $FE,$C0,”ISIGUN = “,#ISIGUN ‘Gündüz Set sıcaklığı ekranda<br/>
+PAUSE 200<br/>
+IF YUKARI=0 THEN ‘Yukarı tuşuna basılınca<br/>
+ISIGUN=ISIGUN+1 ‘Gündüz Set bir artırılıyor<br/>
+IF ISIGUN&gt;50 THEN ISIGUN=50 ‘50 ye ulaşınca 50 de kalıyor<br/>
+ENDIF<br/>
+IF ASAGI =0 THEN ‘Aşağı tuşuna basılınca<br/>
+ISIGUN=ISIGUN-1 ‘Sıcaklık bir eksiltiliyor<br/>
+IF ISIGUN=255 THEN ISIGUN=0 ‘255 e ulaşınca sıfıra eşitleniyor<br/>
+ENDIF<br/>
+IF SEC=0 THEN BASLA ‘Sec tuşuna basılınca başa gidiliyor.<br/>
+GOTO UC<br/>
+GECE:<br/>
+LCDOUT $FE,1, ” GECE SET DEGER ”<br/>
+DORT: LCDOUT $FE,$C0,”ISIGECE = “,#ISIGECE<br/>
+PAUSE 200<br/>
+IF YUKARI=0 THEN<br/>
+ISIGECE=ISIGECE+1<br/>
+IF ISIGECE&gt;50 THEN ISIGECE=50<br/>
+ENDIF<br/>
+IF ASAGI =0 THEN<br/>
+ISIGECE=ISIGECE-1<br/>
+IF ISIGECE=255 THEN ISIGECE=0<br/>
+ENDIF<br/>
+IF SEC=0 THEN BASLA<br/>
+GOTO DORT<br/>
+END<br/>
+Bu programla ilgili ilave bazı açıklamalar yapmak mantığını anlamak açısından yararlı olacaktır.<br/>
+Görüldüğü üzere 2 satır 16 karakter bir ekran sınırları içinde birkaç kademeli bir menü düzenlenmiştir.<br/>
+Programın baş tarafında yer alan ifadelerin açıklaması daha önce yapılmış idi. Bu nedenle açıklamamıza BAŞLA etiketinden itibaren yapacağız.<br/>
+Başla etiketinden sonra hemen ekrana LCDOUT $FE,1, ” SEC =&gt; MENU “ komutu ile Mönü ye geçmek için SEC tuşuna basılacağı açıklanıyor. Dikkat edilir ise LCDOUT $FE,1 komutu kullanılarak önce ekran tamamen siliniyor arkasından Menu açıklaması veriliyor. Bu satır yalnızca bir defa icra edileceğinden ekranın tamamen silinmesi doğru olmaktadır. Aksi taktirde bir önceki ekrandan bazı karakterler ekranda kalabilir.<br/>
+Altında BIR: etiketi ile birlikte LCDOUT $FE,$C0, “ODA SICAKLIGI=”,#ISIODA komutu ile Oda sıcaklığını veriyoruz.<br/>
+Mönü’nün ilk kısmını oluşturan bu bölümde oda sıcaklığı ölçülerek ekrana getiriliyor ve kullanıcı isterse set sıcaklıklarını ayarlamak üzere bir alt mönüye geçebiliyor. Bunun için SEC tuşuna basması yeterli oluyor.<br/>
+Bu konumda SEC tuşuna basıldığı zaman programda yer alan;<br/>
+IF SEC=0 THEN MENU<br/>
+Satırı sayesinde program MENU isimli etikete atlıyor. Burada<br/>
+LCDOUT $FE,1, “GUNDUZ =&gt; YUKARI”<br/>
+Komutu ile önce ekran siliniyor ve daha sonra Yukarı tuşuna basılırsa Gündüz mönüsüne gidileceği açıklanıyor. Bu satırın altında;<br/>
+LCDOUT $FE,$C0,”GECE =&gt;ASAGI BAS”<br/>
+Komutu ile Aşağı tuşuna basılırsa da Gece mönüsüne gidileceği açıklanıyor. Doğal olarak bu satırların altında da hangi tuşa basıldığını kontrol eden bir bölüm yer alıyor. İşlem gayet basit. Yukarı tuşuna basılırsa GUNDUZ isimli etikete git;<br/>
+IF YUKARI=0 THEN GUNDUZ<br/>
+Aşağı tuşuna basılırsa GECE isimli etikete git;<br/>
+IF ASAGI=0 THEN GECE<br/>
+Şeklinde komutlar veriliyor. Tabii ki tüm bu işlemler bittikten sonra programın asıl çalışan bölümüne gitmek içinde SEC tuşunu devreye sokuyoruz. SEC tuşuna basılması halinde ise program tekrar en başa atlıyor.<br/>
+BU aşamada yalnızca Gündüz etiketi altında ne yapılıyor açıklamak istiyorum. Zira Gece etiketinde yapılanlar gündüzden çok farklı değil. Birisini anlarsanız diğerini anlamanız zor değil.<br/>
+Gündüz etiketi altında önce Gündüz set değeri ekrana verilip aşağı veya yukarı tuşlarından birisine basmanız bekleniyor. Ya daSEC tuşuna basıp tekrar program başına geçmeniz bekleniyor. Yukarı tuşuna basmanız halinde Set sıcaklığı bir artırılıyor. Ancak Artırılan sıcaklığın 50 dereceyi geçmesi istenmediğinden şayet geçerseniz sıcaklık yine 50 ye eşitleniyor. Bu bir kısıtlama veya sınırlandırma halidir.<br/>
+Aynı şekilde Aşağı tuşuna basılması halinde sıcaklığın değer bir eskitiliyor ve sıfır değeri geçilip 255’e ulaşıldığında sıcaklık tekrar sıfıra eşitleniyor. Daha önce görmüş idik. Sayıları birer eskiterek gidersek. Sıfırdan sonra tekrar 255 geliyor idi.<br/>
+Bu kadar örnek verdikten sonra Micro Code Studio (MCS) ile nasıl program derlenip Hex dosyası elde ediliyor birazda ona değinelim.<br/>
+Bildiğiniz gibi Pic gibi mikro işlemciler yazılan programları icra ederler. Bunun için yazılan programların Pic’ kayıt edilmesi (yazılması) gerekir. Basic de yazılan programlar direkt olarak Pic’e yazılamaz. Bas uzantılı olan bu dosyaların önce makine diline çevrilerek Pic ’in anlayacağı biçime dönüştürülmesi gerekmektedir.<br/>
+Derleme denilen bu işlem MCS tarafından PBP derleyicisi kullanılarak yapılmaktadır. Derlendikten sonra Hex formatına dönüştürülen programın daha sonra yine başka bir program ve bir programlayıcı devre yardımı ile Pic’e aktarılması yani yazılması sağlanır. Hem program yazma ve hem de derleme işlemi için Micro Code Studio (MCS) programı kullanılmaktadır.<br/>
+MCS ilk defa kurulurken bazı parametrelerin ayarlanması gerekiyor. Bunların başında PBPro klasörünün MCS ye gösterilmesi gerekmektedir. Bu iş için MCS de View mönüsünden Pic Basic Options alt mönüsü seçilir. Bu mönüde PBP nun yeri programa gösterilir.<br/>
+Aynı şekilde Programlayıcı nın yeri ve parametreleri de bu seçenekte MCS ye gösterilir. Bu işlemlerin yapıldığını kabul ederek derlemenin nasıl yapıldığına bakalım.<br/>
+Programı yazmayı tamamladıktan sonra ekranın üst tarafında bulunan derle tuşuna (bir sayfa ve üzerinde sağa doğru ok olan tuş) tıklanır ise yazmış olduğunuz derlenir ve BAS uzantılı dosyanızın yer aldığı klasör içine aynı isimle ancak Hex uzantılı olarak kayıt edilir.<br/>
+Dosyanın derlendikten sonra Pic’e yazılması için programlayıcıyı çalıştırmak gerekir. MCS bunu da otomatik yapabilir. Yine ekran üstünde üzerinde aşağı doğru ok bulunan bir entegre resmi göreceksiniz buda derlemeden sonra programlayıcıyı çalıştıran tuş dur. Bu tuşa basılınca önce program derlenir ve ardından program otomatik olarak programlayıcıya (IC-Prog) yüklenerek programlayıcı çalıştırılır. Size yalnızca programla tuşuna basarak Hex dosyasının Pic’e yazdırılması kalır.<br/>
+MCS içinden IC-Prog gibi programlayıcıların otomatik çalıştırılması için bazı parametrelerinde ayarlanması gerekir. Bunların nasıl yapıldığı Hem MCS help mönüsünde hem de programlayıcıların açıklamalarında yer almaktadır. Bu bilgiler kullanılan programa göre değiştiğinden ve hepsini burada açıklamamız mümkün olmadığından yalnızca ön bilgi vermekle yetineceğiz.<br/>
+Pic’e yazma ve Pic den okuma işlemlerinde en çok kullanılan program olan IC-Prog hakkında da biraz bilgi vermek isterim. IC-Prog hem seri porttan hem de paralel porttan çalışan programlayıcılarla uyumlu bir programlayıcıdır. Kullanımı son derece basittir. Gerekli parametreler ayarlanıp donanım seçimi de doğru yapılırsa sorunsuz olarak çalışacaktır.<br/>
+Programı kullanırken dikkat edilmesi gereken en önemli nokta programlama yaparken veya programlama yaptıktan sonra doğrulama işleminin yaptırılmasıdır. Genelde hata veriyor diye bu işlem iptal edilmektedir. Hatalı yapılan bir işlemi kontrol etmez iseniz hatalı olduğunu nasıl anlayacaksınız. Hata var ise gösterilmesinde fayda vardır. Bu nedenle Seçenekler mönüsünden Programlanıyor alt mönüsünde bulunan kutucukların ikisini de veya en az birini işaretlemekte fayda vardır.</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-131.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

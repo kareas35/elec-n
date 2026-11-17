@@ -1,0 +1,32 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chloroplast&quot; solar engines | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Chloroplast&quot; solar engines</h1><div>2010-09-16 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span></span><br/>
+<span><b>Chloroplast" solar engines</b></span><span>Craig Maynard's "baby" (and two close relatives, courtesy of Wilf Rigter)</span><br/>
+<hr/><br/>
+Craig Maynard dreamed up the Chloroplast solar engine (an interesting design, tho' it uses two parts you probably won't have sitting around in your parts drawer). Since I really can't describe it better than Craig can, here's his description (from the <a href="http://www.jcminventures.com/chlorplast_instructions.htm" rel="noopener noreferrer" target="_blank">Chloroplast web site</a>), followed up by commentary and a related circuit by Wilf Rigter:<br/>
+<blockquote><b>Features:</b><ul><li>Maintains a minimum voltage of around 5 Volts, useful for maintaining digital logic or microprocessor circuits<i>[actually, the minimum voltage can be either 3 or 5 volts, as a function of the parts you select -- ed.]</i><br/>
+</li>
+<li>Has a hysteresis from 5-7 Volts which is adjustable to suit the designer's needs. This "bonus voltage" is discharged across the motor, but discharging stops when the minimum threshold voltage (around 5V) is reached <i>[again, minimum voltage is either 3 or 5 volts, maximum voltage is limited by your solar cell(s)-- ed.]</i>.<br/>
+</li>
+<li>Has more punch at a higher voltage than other solar engines, making it suitable for larger, "torquier" motors.<br/>
+</li>
+<li>Uses only two three-pin devices and two resistors available from most electronics retailers.<br/>
+</li>
+<li>Has no lock-up bugs.<br/>
+</li>
+<li>Very simple to free-form.<br/>
+</li>
+<li>Is very inexpensive.<br/>
+</li>
+<li>Extremely low quiescent current ( about 25 micro amps or less)<br/>
+</li>
+<li>Works the capacitor at closer to capacitor voltage limits for greater efficiency.</li>
+</ul><br/>
+<b>Theory of Operation:</b>The heart of the Chloroplast is the Motorola MC34164-3 Micro power Undervoltage Sensing Circuit (U1 in the following diagram). In normal use, this component monitors the voltage at pin 2, and applies a ground at pin 1 ( out ) when the monitored voltage drops below 3V (34164-3 monitors 3 volts, 34164-5 monitors 5 volts). This low will then be used to assert a RESET on a microprocessor circuit. The output (an open collector) will be open when the output is above the threshold voltage.<br/>
+Through tinkering, I have discovered that placing a 220K to 270K resistor in series with the input of U1 will produce a significant hysteresis in this sensor's output. For instance, a 220K resistor as R2 will cause the output to ground until the solar voltage hits 6.8V, at that point it will open (float) until the solar voltage drops to 5.5V (a 1.3V hysteresis ). Different values of R2 will produce different results.<br/>
+So how does this all work together? Well,<br/>
+<blockquote>1.The solar panel will slowly charge up the storage capacitor C1 towards 6.8V. U1 will assert a ground (believing the voltage is too low) which keeps U2 (a high gain darlington NPN transistor) open and the motor OFF.2.When 6.8V is reached, U1 will open. The base of U2 will then be pulled high (through R1) and U2 will turn on, allowing the solar energy in the capacitor to discharge through the motor. The motor spins.<br/>
+3.The motor will continue spinning and discharge the capacitor until the solar voltage falls to 5.5V.<br/>
+4.At 5.5V, U1 will assert a ground at its output (Out), believing that the voltage is too low, and it must apply a RESET. This ground turns off U2 and the motor stops spinning and the system is ready for another cycle!</blockquote>Here's the schematic:<br/>
+<center><img align="bottom" alt="chloroplast schematic" height="354" loading="lazy" src="http://library.solarbotics.net/circuits/pix/chloroplast.gif" width="536"/></center>And if you want to free-form the <a href="http://encyclobeamia.solarbotics.net/articles/circuit.html" rel="noopener noreferrer" target="_blank">circuit</a>, here's how:</blockquote><center><img align="bottom" alt="chloroplast free-form layout" height="345" loading="lazy" src="http://library.solarbotics.net/circuits/pix/chloroplast_freeform.gif" width="500"/></center><br/>
+<span>More recently, Wilf posted two Chloroplast-related SE designs ("</span><span>Miller</span><span> </span><span>style" Chloroplasts) -- here are their schematics, and Wilf's description:</span><br/>
+<div></div><center><img align="bottom" alt="Image" height="374" loading="lazy" src="http://library.solarbotics.net/circuits/pix/ms_chloroplast_se.gif" width="278"/></center><blockquote>Here is a yet another hybrid SE, this time combining the principle of the Miller Engine with the Chloroplast SE. Two versions are shown with the top one using a Darlington transistor and the bottom using 2 separate NPN transistors which have a lower "on" voltage and deliver slightly more power to the motor. Both MS Chloroplast SE trigger at 4.8V and reset after a time determined by C2. The value of the main storage cap C1 can be 10,000uF to 1F and the value of timing C2 can be 1uF to 100uF.This SE design can also be used with the 3V MC34164-3 chip, 3.4V solar cells and 2.5V super caps for a lower voltage applications (2.8V).<br/>
+My prototype of the lower schematic sits in the window near the 49th parallel and with C1=10,000uF and C2=100uF, the trigger point is 4.8V and the cycle time was about 20 sec with yesterday's overcast sky and about 2.5 seconds in this morning's glorious sunshine. The efficient mightymo gearmotor turns about 4 rotations in 1 second.</blockquote>Alıntıdır</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/09/chloroplast-solar-engines.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

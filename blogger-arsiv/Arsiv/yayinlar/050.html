@@ -1,0 +1,27 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lead Acid Battery Charger #2 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Lead Acid Battery Charger #2</h1><div>2010-09-20 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><div><span>Lead Acid Battery Charger #2</span></div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMjd-yo4jg2T0saVTqAr2ZJW1gqrUfVeesekfGAFSAORxsHt9Hu962pORLSjWza3Z3JgOJbjUWW3XX83TB291MjysFCOWmvTrXXPdlIzplK03gJ0B3P-EOzJq7HmJtvfr82RYad7Lz6JVV/s1600/Schematic.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhMjd-yo4jg2T0saVTqAr2ZJW1gqrUfVeesekfGAFSAORxsHt9Hu962pORLSjWza3Z3JgOJbjUWW3XX83TB291MjysFCOWmvTrXXPdlIzplK03gJ0B3P-EOzJq7HmJtvfr82RYad7Lz6JVV/s320/Schematic.gif"/></a></div><div>The above pictured schematic diagram is just a standard constant current model with a added current limiter, consisting of Q1, R1, and R4. The moment too much current is flowing biases Q1 and drops the output <a href="http://www.electronics-lab.com/projects/power/016/index.html#" rel="noopener noreferrer" target="undefined"><span><span>voltage</span></span></a>.<br/>
+<br/>
+The output voltage is: 1.2 x (P1+R2+R3)/R3 volt. Current limiting kicks in when the current is about 0.6/R1 <a href="http://www.electronics-lab.com/projects/power/016/index.html#" rel="noopener noreferrer" target="undefined"><span><span>amp</span></span></a>.<br/>
+For a 6-volt <a href="http://www.electronics-lab.com/projects/power/016/index.html#" rel="noopener noreferrer" target="undefined"><span><span>battery</span></span><span></span></a> which requires fast-charging, the charge voltage is 3 x 2.45 = 7.35 V. (3 cells at 2.45v per cell). So the total value for R2 + P1 is then about 585 ohm. For a 12 V battery the value for R2 + P1 is then about 1290 ohm.<br/>
+<br/>
+For this <a href="http://www.electronics-lab.com/projects/power/016/index.html#" rel="noopener noreferrer" target="undefined"><span><span>power </span><span>supply</span></span></a> to work efficiently, the input voltage has to be a minimum of 3V higher than the output voltage.<br/>
+<br/>
+P1 is a standard trimmer <a href="http://www.electronics-lab.com/projects/power/016/index.html#" rel="noopener noreferrer" target="undefined"><span><span>potentiometer</span></span></a> of sufficient watt for your application.<br/>
+<br/>
+The LM317 must be cooled on a sufficient (large) coolrib.<br/>
+<br/>
+Q1 (BC140) can be replaced with a NTE128 or the older ECG128 (same company).<br/>
+<br/>
+Except as a <a href="http://www.electronics-lab.com/projects/power/016/index.html#" rel="noopener noreferrer" target="undefined"><span><span>charger</span></span></a>, this circuit can also be used as a regular power supply.</div><div><br/>
+</div><table border="0"><tbody>
+<tr><td><div><strong>Parts List</strong></div></td></tr>
+<tr><td><hr color="#808080" noshade="" size="1"/></td></tr>
+</tbody></table><div>Parts List:<br/>
+R1 = 0.56 Ohm, 5W, WW<br/>
+R2 = 470 Ohm C2 = 220nF<br/>
+R3 = 120 Ohm<br/>
+R4 = 100 Ohm<br/>
+C1 = 1000uF/63V<br/>
+Q1 = BC140<br/>
+Q2 = LM317, Adj. Volt Reg.<br/>
+C3 = 220nF (On large coolrib!)<br/>
+P1 = 220 Ohm</div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhq-KIK2d2BQtPGi6v47qPflZ066CicmDECcTfe8LIBIiJUcCqW0hDq5lycLjhyp8g5uTfv8DaGPpinWkD7gcfDa20Kel1D0pyW_yQQsNt0gKRrCJPKN02lCWcXyi_NynIpOfouUf2AmsMQ/s1600/layout.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhq-KIK2d2BQtPGi6v47qPflZ066CicmDECcTfe8LIBIiJUcCqW0hDq5lycLjhyp8g5uTfv8DaGPpinWkD7gcfDa20Kel1D0pyW_yQQsNt0gKRrCJPKN02lCWcXyi_NynIpOfouUf2AmsMQ/s320/layout.gif"/></a></div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTqxJPWg8q18eaCLf4GPDlUSAqy3XYfzYUNv48T2-gDOjYghiLCKgfoqL3BI8h_WC30CMO0EOScogzigIxndugbzTxgqx1uYgwmsRSOVn3g3PSLhc1tHA9oW-tJVMzXzp5TpaXeqjtlW3O/s1600/pcb.gif" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTqxJPWg8q18eaCLf4GPDlUSAqy3XYfzYUNv48T2-gDOjYghiLCKgfoqL3BI8h_WC30CMO0EOScogzigIxndugbzTxgqx1uYgwmsRSOVn3g3PSLhc1tHA9oW-tJVMzXzp5TpaXeqjtlW3O/s320/pcb.gif"/></a> </div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/09/lead-acid-battery-charger-2.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

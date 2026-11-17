@@ -1,0 +1,221 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title> NTC Sensörü ile Sıcaklık ölçümü ve Buzzer Kullanarak yangın alarmı yapımı | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1> NTC Sensörü ile Sıcaklık ölçümü ve Buzzer Kullanarak yangın alarmı yapımı</h1><div>2020-05-30 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><div dir="ltr" trbidi="on">
+NTC ısıya duyarlı bir sensördür. Bu uygulamamızda NTC Sensörü ile Sıcaklık ölçümü yapıp ve Buzzer Kullanarak bir yangın alarmı uygulaması yapacağız.<br/>
+<br/>
+ Malzeme listesi:<br/>
+<br/>
+1. Arduino Uno<br/>
+2. BreadBoard<br/>
+3. 1 adet Buzzer<br/>
+4. 1 adet NTC Sensörü<br/>
+5. Jumper Kablolar<br/>
+6. 1 adet Led<br/>
+<h2>
+Arduino NTC sensör kiti</h2>
+<div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQryp8Fu5EfcSGWHRvfwMhXZDow5k0hQPJwlepdIW0yGVQynjTCq427nc06cO1-vqQVonzv9NjCCEp9RPU3qAFX5EHAZi2R44c4a8YKlhTWIF3GbUgW8bYidVkZ3B-gboOxZjLHBaTTjIK/s1600/Ashampoo_Snap_2020.05.27_01h02m00s_004_.png" rel="noopener noreferrer"><img border="0" data-original-height="444" data-original-width="478" height="297" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQryp8Fu5EfcSGWHRvfwMhXZDow5k0hQPJwlepdIW0yGVQynjTCq427nc06cO1-vqQVonzv9NjCCEp9RPU3qAFX5EHAZi2R44c4a8YKlhTWIF3GbUgW8bYidVkZ3B-gboOxZjLHBaTTjIK/s320/Ashampoo_Snap_2020.05.27_01h02m00s_004_.png" width="320"/></a></div>
+<br/>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+NTC sıcaklık sensörü kartı, üzerinde direnç bağlantılarının yapılmış olduğu ve besleme ve sinyal çıkışının rahat bir şekilde yapılabilmesi için kart haline getirilmiş bir modüldür. Kart üzerinde yer alan karşılaştırıcı devre ile üzerindeki trimpot ile ayarlanan referans değerine göre dijital çıkış alınabilmektedir.<br/>
+<br/>
+Isı ölçüm cihazları, termostat, oda sıcaklığı ölçümü ve akıllı ev sistemi gibi projelerde rahatlıkla kullanılabilen bu sensör Arduino başta olmak üzere bir çok mikrodenetleyeci sistemi ile beraber kullanılabilmektedir.<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+10k NTC Sensör<br/>
+<br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlbfWmB0PSJYlwxS0Gbi9zDDt7FDsyQIiBppOdAsdB63i95asNpBC4tRkGUFPaJFpKE90FUHzI7PL7H2MwDV4-WM3m7UF4aGkfCfU4wiL58GgfWjgDIxIsEtRbWXeh8N3QpuPho7tfrXsu/" rel="noopener noreferrer"><img border="0" data-original-height="430" data-original-width="437" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjlbfWmB0PSJYlwxS0Gbi9zDDt7FDsyQIiBppOdAsdB63i95asNpBC4tRkGUFPaJFpKE90FUHzI7PL7H2MwDV4-WM3m7UF4aGkfCfU4wiL58GgfWjgDIxIsEtRbWXeh8N3QpuPho7tfrXsu/s320/Ashampoo_Snap_2020.05.30_14h55m20s_001_.png" width="320"/></a></div>
+<div>
+<br/>
+<br/>
+Breadboard'muza eklediğimiz Buzzer'ın artı  bacağından jumper kablo ile ardunio uno malzememizdeki 3  nolu dijital pine bağlantı kuruyoruz. Buzzer'ın kısa bacağını ise yine jumper kablo ile Ardunio Uno'da bulunan GND nün ucuna bağlıyoruz. NTC Sensörü 2 adet pini  var.. pin in bir ucunu artı  5 Volta bağlıyoruz diğer  pinini 10 k lık direnc  ile Arduino Analog pinlerinden. A0 pinine</div>
+<div>
+ bağlantısını yapıyoruz direncin birucunu Arduino nun GND (negatif) pinine bağlıyoruz. Led'in ise artı bacağına 220 ohm direnç bağlıyoruz. Bu uçtan ise Arduino nun 2nolu dijital pine jumper kablo  ile bağlanıyor. Negative bacağını ise GND ucuna bağlıyoruz devre resmi aşağıda gösterilmiştir.</div>
+<div>
+aptığınız devrenin çalıştığını deneyebilmek için( if sıcaklık değerini &lt; 30 &gt; ) derece olarak yazabilirsiniz</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<div>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj87UE8Rt020ZxT365loajbn1SMTAW90JsVY7ADxlQ_M453vtBS-D8mOcKUYbLZk11uoxkx0pJ2jLgJCU8I85d3OYVrZvta0IMGD85OkrY9lrr-ruP4ekDjW0JRvCJ87ku2rHIoK4XXDDhj/" rel="noopener noreferrer"><img border="0" data-original-height="367" data-original-width="409" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj87UE8Rt020ZxT365loajbn1SMTAW90JsVY7ADxlQ_M453vtBS-D8mOcKUYbLZk11uoxkx0pJ2jLgJCU8I85d3OYVrZvta0IMGD85OkrY9lrr-ruP4ekDjW0JRvCJ87ku2rHIoK4XXDDhj/s320/Ashampoo_Snap_2020.05.27_01h11m16s_007_.png" width="320"/></a></div>
+<br/></div>
+<div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+#define led 2</div>
+<div>
+#define buzzer 3</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+void setup() {</div>
+<div>
+  Serial.begin(115200);</div>
+<div>
+  pinMode(led,OUTPUT);</div>
+<div>
+pinMode(buzzer,OUTPUT);</div>
+<div>
+<br/></div>
+<div>
+}</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+double Termistor(int analogOkuma){</div>
+<div>
+<br/></div>
+<div>
+ double sicaklik;</div>
+<div>
+ sicaklik = log(((10240000 / analogOkuma) - 10000));</div>
+<div>
+ sicaklik = 1 / (0.001129148 + (0.000234125 + (0.0000000876741 * sicaklik * sicaklik)) * sicaklik);</div>
+<div>
+ sicaklik = sicaklik - 273.15;</div>
+<div>
+ return sicaklik;</div>
+<div>
+}</div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+void loop() {</div>
+<div>
+<br/></div>
+<div>
+  </div>
+<div>
+  int deger = analogRead(A0);</div>
+<div>
+  double sicaklik = Termistor(deger);</div>
+<div>
+  Serial.println(sicaklik);</div>
+<div>
+<br/></div>
+<div>
+  if(sicaklik &gt; 60){</div>
+<div>
+    digitalWrite(led,HIGH);</div>
+<div>
+    digitalWrite(buzzer,HIGH);</div>
+<div>
+  }</div>
+<div>
+  else{</div>
+<div>
+    digitalWrite(led,LOW);</div>
+<div>
+    digitalWrite(buzzer,LOW);</div>
+<div>
+  }</div>
+<div>
+<br/></div>
+<div>
+  delay(250);</div>
+<div>
+}</div>
+<div>
+  </div>
+<div>
+  </div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+<div>
+<br/></div>
+</div>
+<div>
+<br/></div>
+<div>
+<pre><pre><pre>
+</pre>
+</pre>
+</pre>
+</div>
+</div>
+</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2020/05/ntc-sensoru-ile-scaklk-olcumu-ve-buzzer.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

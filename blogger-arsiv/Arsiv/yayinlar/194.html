@@ -1,0 +1,32 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ses ile aktive olan röle | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Ses ile aktive olan röle</h1><div>2010-01-10 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span>Öncelikle bu yazıyı okuyan herkesin yeni yılını kutlarım. Sevdiklerinizle birlikte, sağlıklı, huzur ve barış dolu bir yıl geçirmenizi dilerim.<br/>
+<br/>
+Bu yazıda ses yada herhangi bir ses kaynağı kullanılarak bir röleyi aktif hakle getiren bir devre sunacağım. Devre ses kayıt cihazlarında kullanılmaktadır. Bu sayede herhangi bir konuşma olmadığında teybin boş yere dönmesini önlemiş oluyorsunuz...<br/>
+<br/>
+Devre önceden ayarlanmış bir ses şiddetinde röleyi aktif hale getiriyor, ses kaynağı kesildikten kısa bir süre sonra da 'off' konumuna dönüyor.<br/>
+<br/>
+<br/>
+<img align="default" alt=" " height="815" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2004/ocak/yz51.jpg" width="278"/><br/>
+<br/>
+Devre girişinde elektret mikrofon kullanıyoruz, mikrofonu monte ederken polaritelerine dikkat edin. Mikrofon girişinden hemen sonra iki adet transistörden oluşan kuvvetlendiricimiz var. Burdaki 5k lık trimpot ile mikrofonun hassasiyet ayarını yapıyorsunuz. Audio girişi buradan sonra 74HC14 Schimtt triger den oluşturulan dijital anahtarlama kısmına gitmektedir. İlk Schmitt triger biaslama voltaj girişi %1 toleranslı 1M ohm luk dirençler ile sağlanmaktadır. 6 voltluk besleme kaynağı kullanılırsa invertör kapısı 2,2 Volt ile 2,3 Voltluk bir aralıkta, 1 Voltluk bir histerizis aralığında çalışır. Bu şu anlama geliyor, Schmitt triger girişi 3,2 voltun üstüne çıkarsa çıkış 'low' oluyor, 2,2 voltun altına düşerse çıkış 'high' oluyor.<br/>
+<br/>
+Girişte bir ses sinyali olduğunu düşünelim, bu durumda invertörün 2 nolu çıkışı 'low' olacaktır. Ve bu çıkışa bağlı olan kondansatör (22uF/16V) diot (1N4148) vasıtası ile hızla şarj olacaktır. 2 nolu çıkışın 'low' olması aynı zamanda 3 nolu invertör girişinin de 'low' ve çıkışının da (4 nolu uç) 'high' olması anlamındadır. Bunun neticesinde de BC337 nolu transistör iletime geçer ve kendisine bağlı rölenin çalışmasını sağlar.<br/>
+<br/>
+Evet.... 3 nolu girişin 'low' olması, yani ses sinyalinin bulunması, ona bağlı diğer iki invertörden U1d nin çıkışının 'low' olması demektir. Ve audio sinyali bulunmaması durumda U1a nın 1 nolu girişini 'low' yapar. Bu durumda 22uF/16 Voltluk kondansatör kendisine paralel bağlanmış olan 470k ohm luk direnç üzerinden yaklaşık olarak 5-6 sn de deşarj olur. Deşarj süresi kondansatör ve/veya direnç değiştirilerek değiştirilebilinir. Deşarj süresi sonunda, 3 nolu invertör girişi 3,2 voltun üzerine çıkar ve invertör çıkışı da 'low' olur ve iletimdeki röle de enerjisiz kalır.<br/>
+<br/>
+Sistemin ses ile aktif hale gelip gelmediğini de U1e nin çıkışına bağlı LED ile gözlemleyebilirsiniz.<br/>
+<br/>
+Devrenin baskılı şeması aşağıda<br/>
+<br/>
+<img align="default" alt=" " height="207" loading="lazy" src="http://antrak.org.tr/images/stories/pic_2004/ocak/yz52.jpg" width="411"/><br/>
+<br/>
+Ayrıca BoarMaker veya printer dosyası olarak çizimleri aşağıdaki linklerden alabilirsiniz. Printer dosyaları HPGL formatında plt dosyalarıdır. Bu formattaki dosyaları yazıcıdan alabilmek için aşağıdaki link deki programdan faydalanabilirsiniz.<br/>
+<br/>
+<a href="http://www.concentric.net/~Ravitz/" rel="noopener noreferrer">http://www.concentric.net/~Ravitz/ </a><br/>
+<br/>
+Yada Windows un "Run" komut penceresinden çıkacak olan kutucuğun içine [print "dosya_adı"] yazarak da çıktı alabilirsiniz.<br/>
+<br/>
+</span><br/>
+<ul><li>BoarMaker dosyası olarak çizimler (<a href="http://antrak.org.tr/images/stories/pic_2004/ocak/bm_dosyalari.zip" rel="noopener noreferrer" target="_blank">bm_dosyalari.zip</a>)<br/>
+</li>
+<li>Ploter dosyası olarak çizimler (<a href="http://antrak.org.tr/images/stories/pic_2004/ocak/printer_dosyalari.zip" rel="noopener noreferrer" target="_blank">printer_dosyalari.zip</a>)</li>
+</ul></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/01/ses-ile-aktive-olan-role.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

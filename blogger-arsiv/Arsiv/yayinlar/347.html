@@ -1,0 +1,135 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 8 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 8</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span></span><br/>
+<h3><span>PIC Basic Pro ile PIC Programlama 8</span></h3><div><h2><a href="http://320volt.com/wp-content/picbasic/pic-basic-pro-ile-pic-programlama-8.html" rel="noopener noreferrer" title="Permanent Link: PIC Basic Pro ile PIC Programlama 8"><span>PIC Basic Pro ile PIC Programlama 8</span></a></h2><div><div><span>Bu dersimizde Pic mikro işlemcilere dışarıdan bağlanan aletleri inceleyeceğiz. Dışarıdan bağlanabilen aletler olarak;</span><strong><span>1.</span></strong><span> Tuş takımları (keyboard)</span><strong><span>2.</span></strong><span> LED display ler</span><strong><span>3.</span></strong><span> Port Çoğullayıcılar</span></div><div><strong><span>1. TUŞ TAKIMI KONTROLU:</span></strong><span><br/>
+Tuş takımları matriks bağlantı şeklinde çalışırlar. Yatay ve dikey hatları vardır. Tuşun birisine basıldığı zaman tuşun bağlı olduğu yatay hat ile dikey hat tuş üzerinden kısa devre edilir. Hatlardan birisini siz lojik olarak kontrol edersiniz diğerine ise lojik olarak bakarsınız. Bir örnekle açıklamak daha uygun olacak sanırım Diyelim ki aşağıdaki şekilde bir tuş takımını kontrol etmek istiyoruz.</span></div><div><span><img alt="picbasic_keypad" height="459" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/picbasic_keypad.png" title="picbasic_keypad" width="600"/></span></div><div><span>Amacımız basılan tuşun değerini ekranda göstermek tabii ki sonra bu değerleri bir işte kullanmak. Tuş takımında </span><strong><span>1-2-3</span></strong><span>numaralarla işaretlenen dikey hatları PortB de 1-2-3 nolu pinlere bağlayıp bunları giriş olarak ayarlıyoruz. </span><strong><span>A-B-C-D</span></strong><span> olarak işaretlenen yatay sıraları ise PortB de 4-5-6 ve 7 nolu pinlere bağlayıp bu pinleri de çıkış olarak ayarlıyoruz.</span></div><div><span>Burada önemli olan bir nokta var. Giriş olarak ayarlanmış pinlerin ya pull-up veya pull-down yapılması gerekmektedir. Biz örneğimizde </span><strong><span>PortB</span></strong><span> nin kendisinde olan Pull-Up dirençlerini kullanarak giriş pinlerini Pull-Up’lı olarak kullanacağız. Şimdi gözünüzde canlandırmanızı isteğim bir durum var. Dikey hatlar pull-up lı olarak High seviyesinde bekliyorlar.</span></div><div><span>Yatay hatların hepsinde çıkış olarak ayarlandı ve bunların hepsine de High uyguluyoruz. Sonuçta tuş takımına baktığımız anda yatay ve dikey hatların tamamı lojik-1 seviyesinde olduğunu görüyoruz. Şimdi basılan tuşu tespit etme işine başlayabiliriz. A ile isimlendirilen Yatay hattı (çıkış olarak ayarlanmış idi) </span><strong><span>LOW</span></strong><span> yapıyoruz. Tuş takımında şimdi yalnızca A yatay hattı </span><strong><span>LOW</span></strong><span>seviyesindedir. Şimdi bakalım, şayet ben 1 nolu tuşa basar isem ne olur? Tabiiki yatay hat ile dikey hat kısa devre olacağından 1 nolu dikey hat hemen </span><strong><span>LOW </span></strong><span>olur.</span></div><div><span>Şayet 2 nolu tuşa basar isem bu defada 2 nolu dikey hat </span><strong><span>LOW</span></strong><span> olur. Aynı şekilde 3 nolu tuşa basar isem 3 nolu dikey hat LOW olur. işte bu özellikten yararlanarak basılan tuşu tespit edebiliriz.<br/>
+işe şöyle başlarız;</span></div><div><span>LOW YATAY-A ‘Önce A yatay hattını LOW yaparız. IF Dikey-1=0 Then TUS=1 ‘Şayet Dikey-1 LOW ise demek ki basılan Tuş=1 dir. IF Dikey-2=0 Then TUS=2 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=2 dir. IF Dikey-3=0 Then TUS=3 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=3 dür.</span></div><div><span>Buraya kadar 1. yatay sıradaki tuşları kontrol etmiş olduk. Şimdi 2. yatay sıradakileri kontrol edelim,<br/>
+LOW YATAY-B IF Dikey-1=0 Then TUS=4 ‘Şayet Dikey-1 LOW ise demek ki basılan Tuş=4 dir. IF Dikey-2=0 Then TUS=5 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=5 dir. IF Dikey-3=0 Then TUS=6 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=6 dür.</span></div><div><span>Buraya kadar 2. yatay sıradaki tuşları da kontrol etmiş olduk. Şimdi 3. yatay sıradakileri kontrol edelim,<br/>
+LOW YATAY-C IF Dikey-1=0 Then TUS=7 ‘Şayet Dikey-1 LOW ise demek ki basılan Tuş=7 dir. IF Dikey-2=0 Then TUS=8 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=8 dir. IF Dikey-3=0 Then TUS=9 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=9 dür.</span></div><div><span>Buraya kadar 3. yatay sıradaki tuşları da kontrol etmiş olduk. Şimdi 4. yatay sıradakileri kontrol edelim,<br/>
+LOW YATAY-D IF Dikey-1=0 Then TUS=11 yani ( * ) tuşu‘Şayet Dikey-1 LOW ise demek ki basılan Tuş=11 dir. IF Dikey-2=0 Then TUS=0 ‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=0 dır. IF Dikey-3=0 Then TUS=12 yani ( # ) tuşu‘Şayet Dikey-2 LOW ise demek ki basılan Tuş=12 dir.</span></div><div><span>Bu şekilde tuşların tamamını kontrol etmiş oluyoruz. işin temeli bu kadardır. Kısaca tekrarlamak gerekir ise ya dikey yada yatay hatların tamamını giriş olarak ayarlayın. Bunları giriş yaptınız ise , Pull-up (veya Pull-down) dirençleri ilave edin.</span></div><div><span>Matriks in diğer ucundaki hatları ise çıkış olarak ayarlayın. Sonra sıra ile çıkış olarak ayarladığınız sıraları lojik seviyesini değiştirerek girişte aynı değişikliği arayın. Olan var ise aynı hatlara bağlı tuş basılmış demektir.<br/>
+Şimdi tuş konusu ile ilgili program örneğimizi verelim.</span></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : TUSTAKIMI.BAS *<br/>
+‘* Author : [E.T.E] *<br/>
+‘* Notice : Copyright (c) 2005 Ete] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 24.06.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+trisa=000000<br/>
+trisb=001110<br/>
+@ device pic16f628a<br/>
+@ device pic16f628a, wdt_off<br/>
+@ device pic16f628a, pwrt_on<br/>
+@ device pic16f628a, protect_off<br/>
+@ device pic16f628a, mclr_off<br/>
+@ DEVICE pic16F628a, INTRC_OSC_NOCLKOUT<br/>
+CMCON=7<br/>
+OPTION_REG.7=0 ‘pull-up dirençleri aktif<br/>
+tus var word<br/>
+Define LCD_DREG PORTA<br/>
+Define LCD_DBIT 0<br/>
+Define LCD_RSREG PORTA<br/>
+Define LCD_RSBIT 4<br/>
+Define LCD_EREG PORTA<br/>
+Define LCD_EBIT 6<br/>
+Define LCD_BITS 4<br/>
+Define LCD_LINES 2<br/>
+Symbol YATAY_A= PORTB.4<br/>
+Symbol YATAY_B= PORTB.5<br/>
+Symbol YATAY_C= PORTB.6<br/>
+Symbol YATAY_D= PORTB.7<br/>
+Symbol DIKEY_1= PORTB.1<br/>
+Symbol DIKEY_2= PORTB.2<br/>
+Symbol DIKEY_3= PORTB.3<br/>
+Tus=0<br/>
+Pause 200<br/>
+Lcdout $fe, 1<br/>
+BASLA:<br/>
+PORTB =254<br/>
+YATAY_A=0<br/>
+If DIKEY_1=0THEN<br/>
+Tus=1:GOSUB EKRAN<br/>
+While DIKEY_1=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_2=0 Then<br/>
+Tus=2:GOSUB EKRAN<br/>
+While DIKEY_2=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_3=0 Then<br/>
+Tus=3:GOSUB EKRAN<br/>
+While DIKEY_3=0<br/>
+Wend<br/>
+Endif<br/>
+High YATAY_A<br/>
+YATAY_B=0<br/>
+If DIKEY_1=0 Then<br/>
+Tus=4:GOSUB EKRAN<br/>
+While DIKEY_1=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_2=0 Then<br/>
+Tus=5:GOSUB EKRAN<br/>
+While DIKEY_2=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_3=0 Then<br/>
+Tus=6:GOSUB EKRAN<br/>
+While DIKEY_3=0<br/>
+Wend<br/>
+Endif<br/>
+High YATAY_B<br/>
+YATAY_C=0<br/>
+If DIKEY_1=0 Then<br/>
+Tus=7:GOSUB EKRAN<br/>
+While DIKEY_1=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_2=0 Then<br/>
+Tus=8:GOSUB EKRAN<br/>
+While DIKEY_2=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_3=0 Then<br/>
+Tus=9:GOSUB EKRAN<br/>
+While DIKEY_3=0<br/>
+Wend<br/>
+Endif<br/>
+High YATAY_C<br/>
+YATAY_D=0<br/>
+If DIKEY_1=0 Then<br/>
+Tus=11:GOSUB EKRAN<br/>
+While DIKEY_1=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_2=0 Then<br/>
+Tus=0:GOSUB EKRAN<br/>
+While DIKEY_2=0<br/>
+Wend<br/>
+Endif<br/>
+If DIKEY_3=0 Then<br/>
+Tus=12:GOSUB EKRAN<br/>
+While DIKEY_3=0<br/>
+Wend<br/>
+Endif<br/>
+High YATAY_D<br/>
+pause 100<br/>
+Goto BASLA<br/>
+EKRAN:<br/>
+Lcdout $fe,1,”Tus= “,#tus<br/>
+pause 50<br/>
+RETURN<br/>
+END</span></strong></div><div><strong><span>2. LED DISPLAY KONTROLU:</span></strong><span><br/>
+Led display ler 7 segment display ler olarak piyasada isimlendirilmektedirler. Genelde ortak Anot ve ortak Katot bağlantılı tipleri mevcuttur. Ortak Anot olanlar ortak şase olarak + beslemeyi, Ortak Katot olanlar ise ortak şase olarak GND yi kullanırlar. Biz örneklerimizde ortak katot display’i inceleyeceğiz. Tercihimiz yalnızca anlatım kolaylığı açısındandır. 7 segment display in A-B-C-D-E-F-G olarak adlandırılan pin uçları vardır. Her bir pin’e High uygulanır ise bağlı olduğu segment ışıldar.</span></div><div><span>Bu sistemle display üzerinde sayılar oluşturulur. Normal olarak her bir display in (Ortak Anot veya Katot) kendi sürücüleri vardır. Bu sürücüler genelde ABCD olarak BCD (Binary Coded Desimal) olarak sürülürler. Yani siz </span><strong><span>ABCD</span></strong><span> girişlerine bir rakam verirseniz yonganın diğer ucu display’e bağlı olduğundan verdiğiniz rakam display’de görülür. Ancak bu sürücüler yalnızca 0-9 arası rakamları görüntüleyebilirler. Bunun dışında displayin gösterebileceği karakterleri gösteremezler. Bu nedenle Pic işlemcilerle birlikte bu sürücüler genelde kullanılmaz.<br/>
+Bu kadar teorik bilgi verdikten sonra konunun Pic işlemcilerle olan alakasına geçelim. Pic işlemcilerle bu tip display leri kullanırken birkaç teknik kullanılır. Şayet özel karakter yazdırılmayacak ise genelde</span><strong><span> 4511</span></strong><span> tipi bir sürücü kullanılır. Bu sürücünün çıkışları </span><strong><span>LATCH</span></strong><span> yani kilitli olduğundan pic ile kullanmaya ve mültipleks çalışmaya son derece elverişlidirler. Özel karakterlerin kullanılması durumunda yine Latch (kilit) leri olan shift register (seriden paralele çevirici) kullanmak en uygunu olacaktır. Bu konuda da en iyi yongalardan biriside </span><strong><span>74HC595</span></strong><span> tir.</span></div><div><span>Öncelikle 4511 li bir uygulamayı inceleyelim. işin temelinde görüntülenmesi gereken her bir bilgi (dijit) ortak bilgi hatta verilir. Sonradan bu bilginin istenen led display’de görüntülenmesini sağlamak amacı ile yalnızca o displayin latch (kilidi) açılarak ortak hattan gelen bilginin çıkışa aktarılması sağlanır. Bu bilgi tekrar değiştirilinceye kadar çıkışta kalacağı için display’de bir titreme (yanma¬sönme) olmadan istenen bilgi görüntülenmiş olur.</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/display_led_4511.png" rel="noopener noreferrer"><span><img alt="display_led_4511-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/display_led_4511-150x150.png" title="display_led_4511" width="150"/></span></a></div><div><span>Şekilde görülen devre bir encoder den gelen palsları sayan bir devredir. Sayılan değer led display den görüntülenmektedir. Şekilde görüldüğü gibi, 4511 lerin ABCD girişleri ortak hatlar olarak kullanılmış ve bu girişler Pic 16F628 ‘in PortA da 0-1-2 ve 3 nolu port uçlarına bağlanmıştır. 4511 lerin segment çıkışları led display’lere bağlanmış ve en önemlisi 4511 lerin LatchEnable (LE) uçlarının her biri pic in bir pinine bağlanmıştır.</span></div><div><span>Şimdi, 4511 lerin tüm ABCD girişleri ortak bağlantı şeklinde olduğundan Pic den ABCD bilgisi olarak bir bilgi çıkarırsak ve latch ları enable (LOW a çekilir ise) yaparsak verdiğimiz bilgi tüm displaylarda görülür. Örneğin 2 bilgisini oluşturacak şekilde ABCD girişlerine 10 bilgisini verirsem tüm display’lerde 2 rakamını görürüm.</span></div><div><span>Şayet ben 2 rakamının yalnızca ilk (soldan birinci) displayda görülmesini ister isem o zaman yalnızca ilk 4511’in LE ucunu (normalde sürekli HiGH da duruyor) önce Low yapar sonra tekrar High yaparım. Diğerlerine dokunmam. Bu durumda ilk display de 2 rakamını okurum. Diğerleri önceden ne kayıtlı ise o rakamları göstermeye devam ederler. işte bu teknik ile son derece hızlı bir şekilde ve ekranda titreme olmaksızın rakamlar görüntülenebilir.</span></div><div><span>Şimdi konuyla ilgili program örneğimizi yapalım. Aşağıdaki programda iki tane buton var. Ayrıca 2 adet Led display göreceksiniz. Tuşlardan üstte olana basılınca sayı bir artırılacak ve artırılan sayı ekranda görülecek. Alttakine basılınca da sayı bir azaltılacak ve yine sayı display de gözlenecek. Önce devremiz;</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/display_sayici.png" rel="noopener noreferrer"><span><img alt="display_sayici-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/display_sayici-150x150.png" title="display_sayici" width="150"/></span></a></div><div><strong><span>Kodlar:</span></strong></div><div><span><img alt="sayici_kodlari_pbp" height="848" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/sayici_kodlari_pbp.png" title="sayici_kodlari_pbp" width="606"/></span></div><div><span>Daha öncede belirttiğim gibi 4511 kullanarak yalnızca sayıları display da görüntüleyebiliriz. Aynı display bize C veya</span></div><div><span>(0) şeklini de gösterebilir veya (-) eksi işaretini gösterebilir. Örnek olarak bir sıcaklık göstergesi yaptık ve display de 23,3 0C şeklini görmek istiyoruz. işte bu durumda 4511 display sürücüsünü kullanamayız. Bu durumda kullanılacak en uygun yonga 74HC595 shift registerdir.</span></div><div><span>Şimdi bu yonganın kullanımına bir örnek verelim,</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/dipslay_devre_picbasic.png" rel="noopener noreferrer"><span><img alt="dipslay_devre_picbasic-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/dipslay_devre_picbasic-150x150.png" title="dipslay_devre_picbasic" width="150"/></span></a></div><div><span>Şimdi aynı ekranın diğer karakterler ile nasıl göründüğüne bakalım.</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/dipslay_devre_picbasic_2.png" rel="noopener noreferrer"><span><img alt="dipslay_devre_picbasic_2-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/dipslay_devre_picbasic_2-150x150.png" title="dipslay_devre_picbasic_2" width="150"/></span></a></div><div><span>Görüldüğü üzere 74HC595 bize istediğimiz görüntü imkanlarını sağlayabiliyor. Şimdi bu yonganın nasıl çalıştığına ve kontrol edildiğine bir bakalım.</span></div><div><span>16 Pin li bir yonga olan 74HC595 in en önemli özelliği data bacağı (14 nolu pin) ile Clock bacağı (11 nolu pin) kullanılarak seri yoldan bilgi registerine yazılabiliyor. Ancak yazılan bu bilgi hemen çıkışta görülemiyor. Görülebilmesi için bilgi aktarma bacağı olan (12 nolu pin) pine bir clock palsının uygulanması gerekiyor. Bu özellik bize bu yonganın display sürücüsü olarak kullanılması imkanını veriyor. Basic de Shiftout komutunun olduğunu biliyorsunuz. Bu komut bize datapin, clockpin, mode , (değişkenler) şeklinde kullanılarak 8 bitlik bir bilginin seri olarak gönderilmesini sağlar. Komutun parametrelerinden biri olan Mode ise bilgi göndermede aşağıdaki işlemler için kullanılır;</span></div><div><span>0. Önce 0 nolu data bitini çıkışa ver ve en sonda 7. biti gönder. Sonuçta Clock Low da kalsın.<br/>
+1. Önce 7. biti , en sonda 0. biti gönder ve Clock Low da kalsın.</span></div><div><span>4. Önce 0. Biti, en sonda 7. biti gönder Clock High da kalsın<br/>
+5. Önce 7. biti ve en sonda 0. biti gönder ve Clock High da kalsın.</span></div><div><span>74HC595 Shift Register de işlemler kontrol pinleri LOW da iken yapılmaktadır. Bu nedenle biz mode olarak 2. seçeneği seçeceğiz. Bunun Mode değeri 1 dir.</span></div><div><span>Yonganın kullanımına geçmeden bir LED display de karakterler nasıl oluşuyor bu konuyu biraz incelememiz gerekecek. Sıfır rakamının displayda oluşması için , segmentlere kontrol eden bitlerden,</span></div><div><span><img alt="led_display_karakter" height="217" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/led_display_karakter.png" title="led_display_karakter" width="595"/></span></div><div><span>olması gerekiyor. Aynı şekilde 1 rakamını görebilmek için sağda yer alan 1 ve 2. bitlerin bir diğerlerinin sıfır olması gerektiğini hemen anlamışsınızdır. Yine 3 rakamını oluşturmak için 0,1,2,3 ve 6. bitlerin bir diğerlerinin sıfır olması gerekir. Aynı mantık ile sayılar veya karakterlere göre bitlerin durumunun ne olması gerektiğini aşağıda belirtmekteyiz.</span></div><div><span><img alt="tablo_bit_karakter" height="206" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/tablo_bit_karakter.png" title="tablo_bit_karakter" width="637"/></span></div><div><span>Şimdi </span><strong><span>74hc595</span></strong><span> yongasına yukarıda belirtilen karakterlerin görüntülenebilmesi için karakterlerin sayı karşılığının nasıl verileceğini inceleyelim.</span></div><div><span>Önce bir </span><strong><span>LOOKUP</span></strong><span> tablosu yapıyoruz. Lookup bir Basic komutudur. indeks kullanılarak indeks değerine karşılık gelen sıradaki değerin tablodan alınmasını sağlar. Bizim Lookup tablomuz aşağıdaki gibi olacaktır. Burada X bizim indeksimiz olacak ve tablodaki sayılarda sırası ile </span><strong><span>0,1,2,3,4,5,6,7,8,9, 0,C</span></strong><span> karakterlerine karşılık gelmektedir. Şimdi </span><strong><span>X=3</span></strong><span> şeklinde X (indeks) değişkenine 3 sayısını verip Lookup tablosuna gönderir isek, 3. sıradaki değer SAYI değişkenine koyularak geri dönecektir. Yani ; </span><strong><span>X=3:GOSUB LOOKUP</span></strong><span> şeklinde bir program komutu verir isem dönüşte </span><strong><span>SAYI=79</span></strong><span> olarak gelecektir. Bunu öğrendikten sonra şayet ben göstereceğim karakterlerin sayı karşılıklarını bu tablodan alıp Shift Registere verir isem ve registerin çıkışlarına display bağlar isem istediğim karakteri görüntüleme şansım olacaktır. işte 74HC595 kullanmanın mantıksal temeli budur. Şimdi bir Lookup tablosu oluşturup, bu tablodan aldığımız değeri </span><strong><span>74HC595</span></strong><span> yongasına yazalım.</span></div><div><span>X=5 ‘yani görüntülemek istediğim karakter “5” olacaktır. GOSUB TABLO ‘Tabloya git ve 5 indeksine karşılık gelen 109 sayısını SAYI değişkenine koy ve dön SHIFTOUT DataPin , ClockPin ,1, [SAYI] ‘sayı değerini bit-bit clock ve data pinleri kullanarak ilet. HiGH AktarPini (Latch) :PAUSEUS 2 : LOW AktarPini ‘burada registere yazılan sayı bilgisinin aktarma pinine bir</span></div><div><span>‘pals verilerek yani önce HiGH ve sonra LOW yapılarak çıkışa verilmesi sağlanıyor. </span><strong><span>TABLO: LOOKUP X,[63,6,91,79,102,109,125,7,127,111,99,57],SAYI :RETURN</span></strong></div><div><span>Kısaca özetler isek, görüntülemek istediğimiz karakterin sayısal karşılığını tespit edip bu sayıyı Shiftout komutu ile Shift registere yazıyoruz. Sonra, registerin aktarma pinine bir pals uyguluyoruz (HiGH – LOW) ve böylece registere yazdığımız bilgi register çıkışlarına aktarılmış oluyor. Bu bilgi değiştirilinceye kadar çıkışta kalmaktadır. Böylece sürekli olarak display’e verilen bu bilgi sayesinde display de istediğimiz karakterin sürekli görülmesini sağlamış olmaktayız.</span></div><div><span>işin görüntüleme kısmını öğrendikten sonra geriye istediğimiz display de istediğimiz bir karakterin görüntülenmesini sağlamak kalıyor. Bu işlem bir önceki konuda bahsettiğimiz mantıkla yapılmaktadır. Yani hangi display’e yeni karakter verecek isem sadece onu süren Shift Registerdeki bilgiyi yenilerim . Böylece istediğim display de istediğim görüntüyü elde etmiş olurum. Açıklamalarımızı bir örnek ile pekiştirelim. Konunun başında vermiş olduğumuz devre bir Saat + Termometre devresidir. Program ekranda hem saati hemde sıcaklık değerini görüntülemektedir.</span></div><div><span>Bu sistemin programı aşağıda verilmektedir.</span></div><div><span><img alt="pbp_kod" height="684" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/pbp_kod.png" title="pbp_kod" width="524"/><br/>
+<img alt="pbp_kod_2" height="582" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/pbp_kod_2.png" title="pbp_kod_2" width="526"/><br/>
+<img alt="pbp_kod_3" height="474" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/pbp_kod_3.png" title="pbp_kod_3" width="581"/><br/>
+<img alt="pbp_kod_4" height="550" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/pbp_kod_4.png" title="pbp_kod_4" width="505"/><br/>
+<img alt="pbp_kod_5" height="691" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/pbp_kod_5.png" title="pbp_kod_5" width="547"/></span></div><div><strong><span>3. PORT ÇOĞULLAMA :</span></strong></div><div><span>Bildiğiniz gibi pic işlemcilerin sınırlı sayıda giriş ve çıkış pinleri bulunmaktadır. Bazı durumlarda bu pinler ihtiyacımızı karşılamaz ve daha fazla çıkış veya giriş pinine ihtiyaç duyarız. işte bu gibi durumlarda kullanabileceğimiz yongalar mevcuttur. ilk inceleyeceğimiz konu çıkış çoğullama olacaktır. Diyelim ki birkaç tane port pini kullanarak daha fazla çıkış pinine sahip olmak istiyoruz.</span></div><div><span>Bu gibi durumlarda kullanabileceğimiz güzel bir yonga var adı 74HC595 shift register. Bu yongayı daha önce saat örneğimizde incelemiş idik. Burada kısaca tekrar nasıl çalıştığını ve bu yongadan nasıl yararlanacağımız açıklayalım. 16 Pin li bir yonga olan 74HC595 in en önemli özelliği, data bacağı (14 no lu pin) ile Clock bacağı (11 no lu pin) kullanılarak seri yoldan bilgi registerine yazılabiliyor.</span></div><div><span>Ancak yazılan bu bilgi hemen çıkışta görülemiyor. Görülebilmesi için bilgi aktarma bacağı olan (12 no lu pin) pine bir Clock palsının uygulanması gerekiyor. Bu durumda 3 adet pin kullanarak 8 adet çıkış elde edebiliriz demektir. Zira 74HC595 çıkış pinlerini sanki pic’e ait çıkış pinleri olarak kullanabilirim. Bunun için önce hangi pinden High , hangi pinden Low çıkarmak istiyor isem bununun binary karşılığını bulurum.</span></div><div><span>Örnek vermek gerekir ise; Çıkarmak istediğim bilginin bit karşılığı şöyle olsun %11001100 bu binary sayının desimal karşılığı 204 dür. Demek ki ben 74HC595’e 204 bilgisini seri olarak verirsem ve registere yazılan bu bilgiyi sonradan çıkışa aktarırsam çıkışta %11001100 bilgisini görebilirim.</span></div><div><span>ilk örneğimiz bahsini ettiğimiz basit örnek olacaktır. Yalnızca 3 adet bacak kullanarak 8 adet çıkış elde edeceğiz. Programda BILGI adında bir değişken tanımlayıp sırasıile 1 – 2 – 4 – 8 – 16 – 32 – 64 – 128değerlerini almasını sağlayacağız. Bu değerler 8 bitlik bir sayının bitlerinin rakam karşılıklarıdır. Bu değerleri verdiğimizde 74 HC 595’in çıkışlarının sırası ile HiGH olduğunu göreceksiniz.</span></div><div><span>Önce devremizi verelim;</span></div><div><span><img alt="cok_cikis" height="268" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/cok_cikis.png" title="cok_cikis" width="600"/></span></div><div><span>ve programımız;</span></div><div><span><img alt="cikis_programi" height="521" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/cikis_programi.png" title="cikis_programi" width="525"/></span></div><div><span>Burada bir soru sormak isterim. 74HC595’in çıkışlarını 1-8 arası numaralandırırsak, Diyelim ki 3 ve 6. pinlerden High çıkarmak istiyorum. Ne yapmalıyım?.</span></div><div><span>Cevap basit tabii ki. isteğimin binary karşılığı 100100 ve desimal karşılığı ise 36 rakamıdır. Dolayısı ile programı aşağıdaki şekilde verir isek istediğimiz yerine gelecektir.</span></div><div><span>BILGI=36<br/>
+SHIFTOUT DTA,CLK,1,[BILGI]<br/>
+HIGH AKTAR<br/>
+PAUSEUS 5<br/>
+LOW AKTAR</span></div><div><span>Bu satırların sonunda istediğim bitler High olacaktır.</span></div><div><span>Görüldüğü üzere yalnızca 3 bit (pin) kullanarak 8 adet çıkış elde ettik. O halde 6 adet pin kullanır isek toplam 16 adet çıkış yapabiliriz. Bunu da size ödev olarak bırakıyorum.</span></div><div><span>Giriş Çoğullama için 74165 yongasını kullanacağız. Bu bir paralel yüklemeli 8 bit seri shift Registerdir. Şimdiye kadar gördüğümüz shift registerlerinde data seri girilip çıkış 8 bit paralel olarak alınıyor idi. Şimdi bu işlemin tersini yapacağız.</span></div><div><span>Yani datayı 8 bit paralel girip bu bilgiyi 8 bit seri bilgi haline çevireceğiz. Girişleri input olarak kullanabileceğimiz için yine 3 adet pin kullanarak 8 adet giriş elde etmiş olacağız. Öncelikle 74165 yongasını biraz incelememiz gerekiyor.</span></div><div><span>8 adet (D0-D7) data girişi bulunmakta 1 adet Clock girişi (2 nolu pin) 1 adet Data çıkışı (9 nolu pin) ve 1 adet Paralel Load pini (1 nolu pin) bulunmaktadır. Girişler D0-D7 data pinlerinden yapılmakta, Paralel load pinine bir pals uygulanarak giriş bilgilerinin dahili registere yazılması sağlanmakta ve sonradan Clock ve Data pini kullanılarak registerdeki bilgi D7-D0 olarak yani tersten başa doğru seri olarak alınmaktadır. Açıklamalarımızı bir programla uygulayalım.</span></div><div><span>Önce Devremiz,</span></div><div><span><img alt="cok_giris" height="434" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/cok_giris.png" title="cok_giris" width="700"/></span></div><div><span>Devremiz ve yazacağımız programda amacımız tuşlardan hangisine basarsak karşılığı olan biti PortB de High yapmak. Yani 1 nolu tuşa basmış isem PortB.0 High olacak. Aynı şekilde şayet 8 nolu tuşa basmış isem PortB.7 High olacak.</span></div><div><span>Şimdi programımızı inceleyelim.</span></div><div><span><img alt="cikis_programi" height="521" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/cikis_programi.png" title="cikis_programi" width="525"/></span></div><div><span>Aslında gördüğünüz gibi program gayet basit ve kısa. Tuşlardan birine bastığım anda bilgi registere aktarılıyor ve seri olarak okunup PortB ye veriliyor. Hepsi bu kadar.</span></div><div><span>Bir programda hem giriş hemde çıkış çoğullama sı yapabilirsiniz. Bunun için iki ayrı Clock ve iki ayrı data pini sembol olarak tanımlanmalıdır. Tabiiki aktarma pinleri de farklı olacaktır. Bunlara dikkat ettikten sonra program yukarıda verilenler örnek alınarak kolaylıkla yapılabilir.</span></div></div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-346.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

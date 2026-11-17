@@ -1,0 +1,108 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Maxim/Dallas DS18B20 sıcaklık algılayıcısı SÜRÜCÜ PROGRAMI | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>Maxim/Dallas DS18B20 sıcaklık algılayıcısı SÜRÜCÜ PROGRAMI</h1><div>2010-03-15 · Motor ve Sürücüler</div></header><main><article class="panel"><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhfFQvbE3GBZek_jlN2bjDISLrvkJFMyRMskFSdcSID3kmFqoqIHjq9NCWO6dcMv457cLD8Er2MyH4RgkV5OOK6VCOatnTHxgzswgHZJ_1T7HfGfiCH9akGpyxqK8-2fIhv4foZzZ56JQu/s1600-h/ds18b20.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjhfFQvbE3GBZek_jlN2bjDISLrvkJFMyRMskFSdcSID3kmFqoqIHjq9NCWO6dcMv457cLD8Er2MyH4RgkV5OOK6VCOatnTHxgzswgHZJ_1T7HfGfiCH9akGpyxqK8-2fIhv4foZzZ56JQu/s320/ds18b20.jpg"/></a></div><br/>
+<br/>
+Maxim/Dallas firması tarafından üretilen DS18B20 sıcaklık algılayıcısı en fazla 0.5 derecelik hata ile -55 ile +125 dereceler arası ölçüm yapabilmekte ve sıcaklık bilgisini sayısal olarak vermektedir. DS18B20 gibi sayısal çıkış veren sıcaklık algılayıcılarının kullanımı ile analog/sayısal dönüştürücü kullanımına gerek kalmamaktadır.<br/>
+<br/>
+Ayrıca parazit besleme özelliği sayesinde harici besleme kaynağına gerek almadan sıcaklık bilgisi okunabilmektedir. Sensörün Pic’e bağlantısı apılırken yapılacak tek şey DQ data hattına 4.7 k’lık bir pull up direnciyle +5 volta bağlanması olacaktır. Aşağıda verilen sürücü programı devrede sadece bir Ds18B20 varken çalışacaktır. Ayrıca buradan kablosuz sıcaklık ölçümünün nasıl yapılacağına dair bilgi edinebileceğiniz dökümana ulaşabilirsiniz.<br/>
+<div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyJiDoZaKVp8CcYPjmocvHGGaGuplk_10vajq9XPBFcexBP3TH0P2K1c88VFSbEtQ1r707nb4qscvU2pWOM4P3l1JhrVTyBV8s38kWq2GZnF-Nr17JM7AYsONWPjAfSUEfxVRfjqE3siS0/s1600-h/ds18b20bag.jpg" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyJiDoZaKVp8CcYPjmocvHGGaGuplk_10vajq9XPBFcexBP3TH0P2K1c88VFSbEtQ1r707nb4qscvU2pWOM4P3l1JhrVTyBV8s38kWq2GZnF-Nr17JM7AYsONWPjAfSUEfxVRfjqE3siS0/s320/ds18b20bag.jpg"/></a></div><br/>
+<br/>
+<table><tbody>
+<tr><td><span><pre><span>class</span>="<span>prettyprint</span>"&gt; </pre></span></td></tr>
+<tr><td></td><td><span><span>align</span>="<span>justify</span>"&gt;//Bu kodu ds18b20.c olarak kaydediniz</span></td></tr>
+<tr><td></td><td><span><span>align</span>="<span>justify</span>"&gt;// (C) copyright 2003 j.d.sandoz / jds-pic !at! losdos.dyndns.org </span></td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>#define ONE_WIRE_PIN PIN_C7</td></tr>
+<tr><td></td><td>void onewire_reset() </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>output_low(ONE_WIRE_PIN);</td></tr>
+<tr><td></td><td>delay_us( 500 ); //1-wire resetleme için sıfıra çekilir</td></tr>
+<tr><td></td><td>output_float(ONE_WIRE_PIN); //1-wire bir yapılır</td></tr>
+<tr><td></td><td>delay_us( 500 ); // sensörün hazırlanması için beklenir.</td></tr>
+<tr><td></td><td>output_float(ONE_WIRE_PIN);</td></tr>
+<tr><td></td><td>} </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>void onewire_write(int data)</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>int count;</td></tr>
+<tr><td></td><td>for (count=0; count&lt;8; ++count)</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>output_low(ONE_WIRE_PIN);</td></tr>
+<tr><td></td><td>delay_us( 2 ); // Sensöre yazma işlemine başlamak için  1-wire sıfıra çekilir.</td></tr>
+<tr><td></td><td>output_bit(ONE_WIRE_PIN, shift_right(&amp;data,1,0)); // yazılacak bilgi 1-wire'da</td></tr>
+<tr><td></td><td>delay_us( 60 ); // Yazma işlemi zamanı doldurulur.</td></tr>
+<tr><td></td><td>output_float(ONE_WIRE_PIN); // 1-wire bir yapılır,</td></tr>
+<tr><td></td><td>delay_us( 2 ); // 1us'den fazla beklenir.</td></tr>
+<tr><td></td><td>}</td></tr>
+<tr><td></td><td>} </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>int onewire_read()</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>int count, data;</td></tr>
+<tr><td></td><td>for (count=0; count&lt;8; ++count)</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>output_low(ONE_WIRE_PIN);</td></tr>
+<tr><td></td><td>delay_us( 2 ); //Sensördem okuma işlemi içinl 1-wire sıfıra çekilir.</td></tr>
+<tr><td></td><td>output_float(ONE_WIRE_PIN); //1-wire bir yapılır,</td></tr>
+<tr><td></td><td>delay_us( 8 ); // Sensörün kendine gelmesi beklenir,</td></tr>
+<tr><td></td><td>shift_right(&amp;data,1,input(ONE_WIRE_PIN)); // sonuc bilgisi alınır.</td></tr>
+<tr><td></td><td>delay_us( 120 ); //Okuma işlemi zamanı doldurulur.</td></tr>
+<tr><td></td><td>}</td></tr>
+<tr><td></td><td>return( data );</td></tr>
+<tr><td></td><td>} </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>float ds1820_read()</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>int8 busy=0, temp1, temp2;</td></tr>
+<tr><td></td><td>signed int16 temp3;</td></tr>
+<tr><td></td><td>float result;</td></tr>
+<tr><td></td><td>onewire_reset();</td></tr>
+<tr><td></td><td>onewire_write(0xCC);</td></tr>
+<tr><td></td><td>onewire_write(0x44);</td></tr>
+<tr><td></td><td>while (busy == 0)</td></tr>
+<tr><td></td><td>busy = onewire_read();</td></tr>
+<tr><td></td><td>onewire_reset();</td></tr>
+<tr><td></td><td>onewire_write(0xCC);</td></tr>
+<tr><td></td><td>onewire_write(0xBE);</td></tr>
+<tr><td></td><td>temp1 = onewire_read();</td></tr>
+<tr><td></td><td>temp2 = onewire_read();</td></tr>
+<tr><td></td><td>temp3 = make16(temp2, temp1);</td></tr>
+<tr><td></td><td>result = (float) temp3 / 2.0;</td></tr>
+<tr><td></td><td>delay_ms(200);</td></tr>
+<tr><td></td><td>return(result);</td></tr>
+<tr><td></td><td>}<span></span> </td></tr>
+<tr><td></td><td><span>Örnek uygulama Progamı:<span></span></span> </td></tr>
+<tr><td></td><td><span><pre><span>class</span>="<span>prettyprint</span>"&gt; </pre></span></td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>#include &lt;16F877A.h&gt;</td></tr>
+<tr><td></td><td>#FUSES NOWDT, XT, PUT, NOPROTECT, NODEBUG, BROWNOUT, NOLVP, NOCPD, NOWRT</td></tr>
+<tr><td></td><td>#use delay(clock=4000000) </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>#include<span><lcd.c></lcd.c></span><span></span> </td></tr>
+<tr><td></td><td>#include<span><ds1820.c></ds1820.c></span><span></span> </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>void main()</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>float temperature; </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>setup_adc_ports(NO_ANALOGS);</td></tr>
+<tr><td></td><td>setup_adc(ADC_OFF);</td></tr>
+<tr><td></td><td>setup_psp(PSP_DISABLED);</td></tr>
+<tr><td></td><td>setup_spi(FALSE);</td></tr>
+<tr><td></td><td>setup_timer_0(RTCC_INTERNAL|RTCC_DIV_1);</td></tr>
+<tr><td></td><td>setup_timer_1(T1_DISABLED);</td></tr>
+<tr><td></td><td>setup_timer_2(T2_DISABLED,0,1);</td></tr>
+<tr><td></td><td>setup_comparator(NC_NC_NC_NC); </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>lcd_init();</td></tr>
+<tr><td></td><td>lcd_putc(”\f”); </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>while (1)</td></tr>
+<tr><td></td><td>{</td></tr>
+<tr><td></td><td>  temperature = ds1820_read(); </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>   printf(lcd_putc,”Sicaklik:\n %3.1f derece”, temperature);</td></tr>
+<tr><td></td><td>   delay_ms(250;)</td></tr>
+<tr><td></td><td> } </td></tr>
+<tr><td></td><td> </td></tr>
+<tr><td></td><td>}<span></span> </td></tr>
+</tbody></table></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/03/maximdallas-ds18b20-scaklk-alglaycs.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

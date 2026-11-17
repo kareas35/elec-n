@@ -1,0 +1,683 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>45 Watt Class B Amplifier | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>45 Watt Class B Amplifier</h1><div>2010-06-18 · Diğer Elektronik Projeleri</div></header><main><article class="panel"><span><b><span>45 Watt Class B Amplifier</span></b></span><br/>
+<span><span><b><span></span></b></span></span><br/>
+<span><span><b><span><div><span><b><span></span></b></span><br/>
+<span><b><span></span></b></span><br/>
+<span><b><span><table><tbody>
+<tr><td></td><td><span></span><br/>
+<span><h3>Circuit diagram:</h3></span></td></tr>
+<tr><td></td><td><span></span><br/>
+<span><div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbSJbbovC23FOBWqVVXX_NIO4pKKWU6MDgSZqeBVRAbTGVYysRaHIClQHePnHsXIeDHHrkUV6c0oMpoyGdS457RYtIZcUNi5Zs4Y6rWrAcuA-9rprDnRypQL8P-j5Eg0HLT_nsSsVPmnS/s1600/ClassB+16f84+2.GIF" imageanchor="1" rel="noopener noreferrer"><img border="0" height="133" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbSJbbovC23FOBWqVVXX_NIO4pKKWU6MDgSZqeBVRAbTGVYysRaHIClQHePnHsXIeDHHrkUV6c0oMpoyGdS457RYtIZcUNi5Zs4Y6rWrAcuA-9rprDnRypQL8P-j5Eg0HLT_nsSsVPmnS/s200/ClassB+16f84+2.GIF" width="200"/><span><b><span></span></b></span></a></div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbSJbbovC23FOBWqVVXX_NIO4pKKWU6MDgSZqeBVRAbTGVYysRaHIClQHePnHsXIeDHHrkUV6c0oMpoyGdS457RYtIZcUNi5Zs4Y6rWrAcuA-9rprDnRypQL8P-j5Eg0HLT_nsSsVPmnS/s1600/ClassB+16f84+2.GIF" imageanchor="1" rel="noopener noreferrer"><b><span></span></b></a><br/>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLbSJbbovC23FOBWqVVXX_NIO4pKKWU6MDgSZqeBVRAbTGVYysRaHIClQHePnHsXIeDHHrkUV6c0oMpoyGdS457RYtIZcUNi5Zs4Y6rWrAcuA-9rprDnRypQL8P-j5Eg0HLT_nsSsVPmnS/s1600/ClassB+16f84+2.GIF" imageanchor="1" rel="noopener noreferrer"><b><span><div><span><b><span></span></b></span><br/>
+<span><b><span><table><tbody>
+<tr><td></td></tr>
+</tbody></table></span></b></span></div></span></b></a><br/>
+<span><b><br/>
+</b></span><b><span></span></b><br/>
+<b><span><div><span><b><span><span></span></span></b></span></div></span></b><br/>
+<span></span></div></span> </td></tr>
+<tr><td></td><td><b><span>Malzeme Listesi</span></b><br/>
+R1______________18K  1/4W Resistor</td></tr>
+<tr><td></td><td>R2_______________3K9 1/4W Resistor</td></tr>
+<tr><td></td><td>R3,R6____________1K  1/4W Resistors</td></tr>
+<tr><td></td><td>R4_______________2K2 1/4W Resistor</td></tr>
+<tr><td></td><td>R5______________15K  1/4W Resistor</td></tr>
+<tr><td></td><td>R7______________22K  1/4W Resistor</td></tr>
+<tr><td></td><td>R8_____________330R  1/4W Resistor</td></tr>
+<tr><td></td><td>R9,R10__________10R  1/4W Resistors</td></tr>
+<tr><td></td><td>R11,R12_________47R  1/4W Resistors</td></tr>
+<tr><td></td><td>R13_____________10R    1W Resistor</td></tr>
+<tr><td></td><td>C1_______________1µF  63V Polyester Capacitor</td></tr>
+<tr><td></td><td>C2_____________470pF  63V Polystyrene or Ceramic Capacitor</td></tr>
+<tr><td></td><td>C3______________47µF  25V Electrolytic Capacitor</td></tr>
+<tr><td></td><td>C4______________15pF  63V Polystyrene or Ceramic Capacitor</td></tr>
+<tr><td></td><td>C6_____________220nF 100V Polyester Capacitor</td></tr>
+<tr><td></td><td>C6_____________100nF  63V Polyester Capacitor</td></tr>
+<tr><td></td><td>D1,D2,D3,D4___1N4148  75V 150mA Diodes</td></tr>
+<tr><td></td><td>Q1,Q2________BC560C   45V 100mA Low noise High gain PNP Transistors</td></tr>
+<tr><td></td><td>Q3,Q4________BC556    65V 100mA PNP Transistors</td></tr>
+<tr><td></td><td>Q5___________BC546    65V 100mA NPN Transistor</td></tr>
+<tr><td></td><td>Q6___________BD139    80V 1.5A NPN Transistor</td></tr>
+<tr><td></td><td>Q7___________BD140    80V 1.5A PNP Transistor</td></tr>
+<tr><td></td><td>Q8__________2N3055    60V 15A NPN Transistor</td></tr>
+<tr><td></td><td>Q9__________MJ2955    60V 15A PNP Transistor</td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><hr/></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h3>Power supply circuit diagram:<span></span></h3><div><br/>
+</div><div><br/>
+</div><div><br/>
+</div><div><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD9yFD3uFdsWFcV4ffHxAOpwTgCTscGv7GinumTd52RVXl_QVTtbzEVAk-J9MuZQSARVvV1_lVermQCKfBsAij_57Bpw0Qdrgd8A2JI8vyOUJAys4qAF-qYWFrVukrW2byEDPxNS2eIQS8/s1600/ClassBPS.GIF" imageanchor="1" rel="noopener noreferrer"><img border="0" loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD9yFD3uFdsWFcV4ffHxAOpwTgCTscGv7GinumTd52RVXl_QVTtbzEVAk-J9MuZQSARVvV1_lVermQCKfBsAij_57Bpw0Qdrgd8A2JI8vyOUJAys4qAF-qYWFrVukrW2byEDPxNS2eIQS8/s320/ClassBPS.GIF"/></a></div></span> </td></tr>
+<tr><td><br/>
+</td><td><span></span><br/>
+<span><div><span><span> B 45W Amplifier Power Supply</span></span><span></span></div></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h3>Malzeme Listesi<span></span></h3></span> </td></tr>
+<tr><td></td><td>R1_______________3K3  1/2W Resistor</td></tr>
+<tr><td></td><td>C1,C2_________4700µF  50V Electrolytic Capacitors</td></tr>
+<tr><td></td><td>C3,C4__________100nF  63V Polyester Capacitors</td></tr>
+<tr><td></td><td>D1_____________200V 8A Diode bridge</td></tr>
+<tr><td></td><td>D2_____________5mm. Red LED</td></tr>
+<tr><td></td><td>F1,F2__________4A Fuses with sockets</td></tr>
+<tr><td></td><td>T1_____________230V or 115V Primary, 25+25V Secondary 120VA Mains transformer</td></tr>
+<tr><td></td><td>PL1____________Male Mains plug</td></tr>
+<tr><td></td><td>SW1____________SPST Mains switch</td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><hr/></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h4>Comments:<span></span></h4></span> </td></tr>
+<tr><td></td><td><span>The main design targets for this amplifier were as follows:<span></span></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Output power in the 40 - 70W range<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Simple circuitry<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Easy to locate, low cost components<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Rugged performance<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>No setup<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span>These goals were achieved by using a discrete-components op-amp driving a BJT complementary common-emitter output stage into Class B operation. In this way, for small output currents, the output transistors are turned off, and the op-amp provides all of the output current. At higher output currents, the power transistors conduct, and the contribution of the op-amp is limited to approximately 0.7/R11. The quiescent current of the op-amp biases the external transistors, and hence greatly reduces the range of crossover.<span></span></span> </td></tr>
+<tr><td></td><td><span>The idea sprang up from a letter published on Wireless World, December 1982, page 65 written by N. M. Allinson, then at the University of Keele, Staffordshire.<span><br/>
+</span> </span></td></tr>
+<tr><td></td><td>In this letter, op-amp ICs were intended as drivers but, as supply voltages up to +/- 35V are required for an amplifier of about 50W, the use of an op-amp made of discrete-components was then considered and the choice proved rewarding.<span></span> </td></tr>
+<tr><td></td><td><span>The discrete-components op-amp is based on a Douglas Self design. Nevertheless, his circuit featured quite obviously a Class A output stage. As for proper operation of this amplifier a Class B output stage op-amp is required, the original circuit was modified accordingly.<span></span></span> </td></tr>
+<tr><td></td><td><span>Using a mains transformer with a secondary winding rated at the common value of 25 + 25V (or 24 + 24V) and 100/120VA power, two amplifiers can be driven at 45W and 69W output power into 8 and 4 Ohms respectively, with very low distortion (less than 0.01% @ 1kHz and 20W into 8 Ohms).<span></span></span> </td></tr>
+<tr><td></td><td><span>This simple, straightforward but rugged circuit, though intended for any high quality audio application and, above all, to complete the recently started series of articles forming the <span><a href="http://www.blogger.com/post-create.g?blogID=4994561290043001064" rel="noopener noreferrer"><span>href</span>="</a><a href="http://redcircuits.com/Page148.htm" rel="noopener noreferrer" target="_blank">Page148.htm</a>"&gt;</span>Modular Preamplifier Control Center<span></span>, is also well suited to make a very good Guitar or Bass amplifier. Enjoy!<span></span></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h4>Notes:<span></span></h4></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>2N3055 and MJ2955 transistors were listed for Q8 and Q9 as the preferred types, but many different output transistors can be used satisfactorily: TIP3055/TIP2955, TIP35/TIP36, MJ802/MJ4502 amongst others.<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Discrete op-amp output transistors Q6 and Q7 do not require any heatsink as their cases remain at ambient temperature. Power transistors Q8 and Q9 should be mounted on a black, finned heatsink as usual.<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><hr/></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h4>Technical data:<span></span></h4></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dl></dl></span></td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Output power (1KHz sinewave):<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd>45 Watt RMS into 8 Ohms - 69W RMS into 4 Ohms<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Sensitivity:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd>0.81V RMS input for 45W output<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Frequency response @ 1W RMS:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd>15Hz to 23KHz -0.2dB<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Total harmonic distortion @ 1KHz:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><dd><span><b><span><div><span><span><br/>
+</span></span></div></span></b></span><br/>
+<span><b><span><div><span><b><span><table><tbody>
+<tr><td><span><dd><span><b><span><div><span><b><span><table><tbody>
+<tr><td><span><dd><div><span>"<span>c</span>"&gt;</span></div></dd></span></td></tr>
+</tbody></table></span></b></span></div></span></b></span></dd></span></td></tr>
+</tbody></table></span></b></span><span><b><span><div><span><b><span><table><tbody>
+<tr><td><span><dd><div><span> 1W<span></span></span> 0.008%</div></dd></span></td></tr>
+</tbody></table></span></b></span></div></span></b></span></div></span></b></span><span>                  </span><br/>
+<span>"<span>c</span>"&gt;20W<span></span></span> 0.008%<br/>
+<span>"<span>c</span>"&gt;  45W<span></span></span> 0.016%<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Total harmonic distortion @10KHz:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd><span>"<span>c</span>"&gt;1W<span></span></span> 0.01%<br/>
+<span>"<span>c</span>"&gt;20W<span></span></span> 0.015%<br/>
+<span>"<span>c</span>"&gt;45W<span></span></span> 0.025% <span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Unconditionally stable on capacitive loads<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+</tbody></table></span></b></span><span><b><span>Malzeme Listesi</span></b></span></div></span></b></span><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><table><tbody>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><pre></pre></span></td></tr>
+<tr><td></td><td>R1______________18K  1/4W Resistor</td></tr>
+<tr><td></td><td>R2_______________3K9 1/4W Resistor</td></tr>
+<tr><td></td><td>R3,R6____________1K  1/4W Resistors</td></tr>
+<tr><td></td><td>R4_______________2K2 1/4W Resistor</td></tr>
+<tr><td></td><td>R5______________15K  1/4W Resistor</td></tr>
+<tr><td></td><td>R7______________22K  1/4W Resistor</td></tr>
+<tr><td></td><td>R8_____________330R  1/4W Resistor</td></tr>
+<tr><td></td><td>R9,R10__________10R  1/4W Resistors</td></tr>
+<tr><td></td><td>R11,R12_________47R  1/4W Resistors</td></tr>
+<tr><td></td><td>R13_____________10R    1W Resistor</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>C1_______________1µF  63V Polyester Capacitor</td></tr>
+<tr><td></td><td>C2_____________470pF  63V Polystyrene or Ceramic Capacitor</td></tr>
+<tr><td></td><td>C3______________47µF  25V Electrolytic Capacitor</td></tr>
+<tr><td></td><td>C4______________15pF  63V Polystyrene or Ceramic Capacitor</td></tr>
+<tr><td></td><td>C6_____________220nF 100V Polyester Capacitor</td></tr>
+<tr><td></td><td>C6_____________100nF  63V Polyester Capacitor</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>D1,D2,D3,D4___1N4148  75V 150mA Diodes</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>Q1,Q2________BC560C   45V 100mA Low noise High gain PNP Transistors</td></tr>
+<tr><td></td><td>Q3,Q4________BC556    65V 100mA PNP Transistors</td></tr>
+<tr><td></td><td>Q5___________BC546    65V 100mA NPN Transistor</td></tr>
+<tr><td></td><td>Q6___________BD139    80V 1.5A NPN Transistor</td></tr>
+<tr><td></td><td>Q7___________BD140    80V 1.5A PNP Transistor</td></tr>
+<tr><td></td><td>Q8__________2N3055    60V 15A NPN Transistor</td></tr>
+<tr><td></td><td>Q9__________MJ2955    60V 15A PNP Transistor</td></tr>
+<tr><td></td><td><span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><hr/></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h3>Power supply circuit diagram:<span></span></h3></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><div><br/>
+</div></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h3>Parts:<span></span></h3></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><pre></pre></span></td></tr>
+<tr><td></td><td>R1_______________3K3  1/2W Resistor</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>C1,C2_________4700µF  50V Electrolytic Capacitors</td></tr>
+<tr><td></td><td>C3,C4__________100nF  63V Polyester Capacitors</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>D1_____________200V 8A Diode bridge</td></tr>
+<tr><td></td><td>D2_____________5mm. Red LED</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>F1,F2__________4A Fuses with sockets</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>T1_____________230V or 115V Primary, 25+25V Secondary 120VA Mains transformer</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>PL1____________Male Mains plug</td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td>SW1____________SPST Mains switch</td></tr>
+<tr><td></td><td><span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><hr/></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h4>Comments:<span></span></h4></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span>The main design targets for this amplifier were as follows:<span></span></span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><ul></ul></span></td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Output power in the 40 - 70W range<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Simple circuitry<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Easy to locate, low cost components<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Rugged performance<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>No setup<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span>These goals were achieved by using a discrete-components op-amp driving a BJT complementary common-emitter output stage into Class B operation. In this way, for small output currents, the output transistors are turned off, and the op-amp provides all of the output current. At higher output currents, the power transistors conduct, and the contribution of the op-amp is limited to approximately 0.7/R11. The quiescent current of the op-amp biases the external transistors, and hence greatly reduces the range of crossover.<span></span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span>The idea sprang up from a letter published on Wireless World, December 1982, page 65 written by N. M. Allinson, then at the University of Keele, Staffordshire.<span><br/>
+</span> </span></td></tr>
+<tr><td></td><td>In this letter, op-amp ICs were intended as drivers but, as supply voltages up to +/- 35V are required for an amplifier of about 50W, the use of an op-amp made of discrete-components was then considered and the choice proved rewarding.<span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span>The discrete-components op-amp is based on a Douglas Self design. Nevertheless, his circuit featured quite obviously a Class A output stage. As for proper operation of this amplifier a Class B output stage op-amp is required, the original circuit was modified accordingly.<span></span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span>Using a mains transformer with a secondary winding rated at the common value of 25 + 25V (or 24 + 24V) and 100/120VA power, two amplifiers can be driven at 45W and 69W output power into 8 and 4 Ohms respectively, with very low distortion (less than 0.01% @ 1kHz and 20W into 8 Ohms).<span></span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span>This simple, straightforward but rugged circuit, though intended for any high quality audio application and, above all, to complete the recently started series of articles forming the Modular Preamplifier Control Center<span></span>, is also well suited to make a very good Guitar or Bass amplifier. Enjoy!<span></span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h4>Notes:<span></span></h4></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><ul></ul></span></td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>2N3055 and MJ2955 transistors were listed for Q8 and Q9 as the preferred types, but many different output transistors can be used satisfactorily: TIP3055/TIP2955, TIP35/TIP36, MJ802/MJ4502 amongst others.<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<li>Discrete op-amp output transistors Q6 and Q7 do not require any heatsink as their cases remain at ambient temperature. Power transistors Q8 and Q9 should be mounted on a black, finned heatsink as usual.<span></span></li><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><hr/></span> </td></tr>
+<tr><td></td><td></td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><h4>Technical data:</h4></span></td></tr>
+<tr><td></td><td>Output power (1KHz sinewave):<br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt><span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd>45 Watt RMS into 8 Ohms - 69W RMS into 4 Ohms<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Sensitivity:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd>0.81V RMS input for 45W output<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Frequency response @ 1W RMS:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd>15Hz to 23KHz -0.2dB<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Total harmonic distortion @ 1KHz:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd><span>1W<span></span></span> 0.008 .<span>20W<span></span></span> 0.008<span> 45W<span></span></span> 0.016<span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Total harmonic distortion @10KHz:<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span></td></tr>
+<tr><td><br/>
+</td><td><span></span><br/>
+<span></span><br/>
+<span></span><br/>
+<span><dd><span>1W<span></span></span> 0.01. <span>20W<span></span></span> 0.015. <span>45W<span></span></span> 0.025% <span></span></dd></span> </td></tr>
+<tr><td></td><td><span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+</span><br/>
+<span><br/>
+<dt>Unconditionally stable on capacitive loads<span></span></dt><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+</span> </td></tr>
+<tr><td></td><td><span></span> </td></tr>
+<tr><td></td><td><span></span> </td></tr>
+</tbody></table></span></span><br/>
+<dl></dl></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/06/45-watt-class-b-amplifier.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

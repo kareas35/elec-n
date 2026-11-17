@@ -1,0 +1,61 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LED i  LDR Sensörü olarak kullanalım | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>LED i  LDR Sensörü olarak kullanalım</h1><div>2020-06-11 · LED ve Göstergeler</div></header><main><article class="panel"><div dir="ltr" trbidi="on"><div><br/>
+</div><br/>
+LED i sensör olarak kullanalım :<br/>
+<br/>
+<br/>
+<br/>
+ Işık yayan diyotlara LED denir , LED içinden  bir elektrik akımı geçtiğinde görünür ışık yayan yarı iletken bir malzemedir.  Genellikle RGB LED  dışında tek renklidirler. Bir LED’in yaydığı işik kırmızı ise  (yaklaşık 700 nanometrelik  dalga boyunda olur)  mavi-mor işik yayan LED (yaklaşık 400 nanometre dalga boyunda olur)  Bazı LED’ler kızılötesi (IR) enerji yayar (830 nanometre veya daha uzundalga boyunda); böyle bir malzemeye , kızıl ötesi yayan diyot (IRED)led denir.<br/>
+<br/>
+Sensör : Sensör, fiziksel ortamdaki bazı giriş türlerini algılayan ve yanıtlayan bir malzemedir.  Giriş olarak  ışık, ısı, hareket, nem, basınç ve buna benzer  çok sayıda başka çevresel olaydan herhangi biri olabilir. Çıktı olarak kullanılan sensöre göre değişik şekilde okuma yapılır<br/>
+<br/>
+LED i sensör olarak kullanalım :<br/>
+LED’e belirli bir akım uygulayınca nasıl ışık veriyorsa, belirli bir ışık uygulayınca da bize ufak bir akım geri döndürüyor.<br/>
+<br/>
+Kullanılan malzemeler:<br/>
+<br/>
+ 2 adet  led  mavi renkte<br/>
+ 1adet  Arduino uno<br/>
+Bilgisayar<br/>
+<br/>
+elimizdeki 2 adet led in bir tanesini Arduino uno nun  Anolog A0 pinine Ledin artı ucunu takacağız Ledin Eksi ucunu GND ye bağlayacağız .<br/>
+2 nci Led    Arduino uno nun  Dijital pini 13 e artı bacağını takacağız .  Led in  eksi bacağını GND ye takacağız .<br/>
+A0 daki ledi sensör olarak kullanacağız Buradaki ledin aldığı ışığı değiştirerek Dijital pin 13 deki ledin yanıp sönmesini sağlayacağız<br/>
+<div></div><div><br/>
+</div><div><br/>
+</div><div>KOD:</div><div><span><span><b>void setup() { </b></span></span><br/>
+<span><span><b> </b></span></span><br/>
+<span><span><b>Serial.begin(115200); </b></span></span><br/>
+<span><span><b>}</b></span></span><br/>
+<span><span><b><br/>
+</b></span></span> <b>void loop()   </b><br/>
+<b>{ </b><br/>
+<b> </b><br/>
+<b>if (analogRead(A0) &lt; 1) </b><br/>
+<b><br/>
+</b> <b>//Buradaki sayısal değeri değiştirerek </b><b>hassasiyeti ayarlıyabiliriz.</b><br/>
+<b><br/>
+</b><b> </b><br/>
+<b><br/>
+</b></div><div><span><span><b>pinMode(13, OUTPUT);  </b></span></span><br/>
+<span><span><b><br/>
+</b></span></span> <span><span><b>//13 dijital pini Çıkış olarak ayarladık</b></span></span><br/>
+<span><span><b> </b></span></span><br/>
+<span><span><b>{</b></span></span><br/>
+<span><span><b><br/>
+</b></span></span> <span><span><b>digitalWrite(13, HIGH); </b></span></span><br/>
+<span><span><b><br/>
+</b></span></span> <span><span><b>//Dijital pin 13 Hıgh çekildi</b></span></span><br/>
+<span><span><b><br/>
+</b></span></span> <span><span><b>}  </b></span></span><br/>
+<span><span><b><br/>
+</b></span></span> <span><span><b>else if (analogRead(A0) &gt;= 1) </b></span></span><br/>
+<b><br/>
+</b> <b>//A0 daki sensör büyük eşit 1 olursa  </b></div><div><span><span><b> </b></span></span><br/>
+<span><span><b>{</b></span></span><br/>
+<span><span><b> </b></span></span><br/>
+<span><span><b>digitalWrite(13, LOW);  </b></span></span><br/>
+<b>//kullandığımız ledin aldığı işiği değiştirerek </b><b>dijital pini low yaptık.</b><br/>
+<b><br/>
+</b><span><span><b> </b></span></span><br/>
+<span><span><b> </b></span></span><br/>
+<span><span><b>} }  </b></span></span><span> </span></div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2020/06/led-i-ldr-sensoru-olarak-kullanalm.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

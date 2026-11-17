@@ -1,0 +1,217 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Assembly komut seti 1 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Assembly komut seti 1</h1><div>2010-10-15 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><h1 align="center"><span><span>PIC Komutları</span></span></h1><div><span>        PIC meraklılarını uzunca bir süre beklettim. Yoğun bir çalışma temposunun ardından (henüz bitmemiş olsa da) bir şeyler hazırlamak için vakit bulabildim.</span></div><div><span>        Artık pic programlamaya hazırlanacağız. Pic programlamak için assembly, basic, C dilleri geliştirilmiştir. Biz ücretsiz olması nedeniyle pic assembly dili üzerinde duracağız ve MPLab yazılım geliştirme ortamını tanıyacağız. Daha önce de belirttiğimiz gibi PIC ailesinden PIC16F84 mikro denetleyicisinin 35 adet assembly komutu vardır. Şimdi bu komutlara, biraz detaylı olarak göz atalım.<br/>
+<br/>
+<br/>
+</span></div><div><b><span>ADDLW </span></b><span>Literal ile W'yu topla<br/>
+Yazılış : ADDLW k<br/>
+İşleçler: 0 £ k £ 255<br/>
+İşlem: (W) + k → (W)<br/>
+Etkilenen Yazmaçlar : C, DC, Z<br/>
+Kodlama : 11 111x kkkk kkkk<br/>
+Tanım : W yazmacının içeriği sekiz bitlik k literali ile toplanır, sonuc W yazmacına yerleştirilir.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"k" literalini oku</span></td><td><span>İşlemi yap</span></td><td><span>W'ye yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     ADDLW 0x15<br/>
+                İşlemden önce W = 0x10<br/>
+                İşlemden sonra W = 0x25<br/>
+<br/>
+<br/>
+</span></div><div><b><span>ADDWF</span></b><span> W ve f'i Topla<br/>
+Yazılış : ADDWF f,d<br/>
+İşleçler: 0 £ f £ 127, d Î [0,1]<br/>
+İşlem: (W) + (f) → (destination)<br/>
+Etkilenen Yazmaçlar : C, DC, Z<br/>
+Kodlama : 00 0111 dfff ffff<br/>
+Tanım : W yazmacının içeriğiyle "f" yazmacının içeriğini topla. Eğer "d" 0 ise sonucu W 'ye, 1 ise "f" yazmacına yaz.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>İşlemi yap</span></td><td><span>Sanucu hedefe yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     ADDWF FSR, 0<br/>
+                İşlemden önce W = 0x17 FSR = 0xC2<br/>
+                İşlemden sonra W =0xD9 FSR = 0xC2<br/>
+<br/>
+<br/>
+</span></div><div><b><span>ANDLW</span></b><span> Literal ile W'yi mantıksal VE<br/>
+Yazılış : ANDLW k<br/>
+İşleçler: 0 £ k £ 255<br/>
+İşlem: (W) .AND. (k) → (W)<br/>
+Etkilenen Yazmaçlar : Z<br/>
+Kodlama : 11 1001 kkkk kkkk<br/>
+Tanım : W yazmacı ile sekiz bitlik "k" literaline VE işlemi uygulanır. Sonuç W'ye yazılır.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"k" literalini oku</span></td><td><span>İşlemi yap</span></td><td><span>W'ye yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     ANDLW 0x5F<br/>
+                İşlemden önce W =0xA3<br/>
+                İşlemden sonra W = 0x03<br/>
+<br/>
+<br/>
+</span></div><div><b><span>ANDWF</span></b><span> W ile "f"'e mantıksal VE işlemi uygula<br/>
+Yazılış : ANDWF f,d<br/>
+İşleçler: 0 £ f £ 127, d Î [0,1]<br/>
+İşlem: (W) .AND. (f) → (destination)<br/>
+Etkilenen Yazmaçlar : Z<br/>
+Kodlama : 00 0101 dfff ffff<br/>
+Tanım : W yazmacı ile "f" yazmacına VE işlemi uygula. Eğer "d" 0 ise sonucu W 'ye, 1 ise "f" yazmacına yaz.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>İşlemi yap</span></td><td><span>Sonucu yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     ANDWF FSR, 1<br/>
+                İşlemden önce W = 0x17, FSR = 0xC2<br/>
+                İşlemden sonra W = 0x17, FSR = 0x02<br/>
+<br/>
+<br/>
+</span></div><div><b><span>BCF</span></b><span> f'in bir bitini sil (sıfırla)<br/>
+Yazılış : BCF f,b<br/>
+İşleçler: 0 £ f £ 127, 0 £ b £ 7<br/>
+İşlem: 0 → (f[b])<br/>
+Etkilenen Yazmaçlar : yok<br/>
+Kodlama : 01 00bb bfff ffff<br/>
+Tanım : "f" yazmacının "b" biti sıfırlanır.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>İşlemi yap</span></td><td><span>"f" yazmacına yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     BCF FLAG_REG, 7<br/>
+                İşlemden önce FLAG_REG = 0xC7<br/>
+                İşlemden sonra FLAG_REG = 0x47<br/>
+<br/>
+<br/>
+</span></div><div><b><span>BSF</span></b><span> f'in bir bitini kur (1 yap)<br/>
+Yazılış : BSF f,b<br/>
+İşleçler: 0 £ f £ 127, 0 £ b £ 7<br/>
+İşlem: 1 -rarr; (f[b])<br/>
+Etkilenen Yazmaçlar : Yok<br/>
+Kodlama : 01 01bb bfff ffff<br/>
+Tanım : "f" yazmacının "b" biti 1 yapılır.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>İşlemi yap</span></td><td><span>"f" yazmacına yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     BSF FLAG_REG, 7<br/>
+                İşlemden önce FLAG_REG = 0x0A<br/>
+                İşlemden sonra FLAG_REG = 0x8A<br/>
+<br/>
+<br/>
+</span></div><div><b><span>BTFSC</span></b><span> "f" yazmacının "b" bitini kontrol et, 0 ise atla<br/>
+Yazılış : BTFSC f,b<br/>
+İşleçler: 0 £ f £ 127, 0 £ b £ 7<br/>
+İşlem: eğer (f[b]) = 0 ise bir sonraki komutu atla<br/>
+Etkilenen Yazmaçlar : Yok<br/>
+Kodlama : 01 10bb bfff ffff<br/>
+Tanım : Eğer "f" yazmacının "b" biti 1 ise sıradaki komut işletilir, 0 ise bir sonraki komut atlanır ve yerine NOP işletilir ve 2 çevrimli komut olur.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1 (2)</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>İşlemi yap</span></td><td><span>İşlem yapılmaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Eğer atlama yapılmışsa 2. çevrimde ;</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td></tr>
+</tbody></table><span><br/>
+<br/>
+<br/>
+</span><br/>
+<div><b><span>BTFSS</span></b><span> "f" yazmacının "b" bitini kontrol et, 1 ise atla<br/>
+Yazılış : BTFSS f,b<br/>
+İşleçler: 0 £ f £ 127, 0 £ b £ 7<br/>
+İşlem: eğer (f[b]) = 1 ise bir sonraki komutu atla<br/>
+Etkilenen Yazmaçlar : Yok<br/>
+Kodlama : 01 11bb bfff ffff<br/>
+Tanım : Eğer "f" yazmacının "b" biti 0 ise sıradaki komut işletilir, 1 ise bir sonraki komut atlanır ve yerine NOP işletilir ve 2 çevrimli komut olur.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1 (2)</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>İşlemi yap</span></td><td><span>İşlem yapılmaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Eğer atlama yapılmışsa 2. çevrimde ;</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td></tr>
+</tbody></table><span><br/>
+<br/>
+<br/>
+</span><br/>
+<div><b><span>CALL</span></b><span> Altrutin çağır<br/>
+Yazılış : CALL k<br/>
+İşleçler: 0 £ k £ 2047<br/>
+İşlem: (PC)+ 1 → TOS, k → PC&lt;10:0&gt;, (PCLATH&lt;4:3&gt;) ® PC&lt;12:11&gt;<br/>
+Etkilenen Yazmaçlar : Yok<br/>
+Kodlama : 10 0kkk kkkk kkkk<br/>
+Tanım : Bir altrutin çağırır. Önce dönüş adresi (PC+1) yığın (stack) hafızaya kaydedilir. 11 bitlik adres PC&lt;10:0&gt;'a yüklenir. PC'nin üst bitleri PCLATCH'den yüklenir. CALL 2 çevrimlik bir komuttur.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 2</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div><span>1. çevrim;</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"k" literalini oku<br/>
+PC'yi yığına kaydet</span></td><td><span>Veriyi işle</span></td><td><span>PC'ye yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>2. çevrim;</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td><td><span>İşlem yapılmaz</span></td></tr>
+</tbody></table><span><br/>
+<br/>
+<br/>
+</span><br/>
+<div><b><span>CLRF</span></b><span> f'in içeriğini temizle (0 yap)<br/>
+Yazılış : CLRF f<br/>
+İşleçler: 0 £ f £ 127<br/>
+İşlem: 00h → (f), 1 → Z<br/>
+Etkilenen Yazmaçlar : Z<br/>
+Kodlama : 00 0001 1fff ffff<br/>
+Tanım : "f" yazmacının içeriği temizlenir(0) ve "Z" biti kurulur(1).<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>Veriyi işle</span></td><td><span>"f" yazmacına yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     CLRWDT<br/>
+                İşlemden önce WDT counter = ?<br/>
+                İşlemden sonra WDT counter = 0x00,<br/>
+                                        WDT prescaler= 0, TO =1, PD =1<br/>
+<br/>
+<br/>
+</span></div><div><b><span>COMF</span></b><span> "f" in tümleyenini al<br/>
+Yazılış : COMF f,d<br/>
+İşleçler: 0 £ f £ 127, d Î [0,1]<br/>
+İşlem: (f) → (destination)<br/>
+Etkilenen Yazmaçlar : Z<br/>
+Kodlama : 00 1001 dfff ffff<br/>
+Tanım : "f" yazmacının içeriğinin tümleyeni alınır. Eğer d 0 ise, sonuc "w", 1 ise "f" yazmacına yazılır.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>Veriyi işle</span></td><td><span>Hedefe yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     COMF REG1,0<br/>
+                İşlemden önce REG1 = 0x13<br/>
+                İşlemden sonra REG1 = 0x13<br/>
+<br/>
+<br/>
+</span></div><div><b><span>DECF</span></b><span> "f" yazmacının içeriğini 1 azalt<br/>
+Yazılış : DECF f,d<br/>
+İşleçler: 0 £ f £ 127, d Î [0,1]<br/>
+İşlem: (f) - 1 → (destination)<br/>
+Etkilenen Yazmaçlar : Z<br/>
+Kodlama : 00 0011 dfff ffff<br/>
+Tanım : "f" yazmacının içeriğini bir(1) azalt. Eğer d 0 ise, sonuc "w", 1 ise "f" yazmacına yazılır.<br/>
+Word: 1<br/>
+Saat Çevrimi (Cycle) : 1</span></div><div><span>Q çevrimi (Q Cycle Activity) :</span></div><div></div><table align="center" border="1" cellpadding="4" cellspacing="0"><tbody>
+<tr><td><span>Q1</span></td><td><span>Q2</span></td><td><span>Q3</span></td><td><span>Q4</span></td></tr>
+<tr><td><span>Kod çöz</span></td><td><span>"f" yazmacını oku</span></td><td><span>Veriyi işle</span></td><td><span>Hedefe yaz</span></td></tr>
+</tbody></table><br/>
+<div><span>Örnek :     DECF CNT, 1<br/>
+                İşlemden önce CNT = 0x01, Z =0<br/>
+                İşlemden sonra CNT = 0x00, Z =1<br/>
+<br/>
+<br/>
+</span></div><div align="right"><span>Hazırlayan </span><a href="mailto:shasta@softhome.net"><span><span>İsmail Karakaya</span></span></a></div><div><br/>
+</div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/10/pic-assembly-komut-seti-1.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

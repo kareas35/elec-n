@@ -1,0 +1,34 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC16C6X ,PIC16C7X Üretilen kodlar PIC 16F877 Ye Aynen Uygulanır. | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC16C6X ,PIC16C7X Üretilen kodlar PIC 16F877 Ye Aynen Uygulanır.</h1><div>2010-02-22 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span><span><span></span>PIC16C6X ,PIC16C7X bitlerine dikkat etmek şartıyla bunlar için geliştirilen kod </span></span><br/>
+<div><span><span>PIC 16F877 Ye Aynen Uygulanır.</span></span></div>PIC16F877’nin Özellikleri PIC16F877, belki en popüler PIC işlemcisi olan PIC16F84’ten sonra kullanıcılarına yeni ve gelişmiş olanaklar sunmasıyla hemen göze çarpmaktadır. Program belleği FLASH ROM olan PIC16F877’de, yüklenen program PIC16F84’te olduğu gibi elektriksel olarak silinip yeniden yüklenebilmektedir.  PIC16F877 ve PIC16F84 işlemcileri arasında özellik karşılaştırması yapılmıştır. Özellikle PIC16C6X ve PIC16C7X ailesinin tüm özelliklerini barındırması, PIC16F877’yi kod geliştirmede de ideal bir çözüm olarak gündeme getirmektedir. Konfigürasyon bitlerine dikkat etmek şartıyla C6X veya C7X ailesinden herhangi bir işlemci için geliştirilen kod hemen hiçbir değişikliğe tabi tutmadan F877’e yüklenebilir ve çalışmalarda denenebilir. Bunun yanı sıra PIC16F877, PIC16C74 ve PIC16C77 işlemcileriyle de bire bir bacak uyumludur<br/>
+<br/>
+PORTA TRISA ADCON1 0x05 0x85 ; giriş / çıkış belirleme registeri 0x9F ; RA portlarının A / D, referans gerilimi veya sayısal giriş / çıkış olarak seçiminde kullanılmaktadır<br/>
+<br/>
+<span><br/>
+</span><br/>
+<span><span>ÖZELLİKLER                             PIC16F877                                   PIC16F84</span></span><br/>
+<span><span>Çalışma hızı                                DC-20Mhz                                   DC-10Mhz</span></span><br/>
+<span><span>Program belleği                        8K×14 word Flash ROM        1K×14 word Flash ROM</span></span><br/>
+<span><span>EEPROM Veri belleği                      256 byte                                       64 byte</span></span><br/>
+<span><span><span>Kullanıcı RAM                                368×8 byte                                    68×8 byte</span></span></span><br/>
+<span><span><span>Giriş / Çıkış port sayısı                           33                                               13</span></span></span><br/>
+<span><span>Timer                                          Timer0,Timer1, Timer2                       Timer0</span></span><br/>
+<span><span>A/D çevirici                                   8 kanal 10 bit                                      YOK</span></span><br/>
+<span><span>Capture / Comp./ PWM            16 bit Capture             </span></span><br/>
+<span><span>                                                     16 bit Compare                                      YOK</span></span><br/>
+<span><span>                                                   10 bit PWM çözünürlük</span></span><br/>
+<span><span>                                                                                                                                 </span></span><br/>
+<span><span>Seri çevresel arayüz                    SPI(Master) ve</span></span><br/>
+<span><span>                                                    12C(Master/Slave)                                 YOK</span></span><br/>
+<span><span>                                                     modunda SPI portu</span></span><br/>
+<span><span>                                                     (senkron seri port)</span></span><br/>
+<span> </span><br/>
+<span><span><span>Paralel slave port                        8 bit, harici RD,WR ve CS                  YOK</span></span></span><br/>
+<span><span><span>                                                                Kontrollü                                   </span></span></span><br/>
+<br/>
+<span><span>USART/SCI                                           9 bit adresli                                   YOK</span></span><br/>
+<span><br/>
+</span><br/>
+<br/>
+<br/>
+<br/>
+İşlemciye ilk defa gerilim uygulandığında RA4 hariç diğer beş PORTA biti çeviricidir. Eğer RA portunun bazı bitlerini sayısal giriş / çıkış olarak kullanmak istersek ADCON1 registerında değişiklik yapmamız gerekmektedir</article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/2010/02/pic16c6x-pic16c7x-uretilen-kodlar-pic.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>

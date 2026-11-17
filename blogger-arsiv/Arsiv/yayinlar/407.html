@@ -1,0 +1,621 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PIC Basic Pro ile PIC Programlama 10 | Elektronik Akademi</title><link rel="stylesheet" href="../../assets/archive.css"></head><body><header><a href="../index.html">← Tüm yayınlara dön</a><h1>PIC Basic Pro ile PIC Programlama 10</h1><div>2010-04-05 · PIC ve Mikrodenetleyiciler</div></header><main><article class="panel"><span></span><br/>
+<h3><span> PIC Basic Pro ile PIC Programlama 10</span></h3><div><h2><a href="http://320volt.com/wp-content/picbasic/pic-basic-pro-ile-pic-programlama-10.html" rel="noopener noreferrer" title="Permanent Link: PIC Basic Pro ile PIC Programlama 10"><span>PIC Basic Pro ile PIC Programlama 10</span></a></h2><div><div><strong><span>PROGRAM ÖRNEKLERi</span></strong></div><div><span><span>10 derslik Pic Basic derslerimizin sonuna gelmiş bulunuyoruz.</span></span><span> (13 bölüm oldu) Bu bölüme kadar verilen bilgilerde Pic MCU ların alternatifli olarak kullanım örneklerini dış ünitelerle bağlantılarını haberleşmelerini öğrendik. Arada da bazı kullanılan komutları işledik. Bu son dersimizde program örnekleri göreceğiz.</span></div><div><strong><span>ÖRNEK PROGRAM: 1*********** LED ANiMASYONU***********</span></strong></div><div><span>işe fantezi ile başlayalım ve bir </span><strong><span>LED-ANiMASYON</span></strong><span> projesi verelim. Bu projede PortA ve PortB nin tamamı kullanılarak 16 led’den oluşan bir görsel gösteri ünitesi yapacağız. Ledler değişik şekillerde yanarak bize bir gösteri sunacaklar.</span></div><div><span>Önce Şemamız;</span></div><div><span><img alt="led_animasyon" height="644" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/led_animasyon.png" title="led_animasyon" width="793"/></span></div><div><span>Aslında PIC16F628 de PortA.5 (MCLR bacağı) çıkış olarak kullanılamaz. Ancak sırf görsel amaçlı olarak bu projede simulasyon olarak denedim ve çalıştığını gördüm. Gerçekte çalışmaması gerekir. Devreyi yapacaklar için kısa bir açıklama olarak vereyim istedim.</span></div><div><span>Diğer taraftan gerçek devrede Pic pinleri ile Led ler arasında 330 Ohm direnç kullanılması gerekmektedir. Aksi halde Pic bozulur. BU açıklama da devreyi fiilen yapmak isteyenler içindir.</span></div><div><span><img alt="picbasic_led_kod" height="1709" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/picbasic_led_kod.png" title="picbasic_led_kod" width="597"/></span></div><div><strong><span>ÖRNEK PROGRAM : 2 ***********OTO CAM KONTROLU*********</span></strong></div><div><span>ikinci örneğimiz enteresan bir örnek olacak. 16F628 de komparatör kullanımına güzel bir örnekdir. Projenin amacı otomobillerde motor kontrollu yan camların açılıp kapanmasını otomatik olarak kontrol etmekdir. Cam açma butonuna kısa süreli basılır ise cam basılan süre kadar aşağı veya yukarı hareket edecek, butona biraz uzun basılması halinde ise cam otomatik olarak açılacak veya kapanacaktır. Tabiiki nereye kadar, cam son noktada gidecek yeri olmadığı için motor sıkışacak ve normalde 2 Amper dolayında motordan çekilen akım 3 amper veya daha fazlasına yükselecektir. işte bu aşamada komparatörler devreye girerek motorun akımını keseceklerdir.</span></div><div><span>Motorun sıkışmasını simule edebilmek için çalışan motora paralel ikinci bir motor daha devreye sokulmaktadır. Bu sayede normalde 2 A dolayında olan çekilen akım iki katına çıkmaktadır ve sistem çekilen fazla amperi algılayıp motorları durdurmaktadır. Sistemin çekilen hangi amper seviyesinde durmasını sağlayacak ince ayarlar devrede bulunan 2 adet 220 Ohm ayarlı dirençler ile yapılmaktadır.</span></div><div><span>Önce şemamızı verelim;</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/otocam_picbasic_motor.png" rel="noopener noreferrer"><span><img alt="otocam_picbasic_motor-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/otocam_picbasic_motor-150x150.png" title="otocam_picbasic_motor" width="150"/></span></a></div><div><span><img alt="oto_cam_kontrol_pbp" height="1440" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/oto_cam_kontrol_pbp.png" title="oto_cam_kontrol_pbp" width="798"/></span></div><div><strong><span>ÖRNEK PROGRAM : 3 ***********DTMF iLE CiHAZ KONTROLU*********</span></strong></div><div><span>Bu örneğimizde Telefonla cihaz kontrol sistemini inceleyeceğiz. Kısaca DTMF kontrol ismi verilen program ile bir telefon hattına bağlayacağımız sistemimizle 5-6 adet cihazı istediğimiz zaman açıp kapatabileceğiz. Arada mesafe olduğundan yapılan işlerin onayı sesli olarak hattan verilmektedir. Bu aleti fiziki olarakda yaptım ve kullanıyorum. Bu devrede simulasyon imkanımız olmadığı için devre şeması vermekle yetineceğiz.;</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/telefon_kontrol.png" rel="noopener noreferrer"><span><img alt="telefon_kontrol-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/telefon_kontrol-150x150.png" title="telefon_kontrol" width="150"/></span></a></div><div><span>Programa geçmeden kullanımla ilgili bazı açıklamalar vermek istiyorum.</span></div><div><span>Program öncelikle çalan telefon zilini saymakta ve önceden ayarlanmış adedi bulduğunda hattı otomatik olarak açmaktadır. Zilin çalma sayısı program içinden değiştirilebilmektedir.</span></div><div><span>Hat açıldıktan sonra program şifre girmenizi beklemektedir. Şifre 4 haneli bir rakam olup default olarak 1111 şeklinde ayarlanmıştır. Ayrıca birde master şifre vardır. Ana şifrenin unutulması durumunda master şifre girilerek şifrenin default şifre ye dönüştürülmesi sağlanmıştır.</span></div><div><span>Şifre girişini takiben program role kontrol bölümüne atlamaktadır. Burada ;</span></div><div><span>-önce # tuşu sonra 1-2-3-4-5 rakamlarından herhangi birisi girildiği tatirde girilen rakama karşılık gelen role çıkışı aktif edilmekte bu durum ilgili led in yanması ile anlaşılmaktadır. Açılan rolenin sayısı kadar da hatta beep sesi verilmektedir. Örneğin 2 nolu role açılmış ise Beep – Beep şeklinde 2 adet beep sesi alınmaktadır.</span></div><div><span>-Önce # tuşu ardından 8 tuşu girilir ise Zil çalma adedi değiştirilebilir. 8 rakamının hemen ardından yeni zil adedi girilmelidir. -Önce # sonra 9 rakamı girilir ise şifre değiştirilecek demektir. Burada önce eski şifre ardından yeni şifre</span></div><div><span>girilmelidir. -Önce # ve ardından 0 rakamı girilir ise sistemden çıkış yapılır. Hat kapatılır. -Önce * tuşu ve ardından 0 rakamı girilir ise açık olan tüm roleler kapatılmaktadır. -Önce * ardından 1-2-3-4-5 rakamlarından biri girilir ise ilgili rakama karşılık gelen role kapatılır.</span></div><div><span>Devrede kullanılan trafo 600/600 sarımlı telefon hat trafosudur. Eski modemlerin üzerinde bulunmaktadır.</span></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : UNTITLED.BAS *<br/>
+‘* Author : [E.T.E] *<br/>
+‘* Notice : Copyright (c) 2005 Ete] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 02.06.2005 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************<br/>
+PORTA=0:PORTB=0<br/>
+TRISB=000001 ‘PortB.0 giriş diğerleri çıkış yapıldı.<br/>
+TRISA=111111 ‘A portu tamamı çıkış yapıldı.<br/>
+‘—————————————————————–<br/>
+@ DEVICE pic16F628 ‘işlemci 16F628<br/>
+@ DEVICE pic16F628, WDT_OFF ‘Watch Dog timer açık<br/>
+@ DEVICE pic16F628, PWRT_ON ‘Power on timer açık<br/>
+@ DEVICE pic16F628, PROTECT_OFF ‘Kod Protek kapalı<br/>
+@ DEVICE pic16F628, MCLR_OFF ‘MCLR pini kullanılıyor.<br/>
+@ DEVICE pic16F628, INTRC_OSC_NOCLKOUT ‘Dahili osilatör kullanılacak<br/>
+‘—————————————————————–<br/>
+CMCON=7 ‘16F628 de komparatör pinleri iptal hepsi giriş çıkış<br/>
+‘—————————————————————–<br/>
+SIFRE VAR WORD<br/>
+RAKAM var WORD<br/>
+TEMP VAR WORD<br/>
+BASKA VAR WORD<br/>
+ZAMAN VAR WORD<br/>
+SURE VAR word<br/>
+SAYAC VAR BYTE<br/>
+SAYI VAR BYTE<br/>
+DURUM VAR BYTE<br/>
+BIRLER VAR BYTE<br/>
+ONLAR VAR BYTE<br/>
+YUZLER VAR BYTE<br/>
+BINLER VAR BYTE<br/>
+ZIL VAR BYTE ‘ÇALACAK ZİL ADEDİ<br/>
+X VAR BYTE<br/>
+CIK VAR BIT<br/>
+SYMBOL HAT=PORTB.0<br/>
+SYMBOL CIKIS1=PORTB.1<br/>
+SYMBOL CIKIS2=PORTB.2<br/>
+SYMBOL CIKIS3=PORTB.3<br/>
+symbol CIKIS4=PORTB.4<br/>
+SYMBOL CIKIS5=PORTB.5<br/>
+SYMBOL ISD =PORTB.6<br/>
+SYMBOL ROLE=PORTB.7<br/>
+SYMBOL VALDAT=PORTA.0<br/>
+SYMBOL BUZZER=PORTA.7</span></strong></div><div><strong><span>‘————————————————————————–<br/>
+‘DATA @ 0,1,2,3,4<br/>
+‘data @ 0,255,255,255,255,255<br/>
+DATA @ 16,5<br/>
+PAUSE 200<br/>
+CLEAR<br/>
+read 0,SAYI:PAUSE 10<br/>
+IF SAYI=$FF THEN<br/>
+SIFRE=1234<br/>
+GOSUB SIFREYAZ<br/>
+endIF<br/>
+READ 0,BINLER<br/>
+READ 1,YUZLER<br/>
+READ 2,ONLAR<br/>
+READ 3,BIRLER<br/>
+SIFRE=BINLER*1000+YUZLER*100+ONLAR*10+BIRLER<br/>
+READ 16,ZIL<br/>
+IF ZIL=255 THEN<br/>
+ZIL=5<br/>
+WRITE 16,ZIL<br/>
+ENDIF</span></strong></div><div><strong><span>‘————————————–ANA————————————–<br/>
+BASLA: Sayac=0<br/>
+‘——————————-PORTB.0=HIGH————-<br/>
+ILK: IF HAT=1 THEN ILK<br/>
+‘——————————PORTB.0=LOW—————<br/>
+BAK: SAYAC=SAYAC+1<br/>
+BIR: IF HAT=0 THEN BIR<br/>
+‘——————————PORTB.0=LOW—————–<br/>
+IF SAYAC=ZIL THEN<br/>
+PAUSE 1800<br/>
+HIGH ROLE<br/>
+pause 300<br/>
+GOTO BIRINCI<br/>
+ENDIF<br/>
+SURE=0<br/>
+WHILE HAT=1<br/>
+SURE=SURE+1<br/>
+IF SURE=300 THEN ILK<br/>
+PAUSE 1<br/>
+WEND<br/>
+IF SURE&lt;100 THEN BIR<br/>
+GOTO BAK<br/>
+‘——————ZİL SAYMA BÖLÜMÜ BİTTİ——————<br/>
+BIRINCI: :SAYAC=0:GOSUB SES1:GOSUB SES2:gosub ses1<br/>
+YINE: RAKAM=0:GOSUB SIFREAL<br/>
+IF CIK=1 THEN BITIR<br/>
+IF RAKAM=7676 THEN<br/>
+SIFRE=1234<br/>
+GOSUB SES2<br/>
+GOSUB SES1<br/>
+GOSUB SES2:gosub ses1<br/>
+GOSUB SIFREYAZ<br/>
+GOTO ROLEKONTROL<br/>
+ENDIF<br/>
+IF RAKAM=SIFRE THEN<br/>
+GOSUB SES2:pause 50<br/>
+GOSUB SES1:pause 50<br/>
+GOSUB SES1:gosub ses1<br/>
+GOTO ROLEKONTROL<br/>
+ENDIF<br/>
+SAYAC=SAYAC+1<br/>
+IF SAYAC=3 THEN<br/>
+ATLA: GOSUB EXIT<br/>
+SLEEP 600<br/>
+GOTO BASLA<br/>
+ENDIF<br/>
+GOSUB SES2<br/>
+GOSUB SES1<br/>
+GOSUB SES3<br/>
+GOTO YINE</span></strong></div><div><strong><span>ROLEKONTROL: GOSUB ALBILGI<br/>
+IF CIK=1 THEN BITIR<br/>
+IF SAYI=12 THEN ACMA ‘#<br/>
+IF SAYI=11 THEN KAPAT ‘*<br/>
+gosub ses2<br/>
+‘ GOSUB EXIT<br/>
+GOTO BASLA<br/>
+ACMA:<br/>
+GOSUB ALBILGI<br/>
+IF CIk=1 THEN BITIR<br/>
+IF SAYI=0 THEN<br/>
+gosub ses3<br/>
+GOSUB EXIT<br/>
+GOTO BASLA<br/>
+ENDIF</span></strong></div><div><strong><span>DURUM=PORTB</span></strong></div><div><strong><span>IF SAYI=1 THEN<br/>
+IF durum.1=0 THEN<br/>
+GOSUB SES1<br/>
+PORTB=DURUM | 000010<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=2 THEN<br/>
+IF durum.2=0 THEN<br/>
+GOSUB SES1:GOSUB SES1<br/>
+PORTB=DURUM | 000100<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=3 THEN<br/>
+IF durum.3=0 THEN<br/>
+FOR X=1 TO 3:GOSUB SES1:NEXT<br/>
+PORTB=DURUM | 001000<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=4 THEN<br/>
+IF durum.4=0 THEN<br/>
+FOR X=1 TO 4:GOSUB SES1:NEXT<br/>
+PORTB=DURUM | 010000<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=5 THEN<br/>
+IF durum.5=0 THEN<br/>
+FOR X=1 TO 5:GOSUB SES1:NEXT<br/>
+PORTB=DURUM | 100000 ‘#5<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=8 THEN ‘#8<br/>
+GOSUB SES2<br/>
+GOSUB ALBILGI<br/>
+GOSUB SES1:gosub ses2<br/>
+IF CIK=1 THEN BITIR<br/>
+IF SAYI&gt;0 AND SAYI&lt;13 THEN<br/>
+ZIL=SAYI:WRITE 16,ZIL:PAUSE 10<br/>
+ENDIF<br/>
+GOTO ROLEKONTROL<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=9 THEN ‘#9<br/>
+GOSUB SIFREAL<br/>
+GOSUB SES1:gosub ses2<br/>
+IF CIK=1 THEN BITIR<br/>
+IF RAKAM=SIFRE THEN<br/>
+GOSUB SES1:GOSUB SES1:GOSUB SES2<br/>
+GOSUB SIFREAL<br/>
+IF CIK=1 THEN BITIR<br/>
+SIFRE=RAKAM<br/>
+GOSUB SES1:gosub ses2<br/>
+gosub SIFREYAZ<br/>
+ENDIF<br/>
+ENDIF<br/>
+GOTO ROLEKONTROL</span></strong></div><div><strong><span>KAPAT: GOSUB ALBILGI<br/>
+IF CIK=1 THEN BITIR<br/>
+durum=PORTB</span></strong></div><div><strong><span>IF SAYI=0 THEN<br/>
+GOSUB SES3<br/>
+PORTB=DURUM &amp; %11000001 ‘*0<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=1 THEN<br/>
+IF durum.1=1 THEN<br/>
+GOSUB SES2<br/>
+PORTB=DURUM &amp; %11111101<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=2 THEN<br/>
+IF durum.2=1 THEN<br/>
+GOSUB SES2:GOSUB SES2<br/>
+PORTB=DURUM &amp; %11111011<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=3 THEN<br/>
+IF durum.3=1 THEN<br/>
+FOR X=1 TO 3:GOSUB SES2:NEXT<br/>
+PORTB=DURUM &amp; %11110111<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+ENDIF</span></strong></div><div><strong><span>IF SAYI=4 THEN<br/>
+IF durum.4=1 THEN<br/>
+FOR X=1 TO 4:GOSUB SES2:NEXT<br/>
+PORTB=DURUM &amp; %11101111<br/>
+goto ROLEKONTROL<br/>
+ENDIF<br/>
+endif</span></strong></div><div><strong><span>IF SAYI=5 THEN<br/>
+IF durum.5=1 THEN<br/>
+FOR X=1 TO 5:GOSUB SES2:NEXT<br/>
+PORTB=DURUM &amp; %11011111 ‘*5<br/>
+ENDIF<br/>
+ENDIF<br/>
+GOTO ROLEKONTROL</span></strong></div><div><strong><span>SIFREAL: GOSUB ALBILGI<br/>
+IF CIK=1 THEN RETURN<br/>
+RAKAM=SAYI*1000<br/>
+GOSUB ALBILGI<br/>
+IF CIK=1 THEN RETURN<br/>
+RAKAM=RAKAM+SAYI*100<br/>
+GOSUB ALBILGI<br/>
+IF CIK=1 THEN RETURN<br/>
+RAKAM=RAKAM+SAYI*10<br/>
+GOSUB ALBILGI<br/>
+IF CIK=1 THEN RETURN<br/>
+RAKAM=RAKAM+SAYI<br/>
+RETURN</span></strong></div><div><strong><span>ALBILGI:<br/>
+SURE=0:ZAMAN=0<br/>
+WHILE VALDAT=0<br/>
+SURE=SURE+1<br/>
+PAUSEus 270<br/>
+IF SURE=65500 THEN<br/>
+CIK=1:RETURN<br/>
+ENDIF<br/>
+WEND</span></strong></div><div><strong><span>SAYIAL: SAYI=0<br/>
+WHILE VALDAT=1<br/>
+SAYI.0=PORTA.4<br/>
+SAYI.1=PORTA.3<br/>
+SAYI.2=PORTA.2<br/>
+SAYI.3=PORTA.1<br/>
+WEND<br/>
+IF SAYI=10 THEN SAYI=0<br/>
+RETURN</span></strong></div><div><strong><span>SIFREYAZ:TEMP=SIFRE<br/>
+BINLER=TEMP DIG 3<br/>
+YUZLER=TEMP DIG 2<br/>
+ONLAR =TEMP DIG 1<br/>
+BIRLER=TEMP DIG 0<br/>
+WRITE 0,BINLER:PAUSE 10<br/>
+WRITE 1,YUZLER:PAUSE 10<br/>
+WRITE 2,ONLAR :PAUSE 10<br/>
+WRITE 3,BIRLER:PAUSE 10<br/>
+RETURN</span></strong></div><div><strong><span>SES1: SOUND BUZZER,[110,12]:pause 30:RETURN<br/>
+SES2: SOUND BUZZER,[95,12] :pause 30:RETURN<br/>
+SES3: SOUND BUZZER,[85,25] :Pause 30:RETURN</span></strong></div><div><strong><span>BITIR: GOSUB EXIT:GOTO BASLA:RETURN<br/>
+EXIT : SURE=0<br/>
+HAT=0<br/>
+CIK=0<br/>
+SAYAC=0<br/>
+RAKAM=0<br/>
+LOW ROLE<br/>
+LOW ISD<br/>
+gosub ses2<br/>
+gosub ses2<br/>
+GOSUB SES3<br/>
+GOSUB SES3<br/>
+RETURN</span></strong></div><div><strong><span>End</span></strong></div><div><strong><span>ÖRNEK PROGRAM : 4 ***********DiJiTAL POT (DS1868) KONTROLÜ**********</span></strong></div><div><span>Dallas firmasının </span><strong><span>DS1868</span></strong><span> kodlu dijital potansiyometre kullanımına ait bir örnek vermek istiyorum. Söz konusu potansiyometrenin model dosyası bulunmadığından dolayı simulasyon bir shift register kullanılarak yapılmıştır.</span></div><div><span>Neticede DS1868 in içinde bir shift register bulunmaktadır ve pot değeri bu registere yazılarak sağlanmaktadır. Önce şemamız;</span></div><div><a href="http://320volt.com/wp-content/picbasic/images/ds1868_picbasic.png" rel="noopener noreferrer"><span><img alt="ds1868_picbasic-150x150" height="150" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/ds1868_picbasic-150x150.png" title="ds1868_picbasic" width="150"/></span></a></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : PIC-DIGIPOT.BAS *<br/>
+‘* Author : [E.T.E] *<br/>
+‘* Notice : Copyright (c) 2004 [ETE] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 25.08.2004 *<br/>
+‘* Version : 1.0 *<br/>
+‘* Notes : *<br/>
+‘* : *<br/>
+‘****************************************************************</span></strong></div><div><strong><span>RAW VAR BYTE<br/>
+ZAMAN VAR WORD<br/>
+RST VAR PORTA.0<br/>
+CLK VAR PORTA.2<br/>
+BILGI VAR PORTA.1<br/>
+TUSA VAR PORTB.0<br/>
+TUSB var PORTB.1<br/>
+KONUM VAR BYTE<br/>
+I VAR BYTE<br/>
+STK VAR BYTE</span></strong></div><div><strong><span>TRISA=000000<br/>
+TRISB=000011</span></strong></div><div><strong><span>PORTB=0<br/>
+PORTA=0<br/>
+ZAMAN=0<br/>
+STK=1<br/>
+‘ ADCON1 = 000010 ‘AN0 VE AN1 Analog,Ref =VDD<br/>
+PAUSE 500<br/>
+konum=0<br/>
+raw=0<br/>
+I=0</span></strong></div><div><strong><span>BASLA:<br/>
+IF TUSA=0 THEN<br/>
+IF I=1 THEN BASLA<br/>
+if konum=255 then basla<br/>
+konum=konum+1:I=1:GOTO CIK<br/>
+ENDIF</span></strong></div><div><strong><span>IF TUSb=0 THEN<br/>
+IF I=1 THEN BASLA<br/>
+if konum=0 then basla<br/>
+konum=konum-1:I=1:GOTO CIK<br/>
+ENDIF</span></strong></div><div><strong><span>IF RAW&lt;&gt;KONUM THEN GOSUB POTYAZ<br/>
+I=0<br/>
+CIK: GOTO BASLA</span></strong></div><div><strong><span>POTYAZ: HIGH RST:PAUSE 1<br/>
+HIGH BILGI<br/>
+PULSOUT CLK,1<br/>
+SHIFTOUT BILGI,CLK,1,[KONUM]<br/>
+SHIFTOUT BILGI,CLK,1,[KONUM]<br/>
+LOW RST:PAUSE 1<br/>
+RAW=KONUM<br/>
+RETURN</span></strong></div><div><strong><span>end</span></strong></div><div><strong><span>ÖRNEK PROGRAM : 5 **************FREKANSMETRE – PALS SAYICI*******************</span></strong></div><div><span>Bu örneğimizde Bir Frekansmetre yapacağız. Bu programda Pic16F628 kullanacağız. </span><strong><span>PIC16F628</span></strong><span> de 16 bitlik TMR1 sayacını dışarıdan gelen palsleri sayacak şekilde ayarlayıp sonuçta belirli örnekleme süreleri kullanarak frekans veya pals sayacı olarak kullanacağız. Frekans ölçme aralığımız kullandığımız örnekleme süresine bağlı olarak 1 Hz ile yaklaşık 40 MHz arasında olacaktır. Teorik olarak üst sınır 65 MHz dolayındadır.</span></div><div><span>Ancak kullanılan malzemeler bu frekanslara çıkmadığı için denemelerle sabit olan ölçülebilecek maksimum frekans yaklaşık 40 MHz dolayındadır. Ancak frekans kaynağından Pic’e direkt giriş yapabilirseniz bu durumda üst sınır yükselebilmektedir. Frekansmetre’nin üst ölçüm sınırını daha da yukarı çekebilmek için arada birde 64’e bölücü (U664) kullanılmaktadır.</span></div><div><span>Bu durumda üst ölçüm sınırı 1,2 GHz ye kadar çıkabilecektir. Program PicBasicPro ile birlikte ASM nin kullanılmasına iyi bir örnekdir. BU programda frekans ölçümünde kullanılacak olan örnekleme süreleri için ASM kullanılmıştır. Zira, 1ms – 10 ms – 100 ms ve 1000 ms lik süreleri hassas olarak elde etmenin en iyi yolu ASM kullanmaktır. Temel mantık olarak düşük frekanslarda büyük süre yüksek frekanslarda ise düşük süre kullanılarak ölçüm yapılmaktadır.</span></div><div><span>Programı isis de simule edebilmek için basit bir devre kullanıyoruz. Önce bu devremizi verelim;</span></div><div><span><img alt="frekans_lcd" height="493" loading="lazy" src="http://320volt.com/wp-content/picbasic/images/frekans_lcd.png" title="frekans_lcd" width="697"/></span></div><div><span>Programda TMR1 kullanıldığını söylemiş idik. TMR1 şayet dışarıdan gelen pals leri sayacak ise giriş bacağı olarak yalnızca PortB.6 pini kullanılmaktadır. Dolayısıyla programda da bu bacak kullanılmıştır.</span></div><div><span>Program girilen frekansa bağlı olarak ölçüm modu (örnekleme süresi) seçimini otomatik yapmaktadır. Bunu anlayabilmek için önce bir kısa süreli ölçüm yapmakta ve bulduğu değere bağlı olarak mod seçmektedir.</span></div><div><span>işte Programımız;</span></div><div><strong><span>‘****************************************************************<br/>
+‘* Name : Frekans-Roleli.BAS *<br/>
+‘* Author : [Erol Erdal] *<br/>
+‘* Notice : Copyright (c) 2004 [Erolec] *<br/>
+‘* : All Rights Reserved *<br/>
+‘* Date : 29.11.2004 *<br/>
+‘* Version : 1.6 *<br/>
+‘* Notes : 10MHz Kristal ile çalışır, U664 (64′de bölücü) *<br/>
+‘* : ile çalışır, Otomatik 4 Mod (0-3) seçer *<br/>
+‘****************************************************************</span></strong></div><div><strong><span>@ DEVICE pic16F628<br/>
+@ DEVICE pic16F628, WDT_off<br/>
+@ DEVICE pic16F628, PWRT_ON<br/>
+@ DEVICE pic16F628, PROTECT_OFF<br/>
+@ DEVICE pic16F628, MCLR_ON<br/>
+@ DEVICE pic16F628, HS_OSC<br/>
+DEFINE OSC 10<br/>
+DEFINE LCD_DREG PORTA<br/>
+DEFINE LCD_DBIT 0<br/>
+DEFINE LCD_RSREG PORTB<br/>
+DEFINE LCD_RSBIT 2<br/>
+define LCD_RWREG PORTB<br/>
+DEFINE LCD_RWBIT 1<br/>
+DEFINE LCD_EREG PORTB<br/>
+DEFINE LCD_EBIT 0<br/>
+DEFINE LCD_BITS 4<br/>
+DEFINE LCD_LINES 2<br/>
+DEFINE LCD_COMMANDUS 4000<br/>
+DEFINE LCD_DATAUS 250</span></strong></div><div><strong><span>TRISA=0<br/>
+TRISB=%11111000<br/>
+low PORTB.1</span></strong></div><div><strong><span>‘——————————————————————————-<br/>
+Frekans var word<br/>
+FrekansL var Frekans.byte0<br/>
+FrekansH var Frekans.byte1<br/>
+sure VAR WORD<br/>
+sureL var SURE.Byte0<br/>
+sureH var SURE.Byte1</span></strong></div><div><strong><span>TOPLAM var word<br/>
+sayac var word<br/>
+counter var byte<br/>
+HAS VAR BYTE<br/>
+I var byte</span></strong></div><div><strong><span>X var bit<br/>
+Z VAR BIT<br/>
+ilk var bit<br/>
+SEC VAR PORTB.7<br/>
+‘——————————————————————————-<br/>
+Z=0<br/>
+CMCON=7<br/>
+has=0:ilk=0<br/>
+lcdout $FE,1<br/>
+lcdout “***EROL ERDAL***”<br/>
+lcdout $FE,$C0,”**FREKANSMETRE**”:pause 300</span></strong></div><div><strong><span>‘******************************* FREKANSMETRE***********************************<br/>
+START:<br/>
+‘ gosub olc<br/>
+‘ gosub modsec<br/>
+‘ lcdout $FE,1,”fre:”,#frekans,” mod=”,#has,”S=”,#SEC<br/>
+‘ pause 500:goto start<br/>
+ATLA: IF SEC=1 THEN<br/>
+HAS=4:goto birinci<br/>
+else<br/>
+gosub MODSEC<br/>
+endif<br/>
+pause 200</span></strong></div><div><strong><span>Birinci: SELECT CASE has<br/>
+‘———-bölücüsüz ölçüm— Mode=0——-0 Hz - 65 KHz.———————-<br/>
+CASE 0<br/>
+gosub binms<br/>
+Lcdout $FE,$80,”0-65 KHz : MOD=”,#has<br/>
+if frekans&lt;1000 then<br/>
+Lcdout $FE,$C0,”Fre:”,#frekans,” Hz ”<br/>
+gosub tus<br/>
+goto ATLA<br/>
+endif<br/>
+sayac=frekans/1000:Toplam=(frekans//1000)<br/>
+Lcdout $FE,$80,”0-65 KHz : MOD=”,#has<br/>
+Lcdout $FE,$C0,”Fre:”,#sayac,”.”,dec3 Toplam,” Hz ”<br/>
+GOSUB TUS<br/>
+‘ pause 500<br/>
+goto ATLA<br/>
+‘——-bölücüsüz ölçümler —Mode=1——-65 KHz.- 650 KHz—————–<br/>
+CASE 1<br/>
+gosub yuzms<br/>
+Sayac=frekans/100:Toplam=(frekans//100)<br/>
+Lcdout $FE,$80,”65-650KHz: MOD=”,DEC has<br/>
+Lcdout $FE,$C0,”Fre:”,#Sayac,”,”,#Toplam,” KHz ”<br/>
+GOSUB TUS<br/>
+‘ pause 500<br/>
+GOTO ATLA</span></strong></div><div><strong><span>‘——BÖLÜCÜSÜZ ÖLÇÜMLER—-Mode=2——650 KHz - 6,5 MHz————–<br/>
+CASE 2<br/>
+gosub onms<br/>
+sayac=frekans/10:Toplam=(frekans//10)<br/>
+Lcdout $FE,$80,”065-6 MHz: MOD=”,#has<br/>
+if sayac&lt;1000 then<br/>
+Lcdout $FE,$C0,”Fre:”,#sayac,”,”,dec3(Toplam*100),” KHz ”<br/>
+gosub tus:goto ATLA<br/>
+endif<br/>
+toplam=sayac/1000<br/>
+lcdout $fe,$C0,”Fre:”,#toplam,”,”,#(sayac//1000),” MHz ”<br/>
+gosub tus<br/>
+goto ATLA</span></strong></div><div><strong><span>‘——-BÖLÜCÜSÜZ ÖLÇÜMLER——Mode=3——6,5 MHz - 30 MHz————<br/>
+CASE 3<br/>
+gosub Birms<br/>
+sayac=frekans<br/>
+toplam=sayac/1000<br/>
+Lcdout $FE,$80,”6,5-50MHz: MOD=”,#has<br/>
+lcdout $fe,$C0,”Fre:”,#toplam,”,”,#(sayac//1000),” MHz ”<br/>
+gosub tus<br/>
+‘ pause 500<br/>
+goto ATLA</span></strong></div><div><strong><span>‘——BÖLÜCÜ İLE ÖLÇME BÖLÜMÜ—-Mode=4——30 mhZ - 1200 mhZ——–<br/>
+case 4<br/>
+gosub birms<br/>
+sayac=Frekans**64<br/>
+frekans=div32 10<br/>
+sayac=frekans/100:Toplam=(frekans//100)<br/>
+Lcdout $FE,$80,”50 MHz&gt;: MOD=”,#has<br/>
+Lcdout $FE,$C0,”Fre:”,#Sayac,”,”,dec3 (Toplam*10),” MHz ”<br/>
+gosub tus<br/>
+‘ pause 500<br/>
+Goto ATLA<br/>
+‘————modların sonu ——————————————–<br/>
+case 5<br/>
+HAS=0:GOTO START<br/>
+END SELECT<br/>
+Z=0<br/>
+GOTO START<br/>
+‘<br/>
+TUS: if PortB.3=1 then<br/>
+IF Z=1 THEN CIK<br/>
+has=has+1:pause 1<br/>
+IF has=5 THEN has=0<br/>
+Z=1<br/>
+RETURN<br/>
+ENDIF<br/>
+Z=0<br/>
+CIK: RETURN<br/>
+‘———————MODSEC——————————–<br/>
+MODSEC: ‘pause 5:gosub olc’:return<br/>
+pause 100<br/>
+‘ if frekans&gt;340 then<br/>
+‘ has=4:RETURN<br/>
+‘ endif<br/>
+‘ if (frekans&gt;43) and(frekans&lt;217) then<br/>
+‘ has=3:RETURN<br/>
+‘ endif<br/>
+gosub birms<br/>
+if Frekans&lt;66 then has=0<br/>
+if frekans&gt;65 and frekans&lt;651 then has=1<br/>
+if frekans&gt;650 and frekans&lt;6501 then has=2<br/>
+if Frekans&gt;6500 and Frekans&lt;32001 then Has=3<br/>
+‘ IF frekans &gt;50000 THEN HAS=4<br/>
+return</span></strong></div><div><strong><span>OLC:<br/>
+asm<br/>
+movlw 0×01<br/>
+movwf _SureL<br/>
+movlw 0×03<br/>
+movwf _SureH<br/>
+delay_0<br/>
+btfss portb,6<br/>
+goto tamamolc<br/>
+decfsz _SureL, f<br/>
+goto $+3<br/>
+decfsz _SureH, f<br/>
+goto Delay_0<br/>
+Goto son<br/>
+tamamolc<br/>
+call zaman<br/>
+movlw 0×01<br/>
+movwf _SureL<br/>
+movlw 0×01<br/>
+movwf _SureH<br/>
+Delay_1<br/>
+decfsz _SureL, f<br/>
+goto $+2<br/>
+decfsz _SureH, f<br/>
+goto Delay_1<br/>
+goto $+1<br/>
+Goto son<br/>
+zaman<br/>
+bcf STATUS,RP0<br/>
+bcf STATUS,RP1<br/>
+clrf TMR1L<br/>
+clrf TMR1H<br/>
+movlw 7<br/>
+movwf T1CON<br/>
+return<br/>
+endasm<br/>
+Binms:<br/>
+ASM<br/>
+movlw 0×20 ;19 idi<br/>
+movwf _SureL<br/>
+movlw 0×80 ;74 idi<br/>
+movwf _SureH<br/>
+movlw 0×06<br/>
+movwf _Counter<br/>
+delay_2<br/>
+btfsc portb,6<br/>
+goto tamambin<br/>
+decfsz _SureL, f<br/>
+goto delay_2<br/>
+decfsz _SureH, f<br/>
+goto $+2<br/>
+decfsz _Counter, f<br/>
+goto Delay_2<br/>
+goto son<br/>
+tamambin<br/>
+call zaman<br/>
+movlw 0×19 ;19 idi<br/>
+movwf _SureL<br/>
+movlw 0×74 ;74 idi<br/>
+movwf _SureH<br/>
+movlw 0×06<br/>
+movwf _Counter<br/>
+Delay_3<br/>
+decfsz _SureL, f<br/>
+goto $+2<br/>
+decfsz _SureH, f<br/>
+goto $+2<br/>
+decfsz _Counter, f<br/>
+goto Delay_3<br/>
+Goto son<br/>
+endasm</span></strong></div><div><strong><span>Yuzms:<br/>
+ASM<br/>
+movlw 0×4e ;4e idi<br/>
+movwf _SureL<br/>
+movlw 0xCa ;c4 idi<br/>
+movwf _SureH<br/>
+Delay_4<br/>
+btfsc portb,6<br/>
+goto tamamyuz<br/>
+decfsz _SureL, f<br/>
+goto delay_4<br/>
+decfsz _SureH, f<br/>
+goto $+2<br/>
+goto son<br/>
+tamamyuz<br/>
+movlw 0×4f ;4e idi<br/>
+movwf _SureL<br/>
+movlw 0xC4 ;c4 idi<br/>
+movwf _SureH<br/>
+call zaman</span></strong></div><div><strong><span>Delay_5<br/>
+decfsz _SureL, f<br/>
+goto $+2<br/>
+decfsz _SureH, f<br/>
+goto Delay_5<br/>
+goto $+1<br/>
+Goto Son<br/>
+endasm</span></strong></div><div><strong><span>Onms:<br/>
+asm<br/>
+movlw 0×86<br/>
+movwf _SureL<br/>
+movlw 0×20<br/>
+movwf _SureH<br/>
+Delay_6<br/>
+btfsc portb,6<br/>
+goto tamamon<br/>
+decfsz _SureL, f<br/>
+goto delay_6<br/>
+decfsz _SureH, f<br/>
+goto $+2<br/>
+goto son<br/>
+Tamamon<br/>
+movlw 0×87<br/>
+movwf _SureL<br/>
+movlw 0×14<br/>
+movwf _SureH<br/>
+call zaman<br/>
+Delay_7<br/>
+decfsz _SureL, f<br/>
+goto $+2<br/>
+decfsz _SureH, f<br/>
+goto Delay_7<br/>
+goto $+1<br/>
+goto son<br/>
+endasm<br/>
+Birms:<br/>
+ASM<br/>
+movlw 0xf2<br/>
+movwf _SureL<br/>
+movlw 0×04<br/>
+movwf _SureH<br/>
+Delay_8<br/>
+btfsc portb,6<br/>
+goto tamambir<br/>
+decfsz _SureL, f<br/>
+goto delay_8<br/>
+decfsz _SureH, f<br/>
+goto $+2<br/>
+goto son<br/>
+tamambir<br/>
+call zaman<br/>
+movlw 0xf2<br/>
+movwf _SureL<br/>
+movlw 0×02<br/>
+movwf _SureH</span></strong></div><div><strong><span>Delay_9<br/>
+decfsz _SureL, f<br/>
+goto $+2<br/>
+decfsz _SureH, f<br/>
+goto Delay_9<br/>
+goto $+1<br/>
+son<br/>
+nop<br/>
+movlw 6<br/>
+movwf T1CON<br/>
+movf TMR1L,0<br/>
+movwf _FrekansL<br/>
+movf TMR1H,0<br/>
+movwf _FrekansH<br/>
+endasm<br/>
+RETURN</span></strong></div><div><strong><span>END</span></strong></div><div><span>Program içinde bazı kapatılmış bölümler vardır. Bunlar test amaçlı koyulmuştur. Gerekirse tamamını kaldırabilirsiniz.</span></div><div><span><span>10. Ders ile birlikte BASIC dersleri serimiz tamamlanmış olmaktadır. Son</span></span><span> dersimiz bir kullanım örnekleri dersi oldu. Umarım okuyanlara veya çalışanlara bir şeyler anlatabilmişimdir. Burada anlatılanların tamamını kendi kendine azimle ve ısrarla öğrenen bir kişi olarak sizelere tavsiyem çalışmaya devam başaracaksınız olacaktır. Haydi bakalım kolay gelsin ve mutlu günler sizlerin olsun.</span></div></div></div></article><p class="sub">Bu yazı, orijinal yayın tarihi korunarak eski Blogger arşivinden aktarılmıştır. Teknik bilgiler tarihsel olabilir ve güncel güvenlik standartlarına göre gözden geçirilmelidir.</p><p><a href="https://16f84pic.blogspot.com/arsiv-406.html" target="_blank" rel="noopener noreferrer">Orijinal Blogger yayını</a> · <a href="../index.html">Arşive dön</a></p></main><footer>Elektronik Akademi · Dijital yayın arşivi</footer></body></html>
