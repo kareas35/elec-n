@@ -1,0 +1,343 @@
+{
+  "entries": {
+    "http://www.deli-prof.net/wp-content/uploads/2006/01/e10.gif": {
+      "bytes": 1215,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/553e58a753ab6d30a42ca982ea486ed5de2c82ddb590b045275f6b868b5ae182.gif",
+      "height": 270,
+      "mime": "image/gif",
+      "replay_url": "https://web.archive.org/web/20140719064414id_/http://www.deli-prof.net/wp-content/uploads/2006/01/e10.gif",
+      "sha256": "553e58a753ab6d30a42ca982ea486ed5de2c82ddb590b045275f6b868b5ae182",
+      "snapshot_url": "https://web.archive.org/web/20140719064414/http://www.deli-prof.net/wp-content/uploads/2006/01/e10.gif",
+      "status": "verified_signature",
+      "timestamp": "20140719064414",
+      "updated_at": "2026-11-18T12:50:16+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": 214
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/01/e11.gif": {
+      "bytes": 1766,
+      "error": "URLError: <urlopen error timed out>",
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/8040286caf4a7f4dec82e5a9a4e1a3f688b1e444fb70c2208da934c01b53ccf4.gif",
+      "height": 244,
+      "mime": "image/gif",
+      "replay_url": "https://web.archive.org/web/20140719070047id_/http://www.deli-prof.net/wp-content/uploads/2006/01/e11.gif",
+      "sha256": "8040286caf4a7f4dec82e5a9a4e1a3f688b1e444fb70c2208da934c01b53ccf4",
+      "snapshot_url": "https://web.archive.org/web/20140719070047/http://www.deli-prof.net/wp-content/uploads/2006/01/e11.gif",
+      "status": "verified_signature",
+      "timestamp": "20140719070047",
+      "updated_at": "2026-11-18T12:53:51+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": 399
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/01/e9.gif": {
+      "bytes": 770,
+      "error": "URLError: <urlopen error timed out>",
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/ff996f9d39fac2e627d07848e3e10dead679bdf0cba2c29be3d8744e7d9f8f84.gif",
+      "height": 152,
+      "mime": "image/gif",
+      "replay_url": "https://web.archive.org/web/20140719064121id_/http://www.deli-prof.net/wp-content/uploads/2006/01/e9.gif",
+      "sha256": "ff996f9d39fac2e627d07848e3e10dead679bdf0cba2c29be3d8744e7d9f8f84",
+      "snapshot_url": "https://web.archive.org/web/20140719064121/http://www.deli-prof.net/wp-content/uploads/2006/01/e9.gif",
+      "status": "verified_signature",
+      "timestamp": "20140719064121",
+      "updated_at": "2026-11-18T12:53:57+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": 190
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/asetat.jpg": {
+      "attempts": 1,
+      "bytes": 75173,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/113448a1d77e9283ab382ca984aaa8c2892cbc277d8caae7354f13c263fe74c3.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150825104150id_/http://www.deli-prof.net/wp-content/uploads/2006/06/asetat.jpg",
+      "sha256": "113448a1d77e9283ab382ca984aaa8c2892cbc277d8caae7354f13c263fe74c3",
+      "snapshot_url": "http://web.archive.org/web/20150825104150/http://www.deli-prof.net/wp-content/uploads/2006/06/asetat.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150825104150",
+      "updated_at": "2026-11-18T12:34:01+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/asetatplaket.jpg": {
+      "attempts": 1,
+      "bytes": 86100,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/04da6872c32815c940120dd47a8143aa926029557d2ed8141b646875f8bb509d.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150825092210id_/http://www.deli-prof.net/wp-content/uploads/2006/06/asetatplaket.jpg",
+      "sha256": "04da6872c32815c940120dd47a8143aa926029557d2ed8141b646875f8bb509d",
+      "snapshot_url": "http://web.archive.org/web/20150825092210/http://www.deli-prof.net/wp-content/uploads/2006/06/asetatplaket.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150825092210",
+      "updated_at": "2026-11-18T12:34:34+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/asit.jpg": {
+      "attempts": 1,
+      "bytes": 52551,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/c956e3f7459dec3f620f5f1f50347e965f638f05c66f6d25b8e004874f0933a8.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150825083758id_/http://www.deli-prof.net/wp-content/uploads/2006/06/asit.jpg",
+      "sha256": "c956e3f7459dec3f620f5f1f50347e965f638f05c66f6d25b8e004874f0933a8",
+      "snapshot_url": "http://web.archive.org/web/20150825083758/http://www.deli-prof.net/wp-content/uploads/2006/06/asit.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150825083758",
+      "updated_at": "2026-11-18T12:35:20+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/asit2.jpg": {
+      "attempts": 1,
+      "bytes": 37343,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/fe00e3f0a16d69ba089a33877fcc7102e4014552f2540b3b7d685b629ca637db.jpg",
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20131219213725id_/http://www.deli-prof.net/wp-content/uploads/2006/06/asit2.jpg",
+      "sha256": "fe00e3f0a16d69ba089a33877fcc7102e4014552f2540b3b7d685b629ca637db",
+      "snapshot_url": "http://web.archive.org/web/20131219213725/http://www.deli-prof.net/wp-content/uploads/2006/06/asit2.jpg",
+      "status": "verified_signature",
+      "timestamp": "20131219213725",
+      "updated_at": "2026-11-18T12:40:00.368597+00:00",
+      "validation": "signature_only; visual/rights review pending"
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/asitson.jpg": {
+      "attempts": 1,
+      "bytes": 36020,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/90962119a6432271027ca9e93ee0fe2f90a5be336c956cc8059cbc9f9d75aaaa.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150718164928id_/http://www.deli-prof.net/wp-content/uploads/2006/06/asitson.jpg",
+      "sha256": "90962119a6432271027ca9e93ee0fe2f90a5be336c956cc8059cbc9f9d75aaaa",
+      "snapshot_url": "http://web.archive.org/web/20150718164928/http://www.deli-prof.net/wp-content/uploads/2006/06/asitson.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150718164928",
+      "updated_at": "2026-11-18T12:36:21+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/k_pcbalt.thumbnail.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T12:19:35+00:00"
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/k_pcbust.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T12:19:40+00:00"
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/kalem.jpg": {
+      "attempts": 1,
+      "bytes": 77410,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/30a0ed835ace353f7c685254c17c83110dd4818e8b5673177d1a9764717cf691.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150825091916id_/http://www.deli-prof.net/wp-content/uploads/2006/06/kalem.jpg",
+      "sha256": "30a0ed835ace353f7c685254c17c83110dd4818e8b5673177d1a9764717cf691",
+      "snapshot_url": "http://web.archive.org/web/20150825091916/http://www.deli-prof.net/wp-content/uploads/2006/06/kalem.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150825091916",
+      "updated_at": "2026-11-18T12:37:10+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/plaketkesme.jpg": {
+      "attempts": 1,
+      "bytes": 46644,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/1b7ef28c7447b14ea39b214b9dc98fed71148c2334da687c686f889c6b7c4b91.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150825104945id_/http://www.deli-prof.net/wp-content/uploads/2006/06/plaketkesme.jpg",
+      "sha256": "1b7ef28c7447b14ea39b214b9dc98fed71148c2334da687c686f889c6b7c4b91",
+      "snapshot_url": "http://web.archive.org/web/20150825104945/http://www.deli-prof.net/wp-content/uploads/2006/06/plaketkesme.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150825104945",
+      "updated_at": "2026-11-18T12:37:36+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/plaketson.jpg": {
+      "attempts": 1,
+      "bytes": 54589,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/6f3f32c44d6e4a4220d4334daaf14d2d8a79c2f0cb534b20f6c6e93e291541ca.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20150825104158id_/http://www.deli-prof.net/wp-content/uploads/2006/06/plaketson.jpg",
+      "sha256": "6f3f32c44d6e4a4220d4334daaf14d2d8a79c2f0cb534b20f6c6e93e291541ca",
+      "snapshot_url": "http://web.archive.org/web/20150825104158/http://www.deli-prof.net/wp-content/uploads/2006/06/plaketson.jpg",
+      "status": "verified_signature",
+      "timestamp": "20150825104158",
+      "updated_at": "2026-11-18T12:38:02+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/sema.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T12:19:50+00:00"
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/su.jpg": {
+      "bytes": 86141,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/752e694cd9ca40cf6a28a16b9c32bad7ef504dae565fd5929d1364adfd9df519.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20131219214730id_/http://www.deli-prof.net/wp-content/uploads/2006/06/su.jpg",
+      "sha256": "752e694cd9ca40cf6a28a16b9c32bad7ef504dae565fd5929d1364adfd9df519",
+      "snapshot_url": "https://web.archive.org/web/20131219214730/http://www.deli-prof.net/wp-content/uploads/2006/06/su.jpg",
+      "status": "verified_signature",
+      "timestamp": "20131219214730",
+      "updated_at": "2026-11-18T12:46:38+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/utu.jpg": {
+      "bytes": 74031,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/f7b28330941d2af161338607c1530706f37c515638300a764ad1f90ab254839f.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20131219213906id_/http://www.deli-prof.net/wp-content/uploads/2006/06/utu.jpg",
+      "sha256": "f7b28330941d2af161338607c1530706f37c515638300a764ad1f90ab254839f",
+      "snapshot_url": "https://web.archive.org/web/20131219213906/http://www.deli-prof.net/wp-content/uploads/2006/06/utu.jpg",
+      "status": "verified_signature",
+      "timestamp": "20131219213906",
+      "updated_at": "2026-11-18T12:46:55+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/utuson.jpg": {
+      "bytes": 48445,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/dbcfc5f0b3c7f8774b90fd99062c530c3f9d553fe62c6806baa06187e9be482d.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20131219213641id_/http://www.deli-prof.net/wp-content/uploads/2006/06/utuson.jpg",
+      "sha256": "dbcfc5f0b3c7f8774b90fd99062c530c3f9d553fe62c6806baa06187e9be482d",
+      "snapshot_url": "https://web.archive.org/web/20131219213641/http://www.deli-prof.net/wp-content/uploads/2006/06/utuson.jpg",
+      "status": "verified_signature",
+      "timestamp": "20131219213641",
+      "updated_at": "2026-11-18T12:47:05+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.deli-prof.net/wp-content/uploads/2006/06/zimpara.jpg": {
+      "bytes": 57335,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/9fc76e2fb07b5401d7614b375ef0a09fedfde977c2b2406ae0fe70b468cab88e.jpg",
+      "height": null,
+      "mime": "image/jpeg",
+      "replay_url": "https://web.archive.org/web/20131219214928id_/http://www.deli-prof.net/wp-content/uploads/2006/06/zimpara.jpg",
+      "sha256": "9fc76e2fb07b5401d7614b375ef0a09fedfde977c2b2406ae0fe70b468cab88e",
+      "snapshot_url": "https://web.archive.org/web/20131219214928/http://www.deli-prof.net/wp-content/uploads/2006/06/zimpara.jpg",
+      "status": "verified_signature",
+      "timestamp": "20131219214928",
+      "updated_at": "2026-11-18T12:47:21+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": null
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Direnc1/007.gif": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T11:55:40+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Direnc1/d1.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T11:55:59+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Direnc1/d2.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T11:56:19+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Direnc1/d3.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T12:06:36+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Direnc1/d4.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T12:06:46+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Direnc1/d5.JPG": {
+      "attempts": 1,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T12:06:56+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/Diyot/image004.gif": {
+      "attempts": 0,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T11:49:47+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/PIC/PIC2/image003.gif": {
+      "attempts": 0,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T11:49:47+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/image006.gif": {
+      "attempts": 0,
+      "status": "no_snapshot_returned",
+      "updated_at": "2026-11-18T11:49:47+00:00"
+    },
+    "http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/kondansator/image004.gif": {
+      "attempts": 0,
+      "bytes": 4033,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/b239f42a3a2e16fad44ae81c0cae378cbdf88566f1e7d75f3d05be893aea78ce.gif",
+      "height": 96,
+      "mime": "image/gif",
+      "sha256": "b239f42a3a2e16fad44ae81c0cae378cbdf88566f1e7d75f3d05be893aea78ce",
+      "snapshot_url": "http://web.archive.org/web/20160208010233/http://www.mavikitaplar.com/ftp_images/elektronik_bilgi/kondansator/image004.gif",
+      "status": "verified_signature",
+      "timestamp": "20160208010233",
+      "updated_at": "2026-11-18T11:49:47+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": 250
+    },
+    "http://www.mavikitaplar.com/temel_bilgiler/images/tbl_alt_cizgi_09.gif": {
+      "attempts": 1,
+      "bytes": 810,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/591b0ccb98b660e7e73cc9f089d1f6f454b055883b7cd7f6b95ddff66aa9cdd7.gif",
+      "height": 6,
+      "mime": "image/gif",
+      "replay_url": "https://web.archive.org/web/20190113112711id_/http://www.mavikitaplar.com/temel_bilgiler/images/tbl_alt_cizgi_09.gif",
+      "sha256": "591b0ccb98b660e7e73cc9f089d1f6f454b055883b7cd7f6b95ddff66aa9cdd7",
+      "snapshot_url": "http://web.archive.org/web/20190113112711/http://mavikitaplar.com/temel_bilgiler/images/tbl_alt_cizgi_09.gif",
+      "status": "verified_signature",
+      "timestamp": "20190113112711",
+      "updated_at": "2026-11-18T11:50:11+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": 1
+    },
+    "http://www.mavikitaplar.com/temel_bilgiler/images/tbl_sag_alt_08.gif": {
+      "attempts": 1,
+      "bytes": 837,
+      "file": "blogger-arsiv/denetim/v3.8/wayback-kurtarilan/sha256/744f3584da9578c8c64432e972c806ec2674532a1b1a3c78e3da949efdb7905f.gif",
+      "height": 6,
+      "mime": "image/gif",
+      "replay_url": "https://web.archive.org/web/20190113103401id_/http://www.mavikitaplar.com/temel_bilgiler/images/tbl_sag_alt_08.gif",
+      "sha256": "744f3584da9578c8c64432e972c806ec2674532a1b1a3c78e3da949efdb7905f",
+      "snapshot_url": "http://web.archive.org/web/20190113103401/http://mavikitaplar.com/temel_bilgiler/images/tbl_sag_alt_08.gif",
+      "status": "verified_signature",
+      "timestamp": "20190113103401",
+      "updated_at": "2026-11-18T11:50:40+00:00",
+      "validation": "signature_only; visual/rights review pending",
+      "width": 6
+    },
+    "http://www.mavikitaplar.com/temel_bilgiler/images/tbl_sol_alt_08.gif": {
+      "attempts": 1,
+      "error": "URLError: <urlopen error timed out>",
+      "snapshot_url": "http://web.archive.org/web/20190113061757/http://mavikitaplar.com/temel_bilgiler/images/tbl_sol_alt_08.gif",
+      "status": "download_error",
+      "timestamp": "20190113061757",
+      "updated_at": "2026-11-18T11:51:30+00:00"
+    },
+    "http://www.mavikitaplar.com/temel_bilgiler/main_images/simge_1.gif": {
+      "attempts": 0,
+      "snapshot_url": "http://web.archive.org/web/20190113021052/http://mavikitaplar.com/temel_bilgiler/main_images/simge_1.gif",
+      "status": "snapshot_found",
+      "timestamp": "20190113021052",
+      "updated_at": "2026-11-18T11:49:47+00:00"
+    }
+  },
+  "pause_until": 0,
+  "version": 1
+}
