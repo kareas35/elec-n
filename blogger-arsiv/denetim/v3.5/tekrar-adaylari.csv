@@ -1,0 +1,11 @@
+﻿Yayin 1,Baslik 1,Yayin 2,Baslik 2,Durum,Jaccard,Kapsama,Metin benzerligi,Uzunluk 1,Uzunluk 2
+yayinlar/018.html,1.2 -30 volt arası değişebilen gün kaynağı,yayinlar/121.html,1.2 -30 Volt 1.5 Amper çeken Kısa Devre korumalı güç kaynağı,exact,1.0,1.0,1.0,903,903
+yayinlar/100.html,Foto Transistörler Foto Diodlar Foto Dirençler,yayinlar/171.html,Foto Dirençler,exact,1.0,1.0,1.0,2253,2253
+yayinlar/059.html,Bilinen PIC ler ve Özellikleri,yayinlar/201.html,Bilinen PIC ler ve Özellikleri,exact,1.0,1.0,1.0,23229,23229
+yayinlar/061.html,rogramlar,yayinlar/082.html,Programlar,exact,1.0,1.0,1.0,2146,2146
+yayinlar/252.html,Araç park etme sensörü,yayinlar/356.html,Araç park etme sensörü,very_similar,0.9708,0.9894,0.9927,2462,2478
+yayinlar/118.html,555 ve 74191 Entegreleri ile step motor Devresi,yayinlar/297.html,STEP MOTOR KONTROL VE SÜRÜCÜ DEVRESİ,very_similar,0.9346,1.0,0.9673,1020,1089
+yayinlar/315.html,PİC KOMUTLARI NELER VE NE İŞE YARIYORLAR,yayinlar/149.html,PIC PROGLAMADA KULLANILAN KOMUTLAR,very_similar,0.9227,0.961,0.9855,1962,1965
+yayinlar/350.html,Servo pulse to PWM converter,yayinlar/361.html,Başlıksız yayın,very_similar,0.9208,1.0,0.946,527,473
+yayinlar/066.html,Fotograf makinası Flaş devresi,yayinlar/081.html,220 volt flaşör devresi,partial_overlap,0.5298,0.9121,0.76,1918,3048
+yayinlar/330.html,CMOS Lojik entegreleri(40XX),yayinlar/378.html,LOJIK  ENTEGRELERİN ÖZELİKLERİ ve ÇALIŞMA PRENSİPLERİ,partial_overlap,0.434,0.8494,0.7233,8036,14091
