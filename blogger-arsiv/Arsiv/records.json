@@ -123,7 +123,8 @@
     "content_type": "project",
     "technical_tags": [
       "Arduino",
-      "Sensör"
+      "Sensör",
+      "Arduino Uno"
     ]
   },
   {
@@ -147,7 +148,8 @@
     "technical_tags": [
       "Arduino",
       "Motor",
-      "Sensör"
+      "Sensör",
+      "Arduino Uno"
     ]
   },
   {
@@ -249,7 +251,8 @@
     "content_type": "unclassified",
     "technical_tags": [
       "Arduino",
-      "Robotik"
+      "Robotik",
+      "Arduino Uno"
     ]
   },
   {
@@ -262,7 +265,8 @@
     "summary": "Arduino UNO\nArduino Uno kartı, Arduino 2009'un güncellenmiş sürümüdür, ATmega8U2 mikrodenetleyici tarafından uygulanan özel bir USB / seri dönüştürücünün varlığı için bundan farklıdır.",
     "content_type": "unclassified",
     "technical_tags": [
-      "Arduino"
+      "Arduino",
+      "Arduino Uno"
     ]
   },
   {
@@ -283,7 +287,8 @@
     "technical_tags": [
       "Arduino",
       "LED",
-      "Direnç"
+      "Direnç",
+      "Arduino Uno"
     ]
   },
   {
@@ -376,7 +381,8 @@
       "PWM",
       "Motor",
       "Kondansatör",
-      "555 Entegresi"
+      "555 Entegresi",
+      "NE555"
     ]
   },
   {
@@ -704,7 +710,8 @@
     "content_type": "unclassified",
     "technical_tags": [
       "LED",
-      "Güç Kaynağı"
+      "Güç Kaynağı",
+      "LM317"
     ]
   },
   {
@@ -816,7 +823,8 @@
     "summary": "DEVRE ŞEMASI DEVRE ELEMANLARI LİSTESİ 1AD. LM555 ENTEGRE 1AD. 4017 ENTEGRE 1AD. 3.9 KOHM DİRENÇ 1AD. 68KOHM DİRENÇ 1AD. 360 OHM DİRENÇ 1AD. KIRMIZI LED LAMBA 1AD. SARI LED LAMBA 1AD. YEŞİL L…",
     "content_type": "project",
     "technical_tags": [
-      "LED"
+      "LED",
+      "555 Entegresi"
     ]
   },
   {
@@ -842,7 +850,9 @@
     "source": "https://16f84pic.blogspot.com/2010/11/l298-ve-data-sheet-okuma.html",
     "summary": "Öncelikle bir elektronikçinin bilmesi gereken kullanacağı malzemenin özellikleridir. Malzemenin özelliklerini de bize anlatan belgelere datasheet diyoruz. Kısaca datasheet okuma nasıl olur? …",
     "content_type": "lesson",
-    "technical_tags": []
+    "technical_tags": [
+      "L298"
+    ]
   },
   {
     "title": "Başlıksız yayın",
@@ -1005,7 +1015,8 @@
     "content_type": "unclassified",
     "technical_tags": [
       "PIC",
-      "LED"
+      "LED",
+      "PIC16F84"
     ]
   },
   {
@@ -1019,7 +1030,8 @@
     "content_type": "unclassified",
     "technical_tags": [
       "PIC",
-      "Motor"
+      "Motor",
+      "PIC16F84"
     ]
   },
   {
@@ -1032,7 +1044,8 @@
     "summary": "PIC16F84  DENEME DEVRESI : Asagidaki devre PIC16F84 mikrodenetleyici deneme devresidir. PIC16F84 hafiza bilgisi PIC yükleme devresi ve IC-Prog programi ile okunabilir. EEPROM hafiza adresind…",
     "content_type": "project",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -1084,7 +1097,8 @@
     "summary": "PIC16F84 KOMUTLARI PIC16F84'ün 35 komutu bulunur. Bu komutlar ve açiklamalari asagidaki tabloda görülmektedir. f    : file register W : Work register b   : f register içerisindeki bit pozisy…",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -1097,7 +1111,8 @@
     "summary": "PIC16F84  YÜKLEME DEVRESI Asagidaki devre ile PIC16F84 mikrodenetleyiciyi okuma veya yazma islemi yapilabilir.  PIC, bilgisayarin COM portu üzerinden seri konnektör araciligiyla programlanir…",
     "content_type": "project",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -1172,7 +1187,8 @@
     "summary": "4017 ENTEGRELI 10 x 7 KAYAN YAZI DEVRESI Bu devreyi çalistirmak için gerekli programi indirmek için buraya tiklayiniz. 3 x 4017 entegreli yürüyen isik devresini yüklemek için buraya tiklayin…",
     "content_type": "project",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -1185,7 +1201,8 @@
     "summary": "PIC16F84 MIKRODENETLEYICISI PIC16F84 mikrodenetleyicisi, Microchip firmasi tarafindan üretilen, benzerlerine göre uygun fiyat, kolay programlanma ve donanim açisindan üstün özelliklere sahip…",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -1336,7 +1353,8 @@
     "content_type": "project",
     "technical_tags": [
       "LED",
-      "Güç Kaynağı"
+      "Güç Kaynağı",
+      "LM317"
     ]
   },
   {
@@ -2422,7 +2440,8 @@
     "summary": "RGB LED Controller This is a Project that I've been woring on. It is pretty much finished. Just needs some LED indicators if its running and if serial connection is working. What it basicall…",
     "content_type": "unclassified",
     "technical_tags": [
-      "LED"
+      "LED",
+      "RS-232"
     ]
   },
   {
@@ -2669,7 +2688,8 @@
     "summary": "DS1307 + PIC16F877A Ds 1307 ve PIC 16F877 A PIC kullanılarak yapılmış gerçek zaman saati alnızca Micro C Kompiler kullanmanızı tavsiye ederim kod aşşağıda verilmiştir //Sample code for //DS1…",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F877"
     ]
   },
   {
@@ -2741,7 +2761,8 @@
     "summary": "1.3 - 32 V / 5A GÜÇ KAYNAĞI w/ KISA DEVRE KORUMALI  LM338 İLE YAPILMIŞ BİR DEVRE LM 338 bir soğutucuya  termal pasta ve heatsink kullanarak bağlanmalı trafo olarak seçilecek trafo 100w civar…",
     "content_type": "project",
     "technical_tags": [
-      "Güç Kaynağı"
+      "Güç Kaynağı",
+      "LM338"
     ]
   },
   {
@@ -3654,7 +3675,8 @@
     "summary": "16F877 ve 16F84A nın karşılaştırması PIC16F877’nin Besleme Uçları ve Beslenmesi PIC16F877’nin besleme gerilimi 11, 12 ve 31, 32 numaralı pinlerden uygulanmaktadır. 11 ve 32 numaralı Vdd ucu …",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F877"
     ]
   },
   {
@@ -3682,7 +3704,8 @@
     "technical_tags": [
       "PIC",
       "LED",
-      "LCD"
+      "LCD",
+      "PIC16F84"
     ]
   },
   {
@@ -3850,7 +3873,8 @@
     "summary": "HEXdownloads Download RC5-RC6_Decoder_V-1_NL.bas, de broncode voor PIC Basic Download DECODERN.HEX(RC5/RC6 decoder) bestand om in een PIC16F628A te programmeren DECODER.HEX,PIC 16F648A ve Yo…",
     "content_type": "project",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F628"
     ]
   },
   {
@@ -3989,7 +4013,8 @@
     "technical_tags": [
       "PIC",
       "PWM",
-      "Motor"
+      "Motor",
+      "L298"
     ]
   },
   {
@@ -4137,7 +4162,8 @@
     "summary": "PIC16C6X ,PIC16C7X bitlerine dikkat etmek şartıyla bunlar için geliştirilen kod PIC 16F877 Ye Aynen Uygulanır. PIC16F877’nin Özellikleri PIC16F877, belki en popüler PIC işlemcisi olan PIC16F…",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F877"
     ]
   },
   {
@@ -4384,7 +4410,8 @@
     "content_type": "unclassified",
     "technical_tags": [
       "PIC",
-      "LED"
+      "LED",
+      "PIC16F628"
     ]
   },
   {
@@ -4620,7 +4647,9 @@
     "source": "https://16f84pic.blogspot.com/2010/01/0-28v-20amp-lm317-ve-2n3055-ile.html",
     "summary": "S2 anahtarı + - 3 Amper ve tam çıkış akımı sağlamak için kulanılmıştır (S1) Açık / kapalı Anahtarı güç kaynağını kapatmak ve açmak için kullanılır. Röle   C2 Kondansatöründeki  voltajı  geci…",
     "content_type": "project",
-    "technical_tags": []
+    "technical_tags": [
+      "LM317"
+    ]
   },
   {
     "title": "Güzel Bir otomasyon görüntüsü",
@@ -4680,7 +4709,8 @@
     "summary": "Deneysel endüstriyel sistemin kontrol edilebilmesi için PIC16F84 mikrodenetleyicisi kullanılmıştır. Bu mikrodenetleyicinin tercih edilmesinin sebeplerinden bazıları şunlardır: ! Kontrol edil…",
     "content_type": "project",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -4715,7 +4745,8 @@
     "summary": "Projenin doc dosyasına Buradan Ulaşabilirsiniz Bu çalışmada entegre devrelerden ve mikro kontroller’ dan oluşan programlana bilinir bir elektronik kas uyarım cihazı tasarlanmıştır. Bu çalışm…",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -4840,7 +4871,8 @@
     "summary": "Amatörler tarafından ucuza ve kolaylıkla gerçekleştirilebilecek bir güç kaynağı sunuyoruz. Cihazımızın amatör deneylerinde kullanılabilecek özelliklere sahip olmasının yanı sıra, genç amatör…",
     "content_type": "project",
     "technical_tags": [
-      "Güç Kaynağı"
+      "Güç Kaynağı",
+      "LM317"
     ]
   },
   {
@@ -4853,7 +4885,8 @@
     "summary": "http://antrak.org.tr/images/stories/pic_2004/ocak/isikontrol.zip Merhabalar, Bu yazıda sizlere PIC16F84A ile ısı kontrolünün nasıl yapılabileceğine örnek vermeye çalışacağım. Bu ısı kontrol …",
     "content_type": "project",
     "technical_tags": [
-      "LCD"
+      "LCD",
+      "PIC16F84"
     ]
   },
   {
@@ -4962,7 +4995,8 @@
     "summary": "2 Kanallı Kablosuz Kumanda Yazar Tarık Konca Cumartesi, 03 Ekim 2009 Piyasada kolaylıkla bulabileceğiniz PIC 16F84A ve Udea  alıcı verici modüllerini kullanarak iki kanallı kablosuz uzaktan …",
     "content_type": "unclassified",
     "technical_tags": [
-      "PIC"
+      "PIC",
+      "PIC16F84"
     ]
   },
   {
@@ -4978,7 +5012,8 @@
       "PIC",
       "LCD",
       "PWM",
-      "Motor"
+      "Motor",
+      "PIC16F877"
     ]
   },
   {
@@ -5002,7 +5037,8 @@
     "summary": "Bu görmüş olduğunuz devre şeması güzel bir devre hex kodunu yazmasını bilenler kendileri yazıp düzenleye bilirler Malzemeler R1........R7 10 komh 6 adet Basçek buton U1  1 adet L298 U2 1 ade…",
     "content_type": "project",
     "technical_tags": [
-      "Motor"
+      "Motor",
+      "L298"
     ]
   },
   {
