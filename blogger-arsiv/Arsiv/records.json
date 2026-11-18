@@ -263,7 +263,7 @@
     "url": "yayinlar/224.html",
     "source": "https://16f84pic.blogspot.com/2020/05/arduino-uno.html",
     "summary": "Arduino UNO\nArduino Uno kartı, Arduino 2009'un güncellenmiş sürümüdür, ATmega8U2 mikrodenetleyici tarafından uygulanan özel bir USB / seri dönüştürücünün varlığı için bundan farklıdır.",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "Arduino",
       "Arduino Uno"
@@ -1339,7 +1339,7 @@
     "url": "yayinlar/043.html",
     "source": "https://16f84pic.blogspot.com/2010/10/cny70-hakknda-birkac-bilgi.html",
     "summary": "",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -2232,7 +2232,7 @@
     "url": "yayinlar/295.html",
     "source": "https://16f84pic.blogspot.com/2010/08/version09.html",
     "summary": "Version:0.9 StartHTML:0000000105 EndHTML:0000009599 StartFragment:0000001197 EndFragment:0000009583 #include <REGX51.H> void bekle()\n        { unsigned int i; for (i= 0 ;i< 7600 ;i++)\n      …",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -2700,7 +2700,7 @@
     "url": "yayinlar/104.html",
     "source": "https://16f84pic.blogspot.com/2010/04/pil-test-cihaz.html",
     "summary": "BC 547 transistörü ile yapılmış basit bir pil test cihazı",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
@@ -2722,7 +2722,7 @@
     "url": "yayinlar/263.html",
     "source": "https://16f84pic.blogspot.com/2010/04/10-led-vu-meter-project-by-lm3915-and.html",
     "summary": "10 LED VU Meter Project by LM3915 and LM324",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "LED"
     ]
@@ -3847,7 +3847,7 @@
     "url": "yayinlar/369.html",
     "source": "https://16f84pic.blogspot.com/2010/03/maximdallas-ds18b20-scaklk-alglaycs.html",
     "summary": "Maxim/Dallas firması tarafından üretilen DS18B20 sıcaklık algılayıcısı en fazla 0.5 derecelik hata ile -55 ile +125 dereceler arası ölçüm yapabilmekte ve sıcaklık bilgisini sayısal olarak ve…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -4071,7 +4071,7 @@
     "url": "yayinlar/377.html",
     "source": "https://16f84pic.blogspot.com/2010/02/steering-diode-applications-b-lan-and.html",
     "summary": "(a) Steering diode applications (b) LAN and WAN Networks (c) Computer and peripheral I/O Ports (d) Core driver switching (e) High frequency data lines (f) Interface networks (a) Plastic DIP …",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": [
       "Diyot"
     ]
@@ -4084,7 +4084,7 @@
     "url": "yayinlar/381.html",
     "source": "https://16f84pic.blogspot.com/2010/02/emitor.html",
     "summary": "Emitör gerilim kazancı Bir \" gerilim kaynağı  sıfır çıkış empedansına sahip olduğunda,   akım ve gerilim aynı kalır. Burada ortak emetör amplifikatör akım çevirici mevcut giriş için gerekli …",
-    "content_type": "unclassified",
+    "content_type": "lesson",
     "technical_tags": []
   },
   {
@@ -4349,7 +4349,7 @@
     "url": "yayinlar/073.html",
     "source": "https://16f84pic.blogspot.com/2010/02/electronic-workbench-devreler.html",
     "summary": "EWB Yazılımı ile kendinizi geliştirmek için yapacağınız denemeler için kullanabileceğiniz animasyonunu yapabileceğiniz ve ölçüm cihazı ile analizini yapabileceğiniz çeşitli hazır devreler aş…",
-    "content_type": "unclassified",
+    "content_type": "technical_reference",
     "technical_tags": []
   },
   {
@@ -4433,7 +4433,7 @@
     "url": "yayinlar/338.html",
     "source": "https://16f84pic.blogspot.com/2010/02/led-animasyon-pik-programi.html",
     "summary": "' FANCY LEDs ' Written for Thibault in March 2003 ' Version 2 ' ' Olivier de Broqueville ' ' Internal osc. DEVICE 16F628 REMARKS=ON CONFIG WDT_OFF, BODEN_ON,INTRC_OSC_NOCLKOUT,LVP_OFF,CP_OFF…",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "PIC",
       "LED"
@@ -4792,7 +4792,7 @@
     "url": "yayinlar/214.html",
     "source": "https://16f84pic.blogspot.com/2010/01/guc-kaynagi-semasi.html",
     "summary": "",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": [
       "Güç Kaynağı"
     ]
@@ -5063,7 +5063,7 @@
     "url": "yayinlar/072.html",
     "source": "https://16f84pic.blogspot.com/2009/12/telefon-sim-kart-okuma.html",
     "summary": "yanda sekil ve resimleri inceleyiniz faydalı olabilir şekil ve proje tarafımdan denenmemiştir.(alıntıdır)",
-    "content_type": "unclassified",
+    "content_type": "project",
     "technical_tags": []
   },
   {
