@@ -192,3 +192,18 @@ Son commit: d48b9b9
 - Rollback guvenlik kilidi aktif.
 - Sonraki hedef: kurtarma icin kalici veri kopyalari,
   transaction state gecisleri ve --recover mekanizmasi.
+
+## 19 Kasim 2026 - Kurtarma durum denetleyicisi
+
+- transaction_journal.py icine inspect_transaction() eklendi.
+- INTEGRATED, RESTORED ve UNKNOWN durumlari dogrulandi.
+- Yari kalmis islem tespit testi basarili.
+- Guvensiz dosya yollari reddedildi.
+- Gecersiz SHA-256 kayitlari reddedildi.
+- Tekrarlanan dosya adlari reddedildi.
+- Toplam 7/7 durum denetleyicisi testi basarili.
+- Testler gecici klasorde calistirildi; kalici test dosyasi henuz yok.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Sonraki hedef: kurtarma icin kalici veri kopyalari,
+  transaction state gecisleri ve --recover mekanizmasi.
