@@ -109,3 +109,14 @@ Son commit: d48b9b9
 - CSV pilot_integrated_pending_final_review olarak guncellendi.
 - e13 ve diger teknik onay bekleyen gorseller entegre edilmedi.
 - Sonraki is: tarayici kontrolu ve kalan gorseller icin teknik onay.
+
+## 19 Kasim 2026 - LDR entegrasyonu
+
+- 100.html ve 171.html LDR restorasyonu entegre edildi.
+- Her iki yayin icin HTML yedegi olusturuldu.
+- Orijinal gorsel URL bilgileri korundu.
+- Restorasyon CSV: 3/9 entegre.
+- Restorasyon entegratoru: restorasyon_entegre.py
+- LDR entegrasyon testleri basarili.
+- Onizleme icin Codespaces 8765 portu kullanildi.
+- Sonraki is: entegratore rollback ve dry-run testleri eklemek.
