@@ -153,3 +153,16 @@ Son commit: d48b9b9
 - Gercek yayinlar ve orijinal HTML yedekleri korunuyor.
 - Sonraki hedef: transaction journal ve --recover mekanizmasi.
 - Guvenlik kilidi test edilmeden kaldirilmamali.
+
+## 19 Kasim 2026 - Transaction journal ilk surum
+
+- transaction_journal.py olusturuldu.
+- Journal olusturma testi basarili.
+- SHA-256 kayit testi basarili.
+- Mevcut journal uzerine yazma engellendi.
+- Gecici klasor testi basarili.
+- Toplam: 4/4 test PASS.
+- Gercek yayinlarda degisiklik yapilmadi.
+- Rollback guvenlik kilidi aktif.
+- Sonraki hedef: bozuk journal, yazma hatasi ve kesinti testleri.
+- Journal henuz rollback/recover sistemine bagli degil.
