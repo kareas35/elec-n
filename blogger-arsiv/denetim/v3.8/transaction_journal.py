@@ -80,6 +80,70 @@ def create_journal(path, entries):
     return journal
 
 
+
+def inspect_transaction(journal_path, live_directory):
+    """Journal ve yayin dosyalarini salt okunur dogrula."""
+    journal = json.loads(
+        Path(journal_path).read_text(encoding="utf-8")
+    )
+
+    if journal.get("version") != 1:
+        raise ValueError("Desteklenmeyen journal surumu")
+
+    if journal.get("state") != "prepared":
+        raise ValueError("Beklenmeyen journal durumu")
+
+    entries = journal.get("entries")
+    if not isinstance(entries, list) or not entries:
+        raise ValueError("Gecersiz journal entries")
+
+    root = Path(live_directory).resolve()
+    states = {}
+    seen = set()
+
+    for entry in entries:
+        name = entry["name"]
+
+        # Sadece ayni klasordeki basit dosya adlari.
+        if not isinstance(name, str) or not name:
+            raise ValueError("Gecersiz dosya adi")
+
+        if Path(name).name != name or name in (".", ".."):
+            raise ValueError("Guvenli olmayan dosya yolu")
+
+        if name in seen:
+            raise ValueError("Tekrarlanan dosya adi")
+        seen.add(name)
+
+        before_hash = entry["before_sha256"]
+        after_hash = entry["after_sha256"]
+
+        for value in (before_hash, after_hash):
+            if (
+                not isinstance(value, str)
+                or len(value) != 64
+                or any(c not in "0123456789abcdef" for c in value)
+            ):
+                raise ValueError("Gecersiz SHA-256")
+
+        page = root / name
+
+        if page.is_symlink() or not page.is_file():
+            states[name] = "UNKNOWN"
+            continue
+
+        current = sha256(page.read_bytes())
+
+        if current == before_hash:
+            states[name] = "RESTORED"
+        elif current == after_hash:
+            states[name] = "INTEGRATED"
+        else:
+            states[name] = "UNKNOWN"
+
+    return states
+
+
 if __name__ == "__main__":
     with tempfile.TemporaryDirectory() as tmp:
         folder = Path(tmp)
