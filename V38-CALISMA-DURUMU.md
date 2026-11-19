@@ -61,3 +61,14 @@ Son commit: d48b9b9
 - Restorasyon taslaklari orijinal kurtarma sayisina eklenmedi.
 - Yayin HTML dosyalari degistirilmedi.
 - Sonraki hedef: e5, e6, e12, e13 gorselleri.
+
+## 19 Kasim 2026 - Kondansator ve diyot restorasyonu
+
+- e5: Kutupsuz ve elektrolitik kondansator sembolleri cizildi.
+- e5: Elektrolitik kondansator + kutup isareti duzeltildi.
+- e6: Normal diyot ve Zener diyot sembolleri cizildi.
+- Her iki diyotta katot sag tarafta.
+- Toplam 6 restorasyon SVG taslagi hazirlandi.
+- Orijinal kurtarma sayisi 18 olarak korundu.
+- Yayin HTML dosyalari degistirilmedi.
+- Sonraki hedef: e12 ve e13 triyak gorselleri.

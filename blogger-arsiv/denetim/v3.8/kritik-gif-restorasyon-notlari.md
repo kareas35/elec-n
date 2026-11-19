@@ -97,3 +97,45 @@ Orijinal kurtarma ile yeniden oluşturulmuş çizim her zaman ayrı işaretlenme
 - Ayrı restored klasoru kullanilacak.
 - Yeniden olusturulan gorseller orijinal olarak sayilmayacak.
 - Orijinal goruntu yerine kullanilmadan once teknik kontrol yapilacak.
+
+
+---
+
+## e5.gif
+- Kaynak yayın: `blogger-arsiv/Arsiv/yayinlar/298.html`
+- Orijinal URL: `http://www.deli-prof.net/wp-content/uploads/2006/01/e5.gif`
+- Konu: Kondansatör ve Ölçümleri
+- İçerik tanımı:
+  - Kutupsuz (non-polarized) kondansatör sembolü
+  - ve kutuplu / elektrolitik kondansatör sembolü
+  - aynı görsel içinde birlikte gösterilmelidir.
+- Metinsel kanıt:
+  - "Yandaki resimde artı-eksi yön farkı bulunmayan bir kondasatör ile artı ve eksi yönlere sahip bir elektrolitik kondansatörün devre çizimlerinde kullanılan sembolleri görülmektedir."
+- Restorasyon notu:
+  - Siyah-beyaz, sade teknik çizim olmalı.
+  - Kutupsuz kondansatör ile elektrolitik kondansatör açıkça ayrılmalı.
+  - Elektrolitik tarafta kutup işareti anlaşılır olmalı.
+- Durum:
+  - Orijinal dosya bulunamadı.
+  - Yeniden çizim adayı.
+
+---
+
+## e6.gif
+- Kaynak yayın: `blogger-arsiv/Arsiv/yayinlar/168.html`
+- Orijinal URL: `http://www.deli-prof.net/wp-content/uploads/2006/01/e6.gif`
+- Konu: Diod ve Ölçümleri
+- İçerik tanımı:
+  - Normal diyot sembolü
+  - ve zener diyot sembolü
+  - aynı görsel içinde birlikte gösterilmelidir.
+- Metinsel kanıt:
+  - "Yandaki resimde sırası ile normal bir diod ve zener diodun devre şemalarında kullanılan sembolü görülmektedir."
+  - "Her iki diodunda sağ tarafta kalan uçları katot uçlarıdır."
+- Restorasyon notu:
+  - Siyah-beyaz, sade teknik çizim olmalı.
+  - Önce normal diyot, sonra zener diyot gösterilmeli.
+  - Her iki sembolde de katot sağda kalmalı.
+- Durum:
+  - Orijinal dosya bulunamadı.
+  - Yeniden çizim adayı.

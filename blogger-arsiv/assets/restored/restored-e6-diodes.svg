@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 430 180" width="430" height="180">
+<title>Normal ve zener diyot sembolleri - restorasyon</title>
+<g fill="none" stroke="#111" stroke-width="3"
+stroke-linecap="round" stroke-linejoin="round">
+  <!-- Normal diode -->
+  <path d="M30 90 H100"/>
+  <path d="M100 55 L155 90 L100 125 Z"/>
+  <path d="M165 55 V125"/>
+  <path d="M165 90 H225"/>
+
+  <!-- Zener diode -->
+  <path d="M240 90 H300"/>
+  <path d="M300 55 L355 90 L300 125 Z"/>
+  <path d="M365 60 L378 52"/>
+  <path d="M365 120 L378 112"/>
+  <path d="M365 55 V125"/>
+  <path d="M365 90 H415"/>
+</g>
+
+<g font-family="Arial,sans-serif" fill="#111" font-size="16" text-anchor="middle">
+  <text x="128" y="155">Diyot</text>
+  <text x="332" y="155">Zener diyot</text>
+</g>
+</svg>
