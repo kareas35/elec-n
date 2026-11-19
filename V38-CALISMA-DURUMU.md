@@ -235,3 +235,16 @@ Son commit: d48b9b9
 - Gercek rollback guvenlik kilidi aktif.
 - Prototip henuz kalici transaction recovery garantisi sunmuyor.
 - Sonraki adim: kalici kurtarma kopyalari ve journal durum gecisleri.
+
+## 19 Kasim 2026 - Transaction Bundle
+
+- transaction_bundle.py olusturuldu.
+- Kurtarma paketi icinde before ve after kopyalari tutuluyor.
+- transaction.json dosyasina SHA-256 kayitlari yaziliyor.
+- Mevcut paketlerin uzerine yazilmasi engelleniyor.
+- Bozuk kopyalar ve guvensiz dosya yollari reddediliyor.
+- Gecici klasorde 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Sonraki adim: prepared, in_progress ve completed
+  transaction durum gecisleri ve kesinti testleri.
