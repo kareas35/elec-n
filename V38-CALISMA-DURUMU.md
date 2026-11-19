@@ -131,3 +131,12 @@ Son commit: d48b9b9
 - Entegrasyon durumu: 3/9.
 - Rollback henüz cok dosyali atomik islem garantisi sunmuyor.
 - Sonraki adim: hata simulasyonu ve yari kalmis islem guvenligi.
+
+## 19 Kasim 2026 - Rollback ek guvenlik testleri
+
+- TEST 5 PASS: Degistirilmis yayin rollback oncesinde tespit edildi.
+- TEST 6 PASS: Hata durumunda hicbir dosya kismen geri alinmadi.
+- Toplam rollback testi: 6/6 basarili.
+- Gercek yayinlar ve entegrasyon CSV degistirilmedi.
+- Sonraki is: cok dosyali rollback icin islem gunlugu ve
+  kesinti sonrasi kurtarma mekanizmasi.
