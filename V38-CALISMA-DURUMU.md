@@ -223,3 +223,15 @@ Son commit: d48b9b9
 - Mevcut restorasyon durumu: 3/9.
 - Rollback guvenlik kilidi aktif.
 - Transaction recovery calismasi kaldigi yerden devam edecek.
+
+## 19 Kasim 2026 - Transaction Recovery prototipi
+
+- transaction_recovery_test.py olusturuldu.
+- 6/6 kontrollu kurtarma testi basarili.
+- Yari kalmis rollback islemi tespit edildi.
+- Gecici klasorde entegre duruma geri donus dogrulandi.
+- Tekrar calistirma ve UNKNOWN engelleme testleri basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Gercek rollback guvenlik kilidi aktif.
+- Prototip henuz kalici transaction recovery garantisi sunmuyor.
+- Sonraki adim: kalici kurtarma kopyalari ve journal durum gecisleri.
