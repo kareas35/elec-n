@@ -15,7 +15,7 @@ ALLOWED = {
 }
 
 
-def save_state(path, state, expected=None):
+def save_state(path, state, expected=None, live_dir=None, csv_path=None):
     """Durumu gecici dosya + os.replace ile kaydet."""
     path = Path(path)
 
@@ -34,6 +34,13 @@ def save_state(path, state, expected=None):
             raise ValueError("Beklenmeyen onceki durum")
         if state not in ALLOWED[current]:
             raise ValueError("Gecersiz durum gecisi")
+
+    # COMPLETED ancak HTML ve CSV birlikte dogrulanirsa yazilir.
+    if state == "COMPLETED":
+        if live_dir is None or csv_path is None:
+            raise ValueError("COMPLETED icin HTML ve CSV zorunlu")
+        from transaction_completion_test import verify_completion
+        verify_completion(path.parent, Path(live_dir), Path(csv_path))
 
     fd, temp = tempfile.mkstemp(
         prefix=".transaction-state-",
@@ -87,13 +94,15 @@ def initialize(bundle):
     save_state(bundle / "transaction-state.json", "PREPARED")
 
 
-def transition(bundle, expected, target):
+def transition(bundle, expected, target, live_dir=None, csv_path=None):
     bundle = Path(bundle)
     verify_bundle(bundle)
     save_state(
         bundle / "transaction-state.json",
         target,
-        expected=expected
+        expected=expected,
+        live_dir=live_dir,
+        csv_path=csv_path
     )
 
 
@@ -134,7 +143,45 @@ def self_test():
             pass
         print("TEST 3 PASS: Gecersiz gecis reddedildi")
 
-        transition(bundle, "IN_PROGRESS", "COMPLETED")
+        # Tamamlanma testi icin yalnizca gecici kopyalar.
+        import csv
+        import shutil
+
+        live = base / "live"
+        live.mkdir()
+
+        for name in ("100.html", "171.html"):
+            shutil.copy2(
+                bundle / "before" / name,
+                live / name
+            )
+
+        plan = base / "plan.csv"
+        shutil.copy2(
+            V38 / "restorasyon-entegrasyon-plani.csv",
+            plan
+        )
+
+        with plan.open(encoding="utf-8-sig", newline="") as f:
+            reader = csv.DictReader(f)
+            fields = reader.fieldnames
+            rows = list(reader)
+
+        for row in rows:
+            if (row["Original"] == "e14.gif"
+                    and row["Publication"] in ("100.html", "171.html")):
+                row["Integrated"] = "false"
+                row["Status"] = "technical_review"
+
+        with plan.open("w", encoding="utf-8-sig", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(rows)
+
+        transition(
+            bundle, "IN_PROGRESS", "COMPLETED",
+            live_dir=live, csv_path=plan
+        )
         assert load_state(statefile) == "COMPLETED"
         print("TEST 4 PASS: COMPLETED kaydedildi")
 
