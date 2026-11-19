@@ -120,3 +120,14 @@ Son commit: d48b9b9
 - LDR entegrasyon testleri basarili.
 - Onizleme icin Codespaces 8765 portu kullanildi.
 - Sonraki is: entegratore rollback ve dry-run testleri eklemek.
+
+## 19 Kasim 2026 - Rollback testleri
+
+- LDR restorasyonu icin kontrollu rollback araci eklendi.
+- 100.html ve 171.html SHA-256 karsilastirmalari basarili.
+- Gecici klasorde 4/4 rollback testi basarili.
+- Gercek yayinlar ve gercek CSV degistirilmedi.
+- Orijinal HTML yedekleri GitHub'da: d42cebc.
+- Entegrasyon durumu: 3/9.
+- Rollback henüz cok dosyali atomik islem garantisi sunmuyor.
+- Sonraki adim: hata simulasyonu ve yari kalmis islem guvenligi.
