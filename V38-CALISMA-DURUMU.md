@@ -85,3 +85,17 @@ Son commit: d48b9b9
 - Orijinal kurtarilan 18 gorsel ayri tutuluyor.
 - Yayin HTML dosyalari degistirilmedi.
 - Sonraki hedef: teknik denetim ve restorasyon entegrasyon plani.
+
+## 19 Kasim 2026 - Restorasyon entegrasyon plani
+
+- Sekiz SVG restorasyon taslagi hazir.
+- Dokuz yayin-gorsel eslesmesi dogrulandi.
+- XML ve kaynak referansi denetimi: 0 hata.
+- restorasyon-entegrasyon-plani.csv olusturuldu.
+- Entegre edilen yayin sayisi: 0.
+- e13 teknik olarak orijinal test devresinin esdegeri degil.
+- e12 teknik dogrulama bekliyor.
+- Diger SVG dosyalari teknik son kontrol bekliyor.
+- Sonraki adim: 393.html LED sembolu icin geri alinabilir
+  entegrasyon onizlemesi olusturulacak.
+- Orijinal HTML dosyalari henuz degistirilmeyecek.
