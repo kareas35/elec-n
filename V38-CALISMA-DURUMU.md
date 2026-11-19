@@ -166,3 +166,14 @@ Son commit: d48b9b9
 - Rollback guvenlik kilidi aktif.
 - Sonraki hedef: bozuk journal, yazma hatasi ve kesinti testleri.
 - Journal henuz rollback/recover sistemine bagli degil.
+
+## 19 Kasim 2026 - Transaction journal ek testleri
+
+- TEST 5 PASS: Bozuk JSON ayrıştırıcı tarafindan reddedildi.
+- TEST 6 PASS: Simule edilen os.link hatasinda journal olusmadi.
+- TEST 7 PASS: Mevcut journal dosyasi korunuyor.
+- Journal toplam test: 7/7 PASS.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Journal okuyucu, durum gecisleri ve --recover henuz uygulanmadi.
+- Sonraki adim: kesinti sonrasi kurtarma protokolu.
