@@ -41,3 +41,13 @@ Son commit: d48b9b9
 - Takip edilmeyen analiz/yedek dosyalarını silme.
 - PR #12 index.html branch'ine merge edildi.
 - Son envanter commit'i henüz ayrı branch üzerinde.
+
+## 19 Kasim 2026 - Restorasyon ilerlemesi
+
+- e7 ve e8 icin teknik restorasyon tanimlari hazirlandi.
+- e14 (LDR) ve e15 (LED) SVG cizimleri olusturuldu.
+- LED sol baglanti hatasi duzeltildi.
+- Iki cizim tarayicida gorsel olarak kontrol edildi.
+- Orijinal gorseller degistirilmedi.
+- Yayin HTML dosyalarina henuz baglanmadi.
+- Sonraki adim: e7 NPN/PNP sembolleri ve e8 anahtarli lamba devresi.

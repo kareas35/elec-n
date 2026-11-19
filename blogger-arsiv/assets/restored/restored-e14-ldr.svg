@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 198 110" width="198" height="110">
+<title>Fotodirenç (LDR) - yeniden çizim</title>
+<g stroke="#111" stroke-width="3" fill="none"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M10 70 H50 L58 58 L70 82 L82 58 L94 82 L106 58 L118 82 L130 70 H188"/>
+<path d="M68 10 L89 40 M105 10 L126 40"/>
+<path d="M79 38 L89 40 L87 30 M116 38 L126 40 L124 30"/>
+</g>
+</svg>

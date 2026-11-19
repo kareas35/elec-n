@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 128 106" width="128" height="106">
+<title>LED sembolü - yeniden çizim</title>
+<g stroke="#111" stroke-width="3" fill="none"
+stroke-linecap="round" stroke-linejoin="round">
+<path d="M8 68 H38 M38 48 L70 68 L38 88 Z"/>
+<path d="M70 43 V93 M70 68 H120"/>
+<path d="M48 39 L69 18 M65 29 L69 18 L58 22"/>
+<path d="M72 45 L93 24 M89 35 L93 24 L82 28"/>
+</g>
+</svg>
