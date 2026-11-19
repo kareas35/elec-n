@@ -139,3 +139,44 @@ Orijinal kurtarma ile yeniden oluşturulmuş çizim her zaman ayrı işaretlenme
 - Durum:
   - Orijinal dosya bulunamadı.
   - Yeniden çizim adayı.
+
+
+---
+
+## e12.gif
+- Kaynak yayın: `blogger-arsiv/Arsiv/yayinlar/176.html`
+- Orijinal URL: `http://www.deli-prof.net/wp-content/uploads/2006/01/e12.gif`
+- Konu: Triyak ve Ölçümleri
+- İçerik tanımı:
+  - Triyağın devre sembolü
+  - ve iki tristör ile kurulan eşdeğer devre şeması
+  - aynı görsel içinde birlikte gösterilmelidir.
+- Metinsel kanıt:
+  - "Aşağıdaki şekilde triyak’ın devre şemalarında kullanılan sembolü ve iki tristör kullanılarak yapılan eşdeğer devre şeması görülmektedir."
+- Restorasyon notu:
+  - Siyah-beyaz, sade teknik çizim olmalı.
+  - A1, A2 ve Gate uçları anlaşılır olmalı.
+  - Eşdeğer devrede iki tristörün ters paralel ilişkisi açık olmalı.
+- Durum:
+  - Orijinal dosya bulunamadı.
+  - Yeniden çizim adayı.
+
+---
+
+## e13.gif
+- Kaynak yayın: `blogger-arsiv/Arsiv/yayinlar/176.html`
+- Orijinal URL: `http://www.deli-prof.net/wp-content/uploads/2006/01/e13.gif`
+- Konu: Triyak ve Ölçümleri
+- İçerik tanımı:
+  - Triyak ölçümü / tetiklemesi için basit devre şeması gösterilmelidir.
+  - Gate ucuna DC 12V tetikleme verildiğinde triyak iletime geçmelidir.
+- Metinsel kanıt:
+  - "Devre kullanılarak ölçüm yapmak için gereken basit bir devre şeması şekilde görülmektedir."
+  - "Bu devrede gate ucuna DC 12V (artı veya eksi) verildiği sürece triyak’ın iletimde kalması..."
+- Restorasyon notu:
+  - AC yük hattı ve triyak ana yolu görünmeli.
+  - Gate tetikleme yolu ayrı gösterilmeli.
+  - DC 12V tetikleme ifadesi açıkça yazılmalı.
+- Durum:
+  - Orijinal dosya bulunamadı.
+  - Yeniden çizim adayı.

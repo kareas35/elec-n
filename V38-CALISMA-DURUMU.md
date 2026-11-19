@@ -72,3 +72,16 @@ Son commit: d48b9b9
 - Orijinal kurtarma sayisi 18 olarak korundu.
 - Yayin HTML dosyalari degistirilmedi.
 - Sonraki hedef: e12 ve e13 triyak gorselleri.
+
+## 19 Kasim 2026 - Sekiz kritik GIF taslagi
+
+- e5, e6, e7, e8, e12, e13, e14, e15 icin SVG taslaklari olusturuldu.
+- e12: Triyak sembolu ve temsili ters paralel SCR gosterimi.
+- e12 teknik onay bekliyor.
+- e13: Hatali elektriksel baglanti semasi kaldirildi.
+- e13 yerine egitim amacli islevsel diyagram hazirlandi.
+- e13 gercek test veya kablolama semasi degildir.
+- Sekiz SVG dosyasi restorasyon taslagi durumundadir.
+- Orijinal kurtarilan 18 gorsel ayri tutuluyor.
+- Yayin HTML dosyalari degistirilmedi.
+- Sonraki hedef: teknik denetim ve restorasyon entegrasyon plani.
