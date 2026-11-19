@@ -304,3 +304,17 @@ Son commit: d48b9b9
 - Transaction kilidi henuz state ve recovery akisina baglanmadi.
 - Sonraki hedef: kilidi durum gecislerine baglamak,
   eszamanli degisiklik ve kesinti testleri yapmak.
+
+## 19 Kasim 2026 - Transaction Locked Flow
+
+- transaction_locked_flow_test.py olusturuldu.
+- Kilit altinda PREPARED ve IN_PROGRESS gecisleri test edildi.
+- Cakisan kilit girisimi engellendi.
+- Eksik HTML ve CSV ile COMPLETED gecisi reddedildi.
+- Dogrulanmis HTML ve CSV ile COMPLETED basarili.
+- Kilit serbest birakma ve tamamlanan islemi koruma dogrulandi.
+- Toplam 7/7 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Gercek rollback guvenlik kilidi aktif.
+- Kilitleme henuz tum state ve recovery giris noktalarinda zorunlu degil.
+- Sonraki hedef: zorunlu kilitleme ve kesinti sonrasi kurtarma testleri.
