@@ -174,6 +174,7 @@ def main():
     p.add_argument("--root", type=Path, default=Path("blogger-arsiv/denetim/v3.8"))
     p.add_argument("--limit", type=int, default=3, help="Max different image URLs per run (default: 3)")
     p.add_argument("--delay", type=float, default=15, help="Seconds between requests (minimum: 10)")
+    p.add_argument("--resume", action="store_true", help="Explicitly permit network requests for this run")
     p.add_argument("--download", action="store_true", help="Retrieve image bytes (otherwise only find snapshots)")
     p.add_argument("--retry-failed", action="store_true", help="Retry previous failures/no snapshot after review")
     p.add_argument("--retry-downloads", action="store_true", help="Retry only download errors with known snapshots")
@@ -214,6 +215,12 @@ def main():
         print("PAUSED after rate limit; no network requests. Resume after:",
               datetime.fromtimestamp(manifest["pause_until"], timezone.utc).isoformat())
         return
+
+    if not args.resume:
+        print("SAFE PAUSE: Network requests require explicit --resume.")
+        return
+    if manifest.get("manual_pause"):
+        print("Manual pause overridden for this run by --resume.")
 
     # Prioritize publications with most risky URLs; then source stable order.
     risk_per_publication = {}
@@ -316,6 +323,7 @@ def main():
                 if exc.code == 429:
                     pause = retry_after_seconds(exc.headers)
                     manifest["pause_until"] = time.time() + pause
+                    manifest["manual_pause"] = True
                     entry["status"] = "rate_limited"
                     entry["error"] = f"HTTP 429: paused {pause}s; do not retry before pause ends"
                     print("   RATE LIMIT: stopping immediately; pause", pause, "seconds")
