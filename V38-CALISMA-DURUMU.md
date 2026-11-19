@@ -207,3 +207,19 @@ Son commit: d48b9b9
 - Rollback guvenlik kilidi aktif.
 - Sonraki hedef: kurtarma icin kalici veri kopyalari,
   transaction state gecisleri ve --recover mekanizmasi.
+
+## 19 Kasim 2026 - Datasheets.com entegrasyonu
+
+- Datasheets.com API anahtari GitHub Codespaces Secrets'a eklendi.
+- DATASHEETS_API_KEY ortam degiskeni dogrulandi.
+- BAV99 API aramasi HTTP 200 ile basarili.
+- Datasheets arama onizlemesi 8766 portunda calisiyor.
+- Parca kodu, uretici ve aciklama bilgileri goruntuleniyor.
+- Teknik ozellikler, PDF baglantilari ve urun gorseli destegi eklendi.
+- Teknik ozellikler ve PDF baglantisi tarayicida goruldu.
+- Urun gorseli henuz gorsel olarak dogrulanmadi.
+- Gelistirme sunucusu PRIVATE kalmali.
+- API kullanim ve yayinlama izinleri netlesmeden halka acilmamali.
+- Mevcut restorasyon durumu: 3/9.
+- Rollback guvenlik kilidi aktif.
+- Transaction recovery calismasi kaldigi yerden devam edecek.
