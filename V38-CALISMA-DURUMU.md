@@ -140,3 +140,16 @@ Son commit: d48b9b9
 - Gercek yayinlar ve entegrasyon CSV degistirilmedi.
 - Sonraki is: cok dosyali rollback icin islem gunlugu ve
   kesinti sonrasi kurtarma mekanizmasi.
+
+## 19 Kasim 2026 - Rollback hata simulasyonu ve guvenlik kilidi
+
+- TEST 7: Ikinci dosyada yapay disk hatasi olusturuldu.
+- TEST 8: Ilk dosyanin geri alindigi dogrulandi.
+- TEST 9: Ikinci dosyanin entegre kaldigi dogrulandi.
+- TEST 10: CSV'nin eski durumda kaldigi dogrulandi.
+- Sonuc: Cok dosyali rollback yari kalabiliyor.
+- Guvenlik kilidi eklendi: --rollback islemi engelleniyor.
+- Salt okunur rollback kontrolu calismaya devam ediyor.
+- Gercek yayinlar ve orijinal HTML yedekleri korunuyor.
+- Sonraki hedef: transaction journal ve --recover mekanizmasi.
+- Guvenlik kilidi test edilmeden kaldirilmamali.

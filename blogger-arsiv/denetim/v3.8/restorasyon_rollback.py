@@ -94,6 +94,11 @@ def main():
         print("Gercek rollback: YAPILMADI")
         return
 
+    raise SystemExit(
+        "GUVENLIK KILIDI: Cok dosyali rollback "
+        "transaction recovery tamamlanana kadar kapali."
+    )
+
     for filename, page, original, row in prepared:
         atomic_write(page, original)
         row["Integrated"] = "false"
