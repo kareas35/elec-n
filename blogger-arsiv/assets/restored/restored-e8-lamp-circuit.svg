@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 400 350" width="400" height="350">
+<title>Anahtar kontrollü NPN transistörlü lamba devresi - restorasyon</title>
+<g fill="none" stroke="#111" stroke-width="3"
+stroke-linecap="round" stroke-linejoin="round">
+<!-- Pozitif besleme -->
+<path d="M65 45 H285 V75 M65 45 V205"/>
+<!-- Lamba -->
+<circle cx="285" cy="100" r="25"/>
+<path d="M268 83 L302 117 M302 83 L268 117"/>
+<path d="M285 125 V170"/>
+<!-- NPN transistör -->
+<path d="M230 180 V260"/>
+<path d="M230 200 L285 170"/>
+<path d="M230 240 L285 270"/>
+<path d="M262 258 L280 267 L272 253 M280 267 L266 267"/>
+<path d="M285 270 V305"/>
+<!-- Toprak -->
+<path d="M265 305 H305 M273 313 H297 M281 321 H289"/>
+<!-- Anahtar (açık) -->
+<path d="M65 205 H105 M105 205 L140 190 M145 205 H165"/>
+<circle cx="105" cy="205" r="3" fill="#111"/>
+<circle cx="145" cy="205" r="3" fill="#111"/>
+<!-- Beyz direnci -->
+<path d="M165 205 H175 L183 195 L195 215 L207 195 L219 215 L231 205"/>
+<!-- Beyz bağlantısı -->
+<path d="M231 205 H230"/>
+</g>
+<g font-family="Arial,sans-serif" font-size="15" fill="#111">
+<text x="76" y="32">+V</text>
+<text x="317" y="105">Lamba</text>
+<text x="295" y="215">NPN</text>
+<text x="180" y="187">Rb</text>
+<text x="65" y="237">Anahtar</text>
+<text x="310" y="309">0V</text>
+</g>
+</svg>

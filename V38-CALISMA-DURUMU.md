@@ -51,3 +51,13 @@ Son commit: d48b9b9
 - Orijinal gorseller degistirilmedi.
 - Yayin HTML dosyalarina henuz baglanmadi.
 - Sonraki adim: e7 NPN/PNP sembolleri ve e8 anahtarli lamba devresi.
+
+## 19 Kasim 2026 - Transistor restorasyonu
+
+- e7: NPN ve PNP transistor sembolleri olusturuldu.
+- e8: Anahtarli, beyz direncli, lambali NPN devresi cizildi.
+- e8 kolektor-lamba baglanti hatasi duzeltildi.
+- Dort SVG tarayicida goruntulendi ve on kontrol yapildi.
+- Restorasyon taslaklari orijinal kurtarma sayisina eklenmedi.
+- Yayin HTML dosyalari degistirilmedi.
+- Sonraki hedef: e5, e6, e12, e13 gorselleri.

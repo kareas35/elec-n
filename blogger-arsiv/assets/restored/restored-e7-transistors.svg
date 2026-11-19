@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 440 260" width="440" height="260">
+<title>NPN ve PNP transistör sembolleri - restorasyon</title>
+<g fill="none" stroke="#111" stroke-width="3"
+stroke-linecap="round" stroke-linejoin="round">
+<!-- NPN -->
+<path d="M35 110 H85 M85 65 V155"/>
+<path d="M85 90 L135 65 V25"/>
+<path d="M85 135 L135 160 V205"/>
+<path d="M113 149 L130 157 L122 145 M130 157 L116 157"/>
+<!-- PNP -->
+<path d="M255 110 H305 M305 65 V155"/>
+<path d="M305 90 L355 65 V25"/>
+<path d="M305 135 L355 160 V205"/>
+<path d="M333 149 L312 139 L320 151 M312 139 L326 139"/>
+</g>
+<g font-family="Arial,sans-serif" fill="#111"
+font-size="16" text-anchor="middle">
+<text x="110" y="238">NPN</text>
+<text x="330" y="238">PNP</text>
+</g>
+<g font-family="Arial,sans-serif" fill="#444" font-size="12">
+<text x="22" y="104">B</text>
+<text x="142" y="28">C</text>
+<text x="142" y="208">E</text>
+<text x="242" y="104">B</text>
+<text x="362" y="28">C</text>
+<text x="362" y="208">E</text>
+</g>
+</svg>
