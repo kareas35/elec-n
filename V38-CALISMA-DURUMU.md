@@ -318,3 +318,19 @@ Son commit: d48b9b9
 - Gercek rollback guvenlik kilidi aktif.
 - Kilitleme henuz tum state ve recovery giris noktalarinda zorunlu degil.
 - Sonraki hedef: zorunlu kilitleme ve kesinti sonrasi kurtarma testleri.
+
+## 19 Kasim 2026 - Transaction Crash Recovery
+
+- transaction_crash_test.py olusturuldu.
+- Ayrı Python surecinde ani kapanma simule edildi.
+- Yari kalmis islem ve IN_PROGRESS durumu tespit edildi.
+- Surec kapandiktan sonra islem kilidi tekrar alinabildi.
+- Kurtarma kopyalari dogrulanarak HTML dosyalari
+  yeniden entegre duruma getirildi.
+- Gecici CSV korundu.
+- Toplam 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Gercek rollback guvenlik kilidi aktif.
+- Kurtarma sonrasi journal IN_PROGRESS olarak kaliyor.
+- Sonraki hedef: RECOVERED son durumu ve
+  kesinti sonrasi guvenli durum gecisleri.
