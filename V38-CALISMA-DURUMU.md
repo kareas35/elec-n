@@ -290,3 +290,17 @@ Son commit: d48b9b9
 - Gercek yayinlar ve CSV degistirilmedi.
 - Gercek rollback guvenlik kilidi aktif.
 - Eszamanli islem ve kesinti sonrasi guvenlik calismasi devam ediyor.
+
+## 19 Kasim 2026 - Transaction Lock
+
+- transaction_lock.py olusturuldu.
+- Linux fcntl.flock tabanli islem kilidi eklendi.
+- 6/6 kilitleme testi basarili.
+- Ayni ve farkli sureclerde cakisabilecek kilitler test edildi.
+- Hata sonrasi kilidin serbest kaldigi dogrulandi.
+- Sembolik baglanti reddetme testi basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Transaction kilidi henuz state ve recovery akisina baglanmadi.
+- Sonraki hedef: kilidi durum gecislerine baglamak,
+  eszamanli degisiklik ve kesinti testleri yapmak.
