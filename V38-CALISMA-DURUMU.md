@@ -99,3 +99,13 @@ Son commit: d48b9b9
 - Sonraki adim: 393.html LED sembolu icin geri alinabilir
   entegrasyon onizlemesi olusturulacak.
 - Orijinal HTML dosyalari henuz degistirilmeyecek.
+
+## 19 Kasim 2026 - LED pilot entegrasyonu
+
+- 393.html LED restorasyonu yerel SVG ile entegre edildi.
+- Orijinal kaynak URL data-original-src alaninda korundu.
+- Restorasyon aciklamasi yayin altina eklendi.
+- Ilk HTML surumu ayri yedeklendi.
+- CSV pilot_integrated_pending_final_review olarak guncellendi.
+- e13 ve diger teknik onay bekleyen gorseller entegre edilmedi.
+- Sonraki is: tarayici kontrolu ve kalan gorseller icin teknik onay.
