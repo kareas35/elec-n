@@ -817,3 +817,31 @@ SONRAKI ADIM: 155
 - Dizin fsync hatasinda hatali otomatik tekrar denemeyi engelle.
 - Belirsiz yazimlarda once yeniden dogrulama yap.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction Write Outcome / Adim 155
+
+- transaction_write_outcome.py olusturuldu.
+- transaction_write_outcome_test.py olusturuldu.
+- CONFIRMED, NO_VISIBLE_CHANGE ve DURABILITY_UNKNOWN
+  sonuc siniflari tanimlandi.
+- Dizin fsync hatasinda yeni state gorunur olsa bile
+  kaliciligin belirsiz kaldigi dogrulandi.
+- Belirsiz yazim sonrasi ayni oturumda tekrar engellendi.
+- Bozuk state kaydi DURABILITY_UNKNOWN kabul edildi.
+- Mevcut transaction state enum'u degistirilmedi.
+- Toplam 6/6 test basarili.
+- Yeni sonuc modeli henuz gercek TransactionAPI ile
+  entegre edilmedi.
+- Oturumlar arasi belirsizlik kaydi henuz kalici degil.
+- NO_VISIBLE_CHANGE otomatik retry izni anlamina gelmez.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 157
+- Belirsiz yazim sonucunun yeniden baslatma
+  sonrasinda nasil korunacagini tasarla.
+- Ayrik bir kalici outcome kaydi icin crash
+  ve butunluk testleri hazirla.
+- Otomatik tekrar veya otomatik silme yapma.
+- Gercek restorasyon ve rollback islemlerini acma.

@@ -48,6 +48,8 @@ Notlar:
 
 - TransactionAPI I/O hata testleri 8/8 basarili.
 
+- DURABILITY_UNKNOWN sonuc modeli 6/6 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -77,6 +79,8 @@ Notlar:
 - Disk I/O hatalari ve elektrik kesintisi sonrasi kalicilik henuz dogrulanmadi.
 
 - Dizin fsync hatasinda state gorunur olsa bile disk kaliciligi belirsizdir.
+
+- DURABILITY_UNKNOWN bilgisi yeniden baslatma sonrasinda henuz kalici degil.
 
 ## 6. Tamamlanma olcumleri
 
