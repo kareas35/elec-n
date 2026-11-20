@@ -566,3 +566,23 @@ SONRAKI ADIM: 130
 - Ortak kilit stratejisini belirle.
 - Kilit atlatma ve eszamanli islem testlerini hazirla.
 - Gercek rollback guvenlik kilidini kaldirma.
+
+
+## 20 Kasim 2026 - Lock Contract / Adim 132
+
+- transaction_lock_contract_test.py olusturuldu.
+- Tek kilit sahibi yaklasimi test edildi.
+- Ic ice ayni kilidi alma girisimi engellendi.
+- Surecler arasi kilit cakismasi dogrulandi.
+- Kilit serbest birakildiktan sonra tekrar kullanildi.
+- Toplam 6/6 test basarili.
+- locked=True kullanimi gercek kilit sahipligi kaniti degildir.
+- Gercek transaction giris noktalari henuz tek kilit
+  sozlesmesine baglanmadi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 134
+- Gercek kilit sahipligini dogrulayan baglam tasarla.
+- Sahte veya suresi bitmis kilit sahipligini reddet.
+- Kilit altinda calisacak islem yurutucusunu test et.
