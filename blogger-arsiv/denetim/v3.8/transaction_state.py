@@ -10,12 +10,13 @@ from transaction_bundle import verify_bundle
 
 ALLOWED = {
     "PREPARED": {"IN_PROGRESS"},
-    "IN_PROGRESS": {"COMPLETED"},
+    "IN_PROGRESS": {"COMPLETED", "RECOVERED"},
     "COMPLETED": set(),
+    "RECOVERED": set(),
 }
 
 
-def save_state(path, state, expected=None, live_dir=None, csv_path=None):
+def _save_state(path, state, expected=None, live_dir=None, csv_path=None):
     """Durumu gecici dosya + os.replace ile kaydet."""
     path = Path(path)
 
@@ -34,6 +35,15 @@ def save_state(path, state, expected=None, live_dir=None, csv_path=None):
             raise ValueError("Beklenmeyen onceki durum")
         if state not in ALLOWED[current]:
             raise ValueError("Gecersiz durum gecisi")
+
+    # RECOVERED icin entegre HTML ve kalici CSV kopyasi zorunlu.
+    if state == "RECOVERED":
+        if expected != "IN_PROGRESS":
+            raise ValueError("RECOVERED yalnizca IN_PROGRESS sonrasi")
+        if live_dir is None or csv_path is None:
+            raise ValueError("RECOVERED icin HTML ve CSV zorunlu")
+        from transaction_recovery_validator import verify_recovered
+        verify_recovered(path.parent, Path(live_dir), Path(csv_path))
 
     # COMPLETED ancak HTML ve CSV birlikte dogrulanirsa yazilir.
     if state == "COMPLETED":
@@ -67,6 +77,31 @@ def save_state(path, state, expected=None, live_dir=None, csv_path=None):
 
     finally:
         Path(temp).unlink(missing_ok=True)
+
+
+
+def save_state(path, state, expected=None, live_dir=None, csv_path=None):
+    """RECOVERED gecisini kilit altinda dogrula ve kaydet."""
+    if state == "RECOVERED":
+        from transaction_lock import transaction_lock
+
+        path = Path(path)
+        if path.name != "transaction-state.json":
+            raise ValueError("Gecersiz RECOVERED state yolu")
+
+        # Bu prototip icin ortak kilit dosyasi.
+        lock_path = path.parent.parent / "transaction.lock"
+
+        with transaction_lock(lock_path):
+            return _save_state(
+                path, state, expected=expected,
+                live_dir=live_dir, csv_path=csv_path
+            )
+
+    return _save_state(
+        path, state, expected=expected,
+        live_dir=live_dir, csv_path=csv_path
+    )
 
 
 def load_state(path):

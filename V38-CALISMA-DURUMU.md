@@ -391,3 +391,23 @@ SONRAKI ADIM: 113
   HTML ve CSV dogrulamasina bagla.
 - Kilitleme ve kesinti guvenligini test et.
 - Testler gecmeden rollback guvenlik kilidini kaldirma.
+
+## 20 Kasim 2026 - RECOVERED State / Adim 115
+
+- transaction_state.py icine RECOVERED durumu eklendi.
+- IN_PROGRESS -> RECOVERED gecisi destekleniyor.
+- RECOVERED icin HTML ve CSV dogrulamasi zorunlu.
+- CSV kurtarma baseline SHA-256 ile kontrol ediliyor.
+- RECOVERED gecisi transaction.lock altinda kaydediliyor.
+- 7/7 RECOVERED state testi basarili.
+- Onceki transaction testleri yeniden calistirildi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Tum islem giris noktalarinda ortak kilit henuz zorunlu degil.
+- Kurtarma kaydi ve state arasindaki tutarlilik
+  sonraki asamada ele alinacak.
+
+SONRAKI ADIM: 116
+- Kurtarma sonuc kaydi ile ana state tutarliligini gelistir.
+- Tum transaction giris noktalarinda ortak kilitlemeyi incele.
+- Kesinti sonrasi durum uyumsuzlugu testlerini ekle.
