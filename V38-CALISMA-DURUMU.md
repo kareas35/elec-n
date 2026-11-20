@@ -937,3 +937,27 @@ SONRAKI ADIM: 163
 - Gercek transaction dogrulama gereksinimlerini tanimla.
 - Eski kod yolundaki yaniltici CONFIRMED riskini kapat.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction Confirmation Boundary / Adim 164
+
+- transaction_confirmation_boundary_test.py olusturuldu.
+- Guvenli transaction onay siniri incelendi.
+- Eksik kayitlar BLOCKED kabul edildi.
+- Intent kaydi tek basina onay sayilmadi.
+- Eslesen intent/result REVIEW_REQUIRED kabul edildi.
+- Eski inspect() CONFIRMED davranisi yeniden dogrulandi.
+- finish() fonksiyonunun inspect() bagimliligi tespit edildi.
+- Yeni verifier otomatik transaction onayi vermiyor.
+- Toplam 6/6 test basarili.
+- KRITIK ACIK HENUZ KAPATILMADI.
+- RESULT_FSYNC_CONFIRMATION_GAP eski kodda devam ediyor.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 166
+- Eski inspect() ve finish() onay yolunu guvenli hale getir.
+- Result kayit eslesmesini nihai transaction onayindan ayir.
+- Eski testleri yeni guvenlik sozlesmesine gore guncelle.
+- Crash ve fsync hata testlerini tekrar calistir.
+- Gercek restorasyon ve rollback islemlerini acma.

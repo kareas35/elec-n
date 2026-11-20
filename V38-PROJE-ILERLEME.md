@@ -56,6 +56,8 @@ Notlar:
 
 - Salt okunur outcome verifier 7/7 testten gecti; yaniltici otomatik CONFIRMED uretmiyor.
 
+- Transaction onay siniri 6/6 testten gecti; legacy onay riski dogrulandi.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -69,6 +71,8 @@ Notlar:
 - Son yayin ve dosya butunlugu denetimi.
 
 - RESULT_FSYNC_CONFIRMATION_GAP acigini kapat, crash ve yeniden baslatma testleriyle dogrula.
+
+- Eski inspect() ve finish() icin guvenli onay sozlesmesini uygula.
 
 ## 5. Engeller ve riskler
 
