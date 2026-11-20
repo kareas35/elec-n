@@ -74,6 +74,8 @@ Notlar:
 
 - Guarded API intent tekrar kullanim duzeltmesi 23/23 testten gecti.
 
+- Attempt ve state kaynakli ret nedenleri 7/7 testle ayri dogrulandi.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -105,6 +107,8 @@ Notlar:
 - Eski transition() ve _save_state() girisleri kapatilacak; intent tekrar kullanimi engellenecek.
 
 - Eski state yazma yollari kapatilacak; attempt ret nedeni ayrica dogrulanacak.
+
+- Eski API state yazma bypass yollari kontrollu olarak kapatilacak.
 
 ## 5. Engeller ve riskler
 
@@ -147,6 +151,8 @@ Notlar:
 - guarded_transition() intent kontrolu yapiyor ancak zorunlu kullanim ve disk kaliciligi henuz kanitlanmadi.
 
 - Attempt kaydi test edilen tekrar girisimleri engelliyor; disk durability ve tum API yollarinda zorunlu koruma kanitlanmadi.
+
+- Ret nedenleri ayrildi; disk durability ve sistem genelinde intent zorunlulugu henuz kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 

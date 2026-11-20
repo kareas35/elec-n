@@ -1189,3 +1189,24 @@ SONRAKI ADIM: 187
 - State uyusmazligi ile attempt kaynakli reddi ayri test et.
 - Mevcut API bypass yollarini kapatma stratejisini uygula.
 - Gercek yayin restorasyonu veya rollback baslatma.
+
+## Guarded Rejection Reasons / Adim 187
+
+- transaction_guarded_rejection_reason_test.py olusturuldu.
+- Attempt kaydi mevcutken RuntimeError ile ret dogrulandi.
+- State uyusmazliginda ValueError ile ret dogrulandi.
+- Reddedilen girisimlerde state korundu.
+- Otomatik result ve nihai transaction onayi olusmadi.
+- Testler 7/7 basarili.
+- Mevcut TransactionAPI kodu degistirilmedi.
+- Eski API bypass yollari henuz acik.
+- Gercek disk durability garantisi kanitlanmadi.
+- Otomatik retry veya rollback yapilmadi.
+- Gercek yayinlar, CSV ve yedekler degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 189
+- Eski state yazma yollarinin kullanimlarini incele.
+- Dogrudan yazim bypass yollarini kontrollu kapat.
+- Mevcut testlerin geriye donuk uyumlulugunu koru.
+- Gercek restorasyon ve rollback baslatma.
