@@ -1050,3 +1050,32 @@ SONRAKI ADIM: 174
   dogrula.
 - Belirsiz sonuclarda otomatik onay veya retry yapma.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## TransactionAPI Binding Integration / Adim 174
+
+- transaction_api_binding_integration_test.py olusturuldu.
+- Gercek TransactionAPI ile state gecisleri test edildi.
+- Intent, state degisiminden once olusturuldu.
+- PREPARED -> IN_PROGRESS -> RECOVERED dogrulandi.
+- Outcome ve HTML/CSV butunluk kontrolleri calistirildi.
+- Binding kaydi olmadan BLOCKED sonucu alindi.
+- Test kodunun olusturdugu binding kaydi dogrulandi.
+- Yanlis operation_id BLOCKED kabul edildi.
+- Bozulmus HTML nedeniyle binding reddedildi.
+- Terminal RECOVERED state'inden gecis reddedildi.
+- Toplam 10/10 test basarili.
+- Yalnizca TemporaryDirectory kullanildi.
+- Binding kaydi henuz TransactionAPI tarafindan uretilmiyor.
+- Gercek state gecis provenansi ve durability kanitlanmadi.
+- Nihai transaction onayi etkin degil.
+- Otomatik retry, rollback ve dosya silme YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 176
+- Binding kaydinin API tarafindan uretilmesi icin
+  kilit ve intent siralamasi sozlesmesini hazirla.
+- State gecisi oncesi kalici intent zorunlulugunu incele.
+- I/O ve crash durumlarinda fail-closed davranisi koru.
+- Gercek restorasyon ve rollback islemlerini acma.
