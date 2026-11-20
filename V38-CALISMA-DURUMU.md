@@ -433,3 +433,23 @@ SONRAKI ADIM: 118
   yonetilmesi icin tasarim ve testleri hazirla.
 - Eski transaction kayitlariyla uyumlulugu koru.
 - Kesinti senaryolarini test et.
+
+## 20 Kasim 2026 - Unified Transaction Record / Adim 118
+
+- transaction_unified_record_test.py olusturuldu.
+- Birlesik transaction kayit formati tanimlandi.
+- RECOVERED durumu ve recovery bilgileri birlikte modellendi.
+- Gecersiz SHA-256 ve guvensiz dosya yollari reddedildi.
+- Mevcut kaydin uzerine yazilmasi engellendi.
+- Eski state ve recovery-result kayitlari salt okunur incelendi.
+- PREPARED durumu desteklendi.
+- Toplam 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Birlesik kayit henuz gercek transaction akisina baglanmadi.
+
+SONRAKI ADIM: 120
+- Eski transaction kayitlarini birlesik formata donustur.
+- Kaynak kayitlari silmeden ve degistirmeden calis.
+- Donusumden once state ve result tutarliligini dogrula.
+- Kesinti ve tekrar calistirma senaryolarini test et.
