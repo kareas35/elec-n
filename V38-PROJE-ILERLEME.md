@@ -42,6 +42,8 @@ Notlar:
 
 - TransactionAPI regresyon testleri 10/10 basarili.
 
+- TransactionAPI crash testleri 8/8 basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -65,6 +67,8 @@ Notlar:
 | _save_state dogrudan erisimi | ACIK |
 | Tum yazma yollarinin ortak kilide baglanmamasi | ACIK |
 | Gercek rollback icin guvenli kanit eksikligi | ACIK |
+
+- State yaziminin ortasinda crash ve disk hatalari icin yeni API testleri eksik.
 
 ## 6. Tamamlanma olcumleri
 

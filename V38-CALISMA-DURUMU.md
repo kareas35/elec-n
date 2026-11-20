@@ -743,3 +743,27 @@ SONRAKI ADIM: 149
 - Merkezi API'nin gercek state entegrasyonu oncesi
   sinirlarini ve eksik korumalarini dogrula.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction API Crash Tests / Adim 149
+
+- transaction_api_crash_test.py olusturuldu.
+- Alt sureclerde os._exit ile ani kapanis test edildi.
+- Yazma oncesi cokme sonrasi state olusmadigi dogrulandi.
+- PREPARED ve IN_PROGRESS sonrasi cokme testleri basarili.
+- Cokme sonrasinda ortak kilit yeniden alinabildi.
+- Iki ayri bundle'in state kayitlari korundu.
+- Cokme sonrasi islem devam ettirilebildi.
+- Toplam 8/8 test basarili.
+- Tum test verileri gecici klasorde olusturuldu.
+- Yazmanin ortasinda cokme ve disk hatalari henuz
+  bu test kapsaminda dogrulanmadi.
+- Eski transaction API degistirilmedi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 151
+- TransactionAPI state yaziminin farkli crash
+  noktalarindaki davranisini test et.
+- Gecici dosya ve yari yazim senaryolarini incele.
+- Gercek restorasyon ve rollback islemlerini acma.
