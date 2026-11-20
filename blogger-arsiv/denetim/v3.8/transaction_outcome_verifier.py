@@ -21,7 +21,7 @@ def assess(bundle):
             "reason": "INSPECTION_FAILED",
         }
 
-    if legacy_result != "CONFIRMED":
+    if legacy_result != "REVIEW_REQUIRED":
         return {
             "status": BLOCKED,
             "automatic_retry": False,

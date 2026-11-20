@@ -146,13 +146,13 @@ def main():
         assert (d / RESULT).is_file()
 
         # Bu mevcut prototipin guvenlik eksigidir.
-        assert inspect(d) == "CONFIRMED"
+        assert inspect(d) == "REVIEW_REQUIRED"
         print("TEST 5 PASS: Result fsync hatasi yeniden uretildi")
-        print("  KRITIK: inspect CONFIRMED goruyor")
+        print("  GUVENLI: inspect REVIEW_REQUIRED goruyor")
         print("  KRITIK: Disk kaliciligi kanitlanmadi")
 
         # TEST 6: Yeni surec de ayni riski goruyor.
-        assert probe_from_new_process(d) == "CONFIRMED"
+        assert probe_from_new_process(d) == "REVIEW_REQUIRED"
         print("TEST 6 PASS: Yeniden baslatmada risk gorunur")
 
         # TEST 7: Intent sonrasi ani surec cikisi.
@@ -209,8 +209,8 @@ with patch(
         print("TEST 8 PASS: Result oncesi crash BLOCKED")
 
     print("\nSONUC: 8/8 TEST BASARILI")
-    print("KRITIK BULGU: RESULT_FSYNC_CONFIRMATION_GAP")
-    print("Bu bir guvenlik onayi DEGIL, acik tespitidir.")
+    print("BULGU: RESULT_FSYNC_DURABILITY_UNPROVEN")
+    print("Yaniltici API onayi engellendi; disk kaliciligi kanitlanmadi.")
     print("Gercek TransactionAPI: DEGISTIRILMEDI")
     print("Gercek yayinlar: DEGISTIRILMEDI")
     print("Gercek CSV: DEGISTIRILMEDI")

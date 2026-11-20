@@ -41,16 +41,16 @@ def main():
         print("TEST 2 PASS: Intent tek basina onay degil")
 
         # TEST 3: Kayit eslesmesi nihai onay degil.
-        assert finish(bundle, "op-001") == "CONFIRMED"
+        assert finish(bundle, "op-001") == "REVIEW_REQUIRED"
         result = assess(bundle)
         assert result["status"] == "REVIEW_REQUIRED"
         assert result["transaction_confirmed"] is False
         print("TEST 3 PASS: Guvenli verifier onay vermiyor")
 
         # TEST 4: Eski API riskini acikca tespit et.
-        assert inspect(bundle) == "CONFIRMED"
-        print("TEST 4 PASS: Eski inspect riski tespit edildi")
-        print("  ACIK: Legacy inspect CONFIRMED uretiyor")
+        assert inspect(bundle) == "REVIEW_REQUIRED"
+        print("TEST 4 PASS: Eski inspect guvenli sonuc verdi")
+        print("  GUVENLI: Legacy inspect REVIEW_REQUIRED uretiyor")
 
         # TEST 5: finish fonksiyonu dogrudan inspect kullaniyor.
         source = ROOT / "transaction_persistent_outcome.py"
@@ -84,13 +84,13 @@ def main():
             if isinstance(value.value, str)
         }
 
-        assert "CONFIRMED" in returned_statuses
+        assert "REVIEW_REQUIRED" in returned_statuses
         assert result["automatic_retry"] is False
         print("TEST 6 PASS: Legacy sonuc otomatik onaylanmiyor")
 
     print("\nSONUC: 6/6 TEST BASARILI")
-    print("KRITIK ACIK: HENUZ KAPATILMADI")
-    print("Eski API davranisi: KORUNDU")
+    print("Yaniltici API onayi: ENGELLENDI")
+    print("Eski API onay davranisi: GUVENLI HALE GETIRILDI")
     print("Gercek yayinlar: DEGISTIRILMEDI")
     print("Gercek CSV: DEGISTIRILMEDI")
     print("Rollback guvenlik kilidi: AKTIF")

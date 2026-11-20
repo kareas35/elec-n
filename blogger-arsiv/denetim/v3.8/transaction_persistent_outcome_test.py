@@ -66,8 +66,8 @@ os._exit(41)
         print("TEST 4 PASS: Tekrar baslatma reddedildi")
 
         # TEST 5: Prototip sonucu eslesirse gorunur onay.
-        assert finish(bundle, "operation-001") == "CONFIRMED"
-        assert inspect(bundle) == "CONFIRMED"
+        assert finish(bundle, "operation-001") == "REVIEW_REQUIRED"
+        assert inspect(bundle) == "REVIEW_REQUIRED"
         print("TEST 5 PASS: Eslesen sonuc kaydi okundu")
 
         # TEST 6: Sonuc bozulursa engel geri gelir.

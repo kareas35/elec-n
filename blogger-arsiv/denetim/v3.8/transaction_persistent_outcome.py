@@ -63,7 +63,7 @@ def inspect(bundle):
         if result != expected:
             return "BLOCKED"
 
-        return "CONFIRMED"
+        return "REVIEW_REQUIRED"
     except (OSError, ValueError, TypeError, KeyError):
         return "BLOCKED"
 

@@ -46,7 +46,7 @@ def main():
         c = root / "matched"
         c.mkdir()
         begin(c, "op-c")
-        assert finish(c, "op-c") == "CONFIRMED"
+        assert finish(c, "op-c") == "REVIEW_REQUIRED"
         check(c, REVIEW_REQUIRED)
         print("TEST 3 PASS: Kayit eslesmesi REVIEW_REQUIRED")
 
@@ -76,7 +76,7 @@ def main():
                 raise AssertionError("fsync hatasi olusmadi")
 
         assert calls[0] == 2
-        assert inspect(d) == "CONFIRMED"
+        assert inspect(d) == "REVIEW_REQUIRED"
         check(d, REVIEW_REQUIRED)
         print("TEST 4 PASS: fsync hatasi yaniltici onay degil")
 

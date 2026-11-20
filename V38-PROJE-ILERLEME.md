@@ -58,6 +58,8 @@ Notlar:
 
 - Transaction onay siniri 6/6 testten gecti; legacy onay riski dogrulandi.
 
+- Legacy inspect()/finish() yaniltici CONFIRMED donusu engellendi; 37/37 test basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -73,6 +75,8 @@ Notlar:
 - RESULT_FSYNC_CONFIRMATION_GAP acigini kapat, crash ve yeniden baslatma testleriyle dogrula.
 
 - Eski inspect() ve finish() icin guvenli onay sozlesmesini uygula.
+
+- Result JSON semantigi ile gercek transaction kaliciligi ayristirilip merkezi API'ye baglanacak.
 
 ## 5. Engeller ve riskler
 
@@ -99,6 +103,8 @@ Notlar:
 - KRITIK: RESULT_FSYNC_CONFIRMATION_GAP - result fsync hatasindan sonra inspect() yaniltici CONFIRMED dondurebiliyor.
 
 - KRITIK ACIK: Eski inspect() fonksiyonu hala yaniltici CONFIRMED dondurebiliyor.
+
+- GUNCEL DURUM: Eski inspect()/finish() otomatik CONFIRMED dondurmuyor; gercek disk kaliciligi ve transaction butunlugu henuz kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 

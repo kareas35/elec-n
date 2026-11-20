@@ -961,3 +961,28 @@ SONRAKI ADIM: 166
 - Eski testleri yeni guvenlik sozlesmesine gore guncelle.
 - Crash ve fsync hata testlerini tekrar calistir.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Confirmation Safety Fix / Adim 166-167
+
+- Eski inspect() artik otomatik CONFIRMED dondurmuyor.
+- Eslesen intent/result icin REVIEW_REQUIRED donuyor.
+- finish() donusu yeni guvenlik sozlesmesine uyarlandi.
+- Outcome verifier yeni sonucu destekliyor.
+- Ilgili regresyon testleri guncellendi.
+- transaction_confirmation_fix_test.py eklendi.
+- Toplam 37/37 test basarili.
+- Eski yaniltici test mesajlari duzeltildi.
+- Result JSON icinde CONFIRMED kayit degeri korunuyor.
+- Bu kayit gercek transaction kaliciligi kaniti DEGIL.
+- Nihai transaction onayi henuz etkinlestirilmedi.
+- Gercek TransactionAPI entegrasyonu henuz tamamlanmadi.
+- Gercek HTML yayinlari ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 168
+- Outcome result semantigini ve gercek veri dogrulamasini
+  birbirinden ayiran entegrasyon testlerini tasarla.
+- Tum eski API cagrilarinin guvenli sozlesmeye uydugunu
+  denetle.
+- Gercek restorasyon ve rollback islemlerini acma.
