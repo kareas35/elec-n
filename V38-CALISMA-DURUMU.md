@@ -1016,3 +1016,37 @@ SONRAKI ADIM: 171
   riskini degerlendir.
 - Salt okunur ve fail-closed baglanti testi hazirla.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction State Binding / Adim 172
+
+- transaction_state_binding.py olusturuldu.
+- transaction_state_binding_test.py olusturuldu.
+- Outcome ve state baglanti prototipi gelistirildi.
+- operation_id kontrolu eklendi.
+- expected_state ve target_state kontrolu eklendi.
+- manifest_sha256 ve state_sha256 karsilastirildi.
+- intent_sha256 baglantisi kontrol edildi.
+- Yanlis operation_id BLOCKED kabul edildi.
+- Yanlis onceki state BLOCKED kabul edildi.
+- Yanlis manifest SHA-256 BLOCKED kabul edildi.
+- State icerigi uyusmazligi BLOCKED kabul edildi.
+- Bozuk ve sembolik baglanti kayitlari reddedildi.
+- Eslesen kayitlar REVIEW_REQUIRED sonucunu verdi.
+- Toplam 8/8 test basarili.
+- Test state kaydi sentetik olarak olusturuldu.
+- Gercek TransactionAPI state gecisi test edilmedi.
+- Kayit provenansi ve disk kaliciligi kanitlanmadi.
+- Nihai transaction onayi etkin degil.
+- Otomatik retry ve rollback YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 174
+- Gercek TransactionAPI state gecisi ile outcome
+  baglanti prototipinin uyumunu test et.
+- Sentetik state yerine gercek API gecisini kullan.
+- Intent yaziminin state degisiminden once geldigini
+  dogrula.
+- Belirsiz sonuclarda otomatik onay veya retry yapma.
+- Gercek restorasyon ve rollback islemlerini acma.

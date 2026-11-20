@@ -62,6 +62,8 @@ Notlar:
 
 - Outcome + HTML/CSV butunluk kapisi 9/9 testten gecti.
 
+- Transaction state/outcome baglanti prototipi 8/8 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -81,6 +83,8 @@ Notlar:
 - Result JSON semantigi ile gercek transaction kaliciligi ayristirilip merkezi API'ye baglanacak.
 
 - Outcome kaydi belirli transaction state gecisine baglanacak ve merkezi API entegrasyonu yapilacak.
+
+- State/outcome baglantisi gercek TransactionAPI gecisiyle ve kalici intent protokoluyle dogrulanacak.
 
 ## 5. Engeller ve riskler
 
@@ -111,6 +115,8 @@ Notlar:
 - GUNCEL DURUM: Eski inspect()/finish() otomatik CONFIRMED dondurmuyor; gercek disk kaliciligi ve transaction butunlugu henuz kanitlanmadi.
 
 - Outcome + butunluk kontrolleri olumlu olsa bile disk kaliciligi ve nihai transaction onayi henuz kanitlanmadi.
+
+- State binding testleri sentetik state kullaniyor; gercek gecis provenansi ve disk kaliciligi henuz kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 
