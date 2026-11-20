@@ -660,3 +660,27 @@ SONRAKI ADIM: 140
 - Tum giris noktalarinda kilit ve bundle kapsam
   zorunlulugunu tasarla.
 - Gercek rollback guvenlik kilidini kaldirma.
+
+
+## 20 Kasim 2026 - Transaction API Contract / Adim 141-142
+
+- transaction_api_contract_test.py olusturuldu.
+- Transaction API guvenlik sozlesmesi tanimlandi.
+- Ortak kilit, bundle kapsami ve state dogrulamasi test edildi.
+- API prototip testleri 7/7 basarili.
+- transaction_api_compatibility_test.py olusturuldu.
+- Mevcut fonksiyon imzalari ve API cagrilari analiz edildi.
+- 92 statik API cagrisi tespit edildi.
+- Uyumluluk denetimi 6/6 basarili.
+- _save_state dogrudan erisilebilir durumda.
+- Eski API giris noktalari henuz kaldirilmadi.
+- Tum yazma yollari henuz zorunlu kilit altinda degil.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 144
+- Bagimsiz TransactionContext ve TransactionAPI modullerini
+  uretim kodundan ayri olarak gelistir.
+- Kilit ve bundle yetkisini merkezi olarak yonet.
+- Mevcut state API fonksiyonlarini degistirmeden test et.
+- Regresyon testlerinden once gercek yazma yollarini acma.
