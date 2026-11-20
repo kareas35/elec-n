@@ -767,3 +767,28 @@ SONRAKI ADIM: 151
   noktalarindaki davranisini test et.
 - Gecici dosya ve yari yazim senaryolarini incele.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction API Midwrite Crash / Adim 151
+
+- transaction_api_midwrite_crash_test.py olusturuldu.
+- State dosyasi yazimi sirasindaki 6 crash noktasi test edildi.
+- os.link oncesi state kaydi olusmadi.
+- os.link sonrasi PREPARED kaydi korundu.
+- os.replace oncesi eski PREPARED kaydi korundu.
+- os.replace sonrasi IN_PROGRESS kaydi korundu.
+- Dosya fsync oncesi crash senaryosu test edildi.
+- Dizin fsync oncesi crash senaryosu test edildi.
+- Tum kilitler crash sonrasinda yeniden alinabildi.
+- Gecici klasorlerde 4 orphan state dosyasi tespit edildi.
+- Gercek dosyalarda otomatik orphan silme YOK.
+- Toplam 8/8 test basarili.
+- Elektrik kesintisi ve disk hatasi dayanimi kanitlanmadi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 153
+- State yazimindaki disk I/O hata senaryolarini test et.
+- ENOSPC, EIO ve izin hatalarinda davranisi incele.
+- Hata sonrasinda state ve kilit butunlugunu dogrula.
+- Gercek restorasyon ve rollback islemlerini acma.
