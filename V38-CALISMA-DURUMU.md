@@ -519,3 +519,27 @@ SONRAKI ADIM: 126
 - Dosyalarin boyutunu, hash'ini ve guvenligini denetle.
 - Otomatik silme yapma.
 - Yalnizca gecici test klasorleri kullan.
+
+
+## 20 Kasim 2026 - Orphan Journal Inspector / Adim 126
+
+- transaction_orphan_inspector.py olusturuldu.
+- Yetim .journal-* dosyalari salt okunur incelendi.
+- Dosya boyutu ve SHA-256 kontrol edildi.
+- Kalici kayitla ayni veya farkli inode tespit edildi.
+- Sembolik baglantilar takip edilmedi.
+- Bozuk JSON kayitlari tespit edildi.
+- Otomatik silme mekanizmasi EKLENMEDI.
+- safe_to_delete her durumda False.
+- Toplam 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Testler yalnizca gecici klasorde calistirildi.
+- Denetleyici aktif islem ve eszamanli degisiklikleri
+  henuz tam olarak ayirt edemiyor.
+
+SONRAKI ADIM: 128
+- Yetim journal dosyalari icin guvenli siniflandirma tasarla.
+- Aktif transaction ile eski gecici dosyalari ayirt et.
+- Kilit ve dosya butunlugu kontrollerini gelistir.
+- Otomatik silme yapma.
