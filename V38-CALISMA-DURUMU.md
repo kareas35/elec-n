@@ -875,3 +875,37 @@ SONRAKI ADIM: 159
 - Kayit yazilamazsa fail-closed davranisini dogrula.
 - Sonuc belirsizken otomatik retry yapma.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Persistent Outcome Fault Tests / Adim 159
+
+- transaction_persistent_outcome_fault_test.py olusturuldu.
+- Intent ve result I/O hata senaryolari test edildi.
+- ENOSPC, EACCES ve EIO hata enjeksiyonlari yapildi.
+- Intent yayinlanamadiginda BLOCKED sonucu dogrulandi.
+- Intent fsync hatasi sonrasi BLOCKED sonucu dogrulandi.
+- Var olan intent uzerine tekrar yazma reddedildi.
+- Result yayinlanamadiginda BLOCKED sonucu dogrulandi.
+- Result oncesi crash senaryosu test edildi.
+- Yeniden baslatma sonrasi belirsizlik davranisi incelendi.
+- Toplam 8/8 test basarili.
+
+KRITIK BULGU: RESULT_FSYNC_CONFIRMATION_GAP
+
+- Result yayinlandiktan sonra fsync hatasi olusursa
+  inspect() CONFIRMED sonucu dondurebiliyor.
+- Yeni Python sureci de ayni sonucu gorebiliyor.
+- Bu durum disk kaliciligini kanitlamiyor.
+- Mevcut prototipte guvenlik acigi DEVAM EDIYOR.
+- Gercek transaction verileriyle entegrasyon YOK.
+- Otomatik retry ve otomatik orphan silme YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 161
+- RESULT_FSYNC_CONFIRMATION_GAP icin guvenli
+  sonuc dogrulama tasarimi hazirla.
+- Belirsiz yazimi CONFIRMED sayma.
+- Gercek transaction verisi dogrulamasini ayri ele al.
+- Crash ve fsync hatalarinda fail-closed davranisini test et.
+- Gercek restorasyon ve rollback islemlerini acma.

@@ -52,6 +52,8 @@ Notlar:
 
 - Kalici transaction intent/result prototipi 8/8 testten gecti.
 
+- Persistent outcome hata/crash testleri 8/8 basarili; kritik acik tespit edildi.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -63,6 +65,8 @@ Notlar:
 - Tum kritik akislar icin regresyon testleri.
 - Gercek rollback icin guvenli kurtarma kaniti.
 - Son yayin ve dosya butunlugu denetimi.
+
+- RESULT_FSYNC_CONFIRMATION_GAP acigini kapat, crash ve yeniden baslatma testleriyle dogrula.
 
 ## 5. Engeller ve riskler
 
@@ -85,6 +89,8 @@ Notlar:
 - DURABILITY_UNKNOWN bilgisi yeniden baslatma sonrasinda henuz kalici degil.
 
 - Kalici intent/result kayitlarinin crash ve fsync hatalari henuz tam dogrulanmadi.
+
+- KRITIK: RESULT_FSYNC_CONFIRMATION_GAP - result fsync hatasindan sonra inspect() yaniltici CONFIRMED dondurebiliyor.
 
 ## 6. Tamamlanma olcumleri
 
