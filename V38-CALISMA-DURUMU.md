@@ -372,3 +372,22 @@ SONRAKI ADIM: 111
 - RECOVERED durumunu ana transaction state yapisina bagla.
 - Kurtarma durumunu HTML ve kalici CSV baseline ile dogrula.
 - Eszamanli islem ve kesinti testlerini surdur.
+
+## 20 Kasim 2026 - Recovery Validator / Adim 111
+
+- transaction_recovery_validator.py olusturuldu.
+- Kurtarma sonrasi HTML dosyalari SHA-256 ile dogrulandi.
+- CSV, kalici baseline ile karsilastirildi.
+- Bozuk HTML, CSV, baseline ve manifest reddedildi.
+- Toplam 5/5 test basarili.
+- Testler yalnizca gecici klasorde calistirildi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Ana transaction state yapisi henuz degistirilmedi.
+
+SONRAKI ADIM: 113
+- RECOVERED durumunu transaction_state.py icine ekle.
+- IN_PROGRESS -> RECOVERED gecisini zorunlu
+  HTML ve CSV dogrulamasina bagla.
+- Kilitleme ve kesinti guvenligini test et.
+- Testler gecmeden rollback guvenlik kilidini kaldirma.
