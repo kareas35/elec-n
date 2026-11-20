@@ -40,6 +40,8 @@ Notlar:
 
 - Bagimsiz TransactionAPI state modulu 8/8 testten gecti.
 
+- TransactionAPI regresyon testleri 10/10 basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.

@@ -720,3 +720,26 @@ SONRAKI ADIM: 147
 - TransactionAPI guvenlik ve regresyon testlerini genislet.
 - Eski state API ile gecis uyumlulugunu dogrula.
 - Diger yazma yollarini henuz etkinlestirme.
+
+
+## Transaction API Regression / Adim 147
+
+- transaction_api_regression_test.py olusturuldu.
+- Toplam 10/10 regresyon ve guvenlik testi basarili.
+- PREPARED durumunun tekrar olusturulmasi engellendi.
+- Yanlis expected ve gecersiz state gecisleri reddedildi.
+- Farkli thread kullanimi reddedildi.
+- Ortak transaction kilidi cakismasi dogrulandi.
+- Kilit inode degisikligi tespit edildi.
+- Eksik ve sembolik bundle yollari reddedildi.
+- Reddedilen islemler sonrasi state korunarak dogrulandi.
+- Tum testler gecici klasorde calistirildi.
+- Eski transaction API degistirilmedi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 149
+- Transaction API icin hata ve crash testlerini genislet.
+- Merkezi API'nin gercek state entegrasyonu oncesi
+  sinirlarini ve eksik korumalarini dogrula.
+- Gercek restorasyon ve rollback islemlerini acma.
