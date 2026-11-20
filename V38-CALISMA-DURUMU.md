@@ -543,3 +543,26 @@ SONRAKI ADIM: 128
 - Aktif transaction ile eski gecici dosyalari ayirt et.
 - Kilit ve dosya butunlugu kontrollerini gelistir.
 - Otomatik silme yapma.
+
+
+## 20 Kasim 2026 - Orphan Journal Classifier / Adim 128
+
+- transaction_orphan_classifier.py olusturuldu.
+- Yetim journal kayitlari ACTIVE, LINKED, REVIEW ve CLEAR
+  durumlarina ayrildi.
+- Kilit eksikse REVIEW sonucu verildi.
+- Baska surec kilidi tutuyorsa ACTIVE sonucu verildi.
+- Kalici kayitla ayni inode LINKED olarak tanindi.
+- Sembolik baglantilar REVIEW olarak siniflandirildi.
+- Dosya silme, tasima veya onarma uygulanmadi.
+- Toplam 8/8 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Tum transaction giris noktalari henuz ayni kilidi
+  zorunlu kullanmiyor.
+
+SONRAKI ADIM: 130
+- Tum transaction giris noktalarini denetle.
+- Ortak kilit stratejisini belirle.
+- Kilit atlatma ve eszamanli islem testlerini hazirla.
+- Gercek rollback guvenlik kilidini kaldirma.
