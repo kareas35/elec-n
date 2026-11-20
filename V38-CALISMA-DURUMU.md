@@ -586,3 +586,26 @@ SONRAKI ADIM: 134
 - Gercek kilit sahipligini dogrulayan baglam tasarla.
 - Sahte veya suresi bitmis kilit sahipligini reddet.
 - Kilit altinda calisacak islem yurutucusunu test et.
+
+
+## 20 Kasim 2026 - TransactionContext / Adim 134
+
+- transaction_context_test.py olusturuldu.
+- Aktif kilit sahipligi icin TransactionContext prototipi eklendi.
+- Kilit kapsami disinda context gecersiz hale getirildi.
+- locked=True gibi sahte parametreler reddedildi.
+- Dogrudan context olusturma engellendi.
+- Farkli thread ve hata sonrasi gecersiz context reddedildi.
+- Ic ice ayni kilidi alma girisimi engellendi.
+- Toplam 7/7 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Context henuz gercek transaction giris noktalarina baglanmadi.
+- Context uygulama seviyesinde kontrol saglar;
+  isletim sistemi kilidinin yerine gecmez.
+
+SONRAKI ADIM: 136
+- TransactionContext yapisini mevcut state ve migration
+  fonksiyonlariyla guvenle entegre etme tasarimini hazirla.
+- Kilit sahibi olmayan islemleri reddet.
+- Mevcut testleri ve geriye donuk uyumlulugu koru.
