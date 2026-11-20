@@ -475,3 +475,23 @@ SONRAKI ADIM: 122
 - Yarim kalmis veya tekrar baslatilmis migrasyonu incele.
 - Eski kaynak kayitlarin her durumda korundugunu dogrula.
 - Testler gecmeden gercek rollback kilidini kaldirma.
+
+
+## 20 Kasim 2026 - Migration Crash Test / Adim 122
+
+- transaction_migration_crash_test.py olusturuldu.
+- Migrasyon oncesi ve sonrasi ani kapanma test edildi.
+- Erken kesintide kaynak kayitlar korundu.
+- Kesinti sonrasi kilit yeniden alinabildi.
+- Migrasyon guvenle tekrar calistirildi.
+- Gec kesintide birlesik kayit saglam kaldi.
+- Tekrar migrasyon mevcut kaydi ezemedi.
+- Toplam 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Testler sadece gecici klasorde yapildi.
+
+SONRAKI ADIM: 124
+- Atomic JSON yazimi icindeki kesintileri test et.
+- Kismi gecici dosya senaryolarini incele.
+- Kaynak kayitlari koru.
