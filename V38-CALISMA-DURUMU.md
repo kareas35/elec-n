@@ -453,3 +453,25 @@ SONRAKI ADIM: 120
 - Kaynak kayitlari silmeden ve degistirmeden calis.
 - Donusumden once state ve result tutarliligini dogrula.
 - Kesinti ve tekrar calistirma senaryolarini test et.
+
+## 20 Kasim 2026 - Transaction Migration / Adim 120
+
+- transaction_migration_test.py olusturuldu.
+- Eski transaction-state ve recovery-result kayitlari
+  birlesik transaction-record.json formatina donusturuldu.
+- PREPARED, IN_PROGRESS ve RECOVERED desteklendi.
+- COMPLETED migrasyonu guvenlik nedeniyle engellendi.
+- Kaynak state ve result dosyalari degistirilmedi.
+- Mevcut transaction-record.json uzerine yazma engellendi.
+- Tutarsiz result, bozuk HTML ve eksik result reddedildi.
+- Toplam 8/8 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Migrasyon sadece gecici test ortaminda dogrulandi.
+- Birlesik kayit henuz gercek transaction akisina baglanmadi.
+
+SONRAKI ADIM: 122
+- Migrasyon sirasinda ani kapanma senaryolarini test et.
+- Yarim kalmis veya tekrar baslatilmis migrasyonu incele.
+- Eski kaynak kayitlarin her durumda korundugunu dogrula.
+- Testler gecmeden gercek rollback kilidini kaldirma.
