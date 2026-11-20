@@ -54,6 +54,8 @@ Notlar:
 
 - Persistent outcome hata/crash testleri 8/8 basarili; kritik acik tespit edildi.
 
+- Salt okunur outcome verifier 7/7 testten gecti; yaniltici otomatik CONFIRMED uretmiyor.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -91,6 +93,8 @@ Notlar:
 - Kalici intent/result kayitlarinin crash ve fsync hatalari henuz tam dogrulanmadi.
 
 - KRITIK: RESULT_FSYNC_CONFIRMATION_GAP - result fsync hatasindan sonra inspect() yaniltici CONFIRMED dondurebiliyor.
+
+- KRITIK ACIK: Eski inspect() fonksiyonu hala yaniltici CONFIRMED dondurebiliyor.
 
 ## 6. Tamamlanma olcumleri
 
