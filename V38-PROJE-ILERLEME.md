@@ -50,6 +50,8 @@ Notlar:
 
 - DURABILITY_UNKNOWN sonuc modeli 6/6 testten gecti.
 
+- Kalici transaction intent/result prototipi 8/8 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -81,6 +83,8 @@ Notlar:
 - Dizin fsync hatasinda state gorunur olsa bile disk kaliciligi belirsizdir.
 
 - DURABILITY_UNKNOWN bilgisi yeniden baslatma sonrasinda henuz kalici degil.
+
+- Kalici intent/result kayitlarinin crash ve fsync hatalari henuz tam dogrulanmadi.
 
 ## 6. Tamamlanma olcumleri
 

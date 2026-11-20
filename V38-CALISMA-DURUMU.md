@@ -845,3 +845,33 @@ SONRAKI ADIM: 157
   ve butunluk testleri hazirla.
 - Otomatik tekrar veya otomatik silme yapma.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Persistent Transaction Outcome / Adim 157
+
+- transaction_persistent_outcome.py olusturuldu.
+- transaction_persistent_outcome_test.py olusturuldu.
+- Kalici intent ve result prototipi gelistirildi.
+- Intent yazimindan sonra ani surec cikisi test edildi.
+- Yeniden baslatma sonrasi BLOCKED durumu korundu.
+- Intent mevcutken tekrar baslatma reddedildi.
+- Eslesen result kaydi prototipte CONFIRMED okundu.
+- Bozuk result kaydi BLOCKED kabul edildi.
+- Yanlis operation_id reddedildi.
+- Sembolik intent kaydi BLOCKED kabul edildi.
+- Toplam 8/8 test basarili.
+- Gercek TransactionAPI entegrasyonu henuz yapilmadi.
+- CONFIRMED yalnizca prototip kayit eslesmesini gosterir.
+- Gercek HTML/CSV veya transaction kaliciligini kanitlamaz.
+- Otomatik retry, rollback ve orphan silme YOK.
+- Intent yazimi ve result fsync hatalarinin crash
+  senaryolari henuz kapsanmiyor.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 159
+- Kalici intent/result kayitlarinin crash ve I/O
+  hata senaryolarini test et.
+- Kayit yazilamazsa fail-closed davranisini dogrula.
+- Sonuc belirsizken otomatik retry yapma.
+- Gercek restorasyon ve rollback islemlerini acma.
