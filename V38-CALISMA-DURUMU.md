@@ -699,3 +699,24 @@ SONRAKI ADIM: 144
 
 SONRAKI ADIM: 145
 - Bagimsiz Transaction API uygulamasina basla.
+
+
+## Bagimsiz TransactionAPI - Adim 145
+
+- transaction_api.py olusturuldu.
+- transaction_api_test.py olusturuldu.
+- Kilitli ve bundle kapsamli state API gelistirildi.
+- Dogrudan API olusturma reddedildi.
+- PREPARED ve IN_PROGRESS gecisleri test edildi.
+- Ortak kilit cakismasi engellendi.
+- Suresi dolmus API kullanimi reddedildi.
+- Bundle inode degisikligi tespit edildi.
+- Toplam 8/8 test basarili.
+- Eski state API degistirilmedi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 147
+- TransactionAPI guvenlik ve regresyon testlerini genislet.
+- Eski state API ile gecis uyumlulugunu dogrula.
+- Diger yazma yollarini henuz etkinlestirme.

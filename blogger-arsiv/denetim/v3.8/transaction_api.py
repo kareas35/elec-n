@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+"""V3.8 - Kilitli ve bundle kapsamli state API.
+
+Ilk surum: yalnizca transaction state yonetimi.
+Gercek restorasyon veya rollback islemi icermez.
+"""
+import os
+import stat
+import threading
+from contextlib import contextmanager
+from pathlib import Path
+
+from transaction_bundle import verify_bundle
+from transaction_lock import transaction_lock
+from transaction_state import _save_state
+
+
+_TOKEN = object()
+
+
+class TransactionAPI:
+    def __init__(self, bundle, lock, token):
+        if token is not _TOKEN:
+            raise RuntimeError("API dogrudan olusturulamaz")
+
+        self._bundle = Path(bundle).absolute()
+        self._lock = Path(lock).absolute()
+        self._pid = os.getpid()
+        self._thread = threading.get_ident()
+        self._active = True
+
+        if self._bundle.is_symlink():
+            raise ValueError("Sembolik bundle yasak")
+
+        bundle_stat = self._bundle.stat()
+        lock_stat = self._lock.stat()
+
+        if not stat.S_ISDIR(bundle_stat.st_mode):
+            raise ValueError("Bundle klasor olmali")
+        if not stat.S_ISREG(lock_stat.st_mode):
+            raise ValueError("Kilit normal dosya olmali")
+
+        self._bundle_identity = (
+            bundle_stat.st_dev, bundle_stat.st_ino
+        )
+        self._lock_identity = (
+            lock_stat.st_dev, lock_stat.st_ino
+        )
+
+    def _require_active(self):
+        if not self._active:
+            raise RuntimeError("Transaction API suresi dolmus")
+
+        if os.getpid() != self._pid:
+            raise RuntimeError("Farkli surec API kullanamaz")
+
+        if threading.get_ident() != self._thread:
+            raise RuntimeError("Farkli thread API kullanamaz")
+
+        for path, identity, expected_type in (
+            (self._bundle, self._bundle_identity, stat.S_ISDIR),
+            (self._lock, self._lock_identity, stat.S_ISREG),
+        ):
+            if path.is_symlink():
+                raise RuntimeError("Sembolik yol degisikligi")
+
+            try:
+                info = path.stat()
+            except OSError as error:
+                raise RuntimeError("Islem yolu kayboldu") from error
+
+            if (
+                not expected_type(info.st_mode)
+                or (info.st_dev, info.st_ino) != identity
+            ):
+                raise RuntimeError("Islem yolu degistirildi")
+
+        verify_bundle(self._bundle)
+
+    def initialize(self):
+        self._require_active()
+        return _save_state(
+            self._bundle / "transaction-state.json",
+            "PREPARED",
+        )
+
+    def transition(self, expected, target,
+                   live_dir=None, csv_path=None):
+        self._require_active()
+        return _save_state(
+            self._bundle / "transaction-state.json",
+            target,
+            expected=expected,
+            live_dir=live_dir,
+            csv_path=csv_path,
+        )
+
+    def _invalidate(self):
+        self._active = False
+
+
+@contextmanager
+def open_transaction(bundle):
+    bundle = Path(bundle).absolute()
+
+    if bundle.is_symlink() or not bundle.is_dir():
+        raise ValueError("Gecersiz bundle")
+
+    lock = bundle.parent / "transaction.lock"
+
+    with transaction_lock(lock):
+        verify_bundle(bundle)
+        api = TransactionAPI(bundle, lock, _TOKEN)
+        try:
+            yield api
+        finally:
+            api._invalidate()

@@ -38,12 +38,14 @@ Notlar:
 - Transaction API sozlesmesi 7/7 testten gecti.
 - API uyumluluk analizi 6/6 testten gecti.
 
+- Bagimsiz TransactionAPI state modulu 8/8 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
 - Kalan 6 yayin entegrasyonu icin teknik inceleme.
 - SVG teknik dogruluk ve yayin onaylari.
-- Bagimsiz TransactionContext ve TransactionAPI.
+- TransactionAPI mevcut state akislariyla tamamen entegre edilecek.
 - State, bundle, CSV ve journal icin ortak kilit.
 - Dogrudan state yazma yollarinin kontrol altina alinmasi.
 - Tum kritik akislar icin regresyon testleri.
