@@ -495,3 +495,27 @@ SONRAKI ADIM: 124
 - Atomic JSON yazimi icindeki kesintileri test et.
 - Kismi gecici dosya senaryolarini incele.
 - Kaynak kayitlari koru.
+
+
+## 20 Kasim 2026 - Atomic JSON Crash Test / Adim 124
+
+- transaction_atomic_crash_test.py olusturuldu.
+- Atomic JSON yazimi icin uc kesinti noktasi test edildi.
+- before_fsync, before_link ve after_link testleri basarili.
+- Erken kesintilerde kalici hedef dosya olusturulmadi.
+- Gec kesintide kalici kayit saglam kaldı.
+- Eski state, recovery-result, manifest ve CSV korundu.
+- Kesinti sonrasi migrasyon tekrar denenebildi.
+- Mevcut birlesik kaydin uzerine yazma engellendi.
+- Kesinti sonrasi .journal-* gecici dosyalari tespit edildi.
+- Toplam 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Fiziksel disk arizalari ve guvenli temp cleanup
+  mekanizmasi henuz tamamlanmadi.
+
+SONRAKI ADIM: 126
+- Yetim .journal-* dosyalarini salt okunur tespit et.
+- Dosyalarin boyutunu, hash'ini ve guvenligini denetle.
+- Otomatik silme yapma.
+- Yalnizca gecici test klasorleri kullan.
