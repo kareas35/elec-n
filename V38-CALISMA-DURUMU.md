@@ -354,3 +354,21 @@ YARIN DEVAM EDILECEK NOKTA: ADIM 109
 - Kesinti ve tekrar calistirma testlerini yap.
 - Tum testleri gecmeden gercek rollback kilidini kaldirma.
 - Eski yedekleri ve untracked dosyalari silme.
+
+## 20 Kasim 2026 - CSV Baseline / Adim 109
+
+- transaction_csv_baseline.py olusturuldu.
+- CSV kurtarma kopyasi ve SHA-256 metadata eklendi.
+- CSV kopyasi transaction manifestine SHA-256 ile baglandi.
+- Mevcut baseline uzerine yazma engellendi.
+- Bozuk CSV ve manifest uyusmazligi reddedildi.
+- Toplam 5/5 test basarili.
+- Testler yalnizca gecici klasorde calistirildi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- CSV baseline henuz gercek kurtarma yurutucusune baglanmadi.
+
+SONRAKI ADIM: 111
+- RECOVERED durumunu ana transaction state yapisina bagla.
+- Kurtarma durumunu HTML ve kalici CSV baseline ile dogrula.
+- Eszamanli islem ve kesinti testlerini surdur.
