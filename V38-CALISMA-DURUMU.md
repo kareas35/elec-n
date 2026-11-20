@@ -609,3 +609,28 @@ SONRAKI ADIM: 136
   fonksiyonlariyla guvenle entegre etme tasarimini hazirla.
 - Kilit sahibi olmayan islemleri reddet.
 - Mevcut testleri ve geriye donuk uyumlulugu koru.
+
+
+## 20 Kasim 2026 - Context Integration / Adim 136
+
+- transaction_context_integration_test.py olusturuldu.
+- TransactionContext ile state gecisleri birlestirildi.
+- PREPARED ve IN_PROGRESS ayni kilit altinda kaydedildi.
+- RECOVERED gecisinde ikinci kilit alinmasi onlendi.
+- Bozuk HTML ve CSV ile RECOVERED gecisi reddedildi.
+- Farkli kilit kapsaminda context kullanimi reddedildi.
+- Ilk TEST 5 yol hatasi duzeltildi.
+- Son durum degisikligi ve suresi dolmus context reddedildi.
+- Toplam 8/8 test basarili.
+- Mevcut transaction modulleri degistirilmedi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Ayni ust klasordeki farkli bundle yetkileri
+  henuz ayrica dogrulanmadi.
+- _save_state dogrudan cagrilabiliyor;
+  zorunlu kilit mimarisi henuz tamamlanmadi.
+
+SONRAKI ADIM: 138
+- Ayni ust klasordeki farkli bundle kapsamlarini test et.
+- Kilit sahipligi ve bundle yetkisini ayri ele al.
+- Tum state girislerini ortak kilit mimarisine hazirla.
