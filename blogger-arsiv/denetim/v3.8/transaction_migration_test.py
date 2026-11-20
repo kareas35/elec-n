@@ -15,7 +15,8 @@ from transaction_csv_baseline import capture_baseline
 from transaction_journal import sha256, atomic_json_write
 from transaction_lock import transaction_lock
 from transaction_recovery_validator import verify_recovered
-from transaction_state import initialize, transition, load_state
+from transaction_state import load_state
+from transaction_api import open_transaction
 from transaction_unified_record_test import validate_record
 
 NAMES = ("100.html", "171.html")
@@ -164,6 +165,30 @@ def assert_rejected(action, output, exceptions):
         assert not output.exists()
     else:
         raise AssertionError("Guvensiz migrasyon kabul edildi")
+
+
+
+def _api_compat_initialize(bundle):
+    """Gecici migration fixture icin kilitli API."""
+    with open_transaction(bundle) as api:
+        return api.initialize()
+
+
+def _api_compat_transition(
+    bundle, expected, target, live_dir=None, csv_path=None
+):
+    """Mevcut migration testini TransactionAPI ile calistir."""
+    with open_transaction(bundle) as api:
+        return api.transition(
+            expected,
+            target,
+            live_dir=live_dir,
+            csv_path=csv_path,
+        )
+
+
+initialize = _api_compat_initialize
+transition = _api_compat_transition
 
 
 def main():

@@ -11,7 +11,8 @@ from pathlib import Path
 from transaction_bundle import create_bundle, verify_bundle, ROOT, V38
 from transaction_journal import sha256
 from transaction_lock import transaction_lock
-from transaction_state import initialize, load_state
+from transaction_state import load_state
+from transaction_api import open_transaction
 
 NAMES = ("100.html", "171.html")
 
@@ -21,7 +22,7 @@ import sys
 from pathlib import Path
 
 from transaction_lock import transaction_lock
-from transaction_state import transition
+from transaction_api import open_transaction
 
 base = Path(sys.argv[1])
 bundle = base / "bundle"
@@ -29,7 +30,8 @@ live = base / "live"
 lock = base / "restoration.lock"
 
 with transaction_lock(lock):
-    transition(bundle, "PREPARED", "IN_PROGRESS")
+    with open_transaction(bundle) as api:
+        api.transition("PREPARED", "IN_PROGRESS")
 
     source = bundle / "before/100.html"
     target = live / "100.html"
@@ -78,6 +80,16 @@ def replace_from_verified_copy(source, target, expected_hash):
             os.close(fd)
     finally:
         temporary.unlink(missing_ok=True)
+
+
+
+def _api_compat_initialize(bundle):
+    """Gecici test bundle'ini kilitli API ile baslat."""
+    with open_transaction(bundle) as api:
+        return api.initialize()
+
+
+initialize = _api_compat_initialize
 
 
 def main():

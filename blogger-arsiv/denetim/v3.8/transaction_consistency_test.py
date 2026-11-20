@@ -13,7 +13,8 @@ from transaction_csv_baseline import capture_baseline
 from transaction_journal import sha256, atomic_json_write
 from transaction_lock import transaction_lock
 from transaction_recovery_validator import verify_recovered
-from transaction_state import initialize, transition, load_state
+from transaction_state import load_state
+from transaction_api import open_transaction
 
 NAMES = ("100.html", "171.html")
 
@@ -59,6 +60,29 @@ def inspect_consistency(bundle, live, csv_path):
 
     except (ValueError, OSError, KeyError, TypeError):
         return "INCONSISTENT"
+
+
+
+def _api_compat_initialize(bundle):
+    """Eski test senaryosunu kilitli API ile calistir."""
+    with open_transaction(bundle) as api:
+        return api.initialize()
+
+
+def _api_compat_transition(
+    bundle, expected, target, live_dir=None, csv_path=None
+):
+    """Yalnizca gecici test fixture'lari icin uyumluluk."""
+    with open_transaction(bundle) as api:
+        return api.transition(
+            expected, target,
+            live_dir=live_dir,
+            csv_path=csv_path,
+        )
+
+
+initialize = _api_compat_initialize
+transition = _api_compat_transition
 
 
 def main():

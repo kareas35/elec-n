@@ -76,6 +76,8 @@ Notlar:
 
 - Attempt ve state kaynakli ret nedenleri 7/7 testle ayri dogrulandi.
 
+- Legacy public state yazma girisi kapatildi; 6 eski test TransactionAPI'ye tasindi ve 13/13 toplu test dosyasi basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -109,6 +111,8 @@ Notlar:
 - Eski state yazma yollari kapatilacak; attempt ret nedeni ayrica dogrulanacak.
 
 - Eski API state yazma bypass yollari kontrollu olarak kapatilacak.
+
+- Dogrudan _save_state() ve intent gerektirmeyen TransactionAPI.transition() yollari kapatilacak.
 
 ## 5. Engeller ve riskler
 
@@ -153,6 +157,8 @@ Notlar:
 - Attempt kaydi test edilen tekrar girisimleri engelliyor; disk durability ve tum API yollarinda zorunlu koruma kanitlanmadi.
 
 - Ret nedenleri ayrildi; disk durability ve sistem genelinde intent zorunlulugu henuz kanitlanmadi.
+
+- Legacy public yazma engeli test edildi; merkezi intent zorunlulugu, binding ve disk durability henuz tam dogrulanmadi.
 
 ## 6. Tamamlanma olcumleri
 

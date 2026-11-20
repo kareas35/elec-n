@@ -1210,3 +1210,36 @@ SONRAKI ADIM: 189
 - Dogrudan yazim bypass yollarini kontrollu kapat.
 - Mevcut testlerin geriye donuk uyumlulugunu koru.
 - Gercek restorasyon ve rollback baslatma.
+
+## Legacy API Migration / Adim 190-199
+
+- transaction_state.save_state() public yazma girisi kapatildi.
+- Eski initialize() ve transition() yazma girisleri engellendi.
+- TransactionAPI initialize/transition davranisi korundu.
+- Legacy engel regresyon testi eklendi: 6/6 basarili.
+- Altı eski islevsel test TransactionAPI kullanimina tasindi:
+  - transaction_consistency_test.py
+  - transaction_crash_test.py
+  - transaction_locked_flow_test.py
+  - transaction_migration_test.py
+  - transaction_recovered_state_test.py
+  - transaction_recovered_test.py
+- Crash alt sureci kilitli TransactionAPI'ye tasindi.
+- 199. adimda toplam 13/13 test dosyasi basarili.
+- Dogrudan _save_state() yolu HENUZ ACIK.
+- TransactionAPI.transition() intent gerektirmiyor.
+- Eski context entegrasyon prototipinde dogrudan
+  _save_state() kullanimi devam ediyor.
+- Intent/attempt ve binding merkezi API'nin tum
+  yazma yollarinda zorunlu hale getirilmedi.
+- Gercek disk durability garantisi kanitlanmadi.
+- Otomatik retry ve rollback YOK.
+- Gercek HTML, CSV ve yedekler degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 201
+- Dogrudan _save_state() yazim yolunu yetkilendirme
+  veya kapsulleme tasarimini ele al.
+- TransactionAPI.transition() icin eski test
+  uyumlulugunu ve intent zorunlulugunu ayristir.
+- Islem onayini ve otomatik rollback'i etkinlestirme.

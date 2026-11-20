@@ -81,26 +81,12 @@ def _save_state(path, state, expected=None, live_dir=None, csv_path=None):
 
 
 def save_state(path, state, expected=None, live_dir=None, csv_path=None):
-    """RECOVERED gecisini kilit altinda dogrula ve kaydet."""
-    if state == "RECOVERED":
-        from transaction_lock import transaction_lock
+    """Eski public yazma girisi. Guvenlik nedeniyle kapali.
 
-        path = Path(path)
-        if path.name != "transaction-state.json":
-            raise ValueError("Gecersiz RECOVERED state yolu")
-
-        # Bu prototip icin ortak kilit dosyasi.
-        lock_path = path.parent.parent / "transaction.lock"
-
-        with transaction_lock(lock_path):
-            return _save_state(
-                path, state, expected=expected,
-                live_dir=live_dir, csv_path=csv_path
-            )
-
-    return _save_state(
-        path, state, expected=expected,
-        live_dir=live_dir, csv_path=csv_path
+    Yeni state yazimlari TransactionAPI uzerinden yapilir.
+    """
+    raise RuntimeError(
+        "Legacy save_state kapali; open_transaction kullanilmali"
     )
 
 

@@ -11,7 +11,8 @@ from pathlib import Path
 from transaction_bundle import create_bundle, verify_bundle, V38, ROOT
 from transaction_journal import sha256, atomic_json_write
 from transaction_lock import transaction_lock
-from transaction_state import initialize, transition, load_state
+from transaction_state import load_state
+from transaction_api import open_transaction
 
 NAMES = ("100.html", "171.html")
 
@@ -63,6 +64,30 @@ def record_recovered(bundle, live, plan, baseline, lock_path):
         # Mevcut sonuc kaydi asla ezilmez.
         atomic_json_write(bundle / "recovery-result.json", result)
         return result
+
+
+
+def _api_compat_initialize(bundle):
+    """Gecici test bundle'ini kilitli API ile baslat."""
+    with open_transaction(bundle) as api:
+        return api.initialize()
+
+
+def _api_compat_transition(
+    bundle, expected, target, live_dir=None, csv_path=None
+):
+    """Eski recovery testini kilitli API ile calistir."""
+    with open_transaction(bundle) as api:
+        return api.transition(
+            expected,
+            target,
+            live_dir=live_dir,
+            csv_path=csv_path,
+        )
+
+
+initialize = _api_compat_initialize
+transition = _api_compat_transition
 
 
 def main():
