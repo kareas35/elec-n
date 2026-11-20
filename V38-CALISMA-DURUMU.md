@@ -1162,3 +1162,30 @@ SONRAKI ADIM: 184
   stratejisini belirle.
 - Nihai transaction onayini etkinlestirme.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+## Guarded Intent Reuse Fix / Adim 185
+
+- TransactionAPI.guarded_transition() guncellendi.
+- State yazimindan once transaction-guarded-attempt.json
+  kaydi olusturuluyor.
+- Attempt varsa ikinci girisim reddediliyor.
+- Attempt yazimi basarisizsa state yazimi baslamiyor.
+- State I/O hatasi sonrasi attempt kaydi korunuyor.
+- Test edilen belirsiz yazim senaryosunda tekrar engelleniyor.
+- transaction_guarded_retry_gap_test.py guncellendi.
+- Intent tekrar kullanim testleri: 7/7.
+- Guarded API testleri: 6/6.
+- API regresyon testleri: 10/10.
+- Toplam: 23/23 test basarili.
+- Eski transition() ve _save_state() yolları halen acik.
+- Gercek disk durability garantisi kanitlanmadi.
+- Attempt kaydi tek basina nihai transaction onayi degildir.
+- Otomatik retry ve rollback YOK.
+- Gercek HTML, CSV ve yedekler degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 187
+- Attempt tekrar kullaniminda ret nedenini ayristir.
+- State uyusmazligi ile attempt kaynakli reddi ayri test et.
+- Mevcut API bypass yollarini kapatma stratejisini uygula.
+- Gercek yayin restorasyonu veya rollback baslatma.

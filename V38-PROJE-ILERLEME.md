@@ -72,6 +72,8 @@ Notlar:
 
 - Merkezi TransactionAPI icin guarded_transition() eklendi; 6/6 yeni test basarili.
 
+- Guarded API intent tekrar kullanim duzeltmesi 23/23 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -101,6 +103,8 @@ Notlar:
 - Dogrudan _save_state() erisimi merkezi API disindan state olusturulmasina izin veriyor; bu guvenlik riski kapatilacak.
 
 - Eski transition() ve _save_state() girisleri kapatilacak; intent tekrar kullanimi engellenecek.
+
+- Eski state yazma yollari kapatilacak; attempt ret nedeni ayrica dogrulanacak.
 
 ## 5. Engeller ve riskler
 
@@ -141,6 +145,8 @@ Notlar:
 - Ic ice kilit reddi dogrulandi; ancak intent olmadan dogrudan state yazimi halen mumkun.
 
 - guarded_transition() intent kontrolu yapiyor ancak zorunlu kullanim ve disk kaliciligi henuz kanitlanmadi.
+
+- Attempt kaydi test edilen tekrar girisimleri engelliyor; disk durability ve tum API yollarinda zorunlu koruma kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 

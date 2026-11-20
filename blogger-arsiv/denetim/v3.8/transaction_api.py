@@ -138,6 +138,43 @@ class TransactionAPI:
         if current != expected:
             raise ValueError("Beklenmeyen onceki state")
 
+        # State yazimina baslamadan once tek kullanimlik
+        # attempt kaydini kalici olarak yayimla.
+        # Bu kod zaten open_transaction kilidi altindadir.
+        import hashlib
+        from transaction_journal import atomic_json_write
+        from transaction_persistent_outcome import digest
+
+        attempt_path = (
+            self._bundle / "transaction-guarded-attempt.json"
+        )
+
+        if attempt_path.exists() or attempt_path.is_symlink():
+            raise RuntimeError(
+                "Onceki state girisimi mevcut; manuel inceleme gerekli"
+            )
+
+        manifest_path = self._bundle / "transaction.json"
+        state_path = self._bundle / "transaction-state.json"
+
+        attempt = {
+            "version": 1,
+            "operation_id": operation_id,
+            "expected_state": expected,
+            "target_state": target,
+            "intent_sha256": digest(intent),
+            "manifest_sha256": hashlib.sha256(
+                manifest_path.read_bytes()
+            ).hexdigest(),
+            "before_state_sha256": hashlib.sha256(
+                state_path.read_bytes()
+            ).hexdigest(),
+        }
+
+        # Yazim basarisiz veya belirsiz olursa state'e
+        # gecilmez. Yayimlanan attempt otomatik silinmez.
+        atomic_json_write(attempt_path, attempt)
+
         # Ayni API sahibi ve ayni kilit icinde ilerler.
         # fsync hatasinda istisna yayilir; otomatik retry YOK.
         self.transition(
