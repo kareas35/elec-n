@@ -70,6 +70,8 @@ Notlar:
 
 - Ic ice kilit ve dogrudan state yazimi denetimi 6/6 testten gecti.
 
+- Merkezi TransactionAPI icin guarded_transition() eklendi; 6/6 yeni test basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -97,6 +99,8 @@ Notlar:
 - Ayni surecte ic ice kilit, merkezi API sahipligi ve _save_state() erisimi incelenecek.
 
 - Dogrudan _save_state() erisimi merkezi API disindan state olusturulmasina izin veriyor; bu guvenlik riski kapatilacak.
+
+- Eski transition() ve _save_state() girisleri kapatilacak; intent tekrar kullanimi engellenecek.
 
 ## 5. Engeller ve riskler
 
@@ -135,6 +139,8 @@ Notlar:
 - Farkli surecler arasinda ortak lock dogrulandi; tum state yazma yollarinin merkezi kilide uydugu henuz kanitlanmadi.
 
 - Ic ice kilit reddi dogrulandi; ancak intent olmadan dogrudan state yazimi halen mumkun.
+
+- guarded_transition() intent kontrolu yapiyor ancak zorunlu kullanim ve disk kaliciligi henuz kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 

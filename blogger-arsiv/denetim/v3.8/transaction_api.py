@@ -95,6 +95,63 @@ class TransactionAPI:
             csv_path=csv_path,
         )
 
+    def guarded_transition(
+        self, operation_id, expected, target,
+        live_dir=None, csv_path=None
+    ):
+        """Intent zorunlu, kilitli state gecisi prototipi.
+
+        open_transaction() kilidi altinda kullanilir.
+        Result/binding uretmez; nihai onay vermez.
+        """
+        from transaction_persistent_outcome import (
+            INTENT, RESULT, read_record
+        )
+        from transaction_state_binding import BINDING
+        from transaction_state import load_state
+
+        self._require_active()
+
+        if not isinstance(operation_id, str) or not operation_id:
+            raise ValueError("Gecersiz operation_id")
+
+        intent_path = self._bundle / INTENT
+
+        intent = read_record(intent_path)
+
+        if intent != {
+            "version": 1,
+            "status": "IN_FLIGHT",
+            "operation_id": operation_id,
+        }:
+            raise ValueError("Intent kaydi uyusmuyor")
+
+        for name in (RESULT, BINDING):
+            path = self._bundle / name
+            if path.exists() or path.is_symlink():
+                raise RuntimeError("Onceki sonuc/binding mevcut")
+
+        current = load_state(
+            self._bundle / "transaction-state.json"
+        )
+
+        if current != expected:
+            raise ValueError("Beklenmeyen onceki state")
+
+        # Ayni API sahibi ve ayni kilit icinde ilerler.
+        # fsync hatasinda istisna yayilir; otomatik retry YOK.
+        self.transition(
+            expected, target,
+            live_dir=live_dir,
+            csv_path=csv_path,
+        )
+
+        return {
+            "status": "STATE_WRITE_ATTEMPTED",
+            "transaction_confirmed": False,
+            "automatic_retry": False,
+        }
+
     def _invalidate(self):
         self._active = False
 

@@ -1134,3 +1134,31 @@ SONRAKI ADIM: 181
 - Intent olmadan state degisimini engelleyen
   regresyon testlerini hazirla.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+## Guarded TransactionAPI / Adim 182
+
+- transaction_api.py dosyasina guarded_transition() eklendi.
+- transaction_guarded_transition_test.py olusturuldu.
+- Intent olmadan guarded state gecisi reddedildi.
+- Yanlis operation_id reddedildi.
+- Gecerli intent ile PREPARED -> IN_PROGRESS test edildi.
+- Tekrarlanan ayni state gecisi reddedildi.
+- Onceki result kaydi varken gecis reddedildi.
+- Otomatik result ve nihai onay uretilmedi.
+- Yeni metodun 6/6 testi basarili.
+- Mevcut API regresyon testleri de yeniden calistirildi.
+- Eski transition() ve _save_state() henuz acik.
+- Intent'in tum state gecisleri icin tekil tuketimi
+  ve islem provenansi henuz saglanmadi.
+- I/O hatalarinda disk kaliciligi kanitlanmadi.
+- Otomatik retry, rollback veya dosya silme YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 184
+- guarded_transition() icin yeniden kullanim ve
+  crash sonrasi belirsizlik senaryolarini incele.
+- Eski API girislerinin kapatilmasi icin uyumluluk
+  stratejisini belirle.
+- Nihai transaction onayini etkinlestirme.
+- Gercek restorasyon ve rollback islemlerini acma.
