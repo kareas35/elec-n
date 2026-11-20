@@ -792,3 +792,28 @@ SONRAKI ADIM: 153
 - ENOSPC, EIO ve izin hatalarinda davranisi incele.
 - Hata sonrasinda state ve kilit butunlugunu dogrula.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction API I/O Error Tests / Adim 153
+
+- transaction_api_io_error_test.py olusturuldu.
+- ENOSPC, EIO ve EACCES hata enjeksiyonlari yapildi.
+- Gecici dosya olusturma hatasi test edildi.
+- Dosya fsync hatasi test edildi.
+- os.link izin hatasi test edildi.
+- os.replace I/O hatasi test edildi.
+- State gecisinde fsync hatasi test edildi.
+- Dizin fsync hatasinda yeni state gorunur kaldi.
+- Bu durumda disk kaliciligi BELIRSIZ.
+- Hatali yazimlardan sonra kilit yeniden alinabildi.
+- Hata sonrasi kontrollu yeniden deneme basarili.
+- Toplam 8/8 test basarili.
+- I/O hatalari gercek diskte degil, simule edilerek test edildi.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 155
+- State yazimi sonrasi DURABILITY_UNKNOWN durumunu tasarla.
+- Dizin fsync hatasinda hatali otomatik tekrar denemeyi engelle.
+- Belirsiz yazimlarda once yeniden dogrulama yap.
+- Gercek restorasyon ve rollback islemlerini acma.

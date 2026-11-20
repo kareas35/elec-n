@@ -46,6 +46,8 @@ Notlar:
 
 - TransactionAPI midwrite crash testleri 8/8 basarili.
 
+- TransactionAPI I/O hata testleri 8/8 basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -73,6 +75,8 @@ Notlar:
 - State yaziminin ortasinda crash ve disk hatalari icin yeni API testleri eksik.
 
 - Disk I/O hatalari ve elektrik kesintisi sonrasi kalicilik henuz dogrulanmadi.
+
+- Dizin fsync hatasinda state gorunur olsa bile disk kaliciligi belirsizdir.
 
 ## 6. Tamamlanma olcumleri
 
