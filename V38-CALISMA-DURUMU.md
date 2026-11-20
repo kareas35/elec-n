@@ -634,3 +634,29 @@ SONRAKI ADIM: 138
 - Ayni ust klasordeki farkli bundle kapsamlarini test et.
 - Kilit sahipligi ve bundle yetkisini ayri ele al.
 - Tum state girislerini ortak kilit mimarisine hazirla.
+
+
+## 20 Kasim 2026 - Bundle Scope / Adim 138
+
+- transaction_bundle_scope_test.py olusturuldu.
+- ScopedBundleContext prototipi gelistirildi.
+- Ayni ust klasordeki iki bundle test edildi.
+- Ortak transaction.lock ile islem sahipligi saglandi.
+- Bundle A yetkisiyle Bundle B state degisikligi reddedildi.
+- Sembolik bundle yolu reddedildi.
+- Aktif ve suresi dolmus context davranislari test edildi.
+- Bundle A ve Bundle B durumlarinin izolasyonu dogrulandi.
+- Toplam 8/8 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Mevcut guarded_transition ve _save_state fonksiyonlari
+  dogrudan cagrilabildiginden kapsam kontrolu zorunlu degil.
+- Bundle yetkisi henuz uretim seviyesinde uygulanmiyor.
+
+SONRAKI ADIM: 140
+- ScopedBundleContext yapisini gercek transaction API
+  mimarisine uyarlama planini hazirla.
+- Dogrudan state yazma yollarini denetle.
+- Tum giris noktalarinda kilit ve bundle kapsam
+  zorunlulugunu tasarla.
+- Gercek rollback guvenlik kilidini kaldirma.
