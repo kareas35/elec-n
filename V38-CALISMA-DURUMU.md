@@ -1108,3 +1108,29 @@ SONRAKI ADIM: 179
 - Tek kilit sahipli merkezi API tasarimini netlestir.
 - _save_state() dogrudan erisim riskini incele.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+## Nested Lock and State Bypass / Adim 179
+
+- transaction_nested_lock_test.py olusturuldu.
+- Ayni surecte ic ice begin() girisimi reddedildi.
+- Ayni surecte ic ice finish() girisimi reddedildi.
+- Ic ice open_transaction() girisimi reddedildi.
+- Testler zaman asimi kontrollu alt sureclerde yapildi.
+- Dogrudan _save_state() cagrisinin mumkun oldugu
+  gecici test ortaminda dogrulandi.
+- Intent kaydi olmadan state olusturulabildigi goruldu.
+- Toplam 6/6 test basarili.
+- Merkezi API bypass riski HENUZ KAPATILMADI.
+- Bu testler guvenlik onayi degildir.
+- Gercek disk kaliciligi kanitlanmadi.
+- Otomatik retry ve rollback YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 181
+- Dogrudan state yazma giris noktalarini denetle.
+- Mevcut cagiranlari ve geriye donuk uyumlulugu belirle.
+- Tek kilit sahipli merkezi API tasarimini uygula.
+- Intent olmadan state degisimini engelleyen
+  regresyon testlerini hazirla.
+- Gercek restorasyon ve rollback islemlerini acma.

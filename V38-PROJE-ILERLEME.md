@@ -68,6 +68,8 @@ Notlar:
 
 - Cok surecli transaction kilit testleri 8/8 basarili.
 
+- Ic ice kilit ve dogrudan state yazimi denetimi 6/6 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -93,6 +95,8 @@ Notlar:
 - Binding kaydi API tarafindan kontrollu ve kilitli islem akisi icinde olusturulacak.
 
 - Ayni surecte ic ice kilit, merkezi API sahipligi ve _save_state() erisimi incelenecek.
+
+- Dogrudan _save_state() erisimi merkezi API disindan state olusturulmasina izin veriyor; bu guvenlik riski kapatilacak.
 
 ## 5. Engeller ve riskler
 
@@ -129,6 +133,8 @@ Notlar:
 - Binding kaydi su anda test kodu tarafindan uretiliyor; crash guvenligi ve durability henuz kanitlanmadi.
 
 - Farkli surecler arasinda ortak lock dogrulandi; tum state yazma yollarinin merkezi kilide uydugu henuz kanitlanmadi.
+
+- Ic ice kilit reddi dogrulandi; ancak intent olmadan dogrudan state yazimi halen mumkun.
 
 ## 6. Tamamlanma olcumleri
 
