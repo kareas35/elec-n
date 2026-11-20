@@ -60,6 +60,8 @@ Notlar:
 
 - Legacy inspect()/finish() yaniltici CONFIRMED donusu engellendi; 37/37 test basarili.
 
+- Outcome + HTML/CSV butunluk kapisi 9/9 testten gecti.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -77,6 +79,8 @@ Notlar:
 - Eski inspect() ve finish() icin guvenli onay sozlesmesini uygula.
 
 - Result JSON semantigi ile gercek transaction kaliciligi ayristirilip merkezi API'ye baglanacak.
+
+- Outcome kaydi belirli transaction state gecisine baglanacak ve merkezi API entegrasyonu yapilacak.
 
 ## 5. Engeller ve riskler
 
@@ -105,6 +109,8 @@ Notlar:
 - KRITIK ACIK: Eski inspect() fonksiyonu hala yaniltici CONFIRMED dondurebiliyor.
 
 - GUNCEL DURUM: Eski inspect()/finish() otomatik CONFIRMED dondurmuyor; gercek disk kaliciligi ve transaction butunlugu henuz kanitlanmadi.
+
+- Outcome + butunluk kontrolleri olumlu olsa bile disk kaliciligi ve nihai transaction onayi henuz kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 

@@ -986,3 +986,33 @@ SONRAKI ADIM: 168
 - Tum eski API cagrilarinin guvenli sozlesmeye uydugunu
   denetle.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction Integrity Gate / Adim 169
+
+- transaction_integrity_gate.py olusturuldu.
+- transaction_integrity_gate_test.py olusturuldu.
+- Outcome degerlendirmesi ile gercek dosya
+  butunluk kontrolu ayni guvenlik kapisinda birlestirildi.
+- verify_recovered() dogrudan kullanildi.
+- Eksik outcome ve intent-only durumlari BLOCKED.
+- HTML, CSV, bundle, result ve manifest bozulmalari
+  BLOCKED kabul edildi.
+- Gecerli butunlukte REVIEW_REQUIRED donuyor.
+- Toplam 9/9 test basarili.
+- Dogrulama kapsami 100.html ve 171.html ile sinirli.
+- Nihai transaction onayi etkin degil.
+- Gercek disk kaliciligi kanitlanmadi.
+- Outcome kaydi belirli state gecisine henuz
+  kriptografik olarak bagli degil.
+- Merkezi TransactionAPI entegrasyonu henuz yapilmadi.
+- Otomatik retry, rollback ve dosya silme YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 171
+- Outcome ve transaction state arasindaki baglantiyi incele.
+- Kayitlarin farkli transaction verileriyle eslesmesi
+  riskini degerlendir.
+- Salt okunur ve fail-closed baglanti testi hazirla.
+- Gercek restorasyon ve rollback islemlerini acma.
