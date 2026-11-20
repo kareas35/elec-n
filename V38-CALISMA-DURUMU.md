@@ -1079,3 +1079,32 @@ SONRAKI ADIM: 176
 - State gecisi oncesi kalici intent zorunlulugunu incele.
 - I/O ve crash durumlarinda fail-closed davranisi koru.
 - Gercek restorasyon ve rollback islemlerini acma.
+
+
+## Transaction Lock Runtime / Adim 177
+
+- transaction_lock_runtime_test.py olusturuldu.
+- Kilit cakismalari ayri Python sureclerinde test edildi.
+- Bir surec kilit tutarken begin() reddedildi.
+- Kilit varken ikinci TransactionAPI erisimi reddedildi.
+- Kilit birakildiginda yeni islem baslatilabildi.
+- Kilit altinda finish() reddedildi.
+- Basarisiz finish sonrasi otomatik result olusmadi.
+- Farkli bundle islemlerinde ortak kilit dogrulandi.
+- Toplam 8/8 test basarili.
+- Yalnizca TemporaryDirectory kullanildi.
+- Ayni surecte ic ice kilit davranisi henuz test edilmedi.
+- Dogrudan _save_state() erisimi henuz kapatilmadi.
+- Merkezi API outcome entegrasyonu henuz tamamlanmadi.
+- Kilit testi disk kaliciligi kaniti degildir.
+- Otomatik retry ve rollback YOK.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 179
+- Ayni surecte ic ice kilit davranisini kontrollu
+  alt sureclerle test et.
+- Deadlock ve kilit sahipligi risklerini degerlendir.
+- Tek kilit sahipli merkezi API tasarimini netlestir.
+- _save_state() dogrudan erisim riskini incele.
+- Gercek restorasyon ve rollback islemlerini acma.

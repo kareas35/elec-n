@@ -66,6 +66,8 @@ Notlar:
 
 - Gercek TransactionAPI ve state/outcome binding entegrasyon testi 10/10 basarili.
 
+- Cok surecli transaction kilit testleri 8/8 basarili.
+
 ## 4. Kalan isler
 
 - 424 riskli URL icin kurtarma veya kapatma karari.
@@ -89,6 +91,8 @@ Notlar:
 - State/outcome baglantisi gercek TransactionAPI gecisiyle ve kalici intent protokoluyle dogrulanacak.
 
 - Binding kaydi API tarafindan kontrollu ve kilitli islem akisi icinde olusturulacak.
+
+- Ayni surecte ic ice kilit, merkezi API sahipligi ve _save_state() erisimi incelenecek.
 
 ## 5. Engeller ve riskler
 
@@ -123,6 +127,8 @@ Notlar:
 - State binding testleri sentetik state kullaniyor; gercek gecis provenansi ve disk kaliciligi henuz kanitlanmadi.
 
 - Binding kaydi su anda test kodu tarafindan uretiliyor; crash guvenligi ve durability henuz kanitlanmadi.
+
+- Farkli surecler arasinda ortak lock dogrulandi; tum state yazma yollarinin merkezi kilide uydugu henuz kanitlanmadi.
 
 ## 6. Tamamlanma olcumleri
 
