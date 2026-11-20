@@ -411,3 +411,25 @@ SONRAKI ADIM: 116
 - Kurtarma sonuc kaydi ile ana state tutarliligini gelistir.
 - Tum transaction giris noktalarinda ortak kilitlemeyi incele.
 - Kesinti sonrasi durum uyumsuzlugu testlerini ekle.
+
+## 20 Kasim 2026 - Transaction Consistency / Adim 116
+
+- transaction_consistency_test.py olusturuldu.
+- Ana transaction state ile recovery-result tutarliligi denetlendi.
+- IN_PROGRESS ve result olmayan islem PENDING olarak tanindi.
+- State ve result uyusmazligi INCONSISTENT olarak tespit edildi.
+- Uyumlu RECOVERED kayitlari CONSISTENT olarak dogrulandi.
+- Eksik result bilgileri reddedildi.
+- Sonradan bozulmus HTML tespit edildi.
+- Eksik recovery-result.json tespit edildi.
+- Toplam 6/6 test basarili.
+- Gercek yayinlar ve CSV degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+- Iki ayri kaydin atomik guncellenmesi henuz saglanmiyor.
+- Eszamanli okuma ve dosya degisiklikleri icin ek koruma gerekiyor.
+
+SONRAKI ADIM: 118
+- State ve kurtarma sonucunun tek bir kalici kayitta
+  yonetilmesi icin tasarim ve testleri hazirla.
+- Eski transaction kayitlariyla uyumlulugu koru.
+- Kesinti senaryolarini test et.
