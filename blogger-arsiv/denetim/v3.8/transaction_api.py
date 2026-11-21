@@ -12,7 +12,7 @@ from pathlib import Path
 
 from transaction_bundle import verify_bundle
 from transaction_lock import transaction_lock
-from transaction_state import _save_state
+from transaction_state import _save_state, _state_write_scope
 
 
 _TOKEN = object()
@@ -79,21 +79,23 @@ class TransactionAPI:
 
     def initialize(self):
         self._require_active()
-        return _save_state(
-            self._bundle / "transaction-state.json",
-            "PREPARED",
-        )
+        with _state_write_scope():
+            return _save_state(
+                self._bundle / "transaction-state.json",
+                "PREPARED",
+            )
 
     def transition(self, expected, target,
                    live_dir=None, csv_path=None):
         self._require_active()
-        return _save_state(
-            self._bundle / "transaction-state.json",
-            target,
-            expected=expected,
-            live_dir=live_dir,
-            csv_path=csv_path,
-        )
+        with _state_write_scope():
+            return _save_state(
+                self._bundle / "transaction-state.json",
+                target,
+                expected=expected,
+                live_dir=live_dir,
+                csv_path=csv_path,
+            )
 
     def guarded_transition(
         self, operation_id, expected, target,

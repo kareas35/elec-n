@@ -188,3 +188,26 @@ mimarisinin ilk kontrollu uygulamasi.
 
 Gercek yayinlar ve CSV korunacak.
 Rollback guvenlik kilidi aktif kalacak.
+
+## TransactionAPI yazma kapsami / Adim 202-204C
+
+- _save_state() icin ContextVar tabanli yazma kapsami eklendi.
+- Normal dogrudan _save_state() cagrilari test edilen yollarda reddedildi.
+- TransactionAPI.initialize() ve transition() yazma kapsamina baglandi.
+- transaction_private_write_scope_test.py eklendi: 5/5 basarili.
+- Context entegrasyon testi TransactionAPI'ye tasindi.
+- Bundle scope testi TransactionAPI'ye tasindi.
+- Eski guarded_transition import bagimliligi giderildi.
+- Adim 204C: 15/15 transaction test dosyasi basarili.
+- Python icinde mutlak yetki izolasyonu saglanmiyor.
+- TransactionAPI.transition() halen intent zorunlulugu uygulamiyor.
+- Gercek disk/power-loss durability garantisi kanitlanmadi.
+- Otomatik retry ve rollback etkin degil.
+- Gercek yayinlar, CSV ve yedekler degistirilmedi.
+- Rollback guvenlik kilidi aktif.
+
+SONRAKI ADIM: 206
+- Intentsiz TransactionAPI.transition() yolunu incele.
+- Mevcut test uyumlulugunu bozmadan korumali gecis
+  protokolunu zorunlu hale getirme tasarimini hazirla.
+

@@ -10,14 +10,13 @@ from contextlib import contextmanager
 from pathlib import Path
 
 from transaction_bundle import create_bundle
-from transaction_context_test import transaction_context
-from transaction_context_integration_test import guarded_transition
+from transaction_api import open_transaction
 from transaction_state import load_state
 
 
 class ScopedBundleContext:
     def __init__(self, ctx, bundle):
-        ctx.require_active()
+        ctx._require_active()
 
         self._ctx = ctx
         self._bundle = Path(bundle).absolute()
@@ -30,7 +29,7 @@ class ScopedBundleContext:
         self._resolved = self._bundle.resolve(strict=True)
 
     def transition(self, bundle, expected, target):
-        self._ctx.require_active()
+        self._ctx._require_active()
 
         requested = Path(bundle).absolute()
 
@@ -49,9 +48,11 @@ class ScopedBundleContext:
         if requested.resolve(strict=True) != self._resolved:
             raise ValueError("BUNDLE_PATH_CHANGED")
 
-        return guarded_transition(
-            self._ctx, requested, expected, target
-        )
+        if expected is None:
+            if target != "PREPARED":
+                raise ValueError("Gecersiz baslangic durumu")
+            return self._ctx.initialize()
+        return self._ctx.transition(expected, target)
 
 
 @contextmanager
@@ -61,9 +62,7 @@ def bundle_context(bundle):
     if bundle.is_symlink() or not bundle.is_dir():
         raise ValueError("Gecersiz bundle")
 
-    lock = bundle.parent / "transaction.lock"
-
-    with transaction_context(lock) as ctx:
+    with open_transaction(bundle) as ctx:
         yield ScopedBundleContext(ctx, bundle)
 
 

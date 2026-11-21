@@ -5,6 +5,8 @@ import json
 import os
 import tempfile
 from pathlib import Path
+from contextlib import contextmanager
+from contextvars import ContextVar
 
 from transaction_bundle import verify_bundle
 
@@ -16,8 +18,27 @@ ALLOWED = {
 }
 
 
+_write_scope = ContextVar(
+    "v38_state_write_scope", default=False
+)
+
+
+@contextmanager
+def _state_write_scope():
+    """Yalnizca TransactionAPI yazma metotlari icin."""
+    token = _write_scope.set(True)
+    try:
+        yield
+    finally:
+        _write_scope.reset(token)
+
+
 def _save_state(path, state, expected=None, live_dir=None, csv_path=None):
-    """Durumu gecici dosya + os.replace ile kaydet."""
+    """API yazma kapsami disinda state degisikligini reddet."""
+    if not _write_scope.get():
+        raise RuntimeError(
+            "Dogrudan state yazimi yasak; TransactionAPI gerekli"
+        )
     path = Path(path)
 
     if state not in ALLOWED:

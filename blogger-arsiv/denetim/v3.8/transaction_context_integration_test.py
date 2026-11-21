@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V3.8 - TransactionContext ile state entegrasyon prototipi.
+"""V3.8 - TransactionAPI ile state entegrasyon testi.
 
 Yalnizca gecici klasorde calisir.
 Mevcut transaction modullerini degistirmez.
@@ -11,36 +11,36 @@ from pathlib import Path
 from transaction_bundle import (
     create_bundle, verify_bundle, V38, ROOT
 )
-from transaction_context_test import transaction_context
+from transaction_api import open_transaction
 from transaction_csv_baseline import capture_baseline
-from transaction_state import _save_state, load_state
+from transaction_state import load_state
 
 NAMES = ("100.html", "171.html")
 
 
-def guarded_transition(ctx, bundle, expected, target,
-                       live_dir=None, csv_path=None):
-    """Tek kilit sahibinin korudugu prototip state gecisi."""
-    ctx.require_active()
+def compat_transition(ctx, bundle, expected, target,
+                      live_dir=None, csv_path=None):
+    """Eski test cagrilarini tek TransactionAPI'ye yonlendir.
 
-    bundle = Path(bundle)
+    Bu helper intent-korumali guarded_transition DEGILDIR.
+    """
+    ctx._require_active()
 
-    required_lock = (
-        bundle.parent / "transaction.lock"
-    ).resolve()
-
-    if ctx.lock_path.resolve() != required_lock:
+    # Testin eski yanlis-bundle reddini koru.
+    if Path(bundle).absolute() != ctx._bundle:
         raise ValueError("Context farkli transaction'a ait")
 
-    verify_bundle(bundle)
+    if expected is None:
+        if target != "PREPARED":
+            raise ValueError("Gecersiz baslangic durumu")
+        return ctx.initialize()
 
-    return _save_state(
-        bundle / "transaction-state.json",
-        target,
-        expected=expected,
+    return ctx.transition(
+        expected, target,
         live_dir=live_dir,
-        csv_path=csv_path
+        csv_path=csv_path,
     )
+
 
 
 def main():
@@ -73,19 +73,20 @@ def main():
             plan
         )
 
-        lock = root / "transaction.lock"
+        # Test verileri yalnizca gecici klasorde hazirlanir.
+        create_bundle(bundle, entries)
+        capture_baseline(bundle, plan)
 
-        with transaction_context(lock) as ctx:
-            create_bundle(bundle, entries)
-            capture_baseline(bundle, plan)
+        # Tek API sahibi, tek transaction.lock.
+        with open_transaction(bundle) as ctx:
 
-            guarded_transition(ctx, bundle, None, "PREPARED")
+            compat_transition(ctx, bundle, None, "PREPARED")
             state = bundle / "transaction-state.json"
 
             assert load_state(state) == "PREPARED"
             print("TEST 1 PASS: Kilit altinda PREPARED")
 
-            guarded_transition(
+            compat_transition(
                 ctx, bundle, "PREPARED", "IN_PROGRESS"
             )
             assert load_state(state) == "IN_PROGRESS"
@@ -97,7 +98,7 @@ def main():
             page.write_bytes(original_html + b"\nTAMPER")
 
             try:
-                guarded_transition(
+                compat_transition(
                     ctx, bundle, "IN_PROGRESS", "RECOVERED",
                     live_dir=live, csv_path=plan
                 )
@@ -115,7 +116,7 @@ def main():
             plan.write_bytes(original_csv + b"\nTAMPER")
 
             try:
-                guarded_transition(
+                compat_transition(
                     ctx, bundle, "IN_PROGRESS", "RECOVERED",
                     live_dir=live, csv_path=plan
                 )
@@ -130,7 +131,7 @@ def main():
 
             # Yanlis bundle ile context kullanilamaz.
             try:
-                guarded_transition(
+                compat_transition(
                     ctx, root / "other_parent" / "bundle", "IN_PROGRESS",
                     "RECOVERED", live_dir=live, csv_path=plan
                 )
@@ -142,7 +143,7 @@ def main():
             print("TEST 5 PASS: Context kapsam kontrolu")
 
             # Kilit zaten alindi; ikinci kez alinmaz.
-            guarded_transition(
+            compat_transition(
                 ctx, bundle, "IN_PROGRESS", "RECOVERED",
                 live_dir=live, csv_path=plan
             )
@@ -152,7 +153,7 @@ def main():
 
             # Son durum degistirilemez.
             try:
-                guarded_transition(
+                compat_transition(
                     ctx, bundle, "RECOVERED", "IN_PROGRESS"
                 )
             except ValueError:
@@ -164,7 +165,7 @@ def main():
 
         # Kilit birakilinca eski context calismamali.
         try:
-            guarded_transition(
+            compat_transition(
                 ctx, bundle, "RECOVERED", "IN_PROGRESS"
             )
         except RuntimeError:
