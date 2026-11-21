@@ -3,7 +3,12 @@
 import errno
 import tempfile
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import patch, Mock
+from contextlib import contextmanager
+import os
+from types import SimpleNamespace
+import transaction_state
+from transaction_persistent_outcome import begin
 
 from transaction_api import open_transaction
 from transaction_bundle_scope_test import make_bundle
@@ -15,6 +20,15 @@ from transaction_write_outcome import (
     DURABILITY_UNKNOWN,
     WriteOutcomeSession,
 )
+
+
+@contextmanager
+def state_os_fault(name, side_effect):
+    """Yalnizca state modulundeki OS cagrilarini etkiler."""
+    proxy = SimpleNamespace(**vars(os))
+    setattr(proxy, name, Mock(side_effect=side_effect))
+    with patch.object(transaction_state, "os", proxy):
+        yield
 
 
 def main():
@@ -32,10 +46,11 @@ def main():
 
         # TEST 1: Basarili state gecisi.
         session = WriteOutcomeSession()
+        begin(bundle, "op-219-success")
 
         with open_transaction(bundle) as api:
             outcome = session.execute(
-                lambda: api.transition(
+                lambda: api.guarded_transition("op-219-success",
                     "PREPARED", "IN_PROGRESS"
                 ),
                 state, "PREPARED", "IN_PROGRESS"
@@ -51,15 +66,16 @@ def main():
             api.initialize()
 
         session2 = WriteOutcomeSession()
+        begin(before, "op-219-replace-error")
         before_state = before / "transaction-state.json"
 
         with open_transaction(before) as api:
-            with patch(
-                "transaction_state.os.replace",
+            with state_os_fault(
+                "replace",
                 side_effect=OSError(errno.EIO, "Replace failed")
             ):
                 outcome = session2.execute(
-                    lambda: api.transition(
+                    lambda: api.guarded_transition("op-219-replace-error",
                         "PREPARED", "IN_PROGRESS"
                     ),
                     before_state, "PREPARED", "IN_PROGRESS"
@@ -78,6 +94,7 @@ def main():
 
         after_state = after / "transaction-state.json"
         session3 = WriteOutcomeSession()
+        begin(after, "op-219-sync-error")
 
         import os
         real_fsync = os.fsync
@@ -90,12 +107,12 @@ def main():
             return real_fsync(fd)
 
         with open_transaction(after) as api:
-            with patch(
-                "transaction_state.os.fsync",
+            with state_os_fault(
+                "fsync",
                 side_effect=fail_directory_sync
             ):
                 outcome = session3.execute(
-                    lambda: api.transition(
+                    lambda: api.guarded_transition("op-219-sync-error",
                         "PREPARED", "IN_PROGRESS"
                     ),
                     after_state, "PREPARED", "IN_PROGRESS"

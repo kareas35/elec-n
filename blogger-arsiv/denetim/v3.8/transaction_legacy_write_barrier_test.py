@@ -69,8 +69,12 @@ def main():
         assert load_state(state) == "PREPARED"
         print("TEST 5 PASS: Legacy state degisimi engellendi")
 
+        from transaction_persistent_outcome import begin
+        begin(bundle, "op-212-guarded")
         with open_transaction(bundle) as api:
-            api.transition("PREPARED", "IN_PROGRESS")
+            api.guarded_transition(
+                "op-212-guarded", "PREPARED", "IN_PROGRESS"
+            )
 
         assert load_state(state) == "IN_PROGRESS"
         print("TEST 6 PASS: TransactionAPI transition calisiyor")

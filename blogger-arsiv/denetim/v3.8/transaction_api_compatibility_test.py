@@ -106,12 +106,11 @@ def test_bypass_exists():
         if isinstance(node, ast.Call)
     ]
 
-    assert "_save_state" in calls, (
-        "State mimarisi degismis; tekrar incele"
+    assert "_save_state" not in calls, (
+        "Legacy save_state dogrudan yazma yapiyor"
     )
 
-    print("TEST 3 PASS: Dogrudan yazma yolu tespit edildi")
-    print("  UYARI: _save_state halen erisilebilir")
+    print("TEST 3 PASS: Legacy yazma delegasyonu kapali")
 
 
 def test_legacy_call_sites():

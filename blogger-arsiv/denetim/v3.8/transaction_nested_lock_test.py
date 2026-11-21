@@ -135,15 +135,11 @@ def main():
 
         result = run(BYPASS, d)
 
-        assert result.returncode == 0, result.stderr
-        assert "DIRECT_WRITE_SUCCEEDED" in result.stdout
+        assert result.returncode != 0
+        assert "Dogrudan state yazimi yasak" in result.stderr
+        assert not (d / "transaction-state.json").exists()
 
-        assert (
-            d / "transaction-state.json"
-        ).is_file()
-
-        print("TEST 4 PASS: Dogrudan state yazimi tespit")
-        print("  RISK: _save_state merkezi API disinda erisilebilir")
+        print("TEST 4 PASS: Dogrudan state yazimi reddedildi")
 
         # TEST 5: Dogrudan yazim icin outcome yok.
         assert not (

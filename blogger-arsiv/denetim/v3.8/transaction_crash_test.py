@@ -23,15 +23,20 @@ from pathlib import Path
 
 from transaction_lock import transaction_lock
 from transaction_api import open_transaction
+from transaction_persistent_outcome import begin
 
 base = Path(sys.argv[1])
 bundle = base / "bundle"
 live = base / "live"
 lock = base / "restoration.lock"
 
+begin(bundle, "op-227-crash")
+
 with transaction_lock(lock):
     with open_transaction(bundle) as api:
-        api.transition("PREPARED", "IN_PROGRESS")
+        api.guarded_transition(
+            "op-227-crash", "PREPARED", "IN_PROGRESS"
+        )
 
     source = bundle / "before/100.html"
     target = live / "100.html"

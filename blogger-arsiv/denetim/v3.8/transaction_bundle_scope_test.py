@@ -11,6 +11,7 @@ from pathlib import Path
 
 from transaction_bundle import create_bundle
 from transaction_api import open_transaction
+from transaction_persistent_outcome import begin
 from transaction_state import load_state
 
 
@@ -52,7 +53,9 @@ class ScopedBundleContext:
             if target != "PREPARED":
                 raise ValueError("Gecersiz baslangic durumu")
             return self._ctx.initialize()
-        return self._ctx.transition(expected, target)
+        return self._ctx.guarded_transition(
+            "op-215-bundle-a", expected, target
+        )
 
 
 @contextmanager
@@ -103,6 +106,7 @@ def main():
         assert a.parent == b.parent
         print("TEST 1 PASS: Iki bundle ayni kilit klasorunde")
 
+        begin(a, "op-215-bundle-a")
         with bundle_context(a) as scoped:
             scoped.transition(a, None, "PREPARED")
             assert load_state(

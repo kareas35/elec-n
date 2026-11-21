@@ -20,9 +20,13 @@ def child(bundle, action):
 import os
 import sys
 from transaction_api import open_transaction
+from transaction_persistent_outcome import begin
 
 bundle = sys.argv[1]
 action = sys.argv[2]
+
+if action == "after_transition":
+    begin(bundle, "op-217-crash")
 
 with open_transaction(bundle) as api:
     if action == "before":
@@ -33,7 +37,9 @@ with open_transaction(bundle) as api:
         os._exit(42)
 
     if action == "after_transition":
-        api.transition("PREPARED", "IN_PROGRESS")
+        api.guarded_transition(
+            "op-217-crash", "PREPARED", "IN_PROGRESS"
+        )
         os._exit(43)
 
     raise RuntimeError("Bilinmeyen test")
@@ -114,8 +120,12 @@ def main():
         print("TEST 7 PASS: Bundle durumlari korundu")
 
         # TEST 8: Sonraki islemler kilit alabilir.
+        from transaction_persistent_outcome import begin
+        begin(b, "op-217-resume")
         with open_transaction(b) as api:
-            api.transition("PREPARED", "IN_PROGRESS")
+            api.guarded_transition(
+                "op-217-resume", "PREPARED", "IN_PROGRESS"
+            )
 
         assert load_state(
             b / "transaction-state.json"

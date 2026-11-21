@@ -7,16 +7,41 @@ Gercek yayin, CSV ve rollback islemi yapmaz.
 import errno
 import tempfile
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import patch, Mock
+from types import SimpleNamespace
+import os
+import transaction_state
+from transaction_persistent_outcome import begin
 
 from transaction_api import open_transaction
 from transaction_bundle_scope_test import make_bundle
 from transaction_state import load_state
 
 
+def state_io_patch(module_target, side_effect):
+    if module_target not in (
+        "transaction_state.os.replace",
+        "transaction_state.os.fsync",
+    ):
+        raise ValueError("Beklenmeyen hata enjeksiyonu")
+
+    proxy = SimpleNamespace(**vars(os))
+    name = module_target.rsplit(".", 1)[-1]
+    setattr(proxy, name, Mock(side_effect=side_effect))
+    return patch.object(transaction_state, "os", proxy)
+
+
 def inject_error(module_target, error, operation):
     """Tek bir sistem cagrisi icin kontrollu hata."""
-    with patch(module_target, side_effect=error):
+    if module_target in (
+        "transaction_state.os.replace",
+        "transaction_state.os.fsync",
+    ):
+        context = state_io_patch(module_target, error)
+    else:
+        context = patch(module_target, side_effect=error)
+
+    with context:
         try:
             operation()
         except OSError as caught:
@@ -102,13 +127,12 @@ def main():
         # TEST 4: Gecis oncesi os.replace EIO.
         d = make_case(root, "replace-eio", initialized=True)
 
+        begin(d, "op-220-replace")
         with open_transaction(d) as api:
             inject_error(
                 "transaction_state.os.replace",
                 OSError(errno.EIO, "Replace failed"),
-                lambda: api.transition(
-                    "PREPARED", "IN_PROGRESS"
-                ),
+                lambda: api.guarded_transition("op-220-replace", "PREPARED", "IN_PROGRESS"),
             )
 
         check_state(d, "PREPARED")
@@ -118,13 +142,12 @@ def main():
         # TEST 5: Gecis dosya fsync hatasi.
         e = make_case(root, "transition-fsync", initialized=True)
 
+        begin(e, "op-220-file-sync")
         with open_transaction(e) as api:
             inject_error(
                 "transaction_state.os.fsync",
                 OSError(errno.EIO, "Sync failed"),
-                lambda: api.transition(
-                    "PREPARED", "IN_PROGRESS"
-                ),
+                lambda: api.guarded_transition("op-220-file-sync", "PREPARED", "IN_PROGRESS"),
             )
 
         check_state(e, "PREPARED")
@@ -143,6 +166,7 @@ def main():
                 raise OSError(errno.EIO, "Directory sync failed")
             return real_fsync(fd)
 
+        begin(f, "op-220-directory-sync")
         with open_transaction(f) as api:
             inject_error(
                 "transaction_state.os.fsync",
@@ -150,12 +174,12 @@ def main():
                 lambda: None,
             ) if False else None
 
-            with patch(
+            with state_io_patch(
                 "transaction_state.os.fsync",
                 side_effect=fail_second_fsync
             ):
                 try:
-                    api.transition("PREPARED", "IN_PROGRESS")
+                    api.guarded_transition("op-220-directory-sync", "PREPARED", "IN_PROGRESS")
                 except OSError as error:
                     assert error.errno == errno.EIO
                 else:

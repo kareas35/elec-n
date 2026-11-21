@@ -87,15 +87,11 @@ class TransactionAPI:
 
     def transition(self, expected, target,
                    live_dir=None, csv_path=None):
+        """Intentsiz public state gecisi kapali."""
         self._require_active()
-        with _state_write_scope():
-            return _save_state(
-                self._bundle / "transaction-state.json",
-                target,
-                expected=expected,
-                live_dir=live_dir,
-                csv_path=csv_path,
-            )
+        raise RuntimeError(
+            "Intentsiz transition kapali; guarded_transition gerekli"
+        )
 
     def guarded_transition(
         self, operation_id, expected, target,
@@ -179,11 +175,14 @@ class TransactionAPI:
 
         # Ayni API sahibi ve ayni kilit icinde ilerler.
         # fsync hatasinda istisna yayilir; otomatik retry YOK.
-        self.transition(
-            expected, target,
-            live_dir=live_dir,
-            csv_path=csv_path,
-        )
+        with _state_write_scope():
+            _save_state(
+                self._bundle / "transaction-state.json",
+                target,
+                expected=expected,
+                live_dir=live_dir,
+                csv_path=csv_path,
+            )
 
         return {
             "status": "STATE_WRITE_ATTEMPTED",

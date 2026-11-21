@@ -4,6 +4,7 @@ import tempfile
 from pathlib import Path
 
 from transaction_api import TransactionAPI, open_transaction
+from transaction_persistent_outcome import begin
 from transaction_bundle_scope_test import make_bundle
 from transaction_state import load_state
 
@@ -27,6 +28,7 @@ def main():
         reject(lambda: TransactionAPI(a, root / "transaction.lock", None))
         print("TEST 1 PASS: Dogrudan API olusturma reddedildi")
 
+        begin(a, "op-209b-api")
         with open_transaction(a) as api:
             api.initialize()
             assert load_state(
@@ -34,7 +36,9 @@ def main():
             ) == "PREPARED"
             print("TEST 2 PASS: Kilit altinda PREPARED")
 
-            api.transition("PREPARED", "IN_PROGRESS")
+            api.guarded_transition(
+                "op-209b-api", "PREPARED", "IN_PROGRESS"
+            )
             assert load_state(
                 a / "transaction-state.json"
             ) == "IN_PROGRESS"

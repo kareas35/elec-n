@@ -9,6 +9,7 @@ import threading
 from pathlib import Path
 
 from transaction_api import open_transaction
+from transaction_persistent_outcome import begin
 from transaction_bundle_scope_test import make_bundle
 from transaction_state import load_state
 
@@ -44,9 +45,11 @@ def main():
         print("TEST 2 PASS: Tekrar initialize reddedildi")
 
         # TEST 3: Yanlis beklenen durum.
+        begin(a, "op-209c-wrong-state")
         with open_transaction(a) as api:
             must_reject(
-                lambda: api.transition(
+                lambda: api.guarded_transition(
+                    "op-209c-wrong-state",
                     "IN_PROGRESS", "COMPLETED"
                 ),
                 (ValueError,)
@@ -57,7 +60,8 @@ def main():
         # TEST 4: Gecersiz state gecisi.
         with open_transaction(a) as api:
             must_reject(
-                lambda: api.transition(
+                lambda: api.guarded_transition(
+                    "op-209c-wrong-state",
                     "PREPARED", "RECOVERED"
                 ),
                 (ValueError,)

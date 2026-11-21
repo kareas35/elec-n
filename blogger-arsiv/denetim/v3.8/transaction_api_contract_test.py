@@ -8,6 +8,7 @@ import ast
 import tempfile
 from pathlib import Path
 
+from transaction_persistent_outcome import begin
 from transaction_bundle_scope_test import (
     bundle_context,
     make_bundle,
@@ -110,6 +111,7 @@ def main():
 
         print("TEST 3 PASS: Context zorunlulugu")
 
+        begin(a, "op-215-bundle-a")
         with bundle_context(a) as scoped:
             api = TransactionAPI(scoped)
 
@@ -156,15 +158,13 @@ def main():
         "_save_state"
     )
 
-    assert direct_calls, (
-        "Dogrudan state cagrisi yeniden incelenmeli"
+    assert not direct_calls, (
+        "Context entegrasyonunda dogrudan state yazimi var"
     )
 
     print(
-        "TEST 7 PASS: Dogrudan _save_state yolu raporlandi"
+        "TEST 7 PASS: Context icinde dogrudan state yazimi yok"
     )
-    print("  Satirlar:", direct_calls)
-    print("  UYARI: Bu yol henuz kapatilmadi")
 
     print("\nSONUC: 7/7 TEST BASARILI")
     print("API durumu: PROTOTIP")

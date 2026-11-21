@@ -19,6 +19,9 @@ import os
 import sys
 from pathlib import Path
 from transaction_api import open_transaction
+from transaction_persistent_outcome import begin
+import transaction_state
+from types import SimpleNamespace
 
 bundle = Path(sys.argv[1])
 scenario = sys.argv[2]
@@ -57,16 +60,26 @@ def injected_fsync(fd):
         os._exit(76)
     return real_fsync(fd)
 
-os.link = injected_link
-os.replace = injected_replace
-os.fsync = injected_fsync
+# INTENT kilit disinda ve hata enjeksiyonundan once olusturulur.
+if scenario not in ("before_link", "after_link",
+                    "before_file_fsync"):
+    begin(bundle, "op-225-midwrite")
+
+# Yalnizca state yazim katmanindaki OS cagrilari etkilenir.
+proxy = SimpleNamespace(**vars(os))
+proxy.link = injected_link
+proxy.replace = injected_replace
+proxy.fsync = injected_fsync
+transaction_state.os = proxy
 
 with open_transaction(bundle) as api:
     if scenario in ("before_link", "after_link",
                     "before_file_fsync"):
         api.initialize()
     else:
-        api.transition("PREPARED", "IN_PROGRESS")
+        api.guarded_transition(
+            "op-225-midwrite", "PREPARED", "IN_PROGRESS"
+        )
 
 sys.exit(99)
 '''
@@ -129,6 +142,14 @@ def main():
                 assert json.loads(
                     state.read_text(encoding="utf-8")
                 ) == {"state": expected}
+
+            attempt = bundle / "transaction-guarded-attempt.json"
+            if scenario in (
+                "before_replace", "after_replace", "before_dir_fsync"
+            ):
+                assert attempt.is_file(), scenario
+            else:
+                assert not attempt.exists(), scenario
 
             bundles.append((bundle, expected))
 
