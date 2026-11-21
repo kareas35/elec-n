@@ -63,7 +63,8 @@ def confirmation_payload(operation_id, intent_sha256,
 
 
 def verify_transaction_confirmation(
-    bundle, number, payload, signature, public_key
+    bundle, number, payload, signature, public_key,
+    expected_fingerprint=None
 ):
     """Transaction kanitlariyla imzayi karsilastirir; islem onaylamaz."""
     from pathlib import Path
@@ -103,7 +104,13 @@ def verify_transaction_confirmation(
         if inspect_step_write_result(bundle, number)["status"] != "REVIEW_REQUIRED":
             return blocked
 
-        if not verify_signature(payload, signature, public_key):
+        if expected_fingerprint is None:
+            return blocked
+
+        trusted_key = trusted_public_key(
+            public_key, expected_fingerprint
+        )
+        if not verify_signature(payload, signature, trusted_key):
             return blocked
 
         return {
@@ -113,3 +120,21 @@ def verify_transaction_confirmation(
         }
     except (OSError, ValueError, TypeError, KeyError):
         return blocked
+
+
+def trusted_public_key(configured_key, expected_fingerprint):
+    """Disaridan sabitlenmis acik anahtari dogrular."""
+    import hashlib
+    import hmac
+
+    if not isinstance(configured_key, bytes) or len(configured_key) != 32:
+        raise ValueError("Gecersiz Ed25519 acik anahtari")
+
+    fingerprint = hashlib.sha256(configured_key).hexdigest()
+
+    if not isinstance(expected_fingerprint, str) or not hmac.compare_digest(
+        fingerprint, expected_fingerprint
+    ):
+        raise ValueError("Guvenilir anahtar kimligi uyusmuyor")
+
+    return configured_key
