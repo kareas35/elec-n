@@ -152,6 +152,15 @@ class TransactionAPI:
                 "Onceki state girisimi mevcut; manuel inceleme gerekli"
             )
 
+        # Yeni step protokolu baslamissa eski API yazamaz.
+        step_attempt = (
+            self._bundle / "transaction-step-0001-attempt.json"
+        )
+        if step_attempt.exists() or step_attempt.is_symlink():
+            raise RuntimeError(
+                "Step ATTEMPT mevcut; eski gecis protokolu bloke"
+            )
+
         manifest_path = self._bundle / "transaction.json"
         state_path = self._bundle / "transaction-state.json"
 
@@ -183,6 +192,86 @@ class TransactionAPI:
                 live_dir=live_dir,
                 csv_path=csv_path,
             )
+
+        return {
+            "status": "STATE_WRITE_ATTEMPTED",
+            "transaction_confirmed": False,
+            "automatic_retry": False,
+        }
+
+    def record_step_attempt(self, number, record):
+        """Kilitli oturumda step-1 kaniti; state yazmaz."""
+        self._require_active()
+
+        if type(number) is not int or number != 1:
+            raise RuntimeError("Cok asamali gecis henuz kapali")
+
+        if not isinstance(record, dict):
+            raise ValueError("Gecersiz step kaydi")
+
+        from transaction_state import ALLOWED, load_state
+        from transaction_step_journal import (
+            _authorized_step_write, write_attempt
+        )
+
+        current = load_state(
+            self._bundle / "transaction-state.json"
+        )
+        if record.get("expected_state") != current:
+            raise ValueError("Step baslangic state uyusmuyor")
+
+        if record.get("target_state") not in ALLOWED[current]:
+            raise ValueError("Gecersiz step gecisi")
+
+        legacy = self._bundle / "transaction-guarded-attempt.json"
+        if legacy.exists() or legacy.is_symlink():
+            raise RuntimeError(
+                "Eski ATTEMPT mevcut; step protokolu bloke"
+            )
+
+        with _authorized_step_write():
+            return write_attempt(self._bundle, number, record)
+
+    def execute_step(self, record, live_dir=None, csv_path=None):
+        """Step-1: kalici ATTEMPT ardindan state yazimi."""
+        self._require_active()
+
+        if not isinstance(record, dict):
+            raise ValueError("Gecersiz step kaydi")
+
+        expected = record.get("expected_state")
+        target = record.get("target_state")
+
+        # record_step_attempt kendi state, INTENT ve
+        # eski protokol cakisma kontrollerini yapar.
+        self.record_step_attempt(1, record)
+
+        # ATTEMPT artik kalici. Yazma hatasinda
+        # kayit silinmez ve otomatik retry yapilmaz.
+        with _state_write_scope():
+            _save_state(
+                self._bundle / "transaction-state.json",
+                target,
+                expected=expected,
+                live_dir=live_dir,
+                csv_path=csv_path,
+            )
+
+        from transaction_persistent_outcome import digest
+        from transaction_step_journal import write_step_result, _authorized_step_write
+
+        result_record = {
+            "version": 1,
+            "status": "WRITE_RETURNED",
+            "step": 1,
+            "attempt_sha256": digest(record),
+            "observed_state": target,
+            "transaction_confirmed": False,
+            "automatic_retry": False,
+        }
+
+        with _authorized_step_write():
+            write_step_result(self._bundle, 1, result_record)
 
         return {
             "status": "STATE_WRITE_ATTEMPTED",
