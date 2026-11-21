@@ -34,6 +34,10 @@ def step_path(bundle, number, kind):
 def write_attempt(bundle, number, record):
     if not _step_write_scope.get():
         raise RuntimeError("Yetkisiz step kaydi yazimi")
+    if number != 1:
+        raise RuntimeError(
+            "Cok asamali islem kilitli: guvenilir confirmation gerekli"
+        )
     from transaction_persistent_outcome import INTENT, digest
     intent = read_record(Path(bundle) / INTENT)
     if not isinstance(intent, dict) or not isinstance(record, dict):
@@ -76,6 +80,10 @@ def write_attempt(bundle, number, record):
 
         if state != prior.get("target_state"):
             raise RuntimeError("Onceki adimin state sonucu uyusmuyor")
+
+        result_check = inspect_step_write_result(bundle, number - 1)
+        if result_check["status"] != "REVIEW_REQUIRED":
+            raise RuntimeError("Onceki adimin write-result kaniti gecersiz")
 
         if not isinstance(record, dict) or (
             record.get("expected_state") != state
