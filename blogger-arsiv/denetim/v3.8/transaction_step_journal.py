@@ -220,3 +220,25 @@ def inspect_step_write_result(bundle, number):
         }
     except (OSError, ValueError, TypeError, KeyError):
         return blocked
+
+
+def inspect_confirmation_authority(bundle, number):
+    """Confirmation guven kaynagini raporlar; onay vermez."""
+    confirmation = step_path(bundle, number, "confirmation")
+    evidence = inspect_step_write_result(bundle, number)
+
+    if evidence["status"] != "REVIEW_REQUIRED":
+        reason = "WRITE_RESULT_NOT_TRUSTED"
+    elif confirmation.is_symlink():
+        reason = "CONFIRMATION_SYMLINK"
+    elif confirmation.exists():
+        reason = "CONFIRMATION_AUTHORITY_UNPROVEN"
+    else:
+        reason = "CONFIRMATION_MISSING"
+
+    return {
+        "status": "BLOCKED",
+        "reason": reason,
+        "transaction_confirmed": False,
+        "automatic_retry": False,
+    }
