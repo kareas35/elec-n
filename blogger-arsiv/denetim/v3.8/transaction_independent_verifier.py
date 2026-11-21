@@ -70,3 +70,68 @@ def collect_step_evidence(bundle, number):
         }
     except (OSError, ValueError, TypeError, KeyError):
         return blocked
+
+
+def inspect_transferred_evidence(data, expected_fingerprint):
+    """Yalnizca aktarilan kanitlari inceler; diskten okuma yapmaz."""
+    from transaction_persistent_outcome import digest
+    from transaction_confirmation_signature import (
+        confirmation_payload, trusted_public_key, verify_signature
+    )
+
+    blocked = {
+        "status": "BLOCKED",
+        "transaction_confirmed": False,
+        "automatic_retry": False,
+    }
+
+    try:
+        i = data["intent"]
+        a = data["attempt"]
+        w = data["write_result"]
+        state = data["state"]
+        number = data["payload"]["step"]
+
+        if i.get("version") != 1 or i.get("status") != "IN_FLIGHT":
+            return blocked
+        if a.get("operation_id") != i.get("operation_id"):
+            return blocked
+        if a.get("intent_sha256") != digest(i):
+            return blocked
+        if a.get("target_state") != state:
+            return blocked
+
+        if w != {
+            "version": 1,
+            "status": "WRITE_RETURNED",
+            "step": number,
+            "attempt_sha256": digest(a),
+            "observed_state": state,
+            "transaction_confirmed": False,
+            "automatic_retry": False,
+        }:
+            return blocked
+
+        expected = confirmation_payload(
+            i["operation_id"], digest(i),
+            number, digest(a), state
+        )
+        if data["payload"] != expected:
+            return blocked
+
+        public = trusted_public_key(
+            bytes.fromhex(data["public"]),
+            expected_fingerprint
+        )
+        if not verify_signature(
+            expected, bytes.fromhex(data["signature"]), public
+        ):
+            return blocked
+
+        return {
+            "status": "TRANSFERRED_EVIDENCE_REVIEW_REQUIRED",
+            "transaction_confirmed": False,
+            "automatic_retry": False,
+        }
+    except (KeyError, ValueError, TypeError, AttributeError):
+        return blocked
