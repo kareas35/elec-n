@@ -31,3 +31,42 @@ def inspect_signed_step(
         "transaction_confirmed": False,
         "automatic_retry": False,
     }
+
+
+def collect_step_evidence(bundle, number):
+    """Transaction kanitlarini salt okunur olarak toplar."""
+    from transaction_persistent_outcome import INTENT, read_record
+    from transaction_step_journal import (
+        step_path, inspect_step_write_result
+    )
+    from transaction_state import load_state
+
+    blocked = {
+        "status": "BLOCKED",
+        "transaction_confirmed": False,
+        "automatic_retry": False,
+    }
+
+    try:
+        bundle = Path(bundle)
+        intent = read_record(bundle / INTENT)
+        attempt = read_record(step_path(bundle, number, "attempt"))
+        write_result = read_record(
+            step_path(bundle, number, "write-result")
+        )
+        state = load_state(bundle / "transaction-state.json")
+
+        if inspect_step_write_result(bundle, number)["status"] != "REVIEW_REQUIRED":
+            return blocked
+
+        return {
+            "status": "EVIDENCE_COLLECTED_REVIEW_REQUIRED",
+            "intent": intent,
+            "attempt": attempt,
+            "write_result": write_result,
+            "state": state,
+            "transaction_confirmed": False,
+            "automatic_retry": False,
+        }
+    except (OSError, ValueError, TypeError, KeyError):
+        return blocked
