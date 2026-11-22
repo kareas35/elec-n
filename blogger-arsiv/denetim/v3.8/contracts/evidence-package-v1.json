@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "purpose": "V38_INDEPENDENT_REVIEW",
+  "transaction": {
+    "operation_id": null,
+    "step": 1,
+    "expected_state": "PREPARED",
+    "target_state": "IN_PROGRESS"
+  },
+  "evidence": {
+    "intent": null,
+    "attempt": null,
+    "write_result": null,
+    "state": null,
+    "payload": null,
+    "signature": null,
+    "public": null
+  },
+  "artifacts": {
+    "manifest_sha256": null,
+    "html_sha256": {},
+    "csv_sha256": null
+  },
+  "transaction_confirmed": false,
+  "automatic_retry": false,
+  "next_step_authorized": false
+}
