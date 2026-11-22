@@ -1,0 +1,23 @@
+name: V3.8 Independent Verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Verification bootstrap
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "V3.8 independent verification bootstrap"
+          echo "Transaction confirmation: DISABLED"
+          echo "Automatic retry: DISABLED"
+          echo "Step 2 authorization: BLOCKED"
+          echo "Evidence verification: NOT CONFIGURED"
