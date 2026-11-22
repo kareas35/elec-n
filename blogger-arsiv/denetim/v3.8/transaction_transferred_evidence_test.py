@@ -63,6 +63,24 @@ class TransferredEvidenceTests(unittest.TestCase):
 
         # Gecerli kanittan turetilen olumsuz senaryolar
         fingerprint = hashlib.sha256(public).hexdigest()
+        second_payload = confirmation_payload(
+            "test-335", digest(intent), 2,
+            digest(attempt), "IN_PROGRESS"
+        )
+        second_data = dict(
+            data,
+            payload=second_payload,
+            signature=private.sign(
+                canonical_bytes(second_payload)
+            ).hex(),
+        )
+        second_check = inspect_transferred_evidence(
+            second_data, fingerprint
+        )
+        self.assertEqual(second_check["status"], "BLOCKED")
+        self.assertFalse(second_check["transaction_confirmed"])
+        self.assertFalse(second_check["automatic_retry"])
+
         cases = [
             ("changed_state", dict(data, state="COMPLETED"), fingerprint),
             ("fake_signature", dict(data, signature="00" * 64), fingerprint),

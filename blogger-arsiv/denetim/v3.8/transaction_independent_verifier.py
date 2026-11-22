@@ -92,6 +92,9 @@ def inspect_transferred_evidence(data, expected_fingerprint):
         state = data["state"]
         number = data["payload"]["step"]
 
+        if type(number) is not int or number != 1:
+            return blocked
+
         if i.get("version") != 1 or i.get("status") != "IN_FLIGHT":
             return blocked
         if a.get("operation_id") != i.get("operation_id"):
