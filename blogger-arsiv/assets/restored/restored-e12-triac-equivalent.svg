@@ -1,50 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-viewBox="0 0 640 330" width="640" height="330">
-<title>Triyak ve ters paralel SCR eşdeğeri - restorasyon taslağı</title>
-<desc>Solda triyak sembolü, sağda iki SCR'nin işlevsel ters paralel eşdeğeri. Orijinal görsel değildir.</desc>
-
-<g fill="none" stroke="#111" stroke-width="3"
-stroke-linecap="round" stroke-linejoin="round">
-<!-- Triyak: ana terminaller -->
-<path d="M145 35 V95 M145 195 V265"/>
-<!-- Üst ve alt karşıt yönlü semboller -->
-<path d="M115 95 L175 95 L145 140 Z"/>
-<path d="M115 195 L175 195 L145 150 Z"/>
-<path d="M112 145 H178"/>
-<!-- Gate, MT1 tarafında -->
-<path d="M60 230 H88 L125 185"/>
-
-<!-- Ters paralel SCR: ortak üst ve alt düğümler -->
-<path d="M380 60 H530"/>
-<path d="M380 260 H530"/>
-<!-- SCR 1: üstten alta -->
-<path d="M410 60 V118"/>
-<path d="M382 118 L438 118 L410 157 Z"/>
-<path d="M380 164 H440"/>
-<path d="M410 164 V260"/>
-<!-- SCR 2: alttan üste -->
-<path d="M500 260 V202"/>
-<path d="M472 202 L528 202 L500 163 Z"/>
-<path d="M470 156 H530"/>
-<path d="M500 156 V60"/>
-<!-- Bağımsız gate uçları -->
-<path d="M340 187 H365 L393 158"/>
-<path d="M547 133 H570 L517 158"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-labelledby="title desc">
+<title id="title">Triyak sembolü ve ters paralel iki SCR ile işlevsel karşılaştırma</title>
+<desc id="desc">Solda tek gate uçlu triyakın standart şema sembolü; sağda her biri ayrı gate uçlu iki SCR'nin zıt yönlü paralel gösterimi. İki SCR çizimi triyakın birebir iç yapısı veya birebir eşdeğer bağlantısı değildir.</desc>
+<rect width="800" height="360" fill="white"/>
+<g fill="none" stroke="#18212d" stroke-width="3.6" stroke-linejoin="round" stroke-linecap="round">
+<!-- TRIAC: opposing thyristor triangles and common gate; terminals MT2/MT1 -->
+<path d="M195 55 V105 M195 235 V287"/>
+<path d="M150 111 H240 L195 161 Z"/>
+<path d="M150 230 H240 L195 180 Z"/>
+<path d="M145 169 H245"/>
+<path d="M105 259 H130 L167 210"/>
+<!-- Conceptual pair: common terminals, reverse-parallel main current paths -->
+<path d="M445 65 H650 M445 280 H650"/>
+<!-- SCR left branch: downward conduction -->
+<path d="M495 65 V125 M495 188 V280"/>
+<path d="M465 126 H525 L495 174 Z"/>
+<path d="M461 181 H529"/>
+<path d="M441 201 H458 L480 168"/>
+<!-- SCR right branch: upward conduction -->
+<path d="M610 65 V158 M610 220 V280"/>
+<path d="M580 217 H640 L610 170 Z"/>
+<path d="M575 163 H645"/>
+<path d="M660 136 H648 L625 181"/>
 </g>
-
-<g font-family="Arial,sans-serif" fill="#111" font-size="15">
-<text x="158" y="42">A2 / MT2</text>
-<text x="158" y="266">A1 / MT1</text>
-<text x="43" y="226">G</text>
-<text x="95" y="303">Triyak sembolü</text>
-<text x="440" y="46">MT2</text>
-<text x="440" y="284">MT1</text>
-<text x="328" y="206">G1</text>
-<text x="556" y="125">G2</text>
-<text x="394" y="303">İki ters paralel SCR</text>
+<g font-family="Arial,DejaVu Sans,sans-serif" font-size="19" fill="#18212d">
+<text x="209" y="62">MT2 / A2</text><text x="209" y="291">MT1 / A1</text><text x="88" y="276">G</text>
+<text x="445" y="52">Uç 2</text><text x="445" y="302">Uç 1</text>
+<text x="413" y="225">G1</text><text x="661" y="127">G2</text>
+<text x="123" y="326" font-weight="bold">Triyak: tek gate</text>
+<text x="440" y="326" font-weight="bold">İki SCR: ayrı gate'ler</text>
 </g>
-<text x="320" y="323"
-font-family="Arial,sans-serif" font-size="12" fill="#555">
-İşlevsel eşdeğerlik - gerçek triyakın birebir iç yapısı değildir
-</text>
+<text x="400" y="348" text-anchor="middle" font-family="Arial,DejaVu Sans,sans-serif" font-size="13" fill="#555">İşlevsel benzetimdir; gerçek bağlantı planı veya birebir iç yapı değildir.</text>
 </svg>
