@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" width="460" height="260" role="img" aria-labelledby="title desc">
+<title id="title">NPN ve PNP bipolar transistör sembolleri</title>
+<desc id="desc">Solda NPN, emiter oku dışarı; sağda PNP, emiter oku beyz yönüne içeri. Her iki sembolde B beyz, C kolektör ve E emiterdir.</desc>
+<g fill="none" stroke="#17212b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- NPN: base, collector, emitter -->
+  <path d="M28 113 H90 M90 70 V158 M90 91 L145 55 V27 M90 137 L145 174 V208"/>
+  <!-- NPN emitter arrow, points away from base -->
+  <path d="M125 160 L145 174 L122 171"/>
+  <!-- PNP: base, collector, emitter -->
+  <path d="M255 113 H317 M317 70 V158 M317 91 L372 55 V27 M317 137 L372 174 V208"/>
+  <!-- PNP emitter arrow, points toward base -->
+  <path d="M342 154 L317 137 L327 159"/>
+</g>
+<g fill="#17212b" font-family="Arial, sans-serif" font-size="15">
+  <text x="13" y="103">B</text><text x="154" y="32">C</text><text x="154" y="211">E</text>
+  <text x="240" y="103">B</text><text x="381" y="32">C</text><text x="381" y="211">E</text>
+</g>
+<g fill="#17212b" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="bold">
+  <text x="100" y="245">NPN</text><text x="327" y="245">PNP</text>
+</g>
+</svg>
