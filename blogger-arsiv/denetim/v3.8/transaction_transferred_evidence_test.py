@@ -86,6 +86,22 @@ class TransferredEvidenceTests(unittest.TestCase):
             ("fake_signature", dict(data, signature="00" * 64), fingerprint),
             ("wrong_fingerprint", data, "0" * 64),
         ]
+        cases.extend([
+            (
+                "wrong_expected_state",
+                dict(data, attempt=dict(
+                    attempt, expected_state="IN_PROGRESS"
+                )),
+                fingerprint,
+            ),
+            (
+                "wrong_target_state",
+                dict(data, attempt=dict(
+                    attempt, target_state="RECOVERED"
+                )),
+                fingerprint,
+            ),
+        ])
         for name, altered, fp in cases:
             with self.subTest(test_tampered_cases=name):
                 outcome = inspect_transferred_evidence(altered, fp)

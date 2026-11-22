@@ -94,6 +94,10 @@ def inspect_transferred_evidence(data, expected_fingerprint):
 
         if type(number) is not int or number != 1:
             return blocked
+        if (a.get("expected_state") != "PREPARED"
+                or a.get("target_state") != "IN_PROGRESS"
+                or state != "IN_PROGRESS"):
+            return blocked
 
         if i.get("version") != 1 or i.get("status") != "IN_FLIGHT":
             return blocked
