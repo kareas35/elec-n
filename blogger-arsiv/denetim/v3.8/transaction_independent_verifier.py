@@ -142,3 +142,40 @@ def inspect_transferred_evidence(data, expected_fingerprint):
         }
     except (KeyError, ValueError, TypeError, AttributeError):
         return blocked
+
+
+def inspect_live_files(bundle, live_dir, csv_path, expected_state):
+    """HTML/CSV sonucunu yeniden okur; transaction onayi vermez."""
+    from pathlib import Path
+
+    blocked = {
+        "status": "BLOCKED",
+        "transaction_confirmed": False,
+        "automatic_retry": False,
+    }
+
+    validators = {
+        "COMPLETED": (
+            "transaction_completion_test", "verify_completion"
+        ),
+        "RECOVERED": (
+            "transaction_recovery_validator", "verify_recovered"
+        ),
+    }
+
+    if expected_state not in validators:
+        return blocked
+
+    try:
+        from importlib import import_module
+        module_name, function_name = validators[expected_state]
+        verifier = getattr(import_module(module_name), function_name)
+        verifier(Path(bundle), Path(live_dir), Path(csv_path))
+    except (OSError, ValueError, KeyError, TypeError, ImportError, AttributeError):
+        return blocked
+
+    return {
+        "status": "LIVE_FILES_REVIEW_REQUIRED",
+        "transaction_confirmed": False,
+        "automatic_retry": False,
+    }
