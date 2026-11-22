@@ -102,6 +102,29 @@ class TransferredEvidenceTests(unittest.TestCase):
                 fingerprint,
             ),
         ])
+        cases.extend([
+            (
+                "changed_write_status",
+                dict(data, write_result=dict(
+                    result, status="VERIFIED"
+                )),
+                fingerprint,
+            ),
+            (
+                "changed_attempt_hash",
+                dict(data, write_result=dict(
+                    result, attempt_sha256="0" * 64
+                )),
+                fingerprint,
+            ),
+            (
+                "fake_transaction_confirmation",
+                dict(data, write_result=dict(
+                    result, transaction_confirmed=True
+                )),
+                fingerprint,
+            ),
+        ])
         for name, altered, fp in cases:
             with self.subTest(test_tampered_cases=name):
                 outcome = inspect_transferred_evidence(altered, fp)
