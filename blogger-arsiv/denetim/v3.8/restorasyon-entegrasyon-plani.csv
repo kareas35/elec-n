@@ -1,8 +1,8 @@
 ﻿Original,Publication,Restored,Status,Integrated
 e5.gif,298.html,restored-e5-capacitors.svg,integrated_pending_final_review,true
 e6.gif,168.html,restored-e6-diodes.svg,integrated_pending_final_review,true
-e7.gif,075.html,restored-e7-transistors.svg,technical_review,false
-e8.gif,075.html,restored-e8-lamp-circuit.svg,technical_review,false
+e7.gif,075.html,restored-e7-transistors.svg,integrated_pending_final_review,true
+e8.gif,075.html,restored-e8-lamp-circuit.svg,integrated_pending_final_review,true
 e12.gif,176.html,restored-e12-triac-equivalent.svg,technical_review,false
 e13.gif,176.html,restored-e13-triac-test-circuit.svg,blocked_not_equivalent,false
 e14.gif,100.html,restored-e14-ldr.svg,integrated_pending_final_review,true

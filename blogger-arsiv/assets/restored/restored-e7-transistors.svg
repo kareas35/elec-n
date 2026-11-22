@@ -1,30 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-viewBox="0 0 440 260" width="440" height="260">
-<title>NPN ve PNP transistör sembolleri - restorasyon</title>
-<g fill="none" stroke="#111" stroke-width="3"
-stroke-linecap="round" stroke-linejoin="round">
-<!-- NPN -->
-<path d="M35 110 H85 M85 65 V155"/>
-<path d="M85 90 L135 65 V25"/>
-<path d="M85 135 L135 160 V205"/>
-<path d="M113 149 L130 157 L122 145 M130 157 L116 157"/>
-<!-- PNP -->
-<path d="M255 110 H305 M305 65 V155"/>
-<path d="M305 90 L355 65 V25"/>
-<path d="M305 135 L355 160 V205"/>
-<path d="M333 149 L312 139 L320 151 M312 139 L326 139"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 260" width="460" height="260" role="img" aria-labelledby="title desc">
+<title id="title">NPN ve PNP bipolar transistör sembolleri</title>
+<desc id="desc">Solda NPN, emiter oku dışarı; sağda PNP, emiter oku beyz yönüne içeri. Her iki sembolde B beyz, C kolektör ve E emiterdir.</desc>
+<g fill="none" stroke="#17212b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- NPN: base, collector, emitter -->
+  <path d="M28 113 H90 M90 70 V158 M90 91 L145 55 V27 M90 137 L145 174 V208"/>
+  <!-- NPN emitter arrow, points away from base -->
+  <path d="M125 160 L145 174 L122 171"/>
+  <!-- PNP: base, collector, emitter -->
+  <path d="M255 113 H317 M317 70 V158 M317 91 L372 55 V27 M317 137 L372 174 V208"/>
+  <!-- PNP emitter arrow, points toward base -->
+  <path d="M342 154 L317 137 L327 159"/>
 </g>
-<g font-family="Arial,sans-serif" fill="#111"
-font-size="16" text-anchor="middle">
-<text x="110" y="238">NPN</text>
-<text x="330" y="238">PNP</text>
+<g fill="#17212b" font-family="Arial, sans-serif" font-size="15">
+  <text x="13" y="103">B</text><text x="154" y="32">C</text><text x="154" y="211">E</text>
+  <text x="240" y="103">B</text><text x="381" y="32">C</text><text x="381" y="211">E</text>
 </g>
-<g font-family="Arial,sans-serif" fill="#444" font-size="12">
-<text x="22" y="104">B</text>
-<text x="142" y="28">C</text>
-<text x="142" y="208">E</text>
-<text x="242" y="104">B</text>
-<text x="362" y="28">C</text>
-<text x="362" y="208">E</text>
+<g fill="#17212b" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" font-weight="bold">
+  <text x="100" y="245">NPN</text><text x="327" y="245">PNP</text>
 </g>
 </svg>

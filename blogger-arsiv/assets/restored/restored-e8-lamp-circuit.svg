@@ -1,37 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-viewBox="0 0 400 350" width="400" height="350">
-<title>Anahtar kontrollü NPN transistörlü lamba devresi - restorasyon</title>
-<g fill="none" stroke="#111" stroke-width="3"
-stroke-linecap="round" stroke-linejoin="round">
-<!-- Pozitif besleme -->
-<path d="M65 45 H285 V75 M65 45 V205"/>
-<!-- Lamba -->
-<circle cx="285" cy="100" r="25"/>
-<path d="M268 83 L302 117 M302 83 L268 117"/>
-<path d="M285 125 V170"/>
-<!-- NPN transistör -->
-<path d="M230 180 V260"/>
-<path d="M230 200 L285 170"/>
-<path d="M230 240 L285 270"/>
-<path d="M262 258 L280 267 L272 253 M280 267 L266 267"/>
-<path d="M285 270 V305"/>
-<!-- Toprak -->
-<path d="M265 305 H305 M273 313 H297 M281 321 H289"/>
-<!-- Anahtar (açık) -->
-<path d="M65 205 H105 M105 205 L140 190 M145 205 H165"/>
-<circle cx="105" cy="205" r="3" fill="#111"/>
-<circle cx="145" cy="205" r="3" fill="#111"/>
-<!-- Beyz direnci -->
-<path d="M165 205 H175 L183 195 L195 215 L207 195 L219 215 L231 205"/>
-<!-- Beyz bağlantısı -->
-<path d="M231 205 H230"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 355" width="500" height="355" role="img" aria-labelledby="title desc">
+<title id="title">Anahtar kontrollü NPN transistörlü lamba devresi</title>
+<desc id="desc">Pozitif beslemeye bağlı lamba NPN transistörün kolektörüne, emiter sıfır volta bağlıdır. Açık anahtar ve beyz direnciyle kontrol edilir. Anahtar kapandığında lambanın yanması amaçlanır.</desc>
+<g fill="none" stroke="#17212b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- supply and lamp loop -->
+  <path d="M65 48 H305 V84 M65 48 V207"/>
+  <circle cx="305" cy="111" r="27"/>
+  <path d="M285 91 L325 131 M325 91 L285 131 M305 138 V180"/>
+  <!-- NPN transistor: collector meets lamp; emitter joins 0V -->
+  <path d="M243 184 V265 M243 207 L305 180 M243 241 L305 273 V302"/>
+  <path d="M277 260 L305 273 L292 247"/>
+  <!-- 0V reference -->
+  <path d="M282 302 H328 M290 311 H320 M299 320 H311"/>
+  <!-- open SPST switch on the positive control rail -->
+  <path d="M65 207 H101 M103 207 L144 188 M149 207 H166"/>
+  <circle cx="103" cy="207" r="3" fill="#17212b"/>
+  <circle cx="149" cy="207" r="3" fill="#17212b"/>
+  <!-- base resistor, connected at both ends -->
+  <path d="M166 207 H176 L184 195 L195 219 L206 195 L217 219 L228 207 H243"/>
 </g>
-<g font-family="Arial,sans-serif" font-size="15" fill="#111">
-<text x="76" y="32">+V</text>
-<text x="317" y="105">Lamba</text>
-<text x="295" y="215">NPN</text>
-<text x="180" y="187">Rb</text>
-<text x="65" y="237">Anahtar</text>
-<text x="310" y="309">0V</text>
+<g fill="#17212b" font-family="Arial, sans-serif" font-size="16">
+  <text x="74" y="35">+V</text>
+  <text x="344" y="116">Lamba</text>
+  <text x="327" y="224">NPN</text>
+  <text x="189" y="181">Rb</text>
+  <text x="65" y="243">Anahtar</text>
+  <text x="344" y="311">0V</text>
 </g>
+<g fill="#465465" font-family="Arial, sans-serif" font-size="12"><text x="65" y="342">Şematik çizim • Anahtar açık konumda gösterilmiştir</text></g>
 </svg>
