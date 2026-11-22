@@ -2,6 +2,11 @@ name: V3.8 Independent Verification
 
 on:
   workflow_dispatch:
+    inputs:
+      evidence_json:
+        description: "Small JSON evidence package - review only"
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -12,6 +17,24 @@ jobs:
     timeout-minutes: 5
 
     steps:
+      - name: Checkout pinned verifier
+        uses: actions/checkout@v4
+        with:
+          ref: ad49bd1df3c7c0945c72c7f4f9eeb3a4a1004072
+          persist-credentials: false
+
+      - name: Review evidence package
+        shell: bash
+        env:
+          EVIDENCE_JSON: ${{ inputs.evidence_json }}
+        run: |
+          set -euo pipefail
+          if [ -z "$EVIDENCE_JSON" ]; then
+            echo "BLOCKED: Evidence package missing"
+            exit 1
+          fi
+          printf '%s' "$EVIDENCE_JSON" > "$RUNNER_TEMP/v38-evidence.json"
+          python3 blogger-arsiv/denetim/v3.8/transaction_evidence_review.py "$RUNNER_TEMP/v38-evidence.json"
       - name: Verification bootstrap
         shell: bash
         run: |
