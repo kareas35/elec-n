@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "purpose": "V38_VERIFIER_REFERENCE",
+  "repository": "kareas35/elec-n",
+  "verifier_commit": "ad49bd1df3c7c0945c72c7f4f9eeb3a4a1004072",
+  "workflow": "v38-independent-verification.yml",
+  "transaction_confirmation_enabled": false,
+  "next_step_authorized": false
+}
