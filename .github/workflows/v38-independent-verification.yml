@@ -27,3 +27,16 @@ jobs:
           echo "Transaction confirmation: DISABLED"
           echo "Automatic retry: DISABLED"
           echo "Step 2 authorization: BLOCKED"
+
+      - name: Review evidence package
+        shell: bash
+        run: |
+          set -euo pipefail
+          PACKAGE="v38-evidence-package.json"
+
+          if [ ! -f "$PACKAGE" ]; then
+            echo "BLOCKED: Evidence package missing"
+            exit 1
+          fi
+
+          python3 blogger-arsiv/denetim/v3.8/transaction_evidence_review.py "$PACKAGE"
