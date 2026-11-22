@@ -13,7 +13,7 @@ stroke-linecap="round" stroke-linejoin="round">
   <path d="M245 90 H305"/>
   <path d="M305 55 V125"/>
   <path d="M328 60 Q345 90 328 120"/>
-  <path d="M328 90 H390"/>
+  <path d="M336.5 90 H390"/>
 
   <!-- Plus sign -->
   <path d="M281 42 V58"/>

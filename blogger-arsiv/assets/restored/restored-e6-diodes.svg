@@ -6,16 +6,16 @@ stroke-linecap="round" stroke-linejoin="round">
   <!-- Normal diode -->
   <path d="M30 90 H100"/>
   <path d="M100 55 L155 90 L100 125 Z"/>
-  <path d="M165 55 V125"/>
-  <path d="M165 90 H225"/>
+  <path d="M155 55 V125"/>
+  <path d="M155 90 H225"/>
 
   <!-- Zener diode -->
   <path d="M240 90 H300"/>
   <path d="M300 55 L355 90 L300 125 Z"/>
-  <path d="M365 60 L378 52"/>
-  <path d="M365 120 L378 112"/>
-  <path d="M365 55 V125"/>
-  <path d="M365 90 H415"/>
+  <path d="M355 55 L368 47"/>
+  <path d="M355 125 L342 133"/>
+  <path d="M355 55 V125"/>
+  <path d="M355 90 H415"/>
 </g>
 
 <g font-family="Arial,sans-serif" fill="#111" font-size="16" text-anchor="middle">
