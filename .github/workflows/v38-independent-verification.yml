@@ -1,0 +1,29 @@
+name: V3.8 Independent Verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Inspect verification environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "V3.8 independent verification environment"
+          echo "Commit: ${GITHUB_SHA}"
+          echo "Runner: ${RUNNER_OS}"
+          echo "Transaction confirmation: DISABLED"
+          echo "Automatic retry: DISABLED"
+          echo "Step 2 authorization: BLOCKED"
