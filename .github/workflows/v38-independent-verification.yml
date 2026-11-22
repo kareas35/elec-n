@@ -4,43 +4,99 @@ on:
   workflow_dispatch:
     inputs:
       evidence_json:
-        description: "Small JSON evidence package - review only"
-        required: false
+        description: "Non-sensitive evidence JSON - review only"
+        required: true
         type: string
 
 permissions:
   contents: read
 
 jobs:
-  bootstrap:
+  inspect:
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
+      - name: Require trusted reference
+        shell: bash
+        env:
+          REF_COMMIT: ${{ vars.V38_REFERENCE_COMMIT }}
+          REF_MANIFEST: ${{ vars.V38_REFERENCE_MANIFEST }}
+          REF_HTML_DIR: ${{ vars.V38_REFERENCE_HTML_DIR }}
+          REF_CSV: ${{ vars.V38_REFERENCE_CSV }}
+        run: |
+          set -euo pipefail
+          [[ "$REF_COMMIT" =~ ^[0-9a-f]{40}$ ]] || exit 1
+          [[ -n "$REF_MANIFEST" && -n "$REF_HTML_DIR" && -n "$REF_CSV" ]] || exit 1
+
       - name: Checkout pinned verifier
         uses: actions/checkout@v4
         with:
-          ref: ad49bd1df3c7c0945c72c7f4f9eeb3a4a1004072
+          ref: 9fc4591376590865935b678fd1b35a117c030b01
+          path: verifier
           persist-credentials: false
 
-      - name: Review evidence package
+      - name: Checkout reference data
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ vars.V38_REFERENCE_COMMIT }}
+          path: reference
+          persist-credentials: false
+
+      - name: Verify journal and file integrity
         shell: bash
         env:
           EVIDENCE_JSON: ${{ inputs.evidence_json }}
+          REF_MANIFEST: ${{ vars.V38_REFERENCE_MANIFEST }}
+          REF_HTML_DIR: ${{ vars.V38_REFERENCE_HTML_DIR }}
+          REF_CSV: ${{ vars.V38_REFERENCE_CSV }}
         run: |
           set -euo pipefail
-          if [ -z "$EVIDENCE_JSON" ]; then
-            echo "BLOCKED: Evidence package missing"
-            exit 1
-          fi
-          printf '%s' "$EVIDENCE_JSON" > "$RUNNER_TEMP/v38-evidence.json"
-          python3 blogger-arsiv/denetim/v3.8/transaction_evidence_review.py "$RUNNER_TEMP/v38-evidence.json"
-      - name: Verification bootstrap
-        shell: bash
-        run: |
-          set -euo pipefail
-          echo "V3.8 independent verification bootstrap"
-          echo "Transaction confirmation: DISABLED"
-          echo "Automatic retry: DISABLED"
-          echo "Step 2 authorization: BLOCKED"
-          echo "Evidence verification: NOT CONFIGURED"
+          python3 - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          base = Path("reference").resolve(strict=True)
+
+          def selected(name):
+              raw = os.environ[name]
+              path = Path(raw)
+              if path.is_absolute() or not raw or ".." in path.parts:
+                  raise ValueError("Unsafe reference path")
+              result = (base / path).resolve(strict=True)
+              if not result.is_relative_to(base):
+                  raise ValueError("Reference path escapes checkout")
+              return result
+
+          module_dir = Path(
+              "verifier/blogger-arsiv/denetim/v3.8"
+          ).resolve()
+          sys.path.insert(0, str(module_dir))
+
+          from transaction_evidence_integrity import inspect_against_files
+
+          raw = os.environ.get("EVIDENCE_JSON", "")
+          if not raw or len(raw.encode("utf-8")) > 10240:
+              raise SystemExit("BLOCKED: Missing or oversized evidence")
+
+          try:
+              package = json.loads(raw)
+              outcome = inspect_against_files(
+                  package,
+                  selected("REF_MANIFEST"),
+                  selected("REF_HTML_DIR"),
+                  selected("REF_CSV")
+              )
+          except (OSError, ValueError, KeyError, TypeError):
+              raise SystemExit("BLOCKED: Invalid evidence or reference")
+
+          print(json.dumps(outcome, sort_keys=True))
+
+          if outcome["status"] != "FILES_MATCH_REVIEW_REQUIRED":
+              raise SystemExit(1)
+
+          print("REVIEW_REQUIRED: No transaction confirmation")
+          print("STEP_2: BLOCKED")
+          PY
