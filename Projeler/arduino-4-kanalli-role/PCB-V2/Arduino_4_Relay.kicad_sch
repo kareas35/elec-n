@@ -144238,17 +144238,10 @@
 					)
 				)
 	)
-	(global_label "+5V"
-		(shape input)
-		(at 15.240 34.290 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "395789f4-69b2-43de-84cf-95a9adbbf806")
-	)
+	(no_connect
+        (at 15.240 34.290)
+        (uuid "8cfef417-0673-495c-a163-8db36ef8f5c4")
+)
 	(global_label "GND"
 		(shape input)
 		(at 15.240 36.830 0)
