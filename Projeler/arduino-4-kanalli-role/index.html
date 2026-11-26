@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Arduino Uno ve ULN2003A ile dört kanallı röle kartı: devre şeması, PCB, Arduino kodu, SimulIDE projesi ve eğitim amaçlı etkileşimli gösterim." name="description"/><title>Arduino ile 4 Kanallı Röle Kartı | Elektronik Akademi</title><style>
+:root{color-scheme:light;--ink:#122336;--muted:#526576;--deep:#10283a;--blue:#067fa4;--accent:#ffb647;--paper:#f6fafc;--border:#dce7ee;--good:#119078}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}a{color:#006f94}a:hover{text-decoration-thickness:2px}header{background:linear-gradient(125deg,#112638,#174b63);color:white;padding:48px max(24px,calc((100vw - 1100px)/2)) 42px}header .eyebrow{color:#95e2ed;letter-spacing:.16em;font-size:.75rem;font-weight:700}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;margin:16px 0}header p{max-width:780px;color:#d4e6ef;font-size:1.12rem}main{max-width:1100px;margin:auto;padding:22px 22px 65px}nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}nav a{background:white;border:1px solid var(--border);border-radius:30px;padding:7px 13px;text-decoration:none;font-size:.9rem;color:var(--ink)}section{background:white;border:1px solid var(--border);border-radius:18px;padding:clamp(18px,3vw,32px);margin:20px 0;box-shadow:0 3px 12px #1233}h2{font-size:1.55rem;line-height:1.25;margin:0 0 14px}h3{font-size:1.1rem;margin:1.2em 0 .4em}p{margin:.7em 0}figure{margin:20px 0}figure img{display:block;max-width:100%;height:auto;border-radius:10px;border:1px solid var(--border);background:#fff}figure figcaption{color:var(--muted);font-size:.87rem;margin-top:9px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.mini{padding:16px;border:1px solid var(--border);border-radius:12px;background:#fbfdff}.mini strong{display:block;font-size:1.08rem}.mini span{color:var(--muted);font-size:.88rem}.notice{border-left:4px solid #db8f24;background:#fffaf0;padding:13px 16px;border-radius:5px}.success{border-left:4px solid var(--good);padding:13px 16px;background:#f1fbf8;border-radius:5px}.mono,code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}pre{overflow:auto;background:#11283a;color:#eaf9ff;padding:18px;border-radius:10px;font-size:.84rem;line-height:1.55}table{border-collapse:collapse;width:100%;font-size:.92rem}th,td{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left}th{background:#f5fafc}ul{padding-left:22px}.button{display:inline-flex;padding:8px 13px;margin:5px 5px 5px 0;border:1px solid #a8ccdc;border-radius:8px;background:#eff9fd;color:#075b77;text-decoration:none;font-weight:650;font-size:.9rem}.button:hover{background:#def4fd}.lab{background:#f0f7fb;border:1px solid var(--border);padding:18px;border-radius:14px}.relaygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.relay{text-align:center;padding:15px 8px;border:2px solid #cbd9df;border-radius:12px;background:white}.relay.on{border-color:var(--good);background:#e9fff8}.light{width:32px;height:32px;background:#d5dce0;border-radius:50%;margin:9px auto;box-shadow:inset 0 2px 6px #aaa}.relay.on .light{background:#1acf8a;box-shadow:0 0 14px #1acf8a}.relay button{cursor:pointer;border:1px solid #8fb9c9;background:#f4fbff;border-radius:9px;padding:8px 12px;color:#123;font-weight:700}.controls{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}.controls button{cursor:pointer;padding:10px 14px;border:1px solid #8ab3c6;border-radius:9px;background:white;color:#123;font-weight:700}.controls button.primary{background:#086b8a;border-color:#086b8a;color:white}#status{margin-top:12px;color:#38566a;font-size:.94rem}.downloadgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.footer{font-size:.88rem;color:#576874;text-align:center;margin:28px 0}.tag{display:inline-block;border-radius:30px;padding:5px 10px;background:#e1f4f6;color:#0d566b;font-weight:700;font-size:.8rem;margin-right:6px}@media(max-width:700px){.grid,.grid3,.downloadgrid{grid-template-columns:1fr}.relaygrid{grid-template-columns:repeat(2,1fr)}header{padding:38px 22px}section{margin:14px 0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}</style><style>
+/* Eğitim sayfası: ikinci sürüm */
+.hero-link{display:inline-flex;align-items:center;gap:8px;margin:16px 0 2px;padding:12px 18px;border-radius:12px;background:#ffe3a6;color:#14334a;font-weight:800;text-decoration:none;border:1px solid #f3c16b}
+.hero-link:hover{background:#ffcf7f}.lead-panel{border:1px solid #95bbcd;background:#eaf5fa;border-radius:14px;padding:16px 18px;margin:12px 0 20px}
+.lead-panel p{margin:.3em 0}.downloadgrid{gap:12px}.file-card{display:block;background:#f3faff;border:1px solid #aed3e5;padding:14px 16px;border-radius:12px;color:#063d56;text-decoration:none;transition:background .15s}
+.file-card:hover{background:#e3f3fb}.file-card strong{display:block;font-size:1rem;color:#095774}.file-card span{display:block;font-size:.86rem;line-height:1.45;margin-top:3px;color:#4b6270}.file-card small{display:block;color:#395b6e;margin-top:4px}
+.download-feature{background:linear-gradient(135deg,#0d4963,#0f7588);padding:18px 20px;border-radius:14px;margin:16px 0 22px;color:#fff;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.download-feature p{color:#e2f5fb;margin:3px 0}.download-feature .button{background:#ffe3a6;color:#153549;border-color:#ffd17c;padding:12px 17px;font-size:1rem;margin:0}
+.lab-header{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}.lab-note{color:#31566b;font-size:.88rem}
+.pin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}
+.pin-item{background:#fff;border:1px solid #c7dce7;border-radius:10px;padding:10px;text-align:center}.pin-item b{display:block}.pin-item output{display:block;font:700 1rem ui-monospace,Consolas,monospace;color:#375265}.pin-item.active{border-color:#119078;background:#f0fff9}.pin-item.active output{color:#086a52}
+.contact-state{font-size:.8rem;color:#455d6c;min-height:38px;line-height:1.4;margin:8px 0 0}.status-strip{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0}
+.status-strip label{font-weight:650}.status-strip select{border:1px solid #a1c3d4;border-radius:8px;padding:9px;background:#fff;color:#173347;font:inherit}
+.track{height:9px;background:#cddfe8;border-radius:20px;overflow:hidden;margin-top:12px}.track-fill{height:100%;width:0;background:#0c8c83;transition:width .15s linear}
+.step-title{margin:10px 0 0;color:#355568;font-size:.88rem}.info-inline{background:#fff;border:1px solid #cadfea;border-radius:10px;padding:12px 14px;margin-top:14px}
+@media(max-width:700px){.pin-grid{grid-template-columns:repeat(2,1fr)}.download-feature .button{width:100%;justify-content:center}}
+</style><style>
+/* Ana sitedeki ders sayfalarıyla uyumlu renk ve ölçüler */
+:root{--ink:#1d2939;--muted:#536174;--deep:#0e4480;--blue:#1565c0;--accent:#ffb700;--paper:#f4f6f9;--border:#dce4ec;--good:#116b39}
+body{font-family:'Segoe UI',Arial,sans-serif;line-height:1.6}
+header{background:linear-gradient(115deg,#0e4480,#227acb);padding-top:22px;padding-bottom:34px}
+header p{color:#eef6ff}header .eyebrow{color:#e5f3ff}h1{font-size:clamp(2rem,5vw,2.7rem)}
+main{max-width:1100px}.site-links{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.site-links a{color:white;font-weight:650;text-decoration:none;border:1px solid #ffffff72;border-radius:9px;padding:7px 12px}
+.site-links a:hover,.site-links a:focus-visible{background:#ffffff30}
+section{border-radius:16px;box-shadow:0 4px 20px #1229490a}
+nav a:hover{background:#edf5ff}a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #ffb700;outline-offset:3px}
+.button{background:#edf5ff;color:#125196}.controls button.primary{background:#1565c0;border-color:#1565c0}
+.hero-link{background:#ffdd93}.file-card{background:#edf5ff}.footer a{color:#1565c0}
+</style></head><body>
+<header><div class="site-links"><a href="../../index.html">← Elektronik Akademi</a><a href="../../index.html#dersler">Dersler</a><a href="../../index.html#projeler">Uygulama projeleri</a></div><span class="eyebrow">ELEKTRONİK AKADEMİ • UYGULAMA PROJESİ</span><h1>Arduino ile 4 Kanallı Röle Kartı</h1><p>Arduino Uno, ULN2003A ve 5 V rölelerle dört ayrı çıkışın nasıl denetlendiğini öğrenin. Şemayı, baskı devreyi ve Arduino kodunu birlikte inceleyin.</p><span class="tag">Arduino Uno</span><span class="tag">KiCad PCB</span><span class="tag">SimulIDE</span><a class="hero-link" href="#dosyalar">↓ Tüm proje dosyalarını tek ZIP ile indir</a></header>
+<main><nav aria-label="Sayfa bölümleri"><a href="#amac">Proje</a><a href="#devre">Devre şeması</a><a href="#pcb">PCB</a><a href="#deney">Etkileşimli gösterim</a><a href="#kod">Arduino kodu</a><a href="#sim">Simülasyon</a><a href="#dosyalar">Dosyalar</a></nav>
+<section id="amac"><h2>Bu projede ne öğreneceğiz?</h2><p>Bir Arduino'nun dijital çıkışlarıyla röle bobinlerini doğrudan beslemek yerine <strong>ULN2003A sürücü entegresi</strong> kullanılır. Böylece Arduino'dan gelen denetim sinyalleri, 5 V ile beslenen dört ayrı röleyi yönetir.</p><div class="grid3"><div class="mini"><strong>4 kanal</strong><span>Birbirinden bağımsız röle çıkışı</span></div><div class="mini"><strong>D4–D7</strong><span>Arduino Uno denetim pinleri</span></div><div class="mini"><strong>5 V DC</strong><span>Röle bobinleri için besleme</span></div></div><h3>Çalışma akışı</h3><p>Arduino → D4–D7 sayısal çıkışları → ULN2003A → röle bobinleri → COM/NO/NC kontakları. ULN2003A içindeki koruma diyotları, bobin akımı kesildiğinde oluşan ters gerilim darbelerine karşı sürücü devresini korumaya yardımcı olur.</p><div class="notice"><strong>Güvenlik:</strong> Bu çalışma <strong>yalnızca düşük gerilimli, 5 V DC eğitim deneyleri</strong> için sunulmuştur. Röle kontaklarının şebeke gerilimini anahtarlayabilmesi, bu PCB'nin şebekeyle kullanıma uygun olduğu anlamına gelmez. Kartın şebeke tarafı fiziksel olarak doğrulanmamıştır; 230 V bağlantısı yapmayın. Dört röleyi Arduino'nun 5 V pininden beslemeyin; uygun harici 5 V besleme ve ortak GND kullanın.</div></section><section id="deney"><h2>1. Rölelerin çalışma mantığını deneyin</h2><p>Aşağıdaki etkileşimli gösterimde röleleri tek tek açabilir veya Arduino kodundaki zamanlama dizisini izleyebilirsiniz. Arduino pinleri ve kontakların durumu birlikte güncellenir. Bu bir eğitim canlandırmasıdır; elektriksel devre çözümü değildir.</p><div class="lab"><div aria-label="Arduino pinlerinin durumu" class="pin-grid" id="pin-grid">
+<div class="pin-item" id="pin-4"><b>D4 · IN1</b><output>LOW · 0 V</output></div>
+<div class="pin-item" id="pin-5"><b>D5 · IN2</b><output>LOW · 0 V</output></div>
+<div class="pin-item" id="pin-6"><b>D6 · IN3</b><output>LOW · 0 V</output></div>
+<div class="pin-item" id="pin-7"><b>D7 · IN4</b><output>LOW · 0 V</output></div>
+</div><div class="relaygrid" id="relays"><div class="relay" data-i="0"><strong>K1</strong><div aria-hidden="true" class="light"></div><button aria-pressed="false" type="button">Kapalı</button><p class="contact-state" id="contact-1">COM–NC bağlı; COM–NO açık</p></div><div class="relay" data-i="1"><strong>K2</strong><div aria-hidden="true" class="light"></div><button aria-pressed="false" type="button">Kapalı</button><p class="contact-state" id="contact-2">COM–NC bağlı; COM–NO açık</p></div><div class="relay" data-i="2"><strong>K3</strong><div aria-hidden="true" class="light"></div><button aria-pressed="false" type="button">Kapalı</button><p class="contact-state" id="contact-3">COM–NC bağlı; COM–NO açık</p></div><div class="relay" data-i="3"><strong>K4</strong><div aria-hidden="true" class="light"></div><button aria-pressed="false" type="button">Kapalı</button><p class="contact-state" id="contact-4">COM–NC bağlı; COM–NO açık</p></div></div><div class="controls"><button class="primary" id="auto" type="button">Arduino dizisini oynat</button><button id="all-on" type="button">Hepsini aç</button><button id="all-off" type="button">Hepsini kapat</button></div><div class="status-strip"><label for="playback-speed">Oynatma hızı</label><select aria-label="Oynatma hızı" id="playback-speed"><option value="0.5">Yavaş · 0,5×</option><option selected="" value="1">Normal · 1×</option><option value="2">Hızlı · 2×</option></select><span id="step-counter">Adım: 0 / 15</span></div><div aria-hidden="true" class="track"><div class="track-fill" id="track-fill"></div></div><p class="step-title" id="step-title">Hazır — isterseniz röleleri elle açıp kapatın.</p><p aria-live="polite" id="status" role="status">Durum: 0000 — Tüm kanallar kapalı.</p><div class="info-inline"><strong>Ne oluyor?</strong> Arduino çıkışı HIGH olduğunda ULN2003A ilgili bobini enerjilendirir. Röle çekince COM–NO kapanır ve COM–NC açılır. Buradaki gösterim yazılımın mantığını canlandırır; elektriksel simülasyon değildir.</div></div><p><strong>Kontak mantığı:</strong> Röle enerjisizken COM–NC kapalı, COM–NO açıktır. Enerji verildiğinde COM–NO kapanır, COM–NC açılır. Buradaki yeşil ışık röle bobininin enerjili olmasını temsil eder.</p></section>
+<section id="devre"><h2>2. Elektronik devre şeması</h2><p>KiCad'de hazırlanmış şema, dört giriş sinyalinin sürücüye, bobinlere ve gösterge LED'lerine bağlantısını gösterir. Büyüterek inceleyebilir veya PDF olarak açabilirsiniz.</p><figure><a href="docs/Arduino_4_Relay_schematic.svg" rel="noopener" target="_blank"><img alt="Arduino dört kanallı röle devresinin KiCad şeması" loading="lazy" src="docs/Arduino_4_Relay_schematic.svg"/></a><figcaption>Orijinal KiCad şema çıktısı. Ayrıntılı incelemek için görsele tıklayın.</figcaption></figure><a class="button" href="docs/Arduino_4_Relay_schematic.pdf" target="_blank">Şemayı PDF olarak aç</a><a class="button" download="" href="Arduino_4_Relay.kicad_sch">KiCad şema dosyası</a><h3>Pin bağlantıları</h3><table><thead><tr><th>Arduino</th><th>Röle girişi</th><th>J1 terminali</th></tr></thead><tbody><tr><td>D4</td><td>IN1</td><td>3</td></tr><tr><td>D5</td><td>IN2</td><td>4</td></tr><tr><td>D6</td><td>IN3</td><td>5</td></tr><tr><td>D7</td><td>IN4</td><td>6</td></tr><tr><td>GND</td><td>Ortak toprak</td><td>2</td></tr><tr><td>5 V</td><td>Besleme*</td><td>1</td></tr></tbody></table><p><small>* Röleler harici 5 V kaynaktan besleniyorsa J1 pin 1'i Arduino'nun 5 V pinine bağlamayın; GND ortak kalmalıdır.</small></p></section>
+<section id="pcb"><h2>3. Baskı devre (PCB)</h2><div class="grid"><figure><img alt="Arduino dört kanallı röle kartının KiCad üç boyutlu görünümü" loading="lazy" src="docs/pcb_3d.png"/><figcaption>KiCad'den üretilmiş 3B PCB görünümü</figcaption></figure><figure><a href="docs/Arduino_4_Relay_pcb_layers.svg" rel="noopener" target="_blank"><img alt="PCB bakır katmanları ve yolları" loading="lazy" src="docs/Arduino_4_Relay_pcb_layers.svg"/></a><figcaption>PCB katmanları</figcaption></figure></div><p>Kaynak projede kart boyutu <strong>140 × 95 mm</strong>. Üretim dosyaları ve delik dosyası Gerber klasöründe bulunuyor. Bu sayfadaki paylaşım, kartın gerçek üretim veya şebeke güvenliği onayı anlamına gelmez.</p><p class="success"><strong>Tasarım raporları:</strong> Birlikte gelen KiCad ERC ve DRC raporlarında sıfır hata ve sıfır uyarı/ihlal kayıtlı. Bu sonuçlar fiziksel güvenlik, tüm tasarım kuralları veya gerçek çalışmanın doğrulandığı anlamına gelmez; bazı kurallar raporda göz ardı edilmiş.</p></section>
+<section id="kod"><h2>4. Arduino kaynak kodu</h2><p>Program açılışta tüm röleleri kapatır, dört kanalı sırayla açar, tümünü birlikte denetler ve ardından kovalamaca dizisi çalıştırır. Gerçek kod aşağıdadır.</p><pre><code>/*
+ * 4 Kanallı Röle Kartı - Arduino Uno demo yazılımı
+ * ------------------------------------------------
+ * Bağlantı (J1):
+ *   J1-1  +5V   -&gt; Arduino 5V     (4 röle aynı anda enerjiliyse harici 5V/2A önerilir)
+ *   J1-2  GND   -&gt; Arduino GND
+ *   J1-3  IN1   -&gt; D4
+ *   J1-4  IN2   -&gt; D5
+ *   J1-5  IN3   -&gt; D6
+ *   J1-6  IN4   -&gt; D7
+ *
+ * ULN2003A girişi HIGH olduğunda ilgili röle enerjilenir (aktif-YÜKSEK).
+ * Röle kontakları COM/NO/NC için J3..J6 vidalı terminallerini kullanın.
+ * Şebeke gerilimi ile çalıştıracaksanız kartı koruyun ve ölçümleri dikkatli yapın.
+ */
+
+const byte RELAY_PINS[4] = {4, 5, 6, 7};
+const byte RELAY_ON  = HIGH;
+const byte RELAY_OFF = LOW;
+
+void setRelay(byte channel, bool on) {
+  if (channel &gt;= 4) return;
+  digitalWrite(RELAY_PINS[channel], on ? RELAY_ON : RELAY_OFF);
+}
+
+void allOff() {
+  for (byte i = 0; i &lt; 4; i++) setRelay(i, false);
+}
+
+void allOn() {
+  for (byte i = 0; i &lt; 4; i++) setRelay(i, true);
+}
+
+void printState(const char* label) {
+  Serial.print(label);
+  Serial.print(" -&gt; ");
+  for (byte i = 0; i &lt; 4; i++) {
+    Serial.print(digitalRead(RELAY_PINS[i]) == RELAY_ON ? '1' : '0');
+  }
+  Serial.println();
+}
+
+void setup() {
+  Serial.begin(9600);
+  for (byte i = 0; i &lt; 4; i++) pinMode(RELAY_PINS[i], OUTPUT);
+  allOff();                       // açılışta tüm röleler kapalı
+  printState("Baslangic");
+}
+
+void loop() {
+  // Sıralı tekil açma: her kanal 0.5 s
+  for (byte i = 0; i &lt; 4; i++) {
+    setRelay(i, true);
+    printState("Tekil");
+    delay(500);
+    setRelay(i, false);
+  }
+
+  // Hepsi açık, sonra kapalı
+  allOn();
+  printState("TumuAcik");
+  delay(500);
+  allOff();
+  printState("TumuKapali");
+  delay(1000);
+
+  // Kovalamaca (chase): 8 x 0.25 s
+  for (byte step = 0; step &lt; 8; step++) {
+    allOff();
+    setRelay(step % 4, true);
+    if (step &gt;= 4) setRelay((step + 2) % 4, true);
+    printState("Kovalamaca");
+    delay(250);
+  }
+
+  allOff();
+  printState("Bekleme");
+  delay(2000);
+}
+</code></pre><a class="button" download="" href="firmware/Arduino_4_Relay/Arduino_4_Relay.ino">Arduino kodunu indir (.ino)</a><a class="button" download="" href="firmware/Arduino_4_Relay.ino.hex">Derlenmiş HEX dosyası</a></section>
+<section id="sim"><h2>5. SimulIDE simülasyonu</h2><div class="grid"><figure><img alt="SimulIDE yazılımında dört kanallı röle devresi çalışırken ekran görüntüsü" loading="lazy" src="docs/simulide_running.png"/><figcaption>Kaynak dosyadaki SimulIDE çalışma ekran görüntüsü</figcaption></figure><figure><img alt="Dört röle kanalının zamana göre elektriksel simülasyon grafiği" loading="lazy" src="simulation/transient.png"/><figcaption>Geçici rejim simülasyon sonucu</figcaption></figure></div><p>Orijinal SimulIDE devresini masaüstündeki SimulIDE uygulamasında açabilirsiniz. Simülasyon dosyasıyla birlikte derlenmiş Arduino HEX dosyasını da alın; ikisi aynı klasörde bulunmalıdır.</p><a class="button" download="" href="simulation/simulide/Arduino_4_Relay.sim1">SimulIDE projesi (.sim1)</a><a class="button" download="" href="simulation/simulide/Arduino_4_Relay.ino.hex">SimulIDE için HEX dosyası</a><p><small>Not: SimulIDE çalışması bu sayfanın içinde değil, SimulIDE uygulamasında gerçekleşir. Ekran görüntüsü ve proje dosyası kaynak paketten alınmıştır; burada yeniden çalıştırma testi yapılmadı.</small></p></section>
+<section id="dosyalar"><h2>6. Proje dosyalarını indirin</h2><p>Kaynakları tek seferde indirebilir ya da yalnızca ihtiyacınız olan dosyayı seçebilirsiniz. ZIP dosyası KiCad, Arduino, SimulIDE, simülasyon grafikleri, Gerber katmanları ve teknik raporları içerir.</p>
+<div class="download-feature"><div><strong>Tüm kaynak proje — tek dosya</strong><p>Orijinal proje dosyaları ve üretim çıktıları · çevrimdışı kullanılabilir.</p></div><a class="button" download="" href="Arduino_4_Relay_Tum_Kaynaklar.zip">ZIP paketini indir</a></div>
+<h3>Dosyaları ayrı ayrı indirin</h3><div class="downloadgrid">
+<a class="file-card" download="" href="Arduino_4_Relay.kicad_sch"><strong>KiCad devre şeması</strong><span>Devrenin bağlantılarını ve elemanlarını KiCad'de inceleyin veya düzenleyin.</span><small>.kicad_sch</small></a>
+<a class="file-card" download="" href="Arduino_4_Relay.kicad_pcb"><strong>KiCad PCB</strong><span>Bakır yollarını, eleman yerleşimini ve kart tasarımını inceleyin.</span><small>.kicad_pcb</small></a>
+<a class="file-card" download="" href="firmware/Arduino_4_Relay/Arduino_4_Relay.ino"><strong>Arduino kaynak kodu</strong><span>Röleleri kontrol eden yazılımı Arduino IDE'de açın ve düzenleyin.</span><small>.ino</small></a>
+<a class="file-card" download="" href="docs/bom.csv"><strong>Parça listesi (BOM)</strong><span>Röle, direnç, LED, konnektör ve diğer bileşenlerin listesi.</span><small>.csv</small></a>
+<a class="file-card" download="" href="simulation/simulide/Arduino_4_Relay.sim1"><strong>SimulIDE projesi</strong><span>Elektronik devreyi SimulIDE programında açın. HEX dosyasına da ihtiyaç duyar.</span><small>.sim1</small></a>
+<a class="file-card" download="" href="simulation/simulide/Arduino_4_Relay.ino.hex"><strong>SimulIDE firmware</strong><span>SimulIDE devresindeki Arduino'ya yüklenecek derlenmiş program.</span><small>.hex</small></a>
+<a class="file-card" download="" href="simulation/relay4_arduino.cir"><strong>SPICE devre dosyası</strong><span>Geçici rejim hesaplamasında kullanılan elektriksel model.</span><small>.cir</small></a>
+<a class="file-card" download="" href="simulation/animation.gif"><strong>Simülasyon animasyonu</strong><span>Çıkışların zamana göre değişimini gösteren görsel çıktı.</span><small>.gif</small></a>
+<a class="file-card" download="" href="netlist.net"><strong>Netlist</strong><span>Devre elemanlarının hangi düğümlere bağlı olduğunu tanımlayan dosya.</span><small>.net</small></a>
+<a class="file-card" download="" href="README.md"><strong>Orijinal proje açıklaması</strong><span>Bağlantılar, çalıştırma adımları, bağımlılıklar ve güvenlik notları.</span><small>.md</small></a>
+</div><p><strong>Gerber notu:</strong> Tek başına <code>.gbrjob</code> dosyası PCB üretimi için yeterli değildir. Gerber katmanlarının tamamı ve delik dosyası ZIP içindeki <code>gerber/</code> klasöründedir. Bu üretim dosyaları fiziksel olarak onaylanmış değildir.</p></section><div class="footer">Elektronik Akademi • Eğitim amaçlı önizleme • Fiziksel üretim ve şebeke bağlantısı onaylanmamıştır<p><a href="../../index.html#projeler">← Uygulama projelerine dön</a></p></div></main>
+<script>(()=>{
+'use strict';
+let states=[false,false,false,false],timer=null,step=0,total=0;
+const cards=Array.from(document.querySelectorAll('.relay'));
+const status=document.getElementById('status');
+const auto=document.getElementById('auto');
+const counter=document.getElementById('step-counter');
+const title=document.getElementById('step-title');
+const track=document.getElementById('track-fill');
+const speed=document.getElementById('playback-speed');
+const allOff=[false,false,false,false];
+function render(message){
+ cards.forEach((card,i)=>{
+   const on=states[i],btn=card.querySelector('button');
+   card.classList.toggle('on',on);
+   btn.textContent=on?'Açık':'Kapalı';btn.setAttribute('aria-pressed',String(on));
+   document.getElementById('contact-'+(i+1)).textContent=on?'COM–NO bağlı; COM–NC açık':'COM–NC bağlı; COM–NO açık';
+   const pin=document.getElementById('pin-'+(i+4));
+   pin.classList.toggle('active',on);
+   pin.querySelector('output').textContent=on?'HIGH · 5 V':'LOW · 0 V';
+ });
+ const bits=states.map(x=>x?'1':'0').join('');
+ status.textContent='Durum: '+bits+' — '+message;
+ title.textContent=message;
+ counter.textContent='Adım: '+step+' / '+(total||15);
+ track.style.width=(total?Math.round(100*step/total):0)+'%';
+}
+function stop(){if(timer!==null){clearTimeout(timer);timer=null;}auto.textContent='Arduino dizisini oynat';}
+function update(next,msg){states=next.slice();render(msg);}
+function sequence(){
+ const q=[];
+ for(let i=0;i<4;i++){
+   const mask=allOff.slice();mask[i]=true;
+   q.push({s:mask,ms:500,msg:'Kanal '+(i+1)+' açık (0,5 saniye)'});
+ }
+ q.push({s:[true,true,true,true],ms:500,msg:'Dört kanal birlikte açık'});
+ q.push({s:allOff,ms:1000,msg:'Dört kanal birlikte kapalı'});
+ for(let n=0;n<8;n++){
+   const mask=allOff.slice();mask[n%4]=true;
+   if(n>=4)mask[(n+2)%4]=true;
+   q.push({s:mask,ms:250,msg:'Kovalamaca '+(n+1)+'/8'});
+ }
+ q.push({s:allOff,ms:2000,msg:'Kapanış ve bekleme (2 saniye)'});
+ return q;
+}
+function manual(next,label){stop();step=0;total=0;update(next,label);}
+cards.forEach((card,i)=>card.querySelector('button').addEventListener('click',()=>{
+ const copy=states.slice();copy[i]=!copy[i];manual(copy,'Kanal '+(i+1)+' elle '+(copy[i]?'açıldı':'kapatıldı'));
+}));
+document.getElementById('all-on').addEventListener('click',()=>manual([true,true,true,true],'Tüm kanallar açık'));
+document.getElementById('all-off').addEventListener('click',()=>manual(allOff,'Tüm kanallar kapalı'));
+auto.addEventListener('click',()=>{
+ if(timer!==null){stop();render('Oynatma durduruldu; mevcut durum korundu');return;}
+ const q=sequence();let i=0;step=0;total=q.length;
+ auto.textContent='Diziyi durdur';
+ function advance(){
+   if(i>=q.length){stop();step=total;update(allOff,'Bir Arduino döngüsü tamamlandı');return;}
+   const item=q[i++];step=i;update(item.s,item.msg);
+   timer=setTimeout(advance,item.ms/Number(speed.value));
+ }
+ advance();
+});
+render('Hazır — isterseniz röleleri elle açıp kapatın.');
+})();</script></body></html>
