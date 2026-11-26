@@ -4,10 +4,17 @@ Arduino Uno ile kontrol edilen, ULN2003A sürücülü, 5 V bobinli 4 kanallı r�
 Şema, PCB, 3B görünüm, Gerber/drill, firmware, sayısal simülasyon ve SimulIDE
 projesi bu klasörde birlikte bulunur.
 
-> **Güvenlik:** Röle kontakları şebeke gerilimini anahtarlayabilir. Kartta optik
-> izolasyon yoktur. Şebeke ile çalışırken sigorta, yalıtımlı kutu ve gerilim
-> altında olmayan bağlantı kullanın; PCB iz genişlikleri sürekli 10 A için
-> tasarlanmamıştır. Röle bobinlerini Arduino 5 V pininden beslemeyin.
+> **Güvenlik — yalnızca düşük gerilimli eğitim:**
+> Bu PCB'nin 230 V şebeke güvenliği doğrulanmamıştır.
+> Şebeke gerilimi bağlamayın. Kontak yolları 0,5 mm'dir;
+> güvenli akım kapasitesi henüz doğrulanmamıştır.
+> Röleleri Arduino 5 V pininden beslemeyin.
+> Harici, regüle 5 V DC kaynak kullanın.
+> J2-1: +5 V, J2-2: GND.
+> Arduino ve röle kartının GND bağlantısı ortak olmalıdır.
+> J1-1 ve J2-1 aynı +5 V hattındadır.
+> Harici besleme kullanırken J1-1'i Arduino 5 V pinine
+> BAĞLAMAYIN. Mevcut PCB yanlış bağlantıyı engellemez.
 
 ## Donanım özeti
 
@@ -24,7 +31,7 @@ projesi bu klasörde birlikte bulunur.
 
 | J1 pini | Sinyal | Arduino Uno |
 |---:|---|---|
-| 1 | +5V | 5V |
+| 1 | +5V | Harici beslemede bağlama |
 | 2 | GND | GND |
 | 3 | IN1 | D4 |
 | 4 | IN2 | D5 |
