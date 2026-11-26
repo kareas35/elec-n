@@ -3007,7 +3007,7 @@
 			(drill 1)
 			(layers "*.Cu" "*.Mask")
 			(remove_unused_layers no)
-			(net "+5V")
+			(net "")
 			(uuid "5d04abba-4147-4546-a37e-a6017eecdb96")
 		)
 		(pad "2" thru_hole circle
