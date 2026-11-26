@@ -2,7 +2,7 @@
  * 4 Kanallı Röle Kartı - Arduino Uno demo yazılımı
  * ------------------------------------------------
  * Bağlantı (J1):
- *   J1-1  +5V   -> Arduino 5V     (4 röle aynı anda enerjiliyse harici 5V/2A önerilir)
+ *   J1-1  +5V   -> Harici besleme kullaniliyorsa baglama; J2 uzerinden 5V ver
  *   J1-2  GND   -> Arduino GND
  *   J1-3  IN1   -> D4
  *   J1-4  IN2   -> D5
@@ -11,7 +11,7 @@
  *
  * ULN2003A girişi HIGH olduğunda ilgili röle enerjilenir (aktif-YÜKSEK).
  * Röle kontakları COM/NO/NC için J3..J6 vidalı terminallerini kullanın.
- * Şebeke gerilimi ile çalıştıracaksanız kartı koruyun ve ölçümleri dikkatli yapın.
+ * Bu kartin 230V guvenligi dogrulanmadi. Sebeke gerilimi baglamayin.
  */
 
 const byte RELAY_PINS[4] = {4, 5, 6, 7};
