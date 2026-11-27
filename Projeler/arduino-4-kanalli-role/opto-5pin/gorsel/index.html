@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4 Röleli Arduino Devresi - V2 / 5 Pinli</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--line:#30363d;--txt:#e6edf3;--mut:#8b949e;--blue:#58a6ff;--red:#f85149;--green:#3fb950}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:14px/1.55 Segoe UI,Arial,sans-serif}
+header{padding:20px 26px;border-bottom:1px solid var(--line);background:#11161d}
+h1{margin:0;font-size:21px}h1 small{display:block;color:var(--mut);font-size:13px;font-weight:400;margin-top:4px}
+main{max-width:1500px;margin:auto;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card h2{margin:0 0 10px;font-size:15px;color:var(--blue)}
+.card p{margin:8px 0 0;color:var(--mut);font-size:12px}
+img{width:100%;height:auto;border-radius:6px;background:#fff}
+iframe{width:100%;height:620px;border:1px solid var(--line);border-radius:8px;background:#fff}
+a{color:var(--blue)}table{border-collapse:collapse;width:100%;font-size:12px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}th{color:var(--blue)}
+.kritik{border-color:#7d3b1f;background:#2b1a12}.kritik h2{color:#ffb37c}
+a.btn{display:inline-block;margin:4px 6px 0 0;padding:6px 10px;border:1px solid var(--line);border-radius:6px;text-decoration:none}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>4 Röleli Arduino Sürücüsü <small>V2 · pinler kullanıcının verdiği düzene göre · J1'de 5V yok, J2 tek röle beslemesi</small></h1></header>
+<main>
+<div class="card kritik" style="margin-bottom:16px">
+<h2>PİN HARİTASI (ONAYLANAN DÜZEN)</h2>
+<table>
+<tr><th colspan="2">J1 — Yeni 5 pinli kontrol soketi</th><th colspan="2">J2 — Tek röle besleme girişi</th></tr>
+<tr><td><b>Pin 1</b></td><td>GND → Arduino GND</td><td><b>Pin 1</b></td><td>Harici +5 V DC</td></tr>
+<tr><td><b>Pin 2</b></td><td>IN1 → Arduino D4</td><td><b>Pin 2</b></td><td>GND</td></tr>
+<tr><td><b>Pin 3</b></td><td>IN2 → Arduino D5</td><td></td><td></td></tr>
+<tr><td><b>Pin 4</b></td><td>IN3 → Arduino D6</td><td></td><td></td></tr>
+<tr><td><b>Pin 5</b></td><td>IN4 → Arduino D7</td><td></td><td></td></tr>
+</table>
+<p>J1'de <b style="color:var(--red)">5V yoktur</b>. Arduino yalnızca USB'den beslenir. J2'den gelen +5V yalnızca röle bobinlerini besler; Arduino'ya verilmez. PC817 optokuplörleri GND_A ve GND_B'yi izole eder (PCB'de 2.5 mm bakırsız bariyer).</p>
+</div>
+
+<div class="grid">
+  <div class="card"><h2>1 - Devre Şeması</h2><img src="varliklar/sema.png" alt="şema"><p>Kaynak: <code>kicad/relay_4ch_5pin.kicad_sch</code> · ERC: 0 ihlal · PDF/SVG: <code>kicad/cikti/</code></p></div>
+  <div class="card"><h2>2 - Baskı Devre (PCB)</h2><img src="varliklar/pcb.png" alt="PCB"><p>2 katman · 190 × 120 mm · X=64.5–67.0 mm bakırsız izolasyon bariyeri · DRC: 0 ihlal</p></div>
+  <div class="card"><h2>3 - 3B Görünüm (üstten)</h2><img src="varliklar/3d_ust.png" alt="3B üst"></div>
+  <div class="card"><h2>4 - 3B Görünüm (izometrik)</h2><img src="varliklar/3d_izometrik.png" alt="3B izometrik"></div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<h2>5 - Çalışan Simülasyon (sketch.ino yüklenmiş)</h2>
+<p>Aşağıdaki canlı simülasyon <code>sim/sketch.ino</code> dosyasını okuyup çalıştırır (D4–D7). Rölelerin açılışını ve seri monitörü izleyebilirsiniz. Hız etiketine tıklayarak hızı değiştirebilirsiniz.</p>
+<iframe src="varliklar/simulasyon.html" title="Canlı simülasyon"></iframe>
+</div>
+
+<div class="card" style="margin-top:16px"><h2>6 - Simülasyon Kaydı (GIF)</h2><img src="simulasyon.gif" alt="animasyon"></div>
+
+<div class="card" style="margin-top:16px">
+<h2>Konnektör özeti</h2>
+<ul style="color:var(--mut);font-size:13px">
+<li><b>J1</b> (1x05): GND, D4, D5, D6, D7 — sıra 1→5 yukarıdaki tabloda</li>
+<li><b>J2</b> (1x02): +5V DC, GND — röle beslemesi</li>
+<li><b>J3–J6</b> (1x02): röle 1–4 yük terminalleri, COM / NO</li>
+<li>Yük LED'leri J2'nin +5V DC kaynağından beslenir; Arduino 5V kullanılmaz.</li>
+</ul>
+<a class="btn" href="../kicad/relay_4ch_5pin.kicad_pro">KiCad projesi</a>
+<a class="btn" href="../kicad/cikti/sema.pdf">Şema PDF</a>
+<a class="btn" href="../kicad/cikti/bom.csv">Malzeme listesi</a>
+<a class="btn" href="../sim/sketch.ino">Arduino kodu</a>
+<a class="btn" href="../sim/diagram.json">Wokwi diagram.json</a>
+<a class="btn" href="../README.md">README</a>
+</div>
+</main>
+</body>
+</html>
