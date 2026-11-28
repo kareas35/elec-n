@@ -123,12 +123,12 @@ const pin={4:0,5:0,6:0,7:0};
 function pinMode(p,m){}
 function digitalWrite(p,v){pin[p]=v?1:0; goster();}
 function millis(){return simMs;}
-async function delay(ms){await new Promise(r=>setTimeout(r,Math.max(1,ms/hiz))); simMs+=ms;}
+async function delay(ms){await new Promise(r=>setTimeout(r,Math.max(1,ms/hiz))); if(!running)throw Error('DEMO_DURDU'); simMs+=ms;}
 const ser={
   begin(){},
   print(x){satir(String(x));},
   println(x){satir(x===undefined?"":String(x));},
-  queue:[], available(){return this.queue.length;}, read(){return this.queue.shift();}
+  queue:[], available(){return this.queue.length;}, read(){return String.fromCharCode(this.queue.shift());}
 };
 function goster(){
   for(let i=0;i<4;i++){
@@ -139,7 +139,7 @@ function goster(){
     el.querySelector(".kontak").textContent=on?"COM ——— NO (yük var)":"COM —| |— NO";
   }
 }
-function gonder(c){ser.queue.push(c.charCodeAt(0)); satir("<- "+c,"cmd");}
+function gonder(c){running=false;document.getElementById("btn").textContent="Başlat";satir("<- "+c,"cmd");if(window.komutCalistir)window.komutCalistir(c).catch(e=>satir("HATA: "+e,"cmd"));}
 document.getElementById("btn").onclick=function(){running=!running;this.textContent=running?"Durdur":"Başlat";};
 document.querySelectorAll(".ctrl button").forEach(b=>b.onclick=()=>gonder(b.textContent.trim()[0]));
 document.getElementById("inp").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.value){gonder(e.target.value[0]);e.target.value="";}});
@@ -152,7 +152,7 @@ document.getElementById("hiz").title="Değiştirmek için tıkla";
 const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor;
 try{
   const runner=new AsyncFunction("pinMode","digitalWrite","delay","millis","ser","HIGH","LOW","OUTPUT",
-    SRC+"\nawait setup();\nwhile(true){ if(!running){await new Promise(r=>setTimeout(r,80));continue;} await loop(); }");
+    SRC+"\nawait setup();\nwindow.komutCalistir=komut;\nwhile(true){ if(!running){await new Promise(r=>setTimeout(r,80));continue;} try{await loop();}catch(e){if(e.message!==\'DEMO_DURDU\')throw e;} }");
   runner(pinMode,digitalWrite,delay,millis,ser,1,0,1).catch(e=>satir("HATA: "+e,"cmd"));
 }catch(e){satir("DERLEME HATASI: "+e,"cmd");}
 goster();
